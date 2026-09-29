@@ -1,0 +1,28 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:campfire",
+    "minecraft:coal_block",
+    "minecraft:copper_lantern",
+    "minecraft:copper_torch",
+    "minecraft:copper_wall_torch",
+    "minecraft:exposed_copper_lantern",
+    "minecraft:jack_o_lantern",
+    "minecraft:lantern",
+    "minecraft:oxidized_copper_lantern",
+    "minecraft:sea_lantern",
+    "minecraft:soul_campfire",
+    "minecraft:soul_lantern",
+    "minecraft:soul_torch",
+    "minecraft:soul_wall_torch",
+    "minecraft:torch",
+    "minecraft:torchflower",
+    "minecraft:torchflower_crop",
+    "minecraft:wall_torch",
+    "minecraft:waxed_copper_lantern",
+    "minecraft:waxed_exposed_copper_lantern",
+    "minecraft:waxed_oxidized_copper_lantern",
+    "minecraft:waxed_weathered_copper_lantern",
+    "minecraft:weathered_copper_lantern"
+  ]
+}

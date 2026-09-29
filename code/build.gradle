@@ -1,0 +1,161 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+    id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    // Loom adds the repositories required by Minecraft and Fabric.
+    maven { url = uri('../.dependency-cache') }
+    mavenCentral()
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+    implementation "com.zaxxer:HikariCP:${project.hikari_version}"
+    include "com.zaxxer:HikariCP:${project.hikari_version}"
+
+    implementation "com.mysql:mysql-connector-j:${project.mysql_connector_version}"
+    include "com.mysql:mysql-connector-j:${project.mysql_connector_version}"
+
+    implementation "com.h2database:h2:${project.h2_version}"
+    include "com.h2database:h2:${project.h2_version}"
+
+    implementation "org.flywaydb:flyway-core:${project.flyway_version}"
+    include "org.flywaydb:flyway-core:${project.flyway_version}"
+    implementation "org.flywaydb:flyway-mysql:${project.flyway_version}"
+    include "org.flywaydb:flyway-mysql:${project.flyway_version}"
+}
+
+processResources {
+    inputs.property 'version', project.version
+    from('src/main/resources/db/migration') {
+        include 'V*.sql'
+        into 'db/migration/mysql'
+    }
+    from('src/main/resources/db/migration') {
+        include 'V*.sql'
+        exclude 'V4__transaction_archive.sql'
+        into 'db/migration/h2'
+    }
+    filesMatching('fabric.mod.json') {
+        expand 'version': inputs.properties.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 25
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+    withSourcesJar()
+}
+
+tasks.register('verifyAccountQueries', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.account.AccountQueryChecks'
+}
+
+tasks.register('verifyDistanceAccounting', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.industry.DistanceAccountingChecks'
+}
+
+tasks.test {
+    failOnNoDiscoveredTests = false
+}
+
+tasks.register('verifyDatabaseIntegration', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.account.DatabaseIntegrationChecks'
+}
+tasks.register('verifyMySqlCreation', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.account.MySqlCreationChecks'
+}
+
+tasks.register('verifyStatisticsIntegration', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.industry.StatisticsIntegrationChecks'
+}
+tasks.register('verifyEmbeddedAccounts', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.account.DatabaseIntegrationChecks'
+    args 'embedded'
+}
+tasks.register('verifyEmbeddedStatistics', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.industry.StatisticsIntegrationChecks'
+    args 'embedded'
+}
+tasks.register('verifyEmbeddedPersistence', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.account.EmbeddedPersistenceChecks'
+}
+tasks.register('verifyConfigCompatibility', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.config.ConfigCompatibilityChecks'
+}
+tasks.register('verifyDialogs', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.ui.DialogChecks'
+}
+tasks.check.dependsOn tasks.verifyDialogs
+
+tasks.register('verifyResources', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.industry.ResourceChecks'
+}
+tasks.check.dependsOn tasks.verifyResources
+
+// Launch the distributable JAR, with its nested database libraries instead of development output.
+tasks.register('verifyPackagedServer', JavaExec) {
+    dependsOn tasks.jar
+    classpath = sourceSets.main.runtimeClasspath.filter { file ->
+        file.isFile() && !['HikariCP-', 'mysql-connector-j-', 'h2-', 'flyway-', 'protobuf-', 'jackson-', 'lombok-'].any { file.name.startsWith(it) }
+    }
+    mainClass = 'net.fabricmc.loader.impl.launch.knot.KnotServer'
+    workingDir = file('run')
+    standardInput = System.in
+    args 'nogui'
+    doFirst {
+        def api = configurations.runtimeClasspath.files.find { it.name.startsWith('fabric-api-0.') }
+        systemProperty 'fabric.addMods', tasks.jar.archiveFile.get().asFile.absolutePath + File.pathSeparator + api.absolutePath
+        systemProperty 'fabric.development', 'false'
+    }
+}
+
+tasks.check.dependsOn tasks.verifyAccountQueries, tasks.verifyDistanceAccounting,
+        tasks.verifyEmbeddedAccounts, tasks.verifyEmbeddedStatistics, tasks.verifyEmbeddedPersistence,
+        tasks.verifyConfigCompatibility
+
+publishing {
+    publications {
+        create('mavenJava', MavenPublication) {
+            artifactId = project.archives_base_name
+            from components.java
+        }
+    }
+}

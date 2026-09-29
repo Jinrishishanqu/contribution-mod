@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:jukebox",
+    "minecraft:lectern",
+    "minecraft:note_block"
+  ]
+}

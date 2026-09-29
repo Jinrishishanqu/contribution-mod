@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:copper_hoe",
+    "minecraft:diamond_hoe",
+    "minecraft:fishing_rod",
+    "minecraft:golden_hoe",
+    "minecraft:iron_hoe",
+    "minecraft:netherite_hoe",
+    "minecraft:shears",
+    "minecraft:stone_hoe",
+    "minecraft:wooden_hoe"
+  ]
+}

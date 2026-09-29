@@ -1,0 +1,94 @@
+# 股票算法可视化配置。修改后运行：python stock_visualizer.py
+
+simulation:
+  days: 100
+  random_seed: 20260924
+
+# 每只股票维护独立 OU 状态和随机冲击，但统一使用这一组参数。
+ou:
+  theta: 0.18
+  mu: 0.0
+  sigma: 1.25
+  dt: 1.0
+  initial_sigma: 1.25
+
+price:
+  initial_price_min: 600.0
+  initial_price_max: 5000.0
+  initial_b_price_ratio: 0.20
+  b_target_price_ratio: 0.20
+  b_ema_beta: 0.90
+  change_coefficient: 0.10
+  daily_floor_ratio: 0.30
+  daily_ceiling_ratio: 3.00
+
+# 只标记首次达到标准的日期，不执行退市后的下跌、出售或清算流程。
+delisting:
+  initial_price_ratio: 0.30
+  historical_high_ratio: 0.15
+
+prosperity:
+  # 从高到低固定排列，整个模拟期间不变化。
+  ranking_high_to_low:
+    - 矿冶
+    - 林业
+    - 食品
+    - 科技
+    - 农耕
+    - 军工
+    - 交通
+    - 物流
+    - 畜牧
+    - 医药
+    - 水产
+    - 金融
+    - 土建
+    - 能源
+    - 制造
+    - 教育
+    - 环保
+    - 文娱
+  # 与上方名次逐项对应的修正参数 w。
+  correction_by_rank:
+    - 0.25
+    - 0.20
+    - 0.15
+    - 0.10
+    - 0.05
+    - 0.00
+    - 0.00
+    - 0.00
+    - 0.00
+    - 0.00
+    - 0.00
+    - 0.00
+    - 0.00
+    - -0.05
+    - -0.10
+    - -0.15
+    - -0.20
+    - -0.25
+
+stocks:
+  - {industry: 矿冶, stock: 钻石}
+  - {industry: 林业, stock: 橡木原木}
+  - {industry: 食品, stock: 面包}
+  - {industry: 科技, stock: 红石比较器}
+  - {industry: 农耕, stock: 小麦}
+  - {industry: 军工, stock: 弩}
+  - {industry: 交通, stock: 动力铁轨}
+  - {industry: 物流, stock: 漏斗}
+  - {industry: 畜牧, stock: 皮革}
+  - {industry: 医药, stock: 治疗药水}
+  - {industry: 水产, stock: 鳕鱼}
+  - {industry: 金融, stock: 绿宝石}
+  - {industry: 土建, stock: 石砖}
+  - {industry: 能源, stock: 煤炭}
+  - {industry: 制造, stock: 铁砧}
+  - {industry: 教育, stock: 附魔书}
+  - {industry: 环保, stock: 树苗}
+  - {industry: 文娱, stock: 唱片}
+
+output:
+  base_dir: output
+  dpi: 170

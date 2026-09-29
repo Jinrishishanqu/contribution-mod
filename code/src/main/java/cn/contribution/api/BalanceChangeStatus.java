@@ -1,0 +1,13 @@
+package cn.contribution.api;
+
+public enum BalanceChangeStatus {
+    SUCCESS,
+    ACCOUNT_NOT_FOUND,
+    INVALID_AMOUNT,
+    INVALID_TEXT,
+    INSUFFICIENT_BALANCE,
+    BALANCE_OVERFLOW,
+    DATABASE_UNAVAILABLE,
+    IN_PROGRESS,
+    IDEMPOTENCY_CONFLICT
+}

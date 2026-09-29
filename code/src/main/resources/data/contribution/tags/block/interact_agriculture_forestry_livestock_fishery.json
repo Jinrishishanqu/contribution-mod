@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:bee_nest",
+    "minecraft:beehive",
+    "minecraft:cave_vines",
+    "minecraft:cave_vines_plant",
+    "minecraft:coarse_dirt",
+    "minecraft:composter",
+    "minecraft:dirt",
+    "minecraft:grass_block",
+    "minecraft:rooted_dirt",
+    "minecraft:sweet_berry_bush"
+  ]
+}

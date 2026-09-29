@@ -1,0 +1,94 @@
+# 股票算法可视化配置。修改后运行：python stock_visualizer.py
+
+simulation:
+  days: 100                 # 模拟游戏日数量
+  random_seed: 20260924     # 固定随机种子，保证相同配置可复现
+
+# 每只股票维护独立 OU 状态和随机冲击，但统一使用这一组参数。
+ou:
+  theta: 0.18              # OU 均值回归速度
+  mu: 0.0                  # OU 长期均值
+  sigma: 1.25              # OU 随机波动强度
+  dt: 1.0                  # OU 单次更新时间步长
+  initial_sigma: 1.25      # OU 初始值相对 mu 的标准差
+
+price:
+  initial_price_min: 600.0       # 随机初始股价下限（包含）
+  initial_price_max: 5000.0      # 随机初始股价上限（包含）
+  initial_b_price_ratio: 0.10    # 初始基准 B = 初始股价 × 此比例
+  b_target_price_ratio: 0.10     # B 的每日 EMA 目标 = 当日股价 × 此比例
+  b_ema_beta: 0.90               # 基准 B 的 EMA beta
+  change_coefficient: 0.10       # 股价更新公式中 N×B 前的系数
+  daily_floor_ratio: 0.30        # 新股价相对旧股价的单日最低倍数
+  daily_ceiling_ratio: 3.00      # 新股价相对旧股价的单日最高倍数
+
+# 只标记首次达到标准的日期，不执行退市后的下跌、出售或清算流程。
+delisting:
+  initial_price_ratio: 0.30      # 跌至初始股价此比例时达到退市标准
+  historical_high_ratio: 0.15   # 跌至历史最高价此比例时达到退市标准
+
+prosperity:
+  # 从高到低固定排列，整个模拟期间不变化。
+  ranking_high_to_low:
+    - 矿冶                  # 第 1 名
+    - 林业                  # 第 2 名
+    - 食品                  # 第 3 名
+    - 科技                  # 第 4 名
+    - 农耕                  # 第 5 名
+    - 军工                  # 第 6 名
+    - 交通                  # 第 7 名
+    - 物流                  # 第 8 名
+    - 畜牧                  # 第 9 名
+    - 医药                  # 第 10 名
+    - 水产                  # 第 11 名
+    - 金融                  # 第 12 名
+    - 土建                  # 第 13 名
+    - 能源                  # 第 14 名
+    - 制造                  # 第 15 名
+    - 教育                  # 第 16 名
+    - 环保                  # 第 17 名
+    - 文娱                  # 第 18 名
+  # 与上方名次逐项对应的修正参数 w。
+  correction_by_rank:
+    - 0.25                  # 第 1 名修正参数 w
+    - 0.20                  # 第 2 名修正参数 w
+    - 0.15                  # 第 3 名修正参数 w
+    - 0.10                  # 第 4 名修正参数 w
+    - 0.05                  # 第 5 名修正参数 w
+    - 0.00                  # 第 6 名修正参数 w
+    - 0.00                  # 第 7 名修正参数 w
+    - 0.00                  # 第 8 名修正参数 w
+    - 0.00                  # 第 9 名修正参数 w
+    - 0.00                  # 第 10 名修正参数 w
+    - 0.00                  # 第 11 名修正参数 w
+    - 0.00                  # 第 12 名修正参数 w
+    - 0.00                  # 第 13 名修正参数 w
+    - -0.05                 # 第 14 名修正参数 w
+    - -0.10                 # 第 15 名修正参数 w
+    - -0.15                 # 第 16 名修正参数 w
+    - -0.20                 # 第 17 名修正参数 w
+    - -0.25                 # 第 18 名修正参数 w
+
+stocks:
+  - {industry: 矿冶, stock: 钻石}          # 矿冶行业股票
+  - {industry: 林业, stock: 橡木原木}      # 林业行业股票
+  - {industry: 食品, stock: 面包}          # 食品行业股票
+  - {industry: 科技, stock: 红石比较器}    # 科技行业股票
+  - {industry: 农耕, stock: 小麦}          # 农耕行业股票
+  - {industry: 军工, stock: 弩}            # 军工行业股票
+  - {industry: 交通, stock: 动力铁轨}      # 交通行业股票
+  - {industry: 物流, stock: 漏斗}          # 物流行业股票
+  - {industry: 畜牧, stock: 皮革}          # 畜牧行业股票
+  - {industry: 医药, stock: 治疗药水}      # 医药行业股票
+  - {industry: 水产, stock: 鳕鱼}          # 水产行业股票
+  - {industry: 金融, stock: 绿宝石}        # 金融行业股票
+  - {industry: 土建, stock: 石砖}          # 土建行业股票
+  - {industry: 能源, stock: 煤炭}          # 能源行业股票
+  - {industry: 制造, stock: 铁砧}          # 制造行业股票
+  - {industry: 教育, stock: 附魔书}        # 教育行业股票
+  - {industry: 环保, stock: 树苗}          # 环保行业股票
+  - {industry: 文娱, stock: 唱片}          # 文娱行业股票
+
+output:
+  base_dir: output               # 时间戳结果目录的父目录
+  dpi: 170                       # PNG 输出分辨率

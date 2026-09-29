@@ -1,0 +1,31 @@
+{
+  "required": true,
+  "package": "cn.contribution.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "BlockItemMixin",
+    "ResultSlotMixin",
+    "FurnaceMixin",
+    "CrafterMixin",
+    "MerchantResultSlotMixin",
+    "AnimalBreedingMixin",
+    "TamableAnimalMixin",
+    "FishingHookMixin",
+    "SmithingMenuMixin",
+    "AnvilMenuMixin",
+    "ItemCombinerTransferMixin",
+    "EnchantmentMenuMixin",
+    "BrewingStandMixin",
+    "ZombieVillagerCureMixin",
+    "CowMilkingMixin",
+    "GoatMilkingMixin",
+    "PlayerShearingContextMixin",
+    "LivingEntityShearingMixin",
+    "ServerPlayerTravelStatsMixin",
+    "ItemUseCompletionMixin",
+    "BlockInteractionCompletionMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

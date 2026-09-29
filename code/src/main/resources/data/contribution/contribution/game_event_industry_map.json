@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "events": [
+    {
+      "event_id": "contribution:process/furnace/mineral_output",
+      "industry": "contribution:mining_metallurgy",
+      "measure": "output_item",
+      "unit_size": 1,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:process/furnace/chemical_output",
+      "industry": "contribution:energy_chemical",
+      "measure": "output_item",
+      "unit_size": 1,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:process/furnace/material_output",
+      "industry": "contribution:processing_manufacturing",
+      "measure": "output_item",
+      "unit_size": 1,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:process/furnace/food_output",
+      "industry": "contribution:military_food_medicine",
+      "measure": "output_item",
+      "unit_size": 1,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:process/blast_furnace/output",
+      "industry": "contribution:mining_metallurgy",
+      "measure": "output_item",
+      "unit_size": 1,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:process/smoker/output",
+      "industry": "contribution:military_food_medicine",
+      "measure": "output_item",
+      "unit_size": 1,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:process/crafter/output",
+      "industry": "contribution:processing_manufacturing",
+      "measure": "output_item",
+      "unit_size": 1,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:entity/breed",
+      "industry": "contribution:agriculture_forestry_livestock_fishery",
+      "measure": "successful_action",
+      "unit_size": 1,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:entity/tame",
+      "industry": "contribution:agriculture_forestry_livestock_fishery",
+      "measure": "successful_action",
+      "unit_size": 1,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:entity/shear",
+      "industry": "contribution:agriculture_forestry_livestock_fishery",
+      "measure": "output_item",
+      "unit_size": 1,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:entity/milk",
+      "industry": "contribution:agriculture_forestry_livestock_fishery",
+      "measure": "successful_action",
+      "unit_size": 1,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:entity/cure",
+      "industry": "contribution:military_food_medicine",
+      "measure": "successful_action",
+      "unit_size": 1,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:entity/kill_hostile",
+      "industry": "contribution:military_food_medicine",
+      "measure": "entity",
+      "unit_size": 1,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:service/villager_trade",
+      "industry": "contribution:circulation_services",
+      "measure": "completed_trade",
+      "unit_size": 1,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:collect/fishing",
+      "industry": "contribution:agriculture_forestry_livestock_fishery",
+      "measure": "output_item",
+      "unit_size": 1,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:modify/smithing",
+      "industry": "contribution:processing_manufacturing",
+      "measure": "modified_item",
+      "unit_size": 1,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:modify/enchanting",
+      "industry": "contribution:technology_magic",
+      "measure": "modified_item",
+      "unit_size": 1,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:modify/anvil_repair",
+      "industry": "contribution:processing_manufacturing",
+      "measure": "modified_item",
+      "unit_size": 1,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:process/brewing",
+      "industry": "contribution:military_food_medicine",
+      "measure": "output_item",
+      "unit_size": 1,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:logistics/distance/elytra",
+      "industry": "contribution:circulation_services",
+      "measure": "distance_block",
+      "unit_size": 16,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:logistics/distance/horse",
+      "industry": "contribution:circulation_services",
+      "measure": "distance_block",
+      "unit_size": 16,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:logistics/distance/boat",
+      "industry": "contribution:circulation_services",
+      "measure": "distance_block",
+      "unit_size": 16,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:logistics/distance/minecart",
+      "industry": "contribution:circulation_services",
+      "measure": "distance_block",
+      "unit_size": 16,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:logistics/distance/pig",
+      "industry": "contribution:circulation_services",
+      "measure": "distance_block",
+      "unit_size": 16,
+      "unit_value": 1
+    },
+    {
+      "event_id": "contribution:logistics/distance/strider",
+      "industry": "contribution:circulation_services",
+      "measure": "distance_block",
+      "unit_size": 16,
+      "unit_value": 1
+    }
+  ]
+}

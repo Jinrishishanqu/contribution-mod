@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:green_dye",
+    "minecraft:lime_dye",
+    "minecraft:charcoal",
+    "minecraft:resin_brick"
+  ]
+}

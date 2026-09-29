@@ -1,0 +1,57 @@
+package cn.contribution;
+
+import cn.contribution.industry.IndustryRegistry;
+import cn.contribution.industry.IndustryMatcher;
+import cn.contribution.command.ContributionCommands;
+import cn.contribution.runtime.ContributionRuntime;
+import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.fabricmc.fabric.api.entity.event.v1.ServerEntityCombatEvents;
+import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.MobCategory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public final class ContributionMod implements ModInitializer {
+    public static final String MOD_ID = "contribution";
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
+    @Override
+    public void onInitialize() {
+        IndustryRegistry.bootstrap();
+        ServerLifecycleEvents.SERVER_STARTED.register(ContributionRuntime::start);
+        ServerLifecycleEvents.END_DATA_PACK_RELOAD.register((server, resources, success) -> {
+            if (success && ContributionRuntime.statistics() != null) cn.contribution.industry.RuleManager.stage(server);
+        });
+        ServerLifecycleEvents.SERVER_STOPPING.register(server -> ContributionRuntime.stop());
+        ServerTickEvents.END_SERVER_TICK.register(ContributionRuntime::tick);
+        CommandRegistrationCallback.EVENT.register((dispatcher, registry, selection) -> ContributionCommands.register(dispatcher));
+        ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
+            if (ContributionRuntime.accounts() != null) {
+                ServerPlayer player = handler.player;
+                ContributionRuntime.accounts().registerPlayer(player.getUUID(), player.getGameProfile().name())
+                        .exceptionally(error -> {
+                            LOGGER.warn("Player account registration is pending: {}", error.toString());
+                            return null;
+                        });
+            }
+        });
+        PlayerBlockBreakEvents.AFTER.register((level, player, pos, state, entity) -> {
+            if (player instanceof ServerPlayer serverPlayer && ContributionRuntime.statistics() != null) {
+                ContributionRuntime.statistics().block(serverPlayer, pos, state, IndustryMatcher.Action.MINE);
+            }
+        });
+        ServerEntityCombatEvents.AFTER_KILLED_OTHER_ENTITY.register((level, killer, victim, damage) -> {
+            if (killer instanceof ServerPlayer player && victim.getType().getCategory() == MobCategory.MONSTER
+                    && ContributionRuntime.statistics() != null) {
+                ContributionRuntime.statistics().gameEvent(level.getServer(),
+                        "contribution:entity/kill_hostile", 1, player);
+            }
+        });
+        LOGGER.info("Loaded {} built-in contribution industries", IndustryRegistry.builtIns().size());
+    }
+}

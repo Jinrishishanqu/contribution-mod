@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:beehive",
+    "minecraft:carrot_on_a_stick",
+    "minecraft:composter",
+    "minecraft:copper_hoe",
+    "minecraft:diamond_hoe",
+    "minecraft:fishing_rod",
+    "minecraft:golden_hoe",
+    "minecraft:honeycomb_block",
+    "minecraft:iron_hoe",
+    "minecraft:leather",
+    "minecraft:melon_seeds",
+    "minecraft:pumpkin_seeds",
+    "minecraft:shears",
+    "minecraft:stone_hoe",
+    "minecraft:sugar",
+    "minecraft:warped_fungus_on_a_stick",
+    "minecraft:wooden_hoe"
+  ]
+}

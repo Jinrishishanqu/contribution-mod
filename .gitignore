@@ -1,0 +1,28 @@
+# Local build tools and caches
+.gradle-home/
+.jdk/
+.dependency-cache/
+.test-tools/
+.test-mysql/
+mysql-test-*.zip
+
+# Runtime worlds, databases, logs and generated outputs
+code/.gradle/
+code/build/
+code/run/
+code/logs/
+logs/
+output/
+__pycache__/
+*.pyc
+*.log
+*.mv.db
+*.lock.db
+*.trace.db
+
+# Local credentials and IDE state
+.env
+.env.*
+**/config/contribution/server.json
+.idea/
+*.iml

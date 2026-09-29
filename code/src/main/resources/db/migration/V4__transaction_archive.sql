@@ -1,0 +1,1 @@
+CREATE TABLE contribution_transaction_archive LIKE contribution_transaction;
