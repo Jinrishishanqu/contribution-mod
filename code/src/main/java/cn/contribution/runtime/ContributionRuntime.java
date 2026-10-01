@@ -146,6 +146,7 @@ public final class ContributionRuntime {
     public static void tick(MinecraftServer server) {
         if (archive != null) archive.tick(server);
         if (stocks != null && server.getTickCount() % 20 == 0) stocks.tick(server);
+        if (stocks != null) stocks.tickNotices(server);
         if (developmentRewards != null) developmentRewards.tick(server);
         if (checkins != null) checkins.tick(server);
         DatabaseService current = database;

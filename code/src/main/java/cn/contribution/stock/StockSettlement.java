@@ -60,24 +60,29 @@ final class StockSettlement {
             double weight = weights.get(row.industry);
             double multiplier = noise > 0 ? 1 + weight : 1 - weight;
             double proposed = row.price + .1 * noise * multiplier * base;
-            long cap = 128L * row.initial;
+            long cap = 10L * row.initial;
             long lower = Math.max(1L, Math.round(.3 * row.price));
             long upper = Math.min(cap, 3L * row.price);
-            price = (int) Math.max(lower, Math.min(upper, Math.round(proposed)));
+            price = (int) Math.min(cap, Math.max(lower, Math.min(upper, Math.round(proposed))));
             base = .9 * base + .1 * (.1 * price);
             String status = row.status;
             Long retirement = row.retirementDay;
             if (status.equals("ACTIVE") && day - row.listedDay >= 3
-                    && (price <= .3 * row.initial || price <= .15 * row.high)) {
+                    && price <= retirementThreshold(row.initial, Math.max(price, row.high))) {
                 status = "RETIRING";
                 retirement = day;
             }
             updateListing(connection, row, day, price, base, noise, status, retirement);
             dailyPrice(connection, row.id, day, price, status);
+            int threshold = retirementThreshold(row.initial, Math.max(price, row.high));
+            if (price <= threshold * 1.25) noticeHolders(connection, row.id, day, "RISK",
+                    "[股票] " + row.itemId + " 股价 " + price + "，接近退市阈值 " + threshold + "，请关注交易窗口");
+            if (!row.status.equals("RETIRING") && status.equals("RETIRING")) noticeHolders(connection, row.id, day,
+                    "RETIRING", "[股票] " + row.itemId + " 今日退市，14:00 前可按正常股价手动卖出");
         }
         triggerBottomRetirement(connection, day, ranking.getLast());
         trimExcess(connection, day);
-        fillVacancies(connection, day, industries, random);
+        fillVacancies(connection, day, random);
     }
 
     /** Existing 30-stock worlds converge to the 20-stock limit after today's trading window. */
@@ -95,6 +100,8 @@ final class StockSettlement {
                     "UPDATE stock_daily_price SET status = 'RETIRING' WHERE stock_id = ? AND game_day = ?")) {
                 update.setLong(1, row.id); update.setLong(2, day); update.executeUpdate();
             }
+            noticeHolders(connection, row.id, day, "RETIRING",
+                    "[股票] " + row.itemId + " 今日退市，14:00 前可按正常股价手动卖出");
         }
     }
 
@@ -153,6 +160,8 @@ final class StockSettlement {
                 "UPDATE stock_industry_streak SET last_bottom_retirement_day = ? WHERE industry_id = ?")) {
             update.setLong(1, day); update.setString(2, industryId); update.executeUpdate();
         }
+        noticeHolders(connection, candidate.id, day, "RETIRING",
+                "[股票] " + candidate.itemId + " 今日退市，14:00 前可按正常股价手动卖出");
     }
 
     static void closeRetirements(Connection connection, long day) throws SQLException {
@@ -164,7 +173,7 @@ final class StockSettlement {
 
     private static void delist(Connection connection, Row row, long day) throws SQLException {
         try (PreparedStatement positions = connection.prepareStatement(
-                "SELECT player_uuid, quantity FROM stock_position WHERE stock_id = ?")) {
+                "SELECT player_uuid, quantity FROM stock_position WHERE stock_id = ? AND quantity > 0")) {
             positions.setLong(1, row.id);
             try (ResultSet holders = positions.executeQuery()) {
                 while (holders.next()) {
@@ -208,6 +217,14 @@ final class StockSettlement {
                             insert.executeUpdate();
                         }
                     }
+                    try (PreparedStatement notice = connection.prepareStatement(
+                            "INSERT IGNORE INTO stock_notice (player_uuid, stock_id, game_day, kind, message, delivered_at) "
+                                    + "VALUES (?, ?, ?, 'REFUND', ?, NULL)")) {
+                        notice.setBytes(1, playerBytes); notice.setLong(2, row.id); notice.setLong(3, day);
+                        notice.setString(4, "[股票] " + row.itemId + " 已退市，按当日股价 50% 返还 " + amount
+                                + " 贡献值；已到账 " + paid + "，余款可用 /stock claim 领取");
+                        notice.executeUpdate();
+                    }
                 }
             }
         }
@@ -224,8 +241,7 @@ final class StockSettlement {
         }
     }
 
-    private static void fillVacancies(Connection connection, long day, Map<BuiltInIndustry, IndustryValue> values,
-                                      Random random) throws SQLException {
+    private static void fillVacancies(Connection connection, long day, Random random) throws SQLException {
         List<Row> active = loadListings(connection).stream().filter(row -> !row.status.equals("DELISTED")).toList();
         if (active.size() >= 20) return;
         Set<String> listed = new HashSet<>();
@@ -250,9 +266,7 @@ final class StockSettlement {
             }
             if (choice == null) break;
             BuiltInIndustry selectedIndustry = choice.industry();
-            int count = (int) StockCatalog.all().stream().filter(item -> item.industry() == selectedIndustry).count();
-            double proposed = values.get(choice.industry()).total() / (double) count * (.5 + random.nextDouble());
-            int price = (int) Math.max(100, Math.min(10000, Math.round(proposed)));
+            int price = 100 + random.nextInt(301);
             long id;
             try (PreparedStatement insert = connection.prepareStatement(
                     "INSERT INTO stock_listing (item_id, item_name, industry_id, listed_day, initial_price, price, high_price, low_price, "
@@ -283,6 +297,21 @@ final class StockSettlement {
             update.setString(6, status);
             if (retirement == null) update.setNull(7, java.sql.Types.BIGINT); else update.setLong(7, retirement);
             update.setLong(8, day); update.setLong(9, row.id); update.executeUpdate();
+        }
+    }
+
+    static int retirementThreshold(int initial, int high) {
+        return Math.min(initial / 2, high / 4);
+    }
+
+    private static void noticeHolders(Connection connection, long stockId, long day, String kind, String message)
+            throws SQLException {
+        try (PreparedStatement notice = connection.prepareStatement(
+                "INSERT IGNORE INTO stock_notice (player_uuid, stock_id, game_day, kind, message, delivered_at) "
+                        + "SELECT player_uuid, stock_id, ?, ?, ?, NULL FROM stock_position "
+                        + "WHERE stock_id = ? AND quantity > 0")) {
+            notice.setLong(1, day); notice.setString(2, kind); notice.setString(3, message);
+            notice.setLong(4, stockId); notice.executeUpdate();
         }
     }
 

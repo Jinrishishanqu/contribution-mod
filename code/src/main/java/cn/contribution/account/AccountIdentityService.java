@@ -16,7 +16,7 @@ public final class AccountIdentityService {
             "contribution_transaction", "contribution_transaction_archive", "player_activity_stats",
             "player_industry_stats", "player_distance_remainder", "stock_position", "stock_trade", "stock_refund",
             "stock_batch_request", "player_development_reward", "checkin_daily", "checkin_player",
-            "checkin_event_claim", "reward_delivery", "shop_order"
+            "checkin_event_claim", "reward_delivery", "shop_order", "stock_notice"
     };
     private final DatabaseService database;
 
@@ -25,6 +25,7 @@ public final class AccountIdentityService {
     public CompletableFuture<String> create(UUID uuid, String name) {
         if (uuid == null || name == null || !name.matches("[A-Za-z0-9_]{3,16}"))
             return CompletableFuture.completedFuture("UUID 或玩家名称无效");
+        if (isBotName(name)) return CompletableFuture.completedFuture("bot_ 前缀是假人，不创建贡献值账户");
         return database.transaction(connection -> {
             Account old = account(connection, uuid, true);
             if (old != null) return "账户已存在：" + old.name + "（" + uuid + "）";
@@ -42,6 +43,34 @@ public final class AccountIdentityService {
                 insert.setString(3, name.toLowerCase(Locale.ROOT)); insert.executeUpdate();
             }
             return "已创建空账户：" + name + "（" + uuid + "）";
+        });
+    }
+
+    public static boolean isBotName(String name) {
+        return name != null && name.toLowerCase(Locale.ROOT).startsWith("bot_");
+    }
+
+    /** Removes only accounts whose stored name still has the bot_ prefix, with their player-owned rows. */
+    public CompletableFuture<Integer> removeBotAccounts() {
+        return database.transaction(connection -> {
+            java.util.List<UUID> bots = new java.util.ArrayList<>();
+            try (PreparedStatement query = connection.prepareStatement(
+                    "SELECT player_uuid FROM contribution_account WHERE LEFT(player_name_normalized, 4) = 'bot_' FOR UPDATE");
+                 ResultSet rows = query.executeQuery()) {
+                while (rows.next()) bots.add(AccountService.bytesUuid(rows.getBytes(1)));
+            }
+            for (UUID id : bots) {
+                byte[] uuid = AccountService.uuidBytes(id);
+                for (String table : OWNED_TABLES) try (PreparedStatement delete = connection.prepareStatement(
+                        "DELETE FROM " + table + " WHERE player_uuid = ?")) {
+                    delete.setBytes(1, uuid); delete.executeUpdate();
+                }
+                try (PreparedStatement delete = connection.prepareStatement(
+                        "DELETE FROM contribution_account WHERE player_uuid = ? AND LEFT(player_name_normalized, 4) = 'bot_'")) {
+                    delete.setBytes(1, uuid); delete.executeUpdate();
+                }
+            }
+            return bots.size();
         });
     }
 

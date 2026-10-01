@@ -29,6 +29,22 @@ public final class StockUiNetwork {
         }));
     }
 
+    public static void portfolio(CommandSourceStack source) {
+        ServerPlayer player = source.getPlayer();
+        if (player == null) { source.sendFailure(Component.literal("请在游戏内查看持仓")); return; }
+        if (!ServerPlayNetworking.canSend(player, StockSnapshotPayload.TYPE)) {
+            StockDialogs.portfolio(source); return;
+        }
+        var service = ContributionRuntime.stocks();
+        if (service == null) { source.sendFailure(Component.literal("股票市场尚未启动")); return; }
+        service.dashboard(player.getUUID()).whenComplete((dashboard, error) -> source.getServer().execute(() -> {
+            if (player.hasDisconnected()) return;
+            if (error != null) source.sendFailure(Component.literal("个人持仓暂时不可用"));
+            else ServerPlayNetworking.send(player, new StockSnapshotPayload(JSON.toJson(new Snapshot("profile", dashboard,
+                    null, dashboard.market().day(), dashboard.market().time()))));
+        }));
+    }
+
     public static void detail(CommandSourceStack source, String symbol, int days) {
         ServerPlayer player = source.getPlayer();
         if (player == null) { source.sendFailure(Component.literal("请在游戏内查看股票")); return; }

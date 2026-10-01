@@ -37,7 +37,9 @@ public final class CheckinService {
     public void tick(MinecraftServer server) {
         if (server.getTickCount() % 20 != 0) return;
         long now = System.currentTimeMillis();
-        onlineTime.sample(server.getPlayerList().getPlayers().stream().map(ServerPlayer::getUUID).toList(), now)
+        onlineTime.sample(server.getPlayerList().getPlayers().stream()
+                        .filter(player -> !cn.contribution.account.AccountIdentityService.isBotName(player.getGameProfile().name()))
+                        .map(ServerPlayer::getUUID).toList(), now)
                 .forEach((key, seconds) -> pending.merge(new Key(key.player(), key.day()), seconds, Integer::sum));
         if (lastFlushMs == 0) lastFlushMs = now;
         if (now - lastFlushMs >= 60_000 && inFlight == null) flush(server);
@@ -72,7 +74,9 @@ public final class CheckinService {
     }
 
     public void shutdown(MinecraftServer server) {
-        onlineTime.sample(server.getPlayerList().getPlayers().stream().map(ServerPlayer::getUUID).toList(), System.currentTimeMillis())
+        onlineTime.sample(server.getPlayerList().getPlayers().stream()
+                        .filter(player -> !cn.contribution.account.AccountIdentityService.isBotName(player.getGameProfile().name()))
+                        .map(ServerPlayer::getUUID).toList(), System.currentTimeMillis())
                 .forEach((key, seconds) -> pending.merge(new Key(key.player(), key.day()), seconds, Integer::sum));
         if (inFlight != null) inFlight.join();
         if (pending.isEmpty()) return;

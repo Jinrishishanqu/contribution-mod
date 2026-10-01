@@ -196,9 +196,6 @@ public final class DatabaseService implements AutoCloseable {
         state.set(DatabaseState.STOPPED);
         HikariDataSource source = dataSource;
         dataSource = null;
-        if (source != null) {
-            source.close();
-        }
         executor.shutdown();
         try {
             if (!executor.awaitTermination(5, TimeUnit.SECONDS)) {
@@ -207,6 +204,8 @@ public final class DatabaseService implements AutoCloseable {
         } catch (InterruptedException exception) {
             executor.shutdownNow();
             Thread.currentThread().interrupt();
+        } finally {
+            if (source != null) source.close();
         }
     }
 

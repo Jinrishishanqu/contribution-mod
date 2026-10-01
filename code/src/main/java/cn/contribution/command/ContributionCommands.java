@@ -51,6 +51,15 @@ public final class ContributionCommands {
                 .then(Commands.literal("accounts")
                         .requires(ContributionCommands::admin)
                         .executes(context -> accounts(context.getSource(), null)))
+                .then(Commands.literal("bot_check").requires(ContributionCommands::admin)
+                        .executes(context -> {
+                            CommandSourceStack source = context.getSource();
+                            if (ContributionRuntime.database() == null) { failure(source, "数据服务尚未启动"); return 0; }
+                            AccountIdentityService service = new AccountIdentityService(ContributionRuntime.database());
+                            dispatch(source, service.removeBotAccounts(), count ->
+                                    success(source, "已清理 " + count + " 个 bot_ 假人账户及其玩家关联记录"));
+                            return 1;
+                        }))
                 .then(Commands.literal("accounts-next")
                         .requires(ContributionCommands::admin)
                         .then(Commands.argument("cursor", StringArgumentType.word())
@@ -411,7 +420,8 @@ public final class ContributionCommands {
             success(source, "暂无流水");
         }
         for (TransactionRecord row : page.rows()) {
-            success(source, row.playerName() + " " + (row.amount() > 0 ? "+" : "") + row.amount()
+            success(source, row.createdAt().truncatedTo(java.time.temporal.ChronoUnit.SECONDS) + " "
+                    + row.playerName() + " " + (row.amount() > 0 ? "+" : "") + row.amount()
                     + "，余额 " + row.balanceAfter() + "，" + row.reason() + "，流水 ID " + row.transactionId());
         }
         page.nextCursor().ifPresent(next -> {

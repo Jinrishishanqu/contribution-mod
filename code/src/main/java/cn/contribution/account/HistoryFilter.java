@@ -13,7 +13,7 @@ import java.util.Set;
 public record HistoryFilter(String type, String source, String serverId, Instant fromInclusive,
                             Instant untilExclusive, String commandArguments) {
     private static final Set<String> TYPES = Set.of(
-            "ADMIN", "CHECK_IN", "EVENT_CHECK_IN", "DEVELOP", "SHOP_BUY", "SPEND", "BONUS", "EXTERNAL", "REFUND", "TAX", "STOCK_BUY", "STOCK_SELL");
+            "ADMIN", "CHECK_IN", "EVENT_CHECK_IN", "DEVELOP", "SHOP_BUY", "SPEND", "STOCK", "BONUS", "EXTERNAL", "REFUND", "TAX", "STOCK_BUY", "STOCK_SELL");
 
     public static HistoryFilter empty() {
         return new HistoryFilter(null, null, null, null, null, "");

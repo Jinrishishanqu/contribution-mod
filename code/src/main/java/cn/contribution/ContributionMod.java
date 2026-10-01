@@ -36,6 +36,7 @@ public final class ContributionMod implements ModInitializer {
         ServerTickEvents.END_SERVER_TICK.register(ContributionRuntime::tick);
         CommandRegistrationCallback.EVENT.register((dispatcher, registry, selection) -> ContributionCommands.register(dispatcher));
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
+            if (cn.contribution.account.AccountIdentityService.isBotName(handler.player.getGameProfile().name())) return;
             if (ContributionRuntime.checkins() != null) ContributionRuntime.checkins().joined(handler.player.getUUID());
             if (ContributionRuntime.accounts() != null) {
                 ServerPlayer player = handler.player;

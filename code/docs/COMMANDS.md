@@ -1,4 +1,4 @@
-# 命令速查（0.0.5）
+# 命令速查（0.0.6）
 
 本模组的命令入口为：贡献值、建设度和签到使用 `/contribution`，股票使用 `/stock`，商店使用 `/shop`。`<…>` 是必填参数，`[…]` 是可选参数。未安装客户端模组的玩家仍可进入服务器，并使用全部文字命令和原版 Dialog。
 
@@ -20,6 +20,7 @@
 | `/shop retry <订单ID> <商品ID> <份数>` | 结果不明时沿用原订单 ID 和参数重试 |
 | `/shop claim` | 领取商店或活动的待发物品 |
 | `/stock` | 打开股票大厅；安装本模组的客户端显示绘制曲线，否则显示原版 Dialog |
+| `/stock portfolio` | 查看个人持仓、市值、成本与未实现盈亏；原版客户端也可用 |
 | `/stock check <股票> [week\|month\|year]` | 查看股票详情与相应时间跨度，省略时为 `week` |
 | `/stock buy <股票> <股数>` | 买入 1—10000 股 |
 | `/stock sell <股票> <股数>` | 卖出 1—10000 股 |
@@ -49,6 +50,7 @@
 | `/contribution retry <请求ID> <玩家> <带符号数量> <原因> <影响历史总收入> [备注]` | 以原参数重试管理员余额变更 |
 | `/contribution account create <UUID> <玩家名称>` | 仅当 UUID 尚无账户时创建零余额账户；名称已被别的 UUID 占用会拒绝 |
 | `/contribution account migrate <旧UUID> <新UUID> confirm` | 将旧账户的余额、历史收入、流水、统计、持仓、交易、批量请求与退市返还迁至新 UUID |
+| `/contribution bot_check` | 清理数据库中名称以 `bot_` 开头的假人账户及其玩家关联数据；执行前备份 |
 | `/contribution checkin event create <ID> <标题> <开始日期> <结束日期> <贡献值> [<物品ID> <数量>]` | 在主服定义活动；日期为 `YYYY-MM-DD`，标题含空格时加引号 |
 | `/contribution checkin event create-extension <ID> <标题> <开始日期> <结束日期> <提供者ID> <参数>` | 用已注册的其他模组奖励提供者定义活动 |
 
@@ -59,7 +61,7 @@
 筛选条件由空格分隔的 `名称=值` 组成，支持 `type`、`source`、`server`、`from`、`to`。日期为 UTC 的 `YYYY-MM-DD`，结束日期包含当天。例如：
 
 ```text
-/contribution history-search self type=STOCK_SELL from=2026-09-01
+/contribution history-search self type=STOCK source=contribution:stock from=2026-09-01
 /contribution history-search * server=survival type=REFUND
 ```
 

@@ -37,6 +37,7 @@ public final class AccountService extends ContributionApi {
     }
 
     public CompletableFuture<Void> registerPlayer(UUID uuid, String name) {
+        if (AccountIdentityService.isBotName(name)) return CompletableFuture.completedFuture(null);
         return database.transaction(connection -> {
             try (PreparedStatement statement = connection.prepareStatement(
                     "INSERT IGNORE INTO contribution_account "

@@ -7,6 +7,8 @@ import cn.contribution.database.DatabaseState;
 import cn.contribution.industry.BuiltInIndustry;
 import cn.contribution.industry.RuleManager;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -28,6 +30,8 @@ public final class StockService {
     private final boolean mainServer;
     private boolean ticking;
     private int nextTick;
+    private boolean noticePolling;
+    private int nextNoticeTick;
 
     public StockService(DatabaseService database, ServerConfig config) {
         this.database = database;
@@ -89,6 +93,51 @@ public final class StockService {
         }));
     }
 
+    /** One bounded off-thread notice query per server every ten seconds, including non-main servers. */
+    public void tickNotices(MinecraftServer server) {
+        if (noticePolling || server.getTickCount() < nextNoticeTick
+                || database.state() != DatabaseState.AVAILABLE) return;
+        nextNoticeTick = server.getTickCount() + 200;
+        List<UUID> online = server.getPlayerList().getPlayers().stream()
+                .map(ServerPlayer::getUUID).toList();
+        if (online.isEmpty()) return;
+        noticePolling = true;
+        database.transaction(connection -> {
+            String markers = String.join(",", java.util.Collections.nCopies(online.size(), "?"));
+            List<Notice> notices = new ArrayList<>();
+            try (PreparedStatement query = connection.prepareStatement(
+                    "SELECT player_uuid, stock_id, game_day, kind, message FROM stock_notice "
+                            + "WHERE delivered_at IS NULL AND player_uuid IN (" + markers + ") "
+                            + "ORDER BY game_day, stock_id LIMIT 100 FOR UPDATE")) {
+                for (int i = 0; i < online.size(); i++) query.setBytes(i + 1, uuidBytes(online.get(i)));
+                try (ResultSet rows = query.executeQuery()) {
+                    while (rows.next()) notices.add(new Notice(
+                            cn.contribution.account.AccountService.bytesUuid(rows.getBytes(1)),
+                            rows.getLong(2), rows.getLong(3), rows.getString(4), rows.getString(5)));
+                }
+            }
+            try (PreparedStatement update = connection.prepareStatement(
+                    "UPDATE stock_notice SET delivered_at = CURRENT_TIMESTAMP(6) "
+                            + "WHERE player_uuid = ? AND stock_id = ? AND game_day = ? AND kind = ? AND delivered_at IS NULL")) {
+                for (Notice notice : notices) {
+                    update.setBytes(1, uuidBytes(notice.player())); update.setLong(2, notice.stock());
+                    update.setLong(3, notice.day()); update.setString(4, notice.kind()); update.addBatch();
+                }
+                if (!notices.isEmpty()) update.executeBatch();
+            }
+            return notices;
+        }).whenComplete((notices, error) -> server.execute(() -> {
+            noticePolling = false;
+            if (error != null) return;
+            for (Notice notice : notices) {
+                ServerPlayer player = server.getPlayerList().getPlayer(notice.player());
+                if (player != null) player.sendSystemMessage(Component.literal(notice.message()));
+            }
+        }));
+    }
+
+    private record Notice(UUID player, long stock, long day, String kind, String message) { }
+
     public CompletableFuture<StockView.Market> market(UUID player) {
         return database.transaction(connection -> loadMarket(connection, player));
     }
@@ -102,7 +151,7 @@ public final class StockService {
             List<StockView.Listing> listings = new ArrayList<>();
             try (PreparedStatement query = connection.prepareStatement(
                     "SELECT s.stock_id, s.item_id, s.item_name, s.industry_id, s.price, s.initial_price, s.status, "
-                            + "COALESCE(p.quantity, 0) FROM stock_listing s LEFT JOIN stock_position p "
+                            + "COALESCE(p.quantity, 0), s.listed_day FROM stock_listing s LEFT JOIN stock_position p "
                             + "ON p.stock_id = s.stock_id AND p.player_uuid = ? WHERE s.status <> 'DELISTED' "
                             + "ORDER BY s.industry_id, s.item_name")) {
                 query.setBytes(1, uuidBytes(player));
@@ -136,7 +185,7 @@ public final class StockService {
                     }
                 }
             }
-            return new StockView.Dashboard(market, curves, ranges);
+            return new StockView.Dashboard(market, curves, ranges, portfolio(connection, player, market));
         });
     }
 
@@ -155,15 +204,112 @@ public final class StockService {
             }
             List<StockView.PricePoint> prices = new ArrayList<>();
             try (PreparedStatement query = connection.prepareStatement(
-                    "SELECT game_day, price FROM stock_daily_price WHERE stock_id = ? ORDER BY game_day DESC LIMIT ?")) {
-                query.setLong(1, listing.id()); query.setInt(2, days);
+                    "SELECT game_day, price FROM stock_daily_price WHERE stock_id = ? ORDER BY game_day DESC LIMIT 361")) {
+                query.setLong(1, listing.id());
                 try (ResultSet rows = query.executeQuery()) {
                     while (rows.next()) prices.add(new StockView.PricePoint(rows.getLong(1), rows.getInt(2)));
                 }
             }
             java.util.Collections.reverse(prices);
-            return new StockView.Detail(listing, List.copyOf(prices), days, range);
+            java.util.Map<Integer, StockView.PriceTrend> trends = new java.util.HashMap<>();
+            for (int span : new int[]{7, 30, 360}) if (prices.size() > span) {
+                int old = prices.get(prices.size() - 1 - span).price();
+                int change = listing.price() - old;
+                trends.put(span, new StockView.PriceTrend(span, change, old == 0 ? 0 : change * 100.0 / old));
+            }
+            List<StockView.PricePoint> displayed = prices.subList(Math.max(0, prices.size() - days), prices.size());
+            return new StockView.Detail(listing, List.copyOf(displayed), days, range,
+                    positionInfo(connection, player, listing.id()), java.util.Map.copyOf(trends));
         });
+    }
+
+    private static StockView.Portfolio portfolio(Connection connection, UUID player, StockView.Market market) throws SQLException {
+        java.util.Map<Long, StockView.PositionInfo> positions = loadBasis(connection, player, null);
+        long value = 0;
+        long cost = 0;
+        for (StockView.Listing listing : market.listings()) {
+            StockView.PositionInfo position = positions.get(listing.id());
+            if (position == null || listing.owned() == 0) continue;
+            value += (long) listing.price() * listing.owned();
+            cost += position.costBasis();
+        }
+        int balance = 0;
+        try (PreparedStatement query = connection.prepareStatement(
+                "SELECT balance FROM contribution_account WHERE player_uuid = ?")) {
+            query.setBytes(1, uuidBytes(player));
+            try (ResultSet rows = query.executeQuery()) { if (rows.next()) balance = rows.getInt(1); }
+        }
+        long realized = positions.values().stream().mapToLong(StockView.PositionInfo::realizedProfit).sum();
+        return new StockView.Portfolio(balance, value, cost, value - cost, realized, positions);
+    }
+
+    private static StockView.PositionInfo positionInfo(Connection connection, UUID player, long stockId) throws SQLException {
+        return loadBasis(connection, player, stockId).getOrDefault(stockId,
+                new StockView.PositionInfo(0, 0, -1, -1, 0, 0));
+    }
+
+    /** Weighted-average acquisition cost, including purchase fees; no main-thread history scan. */
+    private static java.util.Map<Long, StockView.PositionInfo> loadBasis(Connection connection, UUID player, Long stockId)
+            throws SQLException {
+        java.util.Map<Long, Basis> basis = new java.util.HashMap<>();
+        String sql = "SELECT t.stock_id, t.game_day, t.side, t.quantity, t.price, t.account_delta "
+                + "FROM stock_trade t WHERE t.player_uuid = ?"
+                + (stockId == null ? "" : " AND t.stock_id = ?")
+                + " ORDER BY t.stock_id, t.created_at, t.trade_id";
+        try (PreparedStatement query = connection.prepareStatement(sql)) {
+            query.setBytes(1, uuidBytes(player));
+            if (stockId != null) query.setLong(2, stockId);
+            try (ResultSet rows = query.executeQuery()) {
+                while (rows.next()) {
+                    long id = rows.getLong(1);
+                    long day = rows.getLong(2);
+                    String side = rows.getString(3);
+                    int quantity = rows.getInt(4);
+                    Basis value = basis.computeIfAbsent(id, ignored -> new Basis());
+                    if ("BUY".equals(side)) {
+                        if (value.quantity == 0) value.firstBuyDay = day;
+                        value.quantity += quantity;
+                        value.costBasis -= rows.getInt(6);
+                        value.lastBuyDay = day;
+                        value.lastBuyPrice = rows.getInt(5);
+                    } else if (value.quantity > 0) {
+                        long removed = Math.min(value.costBasis, Math.round(value.costBasis *
+                                (quantity / (double) value.quantity)));
+                        value.quantity -= quantity;
+                        value.costBasis -= removed;
+                        value.realizedProfit += rows.getInt(6) - removed;
+                    }
+                }
+            }
+        }
+        try (PreparedStatement query = connection.prepareStatement(
+                "SELECT stock_id, amount FROM stock_refund WHERE player_uuid = ?"
+                        + (stockId == null ? "" : " AND stock_id = ?"))) {
+            query.setBytes(1, uuidBytes(player));
+            if (stockId != null) query.setLong(2, stockId);
+            try (ResultSet rows = query.executeQuery()) {
+                while (rows.next()) {
+                    Basis value = basis.get(rows.getLong(1));
+                    if (value == null) continue;
+                    value.realizedProfit += rows.getLong(2) - value.costBasis;
+                    value.quantity = 0;
+                    value.costBasis = 0;
+                }
+            }
+        }
+        java.util.Map<Long, StockView.PositionInfo> result = new java.util.HashMap<>();
+        basis.forEach((id, value) -> result.put(id, new StockView.PositionInfo(value.quantity,
+                value.costBasis, value.firstBuyDay, value.lastBuyDay, value.lastBuyPrice, value.realizedProfit)));
+        return java.util.Map.copyOf(result);
+    }
+
+    private static final class Basis {
+        int quantity;
+        long costBasis;
+        long firstBuyDay = -1;
+        long lastBuyDay = -1;
+        int lastBuyPrice;
+        long realizedProfit;
     }
 
     public CompletableFuture<StockView.TradeResult> trade(UUID player, String symbol, int quantity,
@@ -239,7 +385,7 @@ public final class StockService {
         long delta = buy ? -gross - fee : gross - fee;
         if (delta < Integer.MIN_VALUE || delta > Integer.MAX_VALUE) return fail("交易金额超过单次变动范围");
         long nextBalance = account.balance + delta;
-        long nextIncome = account.income + (buy ? 0 : delta);
+        long nextIncome = account.income;
         if (nextBalance < 0) return fail("余额不足，本次交易未发起");
         if (nextBalance > Integer.MAX_VALUE || nextIncome > Integer.MAX_VALUE) return fail("余额或历史总收入超过上限");
         if (buy && position == null) {
@@ -274,7 +420,7 @@ public final class StockService {
             insert.setLong(11, fee); insert.setInt(12, (int) delta); insert.executeUpdate();
         }
         accountTransaction(connection, tradeId, requestId, hash, player, account.name, (int) delta,
-                buy ? 0 : (int) delta, account.balance, (int) nextBalance, buy ? "STOCK_BUY" : "STOCK_SELL",
+                0, account.balance, (int) nextBalance, buy ? "SPEND" : "STOCK",
                 (buy ? "买入 " : "卖出 ") + stock.name() + " × " + quantity);
         return new StockView.TradeResult(true, buy ? "买入成功" : "卖出成功", stock.id(), quantity,
                 stock.price(), fee, (int) nextBalance, false);
@@ -372,7 +518,7 @@ public final class StockService {
         String condition = symbol.matches("[0-9]{1,18}") ? "s.stock_id = ?" : "(s.item_id = ? OR s.item_name = ?)";
         try (PreparedStatement query = connection.prepareStatement(
                 "SELECT s.stock_id, s.item_id, s.item_name, s.industry_id, s.price, s.initial_price, s.status, "
-                        + "COALESCE(p.quantity, 0) FROM stock_listing s LEFT JOIN stock_position p "
+                        + "COALESCE(p.quantity, 0), s.listed_day FROM stock_listing s LEFT JOIN stock_position p "
                         + "ON p.stock_id = s.stock_id AND p.player_uuid = ? WHERE " + condition
                         + (activeOnly ? " AND s.status <> 'DELISTED'" : "")
                         + " ORDER BY s.stock_id DESC LIMIT 1")) {
@@ -390,7 +536,7 @@ public final class StockService {
         for (BuiltInIndustry value : BuiltInIndustry.values())
             if (industry.equals("contribution:" + value.path())) industry = value.displayName();
         return new StockView.Listing(rows.getLong(1), rows.getString(2), rows.getString(3), industry,
-                rows.getInt(5), rows.getInt(6), rows.getString(7), rows.getInt(8));
+                rows.getInt(5), rows.getInt(6), rows.getString(7), rows.getInt(8), rows.getLong(9));
     }
 
     private void accountTransaction(Connection connection, UUID transaction, UUID requestId, byte[] hash,

@@ -70,6 +70,26 @@ public final class AccountIdentityChecks {
             check(identities.migrate(another, occupied).join().contains("禁止覆盖"), "occupied account is rejected");
             check(accounts.account(AccountTarget.byUuid(another)).join().orElseThrow().balance() == 325,
                     "failed migration leaves source unchanged");
+            UUID bot = UUID.randomUUID();
+            accounts.registerPlayer(bot, "bot_Test").join();
+            check(accounts.account(AccountTarget.byUuid(bot)).join().isEmpty(), "bot join does not create account");
+            check(identities.create(bot, "bot_Test").join().contains("不创建"), "admin cannot create bot account");
+            db.transaction(connection -> {
+                try (var insert = connection.prepareStatement(
+                        "INSERT INTO contribution_account (player_uuid, player_name, player_name_normalized, balance, total_income, created_at, updated_at) "
+                                + "VALUES (?, 'bot_Test', 'bot_test', 0, 0, CURRENT_TIMESTAMP(6), CURRENT_TIMESTAMP(6))")) {
+                    insert.setBytes(1, AccountService.uuidBytes(bot)); insert.executeUpdate();
+                }
+                try (var insert = connection.prepareStatement(
+                        "INSERT INTO checkin_daily (player_uuid, calendar_day, online_seconds) VALUES (?, CURRENT_DATE, 60)")) {
+                    insert.setBytes(1, AccountService.uuidBytes(bot)); insert.executeUpdate();
+                }
+                return null;
+            }).join();
+            check(identities.removeBotAccounts().join() == 1, "remove only legacy bot account");
+            check(accounts.account(AccountTarget.byUuid(bot)).join().isEmpty(), "legacy bot removed");
+            check(accounts.account(AccountTarget.byUuid(another)).join().isPresent(), "real account preserved");
+            check(identities.removeBotAccounts().join() == 0, "repeat bot cleanup is safe");
             System.out.println("IDENTITY_PASS: creation, UUID migration, history, stats, audit, replay protection");
         }
     }

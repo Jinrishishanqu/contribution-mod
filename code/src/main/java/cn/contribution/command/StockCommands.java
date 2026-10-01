@@ -25,6 +25,8 @@ public final class StockCommands {
                 .executes(context -> { cn.contribution.stock.StockUiNetwork.market(context.getSource()); return 1; })
                 .then(side("buy", true))
                 .then(side("sell", false))
+                .then(Commands.literal("portfolio")
+                        .executes(context -> { cn.contribution.stock.StockUiNetwork.portfolio(context.getSource()); return 1; }))
                 .then(Commands.literal("browse")
                         .then(Commands.argument("sort", StringArgumentType.word())
                                 .executes(context -> browse(context, "all"))
@@ -33,13 +35,13 @@ public final class StockCommands {
                 .then(Commands.literal("batch")
                         .then(Commands.argument("side", StringArgumentType.word())
                                 .then(Commands.argument("quantity", IntegerArgumentType.integer(1, 10000))
-                                        .then(Commands.argument("stockIds", StringArgumentType.word())
+                                        .then(Commands.argument("stockIds", StringArgumentType.greedyString())
                                                 .executes(context -> batch(context, UUID.randomUUID(), false))))))
                 .then(Commands.literal("batch-retry")
                         .then(Commands.argument("id", StringArgumentType.word())
                                 .then(Commands.argument("side", StringArgumentType.word())
                                         .then(Commands.argument("quantity", IntegerArgumentType.integer(1, 10000))
-                                                .then(Commands.argument("stockIds", StringArgumentType.word())
+                                                .then(Commands.argument("stockIds", StringArgumentType.greedyString())
                                                         .executes(context -> batch(context, null, true)))))))
                 .then(Commands.literal("check")
                         .then(Commands.argument("symbol", StringArgumentType.word())
@@ -102,7 +104,7 @@ public final class StockCommands {
         if (service == null) { error(source, "股票市场尚未启动"); return 0; }
         String side = StringArgumentType.getString(context, "side");
         if (!side.equals("buy") && !side.equals("sell")) { error(source, "方向只能是 buy 或 sell"); return 0; }
-        String ids = StringArgumentType.getString(context, "stockIds");
+        String ids = StringArgumentType.getString(context, "stockIds").strip();
         String[] parts = ids.split(",", -1);
         if (parts.length < 1 || parts.length > 20) { error(source, "一次最多选择 20 支股票"); return 0; }
         List<String> symbols = new ArrayList<>();
@@ -155,7 +157,7 @@ public final class StockCommands {
         UUID player = source.getPlayerOrException().getUUID();
         String symbol = StringArgumentType.getString(context, "symbol");
         int quantity = IntegerArgumentType.getInteger(context, "quantity");
-        source.sendSuccess(() -> Component.literal("[股票] 请求 ID：" + id + "；网络异常时使用 /contribution stock retry "
+        source.sendSuccess(() -> Component.literal("[股票] 请求 ID：" + id + "；网络异常时使用 /stock retry "
                 + id + " " + (buy ? "buy" : "sell") + " " + symbol + " " + quantity), false);
         service.trade(player, symbol, quantity, buy, id).whenComplete((result, error) -> source.getServer().execute(() -> {
             if (error != null) { error(source, "数据暂时不可用，请使用原请求 ID 重试"); return; }

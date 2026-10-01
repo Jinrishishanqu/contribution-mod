@@ -129,7 +129,7 @@ public final class ContributionDialogs {
                 try (var statement = connection.prepareStatement("SELECT total_development, prosperity, last_settled_game_day FROM industry_state WHERE industry_id = ?")) {
                     statement.setString(1, "contribution:" + industry.path());
                     try (var row = statement.executeQuery()) {
-                        lines.add(industry.displayName() + " | 当日 " + daily + (row.next() ? " | 总建设度 " + row.getLong(1) + " | 繁荣度 " + row.getBigDecimal(2).toPlainString() + " | 核算日 " + row.getLong(3) : " | 暂无已结算数据"));
+                        lines.add(industry.displayName() + " | 当日 " + daily + (row.next() ? " | 总建设度 " + row.getLong(1) + " | 繁荣度 " + row.getBigDecimal(2).setScale(2, java.math.RoundingMode.HALF_UP).toPlainString() + " | 核算日 " + row.getLong(3) : " | 暂无已结算数据"));
                     }
                 }
             }
@@ -175,16 +175,18 @@ public final class ContributionDialogs {
                 : service().historyPage(target(source, who), cursor, DIALOG_PAGE_SIZE, days, filter).thenApply(value -> value.orElse(new HistoryPage(List.of(), false, true)));
         query(source, future, page -> {
             List<String> lines = new ArrayList<>();
-            for (TransactionRecord row : page.rows()) lines.add(row.createdAt() + " | " + row.playerName() + " | " + row.amount()
+            for (TransactionRecord row : page.rows()) lines.add(row.createdAt().truncatedTo(java.time.temporal.ChronoUnit.SECONDS) + " | " + row.playerName() + " | " + row.amount()
                     + " → " + row.balanceAfter() + " | " + row.type() + " | " + row.reason());
             if (lines.isEmpty()) lines.add(page.validCursor() ? "暂无符合条件的流水" : "翻页位置已失效");
             List<ActionButton> actions = new ArrayList<>();
             actions.add(button("全部流水", "history " + who + " -"));
-            actions.add(button("股票买入", "history " + who + " - type=STOCK_BUY"));
-            actions.add(button("股票卖出", "history " + who + " - type=STOCK_SELL"));
+            actions.add(button("股票买入", "history " + who + " - type=SPEND source=contribution:stock"));
+            actions.add(button("股票卖出", "history " + who + " - type=STOCK source=contribution:stock"));
             actions.add(button("管理员调整", "history " + who + " - type=ADMIN"));
             actions.add(button("退市返还", "history " + who + " - type=REFUND"));
             actions.add(template("应用筛选", "contribution ui history " + who + " - $(filters)"));
+            actions.add(button("刷新", "history " + who + " " + (cursor == null ? "-" : cursor)
+                    + " " + filter.commandArguments()));
             page.nextCursor().ifPresent(next -> actions.add(button("下一页", "history " + who + " " + next + " " + filter.commandArguments())));
             actions.add(button("第一页", "history " + who + " - " + filter.commandArguments())); actions.add(button("首页", "home"));
             show(source, "流水 · " + who, lines, List.of(input("filters", "更多筛选（可选）：type/source/server/from/to", filter.commandArguments(), 256)), actions);

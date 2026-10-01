@@ -37,6 +37,10 @@ public final class StockIntegrationChecks {
             var market = stocks.market(player).join();
             check(market.listings().size() == 20, "initial 20 listings");
             check(market.listings().stream().map(StockView.Listing::industry).distinct().count() == 9, "all industries");
+            check(market.listings().stream().allMatch(stock -> stock.initialPrice() >= 100
+                    && stock.initialPrice() <= 400), "random initial prices stay within 100-400");
+            check(StockSettlement.retirementThreshold(100, 1000) == 50, "initial price drives retirement floor");
+            check(StockSettlement.retirementThreshold(100, 120) == 30, "historical high drives retirement floor");
             UUID batchId = UUID.randomUUID();
             check(stocks.openBatch(player, batchId, "1,2", 3, true).join(), "reserve batch identity");
             check(stocks.openBatch(player, batchId, "1,2", 3, true).join(), "retry same batch");
@@ -57,10 +61,22 @@ public final class StockIntegrationChecks {
             check(!stocks.trade(player, symbol, 1, false, UUID.randomUUID()).join().success(), "no same-day resale");
             check(!stocks.trade(player, symbol, 10000, false, UUID.randomUUID()).join().success(), "holding bound");
             db.transaction(connection -> {
+                try (var crash = connection.prepareStatement(
+                        "UPDATE stock_listing SET price = initial_price / 4, high_price = initial_price * 4, wave_base = 1 WHERE stock_id = ?")) {
+                    crash.setLong(1, Long.parseLong(symbol)); crash.executeUpdate();
+                }
                 StockSettlement.run(connection, 3);
                 try (var update = connection.prepareStatement(
                         "UPDATE stock_market_state SET game_day = 3, day_time = 5000, updated_at = CURRENT_TIMESTAMP(6) WHERE singleton_id = 1")) {
                     update.executeUpdate();
+                }
+                return null;
+            }).join();
+            db.transaction(connection -> {
+                try (var query = connection.prepareStatement(
+                        "SELECT COUNT(*) FROM stock_notice WHERE player_uuid = ? AND stock_id = ? AND kind = 'RISK'")) {
+                    query.setBytes(1, AccountService.uuidBytes(player)); query.setLong(2, Long.parseLong(symbol));
+                    try (var rows = query.executeQuery()) { rows.next(); check(rows.getInt(1) == 1, "risk notice queued"); }
                 }
                 return null;
             }).join();
@@ -71,9 +87,24 @@ public final class StockIntegrationChecks {
             check(sell.success(), "sell: " + sell.message());
             check(stocks.trade(player, symbol, 5, false, sellId).join().replay(), "idempotent sell");
             check(accounts.account(AccountTarget.byUuid(player)).join().orElseThrow().totalIncome()
-                    == 100000 + 5 * sell.price() - sell.fee(), "sale counts as income");
+                    == 100000, "sale does not count as historical income");
             var detail = stocks.detail(player, symbol, 7).join();
             check(detail.prices().size() == 2, "daily history");
+            check(detail.position().quantity() == 5 && detail.position().costBasis() > 0,
+                    "remaining position cost basis");
+            var dashboard = stocks.dashboard(player).join();
+            check(dashboard.portfolio().positions().containsKey(Long.parseLong(symbol)), "portfolio position");
+            db.transaction(connection -> {
+                try (var query = connection.prepareStatement(
+                        "SELECT type, income_delta FROM contribution_transaction WHERE player_uuid = ? AND source = 'contribution:stock' ORDER BY record_no")) {
+                    query.setBytes(1, AccountService.uuidBytes(player));
+                    try (var rows = query.executeQuery()) {
+                        check(rows.next() && "SPEND".equals(rows.getString(1)) && rows.getInt(2) == 0, "buy ledger type");
+                        check(rows.next() && "STOCK".equals(rows.getString(1)) && rows.getInt(2) == 0, "sell ledger type");
+                    }
+                }
+                return null;
+            }).join();
             check(StockChart.draw(detail.prices()).size() == 11, "visible line chart");
             db.transaction(connection -> {
                 try (var stale = connection.prepareStatement(
@@ -101,9 +132,21 @@ public final class StockIntegrationChecks {
                 }
             }).join();
             check(actualRefund == expectedRefund, "50% retirement refund");
+            db.transaction(connection -> {
+                try (var query = connection.prepareStatement(
+                        "SELECT COUNT(*) FROM stock_notice WHERE player_uuid = ? AND stock_id = ? AND kind = 'REFUND'")) {
+                    query.setBytes(1, AccountService.uuidBytes(player)); query.setLong(2, Long.parseLong(symbol));
+                    try (var rows = query.executeQuery()) { rows.next(); check(rows.getInt(1) == 1, "refund notice queued"); }
+                }
+                return null;
+            }).join();
             var accountAfterRetirement = accounts.account(AccountTarget.byUuid(player)).join().orElseThrow();
             check(accountAfterRetirement.balance() == accountBeforeRetirement.balance() + expectedRefund,
                     "retirement automatically credited at close");
+            long expectedProfit = 5L * sell.price() - sell.fee() + expectedRefund
+                    - (10L * buy.price() + buy.fee());
+            check(stocks.dashboard(player).join().portfolio().realizedProfit() == expectedProfit,
+                    "portfolio realized profit includes sale fees and retirement refund");
             int incomeBefore = accountBeforeRetirement.totalIncome();
             String claim = stocks.claim(player, UUID.randomUUID()).join();
             check(claim.contains("暂无待领取"), "refund was already credited: " + claim);
