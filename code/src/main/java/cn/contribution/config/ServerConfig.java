@@ -7,4 +7,5 @@ public final class ServerConfig {
     public int databaseThreads = 2;
     public int databaseQueueCapacity = 1_024;
     public DatabaseConfig database = new DatabaseConfig();
+    public RewardConfig rewards = new RewardConfig();
 }

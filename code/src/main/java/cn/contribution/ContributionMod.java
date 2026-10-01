@@ -5,6 +5,7 @@ import cn.contribution.industry.IndustryMatcher;
 import cn.contribution.command.ContributionCommands;
 import cn.contribution.runtime.ContributionRuntime;
 import cn.contribution.stock.StockSnapshotPayload;
+import cn.contribution.shop.ShopSnapshotPayload;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
@@ -25,6 +26,7 @@ public final class ContributionMod implements ModInitializer {
     @Override
     public void onInitialize() {
         PayloadTypeRegistry.clientboundPlay().register(StockSnapshotPayload.TYPE, StockSnapshotPayload.CODEC);
+        PayloadTypeRegistry.clientboundPlay().register(ShopSnapshotPayload.TYPE, ShopSnapshotPayload.CODEC);
         IndustryRegistry.bootstrap();
         ServerLifecycleEvents.SERVER_STARTED.register(ContributionRuntime::start);
         ServerLifecycleEvents.END_DATA_PACK_RELOAD.register((server, resources, success) -> {
@@ -38,6 +40,8 @@ public final class ContributionMod implements ModInitializer {
                 ServerPlayer player = handler.player;
                 ContributionRuntime.accounts().registerPlayer(player.getUUID(), player.getGameProfile().name())
                         .thenAccept(ignored -> {
+                            if (ContributionRuntime.deliveries() != null)
+                                server.execute(() -> ContributionRuntime.deliveries().claim(player));
                             if (ContributionRuntime.stocks() != null)
                                 ContributionRuntime.stocks().claim(player.getUUID(), java.util.UUID.randomUUID());
                         })

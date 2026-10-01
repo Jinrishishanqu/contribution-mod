@@ -121,6 +121,18 @@ tasks.register('verifyAccountIdentity', JavaExec) {
     classpath = sourceSets.test.runtimeClasspath
     mainClass = 'cn.contribution.account.AccountIdentityChecks'
 }
+tasks.register('verifyRewards', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.reward.RewardIntegrationChecks'
+}
+tasks.register('verifyMySqlRewards', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.reward.RewardIntegrationChecks'
+    args 'mysql'
+}
+tasks.check.dependsOn tasks.verifyRewards
 tasks.check.dependsOn tasks.verifyAccountIdentity
 tasks.register('verifyMySqlStocks', JavaExec) {
     dependsOn tasks.testClasses

@@ -15,7 +15,8 @@ public final class AccountIdentityService {
     private static final String[] OWNED_TABLES = {
             "contribution_transaction", "contribution_transaction_archive", "player_activity_stats",
             "player_industry_stats", "player_distance_remainder", "stock_position", "stock_trade", "stock_refund",
-            "stock_batch_request"
+            "stock_batch_request", "player_development_reward", "checkin_daily", "checkin_player",
+            "checkin_event_claim", "reward_delivery", "shop_order"
     };
     private final DatabaseService database;
 

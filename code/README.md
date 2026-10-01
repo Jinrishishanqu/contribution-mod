@@ -1,10 +1,10 @@
-# CSU-YSU Contribution System 0.0.3
+# CSU-YSU Contribution System 0.0.4
 
 Minecraft Java Edition 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 / Java 25。
 
 ## 安装与使用
 
-将 `build/libs/CSU-YSU-contribution-system-0.0.3.jar` 和匹配版本的 Fabric API 放进服务端 mods 目录。模组只有一份通用 JAR，逻辑在服务端运行；原版客户端无需安装即可进入服务器并使用贡献值和股票文字/原版 Dialog 界面。若也在客户端安装同一 JAR 和 Fabric API，`/stock` 会打开带真实绘制曲线的股票专用界面。
+将 `build/libs/CSU-YSU-contribution-system-0.0.4.jar` 和匹配版本的 Fabric API 放进服务端 mods 目录。模组只有一份通用 JAR，逻辑在服务端运行；原版客户端无需安装即可进入服务器并使用贡献值、签到、股票和商店的文字/原版 Dialog 界面。若也在客户端安装同一 JAR 和 Fabric API，`/stock` 和 `/shop` 会打开专用界面。
 
 进入游戏输入 `/contribution` 打开贡献值图形界面。界面使用 26.3 原生 Dialog，包含账户、流水点选筛选与分页、玩家统计、行业建设度与繁荣度，以及管理员账户变动的预览与确认。股票系统独立使用 `/stock`。文字查询和管理员命令继续可用，完整列表见[命令速查](docs/COMMANDS.md)。
 
@@ -31,7 +31,7 @@ Minecraft Java Edition 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 / J
 
 股票系统已实现：第 3 个游戏日上市，20 支股票覆盖九行业；主服 8 点依繁荣度更新股价，10—14 点可交易，每次买卖收费 2%。退市当天可以正常卖出，窗口结束时未卖的持股按当日股价的 50% 自动返还。客户端安装模组时，`/stock` 显示可筛选、排序、批量买卖的曲线大厅与详细走势图；原版客户端仍能进服，用文字命令和原版 Dialog 交易。单服数据仍在世界 `contribution/`；群组服各服共用 MySQL，由主服推进股市时钟。具体规则见[股票设计](../design/extensions/stock.md)。
 
-不包含签到、商城和自定义行业；它们仍属于后续拓展，不影响 Basic。即时投掷等未定义来源不会仅因加入标签而自动获得建设度。完整行为见 [design](../design/README.md)。
+本版增加建设度贡献值定期发放、现实日自动签到、活动签到和系统商店。默认建设权重均为 1/10000，每 300 秒核算；每日累计在线满 10 分钟自动签到，7 日奖励为 10/10/10/10/15/25/25。`/shop` 提供商品购买，默认面包、火把和铁镐；管理员可创建限时签到活动。奖励、商品和时区在 `config/contribution/server.json` 的 `rewards` 部分配置。群组服所有节点必须同步该配置，模组会比对共享配置指纹。不包含回收、拍卖、抽奖和自定义行业。即时投掷等未定义来源不会仅因加入标签而自动获得建设度。完整行为见 [design](../design/README.md)。
 
 ## 规则资源
 
@@ -45,12 +45,12 @@ Minecraft Java Edition 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 / J
 .\run-gradle.ps1 build --offline
 ```
 
-脚本使用项目内 Java 25 和 Gradle 缓存，不把 JDK 下载到 C 盘。build 自动检查全部 JSON、45 个玩家标签、查询条件、距离换算、账户 UUID 迁移、股票结算及原生 Dialog 的 JSON/网络编码。客户端股票界面会编译进入同一 JAR；正式发布前仍应在实际客户端中检查不同 GUI 缩放下的布局。
+脚本使用项目内 Java 25 和 Gradle 缓存，不把 JDK 下载到 C 盘。build 自动检查全部 JSON、45 个玩家标签、查询条件、距离换算、账户 UUID 迁移、股票结算、奖励交易及原生 Dialog 的 JSON/网络编码。客户端股票和商店界面会编译进入同一 JAR；正式发布前仍应在实际客户端中检查不同 GUI 缩放下的布局。
 
-日常 `build` 已包含嵌入式数据库首次建表、账户交易、统计、股票交易和重启持久化测试。项目专用测试 MySQL 使用 127.0.0.1:23306；仅在测试实例运行时额外执行：
+日常 `build` 已包含嵌入式数据库首次建表、账户交易、统计、股票交易、签到与商店事务和重启持久化测试。项目专用测试 MySQL 使用 127.0.0.1:23306；仅在测试实例运行时额外执行：
 
 ```powershell
-.\run-gradle.ps1 verifyDatabaseIntegration verifyStatisticsIntegration verifyMySqlStocks --offline
+.\run-gradle.ps1 verifyDatabaseIntegration verifyStatisticsIntegration verifyMySqlStocks verifyMySqlRewards --offline
 ```
 
 数据库测试使用 contribution_test_v2 和 contribution_stats_test 独立数据库，股票测试使用自动清理的随机测试库，正常测试服使用 contribution_server_test。测试工具保存在项目的 .test-tools/.test-mysql，不安装 Windows 全局服务。验证范围、结果与局限见 [Basic 验证记录](docs/VALIDATION.md)和[股票验证记录](docs/STOCK_VALIDATION.md)。

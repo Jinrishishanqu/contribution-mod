@@ -9,6 +9,12 @@ import cn.contribution.database.DatabaseService;
 import cn.contribution.database.DatabaseState;
 import cn.contribution.industry.IndustrySettlement;
 import cn.contribution.industry.StatisticsService;
+import cn.contribution.industry.DevelopmentRewardService;
+import cn.contribution.reward.CheckinService;
+import cn.contribution.reward.EventCheckinService;
+import cn.contribution.reward.DeliveryService;
+import cn.contribution.reward.RewardConfigGuard;
+import cn.contribution.shop.ShopService;
 import cn.contribution.stock.StockService;
 import net.minecraft.server.MinecraftServer;
 
@@ -23,6 +29,11 @@ public final class ContributionRuntime {
     private static StatisticsService statistics;
     private static IndustrySettlement settlement;
     private static StockService stocks;
+    private static DevelopmentRewardService developmentRewards;
+    private static CheckinService checkins;
+    private static EventCheckinService eventCheckins;
+    private static DeliveryService deliveries;
+    private static ShopService shop;
     private static cn.contribution.account.TransactionArchive archive;
     private static int lastDatabaseRetryTick;
     private static ServerConfig activeConfig;
@@ -54,6 +65,11 @@ public final class ContributionRuntime {
             accounts = new AccountService(database, config.serverId);
             archive = config.mainServer ? new cn.contribution.account.TransactionArchive(database) : null;
             stocks = new StockService(database, config);
+            developmentRewards = config.mainServer ? new DevelopmentRewardService(database, config) : null;
+            checkins = new CheckinService(database, config);
+            eventCheckins = new EventCheckinService(database, config);
+            deliveries = new DeliveryService(database);
+            shop = new ShopService(database, config);
             ContributionApi.install(accounts);
             try {
                 cn.contribution.industry.RuleManager.start(server, config);
@@ -64,7 +80,11 @@ public final class ContributionRuntime {
                 settlement = null;
                 ContributionMod.LOGGER.error("Statistics are paused because industry rules or recovery data are invalid", error);
             }
-            database.start().thenAccept(state -> registerOnlinePlayers(server, state));
+            database.start().thenAccept(state -> {
+                if (state == DatabaseState.AVAILABLE) RewardConfigGuard.initialize(database, config)
+                        .exceptionally(error -> { ContributionMod.LOGGER.error("Reward configuration could not be published", error); return null; });
+                registerOnlinePlayers(server, state);
+            });
         } catch (IOException | IllegalArgumentException exception) {
             ContributionMod.LOGGER.error("Contribution runtime configuration could not be loaded", exception);
         }
@@ -77,12 +97,21 @@ public final class ContributionRuntime {
         if (statistics != null) {
             statistics.close();
         }
+        if (checkins != null) {
+            try { checkins.shutdown(); }
+            catch (RuntimeException error) { ContributionMod.LOGGER.error("Pending check-in time could not be flushed", error); }
+        }
         database.close();
         database = null;
         accounts = null;
         statistics = null;
         settlement = null;
         stocks = null;
+        developmentRewards = null;
+        checkins = null;
+        eventCheckins = null;
+        deliveries = null;
+        shop = null;
         archive = null;
         cn.contribution.command.RequestLimiter.clear();
         cn.contribution.ui.AdminDialogOperations.clear();
@@ -107,17 +136,27 @@ public final class ContributionRuntime {
     }
 
     public static StockService stocks() { return stocks; }
+    public static CheckinService checkins() { return checkins; }
+    public static EventCheckinService eventCheckins() { return eventCheckins; }
+    public static DeliveryService deliveries() { return deliveries; }
+    public static ShopService shop() { return shop; }
 
     public static boolean isMainServer() { return activeConfig != null && activeConfig.mainServer; }
 
     public static void tick(MinecraftServer server) {
         if (archive != null) archive.tick(server);
         if (stocks != null && server.getTickCount() % 20 == 0) stocks.tick(server);
+        if (developmentRewards != null) developmentRewards.tick(server);
+        if (checkins != null) checkins.tick(server);
         DatabaseService current = database;
         if (current != null && current.state() == DatabaseState.UNAVAILABLE
                 && server.getTickCount() - lastDatabaseRetryTick >= 600) {
             lastDatabaseRetryTick = server.getTickCount();
-            current.start().thenAccept(state -> registerOnlinePlayers(server, state));
+            current.start().thenAccept(state -> {
+                if (state == DatabaseState.AVAILABLE) RewardConfigGuard.initialize(current, activeConfig)
+                        .exceptionally(error -> { ContributionMod.LOGGER.error("Reward configuration could not be published", error); return null; });
+                registerOnlinePlayers(server, state);
+            });
         }
         StatisticsService active = statistics;
         if (active != null) {

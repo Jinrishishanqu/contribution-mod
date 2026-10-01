@@ -1,6 +1,6 @@
-# 命令速查（0.0.3）
+# 命令速查（0.0.4）
 
-本模组只有两个玩家可见的命令入口：贡献值与服务器建设度使用 `/contribution`，股票使用 `/stock`。`<…>` 是必填参数，`[…]` 是可选参数。股票 ID 可在股票市场中查看；单股交易也接受股票名称或 `minecraft:` 物品 ID。未安装客户端模组的玩家仍可进入服务器、使用全部文字命令，并以原版 Dialog 浏览股票。
+本模组的命令入口为：贡献值、建设度和签到使用 `/contribution`，股票使用 `/stock`，商店使用 `/shop`。`<…>` 是必填参数，`[…]` 是可选参数。未安装客户端模组的玩家仍可进入服务器，并使用全部文字命令和原版 Dialog。
 
 ## 普通玩家
 
@@ -11,6 +11,13 @@
 | `/contribution history` | 查询自己的流水，聊天中可点击翻页 |
 | `/contribution history-search self <条件>` | 高级流水筛选；界面也提供无需输入条件的常用筛选按钮 |
 | `/contribution stats` | 查询自己的放置、挖掘及行业建设度统计 |
+| `/contribution checkin` | 查看今日累计在线与自动签到状态 |
+| `/contribution checkin events` | 查看当前签到活动 |
+| `/contribution checkin claim <活动ID>` | 在活动期限内领取一次活动奖励 |
+| `/shop` | 打开商店；原版客户端用 Dialog，安装模组的客户端用专用界面 |
+| `/shop buy <商品ID> <份数>` | 购买 1—64 份商品；余额不足不产生订单或流水 |
+| `/shop retry <订单ID> <商品ID> <份数>` | 结果不明时沿用原订单 ID 和参数重试 |
+| `/shop claim` | 领取商店或活动的待发物品 |
 | `/stock` | 打开股票大厅；安装本模组的客户端显示绘制曲线，否则显示原版 Dialog |
 | `/stock check <股票> [week\|month\|year]` | 查看股票详情与相应时间跨度，省略时为 `week` |
 | `/stock buy <股票> <股数>` | 买入 1—10000 股 |
@@ -41,6 +48,8 @@
 | `/contribution retry <请求ID> <玩家> <带符号数量> <原因> <影响历史总收入> [备注]` | 以原参数重试管理员余额变更 |
 | `/contribution account create <UUID> <玩家名称>` | 仅当 UUID 尚无账户时创建零余额账户；名称已被别的 UUID 占用会拒绝 |
 | `/contribution account migrate <旧UUID> <新UUID> confirm` | 将旧账户的余额、历史收入、流水、统计、持仓、交易、批量请求与退市返还迁至新 UUID |
+| `/contribution checkin event create <ID> <标题> <开始日期> <结束日期> <贡献值> [<物品ID> <数量>]` | 在主服定义活动；日期为 `YYYY-MM-DD`，标题含空格时加引号 |
+| `/contribution checkin event create-extension <ID> <标题> <开始日期> <结束日期> <提供者ID> <参数>` | 用已注册的其他模组奖励提供者定义活动 |
 
 账户迁移是维护命令：只允许在主服务器控制台、该服没有在线玩家时执行；群组服应先停掉其他子服，备份共享数据库，并等待所有未确定结果的交易完成。目标 UUID 若已有账户，必须是完全空白账户；有余额、流水、统计或股票数据时一律拒绝覆盖。迁移会保存审计记录。迁移后，旧 UUID 发出的未完成请求不应再重试。命令中的 `confirm` 是防误操作确认词，执行前请仔细核对两个 UUID。
 

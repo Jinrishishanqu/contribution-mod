@@ -2,14 +2,14 @@
 
 本文面向需要与 Contribution 模组联动的 Fabric 模组作者，描述如何为在线或离线玩家增加、扣除或退还贡献值。
 
-> 当前状态：`cn.contribution.api` 已包含在 0.0.3 开发版 JAR 中。它仍是早期接口，正式发布前请以本项目的源码和构建产物核对兼容性。
+> 当前状态：`cn.contribution.api` 已包含在 0.0.4 开发版 JAR 中。它仍是早期接口，正式发布前请以本项目的源码和构建产物核对兼容性。
 
 ## 运行要求
 
 - Minecraft Java Edition 26.3；
 - Fabric Loader 0.19.5 或更高的兼容版本；
 - Java 25；
-- Contribution 0.0.3；
+- Contribution 0.0.4；
 - API 只能在逻辑服务端调用。
 
 Fabric 使用 `fabric.mod.json` 声明模组身份、入口点和依赖关系。`depends` 表示缺少依赖时拒绝启动，`suggests` 用于可选联动。参见 [Fabric 的 `fabric.mod.json` 文档](https://docs.fabricmc.net/develop/loader/fabric-mod-json)。
@@ -20,7 +20,7 @@ Fabric 使用 `fabric.mod.json` 声明模组身份、入口点和依赖关系。
 
 ```groovy
 dependencies {
-    compileOnly files("libs/CSU-YSU-contribution-system-0.0.3.jar")
+    compileOnly files("libs/CSU-YSU-contribution-system-0.0.4.jar")
 }
 ```
 
@@ -37,7 +37,7 @@ dependencies {
   "depends": {
     "fabricloader": ">=0.19.5",
     "minecraft": "~26.3",
-    "contribution": ">=0.0.3"
+    "contribution": ">=0.0.4"
   }
 }
 ```
@@ -51,7 +51,7 @@ Fabric Loader 会保证 Contribution 存在并满足版本要求，否则拒绝�
 ```json
 {
   "suggests": {
-    "contribution": ">=0.0.3"
+    "contribution": ">=0.0.4"
   }
 }
 ```
@@ -297,9 +297,22 @@ Contribution 与调用模组运行在同一个 JVM 中。服务器管理员安�
 
 即使来源位于白名单中，Contribution 仍会执行数量范围、余额范围、退款类型、文本长度、账户状态和幂等校验。白名单不会授予绕过这些规则的能力。
 
+## 活动签到的其他奖励
+
+0.0.4 的活动签到可在服务端初始化时注册事务型扩展奖励：
+
+```java
+EventRewardRegistry.register("yourmod:badge", (connection, playerUuid, claimId, data) -> {
+    // 使用提供的 connection，在自己的业务表登记 playerUuid 的徽章。
+    // 不要在此访问 Minecraft 世界、背包、网络或等待其他线程。
+});
+```
+
+管理员随后可使用 `/contribution checkin event create-extension <ID> <标题> <开始日期> <结束日期> yourmod:badge <参数>` 定义活动。提供者必须在服务器启动、玩家领取活动之前注册；未注册的键会被拒绝。处理器与活动领取记录处于同一个 SQL 事务，异常会回滚整个领取。`claimId` 是本次领取的唯一标识，可作为提供者自己业务表的幂等键。扩展处理器只应修改自己拥有的表，不得直接修改贡献值账户或流水。这个 `cn.contribution.reward` 扩展点仍处于早期阶段，尚未承诺二进制兼容。
+
 ## API 版本兼容性
 
-正式发布后，公共 API 计划遵循语义化版本；当前 0.0.3 开发版尚不承诺跨版本二进制兼容：
+正式发布后，公共 API 计划遵循语义化版本；当前 0.0.4 开发版尚不承诺跨版本二进制兼容：
 
 - 同一主版本内保持 `cn.contribution.api` 的源代码和二进制兼容；
 - 新增可选函数、结果字段或状态时增加次版本；

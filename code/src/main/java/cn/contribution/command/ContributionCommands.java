@@ -80,6 +80,7 @@ public final class ContributionCommands {
                         .then(Commands.argument("target", StringArgumentType.greedyString())
                                 .requires(ContributionCommands::admin)
                                 .executes(context -> statsTarget(context, StringArgumentType.getString(context, "target")))))
+                .then(RewardCommands.checkinCommand())
                 .then(Commands.literal("account").requires(ContributionCommands::admin)
                         .then(Commands.literal("create")
                                 .then(Commands.argument("uuid", StringArgumentType.word())
@@ -102,6 +103,7 @@ public final class ContributionCommands {
                                                                         .executes(context -> retry(context, StringArgumentType.getString(context, "note"))))))))))
                 .then(balanceCommand("remove", false)));
         dispatcher.register(StockCommands.command());
+        dispatcher.register(RewardCommands.shopCommand());
     }
 
     private static int createAccount(CommandContext<CommandSourceStack> context) {

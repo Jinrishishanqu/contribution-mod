@@ -56,6 +56,7 @@ public final class ContributionDialogs {
                 case "account" -> account(source, target);
                 case "stats" -> stats(source, target);
                 case "industries" -> industries(source);
+                case "checkin" -> checkin(source);
                 case "accounts" -> accounts(source, args.length > 1 ? UUID.fromString(args[1]) : null);
                 case "history" -> history(source, target, args.length > 2 && !args[2].equals("-") ? UUID.fromString(args[2]) : null,
                         args.length > 3 ? args[3] + (args.length > 4 ? " " + args[4] : "") : "");
@@ -81,7 +82,7 @@ public final class ContributionDialogs {
     }
     private static void home(CommandSourceStack source) {
         List<ActionButton> actions = new ArrayList<>(List.of(button("我的账户", "account self"), button("我的流水", "history self"),
-                button("我的统计", "stats self"), button("行业建设度与繁荣度", "industries")));
+                button("我的统计", "stats self"), button("行业建设度与繁荣度", "industries"), button("每日签到与活动", "checkin")));
         if (admin(source)) actions.add(button("管理员功能", "admin"));
         show(source, "贡献值系统", List.of(), List.of(), actions);
     }
@@ -134,6 +135,27 @@ public final class ContributionDialogs {
             }
             return lines;
         }), lines -> show(source, "行业建设度与繁荣度", lines, List.of(), List.of(button("刷新", "industries"), button("首页", "home"))));
+    }
+    private static void checkin(CommandSourceStack source) {
+        var service = ContributionRuntime.checkins();
+        var events = ContributionRuntime.eventCheckins();
+        if (service == null || events == null) { message(source, "签到", "签到服务尚未启动"); return; }
+        query(source, service.status(source.getPlayer().getUUID()).thenCombine(events.list(),
+                (status, list) -> new AbstractMap.SimpleEntry<>(status, list)), result -> {
+            List<String> lines = new ArrayList<>();
+            List<ActionButton> actions = new ArrayList<>();
+            lines.add(result.getKey());
+            lines.add("在线满 10 分钟自动每日签到；时区由服务端配置");
+            for (var event : result.getValue()) {
+                lines.add(event.title() + " · " + event.start() + "—" + event.end()
+                        + " · 贡献 " + event.contribution() + " · 物品 " + event.itemCount());
+                actions.add(new ActionButton(new CommonButtonData(Component.literal("领取 " + event.title()), 190),
+                        Optional.of(new StaticAction(new ClickEvent.RunCommand("/contribution checkin claim " + event.id())))));
+            }
+            if (result.getValue().isEmpty()) lines.add("当前没有开放的活动");
+            actions.add(button("刷新", "checkin")); actions.add(button("首页", "home"));
+            show(source, "签到", lines, List.of(), actions);
+        });
     }
     private static void accounts(CommandSourceStack source, UUID cursor) {
         requireAdmin(source);
