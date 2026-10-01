@@ -12,7 +12,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.HashMap;
@@ -25,28 +24,30 @@ public final class CheckinService {
     private final DatabaseService database;
     private final ServerConfig config;
     private final ZoneId zone;
+    private final OnlineTimeAccumulator onlineTime;
     private final Map<Key, Integer> pending = new HashMap<>();
-    private long lastSampleMs;
     private long lastFlushMs;
     private CompletableFuture<java.util.List<UUID>> inFlight;
 
     public CheckinService(DatabaseService database, ServerConfig config) {
         this.database = database; this.config = config; this.zone = ZoneId.of(config.rewards.timeZone);
+        this.onlineTime = new OnlineTimeAccumulator(zone);
     }
 
     public void tick(MinecraftServer server) {
         if (server.getTickCount() % 20 != 0) return;
         long now = System.currentTimeMillis();
-        if (lastSampleMs == 0) { lastSampleMs = now; lastFlushMs = now; return; }
-        int seconds = (int) Math.min(5, Math.max(0, (now - lastSampleMs) / 1000));
-        if (seconds > 0) {
-            LocalDate day = Instant.ofEpochMilli(now).atZone(zone).toLocalDate();
-            for (ServerPlayer player : server.getPlayerList().getPlayers()) {
-                pending.merge(new Key(player.getUUID(), day), seconds, Integer::sum);
-            }
-            lastSampleMs = now;
-        }
+        onlineTime.sample(server.getPlayerList().getPlayers().stream().map(ServerPlayer::getUUID).toList(), now)
+                .forEach((key, seconds) -> pending.merge(new Key(key.player(), key.day()), seconds, Integer::sum));
+        if (lastFlushMs == 0) lastFlushMs = now;
         if (now - lastFlushMs >= 60_000 && inFlight == null) flush(server);
+    }
+
+    public void joined(UUID player) { onlineTime.joined(player, System.currentTimeMillis()); }
+
+    public void left(UUID player) {
+        onlineTime.left(player, System.currentTimeMillis())
+                .forEach((key, seconds) -> pending.merge(new Key(key.player(), key.day()), seconds, Integer::sum));
     }
 
     public void flush(MinecraftServer server) {
@@ -70,7 +71,9 @@ public final class CheckinService {
         }));
     }
 
-    public void shutdown() {
+    public void shutdown(MinecraftServer server) {
+        onlineTime.sample(server.getPlayerList().getPlayers().stream().map(ServerPlayer::getUUID).toList(), System.currentTimeMillis())
+                .forEach((key, seconds) -> pending.merge(new Key(key.player(), key.day()), seconds, Integer::sum));
         if (inFlight != null) inFlight.join();
         if (pending.isEmpty()) return;
         Map<Key, Integer> batch = new HashMap<>(pending);

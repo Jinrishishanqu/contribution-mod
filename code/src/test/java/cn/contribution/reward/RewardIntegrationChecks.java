@@ -19,6 +19,7 @@ import java.util.UUID;
 /** Embedded transactional checks for development, daily/event check-ins and shop orders. */
 public final class RewardIntegrationChecks {
     public static void main(String[] args) throws Exception {
+        checkClockAccounting();
         net.minecraft.SharedConstants.tryDetectVersion();
         net.minecraft.server.Bootstrap.bootStrap();
         boolean mysql = args.length > 0 && args[0].equals("mysql");
@@ -114,6 +115,24 @@ public final class RewardIntegrationChecks {
     }
 
     private static java.time.ZoneId eventsZone(ServerConfig config) { return java.time.ZoneId.of(config.rewards.timeZone); }
+    private static void checkClockAccounting() {
+        var zone = java.time.ZoneId.of("Asia/Shanghai");
+        var clock = new OnlineTimeAccumulator(zone);
+        UUID player = UUID.randomUUID();
+        long start = LocalDate.of(2026, 10, 1).atTime(23, 59, 58, 500_000_000)
+                .atZone(zone).toInstant().toEpochMilli();
+        clock.joined(player, start);
+        check(clock.sample(java.util.List.of(player), start + 950).isEmpty(), "fractional second retained");
+        var first = clock.sample(java.util.List.of(player), start + 3100);
+        check(first.get(new OnlineTimeAccumulator.Key(player, LocalDate.of(2026, 10, 1))) == 1,
+                "before-midnight seconds");
+        check(first.get(new OnlineTimeAccumulator.Key(player, LocalDate.of(2026, 10, 2))) == 2,
+                "after-midnight seconds");
+        check(clock.sample(java.util.List.of(player), start + 3999).isEmpty(), "later fractional second retained");
+        var second = clock.left(player, start + 4100);
+        check(second.get(new OnlineTimeAccumulator.Key(player, LocalDate.of(2026, 10, 2))) == 1,
+                "departure accounts final whole second");
+    }
     private static int balance(AccountService accounts, UUID player) {
         return accounts.account(AccountTarget.byUuid(player)).join().orElseThrow().balance();
     }

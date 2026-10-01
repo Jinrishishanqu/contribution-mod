@@ -90,7 +90,7 @@ public final class ContributionRuntime {
         }
     }
 
-    public static synchronized void stop() {
+    public static synchronized void stop(MinecraftServer server) {
         if (database == null) {
             return;
         }
@@ -98,7 +98,7 @@ public final class ContributionRuntime {
             statistics.close();
         }
         if (checkins != null) {
-            try { checkins.shutdown(); }
+            try { checkins.shutdown(server); }
             catch (RuntimeException error) { ContributionMod.LOGGER.error("Pending check-in time could not be flushed", error); }
         }
         database.close();

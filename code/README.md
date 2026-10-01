@@ -1,10 +1,10 @@
-# CSU-YSU Contribution System 0.0.4
+# CSU-YSU Contribution System 0.0.5
 
 Minecraft Java Edition 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 / Java 25。
 
 ## 安装与使用
 
-将 `build/libs/CSU-YSU-contribution-system-0.0.4.jar` 和匹配版本的 Fabric API 放进服务端 mods 目录。模组只有一份通用 JAR，逻辑在服务端运行；原版客户端无需安装即可进入服务器并使用贡献值、签到、股票和商店的文字/原版 Dialog 界面。若也在客户端安装同一 JAR 和 Fabric API，`/stock` 和 `/shop` 会打开专用界面。
+将 `build/libs/CSU-YSU-contribution-system-0.0.5.jar` 和匹配版本的 Fabric API 放进服务端 mods 目录。模组只有一份通用 JAR，逻辑在服务端运行；原版客户端无需安装即可进入服务器并使用贡献值、签到、股票和商店的文字/原版 Dialog 界面。若也在客户端安装同一 JAR 和 Fabric API，`/stock` 和 `/shop` 会打开专用界面。
 
 进入游戏输入 `/contribution` 打开贡献值图形界面。界面使用 26.3 原生 Dialog，包含账户、流水点选筛选与分页、玩家统计、行业建设度与繁荣度，以及管理员账户变动的预览与确认。股票系统独立使用 `/stock`。文字查询和管理员命令继续可用，完整列表见[命令速查](docs/COMMANDS.md)。
 

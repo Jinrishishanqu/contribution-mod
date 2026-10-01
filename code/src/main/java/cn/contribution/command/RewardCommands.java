@@ -61,6 +61,12 @@ public final class RewardCommands {
                         .then(Commands.argument("offer", StringArgumentType.word())
                                 .then(Commands.argument("quantity", IntegerArgumentType.integer(1, 64))
                                         .executes(context -> buy(context, true))))))
+                .then(Commands.literal("page").then(Commands.argument("page", IntegerArgumentType.integer(0))
+                        .executes(context -> {
+                            if (!RequestLimiter.allow(context.getSource())) return fail(context.getSource(), "操作过快");
+                            ShopDialogs.page(context.getSource(), IntegerArgumentType.getInteger(context, "page"));
+                            return 1;
+                        })))
                 .then(Commands.literal("claim").executes(context -> {
                     var player = context.getSource().getPlayerOrException();
                     if (ContributionRuntime.deliveries() == null) return fail(context.getSource(), "数据服务尚未启动");

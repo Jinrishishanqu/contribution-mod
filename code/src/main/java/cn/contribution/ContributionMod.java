@@ -32,10 +32,11 @@ public final class ContributionMod implements ModInitializer {
         ServerLifecycleEvents.END_DATA_PACK_RELOAD.register((server, resources, success) -> {
             if (success && ContributionRuntime.statistics() != null) cn.contribution.industry.RuleManager.stage(server);
         });
-        ServerLifecycleEvents.SERVER_STOPPING.register(server -> ContributionRuntime.stop());
+        ServerLifecycleEvents.SERVER_STOPPING.register(ContributionRuntime::stop);
         ServerTickEvents.END_SERVER_TICK.register(ContributionRuntime::tick);
         CommandRegistrationCallback.EVENT.register((dispatcher, registry, selection) -> ContributionCommands.register(dispatcher));
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
+            if (ContributionRuntime.checkins() != null) ContributionRuntime.checkins().joined(handler.player.getUUID());
             if (ContributionRuntime.accounts() != null) {
                 ServerPlayer player = handler.player;
                 ContributionRuntime.accounts().registerPlayer(player.getUUID(), player.getGameProfile().name())
@@ -50,6 +51,9 @@ public final class ContributionMod implements ModInitializer {
                             return null;
                         });
             }
+        });
+        ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
+            if (ContributionRuntime.checkins() != null) ContributionRuntime.checkins().left(handler.player.getUUID());
         });
         PlayerBlockBreakEvents.AFTER.register((level, player, pos, state, entity) -> {
             if (player instanceof ServerPlayer serverPlayer && ContributionRuntime.statistics() != null) {

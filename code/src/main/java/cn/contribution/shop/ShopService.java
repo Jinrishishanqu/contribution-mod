@@ -42,7 +42,7 @@ public final class ShopService {
                 }
             }
             EconomyLedger.Result paid = EconomyLedger.change(connection, player, -(int) total, false,
-                    "SHOP_BUY", "contribution:shop", "购买 " + offer.name, config.serverId, orderId);
+                    "SHOP_BUY", "contribution:shop", "商店购买", config.serverId, orderId);
             if (!paid.success()) return paid.message();
             UUID delivery = UUID.randomUUID();
             try (PreparedStatement insert = connection.prepareStatement(
