@@ -1,14 +1,18 @@
-# CSU-YSU Contribution System 0.0.1
+# CSU-YSU Contribution System 0.0.2
 
 Minecraft Java Edition 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 / Java 25。
 
 ## 安装与使用
 
-将 `build/libs/CSU-YSU-contribution-system-0.0.1.jar` 和匹配版本的 Fabric API 放进服务端 mods 目录。模组只有一份通用 JAR，逻辑在服务端运行；原版客户端无需安装模组。
+将 `build/libs/CSU-YSU-contribution-system-0.0.2.jar` 和匹配版本的 Fabric API 放进服务端 mods 目录。模组只有一份通用 JAR，逻辑在服务端运行；原版客户端无需安装模组。
 
 进入游戏输入 `/contribution` 打开图形界面。界面使用 26.3 原生 Dialog，包含账户、流水筛选与分页、玩家统计、行业建设度与繁荣度，以及管理员账户变动的预览与确认。文字查询和管理员命令继续可用。
 
 单人游戏和单服开箱即用：首次启动自动在当前世界的 `contribution/contribution.mv.db` 建立本地数据库和业务表，不用安装 MySQL，也不需填写数据库配置。旧版生成的 `database.enabled=false` 配置会自动按新的本地模式读取；无需手动改开关。
+
+本地运行数据集中在该世界的 `contribution/` 文件夹：数据库文件保存账户、流水和建设度，`statistics-journal/` 保存尚待入库的建设度恢复日志。旧版放在 `config/contribution/statistics-journal/` 的日志会在启动时自动迁入。备份或回退时先退出世界/停止服务器，再完整复制或替换整个 `contribution/` 文件夹；不要在游戏运行时复制数据库文件，也不要用文本编辑器直接修改 `.mv.db`。配置文件 `config/contribution/server.json` 单独保存。群组服的权威数据在共享 MySQL 中，必须做 MySQL 备份；子服世界里的 `contribution/` 只包含本地恢复日志，不能代替数据库备份。
+
+管理员文字命令：`/contribution add|remove <玩家> <数量> <原因> <影响历史总收入:true|false> [备注]`。`true` 会让历史总收入与余额同向增减，`false` 只变更余额；任一数值越界则整笔操作拒绝，不写流水。
 
 群组服必须将每台服务器的 `config/contribution/server.json` 设为 `database.mode="mysql"`，填写同一个 MySQL 8.4 数据库地址和凭据，并为各服设置唯一 `serverId`。MySQL 服务需要由运维环境提供；主服务器在账号有建库权限时可自动创建指定数据库及业务表，其他子服只校验结构。旧版 `database.enabled=true` 且没有 `mode` 的配置继续按 MySQL 读取。两种模式的数据不会自动互相导入，切换前应备份。口令可由 `CONTRIBUTION_DB_PASSWORD` 覆盖。正式部署应使用独立数据库用户，不要照搬开发测试目录的 root 连接。
 
@@ -25,7 +29,9 @@ Minecraft Java Edition 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 / J
 - 运行保护：有界异步队列、查询限流、统计日志、批次重放、容量与数值溢出保护。
 - 规则：主服数据包重载，次日 8 点统一切换；规则快照按哈希存储，旧批次按历史规则恢复。
 
-不包含股票、签到、商城和自定义行业；它们仍属于后续拓展，不影响 Basic。即时投掷等未定义来源不会仅因加入标签而自动获得建设度。完整行为见 [design](../design/README.md)。
+股票系统已实现：第 3 个游戏日上市，30 支股票覆盖九行业；主服 8 点依繁荣度更新股价，10—12 点可交易，每次买卖收费 2%。原版客户端通过 `/contribution stock` 查看列表和曲线，并可直接交易。`/contribution stock check <股票> <week|month|year>` 查看走势；`buy`、`sell`、`retry` 和 `claim` 分别用于买卖、幂等重试和领取退市返还。单服数据仍在世界 `contribution/`；群组服各服共用 MySQL，由主服推进股市时钟。具体规则见 [股票设计](../design/extensions/stock.md)。
+
+不包含签到、商城和自定义行业；它们仍属于后续拓展，不影响 Basic。即时投掷等未定义来源不会仅因加入标签而自动获得建设度。完整行为见 [design](../design/README.md)。
 
 ## 规则资源
 
@@ -41,13 +47,13 @@ Minecraft Java Edition 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 / J
 
 脚本使用项目内 Java 25 和 Gradle 缓存，不把 JDK 下载到 C 盘。build 自动检查全部 JSON、45 个玩家标签、查询条件、距离换算以及原生 Dialog 的 JSON/网络编码。
 
-日常 `build` 已包含嵌入式数据库首次建表、交易、统计和重启持久化测试。项目专用测试 MySQL 使用 127.0.0.1:23306；仅在测试实例运行时额外执行：
+日常 `build` 已包含嵌入式数据库首次建表、账户交易、统计、股票交易和重启持久化测试。项目专用测试 MySQL 使用 127.0.0.1:23306；仅在测试实例运行时额外执行：
 
 ```powershell
-.\run-gradle.ps1 verifyDatabaseIntegration verifyStatisticsIntegration --offline
+.\run-gradle.ps1 verifyDatabaseIntegration verifyStatisticsIntegration verifyMySqlStocks --offline
 ```
 
-数据库测试使用 contribution_test_v2 和 contribution_stats_test 独立数据库，正常测试服使用 contribution_server_test。测试工具保存在项目的 .test-tools/.test-mysql，不安装 Windows 全局服务。验证范围、结果与局限见 [验证记录](docs/VALIDATION.md)。
+数据库测试使用 contribution_test_v2 和 contribution_stats_test 独立数据库，股票测试使用自动清理的随机测试库，正常测试服使用 contribution_server_test。测试工具保存在项目的 .test-tools/.test-mysql，不安装 Windows 全局服务。验证范围、结果与局限见 [Basic 验证记录](docs/VALIDATION.md)和[股票验证记录](docs/STOCK_VALIDATION.md)。
 
 JAR 已内嵌 H2、MySQL 驱动、连接池及迁移依赖；不要安装 sources.jar。第三方许可证见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 

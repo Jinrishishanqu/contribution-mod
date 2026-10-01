@@ -24,12 +24,29 @@ import java.util.function.Consumer;
 /** Native 26.3 dialogs are rendered by both vanilla and Fabric clients. No client-only classes. */
 public final class ContributionDialogs {
     private static final int DIALOG_PAGE_SIZE = 8;
+    private static final Map<UUID, Deque<String>> BACK_STACK = new HashMap<>();
+    private static final Map<UUID, String> CURRENT_PAGE = new HashMap<>();
 
     private ContributionDialogs() { }
     public static int open(CommandSourceStack source, String request) {
         if (source.getPlayer() == null) { source.sendFailure(Component.literal("请在游戏内打开界面")); return 0; }
         if (!RequestLimiter.allow(source)) { source.sendFailure(Component.literal("操作过快，请稍后重试")); return 0; }
         try {
+            UUID playerId = source.getPlayer().getUUID();
+            if (request.equals("back")) {
+                Deque<String> stack = BACK_STACK.get(playerId);
+                request = stack == null || stack.isEmpty() ? "home" : stack.pop();
+            } else if (request.equals("home")) {
+                BACK_STACK.remove(playerId);
+            } else {
+                String previous = CURRENT_PAGE.getOrDefault(playerId, "home");
+                if (!previous.equals(request)) {
+                    Deque<String> stack = BACK_STACK.computeIfAbsent(playerId, ignored -> new ArrayDeque<>());
+                    if (stack.size() >= 20) stack.removeLast();
+                    stack.push(previous);
+                }
+            }
+            CURRENT_PAGE.put(playerId, request);
             String[] args = request.isBlank() ? new String[]{"home"} : request.trim().split("\\s+", 5);
             String target = args.length > 1 ? args[1] : "self";
             switch (args[0]) {
@@ -39,6 +56,9 @@ public final class ContributionDialogs {
                 case "account" -> account(source, target);
                 case "stats" -> stats(source, target);
                 case "industries" -> industries(source);
+                case "stock" -> StockDialogs.market(source, args.length > 1 ? Integer.parseInt(args[1]) : 0,
+                        args.length > 2 ? args[2] : "name", args.length > 3 ? args[3] : "all");
+                case "stock-detail" -> StockDialogs.detail(source, target, args.length > 2 ? Integer.parseInt(args[2]) : 7);
                 case "accounts" -> accounts(source, args.length > 1 ? UUID.fromString(args[1]) : null);
                 case "history" -> history(source, target, args.length > 2 && !args[2].equals("-") ? UUID.fromString(args[2]) : null,
                         args.length > 3 ? args[3] + (args.length > 4 ? " " + args[4] : "") : "");
@@ -64,7 +84,8 @@ public final class ContributionDialogs {
     }
     private static void home(CommandSourceStack source) {
         List<ActionButton> actions = new ArrayList<>(List.of(button("我的账户", "account self"), button("我的流水", "history self"),
-                button("我的统计", "stats self"), button("行业建设度与繁荣度", "industries")));
+                button("我的统计", "stats self"), button("行业建设度与繁荣度", "industries"),
+                button("股票市场", "stock 0 name all")));
         if (admin(source)) actions.add(button("管理员功能", "admin"));
         show(source, "贡献值系统", List.of(), List.of(), actions);
     }
@@ -170,11 +191,18 @@ public final class ContributionDialogs {
     }
     private static void message(CommandSourceStack source, String title, String message) { show(source, title, List.of(message), List.of(), List.of(button("首页", "home"))); }
     public static void show(CommandSourceStack source, String title, List<String> lines, List<Input> inputs, List<ActionButton> buttons) {
-        source.getPlayer().openDialog(Holder.direct(create(title, lines, inputs, buttons)));
+        boolean hasPrevious = !BACK_STACK.getOrDefault(source.getPlayer().getUUID(), new ArrayDeque<>()).isEmpty();
+        source.getPlayer().openDialog(Holder.direct(create(title, lines, inputs, buttons, hasPrevious)));
     }
     static Dialog create(String title, List<String> lines, List<Input> inputs, List<ActionButton> buttons) {
+        return create(title, lines, inputs, buttons, false);
+    }
+    static Dialog create(String title, List<String> lines, List<Input> inputs, List<ActionButton> buttons, boolean hasPrevious) {
         List<DialogBody> bodies = lines.stream().map(line -> (DialogBody)new PlainMessage(Component.literal(line), 430)).toList();
         var common = new CommonDialogData(Component.literal(title), Optional.empty(), true, false, DialogAction.CLOSE, bodies, inputs);
-        return new MultiActionDialog(common, buttons, Optional.of(new ActionButton(new CommonButtonData(Component.literal("关闭"), 190), Optional.empty())), 2);
+        ActionButton exit = hasPrevious ? button("返回上一页", "back")
+                : new ActionButton(new CommonButtonData(Component.literal("关闭"), 190), Optional.empty());
+        return new MultiActionDialog(common, buttons, Optional.of(exit), 2);
     }
+    public static void clear() { BACK_STACK.clear(); CURRENT_PAGE.clear(); }
 }

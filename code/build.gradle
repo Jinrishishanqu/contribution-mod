@@ -111,6 +111,17 @@ tasks.register('verifyEmbeddedPersistence', JavaExec) {
     classpath = sourceSets.test.runtimeClasspath
     mainClass = 'cn.contribution.account.EmbeddedPersistenceChecks'
 }
+tasks.register('verifyEmbeddedStocks', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.stock.StockIntegrationChecks'
+}
+tasks.register('verifyMySqlStocks', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.stock.StockIntegrationChecks'
+    args 'mysql'
+}
 tasks.register('verifyConfigCompatibility', JavaExec) {
     dependsOn tasks.testClasses
     classpath = sourceSets.test.runtimeClasspath
@@ -149,6 +160,7 @@ tasks.register('verifyPackagedServer', JavaExec) {
 
 tasks.check.dependsOn tasks.verifyAccountQueries, tasks.verifyDistanceAccounting,
         tasks.verifyEmbeddedAccounts, tasks.verifyEmbeddedStatistics, tasks.verifyEmbeddedPersistence,
+        tasks.verifyEmbeddedStocks,
         tasks.verifyConfigCompatibility
 
 publishing {

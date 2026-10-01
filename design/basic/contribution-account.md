@@ -20,7 +20,7 @@
 | 历史总收入范围 | $0$ 至 $2^{31}-1$ |
 | 单次数量变动范围 | $-2^{31}$ 至 $2^{31}-1$ |
 
-历史总收入只累计除退款外的正向代币变动。退款以及 `SPEND`、`TAX` 等负向变动不会影响历史总收入。
+默认情况下，历史总收入累计除退款外的正向代币变动，负向变动不影响它。管理员命令或外部 API 可以显式指定本次是否影响历史总收入：指定 `true` 时，正向变动增加、负向变动减少相同数量；指定 `false` 时不改变。退款始终不影响历史总收入。余额和历史总收入都不得低于 $0$ 或高于 $2^{31}-1$。
 
 ### 账户表
 
@@ -51,7 +51,7 @@
 | `player_uuid` | `BINARY(16)` | 非空；目标账户 UUID |
 | `player_name` | `VARCHAR(16)` | 非空；操作发生时记录的玩家名称 |
 | `amount` | `INT` | 非空且不能为 $0$；本次数量变动 |
-| `income_delta` | `INT` | 非空且非负；本次实际计入历史总收入的数量 |
+| `income_delta` | `INT` | 非空；本次历史总收入变化量，可以为负数或 $0$ |
 | `balance_before` | `INT` | 非空；变动前余额 |
 | `balance_after` | `INT` | 非空；变动后余额 |
 | `type` | `VARCHAR(32)` | 非空；操作类型 |
@@ -70,7 +70,7 @@
 - `(source, created_at DESC, record_no DESC)`：按来源筛选；
 - `(server_id, created_at DESC, record_no DESC)`：按子服筛选。
 
-数据库约束要求 `balance_after=balance_before+amount`。当 `amount>0` 且操作类型不是 `REFUND` 时，`income_delta=amount`；退款和所有扣款的 `income_delta=0`。账户的 `total_income` 与流水写入在同一事务中按 `income_delta` 增加。
+数据库约束要求 `balance_after=balance_before+amount`。`income_delta` 只能是 `0` 或 `amount`；退款必须为 `0`。账户的 `total_income` 与流水写入在同一事务中按 `income_delta` 更新，写入前检查上下限。
 
 所有现实时间在写入数据库前转换为 UTC，统一使用微秒精度的 `DATETIME(6)`。Java 代码使用 `Instant` 表示现实时间。基于游戏日的任务另外保存整数 `game_day`，不能通过现实时间反推游戏日。
 
@@ -145,9 +145,10 @@ API 不分别提供 `add` 和 `remove` 函数。所有余额变更统一通过 `
 | `target` | `AccountTarget` | 通过玩家 UUID 或玩家名称指定的单个账户 |
 | `amount` | `int` | 带符号的余额变动量；正数增加余额，负数减少余额，不能为 `0` |
 | `type` | `BalanceChangeType` | 余额变更类型，目前支持 `EXTERNAL` 和 `REFUND` |
-| `source` | `Identifier` | 调用来源，命名空间必须为调用模组 ID，例如 `quest_mod:quest_reward`；字符串形式最多 128 个字符 |
+| `source` | `Identifier` | 调用来源，例如 `quest_mod:quest_reward`；字符串形式最多 128 个字符。调用方应使用自己的模组 ID 作为命名空间，但当前服务端不以此字段验证真实调用者身份 |
 | `reason` | `String` | 流水原因，最多 64 个 Unicode 字符 |
 | `note` | `String` | 可选备注，空字符串表示无备注，最多 64 个 Unicode 字符 |
+| `affectTotalIncome` | `boolean` | 是否将带符号的 `amount` 同步作用于历史总收入；退款必须为 `false` |
 
 `AccountTarget` 提供以下工厂函数：
 
@@ -158,7 +159,7 @@ AccountTarget.byName(String playerName);
 
 API 不接受目标选择器。每次请求只能对应一个明确的账户，并且支持操作离线玩家。
 
-`EXTERNAL` 允许正向或负向变动。正向 `EXTERNAL` 计入历史总收入，负向 `EXTERNAL` 不影响历史总收入。`REFUND` 的 `amount` 必须为正数，并且完全不影响历史总收入。
+`EXTERNAL` 允许正向或负向变动。旧的七参数构造器保留原默认规则：正向 `EXTERNAL` 计入历史总收入，负向 `EXTERNAL` 不影响历史总收入；新的八参数构造器可明确传入 `affectTotalIncome`。`REFUND` 的 `amount` 必须为正数，且 `affectTotalIncome` 必须为 `false`。
 
 #### 余额变更结果
 
@@ -184,19 +185,19 @@ API 不接受目标选择器。每次请求只能对应一个明确的账户，�
 | `ACCOUNT_NOT_FOUND` | 玩家名称或 UUID 对应的账户不存在 |
 | `INVALID_AMOUNT` | 数量为 `0`、超出范围，或不符合操作类型要求 |
 | `INVALID_TEXT` | 原因、备注或来源标识不符合要求 |
-| `INSUFFICIENT_BALANCE` | 扣款后的余额将小于 `0` |
+| `INSUFFICIENT_BALANCE` | 扣款后的余额将小于 `0`，或历史总收入将小于 `0`；后者反馈“历史总收入不足” |
 | `BALANCE_OVERFLOW` | 操作后的余额或历史总收入将超过 $2^{31}-1$ |
 | `DATABASE_UNAVAILABLE` | 数据服务不可用或结果暂时无法确认；必须沿用原幂等 ID 重试 |
-| `IN_PROGRESS` | 为兼容保留；当前等待事务结果或返回数据服务不可用 |
+| `IN_PROGRESS` | 为兼容保留；当前实现不会主动返回该状态，异步调用等待事务结果，连接故障时返回 `DATABASE_UNAVAILABLE` |
 | `IDEMPOTENCY_CONFLICT` | 相同幂等 ID 被用于内容不同的请求 |
 
-参数错误、余额不足等可预期的业务失败通过 `BalanceChangeResult` 返回，不使用异常表示。只有调用方式错误或不可恢复的内部错误才使 `CompletableFuture` 异常完成。
+参数错误、余额或历史总收入不足等可预期的业务失败通过 `BalanceChangeResult` 返回，不使用异常表示。数据库异常先按原幂等 ID 尝试查询已提交流水，仍无法确认时返回 `DATABASE_UNAVAILABLE`；其他未恢复的内部错误才可能使 `CompletableFuture` 异常完成。
 
 #### 事务与幂等规则
 
 余额、变动前后数值、时间、子服和流水 ID 等信息由代币系统计算。幂等检查、账户行锁、余额校验、账户更新和流水写入必须在同一个数据库事务中完成。
 
-调用方必须为一次业务操作生成并保存一个幂等 ID。网络超时、`IN_PROGRESS` 或返回结果丢失后，只能使用完全相同的请求和原幂等 ID 重试。系统返回原操作结果，不重复修改账户。同一幂等 ID 对应的目标、数量、类型、来源、原因或备注发生变化时，返回 `IDEMPOTENCY_CONFLICT`。
+调用方必须为一次业务操作生成并保存一个幂等 ID。网络超时、`IN_PROGRESS` 或返回结果丢失后，只能使用完全相同的请求和原幂等 ID 重试。系统返回原操作结果，不重复修改账户。同一幂等 ID 对应的目标、数量、类型、来源、原因、备注或 `affectTotalIncome` 发生变化时，返回 `IDEMPOTENCY_CONFLICT`。升级前流水的原幂等哈希在旧默认规则下仍可重试。
 
 #### 异步与线程规则
 
@@ -219,15 +220,15 @@ Java 模组 API 的调用方与 Contribution 运行在同一个 JVM 中，属于
 管理员可以使用以下命令修改账户余额：
 
 ```text
-/contribution add <玩家> <数量> <原因> [备注]
-/contribution remove <玩家> <数量> <原因> [备注]
+/contribution add <玩家> <数量> <原因> <影响历史总收入:true|false> [备注]
+/contribution remove <玩家> <数量> <原因> <影响历史总收入:true|false> [备注]
 ```
 
-`add` 表示增加余额，`remove` 表示减少余额。除备注外，其余参数均为必填项。成功执行后，账户表和流水表会在同一事务中更新，`operator` 记录为 `command-<执行者>`，`source` 记录为 `contribution:admin_command`；图形操作使用 `contribution:admin_dialog`。
+`add` 表示增加余额，`remove` 表示减少余额。除备注外，其余参数均为必填项。布尔值为 `true` 时，`add` 同时增加历史总收入，`remove` 同时减少历史总收入；为 `false` 时只改变余额。图形管理操作暂时使用旧默认规则。成功执行后，账户表和流水表会在同一事务中更新，`operator` 记录为 `command-<执行者>`，`source` 记录为 `contribution:admin_command`；图形操作使用 `contribution:admin_dialog`。
 
 管理员不能绕过余额范围和数量范围限制。
 
-每次命令先返回请求 ID 和可点击的原请求重试文本，再异步执行。`/contribution retry <幂等UUID> <玩家> <带符号变动量> <原因> [备注]` 使用原请求重试；原因包含空格时按命令提示加引号。网络中断或反馈不确定时应使用此入口，而不是再次执行会生成新请求 ID 的 add/remove。参数必须与原请求相同，改变目标表示方式、原因或备注也会被视为幂等冲突。
+每次命令先返回请求 ID 和可点击的原请求重试文本，再异步执行。`/contribution retry <幂等UUID> <玩家> <带符号变动量> <原因> <影响历史总收入:true|false> [备注]` 使用原请求重试；原因包含空格时按命令提示加引号。网络中断或反馈不确定时应使用此入口，而不是再次执行会生成新请求 ID 的 add/remove。参数必须与原请求相同，改变目标表示方式、原因、备注或布尔值也会被视为幂等冲突。
 
 ## 命令与权限
 
@@ -250,6 +251,7 @@ Java 模组 API 的调用方与 Contribution 运行在同一个 JVM 中，属于
 | 选择多个目标 | 目标选择器必须恰好选择一名玩家 |
 | 账户不存在 | 未找到该玩家账户 |
 | 余额不足 | 余额不足 |
+| 历史总收入不足 | 历史总收入不足 |
 | 数值溢出 | 余额或历史总收入超过上限 |
 | 文本无效 | 来源、原因或备注无效 |
 | 数据库异常 | 数据服务暂时不可用，请稍后重试 |
@@ -258,4 +260,4 @@ Java 模组 API 的调用方与 Contribution 运行在同一个 JVM 中，属于
 | 查询成功 | <玩家>：余额 <余额>，历史总收入 <历史总收入> |
 | 操作成功 | 操作成功，余额 <之前> → <之后>，流水 ID <流水ID> |
 
-失败请求不创建成功流水。提交状态不确定时，“稍后重试”指沿用原请求与幂等 ID，不代表可以重复创建新交易。股票等拓展功能的反馈随相应功能实现。
+失败请求不创建成功流水。提交状态不确定时，“稍后重试”指沿用原请求与幂等 ID，不代表可以重复创建新交易。股票功能的反馈与重试规则见[股票系统](../extensions/stock.md)；其他拓展功能在实现时单独约定。

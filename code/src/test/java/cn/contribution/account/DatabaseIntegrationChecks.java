@@ -56,6 +56,20 @@ public final class DatabaseIntegrationChecks {
             check(accounts.historyPage(target, null, 20, 365, HistoryFilter.parse("from=2020-01-01 to=2020-01-31",365)).join().orElseThrow().rows().size() == 1, "archive date query");
             check(accounts.historyPage(target, null, 20, 365, HistoryFilter.parse("to=2020-01-31",365)).join().orElseThrow().rows().size() == 1, "archive end-only query");
             check(accounts.account(target).join().orElseThrow().balance() == 137, "archive leaves balance unchanged");
+            var excludedIncome = new BalanceChangeRequest(UUID.randomUUID(), target, 5,
+                    BalanceChangeType.EXTERNAL, Identifier.parse("contribution:integration"), "不计收入", "", false);
+            check(accounts.changeBalance(excludedIncome).join().successful(), "admin credit without income");
+            check(accounts.account(target).join().orElseThrow().totalIncome() == 137, "credit income excluded");
+            check(accounts.changeBalance(new BalanceChangeRequest(excludedIncome.idempotencyId(), target, 5,
+                    excludedIncome.type(), excludedIncome.source(), excludedIncome.reason(), "", true)).join().status()
+                    == BalanceChangeStatus.IDEMPOTENCY_CONFLICT, "income flag is part of idempotency");
+            var reverseIncome = new BalanceChangeRequest(UUID.randomUUID(), target, -5,
+                    BalanceChangeType.EXTERNAL, Identifier.parse("contribution:integration"), "冲销收入", "", true);
+            check(accounts.changeBalance(reverseIncome).join().successful(), "admin debit with income reversal");
+            check(accounts.account(target).join().orElseThrow().totalIncome() == 132, "debit reverses income");
+            check(accounts.changeBalance(new BalanceChangeRequest(UUID.randomUUID(), target, -133,
+                    BalanceChangeType.EXTERNAL, Identifier.parse("contribution:integration"), "收入不足", "", true)).join().status()
+                    == BalanceChangeStatus.INSUFFICIENT_BALANCE, "income cannot become negative");
             System.out.println((embedded ? "EMBEDDED_" : "MYSQL_") + "DATABASE_INTEGRATION_PASS: migration, balance bounds, refunds, offline queries, concurrent writes, idempotency and archive");
         }
     }

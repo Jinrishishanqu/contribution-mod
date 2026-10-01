@@ -13,12 +13,14 @@ code/run/
 code/logs/
 logs/
 output/
+.sheet-work/
 __pycache__/
 *.pyc
 *.log
 *.mv.db
 *.lock.db
 *.trace.db
+~$*.xlsx
 
 # Local credentials and IDE state
 .env

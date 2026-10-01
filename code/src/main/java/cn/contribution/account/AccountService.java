@@ -225,12 +225,14 @@ public final class AccountService extends ContributionApi {
             return CompletableFuture.completedFuture(invalid);
         }
         byte[] hash = requestHash(request, storedType);
-        return database.transaction(connection -> apply(connection, request, storedType, operator, hash))
+        byte[] legacyHash = request.affectTotalIncome() == (request.amount() > 0 && request.type() != BalanceChangeType.REFUND)
+                ? requestHash(request, storedType, false) : null;
+        return database.transaction(connection -> apply(connection, request, storedType, operator, hash, legacyHash))
                 .exceptionallyCompose(error -> {
                     ContributionMod.LOGGER.warn("Account operation needs idempotency recovery: id={} error={}",
                             id, error.getClass().getSimpleName());
                     return database.transaction(connection -> {
-                        BalanceChangeResult replay = findReplay(connection, request.idempotencyId(), hash);
+                        BalanceChangeResult replay = findReplay(connection, request.idempotencyId(), hash, legacyHash);
                         if (replay != null) {
                             return replay;
                         }
@@ -241,8 +243,8 @@ public final class AccountService extends ContributionApi {
     }
 
     private BalanceChangeResult apply(Connection connection, BalanceChangeRequest request, String storedType,
-                                      String operator, byte[] hash) throws SQLException {
-        BalanceChangeResult replay = findReplay(connection, request.idempotencyId(), hash);
+                                      String operator, byte[] hash, byte[] legacyHash) throws SQLException {
+        BalanceChangeResult replay = findReplay(connection, request.idempotencyId(), hash, legacyHash);
         if (replay != null) {
             return replay;
         }
@@ -252,7 +254,7 @@ public final class AccountService extends ContributionApi {
                     request.idempotencyId(), "未找到该玩家账户");
         }
         AccountRecord account = found.get();
-        replay = findReplay(connection, request.idempotencyId(), hash);
+        replay = findReplay(connection, request.idempotencyId(), hash, legacyHash);
         if (replay != null) {
             return replay;
         }
@@ -261,8 +263,13 @@ public final class AccountService extends ContributionApi {
             return BalanceChangeResult.rejected(BalanceChangeStatus.INSUFFICIENT_BALANCE,
                     request.idempotencyId(), "余额不足");
         }
-        int income = request.amount() > 0 && request.type() != BalanceChangeType.REFUND ? request.amount() : 0;
-        if (next > Integer.MAX_VALUE || (long) account.totalIncome() + income > Integer.MAX_VALUE) {
+        int income = request.affectTotalIncome() ? request.amount() : 0;
+        long nextIncome = (long) account.totalIncome() + income;
+        if (nextIncome < 0) {
+            return BalanceChangeResult.rejected(BalanceChangeStatus.INSUFFICIENT_BALANCE,
+                    request.idempotencyId(), "历史总收入不足");
+        }
+        if (next > Integer.MAX_VALUE || nextIncome > Integer.MAX_VALUE) {
             return BalanceChangeResult.rejected(BalanceChangeStatus.BALANCE_OVERFLOW,
                     request.idempotencyId(), "余额或历史总收入超过上限");
         }
@@ -299,7 +306,8 @@ public final class AccountService extends ContributionApi {
         return BalanceChangeResult.success(request.idempotencyId(), transactionId, account.balance(), (int) next, false);
     }
 
-    private static BalanceChangeResult findReplay(Connection connection, UUID id, byte[] hash) throws SQLException {
+    private static BalanceChangeResult findReplay(Connection connection, UUID id, byte[] hash,
+                                                  byte[] legacyHash) throws SQLException {
         try (PreparedStatement statement = connection.prepareStatement(
                 "SELECT transaction_id, request_hash, balance_before, balance_after "
                         + "FROM (SELECT * FROM contribution_transaction UNION ALL SELECT * FROM contribution_transaction_archive) transactions WHERE idempotency_id = ?")) {
@@ -308,7 +316,9 @@ public final class AccountService extends ContributionApi {
                 if (!rows.next()) {
                     return null;
                 }
-                if (!MessageDigest.isEqual(hash, rows.getBytes(2))) {
+                byte[] storedHash = rows.getBytes(2);
+                if (!MessageDigest.isEqual(hash, storedHash)
+                        && (legacyHash == null || !MessageDigest.isEqual(legacyHash, storedHash))) {
                     return BalanceChangeResult.rejected(BalanceChangeStatus.IDEMPOTENCY_CONFLICT,
                             id, "幂等 ID 已用于不同请求");
                 }
@@ -346,6 +356,9 @@ public final class AccountService extends ContributionApi {
         if (request.amount() == 0 || (request.type() == BalanceChangeType.REFUND && request.amount() < 0)) {
             return BalanceChangeResult.rejected(BalanceChangeStatus.INVALID_AMOUNT, id, "数量或退款类型无效");
         }
+        if (request.type() == BalanceChangeType.REFUND && request.affectTotalIncome()) {
+            return BalanceChangeResult.rejected(BalanceChangeStatus.INVALID_AMOUNT, id, "退款不影响历史总收入");
+        }
         if (request.source() == null || request.source().toString().length() > 128
                 || !validText(request.reason(), false) || !validText(request.note(), true)) {
             return BalanceChangeResult.rejected(BalanceChangeStatus.INVALID_TEXT, id, "来源、原因或备注无效");
@@ -358,6 +371,10 @@ public final class AccountService extends ContributionApi {
     }
 
     private static byte[] requestHash(BalanceChangeRequest request, String storedType) {
+        return requestHash(request, storedType, true);
+    }
+
+    private static byte[] requestHash(BalanceChangeRequest request, String storedType, boolean includeIncomeFlag) {
         String normalized = request.target().playerUuid() != null
                 ? request.target().playerUuid().toString()
                 : request.target().playerName().toLowerCase(Locale.ROOT);
@@ -369,6 +386,7 @@ public final class AccountService extends ContributionApi {
         appendHashField(value, request.source().toString());
         appendHashField(value, request.reason());
         appendHashField(value, request.note());
+        if (includeIncomeFlag) appendHashField(value, Boolean.toString(request.affectTotalIncome()));
         try {
             return MessageDigest.getInstance("SHA-256").digest(value.toString().getBytes(StandardCharsets.UTF_8));
         } catch (NoSuchAlgorithmException impossible) {

@@ -34,6 +34,10 @@ public final class ContributionMod implements ModInitializer {
             if (ContributionRuntime.accounts() != null) {
                 ServerPlayer player = handler.player;
                 ContributionRuntime.accounts().registerPlayer(player.getUUID(), player.getGameProfile().name())
+                        .thenAccept(ignored -> {
+                            if (ContributionRuntime.stocks() != null)
+                                ContributionRuntime.stocks().claim(player.getUUID(), java.util.UUID.randomUUID());
+                        })
                         .exceptionally(error -> {
                             LOGGER.warn("Player account registration is pending: {}", error.toString());
                             return null;

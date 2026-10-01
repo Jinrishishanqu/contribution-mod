@@ -1,1009 +1,1009 @@
-ï»¿åºå·,è¡Œä¸š,å¯¹åº”JSONæ–‡ä»¶,ä¸­æ–‡åç§°,æ³¨å†ŒID
-1,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é‡‘åˆæ¬¢æœ¨æ …æ ,minecraft:acacia_fence
-2,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ‚¬æŒ‚å¼é‡‘åˆæ¬¢æœ¨å‘Šç¤ºç‰Œ,minecraft:acacia_hanging_sign
-3,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é‡‘åˆæ¬¢æœ¨æ¿,minecraft:acacia_planks
-4,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é‡‘åˆæ¬¢æœ¨å‘Šç¤ºç‰Œ,minecraft:acacia_sign
-5,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é‡‘åˆæ¬¢æœ¨å°é˜¶,minecraft:acacia_slab
-6,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é‡‘åˆæ¬¢æœ¨æ¥¼æ¢¯,minecraft:acacia_stairs
-7,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é‡‘åˆæ¬¢æœ¨,minecraft:acacia_wood
-8,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å®‰å±±å²©,minecraft:andesite
-9,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å®‰å±±å²©å°é˜¶,minecraft:andesite_slab
-10,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å®‰å±±å²©æ¥¼æ¢¯,minecraft:andesite_stairs
-11,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å®‰å±±å²©å¢™,minecraft:andesite_wall
-12,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç«¹å—,minecraft:bamboo_block
-13,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç«¹æ …æ ,minecraft:bamboo_fence
-14,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ‚¬æŒ‚å¼ç«¹å‘Šç¤ºç‰Œ,minecraft:bamboo_hanging_sign
-15,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç«¹é©¬èµ›å…‹,minecraft:bamboo_mosaic
-16,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç«¹é©¬èµ›å…‹å°é˜¶,minecraft:bamboo_mosaic_slab
-17,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç«¹é©¬èµ›å…‹æ¥¼æ¢¯,minecraft:bamboo_mosaic_stairs
-18,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç«¹æ¿,minecraft:bamboo_planks
-19,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç«¹å‘Šç¤ºç‰Œ,minecraft:bamboo_sign
-20,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç«¹å°é˜¶,minecraft:bamboo_slab
-21,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç«¹æ¥¼æ¢¯,minecraft:bamboo_stairs
-22,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç™½æ¡¦æœ¨æ …æ ,minecraft:birch_fence
-23,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ‚¬æŒ‚å¼ç™½æ¡¦æœ¨å‘Šç¤ºç‰Œ,minecraft:birch_hanging_sign
-24,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç™½æ¡¦æœ¨æ¿,minecraft:birch_planks
-25,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç™½æ¡¦æœ¨å‘Šç¤ºç‰Œ,minecraft:birch_sign
-26,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç™½æ¡¦æœ¨å°é˜¶,minecraft:birch_slab
-27,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç™½æ¡¦æœ¨æ¥¼æ¢¯,minecraft:birch_stairs
-28,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç™½æ¡¦æœ¨,minecraft:birch_wood
-29,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»‘è‰²åœ°æ¯¯,minecraft:black_carpet
-30,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»‘è‰²æ··å‡åœŸç²‰æœ«,minecraft:black_concrete_powder
-31,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»‘è‰²æ··å‡åœŸå°é˜¶,minecraft:black_concrete_slab
-32,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»‘è‰²æ··å‡åœŸæ¥¼æ¢¯,minecraft:black_concrete_stairs
-33,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»‘è‰²æŸ“è‰²ç»ç’ƒ,minecraft:black_stained_glass
-34,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»‘è‰²æŸ“è‰²ç»ç’ƒæ¿,minecraft:black_stained_glass_pane
-35,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»‘è‰²é™¶ç“¦,minecraft:black_terracotta
-36,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»‘è‰²ç¾Šæ¯›,minecraft:black_wool
-37,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»‘è‰²ç¾Šæ¯›å°é˜¶,minecraft:black_wool_slab
-38,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»‘è‰²ç¾Šæ¯›æ¥¼æ¢¯,minecraft:black_wool_stairs
-39,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»‘çŸ³å°é˜¶,minecraft:blackstone_slab
-40,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»‘çŸ³æ¥¼æ¢¯,minecraft:blackstone_stairs
-41,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»‘çŸ³å¢™,minecraft:blackstone_wall
-42,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è“è‰²åœ°æ¯¯,minecraft:blue_carpet
-43,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è“è‰²æ··å‡åœŸç²‰æœ«,minecraft:blue_concrete_powder
-44,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è“è‰²æ··å‡åœŸå°é˜¶,minecraft:blue_concrete_slab
-45,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è“è‰²æ··å‡åœŸæ¥¼æ¢¯,minecraft:blue_concrete_stairs
-46,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è“å†°,minecraft:blue_ice
-47,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è“è‰²æŸ“è‰²ç»ç’ƒ,minecraft:blue_stained_glass
-48,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è“è‰²æŸ“è‰²ç»ç’ƒæ¿,minecraft:blue_stained_glass_pane
-49,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è“è‰²é™¶ç“¦,minecraft:blue_terracotta
-50,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è“è‰²ç¾Šæ¯›,minecraft:blue_wool
-51,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è“è‰²ç¾Šæ¯›å°é˜¶,minecraft:blue_wool_slab
-52,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è“è‰²ç¾Šæ¯›æ¥¼æ¢¯,minecraft:blue_wool_stairs
-53,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢ç –å°é˜¶,minecraft:brick_slab
-54,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢ç –æ¥¼æ¢¯,minecraft:brick_stairs
-55,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢ç –å¢™,minecraft:brick_wall
-56,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢ç –å—,minecraft:bricks
-57,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ£•è‰²åœ°æ¯¯,minecraft:brown_carpet
-58,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ£•è‰²æ··å‡åœŸç²‰æœ«,minecraft:brown_concrete_powder
-59,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ£•è‰²æ··å‡åœŸå°é˜¶,minecraft:brown_concrete_slab
-60,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ£•è‰²æ··å‡åœŸæ¥¼æ¢¯,minecraft:brown_concrete_stairs
-61,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ£•è‰²æŸ“è‰²ç»ç’ƒ,minecraft:brown_stained_glass
-62,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ£•è‰²æŸ“è‰²ç»ç’ƒæ¿,minecraft:brown_stained_glass_pane
-63,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ£•è‰²é™¶ç“¦,minecraft:brown_terracotta
-64,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ£•è‰²ç¾Šæ¯›,minecraft:brown_wool
-65,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ£•è‰²ç¾Šæ¯›å°é˜¶,minecraft:brown_wool_slab
-66,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ£•è‰²ç¾Šæ¯›æ¥¼æ¢¯,minecraft:brown_wool_stairs
-67,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¨±èŠ±æœ¨æ …æ ,minecraft:cherry_fence
-68,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ‚¬æŒ‚å¼æ¨±èŠ±æœ¨å‘Šç¤ºç‰Œ,minecraft:cherry_hanging_sign
-69,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¨±èŠ±æœ¨æ¿,minecraft:cherry_planks
-70,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¨±èŠ±æœ¨å‘Šç¤ºç‰Œ,minecraft:cherry_sign
-71,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¨±èŠ±æœ¨å°é˜¶,minecraft:cherry_slab
-72,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¨±èŠ±æœ¨æ¥¼æ¢¯,minecraft:cherry_stairs
-73,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¨±èŠ±æœ¨,minecraft:cherry_wood
-74,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é›•çº¹æœ±ç ‚,minecraft:chiseled_cinnabar
-75,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é›•çº¹é“œå—,minecraft:chiseled_copper
-76,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é›•çº¹æ·±æ¿å²©,minecraft:chiseled_deepslate
-77,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é›•çº¹ä¸‹ç•Œç –å—,minecraft:chiseled_nether_bricks
-78,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é›•çº¹ç£¨åˆ¶é»‘çŸ³,minecraft:chiseled_polished_blackstone
-79,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é›•çº¹çŸ³è‹±å—,minecraft:chiseled_quartz_block
-80,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é›•çº¹çº¢ç ‚å²©,minecraft:chiseled_red_sandstone
-81,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é›•çº¹æ ‘è„‚ç –å—,minecraft:chiseled_resin_bricks
-82,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é›•çº¹ç ‚å²©,minecraft:chiseled_sandstone
-83,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é›•çº¹çŸ³ç –,minecraft:chiseled_stone_bricks
-84,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é›•çº¹ç¡«é»„,minecraft:chiseled_sulfur
-85,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é›•çº¹å‡ç°å²©,minecraft:chiseled_tuff
-86,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é›•çº¹å‡ç°å²©ç –,minecraft:chiseled_tuff_bricks
-87,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æœ±ç ‚ç –å°é˜¶,minecraft:cinnabar_brick_slab
-88,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æœ±ç ‚ç –æ¥¼æ¢¯,minecraft:cinnabar_brick_stairs
-89,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æœ±ç ‚ç –å¢™,minecraft:cinnabar_brick_wall
-90,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æœ±ç ‚ç –,minecraft:cinnabar_bricks
-91,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æœ±ç ‚å°é˜¶,minecraft:cinnabar_slab
-92,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æœ±ç ‚æ¥¼æ¢¯,minecraft:cinnabar_stairs
-93,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æœ±ç ‚å¢™,minecraft:cinnabar_wall
-94,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»åœŸ,minecraft:clay
-95,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç ‚åœŸ,minecraft:coarse_dirt
-96,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·±æ¿å²©åœ†çŸ³å°é˜¶,minecraft:cobbled_deepslate_slab
-97,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·±æ¿å²©åœ†çŸ³æ¥¼æ¢¯,minecraft:cobbled_deepslate_stairs
-98,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·±æ¿å²©åœ†çŸ³å¢™,minecraft:cobbled_deepslate_wall
-99,åœŸå»ºå›­æ—,craft_construction_landscaping.json,åœ†çŸ³å°é˜¶,minecraft:cobblestone_slab
-100,åœŸå»ºå›­æ—,craft_construction_landscaping.json,åœ†çŸ³æ¥¼æ¢¯,minecraft:cobblestone_stairs
-101,åœŸå»ºå›­æ—,craft_construction_landscaping.json,åœ†çŸ³å¢™,minecraft:cobblestone_wall
-102,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é“œæ æ†,minecraft:copper_bars
-103,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é“œé“¾,minecraft:copper_chain
-104,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é“œæ ¼æ …,minecraft:copper_grate
-105,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç»¯çº¢æœ¨æ …æ ,minecraft:crimson_fence
-106,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ‚¬æŒ‚å¼ç»¯çº¢æœ¨å‘Šç¤ºç‰Œ,minecraft:crimson_hanging_sign
-107,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç»¯çº¢èŒæ ¸,minecraft:crimson_hyphae
-108,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç»¯çº¢æœ¨æ¿,minecraft:crimson_planks
-109,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç»¯çº¢æœ¨å‘Šç¤ºç‰Œ,minecraft:crimson_sign
-110,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç»¯çº¢æœ¨å°é˜¶,minecraft:crimson_slab
-111,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç»¯çº¢æœ¨æ¥¼æ¢¯,minecraft:crimson_stairs
-112,åœŸå»ºå›­æ—,craft_construction_landscaping.json,åˆ‡åˆ¶é“œå—,minecraft:cut_copper
-113,åœŸå»ºå›­æ—,craft_construction_landscaping.json,åˆ‡åˆ¶é“œå°é˜¶,minecraft:cut_copper_slab
-114,åœŸå»ºå›­æ—,craft_construction_landscaping.json,åˆ‡åˆ¶é“œæ¥¼æ¢¯,minecraft:cut_copper_stairs
-115,åœŸå»ºå›­æ—,craft_construction_landscaping.json,åˆ‡åˆ¶çº¢ç ‚å²©,minecraft:cut_red_sandstone
-116,åœŸå»ºå›­æ—,craft_construction_landscaping.json,åˆ‡åˆ¶çº¢ç ‚å²©å°é˜¶,minecraft:cut_red_sandstone_slab
-117,åœŸå»ºå›­æ—,craft_construction_landscaping.json,åˆ‡åˆ¶ç ‚å²©,minecraft:cut_sandstone
-118,åœŸå»ºå›­æ—,craft_construction_landscaping.json,åˆ‡åˆ¶ç ‚å²©å°é˜¶,minecraft:cut_sandstone_slab
-119,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é’è‰²åœ°æ¯¯,minecraft:cyan_carpet
-120,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é’è‰²æ··å‡åœŸç²‰æœ«,minecraft:cyan_concrete_powder
-121,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é’è‰²æ··å‡åœŸå°é˜¶,minecraft:cyan_concrete_slab
-122,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é’è‰²æ··å‡åœŸæ¥¼æ¢¯,minecraft:cyan_concrete_stairs
-123,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é’è‰²æŸ“è‰²ç»ç’ƒ,minecraft:cyan_stained_glass
-124,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é’è‰²æŸ“è‰²ç»ç’ƒæ¿,minecraft:cyan_stained_glass_pane
-125,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é’è‰²é™¶ç“¦,minecraft:cyan_terracotta
-126,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é’è‰²ç¾Šæ¯›,minecraft:cyan_wool
-127,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é’è‰²ç¾Šæ¯›å°é˜¶,minecraft:cyan_wool_slab
-128,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é’è‰²ç¾Šæ¯›æ¥¼æ¢¯,minecraft:cyan_wool_stairs
-129,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·±è‰²æ©¡æœ¨æ …æ ,minecraft:dark_oak_fence
-130,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ‚¬æŒ‚å¼æ·±è‰²æ©¡æœ¨å‘Šç¤ºç‰Œ,minecraft:dark_oak_hanging_sign
-131,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·±è‰²æ©¡æœ¨æœ¨æ¿,minecraft:dark_oak_planks
-132,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·±è‰²æ©¡æœ¨å‘Šç¤ºç‰Œ,minecraft:dark_oak_sign
-133,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·±è‰²æ©¡æœ¨å°é˜¶,minecraft:dark_oak_slab
-134,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·±è‰²æ©¡æœ¨æ¥¼æ¢¯,minecraft:dark_oak_stairs
-135,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·±è‰²æ©¡æœ¨,minecraft:dark_oak_wood
-136,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æš—æµ·æ™¶çŸ³,minecraft:dark_prismarine
-137,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æš—æµ·æ™¶çŸ³å°é˜¶,minecraft:dark_prismarine_slab
-138,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æš—æµ·æ™¶çŸ³æ¥¼æ¢¯,minecraft:dark_prismarine_stairs
-139,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·±æ¿å²©ç –å°é˜¶,minecraft:deepslate_brick_slab
-140,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·±æ¿å²©ç –æ¥¼æ¢¯,minecraft:deepslate_brick_stairs
-141,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·±æ¿å²©ç –å¢™,minecraft:deepslate_brick_wall
-142,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·±æ¿å²©ç –,minecraft:deepslate_bricks
-143,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·±æ¿å²©ç“¦å°é˜¶,minecraft:deepslate_tile_slab
-144,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·±æ¿å²©ç“¦æ¥¼æ¢¯,minecraft:deepslate_tile_stairs
-145,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·±æ¿å²©ç“¦å¢™,minecraft:deepslate_tile_wall
-146,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·±æ¿å²©ç“¦,minecraft:deepslate_tiles
-147,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é—ªé•¿å²©,minecraft:diorite
-148,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é—ªé•¿å²©å°é˜¶,minecraft:diorite_slab
-149,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é—ªé•¿å²©æ¥¼æ¢¯,minecraft:diorite_stairs
-150,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é—ªé•¿å²©å¢™,minecraft:diorite_wall
-151,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å¤±æ°´æ¶é­‚,minecraft:dried_ghast
-152,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ»´æ°´çŸ³å—,minecraft:dripstone_block
-153,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æœ«åœ°çŸ³ç –å°é˜¶,minecraft:end_stone_brick_slab
-154,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æœ«åœ°çŸ³ç –æ¥¼æ¢¯,minecraft:end_stone_brick_stairs
-155,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æœ«åœ°çŸ³ç –å¢™,minecraft:end_stone_brick_wall
-156,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æœ«åœ°çŸ³ç –,minecraft:end_stone_bricks
-157,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ–‘é©³çš„é›•çº¹é“œå—,minecraft:exposed_chiseled_copper
-158,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ–‘é©³çš„é“œæ ¼æ …,minecraft:exposed_copper_grate
-159,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ–‘é©³çš„åˆ‡åˆ¶é“œå—,minecraft:exposed_cut_copper
-160,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ–‘é©³çš„åˆ‡åˆ¶é“œå°é˜¶,minecraft:exposed_cut_copper_slab
-161,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ–‘é©³çš„åˆ‡åˆ¶é“œæ¥¼æ¢¯,minecraft:exposed_cut_copper_stairs
-162,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç»ç’ƒæ¿,minecraft:glass_pane
-163,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è§çŸ³,minecraft:glowstone
-164,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é‡‘è’²å…¬è‹±,minecraft:golden_dandelion
-165,åœŸå»ºå›­æ—,craft_construction_landscaping.json,èŠ±å²—å²©,minecraft:granite
-166,åœŸå»ºå›­æ—,craft_construction_landscaping.json,èŠ±å²—å²©å°é˜¶,minecraft:granite_slab
-167,åœŸå»ºå›­æ—,craft_construction_landscaping.json,èŠ±å²—å²©æ¥¼æ¢¯,minecraft:granite_stairs
-168,åœŸå»ºå›­æ—,craft_construction_landscaping.json,èŠ±å²—å²©å¢™,minecraft:granite_wall
-169,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç°è‰²åœ°æ¯¯,minecraft:gray_carpet
-170,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç°è‰²æ··å‡åœŸç²‰æœ«,minecraft:gray_concrete_powder
-171,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç°è‰²æ··å‡åœŸå°é˜¶,minecraft:gray_concrete_slab
-172,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç°è‰²æ··å‡åœŸæ¥¼æ¢¯,minecraft:gray_concrete_stairs
-173,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç°è‰²æŸ“è‰²ç»ç’ƒ,minecraft:gray_stained_glass
-174,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç°è‰²æŸ“è‰²ç»ç’ƒæ¿,minecraft:gray_stained_glass_pane
-175,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç°è‰²é™¶ç“¦,minecraft:gray_terracotta
-176,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç°è‰²ç¾Šæ¯›,minecraft:gray_wool
-177,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç°è‰²ç¾Šæ¯›å°é˜¶,minecraft:gray_wool_slab
-178,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç°è‰²ç¾Šæ¯›æ¥¼æ¢¯,minecraft:gray_wool_stairs
-179,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç»¿è‰²åœ°æ¯¯,minecraft:green_carpet
-180,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç»¿è‰²æ··å‡åœŸç²‰æœ«,minecraft:green_concrete_powder
-181,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç»¿è‰²æ··å‡åœŸå°é˜¶,minecraft:green_concrete_slab
-182,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç»¿è‰²æ··å‡åœŸæ¥¼æ¢¯,minecraft:green_concrete_stairs
-183,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç»¿è‰²æŸ“è‰²ç»ç’ƒ,minecraft:green_stained_glass
-184,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç»¿è‰²æŸ“è‰²ç»ç’ƒæ¿,minecraft:green_stained_glass_pane
-185,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç»¿è‰²é™¶ç“¦,minecraft:green_terracotta
-186,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç»¿è‰²ç¾Šæ¯›,minecraft:green_wool
-187,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç»¿è‰²ç¾Šæ¯›å°é˜¶,minecraft:green_wool_slab
-188,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç»¿è‰²ç¾Šæ¯›æ¥¼æ¢¯,minecraft:green_wool_stairs
-189,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é“æ æ†,minecraft:iron_bars
-190,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é“é“¾,minecraft:iron_chain
-191,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ä¸›æ—æœ¨æ …æ ,minecraft:jungle_fence
-192,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ‚¬æŒ‚å¼ä¸›æ—æœ¨å‘Šç¤ºç‰Œ,minecraft:jungle_hanging_sign
-193,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ä¸›æ—æœ¨æ¿,minecraft:jungle_planks
-194,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ä¸›æ—æœ¨å‘Šç¤ºç‰Œ,minecraft:jungle_sign
-195,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ä¸›æ—æœ¨å°é˜¶,minecraft:jungle_slab
-196,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ä¸›æ—æœ¨æ¥¼æ¢¯,minecraft:jungle_stairs
-197,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ä¸›æ—æœ¨,minecraft:jungle_wood
-198,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¢¯å­,minecraft:ladder
-199,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡è“è‰²åœ°æ¯¯,minecraft:light_blue_carpet
-200,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡è“è‰²æ··å‡åœŸç²‰æœ«,minecraft:light_blue_concrete_powder
-201,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡è“è‰²æ··å‡åœŸå°é˜¶,minecraft:light_blue_concrete_slab
-202,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡è“è‰²æ··å‡åœŸæ¥¼æ¢¯,minecraft:light_blue_concrete_stairs
-203,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡è“è‰²æŸ“è‰²ç»ç’ƒ,minecraft:light_blue_stained_glass
-204,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡è“è‰²æŸ“è‰²ç»ç’ƒæ¿,minecraft:light_blue_stained_glass_pane
-205,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡è“è‰²é™¶ç“¦,minecraft:light_blue_terracotta
-206,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡è“è‰²ç¾Šæ¯›,minecraft:light_blue_wool
-207,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡è“è‰²ç¾Šæ¯›å°é˜¶,minecraft:light_blue_wool_slab
-208,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡è“è‰²ç¾Šæ¯›æ¥¼æ¢¯,minecraft:light_blue_wool_stairs
-209,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡ç°è‰²åœ°æ¯¯,minecraft:light_gray_carpet
-210,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡ç°è‰²æ··å‡åœŸç²‰æœ«,minecraft:light_gray_concrete_powder
-211,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡ç°è‰²æ··å‡åœŸå°é˜¶,minecraft:light_gray_concrete_slab
-212,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡ç°è‰²æ··å‡åœŸæ¥¼æ¢¯,minecraft:light_gray_concrete_stairs
-213,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡ç°è‰²æŸ“è‰²ç»ç’ƒ,minecraft:light_gray_stained_glass
-214,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡ç°è‰²æŸ“è‰²ç»ç’ƒæ¿,minecraft:light_gray_stained_glass_pane
-215,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡ç°è‰²é™¶ç“¦,minecraft:light_gray_terracotta
-216,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡ç°è‰²ç¾Šæ¯›,minecraft:light_gray_wool
-217,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡ç°è‰²ç¾Šæ¯›å°é˜¶,minecraft:light_gray_wool_slab
-218,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ·¡ç°è‰²ç¾Šæ¯›æ¥¼æ¢¯,minecraft:light_gray_wool_stairs
-219,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„ç»¿è‰²åœ°æ¯¯,minecraft:lime_carpet
-220,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„ç»¿è‰²æ··å‡åœŸç²‰æœ«,minecraft:lime_concrete_powder
-221,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„ç»¿è‰²æ··å‡åœŸå°é˜¶,minecraft:lime_concrete_slab
-222,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„ç»¿è‰²æ··å‡åœŸæ¥¼æ¢¯,minecraft:lime_concrete_stairs
-223,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„ç»¿è‰²æŸ“è‰²ç»ç’ƒ,minecraft:lime_stained_glass
-224,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„ç»¿è‰²æŸ“è‰²ç»ç’ƒæ¿,minecraft:lime_stained_glass_pane
-225,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„ç»¿è‰²é™¶ç“¦,minecraft:lime_terracotta
-226,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„ç»¿è‰²ç¾Šæ¯›,minecraft:lime_wool
-227,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„ç»¿è‰²ç¾Šæ¯›å°é˜¶,minecraft:lime_wool_slab
-228,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„ç»¿è‰²ç¾Šæ¯›æ¥¼æ¢¯,minecraft:lime_wool_stairs
-229,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å“çº¢è‰²åœ°æ¯¯,minecraft:magenta_carpet
-230,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å“çº¢è‰²æ··å‡åœŸç²‰æœ«,minecraft:magenta_concrete_powder
-231,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å“çº¢è‰²æ··å‡åœŸå°é˜¶,minecraft:magenta_concrete_slab
-232,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å“çº¢è‰²æ··å‡åœŸæ¥¼æ¢¯,minecraft:magenta_concrete_stairs
-233,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å“çº¢è‰²æŸ“è‰²ç»ç’ƒ,minecraft:magenta_stained_glass
-234,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å“çº¢è‰²æŸ“è‰²ç»ç’ƒæ¿,minecraft:magenta_stained_glass_pane
-235,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å“çº¢è‰²é™¶ç“¦,minecraft:magenta_terracotta
-236,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å“çº¢è‰²ç¾Šæ¯›,minecraft:magenta_wool
-237,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å“çº¢è‰²ç¾Šæ¯›å°é˜¶,minecraft:magenta_wool_slab
-238,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å“çº¢è‰²ç¾Šæ¯›æ¥¼æ¢¯,minecraft:magenta_wool_stairs
-239,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å²©æµ†å—,minecraft:magma_block
-240,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢æ ‘æœ¨æ …æ ,minecraft:mangrove_fence
-241,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ‚¬æŒ‚å¼çº¢æ ‘æœ¨å‘Šç¤ºç‰Œ,minecraft:mangrove_hanging_sign
-242,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢æ ‘æœ¨æ¿,minecraft:mangrove_planks
-243,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢æ ‘æœ¨å‘Šç¤ºç‰Œ,minecraft:mangrove_sign
-244,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢æ ‘æœ¨å°é˜¶,minecraft:mangrove_slab
-245,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢æ ‘æœ¨æ¥¼æ¢¯,minecraft:mangrove_stairs
-246,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢æ ‘æœ¨,minecraft:mangrove_wood
-247,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è¥¿ç“œ,minecraft:melon
-248,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è¦†åœ°è‹”è—“,minecraft:moss_carpet
-249,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è‹”çŸ³,minecraft:mossy_cobblestone
-250,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è‹”çŸ³å°é˜¶,minecraft:mossy_cobblestone_slab
-251,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è‹”çŸ³æ¥¼æ¢¯,minecraft:mossy_cobblestone_stairs
-252,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è‹”çŸ³å¢™,minecraft:mossy_cobblestone_wall
-253,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è‹”çŸ³ç –å°é˜¶,minecraft:mossy_stone_brick_slab
-254,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è‹”çŸ³ç –æ¥¼æ¢¯,minecraft:mossy_stone_brick_stairs
-255,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è‹”çŸ³ç –å¢™,minecraft:mossy_stone_brick_wall
-256,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è‹”çŸ³ç –,minecraft:mossy_stone_bricks
-257,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ³¥ç –å°é˜¶,minecraft:mud_brick_slab
-258,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ³¥ç –æ¥¼æ¢¯,minecraft:mud_brick_stairs
-259,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ³¥ç –å¢™,minecraft:mud_brick_wall
-260,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ³¥ç –,minecraft:mud_bricks
-261,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ²¾æ³¥çš„çº¢æ ‘æ ¹,minecraft:muddy_mangrove_roots
-262,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ä¸‹ç•Œç –æ …æ ,minecraft:nether_brick_fence
-263,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ä¸‹ç•Œç –å°é˜¶,minecraft:nether_brick_slab
-264,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ä¸‹ç•Œç –æ¥¼æ¢¯,minecraft:nether_brick_stairs
-265,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ä¸‹ç•Œç –å¢™,minecraft:nether_brick_wall
-266,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ä¸‹ç•Œç –å—,minecraft:nether_bricks
-267,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ä¸‹ç•Œç–£å—,minecraft:nether_wart_block
-268,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ©¡æœ¨æ …æ ,minecraft:oak_fence
-269,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ‚¬æŒ‚å¼æ©¡æœ¨å‘Šç¤ºç‰Œ,minecraft:oak_hanging_sign
-270,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ©¡æœ¨æœ¨æ¿,minecraft:oak_planks
-271,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ©¡æœ¨å‘Šç¤ºç‰Œ,minecraft:oak_sign
-272,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ©¡æœ¨å°é˜¶,minecraft:oak_slab
-273,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ©¡æœ¨æ¥¼æ¢¯,minecraft:oak_stairs
-274,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ©¡æœ¨,minecraft:oak_wood
-275,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ©™è‰²åœ°æ¯¯,minecraft:orange_carpet
-276,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ©™è‰²æ··å‡åœŸç²‰æœ«,minecraft:orange_concrete_powder
-277,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ©™è‰²æ··å‡åœŸå°é˜¶,minecraft:orange_concrete_slab
-278,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ©™è‰²æ··å‡åœŸæ¥¼æ¢¯,minecraft:orange_concrete_stairs
-279,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ©™è‰²æŸ“è‰²ç»ç’ƒ,minecraft:orange_stained_glass
-280,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ©™è‰²æŸ“è‰²ç»ç’ƒæ¿,minecraft:orange_stained_glass_pane
-281,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ©™è‰²é™¶ç“¦,minecraft:orange_terracotta
-282,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ©™è‰²ç¾Šæ¯›,minecraft:orange_wool
-283,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ©™è‰²ç¾Šæ¯›å°é˜¶,minecraft:orange_wool_slab
-284,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ©™è‰²ç¾Šæ¯›æ¥¼æ¢¯,minecraft:orange_wool_stairs
-285,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ°§åŒ–çš„é›•çº¹é“œå—,minecraft:oxidized_chiseled_copper
-286,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ°§åŒ–çš„é“œæ ¼æ …,minecraft:oxidized_copper_grate
-287,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ°§åŒ–çš„åˆ‡åˆ¶é“œå—,minecraft:oxidized_cut_copper
-288,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ°§åŒ–çš„åˆ‡åˆ¶é“œå°é˜¶,minecraft:oxidized_cut_copper_slab
-289,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ°§åŒ–çš„åˆ‡åˆ¶é“œæ¥¼æ¢¯,minecraft:oxidized_cut_copper_stairs
-290,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æµ®å†°,minecraft:packed_ice
-291,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ³¥å¯,minecraft:packed_mud
-292,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è‹ç™½è¦†åœ°è‹”è—“,minecraft:pale_moss_carpet
-293,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è‹ç™½æ©¡æœ¨æ …æ ,minecraft:pale_oak_fence
-294,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ‚¬æŒ‚å¼è‹ç™½æ©¡æœ¨å‘Šç¤ºç‰Œ,minecraft:pale_oak_hanging_sign
-295,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è‹ç™½æ©¡æœ¨æœ¨æ¿,minecraft:pale_oak_planks
-296,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è‹ç™½æ©¡æœ¨å‘Šç¤ºç‰Œ,minecraft:pale_oak_sign
-297,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è‹ç™½æ©¡æœ¨å°é˜¶,minecraft:pale_oak_slab
-298,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è‹ç™½æ©¡æœ¨æ¥¼æ¢¯,minecraft:pale_oak_stairs
-299,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è‹ç™½æ©¡æœ¨,minecraft:pale_oak_wood
-300,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç²‰çº¢è‰²åœ°æ¯¯,minecraft:pink_carpet
-301,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç²‰çº¢è‰²æ··å‡åœŸç²‰æœ«,minecraft:pink_concrete_powder
-302,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç²‰çº¢è‰²æ··å‡åœŸå°é˜¶,minecraft:pink_concrete_slab
-303,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç²‰çº¢è‰²æ··å‡åœŸæ¥¼æ¢¯,minecraft:pink_concrete_stairs
-304,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç²‰çº¢è‰²æŸ“è‰²ç»ç’ƒ,minecraft:pink_stained_glass
-305,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç²‰çº¢è‰²æŸ“è‰²ç»ç’ƒæ¿,minecraft:pink_stained_glass_pane
-306,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç²‰çº¢è‰²é™¶ç“¦,minecraft:pink_terracotta
-307,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç²‰çº¢è‰²ç¾Šæ¯›,minecraft:pink_wool
-308,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç²‰çº¢è‰²ç¾Šæ¯›å°é˜¶,minecraft:pink_wool_slab
-309,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç²‰çº¢è‰²ç¾Šæ¯›æ¥¼æ¢¯,minecraft:pink_wool_stairs
-310,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶å®‰å±±å²©,minecraft:polished_andesite
-311,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶å®‰å±±å²©å°é˜¶,minecraft:polished_andesite_slab
-312,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶å®‰å±±å²©æ¥¼æ¢¯,minecraft:polished_andesite_stairs
-313,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶ç„æ­¦å²©,minecraft:polished_basalt
-314,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶é»‘çŸ³,minecraft:polished_blackstone
-315,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶é»‘çŸ³ç –å°é˜¶,minecraft:polished_blackstone_brick_slab
-316,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶é»‘çŸ³ç –æ¥¼æ¢¯,minecraft:polished_blackstone_brick_stairs
-317,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶é»‘çŸ³ç –å¢™,minecraft:polished_blackstone_brick_wall
-318,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶é»‘çŸ³ç –,minecraft:polished_blackstone_bricks
-319,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶é»‘çŸ³å°é˜¶,minecraft:polished_blackstone_slab
-320,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶é»‘çŸ³æ¥¼æ¢¯,minecraft:polished_blackstone_stairs
-321,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶é»‘çŸ³å¢™,minecraft:polished_blackstone_wall
-322,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶æœ±ç ‚,minecraft:polished_cinnabar
-323,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶æœ±ç ‚å°é˜¶,minecraft:polished_cinnabar_slab
-324,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶æœ±ç ‚æ¥¼æ¢¯,minecraft:polished_cinnabar_stairs
-325,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶æœ±ç ‚å¢™,minecraft:polished_cinnabar_wall
-326,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶æ·±æ¿å²©,minecraft:polished_deepslate
-327,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶æ·±æ¿å²©å°é˜¶,minecraft:polished_deepslate_slab
-328,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶æ·±æ¿å²©æ¥¼æ¢¯,minecraft:polished_deepslate_stairs
-329,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶æ·±æ¿å²©å¢™,minecraft:polished_deepslate_wall
-330,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶é—ªé•¿å²©,minecraft:polished_diorite
-331,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶é—ªé•¿å²©å°é˜¶,minecraft:polished_diorite_slab
-332,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶é—ªé•¿å²©æ¥¼æ¢¯,minecraft:polished_diorite_stairs
-333,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶èŠ±å²—å²©,minecraft:polished_granite
-334,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶èŠ±å²—å²©å°é˜¶,minecraft:polished_granite_slab
-335,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶èŠ±å²—å²©æ¥¼æ¢¯,minecraft:polished_granite_stairs
-336,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶ç¡«é»„,minecraft:polished_sulfur
-337,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶ç¡«é»„å°é˜¶,minecraft:polished_sulfur_slab
-338,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶ç¡«é»„æ¥¼æ¢¯,minecraft:polished_sulfur_stairs
-339,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶ç¡«é»„å¢™,minecraft:polished_sulfur_wall
-340,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶å‡ç°å²©,minecraft:polished_tuff
-341,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶å‡ç°å²©å°é˜¶,minecraft:polished_tuff_slab
-342,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶å‡ç°å²©æ¥¼æ¢¯,minecraft:polished_tuff_stairs
-343,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç£¨åˆ¶å‡ç°å²©å¢™,minecraft:polished_tuff_wall
-344,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¨æœ¨æ …æ ,minecraft:poplar_fence
-345,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ‚¬æŒ‚å¼æ¨æœ¨å‘Šç¤ºç‰Œ,minecraft:poplar_hanging_sign
-346,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¨æœ¨æœ¨æ¿,minecraft:poplar_planks
-347,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¨æœ¨å‘Šç¤ºç‰Œ,minecraft:poplar_sign
-348,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¨æœ¨å°é˜¶,minecraft:poplar_slab
-349,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¨æœ¨æ¥¼æ¢¯,minecraft:poplar_stairs
-350,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¨æœ¨,minecraft:poplar_wood
-351,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çƒˆæ€§ç¡«é»„,minecraft:potent_sulfur
-352,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æµ·æ™¶çŸ³,minecraft:prismarine
-353,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æµ·æ™¶çŸ³ç –å°é˜¶,minecraft:prismarine_brick_slab
-354,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æµ·æ™¶çŸ³ç –æ¥¼æ¢¯,minecraft:prismarine_brick_stairs
-355,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æµ·æ™¶çŸ³ç –,minecraft:prismarine_bricks
-356,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æµ·æ™¶çŸ³å°é˜¶,minecraft:prismarine_slab
-357,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æµ·æ™¶çŸ³æ¥¼æ¢¯,minecraft:prismarine_stairs
-358,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æµ·æ™¶çŸ³å¢™,minecraft:prismarine_wall
-359,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç´«è‰²åœ°æ¯¯,minecraft:purple_carpet
-360,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç´«è‰²æ··å‡åœŸç²‰æœ«,minecraft:purple_concrete_powder
-361,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç´«è‰²æ··å‡åœŸå°é˜¶,minecraft:purple_concrete_slab
-362,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç´«è‰²æ··å‡åœŸæ¥¼æ¢¯,minecraft:purple_concrete_stairs
-363,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç´«è‰²æŸ“è‰²ç»ç’ƒ,minecraft:purple_stained_glass
-364,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç´«è‰²æŸ“è‰²ç»ç’ƒæ¿,minecraft:purple_stained_glass_pane
-365,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç´«è‰²é™¶ç“¦,minecraft:purple_terracotta
-366,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç´«è‰²ç¾Šæ¯›,minecraft:purple_wool
-367,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç´«è‰²ç¾Šæ¯›å°é˜¶,minecraft:purple_wool_slab
-368,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç´«è‰²ç¾Šæ¯›æ¥¼æ¢¯,minecraft:purple_wool_stairs
-369,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç´«ç€å—,minecraft:purpur_block
-370,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç´«ç€æŸ±,minecraft:purpur_pillar
-371,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç´«ç€å°é˜¶,minecraft:purpur_slab
-372,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç´«ç€æ¥¼æ¢¯,minecraft:purpur_stairs
-373,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çŸ³è‹±å—,minecraft:quartz_block
-374,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çŸ³è‹±ç –,minecraft:quartz_bricks
-375,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çŸ³è‹±æŸ±,minecraft:quartz_pillar
-376,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çŸ³è‹±å°é˜¶,minecraft:quartz_slab
-377,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çŸ³è‹±æ¥¼æ¢¯,minecraft:quartz_stairs
-378,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢è‰²åœ°æ¯¯,minecraft:red_carpet
-379,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢è‰²æ··å‡åœŸç²‰æœ«,minecraft:red_concrete_powder
-380,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢è‰²æ··å‡åœŸå°é˜¶,minecraft:red_concrete_slab
-381,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢è‰²æ··å‡åœŸæ¥¼æ¢¯,minecraft:red_concrete_stairs
-382,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢è‰²ä¸‹ç•Œç –å°é˜¶,minecraft:red_nether_brick_slab
-383,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢è‰²ä¸‹ç•Œç –æ¥¼æ¢¯,minecraft:red_nether_brick_stairs
-384,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢è‰²ä¸‹ç•Œç –å¢™,minecraft:red_nether_brick_wall
-385,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢è‰²ä¸‹ç•Œç –å—,minecraft:red_nether_bricks
-386,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢ç ‚å²©,minecraft:red_sandstone
-387,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢ç ‚å²©å°é˜¶,minecraft:red_sandstone_slab
-388,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢ç ‚å²©æ¥¼æ¢¯,minecraft:red_sandstone_stairs
-389,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢ç ‚å²©å¢™,minecraft:red_sandstone_wall
-390,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢è‰²æŸ“è‰²ç»ç’ƒ,minecraft:red_stained_glass
-391,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢è‰²æŸ“è‰²ç»ç’ƒæ¿,minecraft:red_stained_glass_pane
-392,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢è‰²é™¶ç“¦,minecraft:red_terracotta
-393,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢è‰²ç¾Šæ¯›,minecraft:red_wool
-394,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢è‰²ç¾Šæ¯›å°é˜¶,minecraft:red_wool_slab
-395,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çº¢è‰²ç¾Šæ¯›æ¥¼æ¢¯,minecraft:red_wool_stairs
-396,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ ‘è„‚ç –å°é˜¶,minecraft:resin_brick_slab
-397,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ ‘è„‚ç –æ¥¼æ¢¯,minecraft:resin_brick_stairs
-398,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ ‘è„‚ç –å¢™,minecraft:resin_brick_wall
-399,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ ‘è„‚ç –å—,minecraft:resin_bricks
-400,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç ‚å²©,minecraft:sandstone
-401,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç ‚å²©å°é˜¶,minecraft:sandstone_slab
-402,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç ‚å²©æ¥¼æ¢¯,minecraft:sandstone_stairs
-403,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç ‚å²©å¢™,minecraft:sandstone_wall
-404,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è„šæ‰‹æ¶,minecraft:scaffolding
-405,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å¹³æ»‘çŸ³è‹±å°é˜¶,minecraft:smooth_quartz_slab
-406,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å¹³æ»‘çŸ³è‹±æ¥¼æ¢¯,minecraft:smooth_quartz_stairs
-407,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å¹³æ»‘çº¢ç ‚å²©å°é˜¶,minecraft:smooth_red_sandstone_slab
-408,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å¹³æ»‘çº¢ç ‚å²©æ¥¼æ¢¯,minecraft:smooth_red_sandstone_stairs
-409,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å¹³æ»‘ç ‚å²©å°é˜¶,minecraft:smooth_sandstone_slab
-410,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å¹³æ»‘ç ‚å²©æ¥¼æ¢¯,minecraft:smooth_sandstone_stairs
-411,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å¹³æ»‘çŸ³å¤´å°é˜¶,minecraft:smooth_stone_slab
-412,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é›ª,minecraft:snow
-413,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é›ªå—,minecraft:snow_block
-414,åœŸå»ºå›­æ—,craft_construction_landscaping.json,äº‘æ‰æœ¨æ …æ ,minecraft:spruce_fence
-415,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ‚¬æŒ‚å¼äº‘æ‰æœ¨å‘Šç¤ºç‰Œ,minecraft:spruce_hanging_sign
-416,åœŸå»ºå›­æ—,craft_construction_landscaping.json,äº‘æ‰æœ¨æ¿,minecraft:spruce_planks
-417,åœŸå»ºå›­æ—,craft_construction_landscaping.json,äº‘æ‰æœ¨å‘Šç¤ºç‰Œ,minecraft:spruce_sign
-418,åœŸå»ºå›­æ—,craft_construction_landscaping.json,äº‘æ‰æœ¨å°é˜¶,minecraft:spruce_slab
-419,åœŸå»ºå›­æ—,craft_construction_landscaping.json,äº‘æ‰æœ¨æ¥¼æ¢¯,minecraft:spruce_stairs
-420,åœŸå»ºå›­æ—,craft_construction_landscaping.json,äº‘æ‰æœ¨,minecraft:spruce_wood
-421,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çŸ³ç –å°é˜¶,minecraft:stone_brick_slab
-422,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çŸ³ç –æ¥¼æ¢¯,minecraft:stone_brick_stairs
-423,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çŸ³ç –å¢™,minecraft:stone_brick_wall
-424,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çŸ³ç –,minecraft:stone_bricks
-425,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çŸ³å¤´å°é˜¶,minecraft:stone_slab
-426,åœŸå»ºå›­æ—,craft_construction_landscaping.json,çŸ³å¤´æ¥¼æ¢¯,minecraft:stone_stairs
-427,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å»çš®é‡‘åˆæ¬¢æœ¨,minecraft:stripped_acacia_wood
-428,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å»çš®ç™½æ¡¦æœ¨,minecraft:stripped_birch_wood
-429,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å»çš®æ¨±èŠ±æœ¨,minecraft:stripped_cherry_wood
-430,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å»çš®ç»¯çº¢èŒæ ¸,minecraft:stripped_crimson_hyphae
-431,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å»çš®æ·±è‰²æ©¡æœ¨,minecraft:stripped_dark_oak_wood
-432,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å»çš®ä¸›æ—æœ¨,minecraft:stripped_jungle_wood
-433,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å»çš®çº¢æ ‘æœ¨,minecraft:stripped_mangrove_wood
-434,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å»çš®æ©¡æœ¨,minecraft:stripped_oak_wood
-435,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å»çš®è‹ç™½æ©¡æœ¨,minecraft:stripped_pale_oak_wood
-436,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å»çš®æ¨æœ¨,minecraft:stripped_poplar_wood
-437,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å»çš®äº‘æ‰æœ¨,minecraft:stripped_spruce_wood
-438,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å»çš®è¯¡å¼‚èŒæ ¸,minecraft:stripped_warped_hyphae
-439,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç¡«é»„,minecraft:sulfur
-440,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç¡«é»„ç –å°é˜¶,minecraft:sulfur_brick_slab
-441,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç¡«é»„ç –æ¥¼æ¢¯,minecraft:sulfur_brick_stairs
-442,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç¡«é»„ç –å¢™,minecraft:sulfur_brick_wall
-443,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç¡«é»„ç –,minecraft:sulfur_bricks
-444,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç¡«é»„å°é˜¶,minecraft:sulfur_slab
-445,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç¡«é»„æ¥¼æ¢¯,minecraft:sulfur_stairs
-446,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç¡«é»„å¢™,minecraft:sulfur_wall
-447,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é®å…‰ç»ç’ƒ,minecraft:tinted_glass
-448,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å‡ç°å²©ç –å°é˜¶,minecraft:tuff_brick_slab
-449,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å‡ç°å²©ç –æ¥¼æ¢¯,minecraft:tuff_brick_stairs
-450,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å‡ç°å²©ç –å¢™,minecraft:tuff_brick_wall
-451,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å‡ç°å²©ç –,minecraft:tuff_bricks
-452,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å‡ç°å²©å°é˜¶,minecraft:tuff_slab
-453,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å‡ç°å²©æ¥¼æ¢¯,minecraft:tuff_stairs
-454,åœŸå»ºå›­æ—,craft_construction_landscaping.json,å‡ç°å²©å¢™,minecraft:tuff_wall
-455,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è¯¡å¼‚æœ¨æ …æ ,minecraft:warped_fence
-456,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ‚¬æŒ‚å¼è¯¡å¼‚æœ¨å‘Šç¤ºç‰Œ,minecraft:warped_hanging_sign
-457,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è¯¡å¼‚èŒæ ¸,minecraft:warped_hyphae
-458,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è¯¡å¼‚æœ¨æ¿,minecraft:warped_planks
-459,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è¯¡å¼‚æœ¨å‘Šç¤ºç‰Œ,minecraft:warped_sign
-460,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è¯¡å¼‚æœ¨å°é˜¶,minecraft:warped_slab
-461,åœŸå»ºå›­æ—,craft_construction_landscaping.json,è¯¡å¼‚æœ¨æ¥¼æ¢¯,minecraft:warped_stairs
-462,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„é›•çº¹é“œå—,minecraft:waxed_chiseled_copper
-463,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„é“œæ æ†,minecraft:waxed_copper_bars
-464,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„é“œå—,minecraft:waxed_copper_block
-465,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„é“œé“¾,minecraft:waxed_copper_chain
-466,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„é“œå‚€å„¡åƒ,minecraft:waxed_copper_golem_statue
-467,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„é“œæ ¼æ …,minecraft:waxed_copper_grate
-468,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„åˆ‡åˆ¶é“œå—,minecraft:waxed_cut_copper
-469,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„åˆ‡åˆ¶é“œå°é˜¶,minecraft:waxed_cut_copper_slab
-470,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„åˆ‡åˆ¶é“œæ¥¼æ¢¯,minecraft:waxed_cut_copper_stairs
-471,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„æ–‘é©³é›•çº¹é“œå—,minecraft:waxed_exposed_chiseled_copper
-472,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„æ–‘é©³é“œå—,minecraft:waxed_exposed_copper
-473,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„æ–‘é©³é“œæ æ†,minecraft:waxed_exposed_copper_bars
-474,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„æ–‘é©³é“œé“¾,minecraft:waxed_exposed_copper_chain
-475,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„æ–‘é©³é“œå‚€å„¡åƒ,minecraft:waxed_exposed_copper_golem_statue
-476,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„æ–‘é©³é“œæ ¼æ …,minecraft:waxed_exposed_copper_grate
-477,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„æ–‘é©³åˆ‡åˆ¶é“œå—,minecraft:waxed_exposed_cut_copper
-478,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„æ–‘é©³åˆ‡åˆ¶é“œå°é˜¶,minecraft:waxed_exposed_cut_copper_slab
-479,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„æ–‘é©³åˆ‡åˆ¶é“œæ¥¼æ¢¯,minecraft:waxed_exposed_cut_copper_stairs
-480,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„æ°§åŒ–é›•çº¹é“œå—,minecraft:waxed_oxidized_chiseled_copper
-481,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„æ°§åŒ–é“œå—,minecraft:waxed_oxidized_copper
-482,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„æ°§åŒ–é“œæ æ†,minecraft:waxed_oxidized_copper_bars
-483,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„æ°§åŒ–é“œé“¾,minecraft:waxed_oxidized_copper_chain
-484,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„æ°§åŒ–é“œå‚€å„¡åƒ,minecraft:waxed_oxidized_copper_golem_statue
-485,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„æ°§åŒ–é“œæ ¼æ …,minecraft:waxed_oxidized_copper_grate
-486,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„æ°§åŒ–åˆ‡åˆ¶é“œå—,minecraft:waxed_oxidized_cut_copper
-487,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„æ°§åŒ–åˆ‡åˆ¶é“œå°é˜¶,minecraft:waxed_oxidized_cut_copper_slab
-488,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„æ°§åŒ–åˆ‡åˆ¶é“œæ¥¼æ¢¯,minecraft:waxed_oxidized_cut_copper_stairs
-489,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„é”ˆèš€é›•çº¹é“œå—,minecraft:waxed_weathered_chiseled_copper
-490,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„é”ˆèš€é“œå—,minecraft:waxed_weathered_copper
-491,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„é”ˆèš€é“œæ æ†,minecraft:waxed_weathered_copper_bars
-492,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„é”ˆèš€é“œé“¾,minecraft:waxed_weathered_copper_chain
-493,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„é”ˆèš€é“œå‚€å„¡åƒ,minecraft:waxed_weathered_copper_golem_statue
-494,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„é”ˆèš€é“œæ ¼æ …,minecraft:waxed_weathered_copper_grate
-495,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„é”ˆèš€åˆ‡åˆ¶é“œå—,minecraft:waxed_weathered_cut_copper
-496,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„é”ˆèš€åˆ‡åˆ¶é“œå°é˜¶,minecraft:waxed_weathered_cut_copper_slab
-497,åœŸå»ºå›­æ—,craft_construction_landscaping.json,æ¶‚èœ¡çš„é”ˆèš€åˆ‡åˆ¶é“œæ¥¼æ¢¯,minecraft:waxed_weathered_cut_copper_stairs
-498,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é”ˆèš€çš„é›•çº¹é“œå—,minecraft:weathered_chiseled_copper
-499,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é”ˆèš€çš„é“œæ ¼æ …,minecraft:weathered_copper_grate
-500,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é”ˆèš€çš„åˆ‡åˆ¶é“œå—,minecraft:weathered_cut_copper
-501,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é”ˆèš€çš„åˆ‡åˆ¶é“œå°é˜¶,minecraft:weathered_cut_copper_slab
-502,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é”ˆèš€çš„åˆ‡åˆ¶é“œæ¥¼æ¢¯,minecraft:weathered_cut_copper_stairs
-503,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç™½è‰²åœ°æ¯¯,minecraft:white_carpet
-504,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç™½è‰²æ··å‡åœŸç²‰æœ«,minecraft:white_concrete_powder
-505,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç™½è‰²æ··å‡åœŸå°é˜¶,minecraft:white_concrete_slab
-506,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç™½è‰²æ··å‡åœŸæ¥¼æ¢¯,minecraft:white_concrete_stairs
-507,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç™½è‰²æŸ“è‰²ç»ç’ƒ,minecraft:white_stained_glass
-508,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç™½è‰²æŸ“è‰²ç»ç’ƒæ¿,minecraft:white_stained_glass_pane
-509,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç™½è‰²é™¶ç“¦,minecraft:white_terracotta
-510,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç™½è‰²ç¾Šæ¯›,minecraft:white_wool
-511,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç™½è‰²ç¾Šæ¯›å°é˜¶,minecraft:white_wool_slab
-512,åœŸå»ºå›­æ—,craft_construction_landscaping.json,ç™½è‰²ç¾Šæ¯›æ¥¼æ¢¯,minecraft:white_wool_stairs
-513,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„è‰²åœ°æ¯¯,minecraft:yellow_carpet
-514,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„è‰²æ··å‡åœŸç²‰æœ«,minecraft:yellow_concrete_powder
-515,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„è‰²æ··å‡åœŸå°é˜¶,minecraft:yellow_concrete_slab
-516,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„è‰²æ··å‡åœŸæ¥¼æ¢¯,minecraft:yellow_concrete_stairs
-517,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„è‰²æŸ“è‰²ç»ç’ƒ,minecraft:yellow_stained_glass
-518,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„è‰²æŸ“è‰²ç»ç’ƒæ¿,minecraft:yellow_stained_glass_pane
-519,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„è‰²é™¶ç“¦,minecraft:yellow_terracotta
-520,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„è‰²ç¾Šæ¯›,minecraft:yellow_wool
-521,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„è‰²ç¾Šæ¯›å°é˜¶,minecraft:yellow_wool_slab
-522,åœŸå»ºå›­æ—,craft_construction_landscaping.json,é»„è‰²ç¾Šæ¯›æ¥¼æ¢¯,minecraft:yellow_wool_stairs
-523,é‡‡çŸ¿å†¶é‡‘,craft_mining_metallurgy.json,ç´«æ°´æ™¶å—,minecraft:amethyst_block
-524,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,é»‘è‰²æŸ“æ–™,minecraft:black_dye
-525,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,çƒˆç„°ç²‰,minecraft:blaze_powder
-526,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,è“è‰²æŸ“æ–™,minecraft:blue_dye
-527,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,æ£•è‰²æŸ“æ–™,minecraft:brown_dye
-528,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,è¥ç«,minecraft:campfire
-529,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,é“œç¯ç¬¼,minecraft:copper_lantern
-530,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,é“œç«æŠŠ,minecraft:copper_torch
-531,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,é’è‰²æŸ“æ–™,minecraft:cyan_dye
-532,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,æœ«åœ°çƒ›,minecraft:end_rod
-533,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,ç«ç„°å¼¹,minecraft:fire_charge
-534,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,çƒŸèŠ±ç«ç®­,minecraft:firework_rocket
-535,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,çƒŸç«ä¹‹æ˜Ÿ,minecraft:firework_star
-536,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,ç°è‰²æŸ“æ–™,minecraft:gray_dye
-537,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,å—ç“œç¯,minecraft:jack_o_lantern
-538,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,ç¯ç¬¼,minecraft:lantern
-539,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,æ·¡è“è‰²æŸ“æ–™,minecraft:light_blue_dye
-540,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,æ·¡ç°è‰²æŸ“æ–™,minecraft:light_gray_dye
-541,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,é»„ç»¿è‰²æŸ“æ–™,minecraft:lime_dye
-542,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,å“çº¢è‰²æŸ“æ–™,minecraft:magenta_dye
-543,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,å²©æµ†è†,minecraft:magma_cream
-544,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,æ©™è‰²æŸ“æ–™,minecraft:orange_dye
-545,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,ç²‰çº¢è‰²æŸ“æ–™,minecraft:pink_dye
-546,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,ç´«è‰²æŸ“æ–™,minecraft:purple_dye
-547,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,çº¢è‰²æŸ“æ–™,minecraft:red_dye
-548,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,æµ·æ™¶ç¯,minecraft:sea_lantern
-549,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,çµé­‚è¥ç«,minecraft:soul_campfire
-550,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,çµé­‚ç¯ç¬¼,minecraft:soul_lantern
-551,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,çµé­‚ç«æŠŠ,minecraft:soul_torch
-552,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,ç«æŠŠ,minecraft:torch
-553,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,æ¶‚èœ¡çš„é“œç¯ç¬¼,minecraft:waxed_copper_lantern
-554,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,æ¶‚èœ¡çš„æ–‘é©³é“œç¯ç¬¼,minecraft:waxed_exposed_copper_lantern
-555,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,æ¶‚èœ¡çš„æ°§åŒ–é“œç¯ç¬¼,minecraft:waxed_oxidized_copper_lantern
-556,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,æ¶‚èœ¡çš„é”ˆèš€é“œç¯ç¬¼,minecraft:waxed_weathered_copper_lantern
-557,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,ç™½è‰²æŸ“æ–™,minecraft:white_dye
-558,èƒ½æºåŒ–å·¥,craft_energy_chemical.json,é»„è‰²æŸ“æ–™,minecraft:yellow_dye
-559,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,é“ç §,minecraft:anvil
-560,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,é«˜ç‚‰,minecraft:blast_furnace
-561,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,åˆ·å­,minecraft:brush
-562,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,é“æ¡¶,minecraft:bucket
-563,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,ç‚¼è¯é”…,minecraft:cauldron
-564,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,é“œæ–§,minecraft:copper_axe
-565,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,é“œé•,minecraft:copper_pickaxe
-566,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,é“œé”¹,minecraft:copper_shovel
-567,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,å·¥ä½œå°,minecraft:crafting_table
-568,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,é’»çŸ³æ–§,minecraft:diamond_axe
-569,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,é’»çŸ³é•,minecraft:diamond_pickaxe
-570,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,é’»çŸ³é”¹,minecraft:diamond_shovel
-571,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,åˆ¶ç®­å°,minecraft:fletching_table
-572,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,æ‰“ç«çŸ³,minecraft:flint_and_steel
-573,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,ç†”ç‚‰,minecraft:furnace
-574,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,é‡‘æ–§,minecraft:golden_axe
-575,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,é‡‘é•,minecraft:golden_pickaxe
-576,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,é‡‘é”¹,minecraft:golden_shovel
-577,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,ç ‚è½®,minecraft:grindstone
-578,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,é“æ–§,minecraft:iron_axe
-579,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,é“é•,minecraft:iron_pickaxe
-580,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,é“é”¹,minecraft:iron_shovel
-581,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,é”»é€ å°,minecraft:smithing_table
-582,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,çƒŸç†ç‚‰,minecraft:smoker
-583,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,æœ¨æ£,minecraft:stick
-584,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,çŸ³æ–§,minecraft:stone_axe
-585,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,çŸ³é•,minecraft:stone_pickaxe
-586,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,çŸ³é”¹,minecraft:stone_shovel
-587,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,åˆ‡çŸ³æœº,minecraft:stonecutter
-588,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,æœ¨æ–§,minecraft:wooden_axe
-589,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,æœ¨é•,minecraft:wooden_pickaxe
-590,åŠ å·¥åˆ¶é€ ,craft_processing_manufacturing.json,æœ¨é”¹,minecraft:wooden_shovel
-591,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,é‡‘åˆæ¬¢æœ¨æŒ‰é’®,minecraft:acacia_button
-592,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,é‡‘åˆæ¬¢æœ¨é—¨,minecraft:acacia_door
-593,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,é‡‘åˆæ¬¢æœ¨æ …æ é—¨,minecraft:acacia_fence_gate
-594,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,é‡‘åˆæ¬¢æœ¨å‹åŠ›æ¿,minecraft:acacia_pressure_plate
-595,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,é‡‘åˆæ¬¢æœ¨æ´»æ¿é—¨,minecraft:acacia_trapdoor
-596,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ç«¹æŒ‰é’®,minecraft:bamboo_button
-597,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ç«¹é—¨,minecraft:bamboo_door
-598,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ç«¹æ …æ é—¨,minecraft:bamboo_fence_gate
-599,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ç«¹å‹åŠ›æ¿,minecraft:bamboo_pressure_plate
-600,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ç«¹æ´»æ¿é—¨,minecraft:bamboo_trapdoor
-601,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ä¿¡æ ‡,minecraft:beacon
-602,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ç™½æ¡¦æœ¨æŒ‰é’®,minecraft:birch_button
-603,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ç™½æ¡¦æœ¨é—¨,minecraft:birch_door
-604,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ç™½æ¡¦æœ¨æ …æ é—¨,minecraft:birch_fence_gate
-605,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ç™½æ¡¦æœ¨å‹åŠ›æ¿,minecraft:birch_pressure_plate
-606,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ç™½æ¡¦æœ¨æ´»æ¿é—¨,minecraft:birch_trapdoor
-607,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ ¡é¢‘å¹½åŒ¿æ„Ÿæµ‹ä½“,minecraft:calibrated_sculk_sensor
-608,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¨±èŠ±æœ¨æŒ‰é’®,minecraft:cherry_button
-609,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¨±èŠ±æœ¨é—¨,minecraft:cherry_door
-610,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¨±èŠ±æœ¨æ …æ é—¨,minecraft:cherry_fence_gate
-611,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¨±èŠ±æœ¨å‹åŠ›æ¿,minecraft:cherry_pressure_plate
-612,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¨±èŠ±æœ¨æ´»æ¿é—¨,minecraft:cherry_trapdoor
-613,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,çº¢çŸ³æ¯”è¾ƒå™¨,minecraft:comparator
-614,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ½®æ¶Œæ ¸å¿ƒ,minecraft:conduit
-615,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,é“œç¯,minecraft:copper_bulb
-616,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,é“œé—¨,minecraft:copper_door
-617,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,é“œæ´»æ¿é—¨,minecraft:copper_trapdoor
-618,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,åˆæˆå™¨,minecraft:crafter
-619,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,å˜æä¹‹å¿ƒ,minecraft:creaking_heart
-620,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ç»¯çº¢æœ¨æŒ‰é’®,minecraft:crimson_button
-621,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ç»¯çº¢æœ¨é—¨,minecraft:crimson_door
-622,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ç»¯çº¢æœ¨æ …æ é—¨,minecraft:crimson_fence_gate
-623,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ç»¯çº¢æœ¨å‹åŠ›æ¿,minecraft:crimson_pressure_plate
-624,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ç»¯çº¢æœ¨æ´»æ¿é—¨,minecraft:crimson_trapdoor
-625,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ·±è‰²æ©¡æœ¨æŒ‰é’®,minecraft:dark_oak_button
-626,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ·±è‰²æ©¡æœ¨é—¨,minecraft:dark_oak_door
-627,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ·±è‰²æ©¡æœ¨æ …æ é—¨,minecraft:dark_oak_fence_gate
-628,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ·±è‰²æ©¡æœ¨å‹åŠ›æ¿,minecraft:dark_oak_pressure_plate
-629,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ·±è‰²æ©¡æœ¨æ´»æ¿é—¨,minecraft:dark_oak_trapdoor
-630,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,é˜³å…‰æ¢æµ‹å™¨,minecraft:daylight_detector
-631,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,å‘å°„å™¨,minecraft:dispenser
-632,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æŠ•æ·å™¨,minecraft:dropper
-633,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,é™„é­”å°,minecraft:enchanting_table
-634,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æœ«åœ°æ°´æ™¶,minecraft:end_crystal
-635,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æœ«å½±ä¹‹çœ¼,minecraft:ender_eye
-636,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ–‘é©³çš„é“œç¯,minecraft:exposed_copper_bulb
-637,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,é‡è´¨æµ‹é‡å‹åŠ›æ¿,minecraft:heavy_weighted_pressure_plate
-638,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,èœ‚èœœå—,minecraft:honey_block
-639,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,é“é—¨,minecraft:iron_door
-640,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,é“æ´»æ¿é—¨,minecraft:iron_trapdoor
-641,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ä¸›æ—æœ¨æŒ‰é’®,minecraft:jungle_button
-642,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ä¸›æ—æœ¨é—¨,minecraft:jungle_door
-643,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ä¸›æ—æœ¨æ …æ é—¨,minecraft:jungle_fence_gate
-644,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ä¸›æ—æœ¨å‹åŠ›æ¿,minecraft:jungle_pressure_plate
-645,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ä¸›æ—æœ¨æ´»æ¿é—¨,minecraft:jungle_trapdoor
-646,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ‹‰æ†,minecraft:lever
-647,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,è½»è´¨æµ‹é‡å‹åŠ›æ¿,minecraft:light_weighted_pressure_plate
-648,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,é¿é›·é’ˆ,minecraft:lightning_rod
-649,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ç£çŸ³,minecraft:lodestone
-650,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,çº¢æ ‘æœ¨æŒ‰é’®,minecraft:mangrove_button
-651,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,çº¢æ ‘æœ¨é—¨,minecraft:mangrove_door
-652,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,çº¢æ ‘æœ¨æ …æ é—¨,minecraft:mangrove_fence_gate
-653,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,çº¢æ ‘æœ¨å‹åŠ›æ¿,minecraft:mangrove_pressure_plate
-654,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,çº¢æ ‘æœ¨æ´»æ¿é—¨,minecraft:mangrove_trapdoor
-655,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ©¡æœ¨æŒ‰é’®,minecraft:oak_button
-656,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ©¡æœ¨é—¨,minecraft:oak_door
-657,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ©¡æœ¨æ …æ é—¨,minecraft:oak_fence_gate
-658,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ©¡æœ¨å‹åŠ›æ¿,minecraft:oak_pressure_plate
-659,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ©¡æœ¨æ´»æ¿é—¨,minecraft:oak_trapdoor
-660,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ä¾¦æµ‹å™¨,minecraft:observer
-661,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ°§åŒ–çš„é“œç¯,minecraft:oxidized_copper_bulb
-662,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,è‹ç™½æ©¡æœ¨æŒ‰é’®,minecraft:pale_oak_button
-663,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,è‹ç™½æ©¡æœ¨é—¨,minecraft:pale_oak_door
-664,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,è‹ç™½æ©¡æœ¨æ …æ é—¨,minecraft:pale_oak_fence_gate
-665,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,è‹ç™½æ©¡æœ¨å‹åŠ›æ¿,minecraft:pale_oak_pressure_plate
-666,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,è‹ç™½æ©¡æœ¨æ´»æ¿é—¨,minecraft:pale_oak_trapdoor
-667,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ´»å¡,minecraft:piston
-668,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ç£¨åˆ¶é»‘çŸ³æŒ‰é’®,minecraft:polished_blackstone_button
-669,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ç£¨åˆ¶é»‘çŸ³å‹åŠ›æ¿,minecraft:polished_blackstone_pressure_plate
-670,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¨æœ¨æŒ‰é’®,minecraft:poplar_button
-671,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¨æœ¨é—¨,minecraft:poplar_door
-672,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¨æœ¨æ …æ é—¨,minecraft:poplar_fence_gate
-673,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¨æœ¨å‹åŠ›æ¿,minecraft:poplar_pressure_plate
-674,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¨æœ¨æ´»æ¿é—¨,minecraft:poplar_trapdoor
-675,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,çº¢çŸ³ç¯,minecraft:redstone_lamp
-676,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,çº¢çŸ³ç«æŠŠ,minecraft:redstone_torch
-677,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,çº¢çŸ³ä¸­ç»§å™¨,minecraft:repeater
-678,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,é‡ç”Ÿé”š,minecraft:respawn_anchor
-679,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,äº‘æ‰æœ¨æŒ‰é’®,minecraft:spruce_button
-680,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,äº‘æ‰æœ¨é—¨,minecraft:spruce_door
-681,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,äº‘æ‰æœ¨æ …æ é—¨,minecraft:spruce_fence_gate
-682,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,äº‘æ‰æœ¨å‹åŠ›æ¿,minecraft:spruce_pressure_plate
-683,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,äº‘æ‰æœ¨æ´»æ¿é—¨,minecraft:spruce_trapdoor
-684,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,é»æ€§æ´»å¡,minecraft:sticky_piston
-685,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,çŸ³å¤´æŒ‰é’®,minecraft:stone_button
-686,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,çŸ³å¤´å‹åŠ›æ¿,minecraft:stone_pressure_plate
-687,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ ‡é¶,minecraft:target
-688,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,ç»Šçº¿é’©,minecraft:tripwire_hook
-689,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,è¯¡å¼‚æœ¨æŒ‰é’®,minecraft:warped_button
-690,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,è¯¡å¼‚æœ¨é—¨,minecraft:warped_door
-691,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,è¯¡å¼‚æœ¨æ …æ é—¨,minecraft:warped_fence_gate
-692,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,è¯¡å¼‚æœ¨å‹åŠ›æ¿,minecraft:warped_pressure_plate
-693,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,è¯¡å¼‚æœ¨æ´»æ¿é—¨,minecraft:warped_trapdoor
-694,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¶‚èœ¡çš„é“œç¯,minecraft:waxed_copper_bulb
-695,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¶‚èœ¡çš„é“œé—¨,minecraft:waxed_copper_door
-696,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¶‚èœ¡çš„é“œæ´»æ¿é—¨,minecraft:waxed_copper_trapdoor
-697,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¶‚èœ¡çš„æ–‘é©³é“œç¯,minecraft:waxed_exposed_copper_bulb
-698,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¶‚èœ¡çš„æ–‘é©³é“œé—¨,minecraft:waxed_exposed_copper_door
-699,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¶‚èœ¡çš„æ–‘é©³é“œæ´»æ¿é—¨,minecraft:waxed_exposed_copper_trapdoor
-700,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¶‚èœ¡çš„æ–‘é©³é¿é›·é’ˆ,minecraft:waxed_exposed_lightning_rod
-701,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¶‚èœ¡çš„é¿é›·é’ˆ,minecraft:waxed_lightning_rod
-702,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¶‚èœ¡çš„æ°§åŒ–é“œç¯,minecraft:waxed_oxidized_copper_bulb
-703,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¶‚èœ¡çš„æ°§åŒ–é“œé—¨,minecraft:waxed_oxidized_copper_door
-704,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¶‚èœ¡çš„æ°§åŒ–é“œæ´»æ¿é—¨,minecraft:waxed_oxidized_copper_trapdoor
-705,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¶‚èœ¡çš„æ°§åŒ–é¿é›·é’ˆ,minecraft:waxed_oxidized_lightning_rod
-706,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¶‚èœ¡çš„é”ˆèš€é“œç¯,minecraft:waxed_weathered_copper_bulb
-707,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¶‚èœ¡çš„é”ˆèš€é“œé—¨,minecraft:waxed_weathered_copper_door
-708,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¶‚èœ¡çš„é”ˆèš€é“œæ´»æ¿é—¨,minecraft:waxed_weathered_copper_trapdoor
-709,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,æ¶‚èœ¡çš„é”ˆèš€é¿é›·é’ˆ,minecraft:waxed_weathered_lightning_rod
-710,ç§‘æŠ€é­”æ³•,craft_technology_magic.json,é”ˆèš€çš„é“œç¯,minecraft:weathered_copper_bulb
-711,å†œæ—ç‰§æ¸”,craft_agriculture_forestry_livestock_fishery.json,èœ‚ç®±,minecraft:beehive
-712,å†œæ—ç‰§æ¸”,craft_agriculture_forestry_livestock_fishery.json,èƒ¡èåœé’“ç«¿,minecraft:carrot_on_a_stick
-713,å†œæ—ç‰§æ¸”,craft_agriculture_forestry_livestock_fishery.json,å †è‚¥æ¡¶,minecraft:composter
-714,å†œæ—ç‰§æ¸”,craft_agriculture_forestry_livestock_fishery.json,é“œé”„,minecraft:copper_hoe
-715,å†œæ—ç‰§æ¸”,craft_agriculture_forestry_livestock_fishery.json,é’»çŸ³é”„,minecraft:diamond_hoe
-716,å†œæ—ç‰§æ¸”,craft_agriculture_forestry_livestock_fishery.json,é’“é±¼ç«¿,minecraft:fishing_rod
-717,å†œæ—ç‰§æ¸”,craft_agriculture_forestry_livestock_fishery.json,é‡‘é”„,minecraft:golden_hoe
-718,å†œæ—ç‰§æ¸”,craft_agriculture_forestry_livestock_fishery.json,èœœè„¾å—,minecraft:honeycomb_block
-719,å†œæ—ç‰§æ¸”,craft_agriculture_forestry_livestock_fishery.json,é“é”„,minecraft:iron_hoe
-720,å†œæ—ç‰§æ¸”,craft_agriculture_forestry_livestock_fishery.json,çš®é©,minecraft:leather
-721,å†œæ—ç‰§æ¸”,craft_agriculture_forestry_livestock_fishery.json,è¥¿ç“œç§å­,minecraft:melon_seeds
-722,å†œæ—ç‰§æ¸”,craft_agriculture_forestry_livestock_fishery.json,å—ç“œç§å­,minecraft:pumpkin_seeds
-723,å†œæ—ç‰§æ¸”,craft_agriculture_forestry_livestock_fishery.json,å‰ªåˆ€,minecraft:shears
-724,å†œæ—ç‰§æ¸”,craft_agriculture_forestry_livestock_fishery.json,çŸ³é”„,minecraft:stone_hoe
-725,å†œæ—ç‰§æ¸”,craft_agriculture_forestry_livestock_fishery.json,ç³–,minecraft:sugar
-726,å†œæ—ç‰§æ¸”,craft_agriculture_forestry_livestock_fishery.json,è¯¡å¼‚èŒé’“ç«¿,minecraft:warped_fungus_on_a_stick
-727,å†œæ—ç‰§æ¸”,craft_agriculture_forestry_livestock_fishery.json,æœ¨é”„,minecraft:wooden_hoe
-728,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,ç›”ç”²æ¶,minecraft:armor_stand
-729,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,ç®­,minecraft:arrow
-730,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,ç”œèœæ±¤,minecraft:beetroot_soup
-731,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é”»é€ æ¨¡æ¿,minecraft:bolt_armor_trim_smithing_template
-732,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,å¼“,minecraft:bow
-733,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,ç¢—,minecraft:bowl
-734,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é¢åŒ…,minecraft:bread
-735,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é…¿é€ å°,minecraft:brewing_stand
-736,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,è›‹ç³•,minecraft:cake
-737,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é”»é€ æ¨¡æ¿,minecraft:coast_armor_trim_smithing_template
-738,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,æ›²å¥‡,minecraft:cookie
-739,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é“œé´å­,minecraft:copper_boots
-740,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é“œå¤´ç›”,minecraft:copper_helmet
-741,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é“œæŠ¤è…¿,minecraft:copper_leggings
-742,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é“œçŸ›,minecraft:copper_spear
-743,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é“œå‰‘,minecraft:copper_sword
-744,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,å¼©,minecraft:crossbow
-745,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é’»çŸ³é´å­,minecraft:diamond_boots
-746,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é’»çŸ³å¤´ç›”,minecraft:diamond_helmet
-747,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é’»çŸ³æŠ¤è…¿,minecraft:diamond_leggings
-748,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é’»çŸ³çŸ›,minecraft:diamond_spear
-749,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é’»çŸ³å‰‘,minecraft:diamond_sword
-750,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é”»é€ æ¨¡æ¿,minecraft:dune_armor_trim_smithing_template
-751,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é”»é€ æ¨¡æ¿,minecraft:eye_armor_trim_smithing_template
-752,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,å‘é…µè››çœ¼,minecraft:fermented_spider_eye
-753,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é”»é€ æ¨¡æ¿,minecraft:flow_armor_trim_smithing_template
-754,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,ç»ç’ƒç“¶,minecraft:glass_bottle
-755,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é—ªçƒçš„è¥¿ç“œç‰‡,minecraft:glistering_melon_slice
-756,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é‡‘è‹¹æœ,minecraft:golden_apple
-757,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é‡‘é´å­,minecraft:golden_boots
-758,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é‡‘èƒ¡èåœ,minecraft:golden_carrot
-759,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é‡‘å¤´ç›”,minecraft:golden_helmet
-760,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é‡‘æŠ¤è…¿,minecraft:golden_leggings
-761,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é‡‘çŸ›,minecraft:golden_spear
-762,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é‡‘å‰‘,minecraft:golden_sword
-763,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,èœ‚èœœç“¶,minecraft:honey_bottle
-764,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é”»é€ æ¨¡æ¿,minecraft:host_armor_trim_smithing_template
-765,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é“é´å­,minecraft:iron_boots
-766,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é“å¤´ç›”,minecraft:iron_helmet
-767,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é“æŠ¤è…¿,minecraft:iron_leggings
-768,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é“çŸ›,minecraft:iron_spear
-769,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é“å‰‘,minecraft:iron_sword
-770,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,çš®é©é´å­,minecraft:leather_boots
-771,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,çš®é©å¸½å­,minecraft:leather_helmet
-772,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,çš®é©é©¬é“ ,minecraft:leather_horse_armor
-773,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,çš®é©è£¤å­,minecraft:leather_leggings
-774,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é‡é”¤,minecraft:mace
-775,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,è˜‘è‡ç…²,minecraft:mushroom_stew
-776,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é”»é€ æ¨¡æ¿,minecraft:netherite_upgrade_smithing_template
-777,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,å—ç“œæ´¾,minecraft:pumpkin_pie
-778,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,å…”è‚‰ç…²,minecraft:rabbit_stew
-779,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é”»é€ æ¨¡æ¿,minecraft:raiser_armor_trim_smithing_template
-780,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é”»é€ æ¨¡æ¿,minecraft:rib_armor_trim_smithing_template
-781,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é”»é€ æ¨¡æ¿,minecraft:sentry_armor_trim_smithing_template
-782,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é”»é€ æ¨¡æ¿,minecraft:shaper_armor_trim_smithing_template
-783,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,ç›¾ç‰Œ,minecraft:shield
-784,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é”»é€ æ¨¡æ¿,minecraft:silence_armor_trim_smithing_template
-785,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é”»é€ æ¨¡æ¿,minecraft:snout_armor_trim_smithing_template
-786,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,å…‰çµç®­,minecraft:spectral_arrow
-787,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é”»é€ æ¨¡æ¿,minecraft:spire_armor_trim_smithing_template
-788,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,çŸ³çŸ›,minecraft:stone_spear
-789,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,çŸ³å‰‘,minecraft:stone_sword
-790,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,è°œä¹‹ç‚–èœ,minecraft:suspicious_stew
-791,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é”»é€ æ¨¡æ¿,minecraft:tide_armor_trim_smithing_template
-792,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,è¯ç®­,minecraft:tipped_arrow
-793,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,TNT,minecraft:tnt
-794,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,æµ·é¾Ÿå£³,minecraft:turtle_helmet
-795,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é”»é€ æ¨¡æ¿,minecraft:vex_armor_trim_smithing_template
-796,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é”»é€ æ¨¡æ¿,minecraft:ward_armor_trim_smithing_template
-797,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é”»é€ æ¨¡æ¿,minecraft:wayfinder_armor_trim_smithing_template
-798,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é”»é€ æ¨¡æ¿,minecraft:wild_armor_trim_smithing_template
-799,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,é£å¼¹,minecraft:wind_charge
-800,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,ç‹¼é“ ,minecraft:wolf_armor
-801,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,æœ¨çŸ›,minecraft:wooden_spear
-802,å†›å·¥é£Ÿè¯,craft_military_food_medicine.json,æœ¨å‰‘,minecraft:wooden_sword
-803,æµé€šæœåŠ¡,craft_circulation_services.json,é‡‘åˆæ¬¢æœ¨èˆ¹,minecraft:acacia_boat
-804,æµé€šæœåŠ¡,craft_circulation_services.json,é‡‘åˆæ¬¢æœ¨è¿è¾“èˆ¹,minecraft:acacia_chest_boat
-805,æµé€šæœåŠ¡,craft_circulation_services.json,æ¿€æ´»é“è½¨,minecraft:activator_rail
-806,æµé€šæœåŠ¡,craft_circulation_services.json,è¿è¾“ç«¹ç­,minecraft:bamboo_chest_raft
-807,æµé€šæœåŠ¡,craft_circulation_services.json,ç«¹ç­,minecraft:bamboo_raft
-808,æµé€šæœåŠ¡,craft_circulation_services.json,æœ¨æ¡¶,minecraft:barrel
-809,æµé€šæœåŠ¡,craft_circulation_services.json,ç™½æ¡¦æœ¨èˆ¹,minecraft:birch_boat
-810,æµé€šæœåŠ¡,craft_circulation_services.json,ç™½æ¡¦æœ¨è¿è¾“èˆ¹,minecraft:birch_chest_boat
-811,æµé€šæœåŠ¡,craft_circulation_services.json,é»‘è‰²æ”¶çº³è¢‹,minecraft:black_bundle
-812,æµé€šæœåŠ¡,craft_circulation_services.json,é»‘è‰²æŒ½å…·,minecraft:black_harness
-813,æµé€šæœåŠ¡,craft_circulation_services.json,é»‘è‰²æ½œå½±ç›’,minecraft:black_shulker_box
-814,æµé€šæœåŠ¡,craft_circulation_services.json,è“è‰²æ”¶çº³è¢‹,minecraft:blue_bundle
-815,æµé€šæœåŠ¡,craft_circulation_services.json,è“è‰²æŒ½å…·,minecraft:blue_harness
-816,æµé€šæœåŠ¡,craft_circulation_services.json,è“è‰²æ½œå½±ç›’,minecraft:blue_shulker_box
-817,æµé€šæœåŠ¡,craft_circulation_services.json,æ£•è‰²æ”¶çº³è¢‹,minecraft:brown_bundle
-818,æµé€šæœåŠ¡,craft_circulation_services.json,æ£•è‰²æŒ½å…·,minecraft:brown_harness
-819,æµé€šæœåŠ¡,craft_circulation_services.json,æ£•è‰²æ½œå½±ç›’,minecraft:brown_shulker_box
-820,æµé€šæœåŠ¡,craft_circulation_services.json,æ”¶çº³è¢‹,minecraft:bundle
-821,æµé€šæœåŠ¡,craft_circulation_services.json,æ¨±èŠ±æœ¨èˆ¹,minecraft:cherry_boat
-822,æµé€šæœåŠ¡,craft_circulation_services.json,æ¨±èŠ±æœ¨è¿è¾“èˆ¹,minecraft:cherry_chest_boat
-823,æµé€šæœåŠ¡,craft_circulation_services.json,ç®±å­,minecraft:chest
-824,æµé€šæœåŠ¡,craft_circulation_services.json,è¿è¾“çŸ¿è½¦,minecraft:chest_minecart
-825,æµé€šæœåŠ¡,craft_circulation_services.json,é“œç®±å­,minecraft:copper_chest
-826,æµé€šæœåŠ¡,craft_circulation_services.json,é“œèƒ¸ç”²,minecraft:copper_chestplate
-827,æµé€šæœåŠ¡,craft_circulation_services.json,é’è‰²æ”¶çº³è¢‹,minecraft:cyan_bundle
-828,æµé€šæœåŠ¡,craft_circulation_services.json,é’è‰²æŒ½å…·,minecraft:cyan_harness
-829,æµé€šæœåŠ¡,craft_circulation_services.json,é’è‰²æ½œå½±ç›’,minecraft:cyan_shulker_box
-830,æµé€šæœåŠ¡,craft_circulation_services.json,æ·±è‰²æ©¡æœ¨èˆ¹,minecraft:dark_oak_boat
-831,æµé€šæœåŠ¡,craft_circulation_services.json,æ·±è‰²æ©¡æœ¨è¿è¾“èˆ¹,minecraft:dark_oak_chest_boat
-832,æµé€šæœåŠ¡,craft_circulation_services.json,æ¢æµ‹é“è½¨,minecraft:detector_rail
-833,æµé€šæœåŠ¡,craft_circulation_services.json,é’»çŸ³èƒ¸ç”²,minecraft:diamond_chestplate
-834,æµé€šæœåŠ¡,craft_circulation_services.json,æœ«å½±ç®±,minecraft:ender_chest
-835,æµé€šæœåŠ¡,craft_circulation_services.json,åŠ¨åŠ›çŸ¿è½¦,minecraft:furnace_minecart
-836,æµé€šæœåŠ¡,craft_circulation_services.json,é‡‘èƒ¸ç”²,minecraft:golden_chestplate
-837,æµé€šæœåŠ¡,craft_circulation_services.json,ç°è‰²æ”¶çº³è¢‹,minecraft:gray_bundle
-838,æµé€šæœåŠ¡,craft_circulation_services.json,ç°è‰²æŒ½å…·,minecraft:gray_harness
-839,æµé€šæœåŠ¡,craft_circulation_services.json,ç°è‰²æ½œå½±ç›’,minecraft:gray_shulker_box
-840,æµé€šæœåŠ¡,craft_circulation_services.json,ç»¿è‰²æ”¶çº³è¢‹,minecraft:green_bundle
-841,æµé€šæœåŠ¡,craft_circulation_services.json,ç»¿è‰²æŒ½å…·,minecraft:green_harness
-842,æµé€šæœåŠ¡,craft_circulation_services.json,ç»¿è‰²æ½œå½±ç›’,minecraft:green_shulker_box
-843,æµé€šæœåŠ¡,craft_circulation_services.json,æ¼æ–—,minecraft:hopper
-844,æµé€šæœåŠ¡,craft_circulation_services.json,æ¼æ–—çŸ¿è½¦,minecraft:hopper_minecart
-845,æµé€šæœåŠ¡,craft_circulation_services.json,é“èƒ¸ç”²,minecraft:iron_chestplate
-846,æµé€šæœåŠ¡,craft_circulation_services.json,ä¸›æ—æœ¨èˆ¹,minecraft:jungle_boat
-847,æµé€šæœåŠ¡,craft_circulation_services.json,ä¸›æ—æœ¨è¿è¾“èˆ¹,minecraft:jungle_chest_boat
-848,æµé€šæœåŠ¡,craft_circulation_services.json,æ‹´ç»³,minecraft:lead
-849,æµé€šæœåŠ¡,craft_circulation_services.json,çš®é©å¤–å¥—,minecraft:leather_chestplate
-850,æµé€šæœåŠ¡,craft_circulation_services.json,æ·¡è“è‰²æ”¶çº³è¢‹,minecraft:light_blue_bundle
-851,æµé€šæœåŠ¡,craft_circulation_services.json,æ·¡è“è‰²æŒ½å…·,minecraft:light_blue_harness
-852,æµé€šæœåŠ¡,craft_circulation_services.json,æ·¡è“è‰²æ½œå½±ç›’,minecraft:light_blue_shulker_box
-853,æµé€šæœåŠ¡,craft_circulation_services.json,æ·¡ç°è‰²æ”¶çº³è¢‹,minecraft:light_gray_bundle
-854,æµé€šæœåŠ¡,craft_circulation_services.json,æ·¡ç°è‰²æŒ½å…·,minecraft:light_gray_harness
-855,æµé€šæœåŠ¡,craft_circulation_services.json,æ·¡ç°è‰²æ½œå½±ç›’,minecraft:light_gray_shulker_box
-856,æµé€šæœåŠ¡,craft_circulation_services.json,é»„ç»¿è‰²æ”¶çº³è¢‹,minecraft:lime_bundle
-857,æµé€šæœåŠ¡,craft_circulation_services.json,é»„ç»¿è‰²æŒ½å…·,minecraft:lime_harness
-858,æµé€šæœåŠ¡,craft_circulation_services.json,é»„ç»¿è‰²æ½œå½±ç›’,minecraft:lime_shulker_box
-859,æµé€šæœåŠ¡,craft_circulation_services.json,å“çº¢è‰²æ”¶çº³è¢‹,minecraft:magenta_bundle
-860,æµé€šæœåŠ¡,craft_circulation_services.json,å“çº¢è‰²æŒ½å…·,minecraft:magenta_harness
-861,æµé€šæœåŠ¡,craft_circulation_services.json,å“çº¢è‰²æ½œå½±ç›’,minecraft:magenta_shulker_box
-862,æµé€šæœåŠ¡,craft_circulation_services.json,çº¢æ ‘æœ¨èˆ¹,minecraft:mangrove_boat
-863,æµé€šæœåŠ¡,craft_circulation_services.json,çº¢æ ‘æœ¨è¿è¾“èˆ¹,minecraft:mangrove_chest_boat
-864,æµé€šæœåŠ¡,craft_circulation_services.json,çŸ¿è½¦,minecraft:minecart
-865,æµé€šæœåŠ¡,craft_circulation_services.json,æ©¡æœ¨èˆ¹,minecraft:oak_boat
-866,æµé€šæœåŠ¡,craft_circulation_services.json,æ©¡æœ¨è¿è¾“èˆ¹,minecraft:oak_chest_boat
-867,æµé€šæœåŠ¡,craft_circulation_services.json,æ©™è‰²æ”¶çº³è¢‹,minecraft:orange_bundle
-868,æµé€šæœåŠ¡,craft_circulation_services.json,æ©™è‰²æŒ½å…·,minecraft:orange_harness
-869,æµé€šæœåŠ¡,craft_circulation_services.json,æ©™è‰²æ½œå½±ç›’,minecraft:orange_shulker_box
-870,æµé€šæœåŠ¡,craft_circulation_services.json,è‹ç™½æ©¡æœ¨èˆ¹,minecraft:pale_oak_boat
-871,æµé€šæœåŠ¡,craft_circulation_services.json,è‹ç™½æ©¡æœ¨è¿è¾“èˆ¹,minecraft:pale_oak_chest_boat
-872,æµé€šæœåŠ¡,craft_circulation_services.json,ç²‰çº¢è‰²æ”¶çº³è¢‹,minecraft:pink_bundle
-873,æµé€šæœåŠ¡,craft_circulation_services.json,ç²‰çº¢è‰²æŒ½å…·,minecraft:pink_harness
-874,æµé€šæœåŠ¡,craft_circulation_services.json,ç²‰çº¢è‰²æ½œå½±ç›’,minecraft:pink_shulker_box
-875,æµé€šæœåŠ¡,craft_circulation_services.json,æ¨æœ¨èˆ¹,minecraft:poplar_boat
-876,æµé€šæœåŠ¡,craft_circulation_services.json,æ¨æœ¨è¿è¾“èˆ¹,minecraft:poplar_chest_boat
-877,æµé€šæœåŠ¡,craft_circulation_services.json,åŠ¨åŠ›é“è½¨,minecraft:powered_rail
-878,æµé€šæœåŠ¡,craft_circulation_services.json,ç´«è‰²æ”¶çº³è¢‹,minecraft:purple_bundle
-879,æµé€šæœåŠ¡,craft_circulation_services.json,ç´«è‰²æŒ½å…·,minecraft:purple_harness
-880,æµé€šæœåŠ¡,craft_circulation_services.json,ç´«è‰²æ½œå½±ç›’,minecraft:purple_shulker_box
-881,æµé€šæœåŠ¡,craft_circulation_services.json,é“è½¨,minecraft:rail
-882,æµé€šæœåŠ¡,craft_circulation_services.json,çº¢è‰²æ”¶çº³è¢‹,minecraft:red_bundle
-883,æµé€šæœåŠ¡,craft_circulation_services.json,çº¢è‰²æŒ½å…·,minecraft:red_harness
-884,æµé€šæœåŠ¡,craft_circulation_services.json,çº¢è‰²æ½œå½±ç›’,minecraft:red_shulker_box
-885,æµé€šæœåŠ¡,craft_circulation_services.json,é,minecraft:saddle
-886,æµé€šæœåŠ¡,craft_circulation_services.json,æ½œå½±ç›’,minecraft:shulker_box
-887,æµé€šæœåŠ¡,craft_circulation_services.json,äº‘æ‰æœ¨èˆ¹,minecraft:spruce_boat
-888,æµé€šæœåŠ¡,craft_circulation_services.json,äº‘æ‰æœ¨è¿è¾“èˆ¹,minecraft:spruce_chest_boat
-889,æµé€šæœåŠ¡,craft_circulation_services.json,TNTçŸ¿è½¦,minecraft:tnt_minecart
-890,æµé€šæœåŠ¡,craft_circulation_services.json,é™·é˜±ç®±,minecraft:trapped_chest
-891,æµé€šæœåŠ¡,craft_circulation_services.json,æ¶‚èœ¡çš„é“œç®±å­,minecraft:waxed_copper_chest
-892,æµé€šæœåŠ¡,craft_circulation_services.json,æ¶‚èœ¡çš„æ–‘é©³é“œç®±å­,minecraft:waxed_exposed_copper_chest
-893,æµé€šæœåŠ¡,craft_circulation_services.json,æ¶‚èœ¡çš„æ°§åŒ–é“œç®±å­,minecraft:waxed_oxidized_copper_chest
-894,æµé€šæœåŠ¡,craft_circulation_services.json,æ¶‚èœ¡çš„é”ˆèš€é“œç®±å­,minecraft:waxed_weathered_copper_chest
-895,æµé€šæœåŠ¡,craft_circulation_services.json,ç™½è‰²æ”¶çº³è¢‹,minecraft:white_bundle
-896,æµé€šæœåŠ¡,craft_circulation_services.json,ç™½è‰²æŒ½å…·,minecraft:white_harness
-897,æµé€šæœåŠ¡,craft_circulation_services.json,ç™½è‰²æ½œå½±ç›’,minecraft:white_shulker_box
-898,æµé€šæœåŠ¡,craft_circulation_services.json,é»„è‰²æ”¶çº³è¢‹,minecraft:yellow_bundle
-899,æµé€šæœåŠ¡,craft_circulation_services.json,é»„è‰²æŒ½å…·,minecraft:yellow_harness
-900,æµé€šæœåŠ¡,craft_circulation_services.json,é»„è‰²æ½œå½±ç›’,minecraft:yellow_shulker_box
-901,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,é‡‘åˆæ¬¢æœ¨å±•ç¤ºæ¶,minecraft:acacia_shelf
-902,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç«¹å±•ç¤ºæ¶,minecraft:bamboo_shelf
-903,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç™½æ¡¦æœ¨å±•ç¤ºæ¶,minecraft:birch_shelf
-904,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,é»‘è‰²æ——å¸œ,minecraft:black_banner
-905,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,é»‘è‰²åºŠ,minecraft:black_bed
-906,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,é»‘è‰²èœ¡çƒ›,minecraft:black_candle
-907,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,é»‘è‰²åå«,minecraft:black_cushion
-908,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,è“è‰²æ——å¸œ,minecraft:blue_banner
-909,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,è“è‰²åºŠ,minecraft:blue_bed
-910,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,è“è‰²èœ¡çƒ›,minecraft:blue_candle
-911,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,è“è‰²åå«,minecraft:blue_cushion
-912,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ä¹¦,minecraft:book
-913,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ä¹¦æ¶,minecraft:bookshelf
-914,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ³¢çº¹è¾¹æ——å¸œå›¾æ¡ˆ,minecraft:bordure_indented_banner_pattern
-915,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ£•è‰²æ——å¸œ,minecraft:brown_banner
-916,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ£•è‰²åºŠ,minecraft:brown_bed
-917,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ£•è‰²èœ¡çƒ›,minecraft:brown_candle
-918,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ£•è‰²åå«,minecraft:brown_cushion
-919,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,èœ¡çƒ›,minecraft:candle
-920,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,åˆ¶å›¾å°,minecraft:cartography_table
-921,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ¨±èŠ±æœ¨å±•ç¤ºæ¶,minecraft:cherry_shelf
-922,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,é›•çº¹ä¹¦æ¶,minecraft:chiseled_bookshelf
-923,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ—¶é’Ÿ,minecraft:clock
-924,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æŒ‡å—é’ˆ,minecraft:compass
-925,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ——å¸œå›¾æ¡ˆ,minecraft:creeper_banner_pattern
-926,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç»¯çº¢æœ¨å±•ç¤ºæ¶,minecraft:crimson_shelf
-927,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,é’è‰²æ——å¸œ,minecraft:cyan_banner
-928,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,é’è‰²åºŠ,minecraft:cyan_bed
-929,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,é’è‰²èœ¡çƒ›,minecraft:cyan_candle
-930,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,é’è‰²åå«,minecraft:cyan_cushion
-931,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ·±è‰²æ©¡æœ¨å±•ç¤ºæ¶,minecraft:dark_oak_shelf
-932,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,é¥°çº¹é™¶ç½,minecraft:decorated_pot
-933,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç –çº¹æ——å¸œå›¾æ¡ˆ,minecraft:field_masoned_banner_pattern
-934,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ——å¸œå›¾æ¡ˆ,minecraft:flower_banner_pattern
-935,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,èŠ±ç›†,minecraft:flower_pot
-936,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,è§å…‰ç‰©å“å±•ç¤ºæ¡†,minecraft:glow_item_frame
-937,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç°è‰²æ——å¸œ,minecraft:gray_banner
-938,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç°è‰²åºŠ,minecraft:gray_bed
-939,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç°è‰²èœ¡çƒ›,minecraft:gray_candle
-940,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç°è‰²åå«,minecraft:gray_cushion
-941,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç»¿è‰²æ——å¸œ,minecraft:green_banner
-942,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç»¿è‰²åºŠ,minecraft:green_bed
-943,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç»¿è‰²èœ¡çƒ›,minecraft:green_candle
-944,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç»¿è‰²åå«,minecraft:green_cushion
-945,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç‰©å“å±•ç¤ºæ¡†,minecraft:item_frame
-946,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,å”±ç‰‡æœº,minecraft:jukebox
-947,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ä¸›æ—æœ¨å±•ç¤ºæ¶,minecraft:jungle_shelf
-948,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,è®²å°,minecraft:lectern
-949,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ·¡è“è‰²æ——å¸œ,minecraft:light_blue_banner
-950,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ·¡è“è‰²åºŠ,minecraft:light_blue_bed
-951,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ·¡è“è‰²èœ¡çƒ›,minecraft:light_blue_candle
-952,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ·¡è“è‰²åå«,minecraft:light_blue_cushion
-953,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ·¡ç°è‰²æ——å¸œ,minecraft:light_gray_banner
-954,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ·¡ç°è‰²åºŠ,minecraft:light_gray_bed
-955,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ·¡ç°è‰²èœ¡çƒ›,minecraft:light_gray_candle
-956,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ·¡ç°è‰²åå«,minecraft:light_gray_cushion
-957,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,é»„ç»¿è‰²æ——å¸œ,minecraft:lime_banner
-958,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,é»„ç»¿è‰²åºŠ,minecraft:lime_bed
-959,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,é»„ç»¿è‰²èœ¡çƒ›,minecraft:lime_candle
-960,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,é»„ç»¿è‰²åå«,minecraft:lime_cushion
-961,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç»‡å¸ƒæœº,minecraft:loom
-962,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,å“çº¢è‰²æ——å¸œ,minecraft:magenta_banner
-963,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,å“çº¢è‰²åºŠ,minecraft:magenta_bed
-964,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,å“çº¢è‰²èœ¡çƒ›,minecraft:magenta_candle
-965,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,å“çº¢è‰²åå«,minecraft:magenta_cushion
-966,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,çº¢æ ‘æœ¨å±•ç¤ºæ¶,minecraft:mangrove_shelf
-967,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç©ºåœ°å›¾,minecraft:map
-968,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ——å¸œå›¾æ¡ˆ,minecraft:mojang_banner_pattern
-969,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,éŸ³ä¹å”±ç‰‡,minecraft:music_disc_5
-970,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,å‘½åç‰Œ,minecraft:name_tag
-971,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,éŸ³ç¬¦ç›’,minecraft:note_block
-972,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ©¡æœ¨å±•ç¤ºæ¶,minecraft:oak_shelf
-973,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ©™è‰²æ——å¸œ,minecraft:orange_banner
-974,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ©™è‰²åºŠ,minecraft:orange_bed
-975,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ©™è‰²èœ¡çƒ›,minecraft:orange_candle
-976,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ©™è‰²åå«,minecraft:orange_cushion
-977,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç”»,minecraft:painting
-978,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,è‹ç™½æ©¡æœ¨å±•ç¤ºæ¶,minecraft:pale_oak_shelf
-979,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,çº¸,minecraft:paper
-980,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç²‰çº¢è‰²æ——å¸œ,minecraft:pink_banner
-981,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç²‰çº¢è‰²åºŠ,minecraft:pink_bed
-982,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç²‰çº¢è‰²èœ¡çƒ›,minecraft:pink_candle
-983,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç²‰çº¢è‰²åå«,minecraft:pink_cushion
-984,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ¨æœ¨å±•ç¤ºæ¶,minecraft:poplar_shelf
-985,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç´«è‰²æ——å¸œ,minecraft:purple_banner
-986,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç´«è‰²åºŠ,minecraft:purple_bed
-987,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç´«è‰²èœ¡çƒ›,minecraft:purple_candle
-988,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç´«è‰²åå«,minecraft:purple_cushion
-989,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,è¿½æº¯æŒ‡é’ˆ,minecraft:recovery_compass
-990,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,çº¢è‰²æ——å¸œ,minecraft:red_banner
-991,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,çº¢è‰²åºŠ,minecraft:red_bed
-992,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,çº¢è‰²èœ¡çƒ›,minecraft:red_candle
-993,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,çº¢è‰²åå«,minecraft:red_cushion
-994,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æ——å¸œå›¾æ¡ˆ,minecraft:skull_banner_pattern
-995,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,äº‘æ‰æœ¨å±•ç¤ºæ¶,minecraft:spruce_shelf
-996,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æœ›è¿œé•œ,minecraft:spyglass
-997,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,éº¦ç§†åºŠ,minecraft:straw_bed
-998,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,è¯¡å¼‚æœ¨å±•ç¤ºæ¶,minecraft:warped_shelf
-999,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç™½è‰²æ——å¸œ,minecraft:white_banner
-1000,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç™½è‰²åºŠ,minecraft:white_bed
-1001,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç™½è‰²èœ¡çƒ›,minecraft:white_candle
-1002,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ç™½è‰²åå«,minecraft:white_cushion
-1003,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,ä¹¦ä¸ç¬”,minecraft:writable_book
-1004,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,æˆä¹¦,minecraft:written_book
-1005,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,é»„è‰²æ——å¸œ,minecraft:yellow_banner
-1006,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,é»„è‰²åºŠ,minecraft:yellow_bed
-1007,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,é»„è‰²èœ¡çƒ›,minecraft:yellow_candle
-1008,æ–‡æ•™æ°‘ç”Ÿ,craft_culture_education_livelihood.json,é»„è‰²åå«,minecraft:yellow_cushion
+ĞòºÅ,ĞĞÒµ,¶ÔÓ¦JSONÎÄ¼ş,ÖĞÎÄÃû³Æ,×¢²áID
+1,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,½ğºÏ»¶Ä¾Õ¤À¸,minecraft:acacia_fence
+2,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ğü¹ÒÊ½½ğºÏ»¶Ä¾¸æÊ¾ÅÆ,minecraft:acacia_hanging_sign
+3,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,½ğºÏ»¶Ä¾°å,minecraft:acacia_planks
+4,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,½ğºÏ»¶Ä¾¸æÊ¾ÅÆ,minecraft:acacia_sign
+5,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,½ğºÏ»¶Ä¾Ì¨½×,minecraft:acacia_slab
+6,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,½ğºÏ»¶Ä¾Â¥Ìİ,minecraft:acacia_stairs
+7,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,½ğºÏ»¶Ä¾,minecraft:acacia_wood
+8,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°²É½ÑÒ,minecraft:andesite
+9,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°²É½ÑÒÌ¨½×,minecraft:andesite_slab
+10,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°²É½ÑÒÂ¥Ìİ,minecraft:andesite_stairs
+11,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°²É½ÑÒÇ½,minecraft:andesite_wall
+12,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Öñ¿é,minecraft:bamboo_block
+13,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÖñÕ¤À¸,minecraft:bamboo_fence
+14,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ğü¹ÒÊ½Öñ¸æÊ¾ÅÆ,minecraft:bamboo_hanging_sign
+15,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÖñÂíÈü¿Ë,minecraft:bamboo_mosaic
+16,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÖñÂíÈü¿ËÌ¨½×,minecraft:bamboo_mosaic_slab
+17,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÖñÂíÈü¿ËÂ¥Ìİ,minecraft:bamboo_mosaic_stairs
+18,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Öñ°å,minecraft:bamboo_planks
+19,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Öñ¸æÊ¾ÅÆ,minecraft:bamboo_sign
+20,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÖñÌ¨½×,minecraft:bamboo_slab
+21,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÖñÂ¥Ìİ,minecraft:bamboo_stairs
+22,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°×èëÄ¾Õ¤À¸,minecraft:birch_fence
+23,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ğü¹ÒÊ½°×èëÄ¾¸æÊ¾ÅÆ,minecraft:birch_hanging_sign
+24,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°×èëÄ¾°å,minecraft:birch_planks
+25,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°×èëÄ¾¸æÊ¾ÅÆ,minecraft:birch_sign
+26,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°×èëÄ¾Ì¨½×,minecraft:birch_slab
+27,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°×èëÄ¾Â¥Ìİ,minecraft:birch_stairs
+28,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°×èëÄ¾,minecraft:birch_wood
+29,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºÚÉ«µØÌº,minecraft:black_carpet
+30,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºÚÉ«»ìÄıÍÁ·ÛÄ©,minecraft:black_concrete_powder
+31,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºÚÉ«»ìÄıÍÁÌ¨½×,minecraft:black_concrete_slab
+32,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºÚÉ«»ìÄıÍÁÂ¥Ìİ,minecraft:black_concrete_stairs
+33,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºÚÉ«È¾É«²£Á§,minecraft:black_stained_glass
+34,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºÚÉ«È¾É«²£Á§°å,minecraft:black_stained_glass_pane
+35,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºÚÉ«ÌÕÍß,minecraft:black_terracotta
+36,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºÚÉ«ÑòÃ«,minecraft:black_wool
+37,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºÚÉ«ÑòÃ«Ì¨½×,minecraft:black_wool_slab
+38,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºÚÉ«ÑòÃ«Â¥Ìİ,minecraft:black_wool_stairs
+39,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºÚÊ¯Ì¨½×,minecraft:blackstone_slab
+40,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºÚÊ¯Â¥Ìİ,minecraft:blackstone_stairs
+41,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºÚÊ¯Ç½,minecraft:blackstone_wall
+42,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,À¶É«µØÌº,minecraft:blue_carpet
+43,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,À¶É«»ìÄıÍÁ·ÛÄ©,minecraft:blue_concrete_powder
+44,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,À¶É«»ìÄıÍÁÌ¨½×,minecraft:blue_concrete_slab
+45,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,À¶É«»ìÄıÍÁÂ¥Ìİ,minecraft:blue_concrete_stairs
+46,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,À¶±ù,minecraft:blue_ice
+47,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,À¶É«È¾É«²£Á§,minecraft:blue_stained_glass
+48,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,À¶É«È¾É«²£Á§°å,minecraft:blue_stained_glass_pane
+49,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,À¶É«ÌÕÍß,minecraft:blue_terracotta
+50,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,À¶É«ÑòÃ«,minecraft:blue_wool
+51,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,À¶É«ÑòÃ«Ì¨½×,minecraft:blue_wool_slab
+52,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,À¶É«ÑòÃ«Â¥Ìİ,minecraft:blue_wool_stairs
+53,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºì×©Ì¨½×,minecraft:brick_slab
+54,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºì×©Â¥Ìİ,minecraft:brick_stairs
+55,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºì×©Ç½,minecraft:brick_wall
+56,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºì×©¿é,minecraft:bricks
+57,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ØÉ«µØÌº,minecraft:brown_carpet
+58,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ØÉ«»ìÄıÍÁ·ÛÄ©,minecraft:brown_concrete_powder
+59,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ØÉ«»ìÄıÍÁÌ¨½×,minecraft:brown_concrete_slab
+60,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ØÉ«»ìÄıÍÁÂ¥Ìİ,minecraft:brown_concrete_stairs
+61,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ØÉ«È¾É«²£Á§,minecraft:brown_stained_glass
+62,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ØÉ«È¾É«²£Á§°å,minecraft:brown_stained_glass_pane
+63,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ØÉ«ÌÕÍß,minecraft:brown_terracotta
+64,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ØÉ«ÑòÃ«,minecraft:brown_wool
+65,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ØÉ«ÑòÃ«Ì¨½×,minecraft:brown_wool_slab
+66,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ØÉ«ÑòÃ«Â¥Ìİ,minecraft:brown_wool_stairs
+67,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ó£»¨Ä¾Õ¤À¸,minecraft:cherry_fence
+68,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ğü¹ÒÊ½Ó£»¨Ä¾¸æÊ¾ÅÆ,minecraft:cherry_hanging_sign
+69,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ó£»¨Ä¾°å,minecraft:cherry_planks
+70,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ó£»¨Ä¾¸æÊ¾ÅÆ,minecraft:cherry_sign
+71,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ó£»¨Ä¾Ì¨½×,minecraft:cherry_slab
+72,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ó£»¨Ä¾Â¥Ìİ,minecraft:cherry_stairs
+73,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ó£»¨Ä¾,minecraft:cherry_wood
+74,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µñÎÆÖìÉ°,minecraft:chiseled_cinnabar
+75,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µñÎÆÍ­¿é,minecraft:chiseled_copper
+76,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µñÎÆÉî°åÑÒ,minecraft:chiseled_deepslate
+77,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µñÎÆÏÂ½ç×©¿é,minecraft:chiseled_nether_bricks
+78,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µñÎÆÄ¥ÖÆºÚÊ¯,minecraft:chiseled_polished_blackstone
+79,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µñÎÆÊ¯Ó¢¿é,minecraft:chiseled_quartz_block
+80,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µñÎÆºìÉ°ÑÒ,minecraft:chiseled_red_sandstone
+81,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µñÎÆÊ÷Ö¬×©¿é,minecraft:chiseled_resin_bricks
+82,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µñÎÆÉ°ÑÒ,minecraft:chiseled_sandstone
+83,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µñÎÆÊ¯×©,minecraft:chiseled_stone_bricks
+84,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µñÎÆÁò»Æ,minecraft:chiseled_sulfur
+85,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µñÎÆÄı»ÒÑÒ,minecraft:chiseled_tuff
+86,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µñÎÆÄı»ÒÑÒ×©,minecraft:chiseled_tuff_bricks
+87,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÖìÉ°×©Ì¨½×,minecraft:cinnabar_brick_slab
+88,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÖìÉ°×©Â¥Ìİ,minecraft:cinnabar_brick_stairs
+89,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÖìÉ°×©Ç½,minecraft:cinnabar_brick_wall
+90,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÖìÉ°×©,minecraft:cinnabar_bricks
+91,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÖìÉ°Ì¨½×,minecraft:cinnabar_slab
+92,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÖìÉ°Â¥Ìİ,minecraft:cinnabar_stairs
+93,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÖìÉ°Ç½,minecraft:cinnabar_wall
+94,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ğ¤ÍÁ,minecraft:clay
+95,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,É°ÍÁ,minecraft:coarse_dirt
+96,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Éî°åÑÒÔ²Ê¯Ì¨½×,minecraft:cobbled_deepslate_slab
+97,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Éî°åÑÒÔ²Ê¯Â¥Ìİ,minecraft:cobbled_deepslate_stairs
+98,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Éî°åÑÒÔ²Ê¯Ç½,minecraft:cobbled_deepslate_wall
+99,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ô²Ê¯Ì¨½×,minecraft:cobblestone_slab
+100,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ô²Ê¯Â¥Ìİ,minecraft:cobblestone_stairs
+101,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ô²Ê¯Ç½,minecraft:cobblestone_wall
+102,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í­À¸¸Ë,minecraft:copper_bars
+103,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í­Á´,minecraft:copper_chain
+104,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í­¸ñÕ¤,minecraft:copper_grate
+105,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ç³ºìÄ¾Õ¤À¸,minecraft:crimson_fence
+106,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ğü¹ÒÊ½ç³ºìÄ¾¸æÊ¾ÅÆ,minecraft:crimson_hanging_sign
+107,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ç³ºì¾úºË,minecraft:crimson_hyphae
+108,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ç³ºìÄ¾°å,minecraft:crimson_planks
+109,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ç³ºìÄ¾¸æÊ¾ÅÆ,minecraft:crimson_sign
+110,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ç³ºìÄ¾Ì¨½×,minecraft:crimson_slab
+111,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ç³ºìÄ¾Â¥Ìİ,minecraft:crimson_stairs
+112,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÇĞÖÆÍ­¿é,minecraft:cut_copper
+113,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÇĞÖÆÍ­Ì¨½×,minecraft:cut_copper_slab
+114,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÇĞÖÆÍ­Â¥Ìİ,minecraft:cut_copper_stairs
+115,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÇĞÖÆºìÉ°ÑÒ,minecraft:cut_red_sandstone
+116,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÇĞÖÆºìÉ°ÑÒÌ¨½×,minecraft:cut_red_sandstone_slab
+117,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÇĞÖÆÉ°ÑÒ,minecraft:cut_sandstone
+118,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÇĞÖÆÉ°ÑÒÌ¨½×,minecraft:cut_sandstone_slab
+119,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÇàÉ«µØÌº,minecraft:cyan_carpet
+120,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÇàÉ«»ìÄıÍÁ·ÛÄ©,minecraft:cyan_concrete_powder
+121,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÇàÉ«»ìÄıÍÁÌ¨½×,minecraft:cyan_concrete_slab
+122,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÇàÉ«»ìÄıÍÁÂ¥Ìİ,minecraft:cyan_concrete_stairs
+123,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÇàÉ«È¾É«²£Á§,minecraft:cyan_stained_glass
+124,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÇàÉ«È¾É«²£Á§°å,minecraft:cyan_stained_glass_pane
+125,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÇàÉ«ÌÕÍß,minecraft:cyan_terracotta
+126,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÇàÉ«ÑòÃ«,minecraft:cyan_wool
+127,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÇàÉ«ÑòÃ«Ì¨½×,minecraft:cyan_wool_slab
+128,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÇàÉ«ÑòÃ«Â¥Ìİ,minecraft:cyan_wool_stairs
+129,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÉîÉ«ÏğÄ¾Õ¤À¸,minecraft:dark_oak_fence
+130,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ğü¹ÒÊ½ÉîÉ«ÏğÄ¾¸æÊ¾ÅÆ,minecraft:dark_oak_hanging_sign
+131,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÉîÉ«ÏğÄ¾Ä¾°å,minecraft:dark_oak_planks
+132,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÉîÉ«ÏğÄ¾¸æÊ¾ÅÆ,minecraft:dark_oak_sign
+133,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÉîÉ«ÏğÄ¾Ì¨½×,minecraft:dark_oak_slab
+134,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÉîÉ«ÏğÄ¾Â¥Ìİ,minecraft:dark_oak_stairs
+135,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÉîÉ«ÏğÄ¾,minecraft:dark_oak_wood
+136,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°µº£¾§Ê¯,minecraft:dark_prismarine
+137,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°µº£¾§Ê¯Ì¨½×,minecraft:dark_prismarine_slab
+138,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°µº£¾§Ê¯Â¥Ìİ,minecraft:dark_prismarine_stairs
+139,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Éî°åÑÒ×©Ì¨½×,minecraft:deepslate_brick_slab
+140,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Éî°åÑÒ×©Â¥Ìİ,minecraft:deepslate_brick_stairs
+141,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Éî°åÑÒ×©Ç½,minecraft:deepslate_brick_wall
+142,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Éî°åÑÒ×©,minecraft:deepslate_bricks
+143,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Éî°åÑÒÍßÌ¨½×,minecraft:deepslate_tile_slab
+144,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Éî°åÑÒÍßÂ¥Ìİ,minecraft:deepslate_tile_stairs
+145,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Éî°åÑÒÍßÇ½,minecraft:deepslate_tile_wall
+146,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Éî°åÑÒÍß,minecraft:deepslate_tiles
+147,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÉÁ³¤ÑÒ,minecraft:diorite
+148,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÉÁ³¤ÑÒÌ¨½×,minecraft:diorite_slab
+149,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÉÁ³¤ÑÒÂ¥Ìİ,minecraft:diorite_stairs
+150,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÉÁ³¤ÑÒÇ½,minecraft:diorite_wall
+151,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ê§Ë®¶ñ»ê,minecraft:dried_ghast
+152,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µÎË®Ê¯¿é,minecraft:dripstone_block
+153,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä©µØÊ¯×©Ì¨½×,minecraft:end_stone_brick_slab
+154,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä©µØÊ¯×©Â¥Ìİ,minecraft:end_stone_brick_stairs
+155,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä©µØÊ¯×©Ç½,minecraft:end_stone_brick_wall
+156,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä©µØÊ¯×©,minecraft:end_stone_bricks
+157,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°ß²µµÄµñÎÆÍ­¿é,minecraft:exposed_chiseled_copper
+158,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°ß²µµÄÍ­¸ñÕ¤,minecraft:exposed_copper_grate
+159,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°ß²µµÄÇĞÖÆÍ­¿é,minecraft:exposed_cut_copper
+160,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°ß²µµÄÇĞÖÆÍ­Ì¨½×,minecraft:exposed_cut_copper_slab
+161,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°ß²µµÄÇĞÖÆÍ­Â¥Ìİ,minecraft:exposed_cut_copper_stairs
+162,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,²£Á§°å,minecraft:glass_pane
+163,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ó«Ê¯,minecraft:glowstone
+164,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,½ğÆÑ¹«Ó¢,minecraft:golden_dandelion
+165,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»¨¸ÚÑÒ,minecraft:granite
+166,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»¨¸ÚÑÒÌ¨½×,minecraft:granite_slab
+167,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»¨¸ÚÑÒÂ¥Ìİ,minecraft:granite_stairs
+168,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»¨¸ÚÑÒÇ½,minecraft:granite_wall
+169,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÒÉ«µØÌº,minecraft:gray_carpet
+170,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÒÉ«»ìÄıÍÁ·ÛÄ©,minecraft:gray_concrete_powder
+171,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÒÉ«»ìÄıÍÁÌ¨½×,minecraft:gray_concrete_slab
+172,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÒÉ«»ìÄıÍÁÂ¥Ìİ,minecraft:gray_concrete_stairs
+173,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÒÉ«È¾É«²£Á§,minecraft:gray_stained_glass
+174,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÒÉ«È¾É«²£Á§°å,minecraft:gray_stained_glass_pane
+175,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÒÉ«ÌÕÍß,minecraft:gray_terracotta
+176,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÒÉ«ÑòÃ«,minecraft:gray_wool
+177,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÒÉ«ÑòÃ«Ì¨½×,minecraft:gray_wool_slab
+178,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÒÉ«ÑòÃ«Â¥Ìİ,minecraft:gray_wool_stairs
+179,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÂÌÉ«µØÌº,minecraft:green_carpet
+180,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÂÌÉ«»ìÄıÍÁ·ÛÄ©,minecraft:green_concrete_powder
+181,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÂÌÉ«»ìÄıÍÁÌ¨½×,minecraft:green_concrete_slab
+182,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÂÌÉ«»ìÄıÍÁÂ¥Ìİ,minecraft:green_concrete_stairs
+183,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÂÌÉ«È¾É«²£Á§,minecraft:green_stained_glass
+184,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÂÌÉ«È¾É«²£Á§°å,minecraft:green_stained_glass_pane
+185,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÂÌÉ«ÌÕÍß,minecraft:green_terracotta
+186,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÂÌÉ«ÑòÃ«,minecraft:green_wool
+187,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÂÌÉ«ÑòÃ«Ì¨½×,minecraft:green_wool_slab
+188,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÂÌÉ«ÑòÃ«Â¥Ìİ,minecraft:green_wool_stairs
+189,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÌúÀ¸¸Ë,minecraft:iron_bars
+190,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÌúÁ´,minecraft:iron_chain
+191,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,´ÔÁÖÄ¾Õ¤À¸,minecraft:jungle_fence
+192,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ğü¹ÒÊ½´ÔÁÖÄ¾¸æÊ¾ÅÆ,minecraft:jungle_hanging_sign
+193,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,´ÔÁÖÄ¾°å,minecraft:jungle_planks
+194,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,´ÔÁÖÄ¾¸æÊ¾ÅÆ,minecraft:jungle_sign
+195,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,´ÔÁÖÄ¾Ì¨½×,minecraft:jungle_slab
+196,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,´ÔÁÖÄ¾Â¥Ìİ,minecraft:jungle_stairs
+197,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,´ÔÁÖÄ¾,minecraft:jungle_wood
+198,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ìİ×Ó,minecraft:ladder
+199,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­À¶É«µØÌº,minecraft:light_blue_carpet
+200,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­À¶É«»ìÄıÍÁ·ÛÄ©,minecraft:light_blue_concrete_powder
+201,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­À¶É«»ìÄıÍÁÌ¨½×,minecraft:light_blue_concrete_slab
+202,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­À¶É«»ìÄıÍÁÂ¥Ìİ,minecraft:light_blue_concrete_stairs
+203,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­À¶É«È¾É«²£Á§,minecraft:light_blue_stained_glass
+204,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­À¶É«È¾É«²£Á§°å,minecraft:light_blue_stained_glass_pane
+205,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­À¶É«ÌÕÍß,minecraft:light_blue_terracotta
+206,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­À¶É«ÑòÃ«,minecraft:light_blue_wool
+207,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­À¶É«ÑòÃ«Ì¨½×,minecraft:light_blue_wool_slab
+208,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­À¶É«ÑòÃ«Â¥Ìİ,minecraft:light_blue_wool_stairs
+209,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­»ÒÉ«µØÌº,minecraft:light_gray_carpet
+210,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­»ÒÉ«»ìÄıÍÁ·ÛÄ©,minecraft:light_gray_concrete_powder
+211,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­»ÒÉ«»ìÄıÍÁÌ¨½×,minecraft:light_gray_concrete_slab
+212,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­»ÒÉ«»ìÄıÍÁÂ¥Ìİ,minecraft:light_gray_concrete_stairs
+213,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­»ÒÉ«È¾É«²£Á§,minecraft:light_gray_stained_glass
+214,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­»ÒÉ«È¾É«²£Á§°å,minecraft:light_gray_stained_glass_pane
+215,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­»ÒÉ«ÌÕÍß,minecraft:light_gray_terracotta
+216,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­»ÒÉ«ÑòÃ«,minecraft:light_gray_wool
+217,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­»ÒÉ«ÑòÃ«Ì¨½×,minecraft:light_gray_wool_slab
+218,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,µ­»ÒÉ«ÑòÃ«Â¥Ìİ,minecraft:light_gray_wool_stairs
+219,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÂÌÉ«µØÌº,minecraft:lime_carpet
+220,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÂÌÉ«»ìÄıÍÁ·ÛÄ©,minecraft:lime_concrete_powder
+221,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÂÌÉ«»ìÄıÍÁÌ¨½×,minecraft:lime_concrete_slab
+222,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÂÌÉ«»ìÄıÍÁÂ¥Ìİ,minecraft:lime_concrete_stairs
+223,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÂÌÉ«È¾É«²£Á§,minecraft:lime_stained_glass
+224,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÂÌÉ«È¾É«²£Á§°å,minecraft:lime_stained_glass_pane
+225,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÂÌÉ«ÌÕÍß,minecraft:lime_terracotta
+226,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÂÌÉ«ÑòÃ«,minecraft:lime_wool
+227,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÂÌÉ«ÑòÃ«Ì¨½×,minecraft:lime_wool_slab
+228,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÂÌÉ«ÑòÃ«Â¥Ìİ,minecraft:lime_wool_stairs
+229,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Æ·ºìÉ«µØÌº,minecraft:magenta_carpet
+230,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Æ·ºìÉ«»ìÄıÍÁ·ÛÄ©,minecraft:magenta_concrete_powder
+231,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Æ·ºìÉ«»ìÄıÍÁÌ¨½×,minecraft:magenta_concrete_slab
+232,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Æ·ºìÉ«»ìÄıÍÁÂ¥Ìİ,minecraft:magenta_concrete_stairs
+233,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Æ·ºìÉ«È¾É«²£Á§,minecraft:magenta_stained_glass
+234,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Æ·ºìÉ«È¾É«²£Á§°å,minecraft:magenta_stained_glass_pane
+235,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Æ·ºìÉ«ÌÕÍß,minecraft:magenta_terracotta
+236,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Æ·ºìÉ«ÑòÃ«,minecraft:magenta_wool
+237,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Æ·ºìÉ«ÑòÃ«Ì¨½×,minecraft:magenta_wool_slab
+238,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Æ·ºìÉ«ÑòÃ«Â¥Ìİ,minecraft:magenta_wool_stairs
+239,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÑÒ½¬¿é,minecraft:magma_block
+240,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÊ÷Ä¾Õ¤À¸,minecraft:mangrove_fence
+241,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ğü¹ÒÊ½ºìÊ÷Ä¾¸æÊ¾ÅÆ,minecraft:mangrove_hanging_sign
+242,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÊ÷Ä¾°å,minecraft:mangrove_planks
+243,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÊ÷Ä¾¸æÊ¾ÅÆ,minecraft:mangrove_sign
+244,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÊ÷Ä¾Ì¨½×,minecraft:mangrove_slab
+245,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÊ÷Ä¾Â¥Ìİ,minecraft:mangrove_stairs
+246,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÊ÷Ä¾,minecraft:mangrove_wood
+247,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Î÷¹Ï,minecraft:melon
+248,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,¸²µØÌ¦Şº,minecraft:moss_carpet
+249,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ì¦Ê¯,minecraft:mossy_cobblestone
+250,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ì¦Ê¯Ì¨½×,minecraft:mossy_cobblestone_slab
+251,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ì¦Ê¯Â¥Ìİ,minecraft:mossy_cobblestone_stairs
+252,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ì¦Ê¯Ç½,minecraft:mossy_cobblestone_wall
+253,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ì¦Ê¯×©Ì¨½×,minecraft:mossy_stone_brick_slab
+254,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ì¦Ê¯×©Â¥Ìİ,minecraft:mossy_stone_brick_stairs
+255,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ì¦Ê¯×©Ç½,minecraft:mossy_stone_brick_wall
+256,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ì¦Ê¯×©,minecraft:mossy_stone_bricks
+257,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Äà×©Ì¨½×,minecraft:mud_brick_slab
+258,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Äà×©Â¥Ìİ,minecraft:mud_brick_stairs
+259,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Äà×©Ç½,minecraft:mud_brick_wall
+260,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Äà×©,minecraft:mud_bricks
+261,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Õ´ÄàµÄºìÊ÷¸ù,minecraft:muddy_mangrove_roots
+262,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÏÂ½ç×©Õ¤À¸,minecraft:nether_brick_fence
+263,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÏÂ½ç×©Ì¨½×,minecraft:nether_brick_slab
+264,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÏÂ½ç×©Â¥Ìİ,minecraft:nether_brick_stairs
+265,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÏÂ½ç×©Ç½,minecraft:nether_brick_wall
+266,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÏÂ½ç×©¿é,minecraft:nether_bricks
+267,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÏÂ½çğà¿é,minecraft:nether_wart_block
+268,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÏğÄ¾Õ¤À¸,minecraft:oak_fence
+269,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ğü¹ÒÊ½ÏğÄ¾¸æÊ¾ÅÆ,minecraft:oak_hanging_sign
+270,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÏğÄ¾Ä¾°å,minecraft:oak_planks
+271,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÏğÄ¾¸æÊ¾ÅÆ,minecraft:oak_sign
+272,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÏğÄ¾Ì¨½×,minecraft:oak_slab
+273,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÏğÄ¾Â¥Ìİ,minecraft:oak_stairs
+274,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÏğÄ¾,minecraft:oak_wood
+275,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,³ÈÉ«µØÌº,minecraft:orange_carpet
+276,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,³ÈÉ«»ìÄıÍÁ·ÛÄ©,minecraft:orange_concrete_powder
+277,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,³ÈÉ«»ìÄıÍÁÌ¨½×,minecraft:orange_concrete_slab
+278,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,³ÈÉ«»ìÄıÍÁÂ¥Ìİ,minecraft:orange_concrete_stairs
+279,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,³ÈÉ«È¾É«²£Á§,minecraft:orange_stained_glass
+280,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,³ÈÉ«È¾É«²£Á§°å,minecraft:orange_stained_glass_pane
+281,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,³ÈÉ«ÌÕÍß,minecraft:orange_terracotta
+282,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,³ÈÉ«ÑòÃ«,minecraft:orange_wool
+283,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,³ÈÉ«ÑòÃ«Ì¨½×,minecraft:orange_wool_slab
+284,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,³ÈÉ«ÑòÃ«Â¥Ìİ,minecraft:orange_wool_stairs
+285,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ñõ»¯µÄµñÎÆÍ­¿é,minecraft:oxidized_chiseled_copper
+286,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ñõ»¯µÄÍ­¸ñÕ¤,minecraft:oxidized_copper_grate
+287,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ñõ»¯µÄÇĞÖÆÍ­¿é,minecraft:oxidized_cut_copper
+288,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ñõ»¯µÄÇĞÖÆÍ­Ì¨½×,minecraft:oxidized_cut_copper_slab
+289,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ñõ»¯µÄÇĞÖÆÍ­Â¥Ìİ,minecraft:oxidized_cut_copper_stairs
+290,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,¸¡±ù,minecraft:packed_ice
+291,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÄàÅ÷,minecraft:packed_mud
+292,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,²Ô°×¸²µØÌ¦Şº,minecraft:pale_moss_carpet
+293,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,²Ô°×ÏğÄ¾Õ¤À¸,minecraft:pale_oak_fence
+294,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ğü¹ÒÊ½²Ô°×ÏğÄ¾¸æÊ¾ÅÆ,minecraft:pale_oak_hanging_sign
+295,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,²Ô°×ÏğÄ¾Ä¾°å,minecraft:pale_oak_planks
+296,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,²Ô°×ÏğÄ¾¸æÊ¾ÅÆ,minecraft:pale_oak_sign
+297,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,²Ô°×ÏğÄ¾Ì¨½×,minecraft:pale_oak_slab
+298,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,²Ô°×ÏğÄ¾Â¥Ìİ,minecraft:pale_oak_stairs
+299,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,²Ô°×ÏğÄ¾,minecraft:pale_oak_wood
+300,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,·ÛºìÉ«µØÌº,minecraft:pink_carpet
+301,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,·ÛºìÉ«»ìÄıÍÁ·ÛÄ©,minecraft:pink_concrete_powder
+302,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,·ÛºìÉ«»ìÄıÍÁÌ¨½×,minecraft:pink_concrete_slab
+303,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,·ÛºìÉ«»ìÄıÍÁÂ¥Ìİ,minecraft:pink_concrete_stairs
+304,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,·ÛºìÉ«È¾É«²£Á§,minecraft:pink_stained_glass
+305,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,·ÛºìÉ«È¾É«²£Á§°å,minecraft:pink_stained_glass_pane
+306,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,·ÛºìÉ«ÌÕÍß,minecraft:pink_terracotta
+307,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,·ÛºìÉ«ÑòÃ«,minecraft:pink_wool
+308,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,·ÛºìÉ«ÑòÃ«Ì¨½×,minecraft:pink_wool_slab
+309,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,·ÛºìÉ«ÑòÃ«Â¥Ìİ,minecraft:pink_wool_stairs
+310,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆ°²É½ÑÒ,minecraft:polished_andesite
+311,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆ°²É½ÑÒÌ¨½×,minecraft:polished_andesite_slab
+312,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆ°²É½ÑÒÂ¥Ìİ,minecraft:polished_andesite_stairs
+313,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆĞşÎäÑÒ,minecraft:polished_basalt
+314,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆºÚÊ¯,minecraft:polished_blackstone
+315,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆºÚÊ¯×©Ì¨½×,minecraft:polished_blackstone_brick_slab
+316,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆºÚÊ¯×©Â¥Ìİ,minecraft:polished_blackstone_brick_stairs
+317,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆºÚÊ¯×©Ç½,minecraft:polished_blackstone_brick_wall
+318,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆºÚÊ¯×©,minecraft:polished_blackstone_bricks
+319,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆºÚÊ¯Ì¨½×,minecraft:polished_blackstone_slab
+320,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆºÚÊ¯Â¥Ìİ,minecraft:polished_blackstone_stairs
+321,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆºÚÊ¯Ç½,minecraft:polished_blackstone_wall
+322,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆÖìÉ°,minecraft:polished_cinnabar
+323,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆÖìÉ°Ì¨½×,minecraft:polished_cinnabar_slab
+324,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆÖìÉ°Â¥Ìİ,minecraft:polished_cinnabar_stairs
+325,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆÖìÉ°Ç½,minecraft:polished_cinnabar_wall
+326,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆÉî°åÑÒ,minecraft:polished_deepslate
+327,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆÉî°åÑÒÌ¨½×,minecraft:polished_deepslate_slab
+328,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆÉî°åÑÒÂ¥Ìİ,minecraft:polished_deepslate_stairs
+329,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆÉî°åÑÒÇ½,minecraft:polished_deepslate_wall
+330,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆÉÁ³¤ÑÒ,minecraft:polished_diorite
+331,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆÉÁ³¤ÑÒÌ¨½×,minecraft:polished_diorite_slab
+332,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆÉÁ³¤ÑÒÂ¥Ìİ,minecraft:polished_diorite_stairs
+333,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆ»¨¸ÚÑÒ,minecraft:polished_granite
+334,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆ»¨¸ÚÑÒÌ¨½×,minecraft:polished_granite_slab
+335,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆ»¨¸ÚÑÒÂ¥Ìİ,minecraft:polished_granite_stairs
+336,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆÁò»Æ,minecraft:polished_sulfur
+337,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆÁò»ÆÌ¨½×,minecraft:polished_sulfur_slab
+338,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆÁò»ÆÂ¥Ìİ,minecraft:polished_sulfur_stairs
+339,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆÁò»ÆÇ½,minecraft:polished_sulfur_wall
+340,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆÄı»ÒÑÒ,minecraft:polished_tuff
+341,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆÄı»ÒÑÒÌ¨½×,minecraft:polished_tuff_slab
+342,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆÄı»ÒÑÒÂ¥Ìİ,minecraft:polished_tuff_stairs
+343,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ä¥ÖÆÄı»ÒÑÒÇ½,minecraft:polished_tuff_wall
+344,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÑîÄ¾Õ¤À¸,minecraft:poplar_fence
+345,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ğü¹ÒÊ½ÑîÄ¾¸æÊ¾ÅÆ,minecraft:poplar_hanging_sign
+346,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÑîÄ¾Ä¾°å,minecraft:poplar_planks
+347,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÑîÄ¾¸æÊ¾ÅÆ,minecraft:poplar_sign
+348,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÑîÄ¾Ì¨½×,minecraft:poplar_slab
+349,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÑîÄ¾Â¥Ìİ,minecraft:poplar_stairs
+350,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÑîÄ¾,minecraft:poplar_wood
+351,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÁÒĞÔÁò»Æ,minecraft:potent_sulfur
+352,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,º£¾§Ê¯,minecraft:prismarine
+353,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,º£¾§Ê¯×©Ì¨½×,minecraft:prismarine_brick_slab
+354,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,º£¾§Ê¯×©Â¥Ìİ,minecraft:prismarine_brick_stairs
+355,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,º£¾§Ê¯×©,minecraft:prismarine_bricks
+356,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,º£¾§Ê¯Ì¨½×,minecraft:prismarine_slab
+357,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,º£¾§Ê¯Â¥Ìİ,minecraft:prismarine_stairs
+358,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,º£¾§Ê¯Ç½,minecraft:prismarine_wall
+359,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ÏÉ«µØÌº,minecraft:purple_carpet
+360,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ÏÉ«»ìÄıÍÁ·ÛÄ©,minecraft:purple_concrete_powder
+361,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ÏÉ«»ìÄıÍÁÌ¨½×,minecraft:purple_concrete_slab
+362,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ÏÉ«»ìÄıÍÁÂ¥Ìİ,minecraft:purple_concrete_stairs
+363,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ÏÉ«È¾É«²£Á§,minecraft:purple_stained_glass
+364,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ÏÉ«È¾É«²£Á§°å,minecraft:purple_stained_glass_pane
+365,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ÏÉ«ÌÕÍß,minecraft:purple_terracotta
+366,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ÏÉ«ÑòÃ«,minecraft:purple_wool
+367,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ÏÉ«ÑòÃ«Ì¨½×,minecraft:purple_wool_slab
+368,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ÏÉ«ÑòÃ«Â¥Ìİ,minecraft:purple_wool_stairs
+369,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×Ïçê¿é,minecraft:purpur_block
+370,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ÏçêÖù,minecraft:purpur_pillar
+371,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ÏçêÌ¨½×,minecraft:purpur_slab
+372,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,×ÏçêÂ¥Ìİ,minecraft:purpur_stairs
+373,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ê¯Ó¢¿é,minecraft:quartz_block
+374,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ê¯Ó¢×©,minecraft:quartz_bricks
+375,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ê¯Ó¢Öù,minecraft:quartz_pillar
+376,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ê¯Ó¢Ì¨½×,minecraft:quartz_slab
+377,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ê¯Ó¢Â¥Ìİ,minecraft:quartz_stairs
+378,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÉ«µØÌº,minecraft:red_carpet
+379,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÉ«»ìÄıÍÁ·ÛÄ©,minecraft:red_concrete_powder
+380,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÉ«»ìÄıÍÁÌ¨½×,minecraft:red_concrete_slab
+381,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÉ«»ìÄıÍÁÂ¥Ìİ,minecraft:red_concrete_stairs
+382,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÉ«ÏÂ½ç×©Ì¨½×,minecraft:red_nether_brick_slab
+383,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÉ«ÏÂ½ç×©Â¥Ìİ,minecraft:red_nether_brick_stairs
+384,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÉ«ÏÂ½ç×©Ç½,minecraft:red_nether_brick_wall
+385,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÉ«ÏÂ½ç×©¿é,minecraft:red_nether_bricks
+386,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÉ°ÑÒ,minecraft:red_sandstone
+387,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÉ°ÑÒÌ¨½×,minecraft:red_sandstone_slab
+388,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÉ°ÑÒÂ¥Ìİ,minecraft:red_sandstone_stairs
+389,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÉ°ÑÒÇ½,minecraft:red_sandstone_wall
+390,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÉ«È¾É«²£Á§,minecraft:red_stained_glass
+391,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÉ«È¾É«²£Á§°å,minecraft:red_stained_glass_pane
+392,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÉ«ÌÕÍß,minecraft:red_terracotta
+393,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÉ«ÑòÃ«,minecraft:red_wool
+394,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÉ«ÑòÃ«Ì¨½×,minecraft:red_wool_slab
+395,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ºìÉ«ÑòÃ«Â¥Ìİ,minecraft:red_wool_stairs
+396,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ê÷Ö¬×©Ì¨½×,minecraft:resin_brick_slab
+397,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ê÷Ö¬×©Â¥Ìİ,minecraft:resin_brick_stairs
+398,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ê÷Ö¬×©Ç½,minecraft:resin_brick_wall
+399,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ê÷Ö¬×©¿é,minecraft:resin_bricks
+400,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,É°ÑÒ,minecraft:sandstone
+401,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,É°ÑÒÌ¨½×,minecraft:sandstone_slab
+402,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,É°ÑÒÂ¥Ìİ,minecraft:sandstone_stairs
+403,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,É°ÑÒÇ½,minecraft:sandstone_wall
+404,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,½ÅÊÖ¼Ü,minecraft:scaffolding
+405,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Æ½»¬Ê¯Ó¢Ì¨½×,minecraft:smooth_quartz_slab
+406,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Æ½»¬Ê¯Ó¢Â¥Ìİ,minecraft:smooth_quartz_stairs
+407,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Æ½»¬ºìÉ°ÑÒÌ¨½×,minecraft:smooth_red_sandstone_slab
+408,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Æ½»¬ºìÉ°ÑÒÂ¥Ìİ,minecraft:smooth_red_sandstone_stairs
+409,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Æ½»¬É°ÑÒÌ¨½×,minecraft:smooth_sandstone_slab
+410,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Æ½»¬É°ÑÒÂ¥Ìİ,minecraft:smooth_sandstone_stairs
+411,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Æ½»¬Ê¯Í·Ì¨½×,minecraft:smooth_stone_slab
+412,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ñ©,minecraft:snow
+413,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ñ©¿é,minecraft:snow_block
+414,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÔÆÉ¼Ä¾Õ¤À¸,minecraft:spruce_fence
+415,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ğü¹ÒÊ½ÔÆÉ¼Ä¾¸æÊ¾ÅÆ,minecraft:spruce_hanging_sign
+416,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÔÆÉ¼Ä¾°å,minecraft:spruce_planks
+417,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÔÆÉ¼Ä¾¸æÊ¾ÅÆ,minecraft:spruce_sign
+418,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÔÆÉ¼Ä¾Ì¨½×,minecraft:spruce_slab
+419,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÔÆÉ¼Ä¾Â¥Ìİ,minecraft:spruce_stairs
+420,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÔÆÉ¼Ä¾,minecraft:spruce_wood
+421,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ê¯×©Ì¨½×,minecraft:stone_brick_slab
+422,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ê¯×©Â¥Ìİ,minecraft:stone_brick_stairs
+423,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ê¯×©Ç½,minecraft:stone_brick_wall
+424,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ê¯×©,minecraft:stone_bricks
+425,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ê¯Í·Ì¨½×,minecraft:stone_slab
+426,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ê¯Í·Â¥Ìİ,minecraft:stone_stairs
+427,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,È¥Æ¤½ğºÏ»¶Ä¾,minecraft:stripped_acacia_wood
+428,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,È¥Æ¤°×èëÄ¾,minecraft:stripped_birch_wood
+429,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,È¥Æ¤Ó£»¨Ä¾,minecraft:stripped_cherry_wood
+430,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,È¥Æ¤ç³ºì¾úºË,minecraft:stripped_crimson_hyphae
+431,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,È¥Æ¤ÉîÉ«ÏğÄ¾,minecraft:stripped_dark_oak_wood
+432,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,È¥Æ¤´ÔÁÖÄ¾,minecraft:stripped_jungle_wood
+433,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,È¥Æ¤ºìÊ÷Ä¾,minecraft:stripped_mangrove_wood
+434,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,È¥Æ¤ÏğÄ¾,minecraft:stripped_oak_wood
+435,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,È¥Æ¤²Ô°×ÏğÄ¾,minecraft:stripped_pale_oak_wood
+436,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,È¥Æ¤ÑîÄ¾,minecraft:stripped_poplar_wood
+437,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,È¥Æ¤ÔÆÉ¼Ä¾,minecraft:stripped_spruce_wood
+438,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,È¥Æ¤¹îÒì¾úºË,minecraft:stripped_warped_hyphae
+439,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Áò»Æ,minecraft:sulfur
+440,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Áò»Æ×©Ì¨½×,minecraft:sulfur_brick_slab
+441,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Áò»Æ×©Â¥Ìİ,minecraft:sulfur_brick_stairs
+442,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Áò»Æ×©Ç½,minecraft:sulfur_brick_wall
+443,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Áò»Æ×©,minecraft:sulfur_bricks
+444,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Áò»ÆÌ¨½×,minecraft:sulfur_slab
+445,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Áò»ÆÂ¥Ìİ,minecraft:sulfur_stairs
+446,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Áò»ÆÇ½,minecraft:sulfur_wall
+447,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ÕÚ¹â²£Á§,minecraft:tinted_glass
+448,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Äı»ÒÑÒ×©Ì¨½×,minecraft:tuff_brick_slab
+449,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Äı»ÒÑÒ×©Â¥Ìİ,minecraft:tuff_brick_stairs
+450,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Äı»ÒÑÒ×©Ç½,minecraft:tuff_brick_wall
+451,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Äı»ÒÑÒ×©,minecraft:tuff_bricks
+452,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Äı»ÒÑÒÌ¨½×,minecraft:tuff_slab
+453,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Äı»ÒÑÒÂ¥Ìİ,minecraft:tuff_stairs
+454,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Äı»ÒÑÒÇ½,minecraft:tuff_wall
+455,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,¹îÒìÄ¾Õ¤À¸,minecraft:warped_fence
+456,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Ğü¹ÒÊ½¹îÒìÄ¾¸æÊ¾ÅÆ,minecraft:warped_hanging_sign
+457,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,¹îÒì¾úºË,minecraft:warped_hyphae
+458,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,¹îÒìÄ¾°å,minecraft:warped_planks
+459,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,¹îÒìÄ¾¸æÊ¾ÅÆ,minecraft:warped_sign
+460,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,¹îÒìÄ¾Ì¨½×,minecraft:warped_slab
+461,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,¹îÒìÄ¾Â¥Ìİ,minecraft:warped_stairs
+462,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄµñÎÆÍ­¿é,minecraft:waxed_chiseled_copper
+463,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄÍ­À¸¸Ë,minecraft:waxed_copper_bars
+464,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄÍ­¿é,minecraft:waxed_copper_block
+465,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄÍ­Á´,minecraft:waxed_copper_chain
+466,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄÍ­¿şÀÜÏñ,minecraft:waxed_copper_golem_statue
+467,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄÍ­¸ñÕ¤,minecraft:waxed_copper_grate
+468,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄÇĞÖÆÍ­¿é,minecraft:waxed_cut_copper
+469,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄÇĞÖÆÍ­Ì¨½×,minecraft:waxed_cut_copper_slab
+470,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄÇĞÖÆÍ­Â¥Ìİ,minecraft:waxed_cut_copper_stairs
+471,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄ°ß²µµñÎÆÍ­¿é,minecraft:waxed_exposed_chiseled_copper
+472,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄ°ß²µÍ­¿é,minecraft:waxed_exposed_copper
+473,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄ°ß²µÍ­À¸¸Ë,minecraft:waxed_exposed_copper_bars
+474,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄ°ß²µÍ­Á´,minecraft:waxed_exposed_copper_chain
+475,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄ°ß²µÍ­¿şÀÜÏñ,minecraft:waxed_exposed_copper_golem_statue
+476,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄ°ß²µÍ­¸ñÕ¤,minecraft:waxed_exposed_copper_grate
+477,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄ°ß²µÇĞÖÆÍ­¿é,minecraft:waxed_exposed_cut_copper
+478,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄ°ß²µÇĞÖÆÍ­Ì¨½×,minecraft:waxed_exposed_cut_copper_slab
+479,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄ°ß²µÇĞÖÆÍ­Â¥Ìİ,minecraft:waxed_exposed_cut_copper_stairs
+480,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄÑõ»¯µñÎÆÍ­¿é,minecraft:waxed_oxidized_chiseled_copper
+481,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄÑõ»¯Í­¿é,minecraft:waxed_oxidized_copper
+482,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄÑõ»¯Í­À¸¸Ë,minecraft:waxed_oxidized_copper_bars
+483,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄÑõ»¯Í­Á´,minecraft:waxed_oxidized_copper_chain
+484,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄÑõ»¯Í­¿şÀÜÏñ,minecraft:waxed_oxidized_copper_golem_statue
+485,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄÑõ»¯Í­¸ñÕ¤,minecraft:waxed_oxidized_copper_grate
+486,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄÑõ»¯ÇĞÖÆÍ­¿é,minecraft:waxed_oxidized_cut_copper
+487,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄÑõ»¯ÇĞÖÆÍ­Ì¨½×,minecraft:waxed_oxidized_cut_copper_slab
+488,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄÑõ»¯ÇĞÖÆÍ­Â¥Ìİ,minecraft:waxed_oxidized_cut_copper_stairs
+489,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄĞâÊ´µñÎÆÍ­¿é,minecraft:waxed_weathered_chiseled_copper
+490,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄĞâÊ´Í­¿é,minecraft:waxed_weathered_copper
+491,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄĞâÊ´Í­À¸¸Ë,minecraft:waxed_weathered_copper_bars
+492,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄĞâÊ´Í­Á´,minecraft:waxed_weathered_copper_chain
+493,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄĞâÊ´Í­¿şÀÜÏñ,minecraft:waxed_weathered_copper_golem_statue
+494,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄĞâÊ´Í­¸ñÕ¤,minecraft:waxed_weathered_copper_grate
+495,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄĞâÊ´ÇĞÖÆÍ­¿é,minecraft:waxed_weathered_cut_copper
+496,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄĞâÊ´ÇĞÖÆÍ­Ì¨½×,minecraft:waxed_weathered_cut_copper_slab
+497,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,Í¿À¯µÄĞâÊ´ÇĞÖÆÍ­Â¥Ìİ,minecraft:waxed_weathered_cut_copper_stairs
+498,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ĞâÊ´µÄµñÎÆÍ­¿é,minecraft:weathered_chiseled_copper
+499,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ĞâÊ´µÄÍ­¸ñÕ¤,minecraft:weathered_copper_grate
+500,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ĞâÊ´µÄÇĞÖÆÍ­¿é,minecraft:weathered_cut_copper
+501,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ĞâÊ´µÄÇĞÖÆÍ­Ì¨½×,minecraft:weathered_cut_copper_slab
+502,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,ĞâÊ´µÄÇĞÖÆÍ­Â¥Ìİ,minecraft:weathered_cut_copper_stairs
+503,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°×É«µØÌº,minecraft:white_carpet
+504,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°×É«»ìÄıÍÁ·ÛÄ©,minecraft:white_concrete_powder
+505,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°×É«»ìÄıÍÁÌ¨½×,minecraft:white_concrete_slab
+506,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°×É«»ìÄıÍÁÂ¥Ìİ,minecraft:white_concrete_stairs
+507,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°×É«È¾É«²£Á§,minecraft:white_stained_glass
+508,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°×É«È¾É«²£Á§°å,minecraft:white_stained_glass_pane
+509,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°×É«ÌÕÍß,minecraft:white_terracotta
+510,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°×É«ÑòÃ«,minecraft:white_wool
+511,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°×É«ÑòÃ«Ì¨½×,minecraft:white_wool_slab
+512,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,°×É«ÑòÃ«Â¥Ìİ,minecraft:white_wool_stairs
+513,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÉ«µØÌº,minecraft:yellow_carpet
+514,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÉ«»ìÄıÍÁ·ÛÄ©,minecraft:yellow_concrete_powder
+515,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÉ«»ìÄıÍÁÌ¨½×,minecraft:yellow_concrete_slab
+516,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÉ«»ìÄıÍÁÂ¥Ìİ,minecraft:yellow_concrete_stairs
+517,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÉ«È¾É«²£Á§,minecraft:yellow_stained_glass
+518,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÉ«È¾É«²£Á§°å,minecraft:yellow_stained_glass_pane
+519,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÉ«ÌÕÍß,minecraft:yellow_terracotta
+520,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÉ«ÑòÃ«,minecraft:yellow_wool
+521,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÉ«ÑòÃ«Ì¨½×,minecraft:yellow_wool_slab
+522,ÍÁ½¨Ô°ÁÖ,craft_construction_landscaping.json,»ÆÉ«ÑòÃ«Â¥Ìİ,minecraft:yellow_wool_stairs
+523,²É¿óÒ±½ğ,craft_mining_metallurgy.json,×ÏË®¾§¿é,minecraft:amethyst_block
+524,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,ºÚÉ«È¾ÁÏ,minecraft:black_dye
+525,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,ÁÒÑæ·Û,minecraft:blaze_powder
+526,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,À¶É«È¾ÁÏ,minecraft:blue_dye
+527,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,×ØÉ«È¾ÁÏ,minecraft:brown_dye
+528,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,Óª»ğ,minecraft:campfire
+529,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,Í­µÆÁı,minecraft:copper_lantern
+530,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,Í­»ğ°Ñ,minecraft:copper_torch
+531,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,ÇàÉ«È¾ÁÏ,minecraft:cyan_dye
+532,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,Ä©µØÖò,minecraft:end_rod
+533,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,»ğÑæµ¯,minecraft:fire_charge
+534,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,ÑÌ»¨»ğ¼ı,minecraft:firework_rocket
+535,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,ÑÌ»ğÖ®ĞÇ,minecraft:firework_star
+536,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,»ÒÉ«È¾ÁÏ,minecraft:gray_dye
+537,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,ÄÏ¹ÏµÆ,minecraft:jack_o_lantern
+538,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,µÆÁı,minecraft:lantern
+539,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,µ­À¶É«È¾ÁÏ,minecraft:light_blue_dye
+540,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,µ­»ÒÉ«È¾ÁÏ,minecraft:light_gray_dye
+541,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,»ÆÂÌÉ«È¾ÁÏ,minecraft:lime_dye
+542,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,Æ·ºìÉ«È¾ÁÏ,minecraft:magenta_dye
+543,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,ÑÒ½¬¸à,minecraft:magma_cream
+544,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,³ÈÉ«È¾ÁÏ,minecraft:orange_dye
+545,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,·ÛºìÉ«È¾ÁÏ,minecraft:pink_dye
+546,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,×ÏÉ«È¾ÁÏ,minecraft:purple_dye
+547,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,ºìÉ«È¾ÁÏ,minecraft:red_dye
+548,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,º£¾§µÆ,minecraft:sea_lantern
+549,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,Áé»êÓª»ğ,minecraft:soul_campfire
+550,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,Áé»êµÆÁı,minecraft:soul_lantern
+551,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,Áé»ê»ğ°Ñ,minecraft:soul_torch
+552,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,»ğ°Ñ,minecraft:torch
+553,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,Í¿À¯µÄÍ­µÆÁı,minecraft:waxed_copper_lantern
+554,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,Í¿À¯µÄ°ß²µÍ­µÆÁı,minecraft:waxed_exposed_copper_lantern
+555,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,Í¿À¯µÄÑõ»¯Í­µÆÁı,minecraft:waxed_oxidized_copper_lantern
+556,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,Í¿À¯µÄĞâÊ´Í­µÆÁı,minecraft:waxed_weathered_copper_lantern
+557,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,°×É«È¾ÁÏ,minecraft:white_dye
+558,ÄÜÔ´»¯¹¤,craft_energy_chemical.json,»ÆÉ«È¾ÁÏ,minecraft:yellow_dye
+559,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,ÌúÕè,minecraft:anvil
+560,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,¸ßÂ¯,minecraft:blast_furnace
+561,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,Ë¢×Ó,minecraft:brush
+562,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,ÌúÍ°,minecraft:bucket
+563,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,Á¶Ò©¹ø,minecraft:cauldron
+564,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,Í­¸«,minecraft:copper_axe
+565,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,Í­¸ä,minecraft:copper_pickaxe
+566,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,Í­ÇÂ,minecraft:copper_shovel
+567,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,¹¤×÷Ì¨,minecraft:crafting_table
+568,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,×êÊ¯¸«,minecraft:diamond_axe
+569,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,×êÊ¯¸ä,minecraft:diamond_pickaxe
+570,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,×êÊ¯ÇÂ,minecraft:diamond_shovel
+571,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,ÖÆ¼ıÌ¨,minecraft:fletching_table
+572,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,´ò»ğÊ¯,minecraft:flint_and_steel
+573,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,ÈÛÂ¯,minecraft:furnace
+574,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,½ğ¸«,minecraft:golden_axe
+575,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,½ğ¸ä,minecraft:golden_pickaxe
+576,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,½ğÇÂ,minecraft:golden_shovel
+577,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,É°ÂÖ,minecraft:grindstone
+578,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,Ìú¸«,minecraft:iron_axe
+579,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,Ìú¸ä,minecraft:iron_pickaxe
+580,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,ÌúÇÂ,minecraft:iron_shovel
+581,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,¶ÍÔìÌ¨,minecraft:smithing_table
+582,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,ÑÌÑ¬Â¯,minecraft:smoker
+583,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,Ä¾¹÷,minecraft:stick
+584,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,Ê¯¸«,minecraft:stone_axe
+585,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,Ê¯¸ä,minecraft:stone_pickaxe
+586,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,Ê¯ÇÂ,minecraft:stone_shovel
+587,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,ÇĞÊ¯»ú,minecraft:stonecutter
+588,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,Ä¾¸«,minecraft:wooden_axe
+589,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,Ä¾¸ä,minecraft:wooden_pickaxe
+590,¼Ó¹¤ÖÆÔì,craft_processing_manufacturing.json,Ä¾ÇÂ,minecraft:wooden_shovel
+591,¿Æ¼¼Ä§·¨,craft_technology_magic.json,½ğºÏ»¶Ä¾°´Å¥,minecraft:acacia_button
+592,¿Æ¼¼Ä§·¨,craft_technology_magic.json,½ğºÏ»¶Ä¾ÃÅ,minecraft:acacia_door
+593,¿Æ¼¼Ä§·¨,craft_technology_magic.json,½ğºÏ»¶Ä¾Õ¤À¸ÃÅ,minecraft:acacia_fence_gate
+594,¿Æ¼¼Ä§·¨,craft_technology_magic.json,½ğºÏ»¶Ä¾Ñ¹Á¦°å,minecraft:acacia_pressure_plate
+595,¿Æ¼¼Ä§·¨,craft_technology_magic.json,½ğºÏ»¶Ä¾»î°åÃÅ,minecraft:acacia_trapdoor
+596,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Öñ°´Å¥,minecraft:bamboo_button
+597,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÖñÃÅ,minecraft:bamboo_door
+598,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÖñÕ¤À¸ÃÅ,minecraft:bamboo_fence_gate
+599,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÖñÑ¹Á¦°å,minecraft:bamboo_pressure_plate
+600,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Öñ»î°åÃÅ,minecraft:bamboo_trapdoor
+601,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ĞÅ±ê,minecraft:beacon
+602,¿Æ¼¼Ä§·¨,craft_technology_magic.json,°×èëÄ¾°´Å¥,minecraft:birch_button
+603,¿Æ¼¼Ä§·¨,craft_technology_magic.json,°×èëÄ¾ÃÅ,minecraft:birch_door
+604,¿Æ¼¼Ä§·¨,craft_technology_magic.json,°×èëÄ¾Õ¤À¸ÃÅ,minecraft:birch_fence_gate
+605,¿Æ¼¼Ä§·¨,craft_technology_magic.json,°×èëÄ¾Ñ¹Á¦°å,minecraft:birch_pressure_plate
+606,¿Æ¼¼Ä§·¨,craft_technology_magic.json,°×èëÄ¾»î°åÃÅ,minecraft:birch_trapdoor
+607,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Ğ£ÆµÓÄÄä¸Ğ²âÌå,minecraft:calibrated_sculk_sensor
+608,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Ó£»¨Ä¾°´Å¥,minecraft:cherry_button
+609,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Ó£»¨Ä¾ÃÅ,minecraft:cherry_door
+610,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Ó£»¨Ä¾Õ¤À¸ÃÅ,minecraft:cherry_fence_gate
+611,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Ó£»¨Ä¾Ñ¹Á¦°å,minecraft:cherry_pressure_plate
+612,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Ó£»¨Ä¾»î°åÃÅ,minecraft:cherry_trapdoor
+613,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ºìÊ¯±È½ÏÆ÷,minecraft:comparator
+614,¿Æ¼¼Ä§·¨,craft_technology_magic.json,³±Ó¿ºËĞÄ,minecraft:conduit
+615,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í­µÆ,minecraft:copper_bulb
+616,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í­ÃÅ,minecraft:copper_door
+617,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í­»î°åÃÅ,minecraft:copper_trapdoor
+618,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ºÏ³ÉÆ÷,minecraft:crafter
+619,¿Æ¼¼Ä§·¨,craft_technology_magic.json,¸ÂÖ¦Ö®ĞÄ,minecraft:creaking_heart
+620,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ç³ºìÄ¾°´Å¥,minecraft:crimson_button
+621,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ç³ºìÄ¾ÃÅ,minecraft:crimson_door
+622,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ç³ºìÄ¾Õ¤À¸ÃÅ,minecraft:crimson_fence_gate
+623,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ç³ºìÄ¾Ñ¹Á¦°å,minecraft:crimson_pressure_plate
+624,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ç³ºìÄ¾»î°åÃÅ,minecraft:crimson_trapdoor
+625,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÉîÉ«ÏğÄ¾°´Å¥,minecraft:dark_oak_button
+626,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÉîÉ«ÏğÄ¾ÃÅ,minecraft:dark_oak_door
+627,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÉîÉ«ÏğÄ¾Õ¤À¸ÃÅ,minecraft:dark_oak_fence_gate
+628,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÉîÉ«ÏğÄ¾Ñ¹Á¦°å,minecraft:dark_oak_pressure_plate
+629,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÉîÉ«ÏğÄ¾»î°åÃÅ,minecraft:dark_oak_trapdoor
+630,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Ñô¹âÌ½²âÆ÷,minecraft:daylight_detector
+631,¿Æ¼¼Ä§·¨,craft_technology_magic.json,·¢ÉäÆ÷,minecraft:dispenser
+632,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í¶ÖÀÆ÷,minecraft:dropper
+633,¿Æ¼¼Ä§·¨,craft_technology_magic.json,¸½Ä§Ì¨,minecraft:enchanting_table
+634,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Ä©µØË®¾§,minecraft:end_crystal
+635,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Ä©Ó°Ö®ÑÛ,minecraft:ender_eye
+636,¿Æ¼¼Ä§·¨,craft_technology_magic.json,°ß²µµÄÍ­µÆ,minecraft:exposed_copper_bulb
+637,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÖØÖÊ²âÖØÑ¹Á¦°å,minecraft:heavy_weighted_pressure_plate
+638,¿Æ¼¼Ä§·¨,craft_technology_magic.json,·äÃÛ¿é,minecraft:honey_block
+639,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÌúÃÅ,minecraft:iron_door
+640,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Ìú»î°åÃÅ,minecraft:iron_trapdoor
+641,¿Æ¼¼Ä§·¨,craft_technology_magic.json,´ÔÁÖÄ¾°´Å¥,minecraft:jungle_button
+642,¿Æ¼¼Ä§·¨,craft_technology_magic.json,´ÔÁÖÄ¾ÃÅ,minecraft:jungle_door
+643,¿Æ¼¼Ä§·¨,craft_technology_magic.json,´ÔÁÖÄ¾Õ¤À¸ÃÅ,minecraft:jungle_fence_gate
+644,¿Æ¼¼Ä§·¨,craft_technology_magic.json,´ÔÁÖÄ¾Ñ¹Á¦°å,minecraft:jungle_pressure_plate
+645,¿Æ¼¼Ä§·¨,craft_technology_magic.json,´ÔÁÖÄ¾»î°åÃÅ,minecraft:jungle_trapdoor
+646,¿Æ¼¼Ä§·¨,craft_technology_magic.json,À­¸Ë,minecraft:lever
+647,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÇáÖÊ²âÖØÑ¹Á¦°å,minecraft:light_weighted_pressure_plate
+648,¿Æ¼¼Ä§·¨,craft_technology_magic.json,±ÜÀ×Õë,minecraft:lightning_rod
+649,¿Æ¼¼Ä§·¨,craft_technology_magic.json,´ÅÊ¯,minecraft:lodestone
+650,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ºìÊ÷Ä¾°´Å¥,minecraft:mangrove_button
+651,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ºìÊ÷Ä¾ÃÅ,minecraft:mangrove_door
+652,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ºìÊ÷Ä¾Õ¤À¸ÃÅ,minecraft:mangrove_fence_gate
+653,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ºìÊ÷Ä¾Ñ¹Á¦°å,minecraft:mangrove_pressure_plate
+654,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ºìÊ÷Ä¾»î°åÃÅ,minecraft:mangrove_trapdoor
+655,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÏğÄ¾°´Å¥,minecraft:oak_button
+656,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÏğÄ¾ÃÅ,minecraft:oak_door
+657,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÏğÄ¾Õ¤À¸ÃÅ,minecraft:oak_fence_gate
+658,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÏğÄ¾Ñ¹Á¦°å,minecraft:oak_pressure_plate
+659,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÏğÄ¾»î°åÃÅ,minecraft:oak_trapdoor
+660,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Õì²âÆ÷,minecraft:observer
+661,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Ñõ»¯µÄÍ­µÆ,minecraft:oxidized_copper_bulb
+662,¿Æ¼¼Ä§·¨,craft_technology_magic.json,²Ô°×ÏğÄ¾°´Å¥,minecraft:pale_oak_button
+663,¿Æ¼¼Ä§·¨,craft_technology_magic.json,²Ô°×ÏğÄ¾ÃÅ,minecraft:pale_oak_door
+664,¿Æ¼¼Ä§·¨,craft_technology_magic.json,²Ô°×ÏğÄ¾Õ¤À¸ÃÅ,minecraft:pale_oak_fence_gate
+665,¿Æ¼¼Ä§·¨,craft_technology_magic.json,²Ô°×ÏğÄ¾Ñ¹Á¦°å,minecraft:pale_oak_pressure_plate
+666,¿Æ¼¼Ä§·¨,craft_technology_magic.json,²Ô°×ÏğÄ¾»î°åÃÅ,minecraft:pale_oak_trapdoor
+667,¿Æ¼¼Ä§·¨,craft_technology_magic.json,»îÈû,minecraft:piston
+668,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Ä¥ÖÆºÚÊ¯°´Å¥,minecraft:polished_blackstone_button
+669,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Ä¥ÖÆºÚÊ¯Ñ¹Á¦°å,minecraft:polished_blackstone_pressure_plate
+670,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÑîÄ¾°´Å¥,minecraft:poplar_button
+671,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÑîÄ¾ÃÅ,minecraft:poplar_door
+672,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÑîÄ¾Õ¤À¸ÃÅ,minecraft:poplar_fence_gate
+673,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÑîÄ¾Ñ¹Á¦°å,minecraft:poplar_pressure_plate
+674,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÑîÄ¾»î°åÃÅ,minecraft:poplar_trapdoor
+675,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ºìÊ¯µÆ,minecraft:redstone_lamp
+676,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ºìÊ¯»ğ°Ñ,minecraft:redstone_torch
+677,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ºìÊ¯ÖĞ¼ÌÆ÷,minecraft:repeater
+678,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÖØÉúÃª,minecraft:respawn_anchor
+679,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÔÆÉ¼Ä¾°´Å¥,minecraft:spruce_button
+680,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÔÆÉ¼Ä¾ÃÅ,minecraft:spruce_door
+681,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÔÆÉ¼Ä¾Õ¤À¸ÃÅ,minecraft:spruce_fence_gate
+682,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÔÆÉ¼Ä¾Ñ¹Á¦°å,minecraft:spruce_pressure_plate
+683,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ÔÆÉ¼Ä¾»î°åÃÅ,minecraft:spruce_trapdoor
+684,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ğ¤ĞÔ»îÈû,minecraft:sticky_piston
+685,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Ê¯Í·°´Å¥,minecraft:stone_button
+686,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Ê¯Í·Ñ¹Á¦°å,minecraft:stone_pressure_plate
+687,¿Æ¼¼Ä§·¨,craft_technology_magic.json,±ê°Ğ,minecraft:target
+688,¿Æ¼¼Ä§·¨,craft_technology_magic.json,°íÏß¹³,minecraft:tripwire_hook
+689,¿Æ¼¼Ä§·¨,craft_technology_magic.json,¹îÒìÄ¾°´Å¥,minecraft:warped_button
+690,¿Æ¼¼Ä§·¨,craft_technology_magic.json,¹îÒìÄ¾ÃÅ,minecraft:warped_door
+691,¿Æ¼¼Ä§·¨,craft_technology_magic.json,¹îÒìÄ¾Õ¤À¸ÃÅ,minecraft:warped_fence_gate
+692,¿Æ¼¼Ä§·¨,craft_technology_magic.json,¹îÒìÄ¾Ñ¹Á¦°å,minecraft:warped_pressure_plate
+693,¿Æ¼¼Ä§·¨,craft_technology_magic.json,¹îÒìÄ¾»î°åÃÅ,minecraft:warped_trapdoor
+694,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í¿À¯µÄÍ­µÆ,minecraft:waxed_copper_bulb
+695,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í¿À¯µÄÍ­ÃÅ,minecraft:waxed_copper_door
+696,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í¿À¯µÄÍ­»î°åÃÅ,minecraft:waxed_copper_trapdoor
+697,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í¿À¯µÄ°ß²µÍ­µÆ,minecraft:waxed_exposed_copper_bulb
+698,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í¿À¯µÄ°ß²µÍ­ÃÅ,minecraft:waxed_exposed_copper_door
+699,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í¿À¯µÄ°ß²µÍ­»î°åÃÅ,minecraft:waxed_exposed_copper_trapdoor
+700,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í¿À¯µÄ°ß²µ±ÜÀ×Õë,minecraft:waxed_exposed_lightning_rod
+701,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í¿À¯µÄ±ÜÀ×Õë,minecraft:waxed_lightning_rod
+702,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í¿À¯µÄÑõ»¯Í­µÆ,minecraft:waxed_oxidized_copper_bulb
+703,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í¿À¯µÄÑõ»¯Í­ÃÅ,minecraft:waxed_oxidized_copper_door
+704,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í¿À¯µÄÑõ»¯Í­»î°åÃÅ,minecraft:waxed_oxidized_copper_trapdoor
+705,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í¿À¯µÄÑõ»¯±ÜÀ×Õë,minecraft:waxed_oxidized_lightning_rod
+706,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í¿À¯µÄĞâÊ´Í­µÆ,minecraft:waxed_weathered_copper_bulb
+707,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í¿À¯µÄĞâÊ´Í­ÃÅ,minecraft:waxed_weathered_copper_door
+708,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í¿À¯µÄĞâÊ´Í­»î°åÃÅ,minecraft:waxed_weathered_copper_trapdoor
+709,¿Æ¼¼Ä§·¨,craft_technology_magic.json,Í¿À¯µÄĞâÊ´±ÜÀ×Õë,minecraft:waxed_weathered_lightning_rod
+710,¿Æ¼¼Ä§·¨,craft_technology_magic.json,ĞâÊ´µÄÍ­µÆ,minecraft:weathered_copper_bulb
+711,Å©ÁÖÄÁÓæ,craft_agriculture_forestry_livestock_fishery.json,·äÏä,minecraft:beehive
+712,Å©ÁÖÄÁÓæ,craft_agriculture_forestry_livestock_fishery.json,ºúÂÜ²·µö¸Í,minecraft:carrot_on_a_stick
+713,Å©ÁÖÄÁÓæ,craft_agriculture_forestry_livestock_fishery.json,¶Ñ·ÊÍ°,minecraft:composter
+714,Å©ÁÖÄÁÓæ,craft_agriculture_forestry_livestock_fishery.json,Í­³ú,minecraft:copper_hoe
+715,Å©ÁÖÄÁÓæ,craft_agriculture_forestry_livestock_fishery.json,×êÊ¯³ú,minecraft:diamond_hoe
+716,Å©ÁÖÄÁÓæ,craft_agriculture_forestry_livestock_fishery.json,µöÓã¸Í,minecraft:fishing_rod
+717,Å©ÁÖÄÁÓæ,craft_agriculture_forestry_livestock_fishery.json,½ğ³ú,minecraft:golden_hoe
+718,Å©ÁÖÄÁÓæ,craft_agriculture_forestry_livestock_fishery.json,ÃÛÆ¢¿é,minecraft:honeycomb_block
+719,Å©ÁÖÄÁÓæ,craft_agriculture_forestry_livestock_fishery.json,Ìú³ú,minecraft:iron_hoe
+720,Å©ÁÖÄÁÓæ,craft_agriculture_forestry_livestock_fishery.json,Æ¤¸ï,minecraft:leather
+721,Å©ÁÖÄÁÓæ,craft_agriculture_forestry_livestock_fishery.json,Î÷¹ÏÖÖ×Ó,minecraft:melon_seeds
+722,Å©ÁÖÄÁÓæ,craft_agriculture_forestry_livestock_fishery.json,ÄÏ¹ÏÖÖ×Ó,minecraft:pumpkin_seeds
+723,Å©ÁÖÄÁÓæ,craft_agriculture_forestry_livestock_fishery.json,¼ôµ¶,minecraft:shears
+724,Å©ÁÖÄÁÓæ,craft_agriculture_forestry_livestock_fishery.json,Ê¯³ú,minecraft:stone_hoe
+725,Å©ÁÖÄÁÓæ,craft_agriculture_forestry_livestock_fishery.json,ÌÇ,minecraft:sugar
+726,Å©ÁÖÄÁÓæ,craft_agriculture_forestry_livestock_fishery.json,¹îÒì¾úµö¸Í,minecraft:warped_fungus_on_a_stick
+727,Å©ÁÖÄÁÓæ,craft_agriculture_forestry_livestock_fishery.json,Ä¾³ú,minecraft:wooden_hoe
+728,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¿ø¼×¼Ü,minecraft:armor_stand
+729,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¼ı,minecraft:arrow
+730,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Ìğ²ËÌÀ,minecraft:beetroot_soup
+731,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÍÔìÄ£°å,minecraft:bolt_armor_trim_smithing_template
+732,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¹­,minecraft:bow
+733,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Íë,minecraft:bowl
+734,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Ãæ°ü,minecraft:bread
+735,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,ÄğÔìÌ¨,minecraft:brewing_stand
+736,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,µ°¸â,minecraft:cake
+737,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÍÔìÄ£°å,minecraft:coast_armor_trim_smithing_template
+738,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,ÇúÆæ,minecraft:cookie
+739,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Í­Ñ¥×Ó,minecraft:copper_boots
+740,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Í­Í·¿ø,minecraft:copper_helmet
+741,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Í­»¤ÍÈ,minecraft:copper_leggings
+742,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Í­Ã¬,minecraft:copper_spear
+743,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Í­½£,minecraft:copper_sword
+744,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,åó,minecraft:crossbow
+745,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,×êÊ¯Ñ¥×Ó,minecraft:diamond_boots
+746,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,×êÊ¯Í·¿ø,minecraft:diamond_helmet
+747,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,×êÊ¯»¤ÍÈ,minecraft:diamond_leggings
+748,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,×êÊ¯Ã¬,minecraft:diamond_spear
+749,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,×êÊ¯½£,minecraft:diamond_sword
+750,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÍÔìÄ£°å,minecraft:dune_armor_trim_smithing_template
+751,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÍÔìÄ£°å,minecraft:eye_armor_trim_smithing_template
+752,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,·¢½ÍÖëÑÛ,minecraft:fermented_spider_eye
+753,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÍÔìÄ£°å,minecraft:flow_armor_trim_smithing_template
+754,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,²£Á§Æ¿,minecraft:glass_bottle
+755,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,ÉÁË¸µÄÎ÷¹ÏÆ¬,minecraft:glistering_melon_slice
+756,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,½ğÆ»¹û,minecraft:golden_apple
+757,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,½ğÑ¥×Ó,minecraft:golden_boots
+758,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,½ğºúÂÜ²·,minecraft:golden_carrot
+759,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,½ğÍ·¿ø,minecraft:golden_helmet
+760,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,½ğ»¤ÍÈ,minecraft:golden_leggings
+761,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,½ğÃ¬,minecraft:golden_spear
+762,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,½ğ½£,minecraft:golden_sword
+763,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,·äÃÛÆ¿,minecraft:honey_bottle
+764,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÍÔìÄ£°å,minecraft:host_armor_trim_smithing_template
+765,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,ÌúÑ¥×Ó,minecraft:iron_boots
+766,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,ÌúÍ·¿ø,minecraft:iron_helmet
+767,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Ìú»¤ÍÈ,minecraft:iron_leggings
+768,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,ÌúÃ¬,minecraft:iron_spear
+769,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Ìú½£,minecraft:iron_sword
+770,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Æ¤¸ïÑ¥×Ó,minecraft:leather_boots
+771,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Æ¤¸ïÃ±×Ó,minecraft:leather_helmet
+772,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Æ¤¸ïÂíîø,minecraft:leather_horse_armor
+773,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Æ¤¸ï¿ã×Ó,minecraft:leather_leggings
+774,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,ÖØ´¸,minecraft:mace
+775,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Ä¢¹½ìÒ,minecraft:mushroom_stew
+776,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÍÔìÄ£°å,minecraft:netherite_upgrade_smithing_template
+777,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,ÄÏ¹ÏÅÉ,minecraft:pumpkin_pie
+778,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,ÍÃÈâìÒ,minecraft:rabbit_stew
+779,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÍÔìÄ£°å,minecraft:raiser_armor_trim_smithing_template
+780,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÍÔìÄ£°å,minecraft:rib_armor_trim_smithing_template
+781,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÍÔìÄ£°å,minecraft:sentry_armor_trim_smithing_template
+782,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÍÔìÄ£°å,minecraft:shaper_armor_trim_smithing_template
+783,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÜÅÆ,minecraft:shield
+784,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÍÔìÄ£°å,minecraft:silence_armor_trim_smithing_template
+785,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÍÔìÄ£°å,minecraft:snout_armor_trim_smithing_template
+786,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¹âÁé¼ı,minecraft:spectral_arrow
+787,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÍÔìÄ£°å,minecraft:spire_armor_trim_smithing_template
+788,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Ê¯Ã¬,minecraft:stone_spear
+789,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Ê¯½£,minecraft:stone_sword
+790,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,ÃÕÖ®ìÀ²Ë,minecraft:suspicious_stew
+791,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÍÔìÄ£°å,minecraft:tide_armor_trim_smithing_template
+792,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Ò©¼ı,minecraft:tipped_arrow
+793,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,TNT,minecraft:tnt
+794,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,º£¹ê¿Ç,minecraft:turtle_helmet
+795,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÍÔìÄ£°å,minecraft:vex_armor_trim_smithing_template
+796,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÍÔìÄ£°å,minecraft:ward_armor_trim_smithing_template
+797,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÍÔìÄ£°å,minecraft:wayfinder_armor_trim_smithing_template
+798,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,¶ÍÔìÄ£°å,minecraft:wild_armor_trim_smithing_template
+799,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,·çµ¯,minecraft:wind_charge
+800,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,ÀÇîø,minecraft:wolf_armor
+801,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Ä¾Ã¬,minecraft:wooden_spear
+802,¾ü¹¤Ê³Ò©,craft_military_food_medicine.json,Ä¾½£,minecraft:wooden_sword
+803,Á÷Í¨·şÎñ,craft_circulation_services.json,½ğºÏ»¶Ä¾´¬,minecraft:acacia_boat
+804,Á÷Í¨·şÎñ,craft_circulation_services.json,½ğºÏ»¶Ä¾ÔËÊä´¬,minecraft:acacia_chest_boat
+805,Á÷Í¨·şÎñ,craft_circulation_services.json,¼¤»îÌú¹ì,minecraft:activator_rail
+806,Á÷Í¨·şÎñ,craft_circulation_services.json,ÔËÊäÖñ·¤,minecraft:bamboo_chest_raft
+807,Á÷Í¨·şÎñ,craft_circulation_services.json,Öñ·¤,minecraft:bamboo_raft
+808,Á÷Í¨·şÎñ,craft_circulation_services.json,Ä¾Í°,minecraft:barrel
+809,Á÷Í¨·şÎñ,craft_circulation_services.json,°×èëÄ¾´¬,minecraft:birch_boat
+810,Á÷Í¨·şÎñ,craft_circulation_services.json,°×èëÄ¾ÔËÊä´¬,minecraft:birch_chest_boat
+811,Á÷Í¨·şÎñ,craft_circulation_services.json,ºÚÉ«ÊÕÄÉ´ü,minecraft:black_bundle
+812,Á÷Í¨·şÎñ,craft_circulation_services.json,ºÚÉ«Íì¾ß,minecraft:black_harness
+813,Á÷Í¨·şÎñ,craft_circulation_services.json,ºÚÉ«Ç±Ó°ºĞ,minecraft:black_shulker_box
+814,Á÷Í¨·şÎñ,craft_circulation_services.json,À¶É«ÊÕÄÉ´ü,minecraft:blue_bundle
+815,Á÷Í¨·şÎñ,craft_circulation_services.json,À¶É«Íì¾ß,minecraft:blue_harness
+816,Á÷Í¨·şÎñ,craft_circulation_services.json,À¶É«Ç±Ó°ºĞ,minecraft:blue_shulker_box
+817,Á÷Í¨·şÎñ,craft_circulation_services.json,×ØÉ«ÊÕÄÉ´ü,minecraft:brown_bundle
+818,Á÷Í¨·şÎñ,craft_circulation_services.json,×ØÉ«Íì¾ß,minecraft:brown_harness
+819,Á÷Í¨·şÎñ,craft_circulation_services.json,×ØÉ«Ç±Ó°ºĞ,minecraft:brown_shulker_box
+820,Á÷Í¨·şÎñ,craft_circulation_services.json,ÊÕÄÉ´ü,minecraft:bundle
+821,Á÷Í¨·şÎñ,craft_circulation_services.json,Ó£»¨Ä¾´¬,minecraft:cherry_boat
+822,Á÷Í¨·şÎñ,craft_circulation_services.json,Ó£»¨Ä¾ÔËÊä´¬,minecraft:cherry_chest_boat
+823,Á÷Í¨·şÎñ,craft_circulation_services.json,Ïä×Ó,minecraft:chest
+824,Á÷Í¨·şÎñ,craft_circulation_services.json,ÔËÊä¿ó³µ,minecraft:chest_minecart
+825,Á÷Í¨·şÎñ,craft_circulation_services.json,Í­Ïä×Ó,minecraft:copper_chest
+826,Á÷Í¨·şÎñ,craft_circulation_services.json,Í­ĞØ¼×,minecraft:copper_chestplate
+827,Á÷Í¨·şÎñ,craft_circulation_services.json,ÇàÉ«ÊÕÄÉ´ü,minecraft:cyan_bundle
+828,Á÷Í¨·şÎñ,craft_circulation_services.json,ÇàÉ«Íì¾ß,minecraft:cyan_harness
+829,Á÷Í¨·şÎñ,craft_circulation_services.json,ÇàÉ«Ç±Ó°ºĞ,minecraft:cyan_shulker_box
+830,Á÷Í¨·şÎñ,craft_circulation_services.json,ÉîÉ«ÏğÄ¾´¬,minecraft:dark_oak_boat
+831,Á÷Í¨·şÎñ,craft_circulation_services.json,ÉîÉ«ÏğÄ¾ÔËÊä´¬,minecraft:dark_oak_chest_boat
+832,Á÷Í¨·şÎñ,craft_circulation_services.json,Ì½²âÌú¹ì,minecraft:detector_rail
+833,Á÷Í¨·şÎñ,craft_circulation_services.json,×êÊ¯ĞØ¼×,minecraft:diamond_chestplate
+834,Á÷Í¨·şÎñ,craft_circulation_services.json,Ä©Ó°Ïä,minecraft:ender_chest
+835,Á÷Í¨·şÎñ,craft_circulation_services.json,¶¯Á¦¿ó³µ,minecraft:furnace_minecart
+836,Á÷Í¨·şÎñ,craft_circulation_services.json,½ğĞØ¼×,minecraft:golden_chestplate
+837,Á÷Í¨·şÎñ,craft_circulation_services.json,»ÒÉ«ÊÕÄÉ´ü,minecraft:gray_bundle
+838,Á÷Í¨·şÎñ,craft_circulation_services.json,»ÒÉ«Íì¾ß,minecraft:gray_harness
+839,Á÷Í¨·şÎñ,craft_circulation_services.json,»ÒÉ«Ç±Ó°ºĞ,minecraft:gray_shulker_box
+840,Á÷Í¨·şÎñ,craft_circulation_services.json,ÂÌÉ«ÊÕÄÉ´ü,minecraft:green_bundle
+841,Á÷Í¨·şÎñ,craft_circulation_services.json,ÂÌÉ«Íì¾ß,minecraft:green_harness
+842,Á÷Í¨·şÎñ,craft_circulation_services.json,ÂÌÉ«Ç±Ó°ºĞ,minecraft:green_shulker_box
+843,Á÷Í¨·şÎñ,craft_circulation_services.json,Â©¶·,minecraft:hopper
+844,Á÷Í¨·şÎñ,craft_circulation_services.json,Â©¶·¿ó³µ,minecraft:hopper_minecart
+845,Á÷Í¨·şÎñ,craft_circulation_services.json,ÌúĞØ¼×,minecraft:iron_chestplate
+846,Á÷Í¨·şÎñ,craft_circulation_services.json,´ÔÁÖÄ¾´¬,minecraft:jungle_boat
+847,Á÷Í¨·şÎñ,craft_circulation_services.json,´ÔÁÖÄ¾ÔËÊä´¬,minecraft:jungle_chest_boat
+848,Á÷Í¨·şÎñ,craft_circulation_services.json,Ë©Éş,minecraft:lead
+849,Á÷Í¨·şÎñ,craft_circulation_services.json,Æ¤¸ïÍâÌ×,minecraft:leather_chestplate
+850,Á÷Í¨·şÎñ,craft_circulation_services.json,µ­À¶É«ÊÕÄÉ´ü,minecraft:light_blue_bundle
+851,Á÷Í¨·şÎñ,craft_circulation_services.json,µ­À¶É«Íì¾ß,minecraft:light_blue_harness
+852,Á÷Í¨·şÎñ,craft_circulation_services.json,µ­À¶É«Ç±Ó°ºĞ,minecraft:light_blue_shulker_box
+853,Á÷Í¨·şÎñ,craft_circulation_services.json,µ­»ÒÉ«ÊÕÄÉ´ü,minecraft:light_gray_bundle
+854,Á÷Í¨·şÎñ,craft_circulation_services.json,µ­»ÒÉ«Íì¾ß,minecraft:light_gray_harness
+855,Á÷Í¨·şÎñ,craft_circulation_services.json,µ­»ÒÉ«Ç±Ó°ºĞ,minecraft:light_gray_shulker_box
+856,Á÷Í¨·şÎñ,craft_circulation_services.json,»ÆÂÌÉ«ÊÕÄÉ´ü,minecraft:lime_bundle
+857,Á÷Í¨·şÎñ,craft_circulation_services.json,»ÆÂÌÉ«Íì¾ß,minecraft:lime_harness
+858,Á÷Í¨·şÎñ,craft_circulation_services.json,»ÆÂÌÉ«Ç±Ó°ºĞ,minecraft:lime_shulker_box
+859,Á÷Í¨·şÎñ,craft_circulation_services.json,Æ·ºìÉ«ÊÕÄÉ´ü,minecraft:magenta_bundle
+860,Á÷Í¨·şÎñ,craft_circulation_services.json,Æ·ºìÉ«Íì¾ß,minecraft:magenta_harness
+861,Á÷Í¨·şÎñ,craft_circulation_services.json,Æ·ºìÉ«Ç±Ó°ºĞ,minecraft:magenta_shulker_box
+862,Á÷Í¨·şÎñ,craft_circulation_services.json,ºìÊ÷Ä¾´¬,minecraft:mangrove_boat
+863,Á÷Í¨·şÎñ,craft_circulation_services.json,ºìÊ÷Ä¾ÔËÊä´¬,minecraft:mangrove_chest_boat
+864,Á÷Í¨·şÎñ,craft_circulation_services.json,¿ó³µ,minecraft:minecart
+865,Á÷Í¨·şÎñ,craft_circulation_services.json,ÏğÄ¾´¬,minecraft:oak_boat
+866,Á÷Í¨·şÎñ,craft_circulation_services.json,ÏğÄ¾ÔËÊä´¬,minecraft:oak_chest_boat
+867,Á÷Í¨·şÎñ,craft_circulation_services.json,³ÈÉ«ÊÕÄÉ´ü,minecraft:orange_bundle
+868,Á÷Í¨·şÎñ,craft_circulation_services.json,³ÈÉ«Íì¾ß,minecraft:orange_harness
+869,Á÷Í¨·şÎñ,craft_circulation_services.json,³ÈÉ«Ç±Ó°ºĞ,minecraft:orange_shulker_box
+870,Á÷Í¨·şÎñ,craft_circulation_services.json,²Ô°×ÏğÄ¾´¬,minecraft:pale_oak_boat
+871,Á÷Í¨·şÎñ,craft_circulation_services.json,²Ô°×ÏğÄ¾ÔËÊä´¬,minecraft:pale_oak_chest_boat
+872,Á÷Í¨·şÎñ,craft_circulation_services.json,·ÛºìÉ«ÊÕÄÉ´ü,minecraft:pink_bundle
+873,Á÷Í¨·şÎñ,craft_circulation_services.json,·ÛºìÉ«Íì¾ß,minecraft:pink_harness
+874,Á÷Í¨·şÎñ,craft_circulation_services.json,·ÛºìÉ«Ç±Ó°ºĞ,minecraft:pink_shulker_box
+875,Á÷Í¨·şÎñ,craft_circulation_services.json,ÑîÄ¾´¬,minecraft:poplar_boat
+876,Á÷Í¨·şÎñ,craft_circulation_services.json,ÑîÄ¾ÔËÊä´¬,minecraft:poplar_chest_boat
+877,Á÷Í¨·şÎñ,craft_circulation_services.json,¶¯Á¦Ìú¹ì,minecraft:powered_rail
+878,Á÷Í¨·şÎñ,craft_circulation_services.json,×ÏÉ«ÊÕÄÉ´ü,minecraft:purple_bundle
+879,Á÷Í¨·şÎñ,craft_circulation_services.json,×ÏÉ«Íì¾ß,minecraft:purple_harness
+880,Á÷Í¨·şÎñ,craft_circulation_services.json,×ÏÉ«Ç±Ó°ºĞ,minecraft:purple_shulker_box
+881,Á÷Í¨·şÎñ,craft_circulation_services.json,Ìú¹ì,minecraft:rail
+882,Á÷Í¨·şÎñ,craft_circulation_services.json,ºìÉ«ÊÕÄÉ´ü,minecraft:red_bundle
+883,Á÷Í¨·şÎñ,craft_circulation_services.json,ºìÉ«Íì¾ß,minecraft:red_harness
+884,Á÷Í¨·şÎñ,craft_circulation_services.json,ºìÉ«Ç±Ó°ºĞ,minecraft:red_shulker_box
+885,Á÷Í¨·şÎñ,craft_circulation_services.json,°°,minecraft:saddle
+886,Á÷Í¨·şÎñ,craft_circulation_services.json,Ç±Ó°ºĞ,minecraft:shulker_box
+887,Á÷Í¨·şÎñ,craft_circulation_services.json,ÔÆÉ¼Ä¾´¬,minecraft:spruce_boat
+888,Á÷Í¨·şÎñ,craft_circulation_services.json,ÔÆÉ¼Ä¾ÔËÊä´¬,minecraft:spruce_chest_boat
+889,Á÷Í¨·şÎñ,craft_circulation_services.json,TNT¿ó³µ,minecraft:tnt_minecart
+890,Á÷Í¨·şÎñ,craft_circulation_services.json,ÏİÚåÏä,minecraft:trapped_chest
+891,Á÷Í¨·şÎñ,craft_circulation_services.json,Í¿À¯µÄÍ­Ïä×Ó,minecraft:waxed_copper_chest
+892,Á÷Í¨·şÎñ,craft_circulation_services.json,Í¿À¯µÄ°ß²µÍ­Ïä×Ó,minecraft:waxed_exposed_copper_chest
+893,Á÷Í¨·şÎñ,craft_circulation_services.json,Í¿À¯µÄÑõ»¯Í­Ïä×Ó,minecraft:waxed_oxidized_copper_chest
+894,Á÷Í¨·şÎñ,craft_circulation_services.json,Í¿À¯µÄĞâÊ´Í­Ïä×Ó,minecraft:waxed_weathered_copper_chest
+895,Á÷Í¨·şÎñ,craft_circulation_services.json,°×É«ÊÕÄÉ´ü,minecraft:white_bundle
+896,Á÷Í¨·şÎñ,craft_circulation_services.json,°×É«Íì¾ß,minecraft:white_harness
+897,Á÷Í¨·şÎñ,craft_circulation_services.json,°×É«Ç±Ó°ºĞ,minecraft:white_shulker_box
+898,Á÷Í¨·şÎñ,craft_circulation_services.json,»ÆÉ«ÊÕÄÉ´ü,minecraft:yellow_bundle
+899,Á÷Í¨·şÎñ,craft_circulation_services.json,»ÆÉ«Íì¾ß,minecraft:yellow_harness
+900,Á÷Í¨·şÎñ,craft_circulation_services.json,»ÆÉ«Ç±Ó°ºĞ,minecraft:yellow_shulker_box
+901,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,½ğºÏ»¶Ä¾Õ¹Ê¾¼Ü,minecraft:acacia_shelf
+902,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÖñÕ¹Ê¾¼Ü,minecraft:bamboo_shelf
+903,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,°×èëÄ¾Õ¹Ê¾¼Ü,minecraft:birch_shelf
+904,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ºÚÉ«ÆìÖÄ,minecraft:black_banner
+905,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ºÚÉ«´²,minecraft:black_bed
+906,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ºÚÉ«À¯Öò,minecraft:black_candle
+907,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ºÚÉ«×øµæ,minecraft:black_cushion
+908,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,À¶É«ÆìÖÄ,minecraft:blue_banner
+909,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,À¶É«´²,minecraft:blue_bed
+910,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,À¶É«À¯Öò,minecraft:blue_candle
+911,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,À¶É«×øµæ,minecraft:blue_cushion
+912,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,Êé,minecraft:book
+913,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,Êé¼Ü,minecraft:bookshelf
+914,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,²¨ÎÆ±ßÆìÖÄÍ¼°¸,minecraft:bordure_indented_banner_pattern
+915,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,×ØÉ«ÆìÖÄ,minecraft:brown_banner
+916,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,×ØÉ«´²,minecraft:brown_bed
+917,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,×ØÉ«À¯Öò,minecraft:brown_candle
+918,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,×ØÉ«×øµæ,minecraft:brown_cushion
+919,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,À¯Öò,minecraft:candle
+920,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÖÆÍ¼Ì¨,minecraft:cartography_table
+921,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,Ó£»¨Ä¾Õ¹Ê¾¼Ü,minecraft:cherry_shelf
+922,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,µñÎÆÊé¼Ü,minecraft:chiseled_bookshelf
+923,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,Ê±ÖÓ,minecraft:clock
+924,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,Ö¸ÄÏÕë,minecraft:compass
+925,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÆìÖÄÍ¼°¸,minecraft:creeper_banner_pattern
+926,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ç³ºìÄ¾Õ¹Ê¾¼Ü,minecraft:crimson_shelf
+927,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÇàÉ«ÆìÖÄ,minecraft:cyan_banner
+928,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÇàÉ«´²,minecraft:cyan_bed
+929,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÇàÉ«À¯Öò,minecraft:cyan_candle
+930,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÇàÉ«×øµæ,minecraft:cyan_cushion
+931,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÉîÉ«ÏğÄ¾Õ¹Ê¾¼Ü,minecraft:dark_oak_shelf
+932,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÊÎÎÆÌÕ¹Ş,minecraft:decorated_pot
+933,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,×©ÎÆÆìÖÄÍ¼°¸,minecraft:field_masoned_banner_pattern
+934,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÆìÖÄÍ¼°¸,minecraft:flower_banner_pattern
+935,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,»¨Åè,minecraft:flower_pot
+936,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,Ó«¹âÎïÆ·Õ¹Ê¾¿ò,minecraft:glow_item_frame
+937,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,»ÒÉ«ÆìÖÄ,minecraft:gray_banner
+938,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,»ÒÉ«´²,minecraft:gray_bed
+939,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,»ÒÉ«À¯Öò,minecraft:gray_candle
+940,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,»ÒÉ«×øµæ,minecraft:gray_cushion
+941,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÂÌÉ«ÆìÖÄ,minecraft:green_banner
+942,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÂÌÉ«´²,minecraft:green_bed
+943,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÂÌÉ«À¯Öò,minecraft:green_candle
+944,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÂÌÉ«×øµæ,minecraft:green_cushion
+945,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÎïÆ·Õ¹Ê¾¿ò,minecraft:item_frame
+946,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,³ªÆ¬»ú,minecraft:jukebox
+947,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,´ÔÁÖÄ¾Õ¹Ê¾¼Ü,minecraft:jungle_shelf
+948,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,½²Ì¨,minecraft:lectern
+949,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,µ­À¶É«ÆìÖÄ,minecraft:light_blue_banner
+950,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,µ­À¶É«´²,minecraft:light_blue_bed
+951,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,µ­À¶É«À¯Öò,minecraft:light_blue_candle
+952,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,µ­À¶É«×øµæ,minecraft:light_blue_cushion
+953,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,µ­»ÒÉ«ÆìÖÄ,minecraft:light_gray_banner
+954,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,µ­»ÒÉ«´²,minecraft:light_gray_bed
+955,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,µ­»ÒÉ«À¯Öò,minecraft:light_gray_candle
+956,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,µ­»ÒÉ«×øµæ,minecraft:light_gray_cushion
+957,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,»ÆÂÌÉ«ÆìÖÄ,minecraft:lime_banner
+958,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,»ÆÂÌÉ«´²,minecraft:lime_bed
+959,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,»ÆÂÌÉ«À¯Öò,minecraft:lime_candle
+960,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,»ÆÂÌÉ«×øµæ,minecraft:lime_cushion
+961,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,Ö¯²¼»ú,minecraft:loom
+962,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,Æ·ºìÉ«ÆìÖÄ,minecraft:magenta_banner
+963,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,Æ·ºìÉ«´²,minecraft:magenta_bed
+964,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,Æ·ºìÉ«À¯Öò,minecraft:magenta_candle
+965,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,Æ·ºìÉ«×øµæ,minecraft:magenta_cushion
+966,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ºìÊ÷Ä¾Õ¹Ê¾¼Ü,minecraft:mangrove_shelf
+967,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,¿ÕµØÍ¼,minecraft:map
+968,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÆìÖÄÍ¼°¸,minecraft:mojang_banner_pattern
+969,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÒôÀÖ³ªÆ¬,minecraft:music_disc_5
+970,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÃüÃûÅÆ,minecraft:name_tag
+971,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,Òô·ûºĞ,minecraft:note_block
+972,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÏğÄ¾Õ¹Ê¾¼Ü,minecraft:oak_shelf
+973,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,³ÈÉ«ÆìÖÄ,minecraft:orange_banner
+974,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,³ÈÉ«´²,minecraft:orange_bed
+975,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,³ÈÉ«À¯Öò,minecraft:orange_candle
+976,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,³ÈÉ«×øµæ,minecraft:orange_cushion
+977,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,»­,minecraft:painting
+978,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,²Ô°×ÏğÄ¾Õ¹Ê¾¼Ü,minecraft:pale_oak_shelf
+979,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,Ö½,minecraft:paper
+980,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,·ÛºìÉ«ÆìÖÄ,minecraft:pink_banner
+981,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,·ÛºìÉ«´²,minecraft:pink_bed
+982,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,·ÛºìÉ«À¯Öò,minecraft:pink_candle
+983,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,·ÛºìÉ«×øµæ,minecraft:pink_cushion
+984,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÑîÄ¾Õ¹Ê¾¼Ü,minecraft:poplar_shelf
+985,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,×ÏÉ«ÆìÖÄ,minecraft:purple_banner
+986,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,×ÏÉ«´²,minecraft:purple_bed
+987,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,×ÏÉ«À¯Öò,minecraft:purple_candle
+988,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,×ÏÉ«×øµæ,minecraft:purple_cushion
+989,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,×·ËİÖ¸Õë,minecraft:recovery_compass
+990,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ºìÉ«ÆìÖÄ,minecraft:red_banner
+991,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ºìÉ«´²,minecraft:red_bed
+992,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ºìÉ«À¯Öò,minecraft:red_candle
+993,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ºìÉ«×øµæ,minecraft:red_cushion
+994,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÆìÖÄÍ¼°¸,minecraft:skull_banner_pattern
+995,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÔÆÉ¼Ä¾Õ¹Ê¾¼Ü,minecraft:spruce_shelf
+996,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÍûÔ¶¾µ,minecraft:spyglass
+997,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,Âó¸Ñ´²,minecraft:straw_bed
+998,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,¹îÒìÄ¾Õ¹Ê¾¼Ü,minecraft:warped_shelf
+999,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,°×É«ÆìÖÄ,minecraft:white_banner
+1000,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,°×É«´²,minecraft:white_bed
+1001,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,°×É«À¯Öò,minecraft:white_candle
+1002,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,°×É«×øµæ,minecraft:white_cushion
+1003,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,ÊéÓë±Ê,minecraft:writable_book
+1004,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,³ÉÊé,minecraft:written_book
+1005,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,»ÆÉ«ÆìÖÄ,minecraft:yellow_banner
+1006,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,»ÆÉ«´²,minecraft:yellow_bed
+1007,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,»ÆÉ«À¯Öò,minecraft:yellow_candle
+1008,ÎÄ½ÌÃñÉú,craft_culture_education_livelihood.json,»ÆÉ«×øµæ,minecraft:yellow_cushion

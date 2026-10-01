@@ -2,14 +2,14 @@
 
 本文面向需要与 Contribution 模组联动的 Fabric 模组作者，描述如何为在线或离线玩家增加、扣除或退还贡献值。
 
-> 当前状态：`cn.contribution.api` 已包含在 0.0.1 开发版 JAR 中。它仍是早期接口，正式发布前请以本项目的源码和构建产物核对兼容性。
+> 当前状态：`cn.contribution.api` 已包含在 0.0.2 开发版 JAR 中。它仍是早期接口，正式发布前请以本项目的源码和构建产物核对兼容性。
 
 ## 运行要求
 
 - Minecraft Java Edition 26.3；
 - Fabric Loader 0.19.5 或更高的兼容版本；
 - Java 25；
-- Contribution 0.0.1；
+- Contribution 0.0.2；
 - API 只能在逻辑服务端调用。
 
 Fabric 使用 `fabric.mod.json` 声明模组身份、入口点和依赖关系。`depends` 表示缺少依赖时拒绝启动，`suggests` 用于可选联动。参见 [Fabric 的 `fabric.mod.json` 文档](https://docs.fabricmc.net/develop/loader/fabric-mod-json)。
@@ -20,7 +20,7 @@ Fabric 使用 `fabric.mod.json` 声明模组身份、入口点和依赖关系。
 
 ```groovy
 dependencies {
-    compileOnly files("libs/CSU-YSU-contribution-system-0.0.1.jar")
+    compileOnly files("libs/CSU-YSU-contribution-system-0.0.2.jar")
 }
 ```
 
@@ -37,7 +37,7 @@ dependencies {
   "depends": {
     "fabricloader": ">=0.19.5",
     "minecraft": "~26.3",
-    "contribution": ">=0.0.1"
+    "contribution": ">=0.0.2"
   }
 }
 ```
@@ -51,7 +51,7 @@ Fabric Loader 会保证 Contribution 存在并满足版本要求，否则拒绝�
 ```json
 {
   "suggests": {
-    "contribution": ">=0.0.1"
+    "contribution": ">=0.0.2"
   }
 }
 ```
@@ -117,6 +117,7 @@ AccountTarget target = AccountTarget.byName("PlayerName");
 | `source` | 是 | 调用来源，例如 `quest_mod:quest_reward` |
 | `reason` | 是 | 流水原因，最多 64 个 Unicode 字符 |
 | `note` | 是 | 可为空字符串，最多 64 个 Unicode 字符 |
+| `affectTotalIncome` | 否 | 八参数构造器可显式指定；`true` 令历史总收入同步增减，`false` 不改变；七参数构造器沿用默认规则 |
 
 数值和历史总收入规则如下：
 
@@ -126,6 +127,15 @@ AccountTarget target = AccountTarget.byName("PlayerName");
 | `EXTERNAL` | 负数 | 不变 |
 | `REFUND` | 正数 | 不变 |
 | `REFUND` | `0` 或负数 | 请求无效 |
+
+上表是七参数构造器的默认行为。需要冲销既有收入时，可在末尾追加 `true`：
+
+```java
+new BalanceChangeRequest(idempotencyId, target, -200,
+        BalanceChangeType.EXTERNAL, source, "冲销误发奖励", "", true);
+```
+
+此时余额和历史总收入各减少 200。若任一数值将低于 0，操作被拒绝且不写流水。八参数构造器传入 `false` 时只变更余额；`REFUND` 只能传 `false`。布尔值属于幂等请求内容，重试时不能改变。
 
 `source` 使用调用模组自己的模组 ID 作为命名空间，并以路径区分业务来源：
 
@@ -289,7 +299,7 @@ Contribution 与调用模组运行在同一个 JVM 中。服务器管理员安�
 
 ## API 版本兼容性
 
-正式发布后，公共 API 计划遵循语义化版本；当前 0.0.1 开发版尚不承诺跨版本二进制兼容：
+正式发布后，公共 API 计划遵循语义化版本；当前 0.0.2 开发版尚不承诺跨版本二进制兼容：
 
 - 同一主版本内保持 `cn.contribution.api` 的源代码和二进制兼容；
 - 新增可选函数、结果字段或状态时增加次版本；

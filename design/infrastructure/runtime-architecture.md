@@ -17,7 +17,7 @@
 | 日志 | Fabric 已提供的 SLF4J | 随运行环境 | 不重复打包日志实现 |
 | JSON 配置 | Minecraft 已提供的 Gson | 随运行环境 | 不增加配置框架 |
 
-群组服部署数据库使用 MySQL 8.4 LTS 的最新补丁版本，所有业务表使用 InnoDB。单人游戏和单服默认使用 H2 文件库，文件位于世界目录的 `contribution/contribution.mv.db`，数据库与业务表在首次启动时自动创建。H2 仅适用于单个服务器进程，不跨服共享。第三方依赖只从 Maven Central 获取并锁定版本；升级前需要重新执行编译、启动和数据库兼容测试。
+群组服部署数据库使用 MySQL 8.4 LTS 的最新补丁版本，所有业务表使用 InnoDB。单人游戏和单服默认使用 H2 文件库，文件位于世界目录的 `contribution/contribution.mv.db`，数据库与业务表在首次启动时自动创建。建设度恢复日志也集中到同一世界目录的 `contribution/statistics-journal/`；启动时自动迁移旧的 `config/contribution/statistics-journal/`。若新旧两处同时存在，模组记录错误并停止初始化，游戏服务器本身仍可运行，两处原文件都会保留供管理员处理。运行配置仍在 `config/contribution/server.json`。停服后可以整体备份或恢复世界目录下的 `contribution/`；群组服 MySQL 数据必须另行备份数据库，不能只复制各子服的本地目录。H2 仅适用于单个服务器进程，不跨服共享。第三方依赖只从 Maven Central 获取并锁定版本；升级前需要重新执行编译、启动和数据库兼容测试。
 
 短时去重使用有界 HashMap，每 20 tick 清理过期项，最多保留 50,000 个键。满载时新位置不增加行业建设度，原始操作统计独立处理；不引入额外缓存框架。
 

@@ -14,6 +14,7 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.LongArgumentType;
+import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
@@ -79,14 +80,16 @@ public final class ContributionCommands {
                                 .requires(ContributionCommands::admin)
                                 .executes(context -> statsTarget(context, StringArgumentType.getString(context, "target")))))
                 .then(balanceCommand("add", true))
+                .then(StockCommands.command())
                 .then(Commands.literal("retry").requires(ContributionCommands::admin)
                         .then(Commands.argument("id", StringArgumentType.word())
                                 .then(Commands.argument("target", StringArgumentType.word())
                                         .then(Commands.argument("amount", LongArgumentType.longArg(Integer.MIN_VALUE, Integer.MAX_VALUE))
                                                 .then(Commands.argument("reason", StringArgumentType.string())
-                                                        .executes(context -> retry(context, ""))
-                                                        .then(Commands.argument("note", StringArgumentType.greedyString())
-                                                                .executes(context -> retry(context, StringArgumentType.getString(context, "note")))))))))
+                                                        .then(Commands.argument("affectTotalIncome", BoolArgumentType.bool())
+                                                                .executes(context -> retry(context, ""))
+                                                                .then(Commands.argument("note", StringArgumentType.greedyString())
+                                                                        .executes(context -> retry(context, StringArgumentType.getString(context, "note"))))))))))
                 .then(balanceCommand("remove", false)));
     }
 
@@ -96,18 +99,20 @@ public final class ContributionCommands {
                         .then(Commands.argument("amount", LongArgumentType.longArg(1,
                                 add ? Integer.MAX_VALUE : 2_147_483_648L))
                                 .then(Commands.argument("reason", StringArgumentType.string())
-                                        .executes(context -> change(context, add, false, ""))
-                                        .then(Commands.argument("note", StringArgumentType.greedyString())
-                                                .executes(context -> change(context, add, false,
-                                                        StringArgumentType.getString(context, "note")))))))
+                                        .then(Commands.argument("affectTotalIncome", BoolArgumentType.bool())
+                                                .executes(context -> change(context, add, false, ""))
+                                                .then(Commands.argument("note", StringArgumentType.greedyString())
+                                                        .executes(context -> change(context, add, false,
+                                                                StringArgumentType.getString(context, "note"))))))))
                 .then(Commands.argument("selected", EntityArgument.player())
                         .then(Commands.argument("amount", LongArgumentType.longArg(1,
                                 add ? Integer.MAX_VALUE : 2_147_483_648L))
                                 .then(Commands.argument("reason", StringArgumentType.string())
-                                        .executes(context -> change(context, add, true, ""))
-                                        .then(Commands.argument("note", StringArgumentType.greedyString())
-                                                .executes(context -> change(context, add, true,
-                                                        StringArgumentType.getString(context, "note")))))));
+                                        .then(Commands.argument("affectTotalIncome", BoolArgumentType.bool())
+                                                .executes(context -> change(context, add, true, ""))
+                                                .then(Commands.argument("note", StringArgumentType.greedyString())
+                                                        .executes(context -> change(context, add, true,
+                                                                StringArgumentType.getString(context, "note"))))))));
     }
 
     private static boolean admin(CommandSourceStack source) {
@@ -414,7 +419,8 @@ public final class ContributionCommands {
         int amount = (int) (add ? quantity : -quantity);
         String reason = StringArgumentType.getString(context, "reason");
         BalanceChangeRequest request = new BalanceChangeRequest(UUID.randomUUID(), target, amount,
-                BalanceChangeType.EXTERNAL, Identifier.fromNamespaceAndPath("contribution", "admin_command"), reason, note);
+                BalanceChangeType.EXTERNAL, Identifier.fromNamespaceAndPath("contribution", "admin_command"), reason, note,
+                BoolArgumentType.getBool(context, "affectTotalIncome"));
         submitAdmin(source, service, request);
         return 1;
     }
@@ -428,7 +434,8 @@ public final class ContributionCommands {
             var request = new BalanceChangeRequest(UUID.fromString(StringArgumentType.getString(context, "id")),
                     target(source, StringArgumentType.getString(context, "target")), (int)LongArgumentType.getLong(context, "amount"),
                     BalanceChangeType.EXTERNAL, Identifier.fromNamespaceAndPath("contribution", "admin_command"),
-                    StringArgumentType.getString(context, "reason"), note);
+                    StringArgumentType.getString(context, "reason"), note,
+                    BoolArgumentType.getBool(context, "affectTotalIncome"));
             submitAdmin(source, service, request);
             return 1;
         } catch (IllegalArgumentException error) { failure(source, "重试参数无效"); return 0; }
@@ -437,7 +444,8 @@ public final class ContributionCommands {
     private static void submitAdmin(CommandSourceStack source, AccountService service, BalanceChangeRequest request) {
         String who = request.target().playerUuid() == null ? request.target().playerName() : request.target().playerUuid().toString();
         String retry = "/contribution retry " + request.idempotencyId() + " " + who + " " + request.amount() + " "
-                + StringArgumentType.escapeIfRequired(request.reason()) + (request.note().isEmpty() ? "" : " " + request.note());
+                + StringArgumentType.escapeIfRequired(request.reason()) + " " + request.affectTotalIncome()
+                + (request.note().isEmpty() ? "" : " " + request.note());
         source.sendSuccess(() -> Component.literal("[贡献值] 请求 ID " + request.idempotencyId() + " [保留原请求重试]")
                 .withStyle(style -> style.withClickEvent(new ClickEvent.SuggestCommand(retry))), false);
         dispatch(source, service.changeAdmin(request, source.getTextName()), result -> {

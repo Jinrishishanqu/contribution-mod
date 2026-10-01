@@ -9,15 +9,20 @@ import cn.contribution.database.DatabaseService;
 import cn.contribution.database.DatabaseState;
 import cn.contribution.industry.IndustrySettlement;
 import cn.contribution.industry.StatisticsService;
+import cn.contribution.stock.StockService;
 import net.minecraft.server.MinecraftServer;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import net.fabricmc.loader.api.FabricLoader;
 
 public final class ContributionRuntime {
     private static DatabaseService database;
     private static AccountService accounts;
     private static StatisticsService statistics;
     private static IndustrySettlement settlement;
+    private static StockService stocks;
     private static cn.contribution.account.TransactionArchive archive;
     private static int lastDatabaseRetryTick;
     private static ServerConfig activeConfig;
@@ -34,13 +39,25 @@ public final class ContributionRuntime {
             ServerConfig config = ConfigLoader.load();
             activeConfig = config;
             lastDatabaseRetryTick = 0;
-            database = new DatabaseService(config, server.getWorldPath(net.minecraft.world.level.storage.LevelResource.ROOT).resolve("contribution/contribution"));
+            Path dataDirectory = server.getWorldPath(net.minecraft.world.level.storage.LevelResource.ROOT).resolve("contribution");
+            Files.createDirectories(dataDirectory);
+            Path journalDirectory = dataDirectory.resolve("statistics-journal");
+            Path previousJournal = FabricLoader.getInstance().getConfigDir().resolve("contribution/statistics-journal");
+            if (Files.exists(previousJournal)) {
+                if (Files.exists(journalDirectory)) {
+                    throw new IOException("Both old and new statistics journals exist; preserve both and resolve before starting");
+                }
+                Files.move(previousJournal, journalDirectory);
+                ContributionMod.LOGGER.info("Moved statistics recovery journal into world/contribution");
+            }
+            database = new DatabaseService(config, dataDirectory.resolve("contribution"));
             accounts = new AccountService(database, config.serverId);
             archive = config.mainServer ? new cn.contribution.account.TransactionArchive(database) : null;
+            stocks = new StockService(database, config);
             ContributionApi.install(accounts);
             try {
                 cn.contribution.industry.RuleManager.start(server, config);
-                statistics = new StatisticsService(database, config);
+                statistics = new StatisticsService(database, config, journalDirectory);
                 settlement = config.mainServer ? new IndustrySettlement(database, config) : null;
             } catch (RuntimeException error) {
                 statistics = null;
@@ -65,9 +82,11 @@ public final class ContributionRuntime {
         accounts = null;
         statistics = null;
         settlement = null;
+        stocks = null;
         archive = null;
         cn.contribution.command.RequestLimiter.clear();
         cn.contribution.ui.AdminDialogOperations.clear();
+        cn.contribution.ui.ContributionDialogs.clear();
         lastDatabaseRetryTick = 0;
         ContributionApi.install(null);
     }
@@ -87,8 +106,11 @@ public final class ContributionRuntime {
         return statistics;
     }
 
+    public static StockService stocks() { return stocks; }
+
     public static void tick(MinecraftServer server) {
         if (archive != null) archive.tick(server);
+        if (stocks != null && server.getTickCount() % 20 == 0) stocks.tick(server);
         DatabaseService current = database;
         if (current != null && current.state() == DatabaseState.UNAVAILABLE
                 && server.getTickCount() - lastDatabaseRetryTick >= 600) {

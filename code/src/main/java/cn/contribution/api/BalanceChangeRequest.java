@@ -11,6 +11,12 @@ public record BalanceChangeRequest(
         BalanceChangeType type,
         Identifier source,
         String reason,
-        String note
+        String note,
+        boolean affectTotalIncome
 ) {
+    public BalanceChangeRequest(UUID idempotencyId, AccountTarget target, int amount,
+                                BalanceChangeType type, Identifier source, String reason, String note) {
+        this(idempotencyId, target, amount, type, source, reason, note,
+                amount > 0 && type != BalanceChangeType.REFUND);
+    }
 }

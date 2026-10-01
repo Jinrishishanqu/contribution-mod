@@ -84,6 +84,10 @@ public final class StatisticsService {
         this(database, config, FabricLoader.getInstance().getConfigDir().resolve("contribution/statistics-journal"), RuleManager.current());
     }
 
+    public StatisticsService(DatabaseService database, ServerConfig config, Path journalDirectory) {
+        this(database, config, journalDirectory, RuleManager.current());
+    }
+
     StatisticsService(DatabaseService database, ServerConfig config, Path journalDirectory, RuleSnapshot snapshot) {
         this.database = database;
         this.config = config;

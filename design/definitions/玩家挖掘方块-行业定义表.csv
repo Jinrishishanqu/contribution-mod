@@ -1,267 +1,267 @@
-ï»¿åºå·,è¡Œä¸š,å¯¹åº”JSONæ–‡ä»¶,ä¸­æ–‡åç§°,æ³¨å†ŒID
-1,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,è¿œå¤æ®‹éª¸,minecraft:ancient_debris
-2,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,å®‰å±±å²©,minecraft:andesite
-3,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,ç„æ­¦å²©,minecraft:basalt
-4,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,é»‘è‰²é™¶ç“¦,minecraft:black_terracotta
-5,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,é»‘çŸ³,minecraft:blackstone
-6,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,è“è‰²é™¶ç“¦,minecraft:blue_terracotta
-7,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ£•è‰²é™¶ç“¦,minecraft:brown_terracotta
-8,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ–¹è§£çŸ³,minecraft:calcite
-9,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æœ±ç ‚,minecraft:cinnabar
-10,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,é»åœŸ,minecraft:clay
-11,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,ç…¤çŸ¿çŸ³,minecraft:coal_ore
-12,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,ç ‚åœŸ,minecraft:coarse_dirt
-13,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,é“œçŸ¿çŸ³,minecraft:copper_ore
-14,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,ç»¯çº¢èŒå²©,minecraft:crimson_nylium
-15,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,å“­æ³£çš„é»‘æ›œçŸ³,minecraft:crying_obsidian
-16,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,é’è‰²é™¶ç“¦,minecraft:cyan_terracotta
-17,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ·±æ¿å²©,minecraft:deepslate
-18,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ·±å±‚ç…¤çŸ¿çŸ³,minecraft:deepslate_coal_ore
-19,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ·±å±‚é“œçŸ¿çŸ³,minecraft:deepslate_copper_ore
-20,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ·±å±‚é’»çŸ³çŸ¿çŸ³,minecraft:deepslate_diamond_ore
-21,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ·±å±‚ç»¿å®çŸ³çŸ¿çŸ³,minecraft:deepslate_emerald_ore
-22,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ·±å±‚é‡‘çŸ¿çŸ³,minecraft:deepslate_gold_ore
-23,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ·±å±‚é“çŸ¿çŸ³,minecraft:deepslate_iron_ore
-24,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ·±å±‚é’é‡‘çŸ³çŸ¿çŸ³,minecraft:deepslate_lapis_ore
-25,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ·±å±‚çº¢çŸ³çŸ¿çŸ³,minecraft:deepslate_redstone_ore
-26,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,é’»çŸ³çŸ¿çŸ³,minecraft:diamond_ore
-27,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,é—ªé•¿å²©,minecraft:diorite
-28,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ³¥åœŸ,minecraft:dirt
-29,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,åœŸå¾„,minecraft:dirt_path
-30,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ»´æ°´çŸ³å—,minecraft:dripstone_block
-31,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,ç»¿å®çŸ³çŸ¿çŸ³,minecraft:emerald_ore
-32,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æœ«åœ°çŸ³,minecraft:end_stone
-33,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,é•¶é‡‘é»‘çŸ³,minecraft:gilded_blackstone
-34,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,è§çŸ³,minecraft:glowstone
-35,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,é‡‘çŸ¿çŸ³,minecraft:gold_ore
-36,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,èŠ±å²—å²©,minecraft:granite
-37,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ²™ç ¾,minecraft:gravel
-38,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,ç°è‰²é™¶ç“¦,minecraft:gray_terracotta
-39,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,ç»¿è‰²é™¶ç“¦,minecraft:green_terracotta
-40,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,è™«èš€é›•çº¹çŸ³ç –,minecraft:infested_chiseled_stone_bricks
-41,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,è™«èš€åœ†çŸ³,minecraft:infested_cobblestone
-42,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,è™«èš€è£‚çº¹çŸ³ç –,minecraft:infested_cracked_stone_bricks
-43,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,è™«èš€æ·±æ¿å²©,minecraft:infested_deepslate
-44,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,è™«èš€è‹”çŸ³ç –,minecraft:infested_mossy_stone_bricks
-45,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,è™«èš€çŸ³å¤´,minecraft:infested_stone
-46,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,è™«èš€çŸ³ç –,minecraft:infested_stone_bricks
-47,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,é“çŸ¿çŸ³,minecraft:iron_ore
-48,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,é’é‡‘çŸ³çŸ¿çŸ³,minecraft:lapis_ore
-49,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ·¡è“è‰²é™¶ç“¦,minecraft:light_blue_terracotta
-50,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ·¡ç°è‰²é™¶ç“¦,minecraft:light_gray_terracotta
-51,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,é»„ç»¿è‰²é™¶ç“¦,minecraft:lime_terracotta
-52,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,å“çº¢è‰²é™¶ç“¦,minecraft:magenta_terracotta
-53,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,å²©æµ†å—,minecraft:magma_block
-54,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ³¥å·´,minecraft:mud
-55,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,èŒä¸ä½“,minecraft:mycelium
-56,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,ä¸‹ç•Œé‡‘çŸ¿çŸ³,minecraft:nether_gold_ore
-57,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,ä¸‹ç•ŒçŸ³è‹±çŸ¿çŸ³,minecraft:nether_quartz_ore
-58,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,ä¸‹ç•Œå²©,minecraft:netherrack
-59,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,é»‘æ›œçŸ³,minecraft:obsidian
-60,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ©™è‰²é™¶ç“¦,minecraft:orange_terracotta
-61,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,ç²‰çº¢è‰²é™¶ç“¦,minecraft:pink_terracotta
-62,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,ç°åŒ–åœŸ,minecraft:podzol
-63,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ»´æ°´çŸ³é”¥,minecraft:pointed_dripstone
-64,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,çƒˆæ€§ç¡«é»„,minecraft:potent_sulfur
-65,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,ç´«è‰²é™¶ç“¦,minecraft:purple_terracotta
-66,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,çº¢æ²™,minecraft:red_sand
-67,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,çº¢è‰²é™¶ç“¦,minecraft:red_terracotta
-68,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,çº¢çŸ³çŸ¿çŸ³,minecraft:redstone_ore
-69,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,ç¼ æ ¹æ³¥åœŸ,minecraft:rooted_dirt
-70,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,æ²™å­,minecraft:sand
-71,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,çµé­‚æ²™,minecraft:soul_sand
-72,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,çµé­‚åœŸ,minecraft:soul_soil
-73,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,çŸ³å¤´,minecraft:stone
-74,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,ç¡«é»„,minecraft:sulfur
-75,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,ç¡«é»„å°–é”¥,minecraft:sulfur_spike
-76,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,å¯ç–‘çš„æ²™ç ¾,minecraft:suspicious_gravel
-77,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,å¯ç–‘çš„æ²™å­,minecraft:suspicious_sand
-78,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,é™¶ç“¦,minecraft:terracotta
-79,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,å‡ç°å²©,minecraft:tuff
-80,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,è¯¡å¼‚èŒå²©,minecraft:warped_nylium
-81,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,ç™½è‰²é™¶ç“¦,minecraft:white_terracotta
-82,é‡‡çŸ¿å†¶é‡‘,mine_mining_metallurgy.json,é»„è‰²é™¶ç“¦,minecraft:yellow_terracotta
-83,ç§‘æŠ€é­”æ³•,mine_technology_magic.json,ç´«æ°´æ™¶ç°‡,minecraft:amethyst_cluster
-84,ç§‘æŠ€é­”æ³•,mine_technology_magic.json,æ ¡é¢‘å¹½åŒ¿æ„Ÿæµ‹ä½“,minecraft:calibrated_sculk_sensor
-85,ç§‘æŠ€é­”æ³•,mine_technology_magic.json,å¤§å‹ç´«æ™¶èŠ½,minecraft:large_amethyst_bud
-86,ç§‘æŠ€é­”æ³•,mine_technology_magic.json,ä¸­å‹ç´«æ™¶èŠ½,minecraft:medium_amethyst_bud
-87,ç§‘æŠ€é­”æ³•,mine_technology_magic.json,å¹½åŒ¿å—,minecraft:sculk
-88,ç§‘æŠ€é­”æ³•,mine_technology_magic.json,å¹½åŒ¿å‚¬å‘ä½“,minecraft:sculk_catalyst
-89,ç§‘æŠ€é­”æ³•,mine_technology_magic.json,å¹½åŒ¿æ„Ÿæµ‹ä½“,minecraft:sculk_sensor
-90,ç§‘æŠ€é­”æ³•,mine_technology_magic.json,å¹½åŒ¿å°–å•¸ä½“,minecraft:sculk_shrieker
-91,ç§‘æŠ€é­”æ³•,mine_technology_magic.json,å¹½åŒ¿è„‰ç»œ,minecraft:sculk_vein
-92,ç§‘æŠ€é­”æ³•,mine_technology_magic.json,å°å‹ç´«æ™¶èŠ½,minecraft:small_amethyst_bud
-93,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,é‡‘åˆæ¬¢æ ‘å¶,minecraft:acacia_leaves
-94,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,é‡‘åˆæ¬¢åŸæœ¨,minecraft:acacia_log
-95,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,é‡‘åˆæ¬¢æ ‘è‹—,minecraft:acacia_sapling
-96,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,é‡‘åˆæ¬¢æœ¨,minecraft:acacia_wood
-97,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç»’çƒè‘±,minecraft:allium
-98,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç»“æœçš„è¥¿ç“œèŒ,minecraft:attached_melon_stem
-99,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç»“æœçš„å—ç“œèŒ,minecraft:attached_pumpkin_stem
-100,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æœé¹ƒæ ‘å¶,minecraft:azalea_leaves
-101,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è“èŠ±ç¾è€³è‰,minecraft:azure_bluet
-102,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç«¹å­,minecraft:bamboo
-103,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç«¹ç¬‹,minecraft:bamboo_sapling
-104,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç”œèœæ ¹,minecraft:beetroots
-105,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å¤§å‹å‚æ»´å¶,minecraft:big_dripleaf
-106,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å¤§å‹å‚æ»´å¶èŒ,minecraft:big_dripleaf_stem
-107,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç™½æ¡¦æ ‘å¶,minecraft:birch_leaves
-108,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç™½æ¡¦åŸæœ¨,minecraft:birch_log
-109,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç™½æ¡¦æ ‘è‹—,minecraft:birch_sapling
-110,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç™½æ¡¦æœ¨,minecraft:birch_wood
-111,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å…°èŠ±,minecraft:blue_orchid
-112,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ£•è‰²è˜‘è‡,minecraft:brown_mushroom
-113,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ£•è‰²è˜‘è‡æ–¹å—,minecraft:brown_mushroom_block
-114,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ä»™äººæŒ,minecraft:cactus
-115,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ä»™äººæŒèŠ±,minecraft:cactus_flower
-116,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,èƒ¡èåœ,minecraft:carrots
-117,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ´ç©´è—¤è”“,minecraft:cave_vines
-118,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ´ç©´è—¤è”“æ¤æ ª,minecraft:cave_vines_plant
-119,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ¨±èŠ±æ ‘å¶,minecraft:cherry_leaves
-120,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ¨±èŠ±åŸæœ¨,minecraft:cherry_log
-121,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ¨±èŠ±æ ‘è‹—,minecraft:cherry_sapling
-122,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ¨±èŠ±æœ¨,minecraft:cherry_wood
-123,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç´«é¢‚èŠ±,minecraft:chorus_flower
-124,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç´«é¢‚æ¤æ ª,minecraft:chorus_plant
-125,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,é—­åˆçš„çœ¼çœ¸èŠ±,minecraft:closed_eyeblossom
-126,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å¯å¯æœ,minecraft:cocoa
-127,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,çŸ¢è½¦èŠ,minecraft:cornflower
-128,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç»¯çº¢èŒæ ¸,minecraft:crimson_hyphae
-129,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç»¯çº¢èŒç´¢,minecraft:crimson_roots
-130,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç»¯çº¢èŒæŸ„,minecraft:crimson_stem
-131,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è’²å…¬è‹±,minecraft:dandelion
-132,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ·±è‰²æ©¡æ ‘æ ‘å¶,minecraft:dark_oak_leaves
-133,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ·±è‰²æ©¡æœ¨åŸæœ¨,minecraft:dark_oak_log
-134,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ·±è‰²æ©¡æ ‘æ ‘è‹—,minecraft:dark_oak_sapling
-135,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ·±è‰²æ©¡æœ¨,minecraft:dark_oak_wood
-136,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ¯èçš„çŒæœ¨,minecraft:dead_bush
-137,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è•¨,minecraft:fern
-138,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è¤ç«è™«çŒæœ¨ä¸›,minecraft:firefly_bush
-139,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç››å¼€çš„æœé¹ƒæ ‘å¶,minecraft:flowering_azalea_leaves
-140,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å‚æ ¹,minecraft:hanging_roots
-141,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ä¸›æ—æ ‘å¶,minecraft:jungle_leaves
-142,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ä¸›æ—åŸæœ¨,minecraft:jungle_log
-143,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ä¸›æ—æ ‘è‹—,minecraft:jungle_sapling
-144,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ä¸›æ—æœ¨,minecraft:jungle_wood
-145,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æµ·å¸¦,minecraft:kelp
-146,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æµ·å¸¦æ¤æ ª,minecraft:kelp_plant
-147,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å¤§å‹è•¨,minecraft:large_fern
-148,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ¯å¶å †,minecraft:leaf_litter
-149,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ä¸é¦™,minecraft:lilac
-150,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,é“ƒå…°,minecraft:lily_of_the_valley
-151,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,çº¢æ ‘æ ‘å¶,minecraft:mangrove_leaves
-152,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,çº¢æ ‘åŸæœ¨,minecraft:mangrove_log
-153,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,çº¢æ ‘èƒç”Ÿè‹—,minecraft:mangrove_propagule
-154,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,çº¢æ ‘æ ¹,minecraft:mangrove_roots
-155,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,çº¢æ ‘æœ¨,minecraft:mangrove_wood
-156,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è¥¿ç“œ,minecraft:melon
-157,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è¥¿ç“œèŒ,minecraft:melon_stem
-158,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è‹”è—“å—,minecraft:moss_block
-159,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è¦†åœ°è‹”è—“,minecraft:moss_carpet
-160,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ²¾æ³¥çš„çº¢æ ‘æ ¹,minecraft:muddy_mangrove_roots
-161,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è˜‘è‡æŸ„,minecraft:mushroom_stem
-162,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ä¸‹ç•Œè‹—,minecraft:nether_sprouts
-163,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ä¸‹ç•Œç–£,minecraft:nether_wart
-164,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ä¸‹ç•Œç–£å—,minecraft:nether_wart_block
-165,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ©¡æ ‘æ ‘å¶,minecraft:oak_leaves
-166,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ©¡æœ¨åŸæœ¨,minecraft:oak_log
-167,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ©¡æ ‘æ ‘è‹—,minecraft:oak_sapling
-168,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ©¡æœ¨,minecraft:oak_wood
-169,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å¼ å¼€çš„çœ¼çœ¸èŠ±,minecraft:open_eyeblossom
-170,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ©™è‰²æ¨æ ‘æ ‘å¶,minecraft:orange_poplar_leaves
-171,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ©™è‰²éƒé‡‘é¦™,minecraft:orange_tulip
-172,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è‹ç™½è‹”è—“å—,minecraft:pale_moss_block
-173,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è‹ç™½è¦†åœ°è‹”è—“,minecraft:pale_moss_carpet
-174,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è‹ç™½æ©¡æ ‘æ ‘å¶,minecraft:pale_oak_leaves
-175,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è‹ç™½æ©¡æœ¨åŸæœ¨,minecraft:pale_oak_log
-176,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è‹ç™½æ©¡æ ‘æ ‘è‹—,minecraft:pale_oak_sapling
-177,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è‹ç™½æ©¡æœ¨,minecraft:pale_oak_wood
-178,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç‰¡ä¸¹,minecraft:peony
-179,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç²‰çº¢è‰²èŠ±ç°‡,minecraft:pink_petals
-180,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç²‰çº¢è‰²éƒé‡‘é¦™,minecraft:pink_tulip
-181,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç“¶å­è‰æ¤æ ª,minecraft:pitcher_crop
-182,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç“¶å­è‰,minecraft:pitcher_plant
-183,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ¨æœ¨åŸæœ¨,minecraft:poplar_log
-184,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ¨æ ‘æ ‘è‹—,minecraft:poplar_sapling
-185,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ¨æœ¨,minecraft:poplar_wood
-186,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è™ç¾äºº,minecraft:poppy
-187,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,é©¬é“ƒè–¯,minecraft:potatoes
-188,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,é‡‘åˆæ¬¢æ ‘è‹—ç›†æ ½,minecraft:potted_acacia_sapling
-189,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æœé¹ƒèŠ±ä¸›ç›†æ ½,minecraft:potted_azalea_bush
-190,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç™½æ¡¦æ ‘è‹—ç›†æ ½,minecraft:potted_birch_sapling
-191,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å…°èŠ±ç›†æ ½,minecraft:potted_blue_orchid
-192,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ¨±èŠ±æ ‘è‹—ç›†æ ½,minecraft:potted_cherry_sapling
-193,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ·±è‰²æ©¡æ ‘æ ‘è‹—ç›†æ ½,minecraft:potted_dark_oak_sapling
-194,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ¯èçš„çŒæœ¨ç›†æ ½,minecraft:potted_dead_bush
-195,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç››å¼€çš„æœé¹ƒèŠ±ä¸›ç›†æ ½,minecraft:potted_flowering_azalea_bush
-196,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ä¸›æ—æ ‘è‹—ç›†æ ½,minecraft:potted_jungle_sapling
-197,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,çº¢æ ‘èƒç”Ÿè‹—ç›†æ ½,minecraft:potted_mangrove_propagule
-198,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ©¡æ ‘æ ‘è‹—ç›†æ ½,minecraft:potted_oak_sapling
-199,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ©™è‰²éƒé‡‘é¦™ç›†æ ½,minecraft:potted_orange_tulip
-200,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è‹ç™½æ©¡æ ‘æ ‘è‹—ç›†æ ½,minecraft:potted_pale_oak_sapling
-201,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç²‰çº¢è‰²éƒé‡‘é¦™ç›†æ ½,minecraft:potted_pink_tulip
-202,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æ¨æ ‘æ ‘è‹—ç›†æ ½,minecraft:potted_poplar_sapling
-203,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,çº¢è‰²éƒé‡‘é¦™ç›†æ ½,minecraft:potted_red_tulip
-204,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,äº‘æ‰æ ‘è‹—ç›†æ ½,minecraft:potted_spruce_sapling
-205,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç™½è‰²éƒé‡‘é¦™ç›†æ ½,minecraft:potted_white_tulip
-206,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å—ç“œ,minecraft:pumpkin
-207,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å—ç“œèŒ,minecraft:pumpkin_stem
-208,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,çº¢è‰²è˜‘è‡,minecraft:red_mushroom
-209,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,çº¢è‰²è˜‘è‡æ–¹å—,minecraft:red_mushroom_block
-210,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,çº¢è‰²æ¨æ ‘æ ‘å¶,minecraft:red_poplar_leaves
-211,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,çº¢è‰²éƒé‡‘é¦™,minecraft:red_tulip
-212,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç«ç‘°ä¸›,minecraft:rose_bush
-213,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,æµ·è‰,minecraft:seagrass
-214,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å±‚å­”è‡,minecraft:shelf_mushroom
-215,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,çŸ®è‰ä¸›,minecraft:short_grass
-216,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,èŒå…‰ä½“,minecraft:shroomlight
-217,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å°å‹å‚æ»´å¶,minecraft:small_dripleaf
-218,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å­¢å­èŠ±,minecraft:spore_blossom
-219,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,äº‘æ‰æ ‘å¶,minecraft:spruce_leaves
-220,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,äº‘æ‰åŸæœ¨,minecraft:spruce_log
-221,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,äº‘æ‰æ ‘è‹—,minecraft:spruce_sapling
-222,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,äº‘æ‰æœ¨,minecraft:spruce_wood
-223,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®é‡‘åˆæ¬¢åŸæœ¨,minecraft:stripped_acacia_log
-224,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®é‡‘åˆæ¬¢æœ¨,minecraft:stripped_acacia_wood
-225,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®ç™½æ¡¦åŸæœ¨,minecraft:stripped_birch_log
-226,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®ç™½æ¡¦æœ¨,minecraft:stripped_birch_wood
-227,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®æ¨±èŠ±åŸæœ¨,minecraft:stripped_cherry_log
-228,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®æ¨±èŠ±æœ¨,minecraft:stripped_cherry_wood
-229,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®ç»¯çº¢èŒæ ¸,minecraft:stripped_crimson_hyphae
-230,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®ç»¯çº¢èŒæŸ„,minecraft:stripped_crimson_stem
-231,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®æ·±è‰²æ©¡æœ¨åŸæœ¨,minecraft:stripped_dark_oak_log
-232,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®æ·±è‰²æ©¡æœ¨,minecraft:stripped_dark_oak_wood
-233,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®ä¸›æ—åŸæœ¨,minecraft:stripped_jungle_log
-234,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®ä¸›æ—æœ¨,minecraft:stripped_jungle_wood
-235,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®çº¢æ ‘åŸæœ¨,minecraft:stripped_mangrove_log
-236,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®çº¢æ ‘æœ¨,minecraft:stripped_mangrove_wood
-237,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®æ©¡æœ¨åŸæœ¨,minecraft:stripped_oak_log
-238,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®æ©¡æœ¨,minecraft:stripped_oak_wood
-239,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®è‹ç™½æ©¡æœ¨åŸæœ¨,minecraft:stripped_pale_oak_log
-240,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®è‹ç™½æ©¡æœ¨,minecraft:stripped_pale_oak_wood
-241,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®æ¨æœ¨åŸæœ¨,minecraft:stripped_poplar_log
-242,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®æ¨æœ¨,minecraft:stripped_poplar_wood
-243,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®äº‘æ‰åŸæœ¨,minecraft:stripped_spruce_log
-244,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®äº‘æ‰æœ¨,minecraft:stripped_spruce_wood
-245,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®è¯¡å¼‚èŒæ ¸,minecraft:stripped_warped_hyphae
-246,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å»çš®è¯¡å¼‚èŒæŸ„,minecraft:stripped_warped_stem
-247,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç”˜è”—,minecraft:sugar_cane
-248,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å‘æ—¥è‘µ,minecraft:sunflower
-249,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç”œæµ†æœä¸›,minecraft:sweet_berry_bush
-250,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,é«˜è‰ä¸›,minecraft:tall_grass
-251,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,é«˜æµ·è‰,minecraft:tall_seagrass
-252,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç«æŠŠèŠ±,minecraft:torchflower
-253,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç«æŠŠèŠ±æ¤æ ª,minecraft:torchflower_crop
-254,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç¼ æ€¨è—¤,minecraft:twisting_vines
-255,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç¼ æ€¨è—¤æ¤æ ª,minecraft:twisting_vines_plant
-256,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è—¤è”“,minecraft:vine
-257,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è¯¡å¼‚èŒæ ¸,minecraft:warped_hyphae
-258,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è¯¡å¼‚èŒç´¢,minecraft:warped_roots
-259,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è¯¡å¼‚èŒæŸ„,minecraft:warped_stem
-260,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,è¯¡å¼‚ç–£å—,minecraft:warped_wart_block
-261,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å‚æ³ªè—¤,minecraft:weeping_vines
-262,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å‚æ³ªè—¤æ¤æ ª,minecraft:weeping_vines_plant
-263,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,å°éº¦æ¤æ ª,minecraft:wheat
-264,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,ç™½è‰²éƒé‡‘é¦™,minecraft:white_tulip
-265,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,é‡èŠ±ç°‡,minecraft:wildflowers
-266,å†œæ—ç‰§æ¸”,mine_agriculture_forestry_livestock_fishery.json,é»„è‰²æ¨æ ‘æ ‘å¶,minecraft:yellow_poplar_leaves
+ĞòºÅ,ĞĞÒµ,¶ÔÓ¦JSONÎÄ¼ş,ÖĞÎÄÃû³Æ,×¢²áID
+1,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Ô¶¹Å²Ğº¡,minecraft:ancient_debris
+2,²É¿óÒ±½ğ,mine_mining_metallurgy.json,°²É½ÑÒ,minecraft:andesite
+3,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ĞşÎäÑÒ,minecraft:basalt
+4,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ºÚÉ«ÌÕÍß,minecraft:black_terracotta
+5,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ºÚÊ¯,minecraft:blackstone
+6,²É¿óÒ±½ğ,mine_mining_metallurgy.json,À¶É«ÌÕÍß,minecraft:blue_terracotta
+7,²É¿óÒ±½ğ,mine_mining_metallurgy.json,×ØÉ«ÌÕÍß,minecraft:brown_terracotta
+8,²É¿óÒ±½ğ,mine_mining_metallurgy.json,·½½âÊ¯,minecraft:calcite
+9,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ÖìÉ°,minecraft:cinnabar
+10,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ğ¤ÍÁ,minecraft:clay
+11,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Ãº¿óÊ¯,minecraft:coal_ore
+12,²É¿óÒ±½ğ,mine_mining_metallurgy.json,É°ÍÁ,minecraft:coarse_dirt
+13,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Í­¿óÊ¯,minecraft:copper_ore
+14,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ç³ºì¾úÑÒ,minecraft:crimson_nylium
+15,²É¿óÒ±½ğ,mine_mining_metallurgy.json,¿ŞÆüµÄºÚê×Ê¯,minecraft:crying_obsidian
+16,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ÇàÉ«ÌÕÍß,minecraft:cyan_terracotta
+17,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Éî°åÑÒ,minecraft:deepslate
+18,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Éî²ãÃº¿óÊ¯,minecraft:deepslate_coal_ore
+19,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Éî²ãÍ­¿óÊ¯,minecraft:deepslate_copper_ore
+20,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Éî²ã×êÊ¯¿óÊ¯,minecraft:deepslate_diamond_ore
+21,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Éî²ãÂÌ±¦Ê¯¿óÊ¯,minecraft:deepslate_emerald_ore
+22,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Éî²ã½ğ¿óÊ¯,minecraft:deepslate_gold_ore
+23,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Éî²ãÌú¿óÊ¯,minecraft:deepslate_iron_ore
+24,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Éî²ãÇà½ğÊ¯¿óÊ¯,minecraft:deepslate_lapis_ore
+25,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Éî²ãºìÊ¯¿óÊ¯,minecraft:deepslate_redstone_ore
+26,²É¿óÒ±½ğ,mine_mining_metallurgy.json,×êÊ¯¿óÊ¯,minecraft:diamond_ore
+27,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ÉÁ³¤ÑÒ,minecraft:diorite
+28,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ÄàÍÁ,minecraft:dirt
+29,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ÍÁ¾¶,minecraft:dirt_path
+30,²É¿óÒ±½ğ,mine_mining_metallurgy.json,µÎË®Ê¯¿é,minecraft:dripstone_block
+31,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ÂÌ±¦Ê¯¿óÊ¯,minecraft:emerald_ore
+32,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Ä©µØÊ¯,minecraft:end_stone
+33,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Ïâ½ğºÚÊ¯,minecraft:gilded_blackstone
+34,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Ó«Ê¯,minecraft:glowstone
+35,²É¿óÒ±½ğ,mine_mining_metallurgy.json,½ğ¿óÊ¯,minecraft:gold_ore
+36,²É¿óÒ±½ğ,mine_mining_metallurgy.json,»¨¸ÚÑÒ,minecraft:granite
+37,²É¿óÒ±½ğ,mine_mining_metallurgy.json,É³Àù,minecraft:gravel
+38,²É¿óÒ±½ğ,mine_mining_metallurgy.json,»ÒÉ«ÌÕÍß,minecraft:gray_terracotta
+39,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ÂÌÉ«ÌÕÍß,minecraft:green_terracotta
+40,²É¿óÒ±½ğ,mine_mining_metallurgy.json,³æÊ´µñÎÆÊ¯×©,minecraft:infested_chiseled_stone_bricks
+41,²É¿óÒ±½ğ,mine_mining_metallurgy.json,³æÊ´Ô²Ê¯,minecraft:infested_cobblestone
+42,²É¿óÒ±½ğ,mine_mining_metallurgy.json,³æÊ´ÁÑÎÆÊ¯×©,minecraft:infested_cracked_stone_bricks
+43,²É¿óÒ±½ğ,mine_mining_metallurgy.json,³æÊ´Éî°åÑÒ,minecraft:infested_deepslate
+44,²É¿óÒ±½ğ,mine_mining_metallurgy.json,³æÊ´Ì¦Ê¯×©,minecraft:infested_mossy_stone_bricks
+45,²É¿óÒ±½ğ,mine_mining_metallurgy.json,³æÊ´Ê¯Í·,minecraft:infested_stone
+46,²É¿óÒ±½ğ,mine_mining_metallurgy.json,³æÊ´Ê¯×©,minecraft:infested_stone_bricks
+47,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Ìú¿óÊ¯,minecraft:iron_ore
+48,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Çà½ğÊ¯¿óÊ¯,minecraft:lapis_ore
+49,²É¿óÒ±½ğ,mine_mining_metallurgy.json,µ­À¶É«ÌÕÍß,minecraft:light_blue_terracotta
+50,²É¿óÒ±½ğ,mine_mining_metallurgy.json,µ­»ÒÉ«ÌÕÍß,minecraft:light_gray_terracotta
+51,²É¿óÒ±½ğ,mine_mining_metallurgy.json,»ÆÂÌÉ«ÌÕÍß,minecraft:lime_terracotta
+52,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Æ·ºìÉ«ÌÕÍß,minecraft:magenta_terracotta
+53,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ÑÒ½¬¿é,minecraft:magma_block
+54,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Äà°Í,minecraft:mud
+55,²É¿óÒ±½ğ,mine_mining_metallurgy.json,¾úË¿Ìå,minecraft:mycelium
+56,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ÏÂ½ç½ğ¿óÊ¯,minecraft:nether_gold_ore
+57,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ÏÂ½çÊ¯Ó¢¿óÊ¯,minecraft:nether_quartz_ore
+58,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ÏÂ½çÑÒ,minecraft:netherrack
+59,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ºÚê×Ê¯,minecraft:obsidian
+60,²É¿óÒ±½ğ,mine_mining_metallurgy.json,³ÈÉ«ÌÕÍß,minecraft:orange_terracotta
+61,²É¿óÒ±½ğ,mine_mining_metallurgy.json,·ÛºìÉ«ÌÕÍß,minecraft:pink_terracotta
+62,²É¿óÒ±½ğ,mine_mining_metallurgy.json,»Ò»¯ÍÁ,minecraft:podzol
+63,²É¿óÒ±½ğ,mine_mining_metallurgy.json,µÎË®Ê¯×¶,minecraft:pointed_dripstone
+64,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ÁÒĞÔÁò»Æ,minecraft:potent_sulfur
+65,²É¿óÒ±½ğ,mine_mining_metallurgy.json,×ÏÉ«ÌÕÍß,minecraft:purple_terracotta
+66,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ºìÉ³,minecraft:red_sand
+67,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ºìÉ«ÌÕÍß,minecraft:red_terracotta
+68,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ºìÊ¯¿óÊ¯,minecraft:redstone_ore
+69,²É¿óÒ±½ğ,mine_mining_metallurgy.json,²ø¸ùÄàÍÁ,minecraft:rooted_dirt
+70,²É¿óÒ±½ğ,mine_mining_metallurgy.json,É³×Ó,minecraft:sand
+71,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Áé»êÉ³,minecraft:soul_sand
+72,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Áé»êÍÁ,minecraft:soul_soil
+73,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Ê¯Í·,minecraft:stone
+74,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Áò»Æ,minecraft:sulfur
+75,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Áò»Æ¼â×¶,minecraft:sulfur_spike
+76,²É¿óÒ±½ğ,mine_mining_metallurgy.json,¿ÉÒÉµÄÉ³Àù,minecraft:suspicious_gravel
+77,²É¿óÒ±½ğ,mine_mining_metallurgy.json,¿ÉÒÉµÄÉ³×Ó,minecraft:suspicious_sand
+78,²É¿óÒ±½ğ,mine_mining_metallurgy.json,ÌÕÍß,minecraft:terracotta
+79,²É¿óÒ±½ğ,mine_mining_metallurgy.json,Äı»ÒÑÒ,minecraft:tuff
+80,²É¿óÒ±½ğ,mine_mining_metallurgy.json,¹îÒì¾úÑÒ,minecraft:warped_nylium
+81,²É¿óÒ±½ğ,mine_mining_metallurgy.json,°×É«ÌÕÍß,minecraft:white_terracotta
+82,²É¿óÒ±½ğ,mine_mining_metallurgy.json,»ÆÉ«ÌÕÍß,minecraft:yellow_terracotta
+83,¿Æ¼¼Ä§·¨,mine_technology_magic.json,×ÏË®¾§´Ø,minecraft:amethyst_cluster
+84,¿Æ¼¼Ä§·¨,mine_technology_magic.json,Ğ£ÆµÓÄÄä¸Ğ²âÌå,minecraft:calibrated_sculk_sensor
+85,¿Æ¼¼Ä§·¨,mine_technology_magic.json,´óĞÍ×Ï¾§Ñ¿,minecraft:large_amethyst_bud
+86,¿Æ¼¼Ä§·¨,mine_technology_magic.json,ÖĞĞÍ×Ï¾§Ñ¿,minecraft:medium_amethyst_bud
+87,¿Æ¼¼Ä§·¨,mine_technology_magic.json,ÓÄÄä¿é,minecraft:sculk
+88,¿Æ¼¼Ä§·¨,mine_technology_magic.json,ÓÄÄä´ß·¢Ìå,minecraft:sculk_catalyst
+89,¿Æ¼¼Ä§·¨,mine_technology_magic.json,ÓÄÄä¸Ğ²âÌå,minecraft:sculk_sensor
+90,¿Æ¼¼Ä§·¨,mine_technology_magic.json,ÓÄÄä¼âĞ¥Ìå,minecraft:sculk_shrieker
+91,¿Æ¼¼Ä§·¨,mine_technology_magic.json,ÓÄÄäÂöÂç,minecraft:sculk_vein
+92,¿Æ¼¼Ä§·¨,mine_technology_magic.json,Ğ¡ĞÍ×Ï¾§Ñ¿,minecraft:small_amethyst_bud
+93,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,½ğºÏ»¶Ê÷Ò¶,minecraft:acacia_leaves
+94,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,½ğºÏ»¶Ô­Ä¾,minecraft:acacia_log
+95,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,½ğºÏ»¶Ê÷Ãç,minecraft:acacia_sapling
+96,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,½ğºÏ»¶Ä¾,minecraft:acacia_wood
+97,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÈŞÇò´Ğ,minecraft:allium
+98,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,½á¹ûµÄÎ÷¹Ï¾¥,minecraft:attached_melon_stem
+99,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,½á¹ûµÄÄÏ¹Ï¾¥,minecraft:attached_pumpkin_stem
+100,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,¶Å¾éÊ÷Ò¶,minecraft:azalea_leaves
+101,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,À¶»¨ÃÀ¶ú²İ,minecraft:azure_bluet
+102,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Öñ×Ó,minecraft:bamboo
+103,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÖñËñ,minecraft:bamboo_sapling
+104,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Ìğ²Ë¸ù,minecraft:beetroots
+105,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,´óĞÍ´¹µÎÒ¶,minecraft:big_dripleaf
+106,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,´óĞÍ´¹µÎÒ¶¾¥,minecraft:big_dripleaf_stem
+107,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,°×èëÊ÷Ò¶,minecraft:birch_leaves
+108,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,°×èëÔ­Ä¾,minecraft:birch_log
+109,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,°×èëÊ÷Ãç,minecraft:birch_sapling
+110,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,°×èëÄ¾,minecraft:birch_wood
+111,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,À¼»¨,minecraft:blue_orchid
+112,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,×ØÉ«Ä¢¹½,minecraft:brown_mushroom
+113,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,×ØÉ«Ä¢¹½·½¿é,minecraft:brown_mushroom_block
+114,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÏÉÈËÕÆ,minecraft:cactus
+115,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÏÉÈËÕÆ»¨,minecraft:cactus_flower
+116,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ºúÂÜ²·,minecraft:carrots
+117,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,¶´Ñ¨ÌÙÂû,minecraft:cave_vines
+118,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,¶´Ñ¨ÌÙÂûÖ²Öê,minecraft:cave_vines_plant
+119,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Ó£»¨Ê÷Ò¶,minecraft:cherry_leaves
+120,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Ó£»¨Ô­Ä¾,minecraft:cherry_log
+121,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Ó£»¨Ê÷Ãç,minecraft:cherry_sapling
+122,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Ó£»¨Ä¾,minecraft:cherry_wood
+123,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,×ÏËÌ»¨,minecraft:chorus_flower
+124,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,×ÏËÌÖ²Öê,minecraft:chorus_plant
+125,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,±ÕºÏµÄÑÛíø»¨,minecraft:closed_eyeblossom
+126,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,¿É¿É¹û,minecraft:cocoa
+127,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Ê¸³µ¾Õ,minecraft:cornflower
+128,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ç³ºì¾úºË,minecraft:crimson_hyphae
+129,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ç³ºì¾úË÷,minecraft:crimson_roots
+130,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ç³ºì¾ú±ú,minecraft:crimson_stem
+131,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÆÑ¹«Ó¢,minecraft:dandelion
+132,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÉîÉ«ÏğÊ÷Ê÷Ò¶,minecraft:dark_oak_leaves
+133,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÉîÉ«ÏğÄ¾Ô­Ä¾,minecraft:dark_oak_log
+134,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÉîÉ«ÏğÊ÷Ê÷Ãç,minecraft:dark_oak_sapling
+135,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÉîÉ«ÏğÄ¾,minecraft:dark_oak_wood
+136,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,¿İÎ®µÄ¹àÄ¾,minecraft:dead_bush
+137,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Ş§,minecraft:fern
+138,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Ó©»ğ³æ¹àÄ¾´Ô,minecraft:firefly_bush
+139,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Ê¢¿ªµÄ¶Å¾éÊ÷Ò¶,minecraft:flowering_azalea_leaves
+140,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,´¹¸ù,minecraft:hanging_roots
+141,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,´ÔÁÖÊ÷Ò¶,minecraft:jungle_leaves
+142,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,´ÔÁÖÔ­Ä¾,minecraft:jungle_log
+143,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,´ÔÁÖÊ÷Ãç,minecraft:jungle_sapling
+144,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,´ÔÁÖÄ¾,minecraft:jungle_wood
+145,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,º£´ø,minecraft:kelp
+146,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,º£´øÖ²Öê,minecraft:kelp_plant
+147,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,´óĞÍŞ§,minecraft:large_fern
+148,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,¿İÒ¶¶Ñ,minecraft:leaf_litter
+149,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,¶¡Ïã,minecraft:lilac
+150,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÁåÀ¼,minecraft:lily_of_the_valley
+151,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ºìÊ÷Ê÷Ò¶,minecraft:mangrove_leaves
+152,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ºìÊ÷Ô­Ä¾,minecraft:mangrove_log
+153,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ºìÊ÷Ì¥ÉúÃç,minecraft:mangrove_propagule
+154,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ºìÊ÷¸ù,minecraft:mangrove_roots
+155,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ºìÊ÷Ä¾,minecraft:mangrove_wood
+156,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Î÷¹Ï,minecraft:melon
+157,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Î÷¹Ï¾¥,minecraft:melon_stem
+158,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Ì¦Şº¿é,minecraft:moss_block
+159,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,¸²µØÌ¦Şº,minecraft:moss_carpet
+160,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Õ´ÄàµÄºìÊ÷¸ù,minecraft:muddy_mangrove_roots
+161,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Ä¢¹½±ú,minecraft:mushroom_stem
+162,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÏÂ½çÃç,minecraft:nether_sprouts
+163,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÏÂ½çğà,minecraft:nether_wart
+164,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÏÂ½çğà¿é,minecraft:nether_wart_block
+165,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÏğÊ÷Ê÷Ò¶,minecraft:oak_leaves
+166,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÏğÄ¾Ô­Ä¾,minecraft:oak_log
+167,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÏğÊ÷Ê÷Ãç,minecraft:oak_sapling
+168,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÏğÄ¾,minecraft:oak_wood
+169,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÕÅ¿ªµÄÑÛíø»¨,minecraft:open_eyeblossom
+170,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,³ÈÉ«ÑîÊ÷Ê÷Ò¶,minecraft:orange_poplar_leaves
+171,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,³ÈÉ«Óô½ğÏã,minecraft:orange_tulip
+172,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,²Ô°×Ì¦Şº¿é,minecraft:pale_moss_block
+173,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,²Ô°×¸²µØÌ¦Şº,minecraft:pale_moss_carpet
+174,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,²Ô°×ÏğÊ÷Ê÷Ò¶,minecraft:pale_oak_leaves
+175,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,²Ô°×ÏğÄ¾Ô­Ä¾,minecraft:pale_oak_log
+176,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,²Ô°×ÏğÊ÷Ê÷Ãç,minecraft:pale_oak_sapling
+177,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,²Ô°×ÏğÄ¾,minecraft:pale_oak_wood
+178,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Äµµ¤,minecraft:peony
+179,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,·ÛºìÉ«»¨´Ø,minecraft:pink_petals
+180,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,·ÛºìÉ«Óô½ğÏã,minecraft:pink_tulip
+181,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Æ¿×Ó²İÖ²Öê,minecraft:pitcher_crop
+182,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Æ¿×Ó²İ,minecraft:pitcher_plant
+183,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÑîÄ¾Ô­Ä¾,minecraft:poplar_log
+184,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÑîÊ÷Ê÷Ãç,minecraft:poplar_sapling
+185,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÑîÄ¾,minecraft:poplar_wood
+186,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÓİÃÀÈË,minecraft:poppy
+187,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÂíÁåÊí,minecraft:potatoes
+188,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,½ğºÏ»¶Ê÷ÃçÅèÔÔ,minecraft:potted_acacia_sapling
+189,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,¶Å¾é»¨´ÔÅèÔÔ,minecraft:potted_azalea_bush
+190,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,°×èëÊ÷ÃçÅèÔÔ,minecraft:potted_birch_sapling
+191,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,À¼»¨ÅèÔÔ,minecraft:potted_blue_orchid
+192,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Ó£»¨Ê÷ÃçÅèÔÔ,minecraft:potted_cherry_sapling
+193,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÉîÉ«ÏğÊ÷Ê÷ÃçÅèÔÔ,minecraft:potted_dark_oak_sapling
+194,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,¿İÎ®µÄ¹àÄ¾ÅèÔÔ,minecraft:potted_dead_bush
+195,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Ê¢¿ªµÄ¶Å¾é»¨´ÔÅèÔÔ,minecraft:potted_flowering_azalea_bush
+196,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,´ÔÁÖÊ÷ÃçÅèÔÔ,minecraft:potted_jungle_sapling
+197,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ºìÊ÷Ì¥ÉúÃçÅèÔÔ,minecraft:potted_mangrove_propagule
+198,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÏğÊ÷Ê÷ÃçÅèÔÔ,minecraft:potted_oak_sapling
+199,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,³ÈÉ«Óô½ğÏãÅèÔÔ,minecraft:potted_orange_tulip
+200,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,²Ô°×ÏğÊ÷Ê÷ÃçÅèÔÔ,minecraft:potted_pale_oak_sapling
+201,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,·ÛºìÉ«Óô½ğÏãÅèÔÔ,minecraft:potted_pink_tulip
+202,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÑîÊ÷Ê÷ÃçÅèÔÔ,minecraft:potted_poplar_sapling
+203,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ºìÉ«Óô½ğÏãÅèÔÔ,minecraft:potted_red_tulip
+204,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÔÆÉ¼Ê÷ÃçÅèÔÔ,minecraft:potted_spruce_sapling
+205,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,°×É«Óô½ğÏãÅèÔÔ,minecraft:potted_white_tulip
+206,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÄÏ¹Ï,minecraft:pumpkin
+207,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÄÏ¹Ï¾¥,minecraft:pumpkin_stem
+208,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ºìÉ«Ä¢¹½,minecraft:red_mushroom
+209,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ºìÉ«Ä¢¹½·½¿é,minecraft:red_mushroom_block
+210,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ºìÉ«ÑîÊ÷Ê÷Ò¶,minecraft:red_poplar_leaves
+211,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ºìÉ«Óô½ğÏã,minecraft:red_tulip
+212,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Ãµ¹å´Ô,minecraft:rose_bush
+213,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,º£²İ,minecraft:seagrass
+214,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,²ã¿×¹½,minecraft:shelf_mushroom
+215,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,°«²İ´Ô,minecraft:short_grass
+216,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,¾ú¹âÌå,minecraft:shroomlight
+217,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Ğ¡ĞÍ´¹µÎÒ¶,minecraft:small_dripleaf
+218,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,æß×Ó»¨,minecraft:spore_blossom
+219,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÔÆÉ¼Ê÷Ò¶,minecraft:spruce_leaves
+220,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÔÆÉ¼Ô­Ä¾,minecraft:spruce_log
+221,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÔÆÉ¼Ê÷Ãç,minecraft:spruce_sapling
+222,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÔÆÉ¼Ä¾,minecraft:spruce_wood
+223,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤½ğºÏ»¶Ô­Ä¾,minecraft:stripped_acacia_log
+224,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤½ğºÏ»¶Ä¾,minecraft:stripped_acacia_wood
+225,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤°×èëÔ­Ä¾,minecraft:stripped_birch_log
+226,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤°×èëÄ¾,minecraft:stripped_birch_wood
+227,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤Ó£»¨Ô­Ä¾,minecraft:stripped_cherry_log
+228,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤Ó£»¨Ä¾,minecraft:stripped_cherry_wood
+229,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤ç³ºì¾úºË,minecraft:stripped_crimson_hyphae
+230,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤ç³ºì¾ú±ú,minecraft:stripped_crimson_stem
+231,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤ÉîÉ«ÏğÄ¾Ô­Ä¾,minecraft:stripped_dark_oak_log
+232,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤ÉîÉ«ÏğÄ¾,minecraft:stripped_dark_oak_wood
+233,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤´ÔÁÖÔ­Ä¾,minecraft:stripped_jungle_log
+234,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤´ÔÁÖÄ¾,minecraft:stripped_jungle_wood
+235,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤ºìÊ÷Ô­Ä¾,minecraft:stripped_mangrove_log
+236,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤ºìÊ÷Ä¾,minecraft:stripped_mangrove_wood
+237,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤ÏğÄ¾Ô­Ä¾,minecraft:stripped_oak_log
+238,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤ÏğÄ¾,minecraft:stripped_oak_wood
+239,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤²Ô°×ÏğÄ¾Ô­Ä¾,minecraft:stripped_pale_oak_log
+240,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤²Ô°×ÏğÄ¾,minecraft:stripped_pale_oak_wood
+241,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤ÑîÄ¾Ô­Ä¾,minecraft:stripped_poplar_log
+242,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤ÑîÄ¾,minecraft:stripped_poplar_wood
+243,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤ÔÆÉ¼Ô­Ä¾,minecraft:stripped_spruce_log
+244,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤ÔÆÉ¼Ä¾,minecraft:stripped_spruce_wood
+245,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤¹îÒì¾úºË,minecraft:stripped_warped_hyphae
+246,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,È¥Æ¤¹îÒì¾ú±ú,minecraft:stripped_warped_stem
+247,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,¸ÊÕá,minecraft:sugar_cane
+248,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÏòÈÕ¿û,minecraft:sunflower
+249,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Ìğ½¬¹û´Ô,minecraft:sweet_berry_bush
+250,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,¸ß²İ´Ô,minecraft:tall_grass
+251,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,¸ßº£²İ,minecraft:tall_seagrass
+252,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,»ğ°Ñ»¨,minecraft:torchflower
+253,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,»ğ°Ñ»¨Ö²Öê,minecraft:torchflower_crop
+254,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,²øÔ¹ÌÙ,minecraft:twisting_vines
+255,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,²øÔ¹ÌÙÖ²Öê,minecraft:twisting_vines_plant
+256,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,ÌÙÂû,minecraft:vine
+257,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,¹îÒì¾úºË,minecraft:warped_hyphae
+258,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,¹îÒì¾úË÷,minecraft:warped_roots
+259,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,¹îÒì¾ú±ú,minecraft:warped_stem
+260,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,¹îÒìğà¿é,minecraft:warped_wart_block
+261,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,´¹ÀáÌÙ,minecraft:weeping_vines
+262,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,´¹ÀáÌÙÖ²Öê,minecraft:weeping_vines_plant
+263,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Ğ¡ÂóÖ²Öê,minecraft:wheat
+264,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,°×É«Óô½ğÏã,minecraft:white_tulip
+265,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,Ò°»¨´Ø,minecraft:wildflowers
+266,Å©ÁÖÄÁÓæ,mine_agriculture_forestry_livestock_fishery.json,»ÆÉ«ÑîÊ÷Ê÷Ò¶,minecraft:yellow_poplar_leaves
