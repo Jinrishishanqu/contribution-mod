@@ -8,6 +8,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.UUID;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.EnumMap;
@@ -16,6 +20,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import static cn.contribution.account.AccountService.uuidBytes;
+import static cn.contribution.account.AccountService.bytesUuid;
 
 /** One main-server-only, database-serialized market transition at the 08:00 accounting boundary. */
 final class StockSettlement {
@@ -46,27 +52,19 @@ final class StockSettlement {
         Random random = new Random();
         for (Row row : rows) {
             if (row.status.equals("DELISTED")) continue;
-            if (row.status.equals("RETIRING") && day >= row.retirementDay + 4) {
-                delist(connection, row, day);
-                continue;
-            }
             if (row.lastPriceDay >= day) continue;
             int price;
             double noise = row.noise;
             double base = row.base;
-            if (row.status.equals("RETIRING")) {
-                price = Math.max(1, (int) Math.round(row.price * (.75 + random.nextDouble() * .15)));
-            } else {
-                noise = .65 * noise + .8 * random.nextGaussian();
-                double weight = weights.get(row.industry);
-                double multiplier = noise > 0 ? 1 + weight : 1 - weight;
-                double proposed = row.price + .1 * noise * multiplier * base;
-                long cap = 128L * row.initial;
-                long lower = Math.max(1L, Math.round(.3 * row.price));
-                long upper = Math.min(cap, 3L * row.price);
-                price = (int) Math.max(lower, Math.min(upper, Math.round(proposed)));
-                base = .9 * base + .1 * (.1 * price);
-            }
+            noise = .65 * noise + .8 * random.nextGaussian();
+            double weight = weights.get(row.industry);
+            double multiplier = noise > 0 ? 1 + weight : 1 - weight;
+            double proposed = row.price + .1 * noise * multiplier * base;
+            long cap = 128L * row.initial;
+            long lower = Math.max(1L, Math.round(.3 * row.price));
+            long upper = Math.min(cap, 3L * row.price);
+            price = (int) Math.max(lower, Math.min(upper, Math.round(proposed)));
+            base = .9 * base + .1 * (.1 * price);
             String status = row.status;
             Long retirement = row.retirementDay;
             if (status.equals("ACTIVE") && day - row.listedDay >= 3
@@ -78,7 +76,26 @@ final class StockSettlement {
             dailyPrice(connection, row.id, day, price, status);
         }
         triggerBottomRetirement(connection, day, ranking.getLast());
+        trimExcess(connection, day);
         fillVacancies(connection, day, industries, random);
+    }
+
+    /** Existing 30-stock worlds converge to the 20-stock limit after today's trading window. */
+    private static void trimExcess(Connection connection, long day) throws SQLException {
+        List<Row> active = loadListings(connection).stream().filter(row -> row.status.equals("ACTIVE"))
+                .sorted(Comparator.comparingDouble(row -> row.price / (double) row.initial)).toList();
+        int surplus = Math.max(0, active.size() - 20);
+        for (int i = 0; i < surplus; i++) {
+            Row row = active.get(i);
+            try (PreparedStatement update = connection.prepareStatement(
+                    "UPDATE stock_listing SET status = 'RETIRING', retirement_day = ? WHERE stock_id = ?")) {
+                update.setLong(1, day); update.setLong(2, row.id); update.executeUpdate();
+            }
+            try (PreparedStatement update = connection.prepareStatement(
+                    "UPDATE stock_daily_price SET status = 'RETIRING' WHERE stock_id = ? AND game_day = ?")) {
+                update.setLong(1, row.id); update.setLong(2, day); update.executeUpdate();
+            }
+        }
     }
 
     private static Map<BuiltInIndustry, IndustryValue> loadIndustries(Connection connection) throws SQLException {
@@ -138,17 +155,58 @@ final class StockSettlement {
         }
     }
 
+    static void closeRetirements(Connection connection, long day) throws SQLException {
+        for (Row row : loadListings(connection)) {
+            if (row.status.equals("RETIRING") && row.retirementDay != null && row.retirementDay <= day)
+                delist(connection, row, day);
+        }
+    }
+
     private static void delist(Connection connection, Row row, long day) throws SQLException {
         try (PreparedStatement positions = connection.prepareStatement(
                 "SELECT player_uuid, quantity FROM stock_position WHERE stock_id = ?")) {
             positions.setLong(1, row.id);
             try (ResultSet holders = positions.executeQuery()) {
                 while (holders.next()) {
+                    byte[] playerBytes = holders.getBytes(1);
+                    long amount = Math.max(0, Math.round(row.price * holders.getLong(2) * .5));
+                    int balance = 0;
+                    String name = null;
+                    try (PreparedStatement account = connection.prepareStatement(
+                            "SELECT player_name, balance FROM contribution_account WHERE player_uuid = ? FOR UPDATE")) {
+                        account.setBytes(1, playerBytes);
+                        try (ResultSet result = account.executeQuery()) {
+                            if (result.next()) { name = result.getString(1); balance = result.getInt(2); }
+                        }
+                    }
+                    if (name == null) throw new SQLException("Retiring shareholder has no account");
+                    int paid = (int) Math.min(amount, Integer.MAX_VALUE - (long) balance);
                     try (PreparedStatement insert = connection.prepareStatement(
-                            "INSERT INTO stock_refund (player_uuid, stock_id, amount, claimed) VALUES (?, ?, ?, 0)")) {
-                        insert.setBytes(1, holders.getBytes(1)); insert.setLong(2, row.id);
-                        insert.setLong(3, Math.max(0, Math.round(row.price * holders.getLong(2) * .3)));
+                            "INSERT INTO stock_refund (player_uuid, stock_id, amount, claimed) VALUES (?, ?, ?, ?)")) {
+                        insert.setBytes(1, playerBytes); insert.setLong(2, row.id);
+                        insert.setLong(3, amount); insert.setInt(4, paid);
                         insert.executeUpdate();
+                    }
+                    if (paid > 0) {
+                        try (PreparedStatement update = connection.prepareStatement(
+                                "UPDATE contribution_account SET balance = balance + ?, updated_at = CURRENT_TIMESTAMP(6) WHERE player_uuid = ?")) {
+                            update.setInt(1, paid); update.setBytes(2, playerBytes); update.executeUpdate();
+                        }
+                        UUID request = UUID.nameUUIDFromBytes(("stock-retirement|" + row.id + "|" + bytesUuid(playerBytes))
+                                .getBytes(StandardCharsets.UTF_8));
+                        byte[] requestHash;
+                        try { requestHash = MessageDigest.getInstance("SHA-256").digest(request.toString().getBytes(StandardCharsets.UTF_8)); }
+                        catch (NoSuchAlgorithmException impossible) { throw new IllegalStateException(impossible); }
+                        try (PreparedStatement insert = connection.prepareStatement(
+                                "INSERT INTO contribution_transaction (transaction_id, idempotency_id, request_hash, player_uuid, "
+                                        + "player_name, amount, income_delta, balance_before, balance_after, type, source, reason, "
+                                        + "operator, server_id, created_at, note) VALUES (?, ?, ?, ?, ?, ?, 0, ?, ?, 'REFUND', "
+                                        + "'contribution:stock', '股票退市自动返还', 'stock-market', 'stock-main', CURRENT_TIMESTAMP(6), NULL)")) {
+                            insert.setBytes(1, uuidBytes(UUID.randomUUID())); insert.setBytes(2, uuidBytes(request));
+                            insert.setBytes(3, requestHash); insert.setBytes(4, playerBytes); insert.setString(5, name);
+                            insert.setInt(6, paid); insert.setInt(7, balance); insert.setInt(8, balance + paid);
+                            insert.executeUpdate();
+                        }
                     }
                 }
             }
@@ -160,12 +218,16 @@ final class StockSettlement {
                 "UPDATE stock_listing SET status = 'DELISTED', delisted_day = ? WHERE stock_id = ?")) {
             update.setLong(1, day); update.setLong(2, row.id); update.executeUpdate();
         }
+        try (PreparedStatement update = connection.prepareStatement(
+                "UPDATE stock_daily_price SET status = 'DELISTED' WHERE stock_id = ? AND game_day = ?")) {
+            update.setLong(1, row.id); update.setLong(2, row.retirementDay); update.executeUpdate();
+        }
     }
 
     private static void fillVacancies(Connection connection, long day, Map<BuiltInIndustry, IndustryValue> values,
                                       Random random) throws SQLException {
         List<Row> active = loadListings(connection).stream().filter(row -> !row.status.equals("DELISTED")).toList();
-        if (active.size() >= 30) return;
+        if (active.size() >= 20) return;
         Set<String> listed = new HashSet<>();
         Set<BuiltInIndustry> covered = new HashSet<>();
         for (Row row : active) { listed.add(row.itemId); covered.add(row.industry); }
@@ -177,7 +239,7 @@ final class StockSettlement {
         }
         List<StockCatalog.Candidate> pool = new ArrayList<>(StockCatalog.all());
         java.util.Collections.shuffle(pool, random);
-        while (listed.size() < 30 && !pool.isEmpty()) {
+        while (listed.size() < 20 && !pool.isEmpty()) {
             StockCatalog.Candidate choice = null;
             for (StockCatalog.Candidate candidate : pool) {
                 if (!listed.contains(candidate.itemId()) && !recent.contains(candidate.itemId())
@@ -205,7 +267,7 @@ final class StockSettlement {
             }
             dailyPrice(connection, id, day, price, "ACTIVE");
             listed.add(choice.itemId()); covered.add(choice.industry()); pool.remove(choice);
-            if (listed.size() >= 30) break;
+            if (listed.size() >= 20) break;
         }
     }
 

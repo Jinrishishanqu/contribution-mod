@@ -1,6 +1,7 @@
 package cn.contribution.stock;
 
 import java.util.List;
+import java.util.Map;
 
 public final class StockView {
     private StockView() { }
@@ -9,7 +10,9 @@ public final class StockView {
                           int initialPrice, String status, int owned) { }
     public record PricePoint(long day, int price) { }
     public record Market(long day, int time, List<Listing> listings) { }
-    public record Detail(Listing listing, List<PricePoint> prices) { }
+    public record Detail(Listing listing, List<PricePoint> prices, int requestedDays, PriceRange range) { }
+    public record PriceRange(int high, int low) { }
+    public record Dashboard(Market market, Map<Long, List<PricePoint>> curves, Map<Long, PriceRange> ranges) { }
     public record TradeResult(boolean success, String message, long stockId, int quantity,
                               int price, long fee, int balance, boolean replay) { }
 }

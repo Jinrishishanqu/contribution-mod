@@ -12,6 +12,9 @@
   "entrypoints": {
     "main": [
       "cn.contribution.ContributionMod"
+    ],
+    "client": [
+      "cn.contribution.client.ContributionClient"
     ]
   },
   "mixins": [

@@ -1,0 +1,23 @@
+package cn.contribution.client;
+
+import cn.contribution.stock.StockSnapshotPayload;
+import cn.contribution.stock.StockUiNetwork;
+import com.google.gson.Gson;
+import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
+
+/** Optional client-only entrypoint. Dedicated servers never load this package. */
+public final class ContributionClient implements ClientModInitializer {
+    private static final Gson JSON = new Gson();
+    @Override public void onInitializeClient() {
+        ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> StockScreen.clear());
+        ClientPlayNetworking.registerGlobalReceiver(StockSnapshotPayload.TYPE, (payload, context) -> {
+            StockUiNetwork.Snapshot snapshot;
+            try { snapshot = JSON.fromJson(payload.json(), StockUiNetwork.Snapshot.class); }
+            catch (RuntimeException invalid) { return; }
+            if (snapshot == null) return;
+            context.client().execute(() -> StockScreen.receive(snapshot));
+        });
+    }
+}

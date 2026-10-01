@@ -44,12 +44,17 @@ public final class StockService {
         int time = (int) Math.floorMod(server.overworld().getOverworldClockTime(), 24000);
         database.transaction(connection -> {
             long storedDay;
+            long closedDay;
             try (PreparedStatement query = connection.prepareStatement(
-                    "SELECT game_day FROM stock_market_state WHERE singleton_id = 1 FOR UPDATE");
+                    "SELECT game_day, last_retirement_close_day FROM stock_market_state WHERE singleton_id = 1 FOR UPDATE");
                  ResultSet rows = query.executeQuery()) {
-                rows.next(); storedDay = rows.getLong(1);
+                rows.next(); storedDay = rows.getLong(1); closedDay = rows.getLong(2);
             }
             if (storedDay > today) throw new SQLException("Market clock is ahead of the main world");
+            if (storedDay >= 0 && storedDay < today && closedDay < storedDay) {
+                StockSettlement.closeRetirements(connection, storedDay);
+                closedDay = storedDay;
+            }
             boolean transitioned = false;
             if (storedDay < today) {
                 long target = storedDay < 0 ? today : storedDay + 1;
@@ -60,9 +65,14 @@ public final class StockService {
                 storedDay = target;
                 transitioned = true;
             }
+            if (storedDay == today && time >= 8000 && closedDay < today) {
+                StockSettlement.closeRetirements(connection, today);
+                closedDay = today;
+            }
             try (PreparedStatement update = connection.prepareStatement(
-                    "UPDATE stock_market_state SET game_day = ?, day_time = ?, updated_at = CURRENT_TIMESTAMP(6) WHERE singleton_id = 1")) {
+                    "UPDATE stock_market_state SET game_day = ?, day_time = ?, last_retirement_close_day = ?, updated_at = CURRENT_TIMESTAMP(6) WHERE singleton_id = 1")) {
                 update.setLong(1, storedDay); update.setInt(2, storedDay == today ? time : 0);
+                update.setLong(3, closedDay);
                 update.executeUpdate();
             }
             return transitioned ? 2 : 1;
@@ -74,11 +84,16 @@ public final class StockService {
             } else if (done == 0) nextTick = server.getTickCount() + 100;
             else if (done == 2) server.getPlayerList().getPlayers().forEach(player ->
                     claim(player.getUUID(), UUID.randomUUID()));
+            if (error == null)
+                server.getPlayerList().getPlayers().forEach(player -> StockUiNetwork.clock(player, today, time));
         }));
     }
 
     public CompletableFuture<StockView.Market> market(UUID player) {
-        return database.transaction(connection -> {
+        return database.transaction(connection -> loadMarket(connection, player));
+    }
+
+    private static StockView.Market loadMarket(Connection connection, UUID player) throws SQLException {
             long day; int time;
             try (PreparedStatement query = connection.prepareStatement("SELECT game_day, day_time FROM stock_market_state WHERE singleton_id = 1");
                  ResultSet rows = query.executeQuery()) {
@@ -96,6 +111,32 @@ public final class StockService {
                 }
             }
             return new StockView.Market(day, time, List.copyOf(listings));
+    }
+
+    public CompletableFuture<StockView.Dashboard> dashboard(UUID player) {
+        return database.transaction(connection -> {
+            StockView.Market market = loadMarket(connection, player);
+            java.util.Map<Long, List<StockView.PricePoint>> curves = new java.util.HashMap<>();
+            java.util.Map<Long, StockView.PriceRange> ranges = new java.util.HashMap<>();
+            for (StockView.Listing listing : market.listings()) curves.put(listing.id(), new ArrayList<>());
+            try (PreparedStatement query = connection.prepareStatement(
+                    "SELECT stock_id, high_price, low_price FROM stock_listing WHERE status <> 'DELISTED'");
+                 ResultSet rows = query.executeQuery()) {
+                while (rows.next()) ranges.put(rows.getLong(1), new StockView.PriceRange(rows.getInt(2), rows.getInt(3)));
+            }
+            try (PreparedStatement query = connection.prepareStatement(
+                    "SELECT p.stock_id, p.game_day, p.price FROM stock_daily_price p "
+                            + "JOIN stock_listing s ON s.stock_id = p.stock_id "
+                            + "WHERE s.status <> 'DELISTED' AND p.game_day >= ? ORDER BY p.stock_id, p.game_day")) {
+                query.setLong(1, Math.max(0, market.day() - 29));
+                try (ResultSet rows = query.executeQuery()) {
+                    while (rows.next()) {
+                        List<StockView.PricePoint> points = curves.get(rows.getLong(1));
+                        if (points != null) points.add(new StockView.PricePoint(rows.getLong(2), rows.getInt(3)));
+                    }
+                }
+            }
+            return new StockView.Dashboard(market, curves, ranges);
         });
     }
 
@@ -104,6 +145,14 @@ public final class StockService {
         return database.transaction(connection -> {
             StockView.Listing listing = findListing(connection, player, symbol, false);
             if (listing == null) return null;
+            StockView.PriceRange range;
+            try (PreparedStatement query = connection.prepareStatement(
+                    "SELECT high_price, low_price FROM stock_listing WHERE stock_id = ?")) {
+                query.setLong(1, listing.id());
+                try (ResultSet row = query.executeQuery()) {
+                    row.next(); range = new StockView.PriceRange(row.getInt(1), row.getInt(2));
+                }
+            }
             List<StockView.PricePoint> prices = new ArrayList<>();
             try (PreparedStatement query = connection.prepareStatement(
                     "SELECT game_day, price FROM stock_daily_price WHERE stock_id = ? ORDER BY game_day DESC LIMIT ?")) {
@@ -113,7 +162,7 @@ public final class StockService {
                 }
             }
             java.util.Collections.reverse(prices);
-            return new StockView.Detail(listing, List.copyOf(prices));
+            return new StockView.Detail(listing, List.copyOf(prices), days, range);
         });
     }
 
@@ -130,6 +179,28 @@ public final class StockService {
                 }).exceptionally(ignored -> fail("数据暂时不可用；请保留请求 ID 并重试")));
     }
 
+    /** Reserves a batch identity before any constituent trade begins. A changed retry is rejected. */
+    public CompletableFuture<Boolean> openBatch(UUID player, UUID batchId, String symbols, int quantity, boolean buy) {
+        byte[] requestHash = hash(player + "|" + symbols + "|" + quantity + "|" + buy);
+        return database.transaction(connection -> {
+            try (PreparedStatement query = connection.prepareStatement(
+                    "SELECT player_uuid, request_hash FROM stock_batch_request WHERE batch_id = ? FOR UPDATE")) {
+                query.setBytes(1, uuidBytes(batchId));
+                try (ResultSet rows = query.executeQuery()) {
+                    if (rows.next()) return player.equals(cn.contribution.account.AccountService.bytesUuid(rows.getBytes(1)))
+                            && MessageDigest.isEqual(requestHash, rows.getBytes(2));
+                }
+            }
+            try (PreparedStatement insert = connection.prepareStatement(
+                    "INSERT INTO stock_batch_request (batch_id, player_uuid, request_hash, created_at) "
+                            + "VALUES (?, ?, ?, CURRENT_TIMESTAMP(6))")) {
+                insert.setBytes(1, uuidBytes(batchId)); insert.setBytes(2, uuidBytes(player));
+                insert.setBytes(3, requestHash); insert.executeUpdate();
+            }
+            return true;
+        });
+    }
+
     private StockView.TradeResult tradeLocked(Connection connection, UUID player, String symbol, int quantity,
                                               boolean buy, UUID requestId, byte[] hash) throws SQLException {
         StockView.TradeResult replay = replay(connection, requestId, hash);
@@ -144,14 +215,12 @@ public final class StockService {
         }
         if (!fresh) return fail("主服务器市场时钟暂不可用，交易已暂停");
         if (day < 2) return fail("股市尚未开放，将在第 3 个游戏日上市");
-        if (time < 4000 || time >= 6000) return fail("仅在游戏时间 10:00—12:00 可交易");
+        if (time < 4000 || time >= 8000) return fail("仅在游戏时间 10:00—14:00 可交易");
         Account account = lockAccount(connection, player);
         if (account == null) return fail("未找到玩家账户，请重新进入服务器");
         StockView.Listing stock = findListing(connection, player, symbol, true);
         if (stock == null) return fail("未找到这支股票");
-        if (buy && !stock.status().equals("ACTIVE")) return fail("退市保留期只允许卖出");
-        if (!buy && stock.status().equals("RETIRING") && !retirementSaleAllowed(player, stock.id(), day))
-            return fail("这支退市股票今天未能卖出（每日固定 30% 成功率）");
+        if (buy && !stock.status().equals("ACTIVE")) return fail("退市当日只允许卖出");
         try (PreparedStatement query = connection.prepareStatement(
                 "SELECT 1 FROM stock_trade WHERE player_uuid = ? AND stock_id = ? AND game_day = ? AND side = ?")) {
             query.setBytes(1, uuidBytes(player)); query.setLong(2, stock.id());
@@ -338,11 +407,6 @@ public final class StockService {
             insert.setString(12, reason); insert.setString(13, "stock-market");
             insert.setString(14, serverId); insert.executeUpdate();
         }
-    }
-
-    private static boolean retirementSaleAllowed(UUID player, long stock, long day) {
-        byte[] value = hash(player + "|" + stock + "|" + day + "|retirement");
-        return (value[0] & 0xff) * 256 + (value[1] & 0xff) < 19661;
     }
 
     private static byte[] hash(String text) {

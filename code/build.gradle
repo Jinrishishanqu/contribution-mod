@@ -116,6 +116,12 @@ tasks.register('verifyEmbeddedStocks', JavaExec) {
     classpath = sourceSets.test.runtimeClasspath
     mainClass = 'cn.contribution.stock.StockIntegrationChecks'
 }
+tasks.register('verifyAccountIdentity', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.account.AccountIdentityChecks'
+}
+tasks.check.dependsOn tasks.verifyAccountIdentity
 tasks.register('verifyMySqlStocks', JavaExec) {
     dependsOn tasks.testClasses
     classpath = sourceSets.test.runtimeClasspath

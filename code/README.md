@@ -1,12 +1,12 @@
-# CSU-YSU Contribution System 0.0.2
+# CSU-YSU Contribution System 0.0.3
 
 Minecraft Java Edition 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 / Java 25。
 
 ## 安装与使用
 
-将 `build/libs/CSU-YSU-contribution-system-0.0.2.jar` 和匹配版本的 Fabric API 放进服务端 mods 目录。模组只有一份通用 JAR，逻辑在服务端运行；原版客户端无需安装模组。
+将 `build/libs/CSU-YSU-contribution-system-0.0.3.jar` 和匹配版本的 Fabric API 放进服务端 mods 目录。模组只有一份通用 JAR，逻辑在服务端运行；原版客户端无需安装即可进入服务器并使用贡献值和股票文字/原版 Dialog 界面。若也在客户端安装同一 JAR 和 Fabric API，`/stock` 会打开带真实绘制曲线的股票专用界面。
 
-进入游戏输入 `/contribution` 打开图形界面。界面使用 26.3 原生 Dialog，包含账户、流水筛选与分页、玩家统计、行业建设度与繁荣度，以及管理员账户变动的预览与确认。文字查询和管理员命令继续可用。
+进入游戏输入 `/contribution` 打开贡献值图形界面。界面使用 26.3 原生 Dialog，包含账户、流水点选筛选与分页、玩家统计、行业建设度与繁荣度，以及管理员账户变动的预览与确认。股票系统独立使用 `/stock`。文字查询和管理员命令继续可用，完整列表见[命令速查](docs/COMMANDS.md)。
 
 单人游戏和单服开箱即用：首次启动自动在当前世界的 `contribution/contribution.mv.db` 建立本地数据库和业务表，不用安装 MySQL，也不需填写数据库配置。旧版生成的 `database.enabled=false` 配置会自动按新的本地模式读取；无需手动改开关。
 
@@ -29,7 +29,7 @@ Minecraft Java Edition 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 / J
 - 运行保护：有界异步队列、查询限流、统计日志、批次重放、容量与数值溢出保护。
 - 规则：主服数据包重载，次日 8 点统一切换；规则快照按哈希存储，旧批次按历史规则恢复。
 
-股票系统已实现：第 3 个游戏日上市，30 支股票覆盖九行业；主服 8 点依繁荣度更新股价，10—12 点可交易，每次买卖收费 2%。原版客户端通过 `/contribution stock` 查看列表和曲线，并可直接交易。`/contribution stock check <股票> <week|month|year>` 查看走势；`buy`、`sell`、`retry` 和 `claim` 分别用于买卖、幂等重试和领取退市返还。单服数据仍在世界 `contribution/`；群组服各服共用 MySQL，由主服推进股市时钟。具体规则见 [股票设计](../design/extensions/stock.md)。
+股票系统已实现：第 3 个游戏日上市，20 支股票覆盖九行业；主服 8 点依繁荣度更新股价，10—14 点可交易，每次买卖收费 2%。退市当天可以正常卖出，窗口结束时未卖的持股按当日股价的 50% 自动返还。客户端安装模组时，`/stock` 显示可筛选、排序、批量买卖的曲线大厅与详细走势图；原版客户端仍能进服，用文字命令和原版 Dialog 交易。单服数据仍在世界 `contribution/`；群组服各服共用 MySQL，由主服推进股市时钟。具体规则见[股票设计](../design/extensions/stock.md)。
 
 不包含签到、商城和自定义行业；它们仍属于后续拓展，不影响 Basic。即时投掷等未定义来源不会仅因加入标签而自动获得建设度。完整行为见 [design](../design/README.md)。
 
@@ -45,7 +45,7 @@ Minecraft Java Edition 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 / J
 .\run-gradle.ps1 build --offline
 ```
 
-脚本使用项目内 Java 25 和 Gradle 缓存，不把 JDK 下载到 C 盘。build 自动检查全部 JSON、45 个玩家标签、查询条件、距离换算以及原生 Dialog 的 JSON/网络编码。
+脚本使用项目内 Java 25 和 Gradle 缓存，不把 JDK 下载到 C 盘。build 自动检查全部 JSON、45 个玩家标签、查询条件、距离换算、账户 UUID 迁移、股票结算及原生 Dialog 的 JSON/网络编码。客户端股票界面会编译进入同一 JAR；正式发布前仍应在实际客户端中检查不同 GUI 缩放下的布局。
 
 日常 `build` 已包含嵌入式数据库首次建表、账户交易、统计、股票交易和重启持久化测试。项目专用测试 MySQL 使用 127.0.0.1:23306；仅在测试实例运行时额外执行：
 

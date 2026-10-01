@@ -108,6 +108,8 @@ public final class ContributionRuntime {
 
     public static StockService stocks() { return stocks; }
 
+    public static boolean isMainServer() { return activeConfig != null && activeConfig.mainServer; }
+
     public static void tick(MinecraftServer server) {
         if (archive != null) archive.tick(server);
         if (stocks != null && server.getTickCount() % 20 == 0) stocks.tick(server);

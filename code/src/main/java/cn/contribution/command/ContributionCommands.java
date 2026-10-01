@@ -3,6 +3,7 @@ package cn.contribution.command;
 import cn.contribution.account.AccountRecord;
 import cn.contribution.account.AccountPage;
 import cn.contribution.account.AccountService;
+import cn.contribution.account.AccountIdentityService;
 import cn.contribution.account.HistoryPage;
 import cn.contribution.account.HistoryFilter;
 import cn.contribution.account.TransactionRecord;
@@ -79,8 +80,17 @@ public final class ContributionCommands {
                         .then(Commands.argument("target", StringArgumentType.greedyString())
                                 .requires(ContributionCommands::admin)
                                 .executes(context -> statsTarget(context, StringArgumentType.getString(context, "target")))))
+                .then(Commands.literal("account").requires(ContributionCommands::admin)
+                        .then(Commands.literal("create")
+                                .then(Commands.argument("uuid", StringArgumentType.word())
+                                        .then(Commands.argument("name", StringArgumentType.word())
+                                                .executes(ContributionCommands::createAccount))))
+                        .then(Commands.literal("migrate")
+                                .then(Commands.argument("sourceUuid", StringArgumentType.word())
+                                        .then(Commands.argument("targetUuid", StringArgumentType.word())
+                                                .then(Commands.literal("confirm")
+                                                        .executes(ContributionCommands::migrateAccount))))))
                 .then(balanceCommand("add", true))
-                .then(StockCommands.command())
                 .then(Commands.literal("retry").requires(ContributionCommands::admin)
                         .then(Commands.argument("id", StringArgumentType.word())
                                 .then(Commands.argument("target", StringArgumentType.word())
@@ -91,6 +101,47 @@ public final class ContributionCommands {
                                                                 .then(Commands.argument("note", StringArgumentType.greedyString())
                                                                         .executes(context -> retry(context, StringArgumentType.getString(context, "note"))))))))))
                 .then(balanceCommand("remove", false)));
+        dispatcher.register(StockCommands.command());
+    }
+
+    private static int createAccount(CommandContext<CommandSourceStack> context) {
+        CommandSourceStack source = context.getSource();
+        if (!permit(source)) return 0;
+        try {
+            var identities = new AccountIdentityService(ContributionRuntime.database());
+            UUID id = UUID.fromString(StringArgumentType.getString(context, "uuid"));
+            String name = StringArgumentType.getString(context, "name");
+            dispatch(source, identities.create(id, name), result -> {
+                if (result.startsWith("已创建")) success(source, result); else failure(source, result);
+            });
+            return 1;
+        } catch (IllegalArgumentException | IllegalStateException error) {
+            failure(source, "UUID 无效或数据服务未就绪"); return 0;
+        }
+    }
+
+    private static int migrateAccount(CommandContext<CommandSourceStack> context) {
+        CommandSourceStack source = context.getSource();
+        if (!permit(source)) return 0;
+        if (!ContributionRuntime.isMainServer()) {
+            failure(source, "请在主服务器控制台执行账户迁移"); return 0;
+        }
+        if (source.getEntity() != null || !"Server".equals(source.getTextName())
+                || !source.getServer().getPlayerList().getPlayers().isEmpty()) {
+            failure(source, "迁移只能在主服务器控制台、所有玩家离线时执行；群组服请先停止其他子服");
+            return 0;
+        }
+        try {
+            UUID from = UUID.fromString(StringArgumentType.getString(context, "sourceUuid"));
+            UUID to = UUID.fromString(StringArgumentType.getString(context, "targetUuid"));
+            var identities = new AccountIdentityService(ContributionRuntime.database());
+            dispatch(source, identities.migrate(from, to), result -> {
+                if (result.startsWith("已迁移")) success(source, result); else failure(source, result);
+            });
+            return 1;
+        } catch (IllegalArgumentException | IllegalStateException error) {
+            failure(source, "UUID 无效或数据服务未就绪"); return 0;
+        }
     }
 
     private static LiteralArgumentBuilder<CommandSourceStack> balanceCommand(String name, boolean add) {

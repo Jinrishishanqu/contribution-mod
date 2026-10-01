@@ -4,6 +4,8 @@ import cn.contribution.industry.IndustryRegistry;
 import cn.contribution.industry.IndustryMatcher;
 import cn.contribution.command.ContributionCommands;
 import cn.contribution.runtime.ContributionRuntime;
+import cn.contribution.stock.StockSnapshotPayload;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
@@ -22,6 +24,7 @@ public final class ContributionMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        PayloadTypeRegistry.clientboundPlay().register(StockSnapshotPayload.TYPE, StockSnapshotPayload.CODEC);
         IndustryRegistry.bootstrap();
         ServerLifecycleEvents.SERVER_STARTED.register(ContributionRuntime::start);
         ServerLifecycleEvents.END_DATA_PACK_RELOAD.register((server, resources, success) -> {

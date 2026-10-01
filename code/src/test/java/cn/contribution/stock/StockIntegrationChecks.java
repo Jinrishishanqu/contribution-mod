@@ -35,8 +35,12 @@ public final class StockIntegrationChecks {
                     BalanceChangeType.EXTERNAL, Identifier.parse("contribution:test"), "测试资金", "")).join();
             db.transaction(connection -> { StockSettlement.run(connection, 2); return null; }).join();
             var market = stocks.market(player).join();
-            check(market.listings().size() == 30, "initial 30 listings");
+            check(market.listings().size() == 20, "initial 20 listings");
             check(market.listings().stream().map(StockView.Listing::industry).distinct().count() == 9, "all industries");
+            UUID batchId = UUID.randomUUID();
+            check(stocks.openBatch(player, batchId, "1,2", 3, true).join(), "reserve batch identity");
+            check(stocks.openBatch(player, batchId, "1,2", 3, true).join(), "retry same batch");
+            check(!stocks.openBatch(player, batchId, "1,3", 3, true).join(), "reject changed batch list");
             String symbol = Long.toString(market.listings().getFirst().id());
             db.transaction(connection -> {
                 try (var update = connection.prepareStatement(
@@ -79,17 +83,30 @@ public final class StockIntegrationChecks {
                 return null;
             }).join();
             check(!stocks.trade(player, symbol, 1, true, UUID.randomUUID()).join().success(), "stale main server closes market");
+            var accountBeforeRetirement = accounts.account(AccountTarget.byUuid(player)).join().orElseThrow();
             db.transaction(connection -> {
                 try (var retire = connection.prepareStatement(
                         "UPDATE stock_listing SET status = 'RETIRING', retirement_day = 3 WHERE stock_id = ?")) {
                     retire.setLong(1, Long.parseLong(symbol)); retire.executeUpdate();
                 }
-                StockSettlement.run(connection, 7);
+                StockSettlement.closeRetirements(connection, 3);
                 return null;
             }).join();
-            int incomeBefore = accounts.account(AccountTarget.byUuid(player)).join().orElseThrow().totalIncome();
+            long expectedRefund = Math.round(sell.price() * 5 * .5);
+            long actualRefund = db.transaction(connection -> {
+                try (var query = connection.prepareStatement(
+                        "SELECT amount FROM stock_refund WHERE player_uuid = ? AND stock_id = ?")) {
+                    query.setBytes(1, AccountService.uuidBytes(player)); query.setLong(2, Long.parseLong(symbol));
+                    try (var row = query.executeQuery()) { row.next(); return row.getLong(1); }
+                }
+            }).join();
+            check(actualRefund == expectedRefund, "50% retirement refund");
+            var accountAfterRetirement = accounts.account(AccountTarget.byUuid(player)).join().orElseThrow();
+            check(accountAfterRetirement.balance() == accountBeforeRetirement.balance() + expectedRefund,
+                    "retirement automatically credited at close");
+            int incomeBefore = accountBeforeRetirement.totalIncome();
             String claim = stocks.claim(player, UUID.randomUUID()).join();
-            check(claim.startsWith("已领取"), "delisting refund: " + claim);
+            check(claim.contains("暂无待领取"), "refund was already credited: " + claim);
             check(accounts.account(AccountTarget.byUuid(player)).join().orElseThrow().totalIncome() == incomeBefore,
                     "refund does not count as income");
             System.out.println((mysql ? "MYSQL" : "EMBEDDED")

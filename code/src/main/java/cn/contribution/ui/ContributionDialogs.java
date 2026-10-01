@@ -56,9 +56,6 @@ public final class ContributionDialogs {
                 case "account" -> account(source, target);
                 case "stats" -> stats(source, target);
                 case "industries" -> industries(source);
-                case "stock" -> StockDialogs.market(source, args.length > 1 ? Integer.parseInt(args[1]) : 0,
-                        args.length > 2 ? args[2] : "name", args.length > 3 ? args[3] : "all");
-                case "stock-detail" -> StockDialogs.detail(source, target, args.length > 2 ? Integer.parseInt(args[2]) : 7);
                 case "accounts" -> accounts(source, args.length > 1 ? UUID.fromString(args[1]) : null);
                 case "history" -> history(source, target, args.length > 2 && !args[2].equals("-") ? UUID.fromString(args[2]) : null,
                         args.length > 3 ? args[3] + (args.length > 4 ? " " + args[4] : "") : "");
@@ -84,8 +81,7 @@ public final class ContributionDialogs {
     }
     private static void home(CommandSourceStack source) {
         List<ActionButton> actions = new ArrayList<>(List.of(button("我的账户", "account self"), button("我的流水", "history self"),
-                button("我的统计", "stats self"), button("行业建设度与繁荣度", "industries"),
-                button("股票市场", "stock 0 name all")));
+                button("我的统计", "stats self"), button("行业建设度与繁荣度", "industries")));
         if (admin(source)) actions.add(button("管理员功能", "admin"));
         show(source, "贡献值系统", List.of(), List.of(), actions);
     }
@@ -161,10 +157,15 @@ public final class ContributionDialogs {
                     + " → " + row.balanceAfter() + " | " + row.type() + " | " + row.reason());
             if (lines.isEmpty()) lines.add(page.validCursor() ? "暂无符合条件的流水" : "翻页位置已失效");
             List<ActionButton> actions = new ArrayList<>();
+            actions.add(button("全部流水", "history " + who + " -"));
+            actions.add(button("股票买入", "history " + who + " - type=STOCK_BUY"));
+            actions.add(button("股票卖出", "history " + who + " - type=STOCK_SELL"));
+            actions.add(button("管理员调整", "history " + who + " - type=ADMIN"));
+            actions.add(button("退市返还", "history " + who + " - type=REFUND"));
             actions.add(template("应用筛选", "contribution ui history " + who + " - $(filters)"));
             page.nextCursor().ifPresent(next -> actions.add(button("下一页", "history " + who + " " + next + " " + filter.commandArguments())));
             actions.add(button("第一页", "history " + who + " - " + filter.commandArguments())); actions.add(button("首页", "home"));
-            show(source, "流水 · " + who, lines, List.of(input("filters", "筛选：type/source/server/from/to（日期 UTC）", filter.commandArguments(), 256)), actions);
+            show(source, "流水 · " + who, lines, List.of(input("filters", "更多筛选（可选）：type/source/server/from/to", filter.commandArguments(), 256)), actions);
         });
     }
     private static <T> void query(CommandSourceStack source, CompletableFuture<T> future, Consumer<T> success) {
@@ -198,11 +199,15 @@ public final class ContributionDialogs {
         return create(title, lines, inputs, buttons, false);
     }
     static Dialog create(String title, List<String> lines, List<Input> inputs, List<ActionButton> buttons, boolean hasPrevious) {
+        return create(title, lines, inputs, buttons, hasPrevious, 2);
+    }
+    static Dialog create(String title, List<String> lines, List<Input> inputs, List<ActionButton> buttons,
+                         boolean hasPrevious, int columns) {
         List<DialogBody> bodies = lines.stream().map(line -> (DialogBody)new PlainMessage(Component.literal(line), 430)).toList();
         var common = new CommonDialogData(Component.literal(title), Optional.empty(), true, false, DialogAction.CLOSE, bodies, inputs);
         ActionButton exit = hasPrevious ? button("返回上一页", "back")
                 : new ActionButton(new CommonButtonData(Component.literal("关闭"), 190), Optional.empty());
-        return new MultiActionDialog(common, buttons, Optional.of(exit), 2);
+        return new MultiActionDialog(common, buttons, Optional.of(exit), columns);
     }
     public static void clear() { BACK_STACK.clear(); CURRENT_PAGE.clear(); }
 }
