@@ -115,14 +115,17 @@ final class ShopScreen extends Screen {
     }
 
     @Override public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
-        if (super.mouseClicked(event, doubleClick)) return true;
         Layout layout = layout();
-        if (event.button() != 0 || event.x() < layout.left() + 8 || event.x() >= layout.listRight() - 2
-                || event.y() < 84 || event.y() >= layout.contentBottom()) return false;
-        int index = scroll + ((int) event.y() - 84) / 30;
-        List<ShopUiNetwork.Offer> rows = visible();
-        if (index >= 0 && index < rows.size()) { selectedId = rows.get(index).id(); return true; }
-        return false;
+        if (event.button() == 0 && event.x() >= layout.left() + 8 && event.x() < layout.listRight() - 2
+                && event.y() >= 84 && event.y() < layout.contentBottom()) {
+            int index = scroll + ((int) event.y() - 84) / 30;
+            List<ShopUiNetwork.Offer> rows = visible();
+            if (index >= 0 && index < rows.size() && ((int) event.y() - 84) % 30 < 28) {
+                selectedId = rows.get(index).id();
+                return true;
+            }
+        }
+        return super.mouseClicked(event, doubleClick);
     }
 
     @Override public boolean mouseScrolled(double mouseX, double mouseY, double horizontal, double vertical) {

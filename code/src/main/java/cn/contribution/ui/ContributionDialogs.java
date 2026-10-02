@@ -2,7 +2,6 @@ package cn.contribution.ui;
 
 import cn.contribution.account.*;
 import cn.contribution.api.AccountTarget;
-import cn.contribution.command.RequestLimiter;
 import cn.contribution.database.DatabaseService;
 import cn.contribution.database.DatabaseState;
 import cn.contribution.runtime.ContributionRuntime;
@@ -26,13 +25,33 @@ public final class ContributionDialogs {
     private static final int DIALOG_PAGE_SIZE = 8;
     private static final Map<UUID, Deque<String>> BACK_STACK = new HashMap<>();
     private static final Map<UUID, String> CURRENT_PAGE = new HashMap<>();
+    private static final Map<UUID, Long> PAGE_REVISIONS = new HashMap<>();
+    private static final Set<UUID> FORCE_VANILLA = new HashSet<>();
 
     private ContributionDialogs() { }
+    public static int openDefault(CommandSourceStack source) {
+        if (source.getPlayer() != null) FORCE_VANILLA.remove(source.getPlayer().getUUID());
+        return open(source, "home");
+    }
+    public static int openVanilla(CommandSourceStack source) {
+        if (source.getPlayer() != null) FORCE_VANILLA.add(source.getPlayer().getUUID());
+        return open(source, "home");
+    }
+    public static void forget(UUID player) {
+        FORCE_VANILLA.remove(player);
+        BACK_STACK.remove(player);
+        CURRENT_PAGE.remove(player);
+        PAGE_REVISIONS.remove(player);
+    }
+    private static boolean clientUi(CommandSourceStack source) {
+        return !FORCE_VANILLA.contains(source.getPlayer().getUUID())
+                && ContributionUiNetwork.available(source.getPlayer());
+    }
     public static int open(CommandSourceStack source, String request) {
         if (source.getPlayer() == null) { source.sendFailure(Component.literal("请在游戏内打开界面")); return 0; }
-        if (!RequestLimiter.allow(source)) { source.sendFailure(Component.literal("操作过快，请稍后重试")); return 0; }
         try {
             UUID playerId = source.getPlayer().getUUID();
+            PAGE_REVISIONS.merge(playerId, 1L, Long::sum);
             if (request.equals("back")) {
                 Deque<String> stack = BACK_STACK.get(playerId);
                 request = stack == null || stack.isEmpty() ? "home" : stack.pop();
@@ -81,7 +100,7 @@ public final class ContributionDialogs {
         return ContributionRuntime.accounts();
     }
     private static void home(CommandSourceStack source) {
-        if (ContributionUiNetwork.available(source.getPlayer())) {
+        if (clientUi(source)) {
             List<ContributionUiNetwork.Action> actions = new ArrayList<>(List.of(
                     action("我的账户", "account self"), action("我的流水", "history self"),
                     action("我的统计", "stats self"), action("行业建设度", "industries"),
@@ -98,6 +117,16 @@ public final class ContributionDialogs {
     }
     private static void adminHome(CommandSourceStack source) {
         requireAdmin(source);
+        if (clientUi(source)) {
+            ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
+                    "管理员功能", "admin", List.of(), List.of(), List.of(
+                    action("账户列表", "accounts"), action("全服流水", "history *"),
+                    new ContributionUiNetwork.Action("查询账户", "contribution ui account $(target)"),
+                    new ContributionUiNetwork.Action("查询统计", "contribution ui stats $(target)"),
+                    action("首页", "home")), "输入玩家名称或 UUID 以查询其他玩家",
+                    List.of(new ContributionUiNetwork.Field("target", "玩家名称或 UUID", "", 64)), List.of()));
+            return;
+        }
         show(source, "管理员功能", List.of(),
                 List.of(input("target", "玩家名称或 UUID", "", 64)),
                 List.of(button("账户列表", "accounts"), button("全服流水", "history *"),
@@ -108,12 +137,21 @@ public final class ContributionDialogs {
         query(source, service().account(target(source, who)), result -> {
             if (result.isEmpty()) { message(source, "账户", "未找到该玩家账户"); return; }
             AccountRecord account = result.get();
-            if (who.equals("self") && ContributionUiNetwork.available(source.getPlayer())) {
+            if (clientUi(source)) {
+                List<ContributionUiNetwork.Action> actions = new ArrayList<>(List.of(
+                        action("查看流水", "history " + who), action("玩家统计", "stats " + who), action("首页", "home")));
+                List<ContributionUiNetwork.Field> fields = new ArrayList<>();
+                if (admin(source)) {
+                    fields.add(new ContributionUiNetwork.Field("amount", "变动数量", "", 11));
+                    fields.add(new ContributionUiNetwork.Field("reason", "原因（最多 64 字）", "", 64));
+                    actions.add(new ContributionUiNetwork.Action("预览变动", "contribution ui prepare "
+                            + account.playerUuid() + " $(amount) $(reason)"));
+                }
                 ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
                         account.playerName() + " 的账户", "account", List.of("余额", "历史总收入", "UUID"),
                         List.of(List.of(String.valueOf(account.balance()), String.valueOf(account.totalIncome()),
                                 account.playerUuid().toString())),
-                        List.of(action("查看流水", "history self"), action("玩家统计", "stats self"), action("首页", "home")), ""));
+                        actions, "管理员可填写带符号数量和原因后预览", fields, List.of()));
                 return;
             }
             List<Input> inputs = new ArrayList<>();
@@ -131,7 +169,7 @@ public final class ContributionDialogs {
         query(source, service().account(target(source, who)), account -> {
             if (account.isEmpty() || ContributionRuntime.statistics() == null) { message(source, "统计", "暂无统计数据"); return; }
             query(source, ContributionRuntime.statistics().playerSummaryData(account.get().playerUuid()), summary -> {
-                if (who.equals("self") && ContributionUiNetwork.available(source.getPlayer())) {
+                if (clientUi(source)) {
                     List<List<String>> rows = new ArrayList<>();
                     var industries = cn.contribution.industry.BuiltInIndustry.values();
                     for (int i = 0; i < industries.length; i += 3) {
@@ -144,7 +182,7 @@ public final class ContributionDialogs {
                     }
                     ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
                             account.get().playerName() + " 的统计", "stats", List.of("行业建设度", "行业建设度", "行业建设度"), rows,
-                            List.of(action("刷新", "stats self"), action("首页", "home")),
+                            List.of(action("刷新", "stats " + who), action("首页", "home")),
                             "放置 " + summary.placed() + "  ·  挖掘 " + summary.mined()));
                     return;
                 }
@@ -197,7 +235,7 @@ public final class ContributionDialogs {
             return result;
         }), rows -> {
             var industries = cn.contribution.industry.BuiltInIndustry.values();
-            if (ContributionUiNetwork.available(source.getPlayer())) {
+            if (clientUi(source)) {
                 List<List<String>> values = new ArrayList<>();
                 for (int i = 0; i < industries.length; i++) {
                     IndustryRow row = rows.get(i);
@@ -229,6 +267,21 @@ public final class ContributionDialogs {
         if (service == null || events == null) { message(source, "签到", "签到服务尚未启动"); return; }
         query(source, service.status(source.getPlayer().getUUID()).thenCombine(events.list(),
                 (status, list) -> new AbstractMap.SimpleEntry<>(status, list)), result -> {
+            if (clientUi(source)) {
+                List<List<String>> rows = new ArrayList<>();
+                List<String> rowCommands = new ArrayList<>();
+                for (var event : result.getValue()) {
+                    rows.add(List.of(event.title(), event.start() + "—" + event.end(),
+                            "贡献 " + event.contribution() + " · 物品 " + event.itemCount()));
+                    rowCommands.add("contribution checkin claim " + event.id());
+                }
+                ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
+                        "签到", "checkin", List.of("活动", "期限", "奖励"), rows,
+                        List.of(action("刷新", "checkin"), action("首页", "home")),
+                        result.getKey() + " · 点击活动行领取；在线满 10 分钟自动每日签到",
+                        List.of(), rowCommands));
+                return;
+            }
             List<String> lines = new ArrayList<>();
             List<ActionButton> actions = new ArrayList<>();
             lines.add(result.getKey());
@@ -247,6 +300,20 @@ public final class ContributionDialogs {
     private static void accounts(CommandSourceStack source, UUID cursor) {
         requireAdmin(source);
         query(source, service().allAccountsPage(cursor, DIALOG_PAGE_SIZE), page -> {
+            if (clientUi(source)) {
+                List<List<String>> rows = page.rows().stream().map(row -> List.of(
+                        row.playerName(), String.valueOf(row.balance()), row.playerUuid().toString())).toList();
+                List<String> rowCommands = page.rows().stream().map(row ->
+                        "contribution ui account " + row.playerUuid()).toList();
+                List<ContributionUiNetwork.Action> actions = new ArrayList<>();
+                page.nextCursor().ifPresent(next -> actions.add(action("下一页", "accounts " + next)));
+                actions.add(action("首页", "home"));
+                ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
+                        "账户列表", "accounts", List.of("玩家", "余额", "UUID"), rows, actions,
+                        page.validCursor() ? "点击玩家行查看账户" : "翻页位置已失效",
+                        List.of(), rowCommands));
+                return;
+            }
             List<ActionButton> actions = new ArrayList<>();
             for (AccountRecord row : page.rows()) actions.add(button(row.playerName() + "：" + row.balance(), "account " + row.playerUuid()));
             page.nextCursor().ifPresent(next -> actions.add(button("下一页", "accounts " + next)));
@@ -263,7 +330,7 @@ public final class ContributionDialogs {
         query(source, future, page -> {
             List<String> lines = new ArrayList<>();
             var zone = ContributionRuntime.displayZone();
-            if (ContributionUiNetwork.available(source.getPlayer())) {
+            if (clientUi(source)) {
                 List<List<String>> values = new ArrayList<>();
                 for (TransactionRecord row : page.rows())
                     values.add(List.of(LedgerDisplay.shortTime(row.createdAt(), zone), row.playerName(),
@@ -305,8 +372,11 @@ public final class ContributionDialogs {
         });
     }
     private static <T> void query(CommandSourceStack source, CompletableFuture<T> future, Consumer<T> success) {
+        UUID playerId = source.getPlayer().getUUID();
+        long revision = PAGE_REVISIONS.getOrDefault(playerId, 0L);
         future.whenComplete((result, error) -> source.getServer().execute(() -> {
             if (source.getPlayer() == null || source.getPlayer().hasDisconnected()) return;
+            if (PAGE_REVISIONS.getOrDefault(playerId, 0L) != revision) return;
             if (error != null) {
                 DatabaseService database = ContributionRuntime.database();
                 String detail = database.state() == DatabaseState.AVAILABLE ? "数据暂时不可用，请稍后重试"
@@ -331,6 +401,17 @@ public final class ContributionDialogs {
     }
     private static void message(CommandSourceStack source, String title, String message) { show(source, title, List.of(message), List.of(), List.of(button("首页", "home"))); }
     public static void show(CommandSourceStack source, String title, List<String> lines, List<Input> inputs, List<ActionButton> buttons) {
+        if (clientUi(source) && inputs.isEmpty()) {
+            List<ContributionUiNetwork.Action> actions = new ArrayList<>();
+            for (ActionButton button : buttons) {
+                if (button.action().isPresent() && button.action().get() instanceof StaticAction staticAction
+                        && staticAction.value() instanceof ClickEvent.RunCommand run)
+                    actions.add(new ContributionUiNetwork.Action(button.button().label().getString(), run.command().replaceFirst("^/", "")));
+            }
+            ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
+                    title, "message", List.of("信息"), lines.stream().map(List::of).toList(), actions, ""));
+            return;
+        }
         boolean hasPrevious = !BACK_STACK.getOrDefault(source.getPlayer().getUUID(), new ArrayDeque<>()).isEmpty();
         source.getPlayer().openDialog(Holder.direct(create(title, lines, inputs, buttons, hasPrevious)));
     }
@@ -363,5 +444,5 @@ public final class ContributionDialogs {
                 : new ActionButton(new CommonButtonData(Component.literal("关闭"), 190), Optional.empty());
         return new MultiActionDialog(common, buttons, Optional.of(exit), columns);
     }
-    public static void clear() { BACK_STACK.clear(); CURRENT_PAGE.clear(); }
+    public static void clear() { BACK_STACK.clear(); CURRENT_PAGE.clear(); PAGE_REVISIONS.clear(); FORCE_VANILLA.clear(); }
 }

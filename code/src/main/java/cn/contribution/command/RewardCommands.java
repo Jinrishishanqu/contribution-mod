@@ -54,6 +54,10 @@ public final class RewardCommands {
                     if (!RequestLimiter.allow(context.getSource())) return fail(context.getSource(), "操作过快");
                     ShopDialogs.open(context.getSource()); return 1;
                 })
+                .then(Commands.literal("ui_vanilla").executes(context -> {
+                    if (!RequestLimiter.allow(context.getSource())) return fail(context.getSource(), "操作过快");
+                    ShopDialogs.openVanilla(context.getSource()); return 1;
+                }))
                 .then(Commands.literal("buy").then(Commands.argument("offer", StringArgumentType.word())
                         .then(Commands.argument("quantity", IntegerArgumentType.integer(1, 64))
                                 .executes(context -> buy(context, false)))))

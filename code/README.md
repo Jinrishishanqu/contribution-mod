@@ -1,12 +1,12 @@
-# CSU-YSU Contribution System 0.0.11
+# CSU-YSU Contribution System 0.1.0
 
 Minecraft Java Edition 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 / Java 25。
 
 ## 安装与使用
 
-将 `build/libs/CSU-YSU-contribution-system-0.0.11.jar` 和匹配版本的 Fabric API 放进服务端 mods 目录。模组只有一份通用 JAR，逻辑在服务端运行；原版客户端无需安装即可进入服务器并使用贡献值、签到、股票和商店的文字/原版 Dialog 界面。若也在客户端安装同一 JAR 和 Fabric API，`/contribution`、`/stock` 和 `/shop` 会打开各自的专用界面。
+将 `build/libs/CSU-YSU-contribution-system-0.1.0.jar` 和匹配版本的 Fabric API 放进服务端 mods 目录。模组只有一份通用 JAR，逻辑在服务端运行；原版客户端无需安装即可进入服务器并使用贡献值、签到、股票和商店的文字/原版 Dialog 界面。若也在客户端安装同一 JAR 和 Fabric API，`/contribution`、`/stock` 和 `/shop` 会打开各自的专用界面。
 
-进入游戏输入 `/contribution` 打开贡献值图形界面。原版客户端使用 26.3 原生 Dialog；安装模组的客户端使用像素对齐的账户、流水、玩家统计和行业建设度页。签到及管理员输入页仍使用原生 Dialog。股票系统独立使用 `/stock`。文字查询和管理员命令继续可用，完整列表见[命令速查](docs/COMMANDS.md)。
+进入游戏输入 `/contribution` 打开贡献值图形界面。原版客户端使用 26.3 原生 Dialog；安装模组的客户端在账户、流水、统计、行业、签到和管理员页面内保持统一的专用界面，不会跳回 Dialog。`/contribution ui_vanilla`、`/stock ui_vanilla`、`/shop ui_vanilla` 可在已安装客户端模组时分别调试原版界面。股票系统独立使用 `/stock`。文字查询和管理员命令继续可用，完整列表见[命令速查](docs/COMMANDS.md)。
 
 单人游戏和单服开箱即用：首次启动自动在当前世界的 `contribution/contribution.mv.db` 建立本地数据库和业务表，不用安装 MySQL，也不需填写数据库配置。旧版生成的 `database.enabled=false` 配置会自动按新的本地模式读取；无需手动改开关。
 
@@ -36,6 +36,8 @@ Minecraft Java Edition 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 / J
 0.0.11 为股票市场、持仓列表和详情页增加可拖动滚动条，并把详情“股数”标签放在输入框左侧。贡献值专用客户端页使用固定像素列绘制账户、流水、统计和行业建设度；原版 Dialog 后备页也有标题行，流水每笔仅占一行。玩家统计的原版页压缩为放置/挖掘一行、每行三个行业。流水保存时间仍为 UTC，界面按 `rewards.timeZone` 显示到分钟（默认北京时间），筛选日期暂仍按 UTC 日界线计算。股票原版页增加涨跌、退市风险和持仓信息，以及更多排序；商店客户端页压缩布局，避免控件互相遮挡。
 
 本版增加建设度贡献值定期发放、现实日自动签到、活动签到和系统商店。默认建设权重均为 1/10000，每 300 秒核算；每日累计在线满 10 分钟自动签到，7 日奖励为 10/10/10/10/15/25/25。`/shop` 提供商品购买，默认面包、火把和铁镐；管理员可创建限时签到活动。奖励、商品和时区在 `config/contribution/server.json` 的 `rewards` 部分配置。群组服所有节点必须同步该配置，模组会比对共享配置指纹。不包含回收、拍卖、抽奖和自定义行业。即时投掷等未定义来源不会仅因加入标签而自动获得建设度。完整行为见 [design](../design/README.md)。
+
+0.1.0 统一贡献值客户端的管理员、签到、账户列表、变动确认和错误页导航；商店商品行可直接点选。股票滚动条只显示位置，继续使用滚轮滚动，不再响应点击或拖动。商店原版 Dialog 也可通过调试命令直接打开。
 
 ## 规则资源
 

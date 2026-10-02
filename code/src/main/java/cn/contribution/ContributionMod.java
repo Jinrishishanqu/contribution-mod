@@ -57,6 +57,8 @@ public final class ContributionMod implements ModInitializer {
         });
         ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
             if (ContributionRuntime.checkins() != null) ContributionRuntime.checkins().left(handler.player.getUUID());
+            cn.contribution.ui.ContributionDialogs.forget(handler.player.getUUID());
+            cn.contribution.stock.StockUiNetwork.forget(handler.player.getUUID());
         });
         PlayerBlockBreakEvents.AFTER.register((level, player, pos, state, entity) -> {
             if (player instanceof ServerPlayer serverPlayer && ContributionRuntime.statistics() != null) {

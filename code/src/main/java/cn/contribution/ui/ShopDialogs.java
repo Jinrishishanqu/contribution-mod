@@ -30,6 +30,8 @@ public final class ShopDialogs {
         page(source, 0);
     }
 
+    public static void openVanilla(CommandSourceStack source) { page(source, 0); }
+
     public static void page(CommandSourceStack source, int page) {
         if (source.getPlayer() == null) { source.sendFailure(Component.literal("请在游戏内打开商店")); return; }
         if (ContributionRuntime.shop() == null) { source.sendFailure(Component.literal("商店尚未启动")); return; }
@@ -47,6 +49,7 @@ public final class ShopDialogs {
         }
         if (page > 0) buttons.add(button("上一页", "/shop page " + (page - 1)));
         if (page + 1 < pages) buttons.add(button("下一页", "/shop page " + (page + 1)));
+        buttons.add(button("刷新", "/shop ui_vanilla"));
         buttons.add(button("领取待发物品", "/shop claim"));
         source.getPlayer().openDialog(Holder.direct(ContributionDialogs.create("服务器商店", lines, List.of(), buttons, false, 3)));
     }

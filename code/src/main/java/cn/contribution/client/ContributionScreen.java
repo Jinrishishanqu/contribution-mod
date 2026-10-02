@@ -4,10 +4,14 @@ import cn.contribution.ui.ContributionUiNetwork;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.Component;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /** Optional pixel-aligned account tables; commands and data remain server-authoritative. */
 final class ContributionScreen extends Screen {
@@ -18,7 +22,9 @@ final class ContributionScreen extends Screen {
     private static final int MUTED = 0xFF9DAEC4;
     private static final int ACCENT = 0xFF6FC9DF;
     private final ContributionUiNetwork.Snapshot snapshot;
+    private final Map<String, EditBox> fields = new HashMap<>();
     private int scroll;
+    private String error = "";
 
     private ContributionScreen(ContributionUiNetwork.Snapshot snapshot) {
         super(Component.literal(snapshot.title()));
@@ -29,12 +35,19 @@ final class ContributionScreen extends Screen {
         Minecraft client = Minecraft.getInstance();
         ContributionScreen next = new ContributionScreen(snapshot);
         if (client.gui.screen() instanceof ContributionScreen current
-                && current.snapshot.view().equals(snapshot.view())) next.scroll = current.scroll;
+                && current.snapshot.view().equals(snapshot.view())) {
+            next.scroll = current.scroll;
+            for (var field : snapshot.fields()) {
+                EditBox old = current.fields.get(field.key());
+                if (old != null) next.retainedFields.put(field.key(), old.getValue());
+            }
+        }
         client.gui.setScreen(next);
     }
 
+    private final Map<String, String> retainedFields = new HashMap<>();
     private boolean home() { return "home".equals(snapshot.view()); }
-    private int top() { return 68; }
+    private int top() { return snapshot.fields().isEmpty() ? 68 : 130; }
     private int bottom() { return height - (snapshot.actions().size() > 4 ? 69 : 45); }
     private int rowHeight() {
         return switch (snapshot.view()) {
@@ -46,26 +59,73 @@ final class ContributionScreen extends Screen {
     private int capacity() { return Math.max(1, (bottom() - top()) / rowHeight()); }
 
     @Override protected void init() {
+        fields.clear();
+        int fieldCount = snapshot.fields().size();
+        if (fieldCount > 0) {
+            int fieldWidth = (width - 36 - (fieldCount - 1) * 8) / fieldCount;
+            for (int i = 0; i < fieldCount; i++) {
+                var definition = snapshot.fields().get(i);
+                EditBox box = addRenderableWidget(new EditBox(font, 18 + i * (fieldWidth + 8), 75,
+                        fieldWidth, 19, Component.literal(definition.label())));
+                box.setMaxLength(definition.maxLength());
+                box.setValue(retainedFields.getOrDefault(definition.key(), definition.value()));
+                fields.put(definition.key(), box);
+            }
+        }
         int count = snapshot.actions().size();
         int perRow = Math.min(4, Math.max(1, count));
         int buttonWidth = Math.max(55, (width - 24 - (perRow - 1) * 5) / perRow);
+        int rows = (count + perRow - 1) / perRow;
         for (int i = 0; i < count; i++) {
             ContributionUiNetwork.Action action = snapshot.actions().get(i);
-            int x = 12 + (i % perRow) * (buttonWidth + 5);
-            int y = height - 29 - (count > 4 && i < 4 ? 24 : 0);
-            addRenderableWidget(Button.builder(Component.literal(action.label()), button -> command(action.command()))
+            int row = i / perRow;
+            int itemsInRow = Math.min(perRow, count - row * perRow);
+            int rowWidth = itemsInRow * buttonWidth + (itemsInRow - 1) * 5;
+            int x = (width - rowWidth) / 2 + (i % perRow) * (buttonWidth + 5);
+            int y = height - 29 - (rows - row - 1) * 24;
+            addRenderableWidget(Button.builder(Component.literal(action.label()), button -> run(action.command()))
                     .bounds(x, y, buttonWidth, 19).build());
         }
     }
 
     private static void command(String value) {
         var connection = Minecraft.getInstance().getConnection();
-        if (connection != null) connection.sendCommand(value);
+        if (connection != null) connection.sendCommand(value.startsWith("/") ? value.substring(1) : value);
+    }
+
+    private void run(String template) {
+        String command = template;
+        for (var field : snapshot.fields()) {
+            EditBox box = fields.get(field.key());
+            String value = box == null ? "" : box.getValue().strip();
+            if (command.contains("$(" + field.key() + ")") && value.isBlank()) {
+                error = "请填写" + field.label();
+                return;
+            }
+            command = command.replace("$(" + field.key() + ")", value);
+        }
+        error = "";
+        command(command);
     }
 
     @Override public void onClose() {
         if (home()) super.onClose();
-        else command("contribution ui home");
+        else {
+            super.onClose();
+            command("contribution ui back");
+        }
+    }
+
+    @Override public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
+        if (event.button() == 0 && event.x() >= 12 && event.x() < width - 12
+                && event.y() >= top() && event.y() < bottom()) {
+            int index = scroll + ((int) event.y() - top()) / rowHeight();
+            if (index >= scroll && index < scroll + capacity() && index < snapshot.rowCommands().size()) {
+                command(snapshot.rowCommands().get(index));
+                return true;
+            }
+        }
+        return super.mouseClicked(event, doubleClick);
     }
 
     @Override public boolean mouseScrolled(double x, double y, double horizontal, double vertical) {
@@ -84,6 +144,8 @@ final class ContributionScreen extends Screen {
             case "industries" -> new int[]{92, 57, 74, 72, Math.max(40, available - 295)};
             case "stats" -> new int[]{available / 3, available / 3, available - 2 * (available / 3)};
             case "account" -> new int[]{available / 6, available / 5, available - available / 6 - available / 5};
+            case "accounts" -> new int[]{available / 4, available / 6, available - available / 4 - available / 6};
+            case "checkin" -> new int[]{available / 4, available * 2 / 5, available - available / 4 - available * 2 / 5};
             default -> new int[]{available};
         };
     }
@@ -103,13 +165,20 @@ final class ContributionScreen extends Screen {
         graphics.fill(8, 8, width - 8, 52, PANEL);
         graphics.text(font, snapshot.title(), 18, 16, TEXT, true);
         graphics.text(font, font.plainSubstrByWidth(snapshot.note(), width - 36), 18, 34, MUTED, false);
+        for (int i = 0; i < snapshot.fields().size(); i++) {
+            int fieldWidth = (width - 36 - (snapshot.fields().size() - 1) * 8) / snapshot.fields().size();
+            graphics.text(font, snapshot.fields().get(i).label(), 18 + i * (fieldWidth + 8), 60, MUTED, false);
+        }
         if (!home()) {
             int[] widths = widths();
-            graphics.fill(12, 54, width - 12, top() - 1, 0xFF30445C);
-            cells(graphics, snapshot.headers(), 57, widths, ACCENT);
+            if (!snapshot.headers().isEmpty()) {
+                graphics.fill(12, top() - 14, width - 12, top() - 1, 0xFF30445C);
+                cells(graphics, snapshot.headers(), top() - 11, widths, ACCENT);
+            }
             int size = snapshot.rows().size();
             scroll = Math.min(scroll, Math.max(0, size - capacity()));
-            if (size == 0) graphics.text(font, "暂无记录", 18, top() + 8, MUTED, false);
+            if (size == 0 && !snapshot.headers().isEmpty())
+                graphics.text(font, "暂无记录", 18, top() + 8, MUTED, false);
             for (int index = scroll; index < Math.min(size, scroll + capacity()); index++) {
                 int y = top() + (index - scroll) * rowHeight();
                 graphics.fill(12, y, width - 12, y + rowHeight() - 2,
@@ -126,6 +195,7 @@ final class ContributionScreen extends Screen {
         } else {
             graphics.text(font, "选择下方功能查看账户与服务器建设数据", 18, 78, TEXT, false);
         }
+        if (!error.isEmpty()) graphics.text(font, error, 18, bottom() + 3, 0xFFF07575, false);
         super.extractRenderState(graphics, mouseX, mouseY, delta);
     }
 }

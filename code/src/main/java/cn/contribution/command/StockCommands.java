@@ -22,7 +22,9 @@ public final class StockCommands {
 
     public static LiteralArgumentBuilder<CommandSourceStack> command() {
         return Commands.literal("stock")
-                .executes(context -> { cn.contribution.stock.StockUiNetwork.market(context.getSource()); return 1; })
+                .executes(context -> { cn.contribution.stock.StockUiNetwork.openDefault(context.getSource()); return 1; })
+                .then(Commands.literal("ui_vanilla")
+                        .executes(context -> { cn.contribution.stock.StockUiNetwork.openVanilla(context.getSource()); return 1; }))
                 .then(side("buy", true))
                 .then(side("sell", false))
                 .then(Commands.literal("portfolio")

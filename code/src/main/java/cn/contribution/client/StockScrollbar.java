@@ -1,6 +1,6 @@
 package cn.contribution.client;
 
-/** Shared scrollbar geometry for row lists and the pixel-scrolled detail page. */
+/** Read-only scrollbar geometry for row lists and the pixel-scrolled detail page. */
 final class StockScrollbar {
     private static final int MIN_THUMB = 12;
 
@@ -33,11 +33,4 @@ final class StockScrollbar {
         return top + (maximum == 0 ? 0 : (int) Math.round(travel * (double) scroll / maximum));
     }
 
-    int scrollAt(double mouseY) {
-        if (!scrollable()) return 0;
-        int travel = bottom - top - thumbHeight();
-        if (travel <= 0) return 0;
-        return Math.clamp((int) Math.round((mouseY - top - thumbHeight() / 2.0) * maximum / travel),
-                0, maximum);
-    }
 }

@@ -41,8 +41,10 @@ public final class ContributionCommands {
 
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(Commands.literal("contribution")
-                .executes(context -> cn.contribution.ui.ContributionDialogs.open(context.getSource(), "home"))
-                .then(Commands.literal("ui").executes(context -> cn.contribution.ui.ContributionDialogs.open(context.getSource(), "home"))
+                .executes(context -> cn.contribution.ui.ContributionDialogs.openDefault(context.getSource()))
+                .then(Commands.literal("ui_vanilla")
+                        .executes(context -> cn.contribution.ui.ContributionDialogs.openVanilla(context.getSource())))
+                .then(Commands.literal("ui").executes(context -> cn.contribution.ui.ContributionDialogs.openDefault(context.getSource()))
                         .then(Commands.argument("page", StringArgumentType.greedyString()).executes(context -> cn.contribution.ui.ContributionDialogs.open(context.getSource(), StringArgumentType.getString(context, "page")))))
                 .then(Commands.literal("query")
                         .executes(context -> query(context, self(context)))

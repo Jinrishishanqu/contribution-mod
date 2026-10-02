@@ -12,6 +12,7 @@ import io.netty.buffer.Unpooled;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.util.List;
+import com.google.gson.Gson;
 
 /** Verifies the actual production builder against vanilla's JSON and network codecs. */
 public final class DialogChecks {
@@ -70,6 +71,12 @@ public final class DialogChecks {
             Dialog.CONTEXT_FREE_STREAM_CODEC.encode(tableBuffer, table);
             Dialog.CONTEXT_FREE_STREAM_CODEC.decode(tableBuffer);
         } finally { tableBuffer.release(); }
+        var uiSnapshot = new ContributionUiNetwork.Snapshot("管理员", "admin", List.of(), List.of(),
+                List.of(new ContributionUiNetwork.Action("查询", "contribution ui account $(target)")), "玩家查询",
+                List.of(new ContributionUiNetwork.Field("target", "玩家名称或 UUID", "", 64)), List.of());
+        var decodedUi = new Gson().fromJson(new Gson().toJson(uiSnapshot), ContributionUiNetwork.Snapshot.class);
+        if (decodedUi.fields().size() != 1 || !decodedUi.actions().getFirst().command().contains("$(target)"))
+            throw new AssertionError("Optional client form snapshot round-trip");
         System.out.println("DIALOG_CODEC_PASS: native page and stock curve, inputs, buttons, command templates, JSON and network round-trip");
     }
 }

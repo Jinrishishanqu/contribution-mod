@@ -20,6 +20,12 @@ public final class ContributionUiNetwork {
     }
 
     public record Action(String label, String command) { }
+    public record Field(String key, String label, String value, int maxLength) { }
     public record Snapshot(String title, String view, List<String> headers, List<List<String>> rows,
-                           List<Action> actions, String note) { }
+                           List<Action> actions, String note, List<Field> fields, List<String> rowCommands) {
+        public Snapshot(String title, String view, List<String> headers, List<List<String>> rows,
+                        List<Action> actions, String note) {
+            this(title, view, headers, rows, actions, note, List.of(), List.of());
+        }
+    }
 }

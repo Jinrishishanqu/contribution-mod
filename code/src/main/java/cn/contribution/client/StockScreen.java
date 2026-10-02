@@ -55,7 +55,6 @@ final class StockScreen extends Screen {
     private int scroll;
     private int detailScroll;
     private int detailScrollMax;
-    private boolean draggingScrollbar;
     private long focusedRow = -1;
     private long lastClickedRow = -1;
     private long lastClickedAtNanos;
@@ -373,14 +372,6 @@ final class StockScreen extends Screen {
     }
 
     @Override public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
-        if (event.button() == 0 && event.x() >= width - 10 && event.x() < width - 2) {
-            StockScrollbar bar = scrollbar();
-            if (bar.scrollable() && event.y() >= bar.top() && event.y() < bar.bottom()) {
-                draggingScrollbar = true;
-                setScrollbarPosition(bar.scrollAt(event.y()));
-                return true;
-            }
-        }
         if (detail == null && event.button() == 0 && !profile && industryMenu) {
             int searchWidth = Math.max(90, Math.min(145, width / 4));
             int menuX = 17 + searchWidth;
@@ -421,22 +412,6 @@ final class StockScreen extends Screen {
         return false;
     }
 
-    @Override public boolean mouseDragged(MouseButtonEvent event, double dragX, double dragY) {
-        if (draggingScrollbar) {
-            setScrollbarPosition(scrollbar().scrollAt(event.y()));
-            return true;
-        }
-        return super.mouseDragged(event, dragX, dragY);
-    }
-
-    @Override public boolean mouseReleased(MouseButtonEvent event) {
-        if (draggingScrollbar) {
-            draggingScrollbar = false;
-            return true;
-        }
-        return super.mouseReleased(event);
-    }
-
     private StockScrollbar scrollbar() {
         if (detail != null) return new StockScrollbar(29, height - 59,
                 detailScroll, detailScrollMax, Math.max(1, height - 88));
@@ -447,22 +422,13 @@ final class StockScreen extends Screen {
                 Math.max(0, count - capacity), capacity);
     }
 
-    private void setScrollbarPosition(int value) {
-        if (detail != null) detailScroll = value;
-        else scroll = value;
-    }
-
     private void drawScrollbar(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
         StockScrollbar bar = scrollbar();
         if (!bar.scrollable()) return;
         int x = width - 8;
         graphics.fill(x, bar.top(), x + 4, bar.bottom(), 0xFF344354);
         int thumb = bar.thumbTop();
-        boolean hovered = mouseX >= x - 2 && mouseX < x + 6 && mouseY >= thumb
-                && mouseY < thumb + bar.thumbHeight();
-        graphics.fill(x, thumb, x + 4, thumb + bar.thumbHeight(),
-                draggingScrollbar || hovered ? TEXT : MUTED);
-        if (hovered || draggingScrollbar) graphics.requestCursor(CursorTypes.POINTING_HAND);
+        graphics.fill(x, thumb, x + 4, thumb + bar.thumbHeight(), MUTED);
     }
 
     @Override public boolean mouseScrolled(double mouseX, double mouseY, double horizontal, double vertical) {
