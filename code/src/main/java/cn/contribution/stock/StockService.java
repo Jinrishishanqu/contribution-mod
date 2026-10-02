@@ -185,12 +185,19 @@ public final class StockService {
                     }
                 }
             }
-            return new StockView.Dashboard(market, curves, ranges, portfolio(connection, player, market));
+            java.util.Map<Long, Integer> directions = new java.util.HashMap<>();
+            for (StockView.Listing listing : market.listings()) {
+                int direction = StockChart.lastMovement(curves.get(listing.id()));
+                if (direction == 0) direction = lastMovementDirection(connection, listing.id(), listing.price());
+                directions.put(listing.id(), direction);
+            }
+            return new StockView.Dashboard(market, curves, ranges, portfolio(connection, player, market), directions);
         });
     }
 
     public CompletableFuture<StockView.Detail> detail(UUID player, String symbol, int days) {
-        if (days != 7 && days != 30 && days != 360) return CompletableFuture.failedFuture(new IllegalArgumentException("Invalid chart range"));
+        if (days != 7 && days != 30 && days != 360 && days != -1)
+            return CompletableFuture.failedFuture(new IllegalArgumentException("Invalid chart range"));
         return database.transaction(connection -> {
             StockView.Listing listing = findListing(connection, player, symbol, false);
             if (listing == null) return null;
@@ -217,10 +224,46 @@ public final class StockService {
                 int change = listing.price() - old;
                 trends.put(span, new StockView.PriceTrend(span, change, old == 0 ? 0 : change * 100.0 / old));
             }
-            List<StockView.PricePoint> displayed = prices.subList(Math.max(0, prices.size() - days), prices.size());
-            return new StockView.Detail(listing, List.copyOf(displayed), days, range,
-                    positionInfo(connection, player, listing.id()), java.util.Map.copyOf(trends));
+            List<StockView.PricePoint> displayed = days == -1
+                    ? allHistory(connection, listing.id())
+                    : List.copyOf(prices.subList(Math.max(0, prices.size() - days), prices.size()));
+            int direction = StockChart.lastMovement(prices);
+            if (direction == 0) direction = lastMovementDirection(connection, listing.id(), listing.price());
+            int previousPrice = prices.size() >= 2 ? prices.get(prices.size() - 2).price() : listing.price();
+            return new StockView.Detail(listing, displayed, days, range,
+                    positionInfo(connection, player, listing.id()), java.util.Map.copyOf(trends), direction,
+                    previousPrice);
         });
+    }
+
+    private static List<StockView.PricePoint> allHistory(Connection connection, long stockId) throws SQLException {
+        int count;
+        try (PreparedStatement query = connection.prepareStatement(
+                "SELECT COUNT(*) FROM stock_daily_price WHERE stock_id = ?")) {
+            query.setLong(1, stockId);
+            try (ResultSet rows = query.executeQuery()) { rows.next(); count = rows.getInt(1); }
+        }
+        StockChart.ExtremaSampler sample = new StockChart.ExtremaSampler(count, 512);
+        try (PreparedStatement query = connection.prepareStatement(
+                "SELECT game_day, price FROM stock_daily_price WHERE stock_id = ? ORDER BY game_day")) {
+            query.setLong(1, stockId);
+            try (ResultSet rows = query.executeQuery()) {
+                while (rows.next()) sample.accept(new StockView.PricePoint(rows.getLong(1), rows.getInt(2)));
+            }
+        }
+        return sample.finish();
+    }
+
+    private static int lastMovementDirection(Connection connection, long stockId, int price) throws SQLException {
+        try (PreparedStatement query = connection.prepareStatement(
+                "SELECT price FROM stock_daily_price WHERE stock_id = ? AND price <> ? "
+                        + "ORDER BY game_day DESC LIMIT 1")) {
+            query.setLong(1, stockId);
+            query.setInt(2, price);
+            try (ResultSet rows = query.executeQuery()) {
+                return rows.next() ? Integer.compare(price, rows.getInt(1)) : 0;
+            }
+        }
     }
 
     private static StockView.Portfolio portfolio(Connection connection, UUID player, StockView.Market market) throws SQLException {

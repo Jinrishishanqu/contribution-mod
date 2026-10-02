@@ -45,7 +45,7 @@ public final class StockCommands {
                                                         .executes(context -> batch(context, null, true)))))))
                 .then(Commands.literal("check")
                         .then(Commands.argument("symbol", StringArgumentType.word())
-                                .executes(context -> check(context, 7))
+                                .executes(context -> check(context, 360))
                                 .then(Commands.argument("range", StringArgumentType.word())
                                         .executes(context -> check(context, days(StringArgumentType.getString(context, "range")))))))
                 .then(Commands.literal("claim").executes(StockCommands::claim))
@@ -73,7 +73,7 @@ public final class StockCommands {
     }
 
     private static int check(CommandContext<CommandSourceStack> context, int days) {
-        if (days == 0) { error(context.getSource(), "查询范围只能是 week、month 或 year"); return 0; }
+        if (days == 0) { error(context.getSource(), "查询范围只能是 week、month、year 或 all"); return 0; }
         cn.contribution.stock.StockUiNetwork.detail(context.getSource(), StringArgumentType.getString(context, "symbol"), days);
         return 1;
     }
@@ -83,6 +83,7 @@ public final class StockCommands {
             case "week" -> 7;
             case "month" -> 30;
             case "year" -> 360;
+            case "all" -> -1;
             default -> 0;
         };
     }

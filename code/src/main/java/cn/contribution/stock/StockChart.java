@@ -3,7 +3,7 @@ package cn.contribution.stock;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Unicode Braille line plot: a real 80×32-pixel curve in a vanilla client dialog. */
+/** Bounded history sampling and the vanilla-client Braille price plot. */
 public final class StockChart {
     private static final int WIDTH = 80;
     private static final int HEIGHT = 32;
@@ -11,25 +11,63 @@ public final class StockChart {
 
     private StockChart() { }
 
-    public static List<StockView.PricePoint> aggregate(List<StockView.PricePoint> prices, int days) {
-        if (days == 7) return prices;
-        int group = days == 30 ? 3 : 30;
-        List<StockView.PricePoint> output = new ArrayList<>();
-        for (int start = Math.max(0, prices.size() - days); start < prices.size(); start += group) {
-            List<Integer> values = new ArrayList<>();
-            for (int index = start; index < Math.min(prices.size(), start + group); index++) values.add(prices.get(index).price());
-            if (values.isEmpty()) continue;
-            if (days == 360) {
-                values.sort(Integer::compareTo);
-                int trim = values.size() / 4;
-                values = values.subList(trim, values.size() - trim);
-            }
-            long sum = 0;
-            for (int value : values) sum += value;
-            output.add(new StockView.PricePoint(prices.get(Math.min(prices.size() - 1, start + group - 1)).day(),
-                    (int) Math.round(sum / (double) values.size())));
+    /** Retain the most recent non-flat move when today's price is unchanged. */
+    public static int lastMovement(List<StockView.PricePoint> prices) {
+        if (prices == null) return 0;
+        for (int index = prices.size() - 1; index > 0; index--) {
+            int direction = Integer.compare(prices.get(index).price(), prices.get(index - 1).price());
+            if (direction != 0) return direction;
         }
-        return List.copyOf(output);
+        return 0;
+    }
+
+    /** One-pass min/max buckets keep the full time span and spikes without sending every historic day. */
+    public static final class ExtremaSampler {
+        private final int total;
+        private final int bucketCount;
+        private final List<StockView.PricePoint> output = new ArrayList<>();
+        private int index;
+        private int bucket = -1;
+        private StockView.PricePoint low;
+        private StockView.PricePoint high;
+
+        public ExtremaSampler(int total, int maxPoints) {
+            if (total < 0 || maxPoints < 4) throw new IllegalArgumentException("Invalid chart sample size");
+            this.total = total;
+            this.bucketCount = Math.max(1, (maxPoints - 2) / 2);
+        }
+
+        public void accept(StockView.PricePoint point) {
+            if (index >= total) throw new IllegalStateException("More price records than counted");
+            if (total <= bucketCount * 2 + 2 || index == 0 || index == total - 1) {
+                if (index == total - 1 && index > 0) flush();
+                output.add(point);
+            } else {
+                int target = (int) ((long) (index - 1) * bucketCount / (total - 2));
+                if (target != bucket) { flush(); bucket = target; }
+                if (low == null || point.price() < low.price()) low = point;
+                if (high == null || point.price() > high.price()) high = point;
+            }
+            index++;
+        }
+
+        private void flush() {
+            if (low == null) return;
+            if (low.day() <= high.day()) {
+                output.add(low);
+                if (high.day() != low.day()) output.add(high);
+            } else {
+                output.add(high);
+                output.add(low);
+            }
+            low = high = null;
+        }
+
+        public List<StockView.PricePoint> finish() {
+            if (index != total) throw new IllegalStateException("Incomplete price history");
+            flush();
+            return List.copyOf(output);
+        }
     }
 
     public static List<String> draw(List<StockView.PricePoint> points) {

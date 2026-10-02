@@ -35,7 +35,7 @@ public final class StockDialogs {
             List<ActionButton> buttons = new ArrayList<>();
             for (StockView.Listing stock : stocks) {
                 buttons.add(button(stock.name() + " " + stock.price(),
-                        "check " + stock.id() + " week"));
+                        "check " + stock.id() + " year"));
             }
             buttons.add(button("按名称排序", "browse name " + filter));
             buttons.add(button("按股价排序", "browse price " + filter));
@@ -64,7 +64,7 @@ public final class StockDialogs {
                     stock.initialPrice(), detail.range().high());
             lines.add("上市游戏日 " + stock.listedDay() + " · 退市阈值 " + threshold + " · 上限 " + stock.initialPrice() * 10);
             if (points.size() >= 2) {
-                int old = points.get(points.size() - 2).price();
+                int old = detail.previousPrice();
                 lines.add("当日涨跌 " + String.format(java.util.Locale.ROOT, "%+.1f%%",
                         old == 0 ? 0 : (stock.price() - old) * 100.0 / old));
             }
@@ -84,6 +84,7 @@ public final class StockDialogs {
             buttons.add(button("近 7 日", "check " + stock.id() + " week"));
             buttons.add(button("近 30 日", "check " + stock.id() + " month"));
             buttons.add(button("近 360 日", "check " + stock.id() + " year"));
+            buttons.add(button("全部", "check " + stock.id() + " all"));
             if (stock.status().equals("ACTIVE")) {
                 buttons.add(ContributionDialogs.template("买入", "stock buy " + stock.id() + " $(quantity)"));
             }
@@ -110,7 +111,7 @@ public final class StockDialogs {
                 var position = portfolio.positions().get(stock.id());
                 long gain = (long) stock.price() * stock.owned() - (position == null ? 0 : position.costBasis());
                 buttons.add(button(stock.name() + " ×" + stock.owned() + " · 盈亏 " + gain,
-                        "check " + stock.id() + " month"));
+                        "check " + stock.id() + " year"));
             }
             buttons.add(button("返回市场", "browse name all"));
             show(source, "我的股票", lines, List.of(), buttons);

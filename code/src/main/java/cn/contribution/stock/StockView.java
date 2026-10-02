@@ -11,7 +11,8 @@ public final class StockView {
     public record PricePoint(long day, int price) { }
     public record Market(long day, int time, List<Listing> listings) { }
     public record Detail(Listing listing, List<PricePoint> prices, int requestedDays, PriceRange range,
-                         PositionInfo position, Map<Integer, PriceTrend> trends) { }
+                         PositionInfo position, Map<Integer, PriceTrend> trends, int lastDirection,
+                         int previousPrice) { }
     public record PriceRange(int high, int low) { }
     public record PriceTrend(int days, int change, double percent) { }
     public record PositionInfo(int quantity, long costBasis, long firstBuyDay, long lastBuyDay,
@@ -19,7 +20,7 @@ public final class StockView {
     public record Portfolio(int balance, long marketValue, long costBasis, long unrealizedProfit, long realizedProfit,
                             Map<Long, PositionInfo> positions) { }
     public record Dashboard(Market market, Map<Long, List<PricePoint>> curves, Map<Long, PriceRange> ranges,
-                            Portfolio portfolio) { }
+                            Portfolio portfolio, Map<Long, Integer> lastDirections) { }
     public record TradeResult(boolean success, String message, long stockId, int quantity,
                               int price, long fee, int balance, boolean replay) { }
 }

@@ -63,6 +63,27 @@ public final class StockIntegrationChecks {
                 check(Math.abs(next[0] - last[0]) + Math.abs(next[1] - last[1]) == 1,
                         "thin curve connects through one-pixel orthogonal steps");
             }
+            check(StockChart.lastMovement(List.of(new StockView.PricePoint(1, 100),
+                    new StockView.PricePoint(2, 105), new StockView.PricePoint(3, 105))) == 1,
+                    "flat day retains last upward color");
+            check(StockChart.lastMovement(List.of(new StockView.PricePoint(1, 105),
+                    new StockView.PricePoint(2, 100), new StockView.PricePoint(3, 100))) == -1,
+                    "flat day retains last downward color");
+            check(StockChart.lastMovement(List.of(new StockView.PricePoint(1, 100),
+                    new StockView.PricePoint(2, 100))) == 0, "never-changing price remains neutral");
+            check(StockLineRaster.dayX(1, 1, 30, 10, 60) == 10
+                    && StockLineRaster.dayX(15, 1, 30, 10, 60) > 10
+                    && StockLineRaster.dayX(30, 1, 30, 10, 60) == 69,
+                    "market price chart spans a fixed thirty-game-day axis");
+            StockChart.ExtremaSampler sampler = new StockChart.ExtremaSampler(1000, 512);
+            for (int day = 1; day <= 1000; day++)
+                sampler.accept(new StockView.PricePoint(day, day == 517 ? 1 : day == 732 ? 900 : 100));
+            var sampled = sampler.finish();
+            check(sampled.size() <= 512 && sampled.getFirst().day() == 1
+                    && sampled.getLast().day() == 1000
+                    && sampled.stream().anyMatch(point -> point.day() == 517 && point.price() == 1)
+                    && sampled.stream().anyMatch(point -> point.day() == 732 && point.price() == 900),
+                    "all-history chart is bounded and preserves endpoints and extrema");
             UUID batchId = UUID.randomUUID();
             check(stocks.openBatch(player, batchId, "1,2", 3, true).join(), "reserve batch identity");
             check(stocks.openBatch(player, batchId, "1,2", 3, true).join(), "retry same batch");
@@ -174,6 +195,44 @@ public final class StockIntegrationChecks {
             check(claim.contains("暂无待领取"), "refund was already credited: " + claim);
             check(accounts.account(AccountTarget.byUuid(player)).join().orElseThrow().totalIncome() == incomeBefore,
                     "refund does not count as income");
+            long flatStock = market.listings().getLast().id();
+            db.transaction(connection -> {
+                try (var remove = connection.prepareStatement("DELETE FROM stock_daily_price WHERE stock_id = ?")) {
+                    remove.setLong(1, flatStock); remove.executeUpdate();
+                }
+                try (var update = connection.prepareStatement(
+                        "UPDATE stock_listing SET price = 100, high_price = 120, low_price = 90 WHERE stock_id = ?")) {
+                    update.setLong(1, flatStock); update.executeUpdate();
+                }
+                try (var update = connection.prepareStatement(
+                        "UPDATE stock_market_state SET game_day = 40, day_time = 5000, "
+                                + "updated_at = CURRENT_TIMESTAMP(6) WHERE singleton_id = 1")) {
+                    update.executeUpdate();
+                }
+                try (var insert = connection.prepareStatement(
+                        "INSERT INTO stock_daily_price(stock_id, game_day, price, status) VALUES (?, ?, ?, 'ACTIVE')")) {
+                    for (int day = 1; day <= 40; day++) {
+                        insert.setLong(1, flatStock);
+                        insert.setInt(2, day);
+                        insert.setInt(3, day == 1 ? 90 : 100);
+                        insert.addBatch();
+                    }
+                    insert.executeBatch();
+                }
+                return null;
+            }).join();
+            var flatDashboard = stocks.dashboard(player).join();
+            check(flatDashboard.curves().get(flatStock).size() == 30
+                    && StockChart.lastMovement(flatDashboard.curves().get(flatStock)) == 0
+                    && flatDashboard.lastDirections().get(flatStock) == 1,
+                    "a thirty-day flat chart retains the older upward direction");
+            check(stocks.detail(player, Long.toString(flatStock), 7).join().lastDirection() == 1,
+                    "a seven-day detail retains the older upward direction");
+            var allDetail = stocks.detail(player, Long.toString(flatStock), -1).join();
+            check(allDetail.requestedDays() == -1 && allDetail.prices().size() == 40
+                    && allDetail.prices().getFirst().day() == 1
+                    && allDetail.prices().getLast().day() == 40,
+                    "all-history detail includes the full listing lifetime");
             System.out.println((mysql ? "MYSQL" : "EMBEDDED")
                     + "_STOCK_PASS: listing, coverage, buy/sell, fees, no same-day resale, idempotency, chart, stale clock, refund");
         } finally {

@@ -33,4 +33,12 @@ public final class StockLineRaster {
             previous[1] = y;
         });
     }
+
+    /** Keeps the market graph's horizontal axis fixed to its requested game-day window. */
+    public static int dayX(long day, long firstDay, long lastDay, int x, int width) {
+        if (width < 2) throw new IllegalArgumentException("Chart width must be at least two pixels");
+        if (lastDay <= firstDay) return x + width / 2;
+        double fraction = (day - (double) firstDay) / (lastDay - (double) firstDay);
+        return x + (int) Math.round(Math.max(0.0, Math.min(1.0, fraction)) * (width - 1));
+    }
 }

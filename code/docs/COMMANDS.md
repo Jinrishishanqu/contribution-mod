@@ -21,7 +21,7 @@
 | `/shop claim` | 领取商店或活动的待发物品 |
 | `/stock` | 打开股票大厅；安装本模组的客户端显示绘制曲线，否则显示原版 Dialog |
 | `/stock portfolio` | 查看个人持仓、市值、成本与未实现盈亏；原版客户端也可用 |
-| `/stock check <股票> [week\|month\|year]` | 查看股票详情与相应时间跨度，省略时为 `week` |
+| `/stock check <股票> [week\|month\|year\|all]` | 查看股票详情；省略时为 360 日，`all` 查看自上市以来全部历史 |
 | `/stock buy <股票> <股数>` | 买入 1—10000 股 |
 | `/stock sell <股票> <股数>` | 卖出 1—10000 股 |
 | `/stock retry <请求ID> <buy\|sell> <股票> <股数>` | 网络结果不明时按原参数重试单股交易 |
