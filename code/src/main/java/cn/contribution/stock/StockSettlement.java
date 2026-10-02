@@ -60,7 +60,7 @@ final class StockSettlement {
             double weight = weights.get(row.industry);
             double multiplier = noise > 0 ? 1 + weight : 1 - weight;
             double proposed = row.price + .1 * noise * multiplier * base;
-            long cap = 10L * row.initial;
+            long cap = StockPricing.priceCap(row.initial);
             long lower = Math.max(1L, Math.round(.3 * row.price));
             long upper = Math.min(cap, 3L * row.price);
             price = (int) Math.min(cap, Math.max(lower, Math.min(upper, Math.round(proposed))));
@@ -301,7 +301,7 @@ final class StockSettlement {
     }
 
     static int retirementThreshold(int initial, int high) {
-        return Math.min(initial / 2, high / 4);
+        return StockPricing.retirementThreshold(initial, high);
     }
 
     private static void noticeHolders(Connection connection, long stockId, long day, String kind, String message)

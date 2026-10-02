@@ -41,6 +41,8 @@ public final class StockIntegrationChecks {
                     && stock.initialPrice() <= 400), "random initial prices stay within 100-400");
             check(StockSettlement.retirementThreshold(100, 1000) == 50, "initial price drives retirement floor");
             check(StockSettlement.retirementThreshold(100, 120) == 30, "historical high drives retirement floor");
+            check(StockPricing.retirementThreshold(101, 151) == 37, "odd prices use the same integer threshold in every UI");
+            check(StockPricing.priceCap(400) == 4000, "price cap is ten times listing price");
             UUID batchId = UUID.randomUUID();
             check(stocks.openBatch(player, batchId, "1,2", 3, true).join(), "reserve batch identity");
             check(stocks.openBatch(player, batchId, "1,2", 3, true).join(), "retry same batch");

@@ -60,7 +60,8 @@ public final class StockDialogs {
             lines.add(stock.industry() + " · " + stock.itemId() + " · " + stock.status());
             lines.add("现价 " + stock.price() + " · 初始价 " + stock.initialPrice() + " · 持有 " + stock.owned());
             lines.add("历史最高 " + detail.range().high() + " · 历史最低 " + detail.range().low());
-            int threshold = Math.min(stock.initialPrice() / 2, detail.range().high() / 4);
+            int threshold = cn.contribution.stock.StockPricing.retirementThreshold(
+                    stock.initialPrice(), detail.range().high());
             lines.add("上市游戏日 " + stock.listedDay() + " · 退市阈值 " + threshold + " · 上限 " + stock.initialPrice() * 10);
             if (points.size() >= 2) {
                 int old = points.get(points.size() - 2).price();

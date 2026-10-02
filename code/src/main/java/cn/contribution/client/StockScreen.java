@@ -2,6 +2,7 @@ package cn.contribution.client;
 
 import cn.contribution.stock.StockUiNetwork;
 import cn.contribution.stock.StockView;
+import cn.contribution.stock.StockPricing;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
@@ -48,6 +49,8 @@ final class StockScreen extends Screen {
     private boolean ownedOnly;
     private int scroll;
     private long focusedRow = -1;
+    private long lastClickedRow = -1;
+    private long lastClickedAtNanos;
     private String retainedSearch = "";
     private String retainedQuantity = "1";
 
@@ -214,7 +217,8 @@ final class StockScreen extends Screen {
 
     private int retirementThreshold(StockView.Listing row) {
         StockView.PriceRange priceRange = dashboard.ranges().get(row.id());
-        return Math.min(row.initialPrice() / 2, (priceRange == null ? row.price() : priceRange.high()) / 4);
+        return StockPricing.retirementThreshold(row.initialPrice(),
+                priceRange == null ? row.price() : priceRange.high());
     }
 
     private double riskMultiple(StockView.Listing row) {
@@ -252,9 +256,7 @@ final class StockScreen extends Screen {
     }
 
     @Override public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
-        if (super.mouseClicked(event, doubleClick)) return true;
-        if (detail != null || event.button() != 0) return false;
-        if (!profile && industryMenu) {
+        if (detail == null && event.button() == 0 && !profile && industryMenu) {
             int searchWidth = Math.max(90, Math.min(145, width / 4));
             int menuX = 17 + searchWidth;
             if (event.x() >= menuX && event.x() < menuX + 115 && event.y() >= 52
@@ -269,22 +271,45 @@ final class StockScreen extends Screen {
                 scroll = 0;
                 return true;
             }
-            industryMenu = false;
+            // The toggle button itself still goes through vanilla widget dispatch.
+            if (event.x() < menuX || event.x() >= menuX + 90 || event.y() < 31 || event.y() >= 50) {
+                industryMenu = false;
+                return true; // A dismissal click must not activate a stock behind the menu.
+            }
         }
-        int firstY = profile ? 112 : ROW_TOP;
-        if (event.y() < firstY || event.y() >= height - 54) return false;
-        int index = scroll + ((int) event.y() - firstY) / ROW_HEIGHT;
-        List<StockView.Listing> rows = profile ? ownedRows() : visible();
-        if (index < 0 || index >= rows.size()) return false;
-        StockView.Listing row = rows.get(index);
-        if (!profile && event.x() < 29) {
-            if (!selected.add(row.id())) selected.remove(row.id());
-        } else if (doubleClick) command("stock check " + row.id() + " month");
-        else focusedRow = row.id();
-        return true;
+        if (detail == null && event.button() == 0) {
+            int firstY = profile ? 112 : ROW_TOP;
+            if (event.x() >= 10 && event.x() < width - 10
+                    && event.y() >= firstY && event.y() < height - 54) {
+                int index = scroll + ((int) event.y() - firstY) / ROW_HEIGHT;
+                List<StockView.Listing> rows = profile ? ownedRows() : visible();
+                if (index >= 0 && index < rows.size()) {
+                    StockView.Listing row = rows.get(index);
+                    if (!profile && event.x() < 29) {
+                        if (!selected.add(row.id())) selected.remove(row.id());
+                        lastClickedRow = -1;
+                    } else {
+                        long now = System.nanoTime();
+                        boolean repeated = lastClickedRow == row.id()
+                                && now - lastClickedAtNanos <= 400_000_000L;
+                        if (repeated || (doubleClick && lastClickedRow == row.id())) {
+                            lastClickedRow = -1;
+                            command("stock check " + row.id() + " month");
+                        } else {
+                            focusedRow = row.id();
+                            lastClickedRow = row.id();
+                            lastClickedAtNanos = now;
+                        }
+                    }
+                    return true;
+                }
+            }
+        }
+        return super.mouseClicked(event, doubleClick);
     }
 
     @Override public boolean mouseScrolled(double mouseX, double mouseY, double horizontal, double vertical) {
+        if (industryMenu) return true;
         int firstY = profile ? 112 : ROW_TOP;
         if (detail == null && mouseY >= firstY && mouseY < height - 54) {
             int capacity = Math.max(1, (height - 54 - firstY) / ROW_HEIGHT);
@@ -311,11 +336,13 @@ final class StockScreen extends Screen {
         List<StockView.Listing> rows = visible();
         int capacity = Math.max(1, (height - 54 - ROW_TOP) / ROW_HEIGHT);
         scroll = Math.min(scroll, Math.max(0, rows.size() - capacity));
-        int priceX = Math.max(225, width * 41 / 100);
-        int changeX = width * 52 / 100;
-        int riskX = width * 63 / 100;
-        int ownedX = width * 75 / 100;
-        int chartX = width * 82 / 100;
+        // Minecraft GUI scaling can leave only ~480 logical pixels at 1920x1080.
+        // Allocate every column from that logical width; never force a 225px price offset.
+        int priceX = width * 31 / 100;
+        int changeX = width * 43 / 100;
+        int riskX = width * 57 / 100;
+        int ownedX = width * 73 / 100;
+        int chartX = width * 81 / 100;
         graphics.text(font, "选", 13, 62, MUTED, false);
         graphics.text(font, "股票 / 行业", 31, 62, MUTED, false);
         graphics.text(font, "现价", priceX, 62, MUTED, false);
@@ -326,30 +353,36 @@ final class StockScreen extends Screen {
         for (int i = scroll; i < Math.min(rows.size(), scroll + capacity); i++) {
             StockView.Listing row = rows.get(i);
             int y = ROW_TOP + (i - scroll) * ROW_HEIGHT;
-            boolean hovering = mouseX >= 10 && mouseX < width - 10 && mouseY >= y && mouseY < y + ROW_HEIGHT;
+            boolean hovering = !industryMenu && mouseX >= 10 && mouseX < width - 10
+                    && mouseY >= y && mouseY < y + ROW_HEIGHT;
             graphics.fill(10, y, width - 10, y + ROW_HEIGHT - 2,
                     hovering || focusedRow == row.id() ? 0xFF34445B : i % 2 == 0 ? 0xB0263444 : 0xB01C2838);
-            if (hovering && !industryMenu) graphics.requestCursor(CursorTypes.POINTING_HAND);
-            graphics.text(font, selected.contains(row.id()) ? "☑" : "□", 13, y + 20, selected.contains(row.id()) ? GREEN : MUTED, false);
-            graphics.text(font, font.plainSubstrByWidth(row.name(), Math.max(30, priceX - 39)), 31, y + 5, TEXT, false);
-            graphics.text(font, row.industry() + " · #" + row.id(), 31, y + 22, MUTED, false);
-            graphics.text(font, "上市日 " + row.listedDay(), 31, y + 37, MUTED, false);
+            if (hovering) graphics.requestCursor(CursorTypes.POINTING_HAND);
+            graphics.text(font, selected.contains(row.id()) ? "☑" : "□", 13, y + 21, selected.contains(row.id()) ? GREEN : MUTED, false);
+            columnText(graphics, row.name() + " · #" + row.id(), 31, y + 10, priceX - 7, TEXT);
+            columnText(graphics, row.industry(), 31, y + 31, priceX - 7, MUTED);
             int direction = row.price() > previousPrice(row) ? RED : row.price() < previousPrice(row) ? GREEN : MUTED;
-            graphics.text(font, String.valueOf(row.price()), priceX, y + 7, direction, false);
+            columnText(graphics, String.valueOf(row.price()), priceX, y + 10, changeX - 6, direction);
             var range = dashboard.ranges().get(row.id());
-            if (range != null) graphics.text(font, "高/低 " + range.high() + "/" + range.low(), priceX, y + 29, MUTED, false);
-            graphics.text(font, changeText(dailyPercent(row)), changeX, y + 16, direction, false);
+            if (range != null) columnText(graphics, range.high() + "/" + range.low(), priceX, y + 31, changeX - 6, MUTED);
+            columnText(graphics, changeText(dailyPercent(row)), changeX, y + 10, riskX - 6, direction);
+            columnText(graphics, signed(row.price() - previousPrice(row)), changeX, y + 31, riskX - 6, MUTED);
             double multiple = riskMultiple(row);
-            graphics.text(font, "阈值 " + retirementThreshold(row), riskX, y + 8, multiple <= 1.25 ? RED : MUTED, false);
-            graphics.text(font, String.format(Locale.ROOT, "%.2f 倍", multiple), riskX, y + 29,
-                    multiple <= 1.25 ? RED : TEXT, false);
-            graphics.text(font, String.valueOf(row.owned()), ownedX, y + 17, TEXT, false);
-            curve(graphics, dashboard.curves().get(row.id()), chartX, y + 5, width - chartX - 19, 43, direction);
-            if (row.status().equals("RETIRING")) graphics.text(font, "今日退市", ownedX, y + 34, RED, false);
+            columnText(graphics, "阈" + retirementThreshold(row), riskX, y + 10, ownedX - 6,
+                    multiple <= 1.25 ? RED : MUTED);
+            columnText(graphics, String.format(Locale.ROOT, "%.2f倍", multiple), riskX, y + 31,
+                    ownedX - 6, multiple <= 1.25 ? RED : TEXT);
+            columnText(graphics, String.valueOf(row.owned()), ownedX, y + 10, chartX - 5, TEXT);
+            if (row.status().equals("RETIRING")) columnText(graphics, "退市", ownedX, y + 31, chartX - 5, RED);
+            curve(graphics, dashboard.curves().get(row.id()), chartX, y + 6, width - chartX - 13, 41, direction);
         }
-        graphics.text(font, "显示 " + rows.size() + " / " + dashboard.market().listings().size()
-                + " · 已选 " + selected.size() + " · 双击看详情 · 批量操作逐只成交", 13, height - 43, MUTED, false);
+        columnText(graphics, "显示 " + rows.size() + " / " + dashboard.market().listings().size()
+                + " · 已选 " + selected.size() + " · 高/低为历史价 · 双击看详情", 13, height - 43, width - 10, MUTED);
         if (industryMenu) drawIndustryMenu(graphics, mouseX, mouseY);
+    }
+
+    private void columnText(GuiGraphicsExtractor graphics, String value, int x, int y, int right, int color) {
+        if (right > x) graphics.text(font, font.plainSubstrByWidth(value, right - x), x, y, color, false);
     }
 
     private void drawIndustryMenu(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
@@ -357,6 +390,8 @@ final class StockScreen extends Screen {
         List<String> options = industryOptions();
         graphics.fill(menuX, 52, menuX + 115, 52 + (options.size() + 1) * 18, 0xFF101720);
         graphics.outline(menuX, 52, 115, (options.size() + 1) * 18, MUTED);
+        if (mouseX >= menuX && mouseX < menuX + 115 && mouseY >= 52 && mouseY < 70)
+            graphics.requestCursor(CursorTypes.POINTING_HAND);
         graphics.text(font, industries.isEmpty() ? "☑ 全部行业" : "□ 全部行业", menuX + 5, 57, TEXT, false);
         for (int i = 0; i < options.size(); i++) {
             int y = 52 + (i + 1) * 18;
@@ -412,7 +447,7 @@ final class StockScreen extends Screen {
                 ? detail.prices().get(detail.prices().size() - 2).price() : row.price();
         double today = previous == 0 ? 0 : (row.price() - previous) * 100.0 / previous;
         int direction = today > 0 ? RED : today < 0 ? GREEN : MUTED;
-        int threshold = Math.min(row.initialPrice() / 2, detail.range().high() / 4);
+        int threshold = StockPricing.retirementThreshold(row.initialPrice(), detail.range().high());
         double multiple = row.price() / (double) Math.max(1, threshold);
         graphics.text(font, row.industry() + " · " + row.itemId() + " · "
                 + (row.status().equals("RETIRING") ? "今日退市，14:00 自动返还" : "在市"), 12, 31,
@@ -424,7 +459,7 @@ final class StockScreen extends Screen {
                 + " · 上市日 " + row.listedDay() + " · 已上市 " + Math.max(1, clockDay - row.listedDay() + 1) + " 日",
                 12, 65, MUTED, false);
         graphics.text(font, "退市阈值 " + threshold + " · 当前/阈值 "
-                + String.format(Locale.ROOT, "%.2f", multiple) + " 倍 · 股价上限 " + row.initialPrice() * 10,
+                + String.format(Locale.ROOT, "%.2f", multiple) + " 倍 · 股价上限 " + StockPricing.priceCap(row.initialPrice()),
                 12, 82, multiple <= 1.25 ? RED : MUTED, false);
         if (multiple <= 1.25) graphics.text(font, "⚠ 接近退市线，持有者请关注当天交易窗口", 12, 99, RED, false);
         var position = detail.position();
