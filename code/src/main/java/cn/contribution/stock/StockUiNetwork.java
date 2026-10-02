@@ -49,7 +49,7 @@ public final class StockUiNetwork {
             if (error != null) source.sendFailure(Component.literal("股票数据暂时不可用"));
             else ServerPlayNetworking.send(player, new StockSnapshotPayload(JSON.toJson(new Snapshot("market", dashboard, null,
                     dashboard.market().clockFresh() ? dashboard.market().clockDay() : -1,
-                    dashboard.market().clockFresh() ? dashboard.market().clockTime() : -1))));
+                    dashboard.market().clockFresh() ? dashboard.market().clockTime() : -1, dashboard.news()))));
         }));
     }
 
@@ -66,7 +66,7 @@ public final class StockUiNetwork {
             if (error != null) source.sendFailure(Component.literal("个人持仓暂时不可用"));
             else ServerPlayNetworking.send(player, new StockSnapshotPayload(JSON.toJson(new Snapshot("profile", dashboard,
                     null, dashboard.market().clockFresh() ? dashboard.market().clockDay() : -1,
-                    dashboard.market().clockFresh() ? dashboard.market().clockTime() : -1))));
+                    dashboard.market().clockFresh() ? dashboard.market().clockTime() : -1, dashboard.news()))));
         }));
     }
 
@@ -81,14 +81,15 @@ public final class StockUiNetwork {
         service.detail(player.getUUID(), symbol, days).whenComplete((detail, error) -> source.getServer().execute(() -> {
             if (player.hasDisconnected()) return;
             if (error != null || detail == null) source.sendFailure(Component.literal("股票详情暂时不可用"));
-            else ServerPlayNetworking.send(player, new StockSnapshotPayload(JSON.toJson(new Snapshot("detail", null, detail, -1, -1))));
+            else ServerPlayNetworking.send(player, new StockSnapshotPayload(JSON.toJson(new Snapshot("detail", null, detail, -1, -1, null))));
         }));
     }
 
-    public static void clock(ServerPlayer player, long day, int time) {
+    public static void clock(ServerPlayer player, long day, int time, java.util.List<StockView.News> news) {
         if (clientUi(player))
-            ServerPlayNetworking.send(player, new StockSnapshotPayload(JSON.toJson(new Snapshot("clock", null, null, day, time))));
+            ServerPlayNetworking.send(player, new StockSnapshotPayload(JSON.toJson(new Snapshot("clock", null, null, day, time, news))));
     }
 
-    public record Snapshot(String view, StockView.Dashboard dashboard, StockView.Detail detail, long day, int time) { }
+    public record Snapshot(String view, StockView.Dashboard dashboard, StockView.Detail detail, long day, int time,
+                           java.util.List<StockView.News> news) { }
 }

@@ -49,6 +49,7 @@ final class StockSettlement {
         updateBottomStreak(connection, day, ranking.getLast());
 
         List<Row> rows = loadListings(connection);
+        List<StockSwanService.Effect> swanEffects = StockSwanService.pendingEffects(connection, day);
         Random random = new Random();
         for (Row row : rows) {
             if (row.status.equals("DELISTED")) continue;
@@ -64,6 +65,9 @@ final class StockSettlement {
             long lower = Math.max(1L, Math.round(.3 * row.price));
             long upper = Math.min(cap, 3L * row.price);
             price = (int) Math.min(cap, Math.max(lower, Math.min(upper, Math.round(proposed))));
+            for (StockSwanService.Effect effect : swanEffects)
+                if (effect.industry() == row.industry)
+                    price = StockPricing.swanPrice(row.price, row.initial, effect.good());
             base = .9 * base + .1 * (.1 * price);
             String status = row.status;
             Long retirement = row.retirementDay;
@@ -83,6 +87,7 @@ final class StockSettlement {
         triggerBottomRetirement(connection, day, ranking.getLast());
         trimExcess(connection, day);
         fillVacancies(connection, day, random);
+        StockSwanService.markApplied(connection, swanEffects, day);
     }
 
     /** Existing 30-stock worlds converge to the 20-stock limit after today's trading window. */

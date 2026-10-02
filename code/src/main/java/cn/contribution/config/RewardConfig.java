@@ -18,7 +18,7 @@ public final class RewardConfig {
 
     private static Map<String, String> defaultWeights() {
         Map<String, String> weights = new LinkedHashMap<>();
-        for (BuiltInIndustry industry : BuiltInIndustry.values()) weights.put(industry.path(), "0.0001");
+        for (BuiltInIndustry industry : BuiltInIndustry.values()) weights.put(industry.path(), "0.001");
         return weights;
     }
 

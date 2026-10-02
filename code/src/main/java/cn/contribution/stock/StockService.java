@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 
 import static cn.contribution.account.AccountService.uuidBytes;
@@ -35,6 +36,7 @@ public final class StockService {
     private int nextReplicaClockTick;
     private boolean noticePolling;
     private int nextNoticeTick;
+    private final Random swanRandom = new Random();
 
     public StockService(DatabaseService database, ServerConfig config) {
         this.database = database;
@@ -55,6 +57,9 @@ public final class StockService {
         long today = RuleManager.day(server);
         long visibleDay = Math.max(0, Math.floorDiv(clock, 24000));
         int time = (int) Math.floorMod(clock, 24000);
+        List<StockSwanService.Player> online = server.getPlayerList().getPlayers().stream()
+                .filter(player -> !player.getGameProfile().name().startsWith("bot_"))
+                .map(player -> new StockSwanService.Player(player.getUUID(), player.getGameProfile().name())).toList();
         database.transaction(connection -> {
             long storedDay;
             long closedDay;
@@ -73,6 +78,7 @@ public final class StockService {
                 update.setLong(1, visibleDay); update.setInt(2, time); update.setString(3, serverId);
                 update.executeUpdate();
             }
+            StockSwanService.advance(connection, clock, online, swanRandom);
             if (storedDay >= 0 && storedDay < today && closedDay < storedDay) {
                 StockSettlement.closeRetirements(connection, storedDay);
                 closedDay = storedDay;
@@ -82,7 +88,7 @@ public final class StockService {
                 long target = storedDay < 0 ? today : storedDay + 1;
                 boolean existingWorldFirstRun = storedDay < 0 && RuleManager.firstDay(connection) >= target;
                 if (target >= 2 && !existingWorldFirstRun
-                        && !StockSettlement.industryReady(connection, target - 1)) return 0;
+                        && !StockSettlement.industryReady(connection, target - 1)) return new TickResult(0, StockSwanService.news(connection, clock));
                 if (target >= 2) StockSettlement.run(connection, target);
                 storedDay = target;
                 transitioned = true;
@@ -97,13 +103,13 @@ public final class StockService {
                 update.setLong(3, closedDay);
                 update.executeUpdate();
             }
-            return transitioned ? 2 : 1;
+            return new TickResult(transitioned ? 2 : 1, StockSwanService.news(connection, clock));
         }).whenComplete((done, error) -> server.execute(() -> {
             ticking = false;
             if (error != null) {
                 nextTick = server.getTickCount() + 600;
                 ContributionMod.LOGGER.warn("Stock market daily transition is pending: {}", error.toString());
-            } else if (done == 0) {
+            } else if (done.state() == 0) {
                 nextTick = server.getTickCount() + 100;
                 if (server.getTickCount() >= nextPendingNoticeTick) {
                     nextPendingNoticeTick = server.getTickCount() + 1200;
@@ -111,12 +117,14 @@ public final class StockService {
                             + "Check statistics_day_close for all configured statisticsServers.", today, today - 1);
                 }
             }
-            else if (done == 2) server.getPlayerList().getPlayers().forEach(player ->
+            else if (done.state() == 2) server.getPlayerList().getPlayers().forEach(player ->
                     claim(player.getUUID(), UUID.randomUUID()));
             if (error == null)
-                server.getPlayerList().getPlayers().forEach(player -> StockUiNetwork.clock(player, visibleDay, time));
+                server.getPlayerList().getPlayers().forEach(player -> StockUiNetwork.clock(player, visibleDay, time, done.news()));
         }));
     }
+
+    private record TickResult(int state, List<StockView.News> news) { }
 
     /** One shared-clock read per secondary server, never one query per player. */
     private void tickReplicaClock(MinecraftServer server) {
@@ -131,14 +139,19 @@ public final class StockService {
                             + "FROM stock_market_state WHERE singleton_id = 1");
                  ResultSet rows = query.executeQuery()) {
                 rows.next();
-                return rows.getBoolean(3) ? new long[]{rows.getLong(1), rows.getInt(2)} : new long[]{-1, -1};
+                long day = rows.getBoolean(3) ? rows.getLong(1) : -1;
+                int time = day < 0 ? -1 : rows.getInt(2);
+                return new ClockResult(day, time,
+                        day < 0 ? List.of() : StockSwanService.news(connection, day * 24_000 + time));
             }
         }).whenComplete((clock, error) -> server.execute(() -> {
             replicaClockPolling = false;
             if (error == null) server.getPlayerList().getPlayers().forEach(player ->
-                    StockUiNetwork.clock(player, clock[0], (int) clock[1]));
+                    StockUiNetwork.clock(player, clock.day(), clock.time(), clock.news()));
         }));
     }
+
+    private record ClockResult(long day, int time, List<StockView.News> news) { }
 
     /** One bounded off-thread notice query per server every ten seconds, including non-main servers. */
     public void tickNotices(MinecraftServer server) {
@@ -242,7 +255,8 @@ public final class StockService {
                 if (direction == 0) direction = lastMovementDirection(connection, listing.id(), listing.price());
                 directions.put(listing.id(), direction);
             }
-            return new StockView.Dashboard(market, curves, ranges, portfolio(connection, player, market), directions);
+            return new StockView.Dashboard(market, curves, ranges, portfolio(connection, player, market), directions,
+                    market.clockFresh() ? StockSwanService.news(connection, market.clockDay() * 24_000 + market.clockTime()) : List.of());
         });
     }
 

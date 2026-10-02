@@ -34,9 +34,18 @@ public final class ConfigLoader {
                 GSON.toJson(config, writer);
             }
         } else {
+            boolean upgradeLegacyWeights;
             try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
                 JsonObject root = JsonParser.parseReader(reader).getAsJsonObject();
                 config = parse(root);
+                upgradeLegacyWeights = hasLegacyDefaultWeights(root);
+            }
+            if (upgradeLegacyWeights) {
+                for (BuiltInIndustry industry : BuiltInIndustry.values())
+                    config.rewards.developmentWeights.put(industry.path(), "0.001");
+                try (Writer writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
+                    GSON.toJson(config, writer);
+                }
             }
         }
         validate(config);
@@ -59,6 +68,21 @@ public final class ConfigLoader {
             }
         }
         return config;
+    }
+
+    /** Upgrade only the complete, unmodified nine-industry default from earlier releases. */
+    private static boolean hasLegacyDefaultWeights(JsonObject root) {
+        if (!root.has("rewards") || !root.get("rewards").isJsonObject()) return false;
+        JsonObject rewards = root.getAsJsonObject("rewards");
+        if (!rewards.has("developmentWeights") || !rewards.get("developmentWeights").isJsonObject()) return false;
+        JsonObject weights = rewards.getAsJsonObject("developmentWeights");
+        if (weights.size() != BuiltInIndustry.values().length) return false;
+        for (BuiltInIndustry industry : BuiltInIndustry.values()) {
+            if (!weights.has(industry.path())
+                    || new BigDecimal(weights.get(industry.path()).getAsString()).compareTo(new BigDecimal("0.0001")) != 0)
+                return false;
+        }
+        return true;
     }
 
     private static void validate(ServerConfig config) {

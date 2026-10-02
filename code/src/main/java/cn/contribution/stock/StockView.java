@@ -21,7 +21,8 @@ public final class StockView {
     public record Portfolio(int balance, long marketValue, long costBasis, long unrealizedProfit, long realizedProfit,
                             Map<Long, PositionInfo> positions) { }
     public record Dashboard(Market market, Map<Long, List<PricePoint>> curves, Map<Long, PriceRange> ranges,
-                            Portfolio portfolio, Map<Long, Integer> lastDirections) { }
+                            Portfolio portfolio, Map<Long, Integer> lastDirections, List<News> news) { }
+    public record News(String text, long untilClock, boolean good) { }
     public record TradeResult(boolean success, String message, long stockId, int quantity,
                               int price, long fee, int balance, boolean replay) { }
 }

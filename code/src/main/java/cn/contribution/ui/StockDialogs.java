@@ -62,6 +62,7 @@ public final class StockDialogs {
                     : "主服务器时钟暂不可用")
                     + " · 市场核算日 " + market.day() + (settled ? "" : " · 正在等待日结")
                     + " · 交易时间 10:00—14:00 · 手续费 2%");
+            for (StockView.News news : dashboard.news()) lines.add("【市场消息】" + news.text());
             lines.add(stocks.isEmpty() ? "暂无符合条件的上市股票" : "共 " + stocks.size() + " 支 · 每项依次为股价、当日涨跌、退市阈值及持仓；点击看详情");
             show(source, "股票市场", lines,
                     List.of(ContributionDialogs.input("filter", "股票名称、物品 ID 或行业；all 显示全部", filter, 64)), buttons);

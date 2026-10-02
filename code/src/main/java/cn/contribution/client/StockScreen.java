@@ -34,6 +34,8 @@ final class StockScreen extends Screen {
     private static StockScreen lastMarket;
     private static long clockDay = -1;
     private static int clockTime = -1;
+    private static List<StockView.News> headlines = List.of();
+    private static long headlinesSince = System.nanoTime();
 
     private final StockView.Dashboard dashboard;
     private final StockView.Detail detail;
@@ -72,10 +74,13 @@ final class StockScreen extends Screen {
     static void receive(StockUiNetwork.Snapshot snapshot) {
         Minecraft client = Minecraft.getInstance();
         if ("clock".equals(snapshot.view())) {
-            clockDay = snapshot.day(); clockTime = snapshot.time(); return;
+            clockDay = snapshot.day(); clockTime = snapshot.time();
+            updateHeadlines(snapshot.news());
+            return;
         }
         if (("market".equals(snapshot.view()) || "profile".equals(snapshot.view())) && snapshot.dashboard() != null) {
             clockDay = snapshot.day(); clockTime = snapshot.time();
+            updateHeadlines(snapshot.news());
             StockScreen previous = client.gui.screen() instanceof StockScreen ? lastMarket : null;
             boolean wasProfile = "profile".equals(snapshot.view());
             StockScreen updated = new StockScreen(snapshot.dashboard(), null, 30, false);
@@ -96,6 +101,15 @@ final class StockScreen extends Screen {
 
     static void clear() {
         lastMarket = null; clockDay = -1; clockTime = -1;
+        updateHeadlines(List.of());
+    }
+
+    private static void updateHeadlines(List<StockView.News> incoming) {
+        List<StockView.News> next = incoming == null ? List.of() : List.copyOf(incoming);
+        if (!next.equals(headlines)) {
+            headlines = next;
+            headlinesSince = System.nanoTime();
+        }
     }
 
     private void copyMarketState(StockScreen other) {
@@ -449,7 +463,8 @@ final class StockScreen extends Screen {
 
     @Override public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float delta) {
         graphics.fill(0, 0, width, height, BACKGROUND);
-        graphics.text(font, detail == null ? "股票市场" : detail.listing().name() + " · 股票详情", 12, 8, TEXT, true);
+        String title = detail == null ? "股票市场" : detail.listing().name() + " · 股票详情";
+        graphics.text(font, title, 12, 8, TEXT, true);
         boolean clockAvailable = clockDay >= 0 && clockTime >= 0;
         boolean settled = dashboard == null || dashboard.market().day()
                 == (clockTime < 2000 ? clockDay - 1 : clockDay);
@@ -457,7 +472,22 @@ final class StockScreen extends Screen {
         String clockLabel = !clockAvailable ? "主服务器时钟暂不可用"
                 : "游戏日 " + clockDay + "  " + timeText(clockTime) + "  · 交易 10:00—14:00 "
                 + (!settled ? "核算中" : trading ? "交易中" : "已休市");
-        graphics.text(font, clockLabel, Math.max(130, width - 320), 8, trading ? GREEN : MUTED, false);
+        int clockX = width - 12 - font.width(clockLabel);
+        graphics.text(font, clockLabel, clockX, 8, trading ? GREEN : MUTED, false);
+        if (!headlines.isEmpty() && detail == null) {
+            int newsLeft = 24 + font.width(title);
+            int newsRight = clockX - 12;
+            if (newsRight > newsLeft + 24) {
+                String newsText = headlines.stream().map(StockView.News::text).collect(java.util.stream.Collectors.joining("   ◆   "));
+                int textWidth = font.width(newsText);
+                int laneWidth = newsRight - newsLeft;
+                long elapsed = Math.max(0, System.nanoTime() - headlinesSince);
+                int offset = (int) ((elapsed / 35_000_000L) % Math.max(1, laneWidth + textWidth + 40));
+                graphics.enableScissor(newsLeft, 6, newsRight, 20);
+                graphics.text(font, newsText, newsRight - offset, 8, AMBER, false);
+                graphics.disableScissor();
+            }
+        }
         if (detail == null && profile) drawProfile(graphics, mouseX, mouseY);
         else if (detail == null) drawMarket(graphics, mouseX, mouseY);
         else drawDetail(graphics);

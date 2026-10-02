@@ -15,4 +15,11 @@ public final class StockPricing {
             throw new IllegalArgumentException("Invalid initial stock price");
         return initialPrice * 10;
     }
+
+    /** One-time swan correction replaces, rather than adds to, the ordinary daily price change. */
+    public static int swanPrice(int currentPrice, int initialPrice, boolean good) {
+        if (currentPrice <= 0) throw new IllegalArgumentException("Stock prices must be positive");
+        long adjusted = ((long) currentPrice * (good ? 14 : 6) + 5) / 10;
+        return (int) Math.max(1, Math.min(priceCap(initialPrice), adjusted));
+    }
 }

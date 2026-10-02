@@ -256,8 +256,78 @@ public final class StockIntegrationChecks {
                     && allDetail.prices().getFirst().day() == 1
                     && allDetail.prices().getLast().day() == 40,
                     "all-history detail includes the full listing lifetime");
+            check(StockPricing.swanPrice(100, 100, true) == 140
+                    && StockPricing.swanPrice(100, 100, false) == 60
+                    && StockPricing.swanPrice(1000, 100, true) == 1000,
+                    "swan correction is fixed forty percent and obeys the listing cap");
+            db.transaction(connection -> {
+                var online = List.of(new StockSwanService.Player(player, "StockTester"));
+                var random = new java.util.Random(23);
+                long start = 41L * 24_000 + 2_000;
+                StockSwanService.advance(connection, 40L * 24_000 + 2_000, online, random);
+                StockSwanService.advance(connection, start, online, random);
+                String chosen;
+                try (var query = connection.prepareStatement(
+                        "SELECT industry_id FROM stock_swan_candidate ORDER BY industry_id LIMIT 1");
+                     var rows = query.executeQuery()) {
+                    rows.next(); chosen = rows.getString(1);
+                }
+                try (var insert = connection.prepareStatement(
+                        "INSERT INTO player_industry_stats (player_uuid, industry_id, development, updated_at) "
+                                + "VALUES (?, ?, 1, CURRENT_TIMESTAMP(6))")) {
+                    insert.setBytes(1, AccountService.uuidBytes(player));
+                    insert.setString(2, chosen);
+                    insert.executeUpdate();
+                }
+                StockSwanService.advance(connection, start + 2_099, online, random);
+                check(StockSwanService.pendingEffects(connection, 42).isEmpty(), "swan does not decide before the window closes");
+                StockSwanService.advance(connection, start + 2_100, online, random);
+                var good = StockSwanService.pendingEffects(connection, 42);
+                check(good.size() == 1 && good.getFirst().good(), "one active industry produces one good swan");
+                check(StockSwanService.news(connection, start + 2_100).size() == 1,
+                        "good swan news starts after decision");
+                java.util.Map<Long, Integer> before = new java.util.HashMap<>();
+                java.util.Map<Long, Integer> initials = new java.util.HashMap<>();
+                try (var query = connection.prepareStatement(
+                        "SELECT stock_id, price, initial_price FROM stock_listing "
+                                + "WHERE industry_id = ? AND status <> 'DELISTED'")) {
+                    query.setString(1, chosen);
+                    try (var rows = query.executeQuery()) {
+                        while (rows.next()) {
+                            before.put(rows.getLong(1), rows.getInt(2));
+                            initials.put(rows.getLong(1), rows.getInt(3));
+                        }
+                    }
+                }
+                check(!before.isEmpty(), "chosen industry has a listed stock");
+                StockSettlement.run(connection, 42);
+                for (var stock : before.entrySet()) {
+                    try (var query = connection.prepareStatement("SELECT price FROM stock_listing WHERE stock_id = ?")) {
+                        query.setLong(1, stock.getKey());
+                        try (var rows = query.executeQuery()) {
+                            rows.next();
+                            check(rows.getInt(1) == StockPricing.swanPrice(stock.getValue(), initials.get(stock.getKey()), true),
+                                    "good swan replaces the ordinary settlement price");
+                        }
+                    }
+                }
+                check(StockSwanService.pendingEffects(connection, 42).isEmpty(), "settlement consumes event once");
+                try (var update = connection.prepareStatement(
+                        "UPDATE stock_swan_schedule SET next_start_day = 43 WHERE singleton_id = 1")) {
+                    update.executeUpdate();
+                }
+                long badStart = 43L * 24_000 + 2_000;
+                StockSwanService.advance(connection, badStart, online, random);
+                StockSwanService.advance(connection, badStart + 2_100, online, random);
+                var bad = StockSwanService.pendingEffects(connection, 44);
+                check(bad.size() == 3 && bad.stream().noneMatch(StockSwanService.Effect::good),
+                        "no contribution gives all three industries a bad swan");
+                check(StockSwanService.news(connection, badStart + 2_100).size() == 4,
+                        "three-day market news includes both recent events");
+                return null;
+            }).join();
             System.out.println((mysql ? "MYSQL" : "EMBEDDED")
-                    + "_STOCK_PASS: listing, coverage, buy/sell, fees, no same-day resale, idempotency, chart, stale clock, refund");
+                    + "_STOCK_PASS: listing, coverage, buy/sell, fees, no same-day resale, idempotency, chart, stale clock, refund, swans");
         } finally {
             if (mysql) {
                 // Only the random schema created by this invocation is removed; no shared test or player data.

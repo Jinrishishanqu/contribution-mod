@@ -48,7 +48,7 @@ public final class RewardIntegrationChecks {
             DevelopmentRewardService development = new DevelopmentRewardService(db, config);
             development.settlePlayer(player).join();
             development.settlePlayer(player).join();
-            check(balance(accounts, player) == 101, "development credited once");
+            check(balance(accounts, player) == 110, "development credited once");
             check(count(db, player, "DEVELOP") == 1, "development ledger");
             db.transaction(connection -> {
                 try (var update = connection.prepareStatement(
@@ -58,14 +58,14 @@ public final class RewardIntegrationChecks {
                 return null;
             }).join();
             development.settlePlayer(player).join();
-            check(balance(accounts, player) == 103, "incremental development delta");
+            check(balance(accounts, player) == 130, "incremental development delta");
 
             ShopService shop = new ShopService(db, config);
             UUID order = UUID.randomUUID();
             check(shop.buy(player, "bread", 1, order).join().startsWith("购买成功"), "shop purchase");
             check(shop.buy(player, "bread", 1, order).join().contains("已提交"), "shop retry");
             check(shop.buy(player, "torch", 1, order).join().contains("已用于其他请求"), "changed retry rejected");
-            check(balance(accounts, player) == 83, "shop charged once");
+            check(balance(accounts, player) == 110, "shop charged once");
             check(count(db, player, "SHOP_BUY") == 1, "shop ledger");
             db.transaction(connection -> {
                 try (var lease = connection.prepareStatement(
@@ -85,7 +85,7 @@ public final class RewardIntegrationChecks {
                 new ShopService(db, divergent).buy(player, "bread", 1, UUID.randomUUID()).join();
                 throw new AssertionError("divergent shop config accepted");
             } catch (java.util.concurrent.CompletionException expected) {
-                check(balance(accounts, player) == 83, "config mismatch changed no balance");
+                check(balance(accounts, player) == 110, "config mismatch changed no balance");
             }
 
             EventCheckinService events = new EventCheckinService(db, config);
@@ -95,14 +95,14 @@ public final class RewardIntegrationChecks {
             check(events.create(event).join().startsWith("已创建"), "event creation");
             check(events.claim(player, "autumn").join().startsWith("活动签到成功"), "event claim");
             check(events.claim(player, "autumn").join().contains("已经签到"), "event duplicate");
-            check(balance(accounts, player) == 98, "event credited once");
+            check(balance(accounts, player) == 125, "event credited once");
 
             CheckinService daily = new CheckinService(db, config);
             db.transaction(connection -> { daily.process(connection, new CheckinService.Key(player, today), 600); return null; }).join();
             db.transaction(connection -> { daily.process(connection, new CheckinService.Key(player, today), 60); return null; }).join();
-            check(balance(accounts, player) == 108, "daily credited once");
+            check(balance(accounts, player) == 135, "daily credited once");
             check(count(db, player, "CHECK_IN") == 1, "daily ledger");
-            check(accounts.account(AccountTarget.byUuid(player)).join().orElseThrow().totalIncome() == 128,
+            check(accounts.account(AccountTarget.byUuid(player)).join().orElseThrow().totalIncome() == 155,
                     "shop debit excludes income, all grants included");
             System.out.println("REWARDS_PASS: development, shop, event, daily, replay and income");
         } finally {
