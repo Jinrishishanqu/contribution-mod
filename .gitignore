@@ -12,7 +12,7 @@ code/build/
 code/run/
 code/logs/
 logs/
-output/
+stock-simulation/output/
 .sheet-work/
 __pycache__/
 *.pyc
