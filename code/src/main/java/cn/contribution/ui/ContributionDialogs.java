@@ -81,6 +81,16 @@ public final class ContributionDialogs {
         return ContributionRuntime.accounts();
     }
     private static void home(CommandSourceStack source) {
+        if (ContributionUiNetwork.available(source.getPlayer())) {
+            List<ContributionUiNetwork.Action> actions = new ArrayList<>(List.of(
+                    action("我的账户", "account self"), action("我的流水", "history self"),
+                    action("我的统计", "stats self"), action("行业建设度", "industries"),
+                    action("签到", "checkin")));
+            if (admin(source)) actions.add(action("管理员功能", "admin"));
+            ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
+                    "贡献值系统", "home", List.of(), List.of(), actions, "账户、流水、玩家统计与服务器建设度"));
+            return;
+        }
         List<ActionButton> actions = new ArrayList<>(List.of(button("我的账户", "account self"), button("我的流水", "history self"),
                 button("我的统计", "stats self"), button("行业建设度与繁荣度", "industries"), button("每日签到与活动", "checkin")));
         if (admin(source)) actions.add(button("管理员功能", "admin"));
@@ -98,6 +108,14 @@ public final class ContributionDialogs {
         query(source, service().account(target(source, who)), result -> {
             if (result.isEmpty()) { message(source, "账户", "未找到该玩家账户"); return; }
             AccountRecord account = result.get();
+            if (who.equals("self") && ContributionUiNetwork.available(source.getPlayer())) {
+                ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
+                        account.playerName() + " 的账户", "account", List.of("余额", "历史总收入", "UUID"),
+                        List.of(List.of(String.valueOf(account.balance()), String.valueOf(account.totalIncome()),
+                                account.playerUuid().toString())),
+                        List.of(action("查看流水", "history self"), action("玩家统计", "stats self"), action("首页", "home")), ""));
+                return;
+            }
             List<Input> inputs = new ArrayList<>();
             List<ActionButton> actions = new ArrayList<>(List.of(button("查看流水", "history " + who), button("玩家统计", "stats " + who), button("首页", "home")));
             if (admin(source)) {
@@ -112,29 +130,98 @@ public final class ContributionDialogs {
     private static void stats(CommandSourceStack source, String who) {
         query(source, service().account(target(source, who)), account -> {
             if (account.isEmpty() || ContributionRuntime.statistics() == null) { message(source, "统计", "暂无统计数据"); return; }
-            query(source, ContributionRuntime.statistics().playerSummary(account.get().playerUuid()), text ->
-                    show(source, account.get().playerName() + " 的统计", Arrays.asList(text.split("；")), List.of(), List.of(button("刷新", "stats " + who), button("首页", "home"))));
+            query(source, ContributionRuntime.statistics().playerSummaryData(account.get().playerUuid()), summary -> {
+                if (who.equals("self") && ContributionUiNetwork.available(source.getPlayer())) {
+                    List<List<String>> rows = new ArrayList<>();
+                    var industries = cn.contribution.industry.BuiltInIndustry.values();
+                    for (int i = 0; i < industries.length; i += 3) {
+                        List<String> cells = new ArrayList<>();
+                        for (int column = 0; column < 3; column++) {
+                            var industry = industries[i + column];
+                            cells.add(industry.displayName() + " " + summary.development(industry));
+                        }
+                        rows.add(cells);
+                    }
+                    ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
+                            account.get().playerName() + " 的统计", "stats", List.of("行业建设度", "行业建设度", "行业建设度"), rows,
+                            List.of(action("刷新", "stats self"), action("首页", "home")),
+                            "放置 " + summary.placed() + "  ·  挖掘 " + summary.mined()));
+                    return;
+                }
+                int[] widths = {20, 20, 20};
+                boolean[] aligned = {false, false, true};
+                List<String> lines = new ArrayList<>();
+                lines.add(DialogTable.row(new int[]{20, 20}, new boolean[]{false, true},
+                        "放置 " + summary.placed(), "挖掘 " + summary.mined()));
+                var industries = cn.contribution.industry.BuiltInIndustry.values();
+                for (int i = 0; i < industries.length; i += 3) {
+                    String[] cells = new String[3];
+                    for (int column = 0; column < 3; column++) {
+                        var industry = industries[i + column];
+                        cells[column] = industry.displayName() + " " + summary.development(industry);
+                    }
+                    lines.add(DialogTable.row(widths, aligned, cells));
+                }
+                showTable(source, account.get().playerName() + " 的统计", lines, List.of(),
+                        List.of(button("刷新", "stats " + who), button("首页", "home")));
+            });
         });
     }
+    private record IndustryRow(long daily, long total, String prosperity, long settledDay) { }
+
     private static void industries(CommandSourceStack source) {
         long day = cn.contribution.industry.RuleManager.day(source.getServer());
         query(source, ContributionRuntime.database().transaction(connection -> {
-            List<String> lines = new ArrayList<>();
-            for (var industry : cn.contribution.industry.BuiltInIndustry.values()) {
-                long daily = 0;
-                try (var statement = connection.prepareStatement("SELECT development FROM industry_day_accumulator WHERE game_day = ? AND industry_id = ?")) {
-                    statement.setLong(1, day); statement.setString(2, "contribution:" + industry.path());
-                    try (var row = statement.executeQuery()) { if (row.next()) daily = row.getLong(1); }
-                }
-                try (var statement = connection.prepareStatement("SELECT total_development, prosperity, last_settled_game_day FROM industry_state WHERE industry_id = ?")) {
-                    statement.setString(1, "contribution:" + industry.path());
-                    try (var row = statement.executeQuery()) {
-                        lines.add(industry.displayName() + " | 当日 " + daily + (row.next() ? " | 总建设度 " + row.getLong(1) + " | 繁荣度 " + row.getBigDecimal(2).setScale(2, java.math.RoundingMode.HALF_UP).toPlainString() + " | 核算日 " + row.getLong(3) : " | 暂无已结算数据"));
-                    }
+            Map<String, Long> daily = new HashMap<>();
+            try (var statement = connection.prepareStatement(
+                    "SELECT industry_id, development FROM industry_day_accumulator WHERE game_day = ?")) {
+                statement.setLong(1, day);
+                try (var rows = statement.executeQuery()) {
+                    while (rows.next()) daily.put(rows.getString(1), rows.getLong(2));
                 }
             }
-            return lines;
-        }), lines -> show(source, "行业建设度与繁荣度", lines, List.of(), List.of(button("刷新", "industries"), button("首页", "home"))));
+            Map<String, IndustryRow> states = new HashMap<>();
+            try (var statement = connection.prepareStatement(
+                    "SELECT industry_id, total_development, prosperity, last_settled_game_day FROM industry_state")) {
+                try (var rows = statement.executeQuery()) {
+                    while (rows.next()) states.put(rows.getString(1), new IndustryRow(0, rows.getLong(2),
+                            rows.getBigDecimal(3).setScale(2, java.math.RoundingMode.HALF_UP).toPlainString(), rows.getLong(4)));
+                }
+            }
+            List<IndustryRow> result = new ArrayList<>();
+            for (var industry : cn.contribution.industry.BuiltInIndustry.values()) {
+                String id = "contribution:" + industry.path();
+                IndustryRow state = states.getOrDefault(id, new IndustryRow(0, 0, "--", -1));
+                result.add(new IndustryRow(daily.getOrDefault(id, 0L), state.total(), state.prosperity(), state.settledDay()));
+            }
+            return result;
+        }), rows -> {
+            var industries = cn.contribution.industry.BuiltInIndustry.values();
+            if (ContributionUiNetwork.available(source.getPlayer())) {
+                List<List<String>> values = new ArrayList<>();
+                for (int i = 0; i < industries.length; i++) {
+                    IndustryRow row = rows.get(i);
+                    values.add(List.of(industries[i].displayName(), String.valueOf(row.daily()),
+                            String.valueOf(row.total()), row.prosperity(),
+                            row.settledDay() < 0 ? "--" : String.valueOf(row.settledDay())));
+                }
+                ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
+                        "行业建设度与繁荣度", "industries", List.of("行业", "当日", "总建设度", "繁荣度", "核算日"), values,
+                        List.of(action("刷新", "industries"), action("首页", "home")), "服务器共享数据"));
+                return;
+            }
+            int[] widths = {12, 12, 12, 12, 12};
+            boolean[] aligned = {false, true, true, true, true};
+            List<String> lines = new ArrayList<>();
+            lines.add(DialogTable.row(widths, aligned, "行业", "当日", "总建设度", "繁荣度", "核算日"));
+            for (int i = 0; i < industries.length; i++) {
+                IndustryRow row = rows.get(i);
+                lines.add(DialogTable.row(widths, aligned, industries[i].displayName(), String.valueOf(row.daily()),
+                        String.valueOf(row.total()), row.prosperity(), row.settledDay() < 0 ? "--" : String.valueOf(row.settledDay())));
+            }
+            showTable(source, "行业建设度与繁荣度", lines, List.of(),
+                    List.of(button("刷新", "industries"), button("首页", "home")));
+        });
     }
     private static void checkin(CommandSourceStack source) {
         var service = ContributionRuntime.checkins();
@@ -175,9 +262,33 @@ public final class ContributionDialogs {
                 : service().historyPage(target(source, who), cursor, DIALOG_PAGE_SIZE, days, filter).thenApply(value -> value.orElse(new HistoryPage(List.of(), false, true)));
         query(source, future, page -> {
             List<String> lines = new ArrayList<>();
-            for (TransactionRecord row : page.rows()) lines.add(row.createdAt().truncatedTo(java.time.temporal.ChronoUnit.SECONDS) + " | " + row.playerName() + " | " + row.amount()
-                    + " → " + row.balanceAfter() + " | " + row.type() + " | " + row.reason());
-            if (lines.isEmpty()) lines.add(page.validCursor() ? "暂无符合条件的流水" : "翻页位置已失效");
+            var zone = ContributionRuntime.displayZone();
+            if (ContributionUiNetwork.available(source.getPlayer())) {
+                List<List<String>> values = new ArrayList<>();
+                for (TransactionRecord row : page.rows())
+                    values.add(List.of(LedgerDisplay.shortTime(row.createdAt(), zone), row.playerName(),
+                            String.valueOf(row.amount()), String.valueOf(row.balanceAfter()), row.type(), row.reason()));
+                List<ContributionUiNetwork.Action> actions = new ArrayList<>(List.of(
+                        action("全部", "history " + who + " -"),
+                        action("股票买入", "history " + who + " - type=SPEND source=contribution:stock"),
+                        action("股票卖出", "history " + who + " - type=STOCK source=contribution:stock"),
+                        action("刷新", "history " + who + " " + (cursor == null ? "-" : cursor) + " " + filter.commandArguments())));
+                page.nextCursor().ifPresent(next -> actions.add(action("下一页", "history " + who + " " + next + " " + filter.commandArguments())));
+                actions.add(action("第一页", "history " + who + " - " + filter.commandArguments()));
+                actions.add(action("首页", "home"));
+                ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
+                        "流水 · " + who, "history", List.of("时间", "玩家", "变动", "余额", "类型", "原因"), values,
+                        actions, "时间 " + zone + " · 每条流水一行"));
+                return;
+            }
+            int[] widths = {12, 11, 8, 9, 10, 12};
+            boolean[] aligned = {false, false, true, true, false, false};
+            lines.add(DialogTable.row(widths, aligned, "时间", "玩家", "变动", "余额", "类型", "原因"));
+            for (TransactionRecord row : page.rows()) {
+                lines.add(DialogTable.row(widths, aligned, LedgerDisplay.shortTime(row.createdAt(), zone), row.playerName(),
+                        String.valueOf(row.amount()), String.valueOf(row.balanceAfter()), row.type(), row.reason()));
+            }
+            if (page.rows().isEmpty()) lines.add(page.validCursor() ? "暂无符合条件的流水" : "翻页位置已失效");
             List<ActionButton> actions = new ArrayList<>();
             actions.add(button("全部流水", "history " + who + " -"));
             actions.add(button("股票买入", "history " + who + " - type=SPEND source=contribution:stock"));
@@ -189,7 +300,8 @@ public final class ContributionDialogs {
                     + " " + filter.commandArguments()));
             page.nextCursor().ifPresent(next -> actions.add(button("下一页", "history " + who + " " + next + " " + filter.commandArguments())));
             actions.add(button("第一页", "history " + who + " - " + filter.commandArguments())); actions.add(button("首页", "home"));
-            show(source, "流水 · " + who, lines, List.of(input("filters", "更多筛选（可选）：type/source/server/from/to", filter.commandArguments(), 256)), actions);
+            showTable(source, "流水 · " + who + " · " + zone, lines,
+                    List.of(input("filters", "更多筛选（可选）：type/source/server/from/to（UTC 日期）", filter.commandArguments(), 256)), actions);
         });
     }
     private static <T> void query(CommandSourceStack source, CompletableFuture<T> future, Consumer<T> success) {
@@ -210,6 +322,9 @@ public final class ContributionDialogs {
     static ActionButton button(String label, String request) {
         return new ActionButton(new CommonButtonData(Component.literal(label), 190), Optional.of(new StaticAction(new ClickEvent.RunCommand("/contribution ui " + request))));
     }
+    private static ContributionUiNetwork.Action action(String label, String request) {
+        return new ContributionUiNetwork.Action(label, "contribution ui " + request);
+    }
     static ActionButton template(String label, String command) {
         ParsedTemplate parsed = ParsedTemplate.CODEC.parse(JsonOps.INSTANCE, new JsonPrimitive(command)).getOrThrow();
         return new ActionButton(new CommonButtonData(Component.literal(label), 190), Optional.of(new CommandTemplate(parsed)));
@@ -218,6 +333,17 @@ public final class ContributionDialogs {
     public static void show(CommandSourceStack source, String title, List<String> lines, List<Input> inputs, List<ActionButton> buttons) {
         boolean hasPrevious = !BACK_STACK.getOrDefault(source.getPlayer().getUUID(), new ArrayDeque<>()).isEmpty();
         source.getPlayer().openDialog(Holder.direct(create(title, lines, inputs, buttons, hasPrevious)));
+    }
+    private static void showTable(CommandSourceStack source, String title, List<String> lines,
+                                  List<Input> inputs, List<ActionButton> buttons) {
+        boolean hasPrevious = !BACK_STACK.getOrDefault(source.getPlayer().getUUID(), new ArrayDeque<>()).isEmpty();
+        source.getPlayer().openDialog(Holder.direct(createTable(title, lines, inputs, buttons, hasPrevious)));
+    }
+    static Dialog createTable(String title, List<String> lines, List<Input> inputs,
+                              List<ActionButton> buttons, boolean hasPrevious) {
+        List<DialogBody> bodies = lines.stream()
+                .map(line -> (DialogBody) new PlainMessage(DialogTable.text(line), 450)).toList();
+        return createBodies(title, bodies, inputs, buttons, hasPrevious, 2);
     }
     static Dialog create(String title, List<String> lines, List<Input> inputs, List<ActionButton> buttons) {
         return create(title, lines, inputs, buttons, false);
@@ -228,6 +354,10 @@ public final class ContributionDialogs {
     static Dialog create(String title, List<String> lines, List<Input> inputs, List<ActionButton> buttons,
                          boolean hasPrevious, int columns) {
         List<DialogBody> bodies = lines.stream().map(line -> (DialogBody)new PlainMessage(Component.literal(line), 430)).toList();
+        return createBodies(title, bodies, inputs, buttons, hasPrevious, columns);
+    }
+    private static Dialog createBodies(String title, List<DialogBody> bodies, List<Input> inputs,
+                                       List<ActionButton> buttons, boolean hasPrevious, int columns) {
         var common = new CommonDialogData(Component.literal(title), Optional.empty(), true, false, DialogAction.CLOSE, bodies, inputs);
         ActionButton exit = hasPrevious ? button("返回上一页", "back")
                 : new ActionButton(new CommonButtonData(Component.literal("关闭"), 190), Optional.empty());

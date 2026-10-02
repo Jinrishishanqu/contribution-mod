@@ -11,6 +11,7 @@ import cn.contribution.api.AccountTarget;
 import cn.contribution.api.BalanceChangeRequest;
 import cn.contribution.api.BalanceChangeType;
 import cn.contribution.runtime.ContributionRuntime;
+import cn.contribution.ui.LedgerDisplay;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.StringReader;
@@ -420,7 +421,7 @@ public final class ContributionCommands {
             success(source, "暂无流水");
         }
         for (TransactionRecord row : page.rows()) {
-            success(source, row.createdAt().truncatedTo(java.time.temporal.ChronoUnit.SECONDS) + " "
+            success(source, LedgerDisplay.time(row.createdAt(), ContributionRuntime.displayZone()) + " "
                     + row.playerName() + " " + (row.amount() > 0 ? "+" : "") + row.amount()
                     + "，余额 " + row.balanceAfter() + "，" + row.reason() + "，流水 ID " + row.transactionId());
         }

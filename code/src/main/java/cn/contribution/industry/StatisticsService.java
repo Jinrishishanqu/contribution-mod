@@ -685,7 +685,24 @@ public final class StatisticsService {
         }
     }
 
+    public record PlayerSummary(long placed, long mined, Map<String, Long> industries) {
+        public long development(BuiltInIndustry industry) {
+            return industries.getOrDefault("contribution:" + industry.path(), 0L);
+        }
+
+        public String description() {
+            StringBuilder text = new StringBuilder("放置：").append(placed).append("，挖掘：").append(mined);
+            for (BuiltInIndustry industry : BuiltInIndustry.values())
+                text.append("；").append(industry.displayName()).append("：").append(development(industry));
+            return text.toString();
+        }
+    }
+
     public CompletableFuture<String> playerSummary(UUID uuid) {
+        return playerSummaryData(uuid).thenApply(PlayerSummary::description);
+    }
+
+    public CompletableFuture<PlayerSummary> playerSummaryData(UUID uuid) {
         return database.transaction(connection -> {
             long placed = 0;
             long mined = 0;
@@ -709,12 +726,7 @@ public final class StatisticsService {
                     }
                 }
             }
-            StringBuilder text = new StringBuilder("放置：").append(placed).append("，挖掘：").append(mined);
-            for (BuiltInIndustry builtIn : BuiltInIndustry.values()) {
-                text.append("；").append(builtIn.displayName()).append("：")
-                        .append(values.getOrDefault("contribution:" + builtIn.path(), 0L));
-            }
-            return text.toString();
+            return new PlayerSummary(placed, mined, Map.copyOf(values));
         });
     }
 

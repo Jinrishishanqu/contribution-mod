@@ -142,6 +142,9 @@ public final class ContributionRuntime {
     public static ShopService shop() { return shop; }
 
     public static boolean isMainServer() { return activeConfig != null && activeConfig.mainServer; }
+    public static java.time.ZoneId displayZone() {
+        return java.time.ZoneId.of(activeConfig == null ? "Asia/Shanghai" : activeConfig.rewards.timeZone);
+    }
 
     public static void tick(MinecraftServer server) {
         if (archive != null) archive.tick(server);

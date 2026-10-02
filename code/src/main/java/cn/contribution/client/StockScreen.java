@@ -55,6 +55,7 @@ final class StockScreen extends Screen {
     private int scroll;
     private int detailScroll;
     private int detailScrollMax;
+    private boolean draggingScrollbar;
     private long focusedRow = -1;
     private long lastClickedRow = -1;
     private long lastClickedAtNanos;
@@ -372,6 +373,14 @@ final class StockScreen extends Screen {
     }
 
     @Override public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
+        if (event.button() == 0 && event.x() >= width - 10 && event.x() < width - 2) {
+            StockScrollbar bar = scrollbar();
+            if (bar.scrollable() && event.y() >= bar.top() && event.y() < bar.bottom()) {
+                draggingScrollbar = true;
+                setScrollbarPosition(bar.scrollAt(event.y()));
+                return true;
+            }
+        }
         if (detail == null && event.button() == 0 && !profile && industryMenu) {
             int searchWidth = Math.max(90, Math.min(145, width / 4));
             int menuX = 17 + searchWidth;
@@ -412,6 +421,50 @@ final class StockScreen extends Screen {
         return false;
     }
 
+    @Override public boolean mouseDragged(MouseButtonEvent event, double dragX, double dragY) {
+        if (draggingScrollbar) {
+            setScrollbarPosition(scrollbar().scrollAt(event.y()));
+            return true;
+        }
+        return super.mouseDragged(event, dragX, dragY);
+    }
+
+    @Override public boolean mouseReleased(MouseButtonEvent event) {
+        if (draggingScrollbar) {
+            draggingScrollbar = false;
+            return true;
+        }
+        return super.mouseReleased(event);
+    }
+
+    private StockScrollbar scrollbar() {
+        if (detail != null) return new StockScrollbar(29, height - 59,
+                detailScroll, detailScrollMax, Math.max(1, height - 88));
+        int top = profile ? 112 : ROW_TOP;
+        int capacity = Math.max(1, (height - 54 - top) / ROW_HEIGHT);
+        int count = profile ? ownedRows().size() : visible().size();
+        return new StockScrollbar(top, height - 54, scroll,
+                Math.max(0, count - capacity), capacity);
+    }
+
+    private void setScrollbarPosition(int value) {
+        if (detail != null) detailScroll = value;
+        else scroll = value;
+    }
+
+    private void drawScrollbar(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
+        StockScrollbar bar = scrollbar();
+        if (!bar.scrollable()) return;
+        int x = width - 8;
+        graphics.fill(x, bar.top(), x + 4, bar.bottom(), 0xFF344354);
+        int thumb = bar.thumbTop();
+        boolean hovered = mouseX >= x - 2 && mouseX < x + 6 && mouseY >= thumb
+                && mouseY < thumb + bar.thumbHeight();
+        graphics.fill(x, thumb, x + 4, thumb + bar.thumbHeight(),
+                draggingScrollbar || hovered ? TEXT : MUTED);
+        if (hovered || draggingScrollbar) graphics.requestCursor(CursorTypes.POINTING_HAND);
+    }
+
     @Override public boolean mouseScrolled(double mouseX, double mouseY, double horizontal, double vertical) {
         if (industryMenu) return true;
         if (detail != null && mouseY >= 27 && mouseY < height - 57) {
@@ -437,6 +490,7 @@ final class StockScreen extends Screen {
         if (detail == null && profile) drawProfile(graphics, mouseX, mouseY);
         else if (detail == null) drawMarket(graphics, mouseX, mouseY);
         else drawDetail(graphics);
+        drawScrollbar(graphics, mouseX, mouseY);
         super.extractRenderState(graphics, mouseX, mouseY, delta);
     }
 
@@ -639,7 +693,7 @@ final class StockScreen extends Screen {
         detailScrollMax = Math.max(0, y + detailScroll - bottom + 8);
         graphics.disableScissor();
         graphics.horizontalLine(8, width - 8, bottom, 0xFF344354);
-        graphics.text(font, "股数", width - 170, height - 66, MUTED, false);
+        graphics.text(font, "股数", width - 193, height - 47, MUTED, false);
     }
 
     private int detailHeading(GuiGraphicsExtractor graphics, String label, int y) {

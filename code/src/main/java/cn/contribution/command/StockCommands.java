@@ -66,7 +66,9 @@ public final class StockCommands {
     private static int browse(CommandContext<CommandSourceStack> context, String filter) {
         if (context.getSource().getPlayer() == null) { error(context.getSource(), "请在游戏内浏览股票"); return 0; }
         String sort = StringArgumentType.getString(context, "sort");
-        if (!sort.equals("name") && !sort.equals("price")) { error(context.getSource(), "排序方式只能是 name 或 price"); return 0; }
+        if (!List.of("name", "price", "change", "risk", "owned").contains(sort)) {
+            error(context.getSource(), "排序方式只能是 name、price、change、risk 或 owned"); return 0;
+        }
         if (filter.length() > 64) { error(context.getSource(), "筛选词过长"); return 0; }
         cn.contribution.ui.StockDialogs.market(context.getSource(), 0, sort, filter);
         return 1;

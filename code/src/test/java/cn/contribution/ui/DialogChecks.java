@@ -9,6 +9,8 @@ import net.minecraft.network.chat.ClickEvent;
 import cn.contribution.stock.StockChart;
 import cn.contribution.stock.StockView;
 import io.netty.buffer.Unpooled;
+import java.time.Instant;
+import java.time.ZoneId;
 import java.util.List;
 
 /** Verifies the actual production builder against vanilla's JSON and network codecs. */
@@ -45,6 +47,29 @@ public final class DialogChecks {
                 || !command.command().equals("/contribution ui back")) {
             throw new AssertionError("Escape must invoke previous-page action");
         }
+        String header = DialogTable.row(new int[]{10, 12, 12}, new boolean[]{false, true, true},
+                "行业", "当日", "总建设度");
+        String first = DialogTable.row(new int[]{10, 12, 12}, new boolean[]{false, true, true},
+                "土建园林", "17", "23805");
+        String second = DialogTable.row(new int[]{10, 12, 12}, new boolean[]{false, true, true},
+                "能源化工", "0", "200000");
+        if (DialogTable.displayWidth(header) != DialogTable.displayWidth(first)
+                || DialogTable.displayWidth(first) != DialogTable.displayWidth(second)
+                || !LedgerDisplay.time(Instant.parse("2026-10-02T07:39:28Z"), ZoneId.of("Asia/Shanghai"))
+                .equals("2026-10-02 15:39:28")
+                || !LedgerDisplay.shortTime(Instant.parse("2026-10-02T07:39:28Z"), ZoneId.of("Asia/Shanghai"))
+                .equals("10-02 15:39")) {
+            throw new AssertionError("Aligned columns or local ledger time");
+        }
+        var table = ContributionDialogs.createTable("行业表", List.of(header, first, second),
+                List.of(), List.of(ContributionDialogs.button("首页", "home")), false);
+        Dialog.DIRECT_CODEC.parse(JsonOps.INSTANCE,
+                Dialog.DIRECT_CODEC.encodeStart(JsonOps.INSTANCE, table).getOrThrow()).getOrThrow();
+        var tableBuffer = Unpooled.buffer();
+        try {
+            Dialog.CONTEXT_FREE_STREAM_CODEC.encode(tableBuffer, table);
+            Dialog.CONTEXT_FREE_STREAM_CODEC.decode(tableBuffer);
+        } finally { tableBuffer.release(); }
         System.out.println("DIALOG_CODEC_PASS: native page and stock curve, inputs, buttons, command templates, JSON and network round-trip");
     }
 }

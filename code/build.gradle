@@ -152,6 +152,13 @@ tasks.register('verifyDialogs', JavaExec) {
 }
 tasks.check.dependsOn tasks.verifyDialogs
 
+tasks.register('verifyStockScrollbars', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.client.StockScrollbarChecks'
+}
+tasks.check.dependsOn tasks.verifyStockScrollbars
+
 tasks.register('verifyResources', JavaExec) {
     dependsOn tasks.testClasses
     classpath = sourceSets.test.runtimeClasspath

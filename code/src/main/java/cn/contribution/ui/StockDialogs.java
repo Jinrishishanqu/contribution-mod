@@ -4,6 +4,7 @@ import cn.contribution.runtime.ContributionRuntime;
 import cn.contribution.stock.StockChart;
 import cn.contribution.stock.StockService;
 import cn.contribution.stock.StockView;
+import cn.contribution.stock.StockPricing;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.server.dialog.ActionButton;
 import net.minecraft.server.dialog.CommonButtonData;
@@ -26,27 +27,52 @@ public final class StockDialogs {
     public static void market(CommandSourceStack source, int page, String sort, String filter) {
         StockService service = ContributionRuntime.stocks();
         if (service == null) { message(source, "股票数据服务尚未启动"); return; }
-        query(source, service.market(source.getPlayer().getUUID()), market -> {
+        query(source, service.dashboard(source.getPlayer().getUUID()), dashboard -> {
+            StockView.Market market = dashboard.market();
             List<StockView.Listing> stocks = new ArrayList<>(market.listings());
             if (!filter.equals("all")) stocks.removeIf(stock -> !stock.name().contains(filter)
                     && !stock.industry().contains(filter) && !stock.itemId().contains(filter));
-            stocks.sort(sort.equals("price") ? Comparator.comparingInt(StockView.Listing::price).reversed()
-                    : Comparator.comparing(StockView.Listing::name));
+            stocks.sort(switch (sort) {
+                case "price" -> Comparator.comparingInt(StockView.Listing::price).reversed();
+                case "change" -> Comparator.comparingDouble((StockView.Listing value) -> change(dashboard, value)).reversed();
+                case "risk" -> Comparator.comparingDouble((StockView.Listing value) -> risk(dashboard, value));
+                case "owned" -> Comparator.comparingInt(StockView.Listing::owned).reversed();
+                default -> Comparator.comparing(StockView.Listing::name);
+            });
             List<ActionButton> buttons = new ArrayList<>();
             for (StockView.Listing stock : stocks) {
-                buttons.add(button(stock.name() + " " + stock.price(),
+                String change = String.format(java.util.Locale.ROOT, "%+.1f%%", change(dashboard, stock));
+                int high = dashboard.ranges().get(stock.id()) == null ? stock.price() : dashboard.ranges().get(stock.id()).high();
+                int threshold = StockPricing.retirementThreshold(stock.initialPrice(), high);
+                buttons.add(button(stock.name() + " #" + stock.id() + "  " + stock.price() + "  " + change
+                                + "  阈" + threshold + (stock.owned() > 0 ? "  持" + stock.owned() : ""),
                         "check " + stock.id() + " year"));
             }
             buttons.add(button("按名称排序", "browse name " + filter));
             buttons.add(button("按股价排序", "browse price " + filter));
+            buttons.add(button("按涨跌排序", "browse change " + filter));
+            buttons.add(button("按退市风险排序", "browse risk " + filter));
+            buttons.add(button("按持仓排序", "browse owned " + filter));
             buttons.add(button("我的股票", "portfolio"));
             buttons.add(ContributionDialogs.template("筛选", "stock browse " + sort + " $(filter)"));
             List<String> lines = new ArrayList<>();
             lines.add("核算日 " + market.day() + " · 当前 " + timeText(market.time()) + " · 交易时间 10:00—14:00 · 手续费 2%");
-            lines.add(stocks.isEmpty() ? "暂无符合条件的上市股票" : "本页列出全部 " + stocks.size() + " 支股票；点击查看走势和交易");
+            lines.add(stocks.isEmpty() ? "暂无符合条件的上市股票" : "共 " + stocks.size() + " 支 · 每项依次为股价、当日涨跌、退市阈值及持仓；点击看详情");
             show(source, "股票市场", lines,
                     List.of(ContributionDialogs.input("filter", "股票名称、物品 ID 或行业；all 显示全部", filter, 64)), buttons);
         });
+    }
+
+    private static double change(StockView.Dashboard dashboard, StockView.Listing stock) {
+        var points = dashboard.curves().get(stock.id());
+        int previous = points == null || points.size() < 2 ? stock.price() : points.get(points.size() - 2).price();
+        return previous == 0 ? 0 : (stock.price() - previous) * 100.0 / previous;
+    }
+
+    private static double risk(StockView.Dashboard dashboard, StockView.Listing stock) {
+        var range = dashboard.ranges().get(stock.id());
+        int high = range == null ? stock.price() : range.high();
+        return stock.price() / (double) StockPricing.retirementThreshold(stock.initialPrice(), high);
     }
 
     public static void detail(CommandSourceStack source, String symbol, int days) {
@@ -79,6 +105,7 @@ public final class StockDialogs {
                         + " · 最近买入游戏日 " + detail.position().lastBuyDay()
                         + " · 最近买价 " + detail.position().lastBuyPrice());
             }
+            lines.add("以下为历史股价文字走势图，横轴为游戏日；安装客户端模组可查看像素曲线");
             lines.addAll(StockChart.draw(points));
             List<ActionButton> buttons = new ArrayList<>();
             buttons.add(button("近 7 日", "check " + stock.id() + " week"));
@@ -103,9 +130,8 @@ public final class StockDialogs {
         query(source, service.dashboard(source.getPlayer().getUUID()), dashboard -> {
             var portfolio = dashboard.portfolio();
             List<String> lines = new ArrayList<>();
-            lines.add("余额 " + portfolio.balance() + " · 持仓市值 " + portfolio.marketValue()
-                    + " · 成本 " + portfolio.costBasis() + " · 未实现盈亏 " + portfolio.unrealizedProfit()
-                    + " · 已实现盈亏 " + portfolio.realizedProfit());
+            lines.add("余额 " + portfolio.balance() + " · 持仓市值 " + portfolio.marketValue() + " · 成本 " + portfolio.costBasis());
+            lines.add("未实现盈亏 " + portfolio.unrealizedProfit() + " · 已实现盈亏 " + portfolio.realizedProfit());
             List<ActionButton> buttons = new ArrayList<>();
             for (StockView.Listing stock : dashboard.market().listings()) if (stock.owned() > 0) {
                 var position = portfolio.positions().get(stock.id());
@@ -123,13 +149,13 @@ public final class StockDialogs {
     }
 
     private static ActionButton button(String label, String command) {
-        return new ActionButton(new CommonButtonData(Component.literal(label), 100),
+        return new ActionButton(new CommonButtonData(Component.literal(label), 190),
                 Optional.of(new StaticAction(new ClickEvent.RunCommand("/stock " + command))));
     }
 
     private static void show(CommandSourceStack source, String title, List<String> lines,
                              List<net.minecraft.server.dialog.Input> inputs, List<ActionButton> buttons) {
-        source.getPlayer().openDialog(Holder.direct(ContributionDialogs.create(title, lines, inputs, buttons, false, 4)));
+        source.getPlayer().openDialog(Holder.direct(ContributionDialogs.create(title, lines, inputs, buttons, false, 2)));
     }
 
     private static String timeText(int ticks) {
