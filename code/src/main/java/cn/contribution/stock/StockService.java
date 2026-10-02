@@ -30,6 +30,9 @@ public final class StockService {
     private final boolean mainServer;
     private boolean ticking;
     private int nextTick;
+    private int nextPendingNoticeTick;
+    private boolean replicaClockPolling;
+    private int nextReplicaClockTick;
     private boolean noticePolling;
     private int nextNoticeTick;
 
@@ -40,21 +43,36 @@ public final class StockService {
     }
 
     public void tick(MinecraftServer server) {
-        if (!mainServer || ticking || server.getTickCount() < nextTick
+        if (!mainServer) {
+            tickReplicaClock(server);
+            return;
+        }
+        if (ticking || server.getTickCount() < nextTick
                 || database.state() != DatabaseState.AVAILABLE || !RuleManager.historyReady()) return;
         ticking = true;
         nextTick = server.getTickCount() + 20;
+        long clock = server.overworld().getOverworldClockTime();
         long today = RuleManager.day(server);
-        int time = (int) Math.floorMod(server.overworld().getOverworldClockTime(), 24000);
+        long visibleDay = Math.max(0, Math.floorDiv(clock, 24000));
+        int time = (int) Math.floorMod(clock, 24000);
         database.transaction(connection -> {
             long storedDay;
             long closedDay;
             try (PreparedStatement query = connection.prepareStatement(
-                    "SELECT game_day, last_retirement_close_day FROM stock_market_state WHERE singleton_id = 1 FOR UPDATE");
+                    "SELECT game_day, last_retirement_close_day, clock_server_id FROM stock_market_state WHERE singleton_id = 1 FOR UPDATE");
                  ResultSet rows = query.executeQuery()) {
                 rows.next(); storedDay = rows.getLong(1); closedDay = rows.getLong(2);
+                String owner = rows.getString(3);
+                if (owner != null && !owner.equals(serverId))
+                    throw new SQLException("Market clock is owned by server_id=" + owner + ", not " + serverId);
             }
             if (storedDay > today) throw new SQLException("Market clock is ahead of the main world");
+            try (PreparedStatement update = connection.prepareStatement(
+                    "UPDATE stock_market_state SET observed_day = ?, observed_time = ?, "
+                            + "observed_at = CURRENT_TIMESTAMP(6), clock_server_id = ? WHERE singleton_id = 1")) {
+                update.setLong(1, visibleDay); update.setInt(2, time); update.setString(3, serverId);
+                update.executeUpdate();
+            }
             if (storedDay >= 0 && storedDay < today && closedDay < storedDay) {
                 StockSettlement.closeRetirements(connection, storedDay);
                 closedDay = storedDay;
@@ -85,11 +103,40 @@ public final class StockService {
             if (error != null) {
                 nextTick = server.getTickCount() + 600;
                 ContributionMod.LOGGER.warn("Stock market daily transition is pending: {}", error.toString());
-            } else if (done == 0) nextTick = server.getTickCount() + 100;
+            } else if (done == 0) {
+                nextTick = server.getTickCount() + 100;
+                if (server.getTickCount() >= nextPendingNoticeTick) {
+                    nextPendingNoticeTick = server.getTickCount() + 1200;
+                    ContributionMod.LOGGER.warn("Stock market day {} is waiting for industry_daily_settlement day {}. "
+                            + "Check statistics_day_close for all configured statisticsServers.", today, today - 1);
+                }
+            }
             else if (done == 2) server.getPlayerList().getPlayers().forEach(player ->
                     claim(player.getUUID(), UUID.randomUUID()));
             if (error == null)
-                server.getPlayerList().getPlayers().forEach(player -> StockUiNetwork.clock(player, today, time));
+                server.getPlayerList().getPlayers().forEach(player -> StockUiNetwork.clock(player, visibleDay, time));
+        }));
+    }
+
+    /** One shared-clock read per secondary server, never one query per player. */
+    private void tickReplicaClock(MinecraftServer server) {
+        if (replicaClockPolling || server.getTickCount() < nextReplicaClockTick
+                || database.state() != DatabaseState.AVAILABLE || server.getPlayerList().getPlayers().isEmpty()) return;
+        replicaClockPolling = true;
+        nextReplicaClockTick = server.getTickCount() + 20;
+        database.transaction(connection -> {
+            try (PreparedStatement query = connection.prepareStatement(
+                    "SELECT observed_day, observed_time, "
+                            + "observed_at > CURRENT_TIMESTAMP(6) - INTERVAL '5' SECOND "
+                            + "FROM stock_market_state WHERE singleton_id = 1");
+                 ResultSet rows = query.executeQuery()) {
+                rows.next();
+                return rows.getBoolean(3) ? new long[]{rows.getLong(1), rows.getInt(2)} : new long[]{-1, -1};
+            }
+        }).whenComplete((clock, error) -> server.execute(() -> {
+            replicaClockPolling = false;
+            if (error == null) server.getPlayerList().getPlayers().forEach(player ->
+                    StockUiNetwork.clock(player, clock[0], (int) clock[1]));
         }));
     }
 
@@ -143,10 +190,14 @@ public final class StockService {
     }
 
     private static StockView.Market loadMarket(Connection connection, UUID player) throws SQLException {
-            long day; int time;
-            try (PreparedStatement query = connection.prepareStatement("SELECT game_day, day_time FROM stock_market_state WHERE singleton_id = 1");
+            long day; int time; long clockDay; int clockTime; boolean clockFresh;
+            try (PreparedStatement query = connection.prepareStatement(
+                    "SELECT game_day, day_time, observed_day, observed_time, "
+                            + "observed_at > CURRENT_TIMESTAMP(6) - INTERVAL '5' SECOND "
+                            + "FROM stock_market_state WHERE singleton_id = 1");
                  ResultSet rows = query.executeQuery()) {
                 rows.next(); day = rows.getLong(1); time = rows.getInt(2);
+                clockDay = rows.getLong(3); clockTime = rows.getInt(4); clockFresh = rows.getBoolean(5);
             }
             List<StockView.Listing> listings = new ArrayList<>();
             try (PreparedStatement query = connection.prepareStatement(
@@ -159,7 +210,7 @@ public final class StockService {
                     while (rows.next()) listings.add(listing(rows));
                 }
             }
-            return new StockView.Market(day, time, List.copyOf(listings));
+            return new StockView.Market(day, time, List.copyOf(listings), clockDay, clockTime, clockFresh);
     }
 
     public CompletableFuture<StockView.Dashboard> dashboard(UUID player) {
@@ -395,14 +446,18 @@ public final class StockService {
         StockView.TradeResult replay = replay(connection, requestId, hash);
         if (replay != null) return replay;
         if (accountRequestExists(connection, requestId)) return fail("请求 ID 已用于其他账户操作");
-        long day; int time; boolean fresh;
+        long day; int time; long clockDay; boolean fresh;
         try (PreparedStatement query = connection.prepareStatement(
-                "SELECT game_day, day_time, updated_at > CURRENT_TIMESTAMP(6) - INTERVAL '5' SECOND "
+                "SELECT game_day, observed_time, observed_day, "
+                        + "observed_at > CURRENT_TIMESTAMP(6) - INTERVAL '5' SECOND "
                         + "FROM stock_market_state WHERE singleton_id = 1 FOR UPDATE");
              ResultSet rows = query.executeQuery()) {
-            rows.next(); day = rows.getLong(1); time = rows.getInt(2); fresh = rows.getBoolean(3);
+            rows.next(); day = rows.getLong(1); time = rows.getInt(2);
+            clockDay = rows.getLong(3); fresh = rows.getBoolean(4);
         }
         if (!fresh) return fail("主服务器市场时钟暂不可用，交易已暂停");
+        long accountingDay = time < 2000 ? clockDay - 1 : clockDay;
+        if (day != accountingDay) return fail("当前游戏日的行业与股价核算尚未完成，交易已暂停");
         if (day < 2) return fail("股市尚未开放，将在第 3 个游戏日上市");
         if (time < 4000 || time >= 8000) return fail("仅在游戏时间 10:00—14:00 可交易");
         Account account = lockAccount(connection, player);

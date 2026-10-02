@@ -56,7 +56,12 @@ public final class StockDialogs {
             buttons.add(button("我的股票", "portfolio"));
             buttons.add(ContributionDialogs.template("筛选", "stock browse " + sort + " $(filter)"));
             List<String> lines = new ArrayList<>();
-            lines.add("核算日 " + market.day() + " · 当前 " + timeText(market.time()) + " · 交易时间 10:00—14:00 · 手续费 2%");
+            boolean settled = market.day() == (market.clockTime() < 2000 ? market.clockDay() - 1 : market.clockDay());
+            lines.add((market.clockFresh()
+                    ? "主世界游戏日 " + market.clockDay() + " · 当前 " + timeText(market.clockTime())
+                    : "主服务器时钟暂不可用")
+                    + " · 市场核算日 " + market.day() + (settled ? "" : " · 正在等待日结")
+                    + " · 交易时间 10:00—14:00 · 手续费 2%");
             lines.add(stocks.isEmpty() ? "暂无符合条件的上市股票" : "共 " + stocks.size() + " 支 · 每项依次为股价、当日涨跌、退市阈值及持仓；点击看详情");
             show(source, "股票市场", lines,
                     List.of(ContributionDialogs.input("filter", "股票名称、物品 ID 或行业；all 显示全部", filter, 64)), buttons);

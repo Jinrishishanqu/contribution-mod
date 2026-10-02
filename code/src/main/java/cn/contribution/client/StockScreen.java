@@ -450,9 +450,14 @@ final class StockScreen extends Screen {
     @Override public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float delta) {
         graphics.fill(0, 0, width, height, BACKGROUND);
         graphics.text(font, detail == null ? "股票市场" : detail.listing().name() + " · 股票详情", 12, 8, TEXT, true);
-        graphics.text(font, "游戏日 " + clockDay + "  " + timeText(clockTime) + "  · 交易 10:00—14:00 "
-                + (clockTime >= 4000 && clockTime < 8000 ? "交易中" : "已休市"),
-                Math.max(130, width - 280), 8, clockTime >= 4000 && clockTime < 8000 ? GREEN : MUTED, false);
+        boolean clockAvailable = clockDay >= 0 && clockTime >= 0;
+        boolean settled = dashboard == null || dashboard.market().day()
+                == (clockTime < 2000 ? clockDay - 1 : clockDay);
+        boolean trading = clockAvailable && settled && clockTime >= 4000 && clockTime < 8000;
+        String clockLabel = !clockAvailable ? "主服务器时钟暂不可用"
+                : "游戏日 " + clockDay + "  " + timeText(clockTime) + "  · 交易 10:00—14:00 "
+                + (!settled ? "核算中" : trading ? "交易中" : "已休市");
+        graphics.text(font, clockLabel, Math.max(130, width - 320), 8, trading ? GREEN : MUTED, false);
         if (detail == null && profile) drawProfile(graphics, mouseX, mouseY);
         else if (detail == null) drawMarket(graphics, mouseX, mouseY);
         else drawDetail(graphics);

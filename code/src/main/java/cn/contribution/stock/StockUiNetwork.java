@@ -48,7 +48,8 @@ public final class StockUiNetwork {
             if (player.hasDisconnected()) return;
             if (error != null) source.sendFailure(Component.literal("股票数据暂时不可用"));
             else ServerPlayNetworking.send(player, new StockSnapshotPayload(JSON.toJson(new Snapshot("market", dashboard, null,
-                    dashboard.market().day(), dashboard.market().time()))));
+                    dashboard.market().clockFresh() ? dashboard.market().clockDay() : -1,
+                    dashboard.market().clockFresh() ? dashboard.market().clockTime() : -1))));
         }));
     }
 
@@ -64,7 +65,8 @@ public final class StockUiNetwork {
             if (player.hasDisconnected()) return;
             if (error != null) source.sendFailure(Component.literal("个人持仓暂时不可用"));
             else ServerPlayNetworking.send(player, new StockSnapshotPayload(JSON.toJson(new Snapshot("profile", dashboard,
-                    null, dashboard.market().day(), dashboard.market().time()))));
+                    null, dashboard.market().clockFresh() ? dashboard.market().clockDay() : -1,
+                    dashboard.market().clockFresh() ? dashboard.market().clockTime() : -1))));
         }));
     }
 

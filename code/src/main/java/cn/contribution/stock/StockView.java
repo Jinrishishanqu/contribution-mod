@@ -9,7 +9,8 @@ public final class StockView {
     public record Listing(long id, String itemId, String name, String industry, int price,
                           int initialPrice, String status, int owned, long listedDay) { }
     public record PricePoint(long day, int price) { }
-    public record Market(long day, int time, List<Listing> listings) { }
+    public record Market(long day, int time, List<Listing> listings,
+                         long clockDay, int clockTime, boolean clockFresh) { }
     public record Detail(Listing listing, List<PricePoint> prices, int requestedDays, PriceRange range,
                          PositionInfo position, Map<Integer, PriceTrend> trends, int lastDirection,
                          int previousPrice) { }

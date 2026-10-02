@@ -91,7 +91,27 @@ public final class StockIntegrationChecks {
             String symbol = Long.toString(market.listings().getFirst().id());
             db.transaction(connection -> {
                 try (var update = connection.prepareStatement(
-                        "UPDATE stock_market_state SET game_day = 2, day_time = 5000, updated_at = CURRENT_TIMESTAMP(6) WHERE singleton_id = 1")) {
+                        "UPDATE stock_market_state SET game_day = 2, day_time = 5000, observed_day = 2, "
+                                + "observed_time = 5000, observed_at = CURRENT_TIMESTAMP(6), "
+                                + "updated_at = CURRENT_TIMESTAMP(6) WHERE singleton_id = 1")) {
+                    update.executeUpdate();
+                }
+                return null;
+            }).join();
+            check(stocks.market(player).join().clockDay() == 2, "market displays observed overworld day");
+            db.transaction(connection -> {
+                try (var update = connection.prepareStatement(
+                        "UPDATE stock_market_state SET observed_day = 3, observed_time = 5000, "
+                                + "observed_at = CURRENT_TIMESTAMP(6) WHERE singleton_id = 1")) {
+                    update.executeUpdate();
+                }
+                return null;
+            }).join();
+            check(stocks.trade(player, symbol, 1, true, UUID.randomUUID()).join().message().contains("核算尚未完成"),
+                    "unsettled market day is distinguished from a missing clock");
+            db.transaction(connection -> {
+                try (var update = connection.prepareStatement(
+                        "UPDATE stock_market_state SET observed_day = 2 WHERE singleton_id = 1")) {
                     update.executeUpdate();
                 }
                 return null;
@@ -110,7 +130,9 @@ public final class StockIntegrationChecks {
                 }
                 StockSettlement.run(connection, 3);
                 try (var update = connection.prepareStatement(
-                        "UPDATE stock_market_state SET game_day = 3, day_time = 5000, updated_at = CURRENT_TIMESTAMP(6) WHERE singleton_id = 1")) {
+                        "UPDATE stock_market_state SET game_day = 3, day_time = 5000, observed_day = 3, "
+                                + "observed_time = 5000, observed_at = CURRENT_TIMESTAMP(6), "
+                                + "updated_at = CURRENT_TIMESTAMP(6) WHERE singleton_id = 1")) {
                     update.executeUpdate();
                 }
                 return null;
@@ -151,7 +173,7 @@ public final class StockIntegrationChecks {
             check(StockChart.draw(detail.prices()).size() == 11, "visible line chart");
             db.transaction(connection -> {
                 try (var stale = connection.prepareStatement(
-                        "UPDATE stock_market_state SET updated_at = '2020-01-01 00:00:00' WHERE singleton_id = 1")) {
+                        "UPDATE stock_market_state SET observed_at = '2020-01-01 00:00:00' WHERE singleton_id = 1")) {
                     stale.executeUpdate();
                 }
                 return null;
@@ -205,7 +227,8 @@ public final class StockIntegrationChecks {
                     update.setLong(1, flatStock); update.executeUpdate();
                 }
                 try (var update = connection.prepareStatement(
-                        "UPDATE stock_market_state SET game_day = 40, day_time = 5000, "
+                        "UPDATE stock_market_state SET game_day = 40, day_time = 5000, observed_day = 40, "
+                                + "observed_time = 5000, observed_at = CURRENT_TIMESTAMP(6), "
                                 + "updated_at = CURRENT_TIMESTAMP(6) WHERE singleton_id = 1")) {
                     update.executeUpdate();
                 }
