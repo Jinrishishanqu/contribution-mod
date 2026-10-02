@@ -7,7 +7,7 @@ public final class StockPricing {
     /** The comparison price is floored because stock prices are whole contribution points. */
     public static int retirementThreshold(int initialPrice, int historicalHigh) {
         if (initialPrice <= 0 || historicalHigh <= 0) throw new IllegalArgumentException("Stock prices must be positive");
-        return Math.min(initialPrice / 2, historicalHigh / 4);
+        return Math.max(initialPrice / 2, historicalHigh / 4);
     }
 
     public static int priceCap(int initialPrice) {

@@ -12,6 +12,7 @@ import net.minecraft.resources.Identifier;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.UUID;
 
 /** Isolated embedded or loopback-MySQL stock integration; never touches a player's world. */
@@ -39,10 +40,19 @@ public final class StockIntegrationChecks {
             check(market.listings().stream().map(StockView.Listing::industry).distinct().count() == 9, "all industries");
             check(market.listings().stream().allMatch(stock -> stock.initialPrice() >= 100
                     && stock.initialPrice() <= 400), "random initial prices stay within 100-400");
-            check(StockSettlement.retirementThreshold(100, 1000) == 50, "initial price drives retirement floor");
-            check(StockSettlement.retirementThreshold(100, 120) == 30, "historical high drives retirement floor");
-            check(StockPricing.retirementThreshold(101, 151) == 37, "odd prices use the same integer threshold in every UI");
+            check(StockSettlement.retirementThreshold(100, 1000) == 250, "historical high raises retirement threshold");
+            check(StockSettlement.retirementThreshold(100, 120) == 50, "initial price sets minimum retirement threshold");
+            check(StockPricing.retirementThreshold(101, 151) == 50, "odd prices use the same integer threshold in every UI");
             check(StockPricing.priceCap(400) == 4000, "price cap is ten times listing price");
+            List<int[]> steepLine = new ArrayList<>();
+            StockLineRaster.trace(0, 0, 3, 40, (x, y) -> steepLine.add(new int[] {x, y}));
+            check(steepLine.size() >= 41 && steepLine.getFirst()[1] == 0 && steepLine.getLast()[1] == 40,
+                    "steep price curve reaches every vertical pixel");
+            for (int i = 1; i < steepLine.size(); i++) {
+                int[] last = steepLine.get(i - 1), next = steepLine.get(i);
+                check(Math.abs(next[0] - last[0]) <= 1 && Math.abs(next[1] - last[1]) <= 1,
+                        "stock curve has no disconnected raster steps");
+            }
             UUID batchId = UUID.randomUUID();
             check(stocks.openBatch(player, batchId, "1,2", 3, true).join(), "reserve batch identity");
             check(stocks.openBatch(player, batchId, "1,2", 3, true).join(), "retry same batch");

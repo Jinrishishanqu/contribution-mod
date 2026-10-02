@@ -27,3 +27,11 @@
 `verifyEmbeddedStocks`、`verifyMySqlStocks` 与完整 `build --offline` 通过；测试包含奇数价格阈值和十倍价格上限边界。0.0.7 分发 JAR 在 Minecraft 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 / Java 25 服务端加载，连接项目 MySQL 8.4 测试实例、确认数据库 V14 并正常停服。最后一次构建仅收紧客户端双击判定，未再修改服务端逻辑；最终 JAR SHA-256：`7CB2805A0A8B08AB596B51CB0687366BBB4192F4AF07A25D869149E28DC3F15F`。
 
 尚未在实际客户端逐项点击并截图验收多种 GUI 缩放；此项保留在 `STOCK_CORRECTION_TODO.md`，不宣称已经完成真人视觉验收。
+
+## 0.0.8 曲线、逐行按钮与阈值更正
+
+收到客户端截图后，0.0.7 的自绘复选框和双击行在实际游戏中仍无法可靠操作。0.0.8 为每个可见股票行注册两个原版按钮控件，分别用于单击勾选和直接打开详情；自绘部分只负责外观，并保留坐标点击兜底。陡峭价格变动改用连通的整数像素线段及裁剪后的 2 像素笔画，回归检查断言从 `(0,0)` 到 `(3,40)` 的线段覆盖每个纵向像素且相邻像素不跳跃。
+
+退市阈值按用户更正改为 `max(⌊初始价/2⌋, ⌊历史最高价/4⌋)`；结算和两种客户端显示仍共用 `StockPricing`。`verifyEmbeddedStocks verifyMySqlStocks build --offline` 均通过。0.0.8 分发 JAR 在 Minecraft 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 / Java 25 服务端启动至 `Done`，连接项目 MySQL 8.4 测试实例、确认 V14 数据库可用并正常停服。最终 JAR SHA-256：`863E461E04FD40D52BA9352432FAB5A9322A52DF9BD2C61CE52A4A0F12ACDCF3`。
+
+尚未在实际安装 0.0.8 的客户端逐项点击这两个按钮并检查曲线截图。服务端和自动测试通过不等于客户端人工验收通过。

@@ -64,3 +64,7 @@ Flyway 13.5.0 对 H2 2.5.250 给出“版本较新、尚未列入其已验证版
 ## 0.0.7 回归
 
 Java 25 `build --offline` 通过完整检查，包含股票、账户、资源 JSON 与行业标签验证；`verifyMySqlStocks --offline` 在项目 MySQL 8.4 测试实例中通过。打包的 0.0.7 JAR 已在 Fabric 26.3 服务端启动至 `Done`，确认 MySQL 数据库 V14 可用，并通过控制台正常停服。股票原生客户端的点选、双击、行业浮层和缩放布局尚未在实际游戏窗口人工操作验收。
+
+## 0.0.8 回归
+
+在 Java 25 下执行 `verifyEmbeddedStocks verifyMySqlStocks build --offline`，覆盖更正后的 `max` 退市阈值和陡坡像素线段连通性，并通过全部账户、行业规则资源与奖励检查。打包 JAR 在 Minecraft 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 的项目服务端加载，MySQL 8.4 数据库 V14 可用，控制台正常停服。新增逐行原版按钮控件只在可选客户端屏幕中创建；原版客户端仍依赖服务端后备 Dialog。

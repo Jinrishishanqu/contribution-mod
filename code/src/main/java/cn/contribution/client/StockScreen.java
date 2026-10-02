@@ -3,6 +3,7 @@ package cn.contribution.client;
 import cn.contribution.stock.StockUiNetwork;
 import cn.contribution.stock.StockView;
 import cn.contribution.stock.StockPricing;
+import cn.contribution.stock.StockLineRaster;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
@@ -39,6 +40,8 @@ final class StockScreen extends Screen {
     private final boolean profile;
     private final Set<Long> selected = new HashSet<>();
     private final Set<String> industries = new HashSet<>();
+    private final List<Button> rowSelectButtons = new ArrayList<>();
+    private final List<Button> rowDetailButtons = new ArrayList<>();
     private EditBox search;
     private EditBox quantity;
     private Button industryButton;
@@ -132,6 +135,15 @@ final class StockScreen extends Screen {
                 retainInputs();
                 minecraft.gui.setScreen(new StockScreen(dashboard, null, range, true));
             }).bounds(width - 137, footer, 75, 19).build());
+            int slots = Math.max(1, (height - 54 - ROW_TOP) / ROW_HEIGHT);
+            for (int slot = 0; slot < slots; slot++) {
+                final int rowSlot = slot;
+                int y = ROW_TOP + slot * ROW_HEIGHT;
+                rowSelectButtons.add(addRenderableWidget(Button.builder(Component.literal("□"), button -> selectRow(rowSlot))
+                        .bounds(11, y + 17, 20, 20).build()));
+                rowDetailButtons.add(addRenderableWidget(Button.builder(Component.literal("详情"), button -> openRow(rowSlot))
+                        .bounds(detailButtonX(), y + 28, 44, 19).build()));
+            }
         } else if (profile) {
             addRenderableWidget(Button.builder(Component.literal("返回市场"), button -> {
                 if (lastMarket != null) minecraft.gui.setScreen(lastMarket);
@@ -178,6 +190,39 @@ final class StockScreen extends Screen {
     private void retainInputs() {
         if (search != null) retainedSearch = search.getValue();
         if (quantity != null) retainedQuantity = quantity.getValue();
+    }
+
+    private int detailButtonX() { return width * 31 / 100 - 51; }
+
+    private StockView.Listing rowAt(int slot) {
+        List<StockView.Listing> rows = visible();
+        int index = scroll + slot;
+        return index >= 0 && index < rows.size() ? rows.get(index) : null;
+    }
+
+    private void selectRow(int slot) {
+        StockView.Listing row = rowAt(slot);
+        if (row == null) return;
+        if (!selected.add(row.id())) selected.remove(row.id());
+        lastClickedRow = -1;
+    }
+
+    private void openRow(int slot) {
+        StockView.Listing row = rowAt(slot);
+        if (row != null) command("stock check " + row.id() + " month");
+    }
+
+    private void syncRowButtons(List<StockView.Listing> rows, int capacity) {
+        scroll = Math.min(scroll, Math.max(0, rows.size() - capacity));
+        for (int slot = 0; slot < rowSelectButtons.size(); slot++) {
+            int index = scroll + slot;
+            boolean exists = slot < capacity && index < rows.size();
+            Button select = rowSelectButtons.get(slot);
+            Button open = rowDetailButtons.get(slot);
+            select.visible = exists;
+            open.visible = exists;
+            if (exists) select.setMessage(Component.literal(selected.contains(rows.get(index).id()) ? "☑" : "□"));
+        }
     }
 
     private List<StockView.Listing> visible() {
@@ -277,6 +322,8 @@ final class StockScreen extends Screen {
                 return true; // A dismissal click must not activate a stock behind the menu.
             }
         }
+        // Registered row buttons use the same vanilla dispatch path as the working footer buttons.
+        if (super.mouseClicked(event, doubleClick)) return true;
         if (detail == null && event.button() == 0) {
             int firstY = profile ? 112 : ROW_TOP;
             if (event.x() >= 10 && event.x() < width - 10
@@ -285,7 +332,12 @@ final class StockScreen extends Screen {
                 List<StockView.Listing> rows = profile ? ownedRows() : visible();
                 if (index >= 0 && index < rows.size()) {
                     StockView.Listing row = rows.get(index);
-                    if (!profile && event.x() < 29) {
+                    int slot = index - scroll;
+                    int rowY = firstY + slot * ROW_HEIGHT;
+                    if (!profile && event.x() >= detailButtonX() && event.x() < detailButtonX() + 44
+                            && event.y() >= rowY + 28 && event.y() < rowY + 47) {
+                        openRow(slot); // Also works if a future widget implementation declines the click.
+                    } else if (!profile && event.x() < 31) {
                         if (!selected.add(row.id())) selected.remove(row.id());
                         lastClickedRow = -1;
                     } else {
@@ -305,7 +357,7 @@ final class StockScreen extends Screen {
                 }
             }
         }
-        return super.mouseClicked(event, doubleClick);
+        return false;
     }
 
     @Override public boolean mouseScrolled(double mouseX, double mouseY, double horizontal, double vertical) {
@@ -335,7 +387,7 @@ final class StockScreen extends Screen {
     private void drawMarket(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
         List<StockView.Listing> rows = visible();
         int capacity = Math.max(1, (height - 54 - ROW_TOP) / ROW_HEIGHT);
-        scroll = Math.min(scroll, Math.max(0, rows.size() - capacity));
+        syncRowButtons(rows, capacity);
         // Minecraft GUI scaling can leave only ~480 logical pixels at 1920x1080.
         // Allocate every column from that logical width; never force a 225px price offset.
         int priceX = width * 31 / 100;
@@ -358,9 +410,18 @@ final class StockScreen extends Screen {
             graphics.fill(10, y, width - 10, y + ROW_HEIGHT - 2,
                     hovering || focusedRow == row.id() ? 0xFF34445B : i % 2 == 0 ? 0xB0263444 : 0xB01C2838);
             if (hovering) graphics.requestCursor(CursorTypes.POINTING_HAND);
-            graphics.text(font, selected.contains(row.id()) ? "☑" : "□", 13, y + 21, selected.contains(row.id()) ? GREEN : MUTED, false);
+            boolean selectHover = !industryMenu && mouseX >= 11 && mouseX < 31 && mouseY >= y + 17 && mouseY < y + 37;
+            graphics.fill(11, y + 17, 31, y + 37, selectHover ? 0xFF52657C : 0xFF344354);
+            graphics.text(font, selected.contains(row.id()) ? "☑" : "□", 16, y + 22,
+                    selected.contains(row.id()) ? GREEN : TEXT, false);
+            int detailX = detailButtonX();
+            boolean detailHover = !industryMenu && mouseX >= detailX && mouseX < detailX + 44
+                    && mouseY >= y + 28 && mouseY < y + 47;
+            graphics.fill(detailX, y + 28, detailX + 44, y + 47, detailHover ? 0xFF52657C : 0xFF344354);
+            graphics.text(font, "详情 ›", detailX + 4, y + 33, TEXT, false);
+            if (selectHover || detailHover) graphics.requestCursor(CursorTypes.POINTING_HAND);
             columnText(graphics, row.name() + " · #" + row.id(), 31, y + 10, priceX - 7, TEXT);
-            columnText(graphics, row.industry(), 31, y + 31, priceX - 7, MUTED);
+            columnText(graphics, row.industry(), 31, y + 31, detailX - 5, MUTED);
             int direction = row.price() > previousPrice(row) ? RED : row.price() < previousPrice(row) ? GREEN : MUTED;
             columnText(graphics, String.valueOf(row.price()), priceX, y + 10, changeX - 6, direction);
             var range = dashboard.ranges().get(row.id());
@@ -377,7 +438,7 @@ final class StockScreen extends Screen {
             curve(graphics, dashboard.curves().get(row.id()), chartX, y + 6, width - chartX - 13, 41, direction);
         }
         columnText(graphics, "显示 " + rows.size() + " / " + dashboard.market().listings().size()
-                + " · 已选 " + selected.size() + " · 高/低为历史价 · 双击看详情", 13, height - 43, width - 10, MUTED);
+                + " · 已选 " + selected.size() + " · 高/低为历史价 · 点击详情", 13, height - 43, width - 10, MUTED);
         if (industryMenu) drawIndustryMenu(graphics, mouseX, mouseY);
     }
 
@@ -522,14 +583,23 @@ final class StockScreen extends Screen {
             int nextX = x + (points.size() == 1 ? width / 2 : i * (width - 1) / (points.size() - 1));
             int nextY = y + (min == max ? height / 2 : (int) Math.round((max - points.get(i).price())
                     * (height - 1.0) / (max - min)));
-            if (i == 0) graphics.fill(nextX, nextY, nextX + 1, nextY + 1, color);
-            else for (int px = lastX; px <= nextX; px++) {
-                double ratio = nextX == lastX ? 1 : (px - lastX) / (double) (nextX - lastX);
-                int py = (int) Math.round(lastY + ratio * (nextY - lastY));
-                graphics.fill(px, py, px + 1, py + 1, color);
-            }
+            if (i == 0) drawCurvePixel(graphics, nextX, nextY, x, y, width, height, color);
+            else curveSegment(graphics, lastX, lastY, nextX, nextY, x, y, width, height, color);
             lastX = nextX; lastY = nextY;
         }
+    }
+
+    private static void curveSegment(GuiGraphicsExtractor graphics, int x0, int y0, int x1, int y1,
+                                     int x, int y, int width, int height, int color) {
+        StockLineRaster.trace(x0, y0, x1, y1,
+                (px, py) -> drawCurvePixel(graphics, px, py, x, y, width, height, color));
+    }
+
+    private static void drawCurvePixel(GuiGraphicsExtractor graphics, int px, int py,
+                                       int x, int y, int width, int height, int color) {
+        // A clipped 2px stroke bridges diagonal corners even at high GUI scaling.
+        graphics.fill(Math.max(x, px - 1), Math.max(y, py - 1),
+                Math.min(x + width, px + 2), Math.min(y + height, py + 2), color);
     }
 
     private static String timeText(int ticks) {
