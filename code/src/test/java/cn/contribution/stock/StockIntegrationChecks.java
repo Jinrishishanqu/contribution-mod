@@ -53,6 +53,16 @@ public final class StockIntegrationChecks {
                 check(Math.abs(next[0] - last[0]) <= 1 && Math.abs(next[1] - last[1]) <= 1,
                         "stock curve has no disconnected raster steps");
             }
+            List<int[]> thinLine = new ArrayList<>();
+            StockLineRaster.traceConnected(0, 0, 3, 40, (x, y) -> thinLine.add(new int[] {x, y}));
+            check(thinLine.getFirst()[0] == 0 && thinLine.getFirst()[1] == 0
+                    && thinLine.getLast()[0] == 3 && thinLine.getLast()[1] == 40,
+                    "thin curve keeps both endpoints");
+            for (int i = 1; i < thinLine.size(); i++) {
+                int[] last = thinLine.get(i - 1), next = thinLine.get(i);
+                check(Math.abs(next[0] - last[0]) + Math.abs(next[1] - last[1]) == 1,
+                        "thin curve connects through one-pixel orthogonal steps");
+            }
             UUID batchId = UUID.randomUUID();
             check(stocks.openBatch(player, batchId, "1,2", 3, true).join(), "reserve batch identity");
             check(stocks.openBatch(player, batchId, "1,2", 3, true).join(), "retry same batch");

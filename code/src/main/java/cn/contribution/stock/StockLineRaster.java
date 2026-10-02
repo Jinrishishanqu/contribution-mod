@@ -20,4 +20,17 @@ public final class StockLineRaster {
             if (twice <= dx) { error += dx; y0 += sy; }
         }
     }
+
+    /** Adds a one-pixel orthogonal bridge at diagonal steps, keeping a thin 4-connected line. */
+    public static void traceConnected(int x0, int y0, int x1, int y1, PixelSink sink) {
+        int[] previous = {Integer.MIN_VALUE, Integer.MIN_VALUE};
+        trace(x0, y0, x1, y1, (x, y) -> {
+            if (previous[0] != Integer.MIN_VALUE && x != previous[0] && y != previous[1]) {
+                sink.draw(previous[0], y);
+            }
+            sink.draw(x, y);
+            previous[0] = x;
+            previous[1] = y;
+        });
+    }
 }

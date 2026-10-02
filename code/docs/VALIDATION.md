@@ -68,3 +68,9 @@ Java 25 `build --offline` 通过完整检查，包含股票、账户、资源 JS
 ## 0.0.8 回归
 
 在 Java 25 下执行 `verifyEmbeddedStocks verifyMySqlStocks build --offline`，覆盖更正后的 `max` 退市阈值和陡坡像素线段连通性，并通过全部账户、行业规则资源与奖励检查。打包 JAR 在 Minecraft 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 的项目服务端加载，MySQL 8.4 数据库 V14 可用，控制台正常停服。新增逐行原版按钮控件只在可选客户端屏幕中创建；原版客户端仍依赖服务端后备 Dialog。
+
+## 0.0.9 界面回归
+
+股票界面使用单像素四邻域连通曲线、名称/行业列的详情点击区和窄列勾选框。行业下拉每项注册原版按钮；详情使用滚动裁剪区与固定交易栏，历史图表至少高 110 GUI 逻辑像素。构建和自动化检查不等于在真实客户端完成鼠标与视觉验收。
+
+在 Java 25 下执行 `verifyEmbeddedStocks build --offline` 通过，资源检查覆盖 57 个 JSON 文件和 45 个玩家标签。分发 JAR 以 Minecraft 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 在临时测试世界启动到 `Done`，内置数据库升级至 V14，正常停服；本轮未再次启动 MySQL 测试实例。测试世界原有 MySQL 配置已恢复。
