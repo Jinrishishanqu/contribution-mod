@@ -77,6 +77,38 @@ public final class DialogChecks {
         var decodedUi = new Gson().fromJson(new Gson().toJson(uiSnapshot), ContributionUiNetwork.Snapshot.class);
         if (decodedUi.fields().size() != 1 || !decodedUi.actions().getFirst().command().contains("$(target)"))
             throw new AssertionError("Optional client form snapshot round-trip");
+        for (var editor : List.of(ShopDialogs.editorDialog(null, ""),
+                ShopDialogs.editorDialog(new cn.contribution.shop.ShopOffer(4, "测试商品", "minecraft:torch", 16, 20,
+                        "描述正文", true, 0, 3), ""))) {
+            Dialog.DIRECT_CODEC.parse(JsonOps.INSTANCE, Dialog.DIRECT_CODEC.encodeStart(JsonOps.INSTANCE, editor).getOrThrow()).getOrThrow();
+            var editorBuffer = Unpooled.buffer();
+            try {
+                Dialog.CONTEXT_FREE_STREAM_CODEC.encode(editorBuffer, editor);
+                Dialog.CONTEXT_FREE_STREAM_CODEC.decode(editorBuffer);
+            } finally { editorBuffer.release(); }
+            if (editor.common().inputs().size() != 6) throw new AssertionError("Native shop editor fields");
+        }
+        var shopSnapshot = new cn.contribution.shop.ShopUiNetwork.Snapshot("edit", -1, List.of(), true,
+                new cn.contribution.shop.ShopOffer(4, "商品", "minecraft:apple", 1, 20, "描述", false, 3, 5), "");
+        var decodedShop = new Gson().fromJson(new Gson().toJson(shopSnapshot), cn.contribution.shop.ShopUiNetwork.Snapshot.class);
+        if (!decodedShop.editing().equals(shopSnapshot.editing())) throw new AssertionError("Shop editor metadata round-trip");
+        var dispatcher = new com.mojang.brigadier.CommandDispatcher<net.minecraft.commands.CommandSourceStack>();
+        dispatcher.register(cn.contribution.command.ShopCommands.root());
+        var source = new net.minecraft.commands.CommandSourceStack(net.minecraft.commands.CommandSource.NULL,
+                net.minecraft.world.phys.Vec3.ZERO, net.minecraft.world.phys.Vec2.ZERO, null,
+                net.minecraft.server.permissions.PermissionSet.ALL_PERMISSIONS, net.minecraft.network.chat.Component.literal("test"), null);
+        for (String input : List.of(
+                "shop put_on minecraft:diamond \"测试礼包\" 4 100 建设者精选礼包",
+                "shop modify 4 - - 35",
+                "shop modify 4 - - - \"\"",
+                "shop take_off 4",
+                "shop admin publish minecraft:apple \"中文商品\" 3 20 -3 true \"描述正文\"",
+                "shop admin save 4 0 minecraft:apple \"中文商品\" 3 20 -3 false \"含 空格 描述\"",
+                "shop buy 4 1 0")) {
+            var parsed = dispatcher.parse(input, source);
+            if (parsed.getReader().canRead() || parsed.getContext().getCommand() == null)
+                throw new AssertionError("Shop command grammar: " + input + " " + parsed.getExceptions());
+        }
         System.out.println("DIALOG_CODEC_PASS: native page and stock curve, inputs, buttons, command templates, JSON and network round-trip");
     }
 }

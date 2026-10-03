@@ -112,6 +112,7 @@ public final class ContributionRuntime {
         eventCheckins = null;
         deliveries = null;
         shop = null;
+        cn.contribution.shop.ShopUiNetwork.clear();
         archive = null;
         cn.contribution.command.RequestLimiter.clear();
         cn.contribution.ui.AdminDialogOperations.clear();

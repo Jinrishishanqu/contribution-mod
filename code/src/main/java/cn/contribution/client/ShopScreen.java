@@ -1,191 +1,213 @@
 package cn.contribution.client;
 
 import cn.contribution.reward.DeliveryService;
+import cn.contribution.shop.ShopOffer;
 import cn.contribution.shop.ShopUiNetwork;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
-import com.mojang.blaze3d.platform.cursor.CursorTypes;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
-/** Client-only catalog; all prices and purchases are validated again by the server. */
+/** A snapshot-backed shop: real card widgets, cached filtering, and no database work while drawing. */
 final class ShopScreen extends Screen {
-    private static final int BACKGROUND = 0xF0181712;
-    private static final int PANEL = 0xF02C2820;
-    private static final int EDGE = 0xFF806A43;
-    private static final int TEXT = 0xFFF4EBD5;
-    private static final int MUTED = 0xFFBAAB8B;
-    private static final int GOLD = 0xFFFFD36C;
+    private static final int TEXT = 0xFFF4EBD5, MUTED = 0xFFBAAB8B, GOLD = 0xFFFFD36C;
     private final ShopUiNetwork.Snapshot snapshot;
-    private EditBox search;
-    private EditBox quantity;
-    private String selectedId;
-    private int scroll;
-    private int sort;
-    private Button sortButton;
+    private final boolean management;
+    private EditBox search, quantity;
+    private List<ShopOffer> rows = List.of();
+    private final List<ShopCardWidget> cards = new ArrayList<>();
+    private long selectedId;
+    private int scroll, sort;
+    private String term = "", amount = "1";
+    private Button purchase;
+    private String message = "";
 
     private ShopScreen(ShopUiNetwork.Snapshot snapshot) {
-        super(Component.literal("服务器商店"));
+        super(Component.literal(snapshot.view().equals("admin") ? "商品管理" : "服务器商店"));
         this.snapshot = snapshot;
+        this.management = snapshot.view().equals("admin");
+        this.message = snapshot.message();
     }
-
     static void receive(ShopUiNetwork.Snapshot snapshot) {
-        Minecraft.getInstance().gui.setScreen(new ShopScreen(snapshot));
+        var minecraft = Minecraft.getInstance();
+        if (snapshot.view().equals("notice")) {
+            if (minecraft.gui.screen() instanceof ShopAdminScreen editor) editor.feedback(snapshot.message());
+            else if (minecraft.gui.screen() instanceof ShopScreen shop) shop.message = snapshot.message();
+            return;
+        }
+        if (snapshot.view().equals("edit") || snapshot.view().equals("create")) {
+            minecraft.gui.setScreen(new ShopAdminScreen(snapshot)); return;
+        }
+        if (snapshot.view().equals("catalog_refresh") && !(minecraft.gui.screen() instanceof ShopScreen)) return;
+        ShopScreen next = new ShopScreen(snapshot);
+        if ((snapshot.view().equals("catalog_refresh") || snapshot.view().equals("admin"))
+                && minecraft.gui.screen() instanceof ShopScreen old && old.management == next.management) {
+            next.term = old.search.getValue(); next.amount = old.quantity == null ? "1" : old.quantity.getValue();
+            next.selectedId = old.selectedId; next.sort = old.sort; next.scroll = old.scroll;
+        }
+        minecraft.gui.setScreen(next);
     }
-
-    private record Layout(int left, int right, int listRight, int detailLeft, int contentBottom) { }
-
+    private record Layout(int left, int right, int listRight, int detailLeft, int bottom) {
+        int listWidth() { return listRight - left - 10; }
+        int detailWidth() { return right - detailLeft - 10; }
+    }
     private Layout layout() {
-        int panelWidth = Math.min(340, width - 24);
-        int left = (width - panelWidth) / 2;
-        int right = left + panelWidth;
-        int listRight = left + panelWidth * 56 / 100;
-        return new Layout(left, right, listRight, listRight + 8, Math.max(112, height - 89));
+        int panelWidth = Math.min(460, width - 16);
+        int left = (width - panelWidth) / 2, right = left + panelWidth;
+        int listRight = left + panelWidth * 58 / 100;
+        return new Layout(left, right, listRight, listRight + 10, height - 65);
     }
-
-    private int capacity(Layout layout) { return Math.max(1, (layout.contentBottom() - 84) / 30); }
-
-    private ShopUiNetwork.Offer selectedOffer(List<ShopUiNetwork.Offer> rows) {
-        if (rows.isEmpty()) return null;
-        for (var offer : rows) if (offer.id().equals(selectedId)) return offer;
-        selectedId = rows.getFirst().id();
-        return rows.getFirst();
-    }
-
+    private int capacity() { return Math.max(1, (layout().bottom - 86) / 44); }
     @Override protected void init() {
-        Layout layout = layout();
-        int left = layout.left();
-        int searchWidth = layout.listRight() - left - 17;
-        search = addRenderableWidget(new EditBox(font, left + 10, 53, searchWidth, 19, Component.literal("搜索商品")));
-        search.setHint(Component.literal("搜索名称或物品"));
-        search.setMaxLength(64);
-        sortButton = addRenderableWidget(Button.builder(Component.literal("名称排序"), button -> {
-            sort = (sort + 1) % 3;
-            sortButton.setMessage(Component.literal(sort == 0 ? "名称排序" : sort == 1 ? "价格从低到高" : "价格从高到低"));
-            scroll = 0;
-        }).bounds(layout.detailLeft(), 53, layout.right() - layout.detailLeft() - 9, 19).build());
-        int inputX = layout.detailLeft() + 29;
-        quantity = addRenderableWidget(new EditBox(font, inputX, height - 67, 34, 19, Component.literal("份数")));
-        quantity.setValue("1"); quantity.setMaxLength(2);
-        addRenderableWidget(Button.builder(Component.literal("购买所选"), button -> buy())
-                .bounds(inputX + 39, height - 67, layout.right() - inputX - 47, 19).build());
-        addRenderableWidget(Button.builder(Component.literal("领取待发物品"), button -> command("shop claim"))
-                .bounds(layout.detailLeft(), height - 41, layout.right() - layout.detailLeft() - 9, 19).build());
-        addRenderableWidget(Button.builder(Component.literal("刷新"), button -> command("shop"))
-                .bounds(left + 10, height - 41, 55, 19).build());
-        addRenderableWidget(Button.builder(Component.literal("关闭"), button -> onClose())
-                .bounds(left + 72, height - 41, 55, 19).build());
+        Layout l = layout();
+        cards.clear();
+        search = addRenderableWidget(new EditBox(font, l.left + 10, 45, l.listWidth(), 18, Component.literal("搜索商品")));
+        search.setMaxLength(64); search.setHint(Component.literal("搜索名称、编号或物品")); search.setValue(term);
+        search.setResponder(value -> { term = value; scroll = 0; filter(); });
+        addRenderableWidget(Button.builder(Component.literal(sortLabel()), button -> {
+            sort = (sort + 1) % 4; button.setMessage(Component.literal(sortLabel())); scroll = 0; filter();
+        }).bounds(l.detailLeft, 45, l.detailWidth(), 18).build());
+        addRenderableWidget(Button.builder(Component.literal("刷新"), b -> command(management ? "shop admin" : "shop refresh"))
+                .bounds(l.right - 76, 17, 30, 18).build());
+        addRenderableWidget(Button.builder(Component.literal("关闭"), b -> onClose()).bounds(l.right - 42, 17, 30, 18).build());
+        if (snapshot.admin() && !management)
+            addRenderableWidget(Button.builder(Component.literal("管理"), b -> command("shop admin"))
+                    .bounds(l.right - 110, 17, 30, 18).build());
+        int cardWidth = (l.listWidth() - 6) / 2;
+        for (int slot = 0; slot < capacity() * 2; slot++) {
+            final int index = slot;
+            cards.add(addRenderableWidget(new ShopCardWidget(font, l.left + 10 + (slot % 2) * (cardWidth + 6),
+                    86 + (slot / 2) * 44, cardWidth, 40, () -> cardOffer(index),
+                    () -> cardOffer(index) != null && cardOffer(index).id() == selectedId,
+                    () -> { ShopOffer offer = cardOffer(index); if (offer != null) selectedId = offer.id(); })));
+        }
+        if (!management) {
+            quantity = addRenderableWidget(new EditBox(font, l.detailLeft + 27, height - 55, 32, 18, Component.literal("份数")));
+            quantity.setMaxLength(2); quantity.setValue(amount);
+        }
+        purchase = addRenderableWidget(Button.builder(Component.literal(management ? "编辑商品" : "购买所选"), b -> act())
+                .bounds(management ? l.detailLeft : l.detailLeft + 64, height - 55,
+                        management ? l.detailWidth() : l.detailWidth() - 64, 18).build());
+        addRenderableWidget(Button.builder(Component.literal(management ? "新建商品" : "领取待发物品"),
+                b -> command(management ? "shop admin create" : "shop claim"))
+                .bounds(l.detailLeft, height - 29, l.detailWidth(), 18).build());
+        if (management) addRenderableWidget(Button.builder(Component.literal("返回商店"), b -> command("shop back"))
+                .bounds(l.left + 10, height - 29, 68, 18).build());
+        filter();
     }
-
-    private List<ShopUiNetwork.Offer> visible() {
-        String term = search == null ? "" : search.getValue().strip().toLowerCase(Locale.ROOT);
-        List<ShopUiNetwork.Offer> result = new ArrayList<>();
-        for (var offer : snapshot.offers()) if (term.isEmpty() || offer.name().toLowerCase(Locale.ROOT).contains(term)
-                || offer.itemId().contains(term)) result.add(offer);
-        result.sort(switch (sort) {
-            case 1 -> Comparator.comparingInt(ShopUiNetwork.Offer::price);
-            case 2 -> Comparator.comparingInt(ShopUiNetwork.Offer::price).reversed();
-            default -> Comparator.comparing(ShopUiNetwork.Offer::name);
-        });
-        return result;
+    private String sortLabel() {
+        return switch (sort) { case 1 -> "名称排序"; case 2 -> "价格从低到高"; case 3 -> "价格从高到低"; default -> "商品排序"; };
     }
-
-    private void buy() {
-        List<ShopUiNetwork.Offer> rows = visible();
-        ShopUiNetwork.Offer offer = selectedOffer(rows);
-        if (offer == null) return;
+    private void filter() {
+        String query = term.strip().toLowerCase(Locale.ROOT);
+        Comparator<ShopOffer> order = switch (sort) {
+            case 1 -> Comparator.comparing(ShopOffer::name);
+            case 2 -> Comparator.comparingInt(ShopOffer::price);
+            case 3 -> Comparator.comparingInt(ShopOffer::price).reversed();
+            default -> Comparator.comparingInt(ShopOffer::sortOrder);
+        };
+        rows = snapshot.offers().stream().filter(offer -> query.isEmpty() || offer.name().toLowerCase(Locale.ROOT).contains(query)
+                || offer.itemId().contains(query) || Long.toString(offer.id()).equals(query))
+                .sorted(order.thenComparingLong(ShopOffer::id)).toList();
+        if (rows.stream().noneMatch(offer -> offer.id() == selectedId)) selectedId = rows.isEmpty() ? 0 : rows.getFirst().id();
+        syncCards();
+    }
+    private ShopOffer cardOffer(int slot) {
+        int index = scroll * 2 + slot;
+        return index < rows.size() ? rows.get(index) : null;
+    }
+    private ShopOffer selected() { return rows.stream().filter(offer -> offer.id() == selectedId).findFirst().orElse(null); }
+    private void syncCards() {
+        scroll = Math.max(0, Math.min(scroll, Math.max(0, (rows.size() + 1) / 2 - capacity())));
+        for (int slot = 0; slot < cards.size(); slot++) {
+            var offer = cardOffer(slot);
+            cards.get(slot).visible = offer != null; cards.get(slot).active = offer != null;
+            cards.get(slot).setMessage(Component.literal(offer == null ? "" : "#" + offer.id() + " " + offer.name()));
+        }
+    }
+    private void act() {
+        ShopOffer chosen = selected(); if (chosen == null) return;
+        if (management) { command("shop admin edit " + chosen.id()); return; }
         try {
-            int amount = Integer.parseInt(quantity.getValue());
-            if (amount >= 1 && amount <= 64) command("shop buy " + offer.id() + " " + amount);
-        } catch (NumberFormatException ignored) { }
+            int count = Integer.parseInt(quantity.getValue());
+            if (count >= 1 && count <= 64) command("shop buy " + chosen.id() + " " + count + " " + chosen.revision());
+            else message = "份数需要填写 1—64";
+        } catch (NumberFormatException invalid) { message = "份数需要填写 1—64"; }
     }
-
-    private static void command(String command) {
-        var listener = Minecraft.getInstance().getConnection();
-        if (listener != null) listener.sendCommand(command);
+    static void command(String value) {
+        var connection = Minecraft.getInstance().getConnection(); if (connection != null) connection.sendCommand(value);
     }
-
-    @Override public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
-        Layout layout = layout();
-        if (event.button() == 0 && event.x() >= layout.left() + 8 && event.x() < layout.listRight() - 2
-                && event.y() >= 84 && event.y() < layout.contentBottom()) {
-            int index = scroll + ((int) event.y() - 84) / 30;
-            List<ShopUiNetwork.Offer> rows = visible();
-            if (index >= 0 && index < rows.size() && ((int) event.y() - 84) % 30 < 28) {
-                selectedId = rows.get(index).id();
-                return true;
-            }
+    @Override public boolean isPauseScreen() { return false; }
+    @Override public void onClose() {
+        super.onClose();
+        if (management) command("shop back");
+    }
+    @Override public void resize(int width, int height) {
+        if (search != null) term = search.getValue(); if (quantity != null) amount = quantity.getValue();
+        super.resize(width, height);
+    }
+    @Override public boolean mouseScrolled(double x, double y, double horizontal, double vertical) {
+        Layout l = layout();
+        if (x >= l.left + 10 && x < l.listRight && y >= 86 && y < l.bottom) {
+            scroll -= (int) Math.signum(vertical); syncCards(); return true;
         }
-        return super.mouseClicked(event, doubleClick);
+        return super.mouseScrolled(x, y, horizontal, vertical);
     }
-
-    @Override public boolean mouseScrolled(double mouseX, double mouseY, double horizontal, double vertical) {
-        Layout layout = layout();
-        if (mouseX < layout.left() + 8 || mouseX >= layout.listRight() || mouseY < 84
-                || mouseY >= layout.contentBottom()) return super.mouseScrolled(mouseX, mouseY, horizontal, vertical);
-        scroll = Math.max(0, Math.min(Math.max(0, visible().size() - capacity(layout)),
-                scroll - (int) Math.signum(vertical)));
-        return true;
-    }
-
-    @Override public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float delta) {
-        graphics.fill(0, 0, width, height, BACKGROUND);
-        Layout layout = layout();
-        int left = layout.left(), right = layout.right();
-        graphics.fill(left, 15, right, height - 15, PANEL);
-        graphics.outline(left, 15, right - left, height - 30, EDGE);
-        graphics.fill(left + 2, 17, right - 2, 44, 0xFF4D3D29);
-        graphics.text(font, "✦  服务器商店", left + 12, 26, GOLD, true);
-        String balance = "余额 " + snapshot.balance();
-        graphics.text(font, balance, right - 12 - font.width(balance), 26, TEXT, false);
-        graphics.text(font, "商品目录", left + 10, 76, MUTED, false);
-        graphics.text(font, "选中商品", layout.detailLeft(), 76, MUTED, false);
-        List<ShopUiNetwork.Offer> rows = visible();
-        ShopUiNetwork.Offer chosen = selectedOffer(rows);
-        int capacity = capacity(layout);
-        scroll = Math.min(scroll, Math.max(0, rows.size() - capacity));
-        for (int i = scroll; i < Math.min(rows.size(), scroll + capacity); i++) {
-            var row = rows.get(i);
-            int y = 84 + (i - scroll) * 30;
-            boolean hovered = mouseX >= left + 8 && mouseX < layout.listRight() - 2
-                    && mouseY >= y && mouseY < y + 28;
-            graphics.fill(left + 8, y, layout.listRight() - 2, y + 28,
-                    row == chosen ? 0xFF695331 : hovered ? 0xFF514431 : 0xFF3B3428);
-            graphics.outline(left + 8, y, layout.listRight() - left - 10, 28, row == chosen ? GOLD : EDGE);
-            if (hovered) graphics.requestCursor(CursorTypes.POINTING_HAND);
-            var item = DeliveryService.findItem(row.itemId());
-            if (item != null) graphics.item(new ItemStack(item), left + 12, y + 6);
-            int textWidth = layout.listRight() - left - 40;
-            graphics.text(font, font.plainSubstrByWidth(row.name(), textWidth), left + 34, y + 4, TEXT, false);
-            graphics.text(font, font.plainSubstrByWidth(row.itemCount() + " 个 · " + row.price() + " 贡献值", textWidth),
-                    left + 34, y + 16, MUTED, false);
+    @Override public void extractRenderState(GuiGraphicsExtractor g, int x, int y, float delta) {
+        Layout l = layout();
+        g.fill(0, 0, width, height, 0xF0181712); g.fill(l.left, 10, l.right, height - 6, 0xF02C2820);
+        g.outline(l.left, 10, l.right - l.left, height - 16, 0xFF806A43);
+        g.text(font, getTitle(), l.left + 10, 22, GOLD, false);
+        if (!management) {
+            String balance = "余额 " + snapshot.balance();
+            int end = l.right - (snapshot.admin() ? 116 : 82);
+            g.text(font, balance, end - font.width(balance), 22, TEXT, false);
         }
-        graphics.fill(layout.detailLeft(), 84, right - 8, layout.contentBottom(), 0xFF352F25);
-        graphics.outline(layout.detailLeft(), 84, right - layout.detailLeft() - 8,
-                layout.contentBottom() - 84, EDGE);
+        g.text(font, "商品目录", l.left + 10, 71, MUTED, false);
+        g.text(font, "选中商品", l.detailLeft, 71, MUTED, false);
+        g.fill(l.detailLeft, 86, l.right - 10, l.bottom, 0xFF352F25);
+        g.outline(l.detailLeft, 86, l.detailWidth(), l.bottom - 86, 0xFF806A43);
+        ShopOffer chosen = selected();
+        purchase.active = chosen != null;
+        g.enableScissor(l.detailLeft + 1, 87, l.right - 11, l.bottom - 1);
         if (chosen != null) {
             var item = DeliveryService.findItem(chosen.itemId());
-            if (item != null) graphics.item(new ItemStack(item), layout.detailLeft() + 7, 91);
-            int detailTextX = layout.detailLeft() + 28;
-            int detailWidth = right - detailTextX - 12;
-            graphics.text(font, font.plainSubstrByWidth(chosen.name(), detailWidth), detailTextX, 94, GOLD, false);
-            graphics.text(font, "每份 " + chosen.itemCount() + " 个", layout.detailLeft() + 7, 114, TEXT, false);
-            graphics.text(font, "价格 " + chosen.price() + " 贡献值", layout.detailLeft() + 7, 130, TEXT, false);
-            graphics.text(font, font.plainSubstrByWidth(chosen.itemId(), right - layout.detailLeft() - 19),
-                    layout.detailLeft() + 7, 146, MUTED, false);
-        } else graphics.text(font, "没有符合条件的商品", layout.detailLeft() + 7, 99, MUTED, false);
-        graphics.text(font, font.plainSubstrByWidth("背包放不下的物品会掉落在玩家附近", right - left - 20),
-                left + 10, height - 83, MUTED, false);
-        graphics.text(font, "份数", layout.detailLeft(), height - 62, MUTED, false);
-        super.extractRenderState(graphics, mouseX, mouseY, delta);
+            if (item != null) g.item(new ItemStack(item), l.detailLeft + 6, 92);
+            g.text(font, font.plainSubstrByWidth(chosen.name(), l.detailWidth() - 32), l.detailLeft + 27, 94, GOLD, false);
+            int textX = l.detailLeft + 7, textWidth = l.detailWidth() - 14;
+            g.text(font, "#" + chosen.id() + (chosen.listed() ? " · 已上架" : " · 已下架"), textX, 113, MUTED, false);
+            g.text(font, chosen.itemCount() + " 个 / 份 · " + chosen.price() + " 贡献值", textX, 127, TEXT, false);
+            g.text(font, font.plainSubstrByWidth(chosen.itemId(), textWidth), textX, 141, MUTED, false);
+            int lineY = 156;
+            for (var line : font.split(Component.literal(chosen.description().isBlank() ? "暂无商品描述" : chosen.description()), textWidth)) {
+                if (lineY + font.lineHeight > l.bottom - 4) break;
+                g.text(font, line, textX, lineY, TEXT, false); lineY += font.lineHeight + 2;
+            }
+        } else g.text(font, "没有符合条件的商品", l.detailLeft + 7, 96, MUTED, false);
+        g.disableScissor();
+        int totalRows = (rows.size() + 1) / 2;
+        if (totalRows > capacity()) {
+            int track = capacity() * 44 - 4, thumb = Math.max(8, track * capacity() / totalRows);
+            int thumbY = 86 + (track - thumb) * scroll / (totalRows - capacity());
+            g.fill(l.listRight + 2, 86, l.listRight + 4, 86 + track, 0xFF352F25);
+            g.fill(l.listRight + 2, thumbY, l.listRight + 4, thumbY + thumb, MUTED);
+        }
+        if (!management) {
+            g.text(font, "份数", l.detailLeft, height - 50, MUTED, false);
+            int lineY = height - 29;
+            for (var line : font.split(Component.literal("背包放不下的物品会掉落在玩家附近"), l.listWidth())) {
+                g.text(font, line, l.left + 10, lineY, MUTED, false); lineY += font.lineHeight + 1;
+            }
+        }
+        if (!message.isEmpty()) g.text(font, font.plainSubstrByWidth(message, l.listWidth()),
+                l.left + 10, height - 51, GOLD, false);
+        super.extractRenderState(g, x, y, delta);
     }
 }

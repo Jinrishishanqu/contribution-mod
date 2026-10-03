@@ -66,7 +66,8 @@ final class StockSettlement {
             long upper = Math.min(cap, 3L * row.price);
             price = (int) Math.min(cap, Math.max(lower, Math.min(upper, Math.round(proposed))));
             for (StockSwanService.Effect effect : swanEffects)
-                if (effect.industry() == row.industry)
+                if (effect.industry() == row.industry && (effect.good()
+                        || (effect.targetStockId() != null && effect.targetStockId() == row.id)))
                     price = StockPricing.swanPrice(row.price, row.initial, effect.good());
             base = .9 * base + .1 * (.1 * price);
             String status = row.status;

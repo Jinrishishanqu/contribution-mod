@@ -20,7 +20,7 @@ final class StockSwanService {
     private static final long NEWS_TICKS = 3 * 24_000L;
 
     record Player(UUID id, String name) { }
-    record Effect(UUID eventId, BuiltInIndustry industry, boolean good) { }
+    record Effect(UUID eventId, BuiltInIndustry industry, boolean good, Long targetStockId) { }
 
     private StockSwanService() { }
 
@@ -111,15 +111,18 @@ final class StockSwanService {
             if (candidate.gain() > 0 && (winner == null || candidate.gain() > winner.gain())) winner = candidate;
         long effectDay = accountingDay(clock) + 1;
         try (PreparedStatement update = connection.prepareStatement(
-                "UPDATE stock_swan_candidate SET result_kind = ?, effect_day = ?, news_until_clock = ? "
+                "UPDATE stock_swan_candidate SET result_kind = ?, effect_day = ?, news_until_clock = ?, "
+                        + "target_stock_id = ?, target_selected = TRUE "
                         + "WHERE event_id = ? AND industry_id = ?")) {
             for (Candidate candidate : candidates) {
                 if (winner != null && !candidate.industryId().equals(winner.industryId())) continue;
                 update.setString(1, winner == null ? "BAD" : "GOOD");
                 update.setLong(2, effectDay);
                 update.setLong(3, clock + NEWS_TICKS);
-                update.setBytes(4, AccountService.uuidBytes(eventId));
-                update.setString(5, candidate.industryId());
+                Long target = winner == null ? chooseStock(connection, candidate.industryId(), random) : null;
+                if (target == null) update.setNull(4, java.sql.Types.BIGINT); else update.setLong(4, target);
+                update.setBytes(5, AccountService.uuidBytes(eventId));
+                update.setString(6, candidate.industryId());
                 update.addBatch();
             }
             update.executeBatch();
@@ -134,17 +137,46 @@ final class StockSwanService {
     }
 
     static List<Effect> pendingEffects(Connection connection, long day) throws SQLException {
+        // Upgrade outstanding 0.1.2 events once. Persist selection so retries never reroll targets.
+        List<String[]> legacy = new ArrayList<>();
+        try (var query = connection.prepareStatement("SELECT event_id, industry_id FROM stock_swan_candidate "
+                + "WHERE result_kind = 'BAD' AND target_selected = FALSE AND applied_day IS NULL");
+             var rows = query.executeQuery()) {
+            while (rows.next()) legacy.add(new String[] {AccountService.bytesUuid(rows.getBytes(1)).toString(), rows.getString(2)});
+        }
+        for (var old : legacy) {
+            Long target = chooseStock(connection, old[1], new Random());
+            try (var update = connection.prepareStatement("UPDATE stock_swan_candidate SET target_stock_id = ?, target_selected = TRUE "
+                    + "WHERE event_id = ? AND industry_id = ? AND target_selected = FALSE")) {
+                if (target == null) update.setNull(1, java.sql.Types.BIGINT); else update.setLong(1, target);
+                update.setBytes(2, AccountService.uuidBytes(UUID.fromString(old[0]))); update.setString(3, old[1]); update.executeUpdate();
+            }
+        }
         List<Effect> effects = new ArrayList<>();
         try (PreparedStatement query = connection.prepareStatement(
-                "SELECT event_id, industry_id, result_kind FROM stock_swan_candidate "
+                "SELECT event_id, industry_id, result_kind, target_stock_id FROM stock_swan_candidate "
                         + "WHERE effect_day <= ? AND applied_day IS NULL ORDER BY effect_day, event_id, industry_id")) {
             query.setLong(1, day);
             try (ResultSet rows = query.executeQuery()) {
-                while (rows.next()) effects.add(new Effect(AccountService.bytesUuid(rows.getBytes(1)),
-                        industry(rows.getString(2)), "GOOD".equals(rows.getString(3))));
+                while (rows.next()) {
+                    long target = rows.getLong(4);
+                    Long targetId = rows.wasNull() ? null : target;
+                    effects.add(new Effect(AccountService.bytesUuid(rows.getBytes(1)),
+                            industry(rows.getString(2)), "GOOD".equals(rows.getString(3)), targetId));
+                }
             }
         }
         return effects;
+    }
+
+    private static Long chooseStock(Connection connection, String industry, Random random) throws SQLException {
+        List<Long> ids = new ArrayList<>();
+        try (var query = connection.prepareStatement("SELECT stock_id FROM stock_listing "
+                + "WHERE industry_id = ? AND status <> 'DELISTED' ORDER BY stock_id")) {
+            query.setString(1, industry);
+            try (var rows = query.executeQuery()) { while (rows.next()) ids.add(rows.getLong(1)); }
+        }
+        return ids.isEmpty() ? null : ids.get(random.nextInt(ids.size()));
     }
 
     static void markApplied(Connection connection, List<Effect> effects, long day) throws SQLException {

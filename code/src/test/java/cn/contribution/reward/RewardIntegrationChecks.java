@@ -80,7 +80,7 @@ public final class RewardIntegrationChecks {
                 return null;
             }).join();
             ServerConfig divergent = new ServerConfig();
-            divergent.rewards.shopOffers[0].price++;
+            divergent.rewards.dailyCycleRewards[0]++;
             try {
                 new ShopService(db, divergent).buy(player, "bread", 1, UUID.randomUUID()).join();
                 throw new AssertionError("divergent shop config accepted");
@@ -104,6 +104,7 @@ public final class RewardIntegrationChecks {
             check(count(db, player, "CHECK_IN") == 1, "daily ledger");
             check(accounts.account(AccountTarget.byUuid(player)).join().orElseThrow().totalIncome() == 155,
                     "shop debit excludes income, all grants included");
+            checkCatalog(db, config, accounts);
             System.out.println("REWARDS_PASS: development, shop, event, daily, replay and income");
         } finally {
             if (mysql) try (var admin = java.sql.DriverManager.getConnection(
@@ -115,6 +116,47 @@ public final class RewardIntegrationChecks {
     }
 
     private static java.time.ZoneId eventsZone(ServerConfig config) { return java.time.ZoneId.of(config.rewards.timeZone); }
+    private static void checkCatalog(DatabaseService db, ServerConfig config, AccountService accounts) {
+        var shop = new ShopService(db, config);
+        UUID player = UUID.randomUUID();
+        accounts.registerPlayer(player, "CatalogTester").join();
+        accounts.changeBalance(new BalanceChangeRequest(UUID.randomUUID(), AccountTarget.byUuid(player), 1000,
+                BalanceChangeType.EXTERNAL, Identifier.parse("contribution:test"), "catalog-test", "")).join();
+        var created = shop.create(new cn.contribution.shop.ShopCatalog.Change(
+                "测试商品", "minecraft:diamond", 2, 30, "双列目录描述", true, -7)).join();
+        check(created.success() && created.id() > 3, "automatic stable numeric product ID");
+        var first = shop.offer(created.id()).join();
+        check(first.description().equals("双列目录描述") && first.sortOrder() == -7, "metadata persisted");
+        check(shop.offers(false).join().getFirst().id() == created.id(), "configured product order");
+        ServerConfig other = new ServerConfig();
+        other.rewards.shopOffers[0].price = 999;
+        RewardConfigGuard.initialize(db, other).join();
+        check(new ShopService(db, other).offer(first.id()).join().equals(first), "restart never overwrites catalog");
+        var patch = new cn.contribution.shop.ShopCatalog.Change("新名称", "minecraft:apple", 3, 40, "新描述", true, 2);
+        check(shop.modify(first.id(), patch, first.revision()).join().success(), "edit all product fields");
+        check(!shop.modify(first.id(), patch, first.revision()).join().success(), "stale editor rejected");
+        check(shop.buy(player, "" + first.id(), 1, UUID.randomUUID(), first.revision()).join().contains("信息已更新"),
+                "stale GUI price rejected");
+        check(balance(accounts, player) == 1000, "stale price does not debit account");
+        var current = shop.offer(first.id()).join();
+        UUID order = UUID.randomUUID();
+        check(shop.buy(player, "" + first.id(), 2, order, current.revision()).join().startsWith("购买成功"), "numeric ID buy");
+        check(balance(accounts, player) == 920, "updated authoritative price");
+        check(shop.modify(first.id(), new cn.contribution.shop.ShopCatalog.Change(null, null, null, null, null, false, null), null)
+                .join().success(), "take off preserves product");
+        check(shop.buy(player, "" + first.id(), 2, order).join().contains("已提交"), "retry after delisting remains idempotent");
+        check(shop.buy(player, "" + first.id(), 1, UUID.randomUUID()).join().contains("已经下架"), "delisted buy rejected");
+        check(shop.offers(false).join().stream().noneMatch(value -> value.id() == first.id()), "public catalog hides delisted item");
+        check(shop.offers(true).join().stream().anyMatch(value -> value.id() == first.id()), "admin catalog retains delisted item");
+        check(!shop.create(new cn.contribution.shop.ShopCatalog.Change("坏物品", "minecraft:not_an_item", 1, 1, "", true, 0))
+                .join().success(), "unknown registry item rejected");
+        check(!shop.modify(first.id(), new cn.contribution.shop.ShopCatalog.Change(null, null, 65, null, null, null, null), null)
+                .join().success(), "quantity bounds enforced");
+        check(count(db, player, "SHOP_BUY") == 1, "replay and invalid orders create no extra ledger");
+        check(accounts.account(AccountTarget.byUuid(player)).join().orElseThrow().totalIncome() == 1000,
+                "shop debit never reduces historical income");
+        System.out.println("CATALOG_PASS: seeding, IDs, metadata, revision conflicts, shared pricing, delisting and replay");
+    }
     private static void checkClockAccounting() {
         var zone = java.time.ZoneId.of("Asia/Shanghai");
         var clock = new OnlineTimeAccumulator(zone);

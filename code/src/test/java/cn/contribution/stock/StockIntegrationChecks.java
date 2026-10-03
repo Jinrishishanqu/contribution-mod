@@ -268,7 +268,9 @@ public final class StockIntegrationChecks {
                 StockSwanService.advance(connection, start, online, random);
                 String chosen;
                 try (var query = connection.prepareStatement(
-                        "SELECT industry_id FROM stock_swan_candidate ORDER BY industry_id LIMIT 1");
+                        "SELECT c.industry_id FROM stock_swan_candidate c "
+                                + "WHERE EXISTS (SELECT 1 FROM stock_listing s WHERE s.industry_id = c.industry_id "
+                                + "AND s.status <> 'DELISTED') ORDER BY c.industry_id LIMIT 1");
                      var rows = query.executeQuery()) {
                     rows.next(); chosen = rows.getString(1);
                 }
@@ -317,11 +319,49 @@ public final class StockIntegrationChecks {
                     update.executeUpdate();
                 }
                 long badStart = 43L * 24_000 + 2_000;
+                // Ensure every eligible industry has multiple listings, to detect accidental industry-wide effects.
+                try (var clone = connection.prepareStatement(
+                        "INSERT INTO stock_listing (item_id, item_name, industry_id, listed_day, initial_price, price, "
+                                + "high_price, low_price, wave_base, ou_noise, status, last_price_day) "
+                                + "SELECT item_id, item_name, industry_id, listed_day, initial_price, price, "
+                                + "high_price, low_price, 0, 0, status, last_price_day FROM stock_listing WHERE status <> 'DELISTED'")) {
+                    clone.executeUpdate();
+                }
                 StockSwanService.advance(connection, badStart, online, random);
                 StockSwanService.advance(connection, badStart + 2_100, online, random);
                 var bad = StockSwanService.pendingEffects(connection, 44);
                 check(bad.size() == 3 && bad.stream().noneMatch(StockSwanService.Effect::good),
                         "no contribution gives all three industries a bad swan");
+                check(bad.stream().allMatch(effect -> effect.targetStockId() != null)
+                        && bad.stream().map(StockSwanService.Effect::targetStockId).distinct().count() == 3,
+                        "one distinct persisted stock target per bad industry");
+                check(bad.equals(StockSwanService.pendingEffects(connection, 44)), "retry never rerolls bad targets");
+                java.util.Map<Long, Integer> badPrices = new java.util.HashMap<>();
+                java.util.Map<Long, Integer> badInitials = new java.util.HashMap<>();
+                try (var update = connection.prepareStatement("UPDATE stock_listing SET wave_base = 0, ou_noise = 0")) {
+                    update.executeUpdate();
+                }
+                try (var query = connection.prepareStatement(
+                        "SELECT stock_id, price, initial_price FROM stock_listing WHERE status <> 'DELISTED'");
+                     var rows = query.executeQuery()) {
+                    while (rows.next()) {
+                        badPrices.put(rows.getLong(1), rows.getInt(2)); badInitials.put(rows.getLong(1), rows.getInt(3));
+                    }
+                }
+                StockSettlement.run(connection, 44);
+                var targets = bad.stream().map(StockSwanService.Effect::targetStockId).collect(java.util.stream.Collectors.toSet());
+                for (var stock : badPrices.entrySet()) {
+                    try (var query = connection.prepareStatement("SELECT price FROM stock_listing WHERE stock_id = ?")) {
+                        query.setLong(1, stock.getKey());
+                        try (var rows = query.executeQuery()) {
+                            rows.next();
+                            int expected = targets.contains(stock.getKey())
+                                    ? StockPricing.swanPrice(stock.getValue(), badInitials.get(stock.getKey()), false) : stock.getValue();
+                            check(rows.getInt(1) == expected, "only selected bad stocks drop forty percent");
+                        }
+                    }
+                }
+                check(StockSwanService.pendingEffects(connection, 44).isEmpty(), "bad effects consumed once");
                 check(StockSwanService.news(connection, badStart + 2_100).size() == 4,
                         "three-day market news includes both recent events");
                 return null;

@@ -2,7 +2,6 @@ package cn.contribution.command;
 
 import cn.contribution.reward.EventCheckinService;
 import cn.contribution.runtime.ContributionRuntime;
-import cn.contribution.ui.ShopDialogs;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
@@ -12,7 +11,6 @@ import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 
 import java.time.LocalDate;
-import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 public final class RewardCommands {
@@ -49,35 +47,7 @@ public final class RewardCommands {
     }
 
     public static LiteralArgumentBuilder<CommandSourceStack> shopCommand() {
-        return Commands.literal("shop")
-                .executes(context -> {
-                    if (!RequestLimiter.allow(context.getSource())) return fail(context.getSource(), "操作过快");
-                    ShopDialogs.open(context.getSource()); return 1;
-                })
-                .then(Commands.literal("ui_vanilla").executes(context -> {
-                    if (!RequestLimiter.allow(context.getSource())) return fail(context.getSource(), "操作过快");
-                    ShopDialogs.openVanilla(context.getSource()); return 1;
-                }))
-                .then(Commands.literal("buy").then(Commands.argument("offer", StringArgumentType.word())
-                        .then(Commands.argument("quantity", IntegerArgumentType.integer(1, 64))
-                                .executes(context -> buy(context, false)))))
-                .then(Commands.literal("retry").then(Commands.argument("orderId", StringArgumentType.word())
-                        .then(Commands.argument("offer", StringArgumentType.word())
-                                .then(Commands.argument("quantity", IntegerArgumentType.integer(1, 64))
-                                        .executes(context -> buy(context, true))))))
-                .then(Commands.literal("page").then(Commands.argument("page", IntegerArgumentType.integer(0))
-                        .executes(context -> {
-                            if (!RequestLimiter.allow(context.getSource())) return fail(context.getSource(), "操作过快");
-                            ShopDialogs.page(context.getSource(), IntegerArgumentType.getInteger(context, "page"));
-                            return 1;
-                        })))
-                .then(Commands.literal("claim").executes(context -> {
-                    var player = context.getSource().getPlayerOrException();
-                    if (ContributionRuntime.deliveries() == null) return fail(context.getSource(), "数据服务尚未启动");
-                    ContributionRuntime.deliveries().claim(player);
-                    context.getSource().sendSuccess(() -> Component.literal("正在领取待发物品"), false);
-                    return 1;
-                }));
+        return ShopCommands.root();
     }
 
     private static int status(CommandContext<CommandSourceStack> context) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
@@ -140,18 +110,6 @@ public final class RewardCommands {
         } catch (RuntimeException invalid) { return fail(context.getSource(), "活动日期或扩展奖励格式无效"); }
     }
 
-    private static int buy(CommandContext<CommandSourceStack> context, boolean retry) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
-        var player = context.getSource().getPlayerOrException();
-        if (!RequestLimiter.allow(context.getSource())) return fail(context.getSource(), "操作过快");
-        if (ContributionRuntime.shop() == null) return fail(context.getSource(), "商店尚未启动");
-        UUID orderId;
-        try { orderId = retry ? UUID.fromString(StringArgumentType.getString(context, "orderId")) : UUID.randomUUID(); }
-        catch (IllegalArgumentException invalid) { return fail(context.getSource(), "订单 ID 无效"); }
-        context.getSource().sendSuccess(() -> Component.literal("订单请求 ID：" + orderId + "；结果不明时可用 /shop retry 重试"), false);
-        reply(context.getSource(), ContributionRuntime.shop().buy(player.getUUID(),
-                StringArgumentType.getString(context, "offer"), IntegerArgumentType.getInteger(context, "quantity"), orderId), true);
-        return 1;
-    }
 
     private static void reply(CommandSourceStack source, CompletableFuture<String> future) { reply(source, future, false); }
     private static void reply(CommandSourceStack source, CompletableFuture<String> future, boolean deliver) {

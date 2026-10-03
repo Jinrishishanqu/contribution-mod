@@ -12,16 +12,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.concurrent.CompletableFuture;
 
-/** Main-server catalog/weight fingerprint; all servers refuse divergent reward rules. */
+/** Main-server reward fingerprint; product prices come from the shared database catalog. */
 public final class RewardConfigGuard {
     private RewardConfigGuard() { }
 
     public static CompletableFuture<Void> initialize(DatabaseService database, ServerConfig config) {
         if (!config.mainServer) return CompletableFuture.completedFuture(null);
         return database.transaction(connection -> {
+            cn.contribution.shop.ShopCatalog.seed(connection, config.rewards.shopOffers);
             try (PreparedStatement update = connection.prepareStatement(
                     "INSERT INTO reward_configuration (singleton_id, config_hash, updated_at) VALUES (1, ?, CURRENT_TIMESTAMP(6)) "
                             + "ON DUPLICATE KEY UPDATE config_hash = VALUES(config_hash), updated_at = CURRENT_TIMESTAMP(6)")) {
@@ -49,9 +49,6 @@ public final class RewardConfigGuard {
                 .append(Arrays.toString(reward.dailyCycleRewards));
         for (BuiltInIndustry industry : BuiltInIndustry.values()) canonical.append('|').append(industry.path())
                 .append('=').append(new java.math.BigDecimal(reward.developmentWeights.get(industry.path())).stripTrailingZeros());
-        Arrays.stream(reward.shopOffers).sorted(Comparator.comparing(offer -> offer.id)).forEach(offer ->
-                canonical.append('|').append(offer.id).append(':').append(offer.name).append(':')
-                        .append(offer.itemId).append(':').append(offer.itemCount).append(':').append(offer.price));
         try { return MessageDigest.getInstance("SHA-256").digest(canonical.toString().getBytes(StandardCharsets.UTF_8)); }
         catch (java.security.NoSuchAlgorithmException impossible) { throw new IllegalStateException(impossible); }
     }
