@@ -39,7 +39,7 @@ dependencies {
 def itemPack = tasks.register('itemResourcePack', Zip) {
     archiveFileName = "CSU-YSU-items-${project.mod_version}-resource-pack.zip"
     destinationDirectory = layout.buildDirectory.dir('libs')
-    from('src/main/resources') { include 'assets/contribution/**' }
+    from('src/main/resources') { include 'assets/contribution/**', 'assets/minecraft/textures/trims/entity/wings/**' }
     from('src/itemResourcePack') { include 'pack.mcmeta' }
     preserveFileTimestamps = false
     reproducibleFileOrder = true

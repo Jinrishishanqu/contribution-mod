@@ -15,7 +15,15 @@
         "slot": "chest",
         "asset_id": "contribution:winged/netherite",
         "equip_sound": "minecraft:item.armor.equip_netherite"
-      }
+      },
+      "minecraft:item_model": "contribution:winged/netherite",
+      "minecraft:lore": [
+        {
+          "text": "添翼",
+          "color": "gray",
+          "italic": false
+        }
+      ]
     }
   }
 }

@@ -167,6 +167,26 @@ public final class AccountService extends ContributionApi {
                           String type, String source, String serverId) {
     }
 
+    public CompletableFuture<AccountPage> searchAccounts(String prefix, int limit) {
+        if (prefix.length() > 64 || limit < 1 || limit > 100) throw new IllegalArgumentException("Invalid account search");
+        try {
+            return account(AccountTarget.byUuid(UUID.fromString(prefix))).thenApply(found ->
+                    new AccountPage(found.stream().toList(), false, true));
+        } catch (IllegalArgumentException ignored) { }
+        String pattern = prefix.toLowerCase(Locale.ROOT).replace("!", "!!").replace("%", "!%").replace("_", "!_") + "%";
+        return database.transaction(connection -> {
+            try (var statement = connection.prepareStatement("SELECT player_uuid, player_name, balance, total_income FROM contribution_account "
+                    + "WHERE player_name_normalized LIKE ? ESCAPE '!' ORDER BY player_name_normalized LIMIT ?")) {
+                statement.setString(1, pattern); statement.setInt(2, limit);
+                List<AccountRecord> result = new ArrayList<>();
+                try (var rows = statement.executeQuery()) {
+                    while (rows.next()) result.add(new AccountRecord(bytesUuid(rows.getBytes(1)), rows.getString(2), rows.getInt(3), rows.getInt(4)));
+                }
+                return new AccountPage(result, false, true);
+            }
+        });
+    }
+
     public CompletableFuture<AccountPage> allAccountsPage(UUID before, int limit) {
         return database.transaction(connection -> {
             if (limit < 1 || limit > 100) {

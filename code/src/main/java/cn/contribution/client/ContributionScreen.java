@@ -21,7 +21,9 @@ final class ContributionScreen extends Screen {
     private static final int TEXT = 0xFFE7EDF7;
     private static final int MUTED = 0xFF9DAEC4;
     private static final int ACCENT = 0xFF6FC9DF;
-    private final ContributionUiNetwork.Snapshot snapshot;
+    private ContributionUiNetwork.Snapshot snapshot;
+    private long searchDue;
+    private String submittedSearch = "";
     private final Map<String, EditBox> fields = new HashMap<>();
     private int scroll;
     private String error = "";
@@ -33,23 +35,26 @@ final class ContributionScreen extends Screen {
 
     static void receive(ContributionUiNetwork.Snapshot snapshot) {
         Minecraft client = Minecraft.getInstance();
-        ContributionScreen next = new ContributionScreen(snapshot);
         if (client.gui.screen() instanceof ContributionScreen current
                 && current.snapshot.view().equals(snapshot.view())) {
-            next.scroll = current.scroll;
-            for (var field : snapshot.fields()) {
-                EditBox old = current.fields.get(field.key());
-                if (old != null) next.retainedFields.put(field.key(), old.getValue());
-            }
+            current.retainedFields.clear();
+            for (var entry : current.fields.entrySet()) current.retainedFields.put(entry.getKey(), entry.getValue().getValue());
+            current.snapshot = snapshot;
+            current.clearWidgets();
+            current.init();
+            if (snapshot.view().equals("admin") && current.fields.containsKey("target"))
+                current.setFocused(current.fields.get("target"));
+            return;
         }
-        client.gui.setScreen(next);
+        client.gui.setScreen(new ContributionScreen(snapshot));
     }
 
     private final Map<String, String> retainedFields = new HashMap<>();
     private boolean home() { return "home".equals(snapshot.view()); }
-    private int top() { return snapshot.fields().isEmpty() ? 68 : 130; }
+    private int top() { return snapshot.fields().isEmpty() ? 68 : 114; }
     private int bottom() {
-        int buttonRows = Math.max(1, (snapshot.actions().size() + 3) / 4);
+        int localCount = (int) snapshot.actions().stream().filter(action -> !navigation(action)).count();
+        int buttonRows = 1 + (localCount + 3) / 4;
         return height - 36 - (buttonRows - 1) * 24;
     }
     private int rowHeight() {
@@ -88,22 +93,34 @@ final class ContributionScreen extends Screen {
                 box.setMaxLength(definition.maxLength());
                 box.setValue(retainedFields.getOrDefault(definition.key(), definition.value()));
                 fields.put(definition.key(), box);
+                if (snapshot.view().equals("admin") && definition.key().equals("target")) {
+                    submittedSearch = definition.value();
+                    box.setResponder(value -> searchDue = System.currentTimeMillis() + 450);
+                }
             }
         }
-        int count = snapshot.actions().size();
-        int perRow = Math.min(4, Math.max(1, count));
-        int buttonWidth = Math.max(55, (width - 24 - (perRow - 1) * 5) / perRow);
+        var localActions = snapshot.actions().stream().filter(action -> !navigation(action)).toList();
+        int count = localActions.size(), perRow = Math.min(4, Math.max(1, count));
+        int buttonWidth = Math.max(30, (width - 24 - (perRow - 1) * 5) / perRow);
         int rows = (count + perRow - 1) / perRow;
         for (int i = 0; i < count; i++) {
-            ContributionUiNetwork.Action action = snapshot.actions().get(i);
-            int row = i / perRow;
-            int itemsInRow = Math.min(perRow, count - row * perRow);
-            int rowWidth = itemsInRow * buttonWidth + (itemsInRow - 1) * 5;
-            int x = (width - rowWidth) / 2 + (i % perRow) * (buttonWidth + 5);
-            int y = height - 29 - (rows - row - 1) * 24;
-            addRenderableWidget(Button.builder(Component.literal(action.label()), button -> run(action.command()))
-                    .bounds(x, y, buttonWidth, 19).build());
+            var action = localActions.get(i);
+            Button button = Button.builder(Component.literal(action.label()), ignored -> run(action.command()))
+                    .bounds(12 + (i % perRow) * (buttonWidth + 5), height - 55 - (rows - i / perRow - 1) * 24, buttonWidth, 19).build();
+            button.active = !action.command().isBlank();
+            addRenderableWidget(button);
         }
+        int navWidth = Math.max(30, (width - 34) / 3);
+        var parent = Button.builder(Component.literal("返回上级"), ignored -> run("contribution ui back"))
+                .bounds(12, height - 29, navWidth, 19).build();
+        parent.active = !home();
+        addRenderableWidget(parent);
+        var root = Button.builder(Component.literal("首页"), ignored -> run("contribution ui home"))
+                .bounds(17 + navWidth, height - 29, navWidth, 19).build();
+        root.active = !home();
+        addRenderableWidget(root);
+        addRenderableWidget(Button.builder(Component.literal("关闭"), ignored -> closeAll())
+                .bounds(22 + 2 * navWidth, height - 29, navWidth, 19).build());
         addRowWidgets();
     }
 
@@ -142,15 +159,26 @@ final class ContributionScreen extends Screen {
         command(command);
     }
 
+    private static boolean navigation(ContributionUiNetwork.Action action) {
+        return action.command().equals("contribution ui back") || action.command().equals("contribution ui home")
+                || action.command().equals("contribution ui close");
+    }
+    private void closeAll() { command("contribution ui close"); super.onClose(); }
     @Override public void onClose() {
-        if (home()) { super.onClose(); command("contribution ui close"); }
-        else {
-            super.onClose();
-            command("contribution ui back");
+        if (home()) closeAll();
+        else command("contribution ui back");
+    }
+    @Override public void tick() {
+        super.tick();
+        if (searchDue > 0 && System.currentTimeMillis() >= searchDue && fields.containsKey("target")) {
+            searchDue = 0;
+            String value = fields.get("target").getValue().strip();
+            if (!value.equals(submittedSearch)) {
+                submittedSearch = value;
+                command(value.isEmpty() ? "contribution ui admin" : "contribution ui admin_search " + value);
+            }
         }
     }
-
-
 
     @Override public boolean mouseScrolled(double x, double y, double horizontal, double vertical) {
         if (y >= top() && y <= bottom()) {
@@ -171,7 +199,7 @@ final class ContributionScreen extends Screen {
                     available - 4 * (available / 5)};
             case "stats" -> new int[]{available / 3, available / 3, available - 2 * (available / 3)};
             case "account" -> new int[]{available / 6, available / 5, available - available / 6 - available / 5};
-            case "accounts" -> new int[]{available / 4, available / 6, available - available / 4 - available / 6};
+            case "admin", "accounts" -> new int[]{available / 4, available / 6, available - available / 4 - available / 6};
             case "checkin" -> new int[]{available / 4, available * 2 / 5, available - available / 4 - available * 2 / 5};
             default -> new int[]{available};
         };

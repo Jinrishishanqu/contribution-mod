@@ -112,6 +112,23 @@ public final class DialogChecks {
             if (parsed.getReader().canRead() || parsed.getContext().getCommand() == null)
                 throw new AssertionError("Shop command grammar: " + input + " " + parsed.getExceptions());
         }
-        System.out.println("DIALOG_CODEC_PASS: native page and stock curve, inputs, buttons, command templates, JSON and network round-trip");
+        var navigation = new ContributionNavigation();
+        navigation.visit("history self -");
+        navigation.visit("history self 00000000-0000-0000-0000-000000000001");
+        if (!navigation.previous("history self 00000000-0000-0000-0000-000000000001").equals("history self -"))
+            throw new AssertionError("Pagination previous page");
+        for (String request : List.of("history self -", "history self 00000000-0000-0000-0000-000000000001")) {
+            if (!ContributionNavigation.parent(request).equals("account self")) throw new AssertionError("Cursor became Escape parent");
+        }
+        if (!ContributionNavigation.parent("history * -").equals("admin")
+                || !ContributionNavigation.parent("account tester").equals("admin")
+                || !ContributionNavigation.parent("admin_search test").equals("home")
+                || !ContributionNavigation.parent("home").equals("close"))
+            throw new AssertionError("Hierarchy is not rooted");
+        var controls = ContributionUiNetwork.withNavigation(uiSnapshot);
+        if (controls.actions().stream().noneMatch(control -> control.command().equals("contribution ui close"))
+                || controls.actions().stream().filter(control -> control.command().equals("contribution ui back")).count() != 1)
+            throw new AssertionError("Single parent and explicit close");
+        System.out.println("DIALOG_CODEC_PASS: native codecs, component shop commands, hierarchy and pagination independence");
     }
 }

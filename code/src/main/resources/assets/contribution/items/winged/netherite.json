@@ -1,0 +1,89 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:trim_material",
+    "cases": [
+      {
+        "when": "minecraft:quartz",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/netherite/quartz"
+        }
+      },
+      {
+        "when": "minecraft:iron",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/netherite/iron"
+        }
+      },
+      {
+        "when": "minecraft:netherite",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/netherite/netherite"
+        }
+      },
+      {
+        "when": "minecraft:redstone",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/netherite/redstone"
+        }
+      },
+      {
+        "when": "minecraft:copper",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/netherite/copper"
+        }
+      },
+      {
+        "when": "minecraft:gold",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/netherite/gold"
+        }
+      },
+      {
+        "when": "minecraft:emerald",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/netherite/emerald"
+        }
+      },
+      {
+        "when": "minecraft:diamond",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/netherite/diamond"
+        }
+      },
+      {
+        "when": "minecraft:lapis",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/netherite/lapis"
+        }
+      },
+      {
+        "when": "minecraft:amethyst",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/netherite/amethyst"
+        }
+      },
+      {
+        "when": "minecraft:resin",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/netherite/resin"
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "contribution:item/winged/netherite/root"
+    }
+  }
+}

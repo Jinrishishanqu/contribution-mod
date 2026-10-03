@@ -1,0 +1,89 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:trim_material",
+    "cases": [
+      {
+        "when": "minecraft:quartz",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/chainmail/quartz"
+        }
+      },
+      {
+        "when": "minecraft:iron",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/chainmail/iron"
+        }
+      },
+      {
+        "when": "minecraft:netherite",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/chainmail/netherite"
+        }
+      },
+      {
+        "when": "minecraft:redstone",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/chainmail/redstone"
+        }
+      },
+      {
+        "when": "minecraft:copper",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/chainmail/copper"
+        }
+      },
+      {
+        "when": "minecraft:gold",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/chainmail/gold"
+        }
+      },
+      {
+        "when": "minecraft:emerald",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/chainmail/emerald"
+        }
+      },
+      {
+        "when": "minecraft:diamond",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/chainmail/diamond"
+        }
+      },
+      {
+        "when": "minecraft:lapis",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/chainmail/lapis"
+        }
+      },
+      {
+        "when": "minecraft:amethyst",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/chainmail/amethyst"
+        }
+      },
+      {
+        "when": "minecraft:resin",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/chainmail/resin"
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "contribution:item/winged/chainmail/root"
+    }
+  }
+}

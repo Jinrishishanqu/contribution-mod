@@ -23,11 +23,12 @@ import java.util.function.Consumer;
 /** Native 26.3 dialogs are rendered by both vanilla and Fabric clients. No client-only classes. */
 public final class ContributionDialogs {
     private static final int DIALOG_PAGE_SIZE = 8;
-    private static final Map<UUID, Deque<String>> BACK_STACK = new HashMap<>();
+    private static final Map<UUID, ContributionNavigation> NAVIGATION = new HashMap<>();
     private static final Map<UUID, String> CURRENT_PAGE = new HashMap<>();
     private static final Map<UUID, Long> PAGE_REVISIONS = new HashMap<>();
     private static final Set<UUID> FORCE_VANILLA = new HashSet<>();
 
+    static String currentRequest(UUID player) { return CURRENT_PAGE.getOrDefault(player, "home"); }
     private ContributionDialogs() { }
     public static int openDefault(CommandSourceStack source) {
         if (source.getPlayer() != null) FORCE_VANILLA.remove(source.getPlayer().getUUID());
@@ -39,7 +40,7 @@ public final class ContributionDialogs {
     }
     public static void forget(UUID player) {
         FORCE_VANILLA.remove(player);
-        BACK_STACK.remove(player);
+        NAVIGATION.remove(player);
         CURRENT_PAGE.remove(player);
         PAGE_REVISIONS.remove(player);
     }
@@ -52,23 +53,16 @@ public final class ContributionDialogs {
         try {
             UUID playerId = source.getPlayer().getUUID();
             PAGE_REVISIONS.merge(playerId, 1L, Long::sum);
+            var navigation = NAVIGATION.computeIfAbsent(playerId, ignored -> new ContributionNavigation());
             if (request.equals("close")) {
-                BACK_STACK.remove(playerId); CURRENT_PAGE.remove(playerId);
+                NAVIGATION.remove(playerId); CURRENT_PAGE.remove(playerId);
                 return 1;
             }
-            if (request.equals("back")) {
-                Deque<String> stack = BACK_STACK.get(playerId);
-                request = stack == null || stack.isEmpty() ? "home" : stack.pop();
-            } else if (request.equals("home")) {
-                BACK_STACK.remove(playerId);
-            } else {
-                String previous = CURRENT_PAGE.getOrDefault(playerId, "home");
-                if (!previous.equals(request)) {
-                    Deque<String> stack = BACK_STACK.computeIfAbsent(playerId, ignored -> new ArrayDeque<>());
-                    if (stack.size() >= 20) stack.removeLast();
-                    stack.push(previous);
-                }
-            }
+            boolean previousPage = request.equals("previous");
+            if (request.equals("back")) request = ContributionNavigation.parent(CURRENT_PAGE.getOrDefault(playerId, "home"));
+            else if (previousPage) request = navigation.previous(CURRENT_PAGE.getOrDefault(playerId, "home"));
+            if (request.equals("close")) { NAVIGATION.remove(playerId); CURRENT_PAGE.remove(playerId); return 1; }
+            if (!previousPage) navigation.visit(request);
             CURRENT_PAGE.put(playerId, request);
             String[] args = request.isBlank() ? new String[]{"home"} : request.trim().split("\\s+", 5);
             String target = args.length > 1 ? args[1] : "self";
@@ -80,7 +74,8 @@ public final class ContributionDialogs {
                 case "stats" -> account(source, target);
                 case "industries" -> industries(source);
                 case "checkin" -> checkin(source);
-                case "accounts" -> accounts(source, args.length > 1 ? UUID.fromString(args[1]) : null);
+                case "accounts" -> accounts(source, args.length > 1 ? UUID.fromString(args[1]) : null, "");
+                case "admin_search" -> accounts(source, null, args.length > 1 ? args[1] : "");
                 case "history" -> history(source, target, args.length > 2 && !args[2].equals("-") ? UUID.fromString(args[2]) : null,
                         args.length > 3 ? args[3] + (args.length > 4 ? " " + args[4] : "") : "");
                 default -> home(source);
@@ -120,20 +115,7 @@ public final class ContributionDialogs {
         show(source, "贡献值系统", List.of(), List.of(), actions);
     }
     private static void adminHome(CommandSourceStack source) {
-        requireAdmin(source);
-        if (clientUi(source)) {
-            ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
-                    "管理员功能", "admin", List.of(), List.of(), List.of(
-                    action("账户列表", "accounts"), action("全服流水", "history *"),
-                    new ContributionUiNetwork.Action("查询玩家", "contribution ui account $(target)"),
-                    action("首页", "home")), "输入玩家名称或 UUID 以查询其他玩家",
-                    List.of(new ContributionUiNetwork.Field("target", "玩家名称或 UUID", "", 64)), List.of()));
-            return;
-        }
-        show(source, "管理员功能", List.of(),
-                List.of(input("target", "玩家名称或 UUID", "", 64)),
-                List.of(button("账户列表", "accounts"), button("全服流水", "history *"),
-                        template("查询玩家", "contribution ui account $(target)"), button("首页", "home")));
+        accounts(source, null, "");
     }
     private static void account(CommandSourceStack source, String who) {
         query(source, service().account(target(source, who)), result -> {
@@ -160,7 +142,7 @@ public final class ContributionDialogs {
                     ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
                             account.playerName() + " 的账户与统计", "profile", List.of(), rows,
                             List.of(action("查看流水", "history " + who), action("刷新", "account " + who),
-                                    action("返回上一页", "back"), action("首页", "home")),
+                                    action("返回上级", "back"), action("首页", "home")),
                             "账户变动仅通过管理员 /contribution add、remove 命令"));
                     return;
                 }
@@ -267,33 +249,37 @@ public final class ContributionDialogs {
             show(source, "签到", lines, List.of(), actions);
         });
     }
-    private static void accounts(CommandSourceStack source, UUID cursor) {
+    private static void accounts(CommandSourceStack source, UUID cursor, String prefix) {
         requireAdmin(source);
-        query(source, service().allAccountsPage(cursor, DIALOG_PAGE_SIZE), page -> {
+        query(source, prefix.isBlank() ? service().allAccountsPage(cursor, DIALOG_PAGE_SIZE)
+                : service().searchAccounts(prefix, DIALOG_PAGE_SIZE), page -> {
             if (clientUi(source)) {
                 List<List<String>> rows = page.rows().stream().map(row -> List.of(
                         row.playerName(), String.valueOf(row.balance()), row.playerUuid().toString())).toList();
                 List<String> rowCommands = page.rows().stream().map(row ->
                         "contribution ui account " + row.playerUuid()).toList();
                 List<ContributionUiNetwork.Action> actions = new ArrayList<>();
-                if (cursor != null) actions.add(action("上一页", "back"));
-                page.nextCursor().ifPresent(next -> actions.add(action("下一页", "accounts " + next)));
-                actions.add(action("返回管理", "admin"));
-                actions.add(action("第一页", "accounts"));
-                actions.add(action("首页", "home"));
+                actions.add(action("全服流水", "history *"));
+                actions.add(new ContributionUiNetwork.Action("查询玩家", "contribution ui account $(target)"));
+                actions.add(new ContributionUiNetwork.Action("上一页", cursor == null ? "" : "contribution ui previous"));
+                actions.add(new ContributionUiNetwork.Action("下一页", page.nextCursor().map(next -> "contribution ui accounts " + next).orElse("")));
+                if (cursor != null || !prefix.isBlank()) actions.add(action("重置列表", "admin"));
                 ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
-                        "账户列表", "accounts", List.of("玩家", "余额", "UUID"), rows, actions,
+                        "管理员功能 · 账户列表", "admin", List.of("玩家", "余额", "UUID"), rows, actions,
                         page.validCursor() ? "点击玩家行查看账户" : "翻页位置已失效",
-                        List.of(), rowCommands));
+                        List.of(new ContributionUiNetwork.Field("target", "筛选玩家名称或 UUID", prefix, 64)), rowCommands));
                 return;
             }
             List<ActionButton> actions = new ArrayList<>();
+            actions.add(template("筛选玩家", "contribution ui admin_search $(target)"));
+            actions.add(button("全服流水", "history *"));
             for (AccountRecord row : page.rows()) actions.add(button(row.playerName() + "：" + row.balance(), "account " + row.playerUuid()));
-            if (cursor != null) actions.add(button("上一页", "back"));
+            if (cursor != null) actions.add(button("上一页", "previous"));
             page.nextCursor().ifPresent(next -> actions.add(button("下一页", "accounts " + next)));
-            actions.add(button("第一页", "accounts")); actions.add(button("返回管理", "admin"));
+            if (cursor != null || !prefix.isBlank()) actions.add(button("重置列表", "admin"));
             actions.add(button("首页", "home"));
-            show(source, "账户列表", List.of(page.validCursor() ? "点击账户查看详情" : "翻页位置已失效，请从首页重试"), List.of(), actions);
+            show(source, "管理员功能 · 账户列表", List.of(page.validCursor() ? "点击账户查看详情" : "翻页位置已失效，请重置列表"),
+                    List.of(input("target", "筛选玩家名称或 UUID", prefix, 64)), actions);
         });
     }
     private static void history(CommandSourceStack source, String who, UUID cursor, String rawFilter) {
@@ -315,10 +301,10 @@ public final class ContributionDialogs {
                         action("股票买入", "history " + who + " - type=SPEND source=contribution:stock"),
                         action("股票卖出", "history " + who + " - type=STOCK source=contribution:stock"),
                         action("刷新", "history " + who + " " + (cursor == null ? "-" : cursor) + " " + filter.commandArguments())));
-                if (cursor != null) actions.add(action("上一页", "back"));
-                page.nextCursor().ifPresent(next -> actions.add(action("下一页", "history " + who + " " + next + " " + filter.commandArguments())));
-                actions.add(action("返回上一页", "back"));
-                actions.add(action("第一页", "history " + who + " - " + filter.commandArguments()));
+                actions.add(new ContributionUiNetwork.Action("上一页", cursor == null ? "" : "contribution ui previous"));
+                actions.add(new ContributionUiNetwork.Action("下一页", page.nextCursor().map(next -> "contribution ui history " + who + " " + next + " " + filter.commandArguments()).orElse("")));
+                actions.add(action("返回上级", "back"));
+                if (cursor != null) actions.add(action("第一页", "history " + who + " - " + filter.commandArguments()));
                 actions.add(action("首页", "home"));
                 ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
                         "流水 · " + who, "history", List.of("时间", "玩家", "变动", "余额", "类型", "原因"), values,
@@ -342,9 +328,9 @@ public final class ContributionDialogs {
             actions.add(template("应用筛选", "contribution ui history " + who + " - $(filters)"));
             actions.add(button("刷新", "history " + who + " " + (cursor == null ? "-" : cursor)
                     + " " + filter.commandArguments()));
-            if (cursor != null) actions.add(button("上一页", "back"));
+            if (cursor != null) actions.add(button("上一页", "previous"));
             page.nextCursor().ifPresent(next -> actions.add(button("下一页", "history " + who + " " + next + " " + filter.commandArguments())));
-            actions.add(button("第一页", "history " + who + " - " + filter.commandArguments())); actions.add(button("首页", "home"));
+            if (cursor != null) actions.add(button("第一页", "history " + who + " - " + filter.commandArguments())); actions.add(button("首页", "home"));
             showTable(source, "流水 · " + who + " · " + zone, lines,
                     List.of(input("filters", "更多筛选（可选）：type/source/server/from/to（UTC 日期）", filter.commandArguments(), 256)), actions);
         });
@@ -390,12 +376,12 @@ public final class ContributionDialogs {
                     title, "message", List.of("信息"), lines.stream().map(List::of).toList(), actions, ""));
             return;
         }
-        boolean hasPrevious = !BACK_STACK.getOrDefault(source.getPlayer().getUUID(), new ArrayDeque<>()).isEmpty();
+        boolean hasPrevious = !CURRENT_PAGE.getOrDefault(source.getPlayer().getUUID(), "home").equals("home");
         source.getPlayer().openDialog(Holder.direct(create(title, lines, inputs, buttons, hasPrevious)));
     }
     private static void showTable(CommandSourceStack source, String title, List<String> lines,
                                   List<Input> inputs, List<ActionButton> buttons) {
-        boolean hasPrevious = !BACK_STACK.getOrDefault(source.getPlayer().getUUID(), new ArrayDeque<>()).isEmpty();
+        boolean hasPrevious = !CURRENT_PAGE.getOrDefault(source.getPlayer().getUUID(), "home").equals("home");
         source.getPlayer().openDialog(Holder.direct(createTable(title, lines, inputs, buttons, hasPrevious)));
     }
     static Dialog createTable(String title, List<String> lines, List<Input> inputs,
@@ -415,12 +401,18 @@ public final class ContributionDialogs {
         List<DialogBody> bodies = lines.stream().map(line -> (DialogBody)new PlainMessage(Component.literal(line), 430)).toList();
         return createBodies(title, bodies, inputs, buttons, hasPrevious, columns);
     }
+    static Dialog cancelTo(Dialog dialog, ActionButton parent) {
+        MultiActionDialog page = (MultiActionDialog) dialog;
+        return new MultiActionDialog(page.common(), page.actions(), Optional.of(parent), page.columns());
+    }
     private static Dialog createBodies(String title, List<DialogBody> bodies, List<Input> inputs,
                                        List<ActionButton> buttons, boolean hasPrevious, int columns) {
         var common = new CommonDialogData(Component.literal(title), Optional.empty(), true, false, DialogAction.CLOSE, bodies, inputs);
-        ActionButton exit = hasPrevious ? button("返回上一页", "back")
+        ActionButton exit = hasPrevious ? button("返回上级", "back")
                 : new ActionButton(new CommonButtonData(Component.literal("关闭"), 190), Optional.empty());
-        return new MultiActionDialog(common, buttons, Optional.of(exit), columns);
+        var controls = new ArrayList<>(buttons);
+        if (hasPrevious) controls.add(button("关闭", "close"));
+        return new MultiActionDialog(common, controls, Optional.of(exit), columns);
     }
-    public static void clear() { BACK_STACK.clear(); CURRENT_PAGE.clear(); PAGE_REVISIONS.clear(); FORCE_VANILLA.clear(); }
+    public static void clear() { NAVIGATION.clear(); CURRENT_PAGE.clear(); PAGE_REVISIONS.clear(); FORCE_VANILLA.clear(); }
 }

@@ -16,14 +16,21 @@ public final class ContributionUiNetwork {
     }
 
     public static void send(ServerPlayer player, Snapshot snapshot) {
-        ServerPlayNetworking.send(player, new ContributionSnapshotPayload(JSON.toJson(withNavigation(snapshot))));
+        ServerPlayNetworking.send(player, new ContributionSnapshotPayload(JSON.toJson(withNavigation(snapshot, ContributionDialogs.currentRequest(player.getUUID())))));
     }
 
-    static Snapshot withNavigation(Snapshot snapshot) {
-        if (snapshot.view().equals("home") || snapshot.actions().stream().anyMatch(action ->
-                action.command().equals("contribution ui back"))) return snapshot;
-        var actions = new java.util.ArrayList<>(snapshot.actions());
-        actions.add(new Action("返回上一页", "contribution ui back"));
+    static Snapshot withNavigation(Snapshot snapshot) { return withNavigation(snapshot, snapshot.view()); }
+    static Snapshot withNavigation(Snapshot snapshot, String request) {
+        var actions = new java.util.ArrayList<Action>();
+        for (var action : snapshot.actions()) {
+            if (!action.command().equals("contribution ui back") && !action.command().equals("contribution ui home"))
+                actions.add(action);
+        }
+        if (!snapshot.view().equals("home")) {
+            actions.add(new Action("返回上级", "contribution ui back"));
+            actions.add(new Action("首页", "contribution ui home"));
+        }
+        actions.add(new Action("关闭", "contribution ui close"));
         return new Snapshot(snapshot.title(), snapshot.view(), snapshot.headers(), snapshot.rows(), actions,
                 snapshot.note(), snapshot.fields(), snapshot.rowCommands());
     }

@@ -15,7 +15,15 @@
         "slot": "chest",
         "asset_id": "contribution:winged/chainmail",
         "equip_sound": "minecraft:item.armor.equip_chain"
-      }
+      },
+      "minecraft:item_model": "contribution:winged/chainmail",
+      "minecraft:lore": [
+        {
+          "text": "添翼",
+          "color": "gray",
+          "italic": false
+        }
+      ]
     }
   }
 }

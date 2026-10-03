@@ -15,7 +15,15 @@
         "slot": "chest",
         "asset_id": "contribution:winged/iron",
         "equip_sound": "minecraft:item.armor.equip_iron"
-      }
+      },
+      "minecraft:item_model": "contribution:winged/iron",
+      "minecraft:lore": [
+        {
+          "text": "添翼",
+          "color": "gray",
+          "italic": false
+        }
+      ]
     }
   }
 }

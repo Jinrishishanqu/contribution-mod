@@ -15,7 +15,15 @@
         "slot": "chest",
         "asset_id": "contribution:winged/leather",
         "equip_sound": "minecraft:item.armor.equip_leather"
-      }
+      },
+      "minecraft:item_model": "contribution:winged/leather",
+      "minecraft:lore": [
+        {
+          "text": "添翼",
+          "color": "gray",
+          "italic": false
+        }
+      ]
     }
   }
 }

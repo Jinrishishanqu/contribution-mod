@@ -1,0 +1,161 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:trim_material",
+    "cases": [
+      {
+        "when": "minecraft:quartz",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/leather/quartz",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": -6265536
+            }
+          ]
+        }
+      },
+      {
+        "when": "minecraft:iron",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/leather/iron",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": -6265536
+            }
+          ]
+        }
+      },
+      {
+        "when": "minecraft:netherite",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/leather/netherite",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": -6265536
+            }
+          ]
+        }
+      },
+      {
+        "when": "minecraft:redstone",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/leather/redstone",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": -6265536
+            }
+          ]
+        }
+      },
+      {
+        "when": "minecraft:copper",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/leather/copper",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": -6265536
+            }
+          ]
+        }
+      },
+      {
+        "when": "minecraft:gold",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/leather/gold",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": -6265536
+            }
+          ]
+        }
+      },
+      {
+        "when": "minecraft:emerald",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/leather/emerald",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": -6265536
+            }
+          ]
+        }
+      },
+      {
+        "when": "minecraft:diamond",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/leather/diamond",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": -6265536
+            }
+          ]
+        }
+      },
+      {
+        "when": "minecraft:lapis",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/leather/lapis",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": -6265536
+            }
+          ]
+        }
+      },
+      {
+        "when": "minecraft:amethyst",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/leather/amethyst",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": -6265536
+            }
+          ]
+        }
+      },
+      {
+        "when": "minecraft:resin",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/winged/leather/resin",
+          "tints": [
+            {
+              "type": "minecraft:dye",
+              "default": -6265536
+            }
+          ]
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "contribution:item/winged/leather/root",
+      "tints": [
+        {
+          "type": "minecraft:dye",
+          "default": -6265536
+        }
+      ]
+    }
+  }
+}

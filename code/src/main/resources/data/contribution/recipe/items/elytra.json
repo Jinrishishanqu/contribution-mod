@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
+  "group": "contribution:elytra_duplication",
   "pattern": [
     "N#N",
     "PSP",
@@ -10,10 +11,11 @@
     "N": "minecraft:netherite_scrap",
     "#": "minecraft:nether_star",
     "P": "minecraft:phantom_membrane",
-    "S": "minecraft:saddle"
+    "S": "minecraft:elytra"
   },
   "result": {
     "id": "minecraft:elytra",
-    "count": 1
+    "count": 1,
+    "components": { "minecraft:damage": 431 }
   }
 }

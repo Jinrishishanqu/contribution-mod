@@ -16,7 +16,14 @@
         "asset_id": "contribution:armor/quantum_winged",
         "equip_sound": "minecraft:item.armor.equip_netherite"
       },
-      "minecraft:glider": {}
+      "minecraft:glider": {},
+      "minecraft:lore": [
+        {
+          "text": "添翼",
+          "color": "gray",
+          "italic": false
+        }
+      ]
     }
   }
 }

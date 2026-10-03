@@ -53,8 +53,9 @@ public final class ShopDialogs {
                 if (ShopUiNetwork.admin(source)) buttons.add(button("商品管理", "/shop admin"));
                 lines.add("更多份数：/shop buy <商品编号> <份数>；背包放不下的物品会掉落在玩家附近");
             }
-            source.getPlayer().openDialog(Holder.direct(ContributionDialogs.create(admin ? "商品管理" : "服务器商店",
-                    lines, List.of(), buttons, false, 2)));
+            var dialog = ContributionDialogs.create(admin ? "商品管理" : "服务器商店", lines, List.of(), buttons, false, 2);
+            if (admin) dialog = ContributionDialogs.cancelTo(dialog, button("返回商店", "/shop back"));
+            source.getPlayer().openDialog(Holder.direct(dialog));
         }));
     }
     public static void editor(CommandSourceStack source, ShopOffer offer, String message) {
@@ -71,12 +72,12 @@ public final class ShopDialogs {
                 ContributionDialogs.input("description", "描述（最多 512 字）", offer == null ? "" : offer.description(), 512));
         String prefix = offer == null ? "shop admin publish " : "shop admin save " + offer.id() + " " + offer.revision() + " ";
         String template = prefix + "$(item) \"$(name)\" $(count) $(price) $(order) ";
-        return ContributionDialogs.create(
+        return ContributionDialogs.cancelTo(ContributionDialogs.create(
                 offer == null ? "新建商品" : "编辑商品 #" + offer.id(),
                 List.of("选择保存并上架或保存并下架。名称、描述中请不要输入双引号或反斜杠。", message),
                 inputs, List.of(ContributionDialogs.template("保存并上架", template + "true \"$(description)\""),
                         ContributionDialogs.template("保存并下架", template + "false \"$(description)\""),
-                        button("返回管理", "/shop admin")), false, 2);
+                        button("返回管理", "/shop admin")), false, 2), button("返回管理", "/shop admin"));
     }
     private static ActionButton button(String label, String command) {
         return new ActionButton(new CommonButtonData(Component.literal(label), 190),

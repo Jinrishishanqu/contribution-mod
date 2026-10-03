@@ -19,14 +19,14 @@
           "amount": 0,
           "operation": "add_value",
           "slot": "mainhand",
-          "id": "contribution:reinforced_attack_damage"
+          "id": "minecraft:base_attack_damage"
         },
         {
           "type": "minecraft:attack_speed",
           "amount": 0,
           "operation": "add_value",
           "slot": "mainhand",
-          "id": "contribution:reinforced_attack_speed"
+          "id": "minecraft:base_attack_speed"
         }
       ]
     }

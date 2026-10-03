@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "base": "minecraft:copper_chestplate",
+  "addition": "minecraft:elytra",
+  "result": {
+    "id": "minecraft:copper_chestplate",
+    "components": {
+      "minecraft:max_damage": 592,
+      "minecraft:damage_resistant": {
+        "types": "#minecraft:is_fire"
+      },
+      "minecraft:glider": {},
+      "minecraft:equippable": {
+        "slot": "chest",
+        "asset_id": "contribution:winged/copper",
+        "equip_sound": "minecraft:item.armor.equip_copper"
+      },
+      "minecraft:item_model": "contribution:winged/copper",
+      "minecraft:lore": [
+        {
+          "text": "添翼",
+          "color": "gray",
+          "italic": false
+        }
+      ]
+    }
+  }
+}

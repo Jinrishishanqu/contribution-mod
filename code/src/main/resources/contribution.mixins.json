@@ -3,6 +3,7 @@
   "package": "cn.contribution.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
+    "ElytraDuplicationRecipeMixin",
     "BlockItemMixin",
     "ResultSlotMixin",
     "FurnaceMixin",

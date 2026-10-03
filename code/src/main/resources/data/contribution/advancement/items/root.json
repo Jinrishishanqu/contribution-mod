@@ -15,7 +15,7 @@
     "description": {
       "text": "更多合成、装备与探索乐趣"
     },
-    "background": "minecraft:textures/block/cyan_concrete_powder.png",
+    "background": "contribution:gui/advancements/backgrounds/cyan_concrete_powder",
     "show_toast": false,
     "announce_to_chat": false
   },

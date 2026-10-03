@@ -79,7 +79,7 @@
 
 `/contribution history-next`、`history-search-next`、`accounts-next` 及 `/contribution ui <页面参数>` 用于可点击的翻页或界面内部跳转，普通使用无需手动输入。管理员图形界面也支持点击常用流水类型筛选；复杂条件仍可在高级输入框或文字命令中填写。
 
-## 0.1.5 页面与自定义物品
+## 0.1.6 页面与自定义物品
 
 玩家账户与统计合并；/contribution ui account self 和旧的 /contribution ui stats self 均打开合并页。两套界面均移除管理员账户变动，旧 ui prepare/confirm 不再执行，调整余额仅使用上表的 /contribution add/remove。
 

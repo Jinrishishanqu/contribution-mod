@@ -161,7 +161,9 @@ public final class StockDialogs {
 
     private static void show(CommandSourceStack source, String title, List<String> lines,
                              List<net.minecraft.server.dialog.Input> inputs, List<ActionButton> buttons) {
-        source.getPlayer().openDialog(Holder.direct(ContributionDialogs.create(title, lines, inputs, buttons, false, 2)));
+        var dialog = ContributionDialogs.create(title, lines, inputs, buttons, false, 2);
+        if (!title.equals("股票市场")) dialog = ContributionDialogs.cancelTo(dialog, button("返回市场", "browse name all"));
+        source.getPlayer().openDialog(Holder.direct(dialog));
     }
 
     private static String timeText(int ticks) {

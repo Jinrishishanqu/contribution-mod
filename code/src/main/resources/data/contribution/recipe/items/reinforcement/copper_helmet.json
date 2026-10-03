@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "base": "minecraft:copper_helmet",
+  "addition": "minecraft:netherite_helmet",
+  "result": {
+    "id": "minecraft:copper_helmet",
+    "components": {
+      "minecraft:item_name": {
+        "text": "强化铜头盔"
+      },
+      "minecraft:max_damage": 407,
+      "minecraft:damage_resistant": {
+        "types": "#minecraft:is_fire"
+      },
+      "minecraft:attribute_modifiers": [
+        {
+          "type": "minecraft:armor",
+          "amount": 3,
+          "operation": "add_value",
+          "slot": "head",
+          "id": "contribution:reinforced_helmet_armor"
+        },
+        {
+          "type": "minecraft:armor_toughness",
+          "amount": 3,
+          "operation": "add_value",
+          "slot": "head",
+          "id": "contribution:reinforced_helmet_toughness"
+        },
+        {
+          "type": "minecraft:knockback_resistance",
+          "amount": 0.1,
+          "operation": "add_value",
+          "slot": "head",
+          "id": "contribution:reinforced_helmet_knockback"
+        }
+      ]
+    }
+  }
+}

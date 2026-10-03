@@ -15,7 +15,15 @@
         "slot": "chest",
         "asset_id": "contribution:winged/golden",
         "equip_sound": "minecraft:item.armor.equip_gold"
-      }
+      },
+      "minecraft:item_model": "contribution:winged/golden",
+      "minecraft:lore": [
+        {
+          "text": "添翼",
+          "color": "gray",
+          "italic": false
+        }
+      ]
     }
   }
 }

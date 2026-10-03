@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "base": "minecraft:stone_axe",
+  "addition": "minecraft:netherite_axe",
+  "result": {
+    "id": "minecraft:stone_axe",
+    "components": {
+      "minecraft:item_name": {
+        "text": "强化石斧"
+      },
+      "minecraft:max_damage": 2031,
+      "minecraft:damage_resistant": {
+        "types": "#minecraft:is_fire"
+      },
+      "minecraft:attribute_modifiers": [
+        {
+          "type": "minecraft:attack_damage",
+          "amount": 9,
+          "operation": "add_value",
+          "slot": "mainhand",
+          "id": "minecraft:base_attack_damage"
+        },
+        {
+          "type": "minecraft:attack_speed",
+          "amount": -3,
+          "operation": "add_value",
+          "slot": "mainhand",
+          "id": "minecraft:base_attack_speed"
+        }
+      ]
+    }
+  }
+}
