@@ -23,6 +23,7 @@ final class ContributionScreen extends Screen {
     private static final int ACCENT = 0xFF6FC9DF;
     private ContributionUiNetwork.Snapshot snapshot;
     private long searchDue;
+    private long lastNavigation;
     private String submittedSearch = "";
     private final Map<String, EditBox> fields = new HashMap<>();
     private int scroll;
@@ -40,8 +41,7 @@ final class ContributionScreen extends Screen {
             current.retainedFields.clear();
             for (var entry : current.fields.entrySet()) current.retainedFields.put(entry.getKey(), entry.getValue().getValue());
             current.snapshot = snapshot;
-            current.clearWidgets();
-            current.init();
+            current.rebuildWidgets();
             if (snapshot.view().equals("admin") && current.fields.containsKey("target"))
                 current.setFocused(current.fields.get("target"));
             return;
@@ -131,7 +131,7 @@ final class ContributionScreen extends Screen {
             rowWidgets.add(addRenderableWidget(new ContributionRowWidget(12, top() + slot * rowHeight(),
                     width - 24, rowHeight() - 2, () -> {
                         int index = scroll + offset;
-                        if (index < snapshot.rowCommands().size()) command(snapshot.rowCommands().get(index));
+                        if (index < snapshot.rowCommands().size()) run(snapshot.rowCommands().get(index));
                     })));
         }
         syncRows();
@@ -145,6 +145,9 @@ final class ContributionScreen extends Screen {
     }
 
     private void run(String template) {
+        long now = System.nanoTime();
+        if (now - lastNavigation < 250_000_000L) return;
+        lastNavigation = now;
         String command = template;
         for (var field : snapshot.fields()) {
             EditBox box = fields.get(field.key());

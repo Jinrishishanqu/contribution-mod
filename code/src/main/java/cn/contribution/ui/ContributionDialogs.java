@@ -26,6 +26,8 @@ public final class ContributionDialogs {
     private static final Map<UUID, ContributionNavigation> NAVIGATION = new HashMap<>();
     private static final Map<UUID, String> CURRENT_PAGE = new HashMap<>();
     private static final Map<UUID, Long> PAGE_REVISIONS = new HashMap<>();
+    private static final Map<UUID, Long> LAST_REQUEST = new HashMap<>();
+    private static final Map<UUID, Object> PENDING_QUERY = new HashMap<>();
     private static final Set<UUID> FORCE_VANILLA = new HashSet<>();
 
     static String currentRequest(UUID player) { return CURRENT_PAGE.getOrDefault(player, "home"); }
@@ -40,6 +42,8 @@ public final class ContributionDialogs {
     }
     public static void forget(UUID player) {
         FORCE_VANILLA.remove(player);
+        LAST_REQUEST.remove(player);
+        PENDING_QUERY.remove(player);
         NAVIGATION.remove(player);
         CURRENT_PAGE.remove(player);
         PAGE_REVISIONS.remove(player);
@@ -52,6 +56,14 @@ public final class ContributionDialogs {
         if (source.getPlayer() == null) { source.sendFailure(Component.literal("请在游戏内打开界面")); return 0; }
         try {
             UUID playerId = source.getPlayer().getUUID();
+            long now = System.nanoTime();
+            if (!request.equals("close") && !request.equals("back") && !request.equals("home")) {
+                // Do not queue more database reads while this player's page is still loading.
+                if (PENDING_QUERY.containsKey(playerId)) return 1;
+                Long previous = LAST_REQUEST.get(playerId);
+                if (previous != null && now - previous < 250_000_000L) return 1;
+                LAST_REQUEST.put(playerId, now);
+            }
             PAGE_REVISIONS.merge(playerId, 1L, Long::sum);
             var navigation = NAVIGATION.computeIfAbsent(playerId, ignored -> new ContributionNavigation());
             if (request.equals("close")) {
@@ -338,7 +350,10 @@ public final class ContributionDialogs {
     private static <T> void query(CommandSourceStack source, CompletableFuture<T> future, Consumer<T> success) {
         UUID playerId = source.getPlayer().getUUID();
         long revision = PAGE_REVISIONS.getOrDefault(playerId, 0L);
+        Object token = new Object();
+        PENDING_QUERY.put(playerId, token);
         future.whenComplete((result, error) -> source.getServer().execute(() -> {
+            PENDING_QUERY.remove(playerId, token);
             if (source.getPlayer() == null || source.getPlayer().hasDisconnected()) return;
             if (PAGE_REVISIONS.getOrDefault(playerId, 0L) != revision) return;
             if (error != null) {
@@ -414,5 +429,5 @@ public final class ContributionDialogs {
         if (hasPrevious) controls.add(button("关闭", "close"));
         return new MultiActionDialog(common, controls, Optional.of(exit), columns);
     }
-    public static void clear() { NAVIGATION.clear(); CURRENT_PAGE.clear(); PAGE_REVISIONS.clear(); FORCE_VANILLA.clear(); }
+    public static void clear() { NAVIGATION.clear(); CURRENT_PAGE.clear(); PAGE_REVISIONS.clear(); LAST_REQUEST.clear(); PENDING_QUERY.clear(); FORCE_VANILLA.clear(); }
 }

@@ -18,9 +18,11 @@ public abstract class ItemUseCompletionMixin {
         ItemStack stack = (ItemStack)(Object)this;
         ItemStack before = stack.copy();
         ItemStack result = original.call(level, user);
-        if (user instanceof ServerPlayer player && ContributionRuntime.statistics() != null) {
+        if (user instanceof ServerPlayer player) {
             int consumed = Math.max(0, before.getCount() - stack.getCount());
-            if (consumed > 0) ContributionRuntime.statistics().usedItem(player, before, consumed);
+            cn.contribution.items.SpecialItems.consumed(player, before, consumed);
+            if (consumed > 0 && ContributionRuntime.statistics() != null)
+                ContributionRuntime.statistics().usedItem(player, before, consumed);
         }
         return result;
     }

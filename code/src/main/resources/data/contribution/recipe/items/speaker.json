@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " II",
+    "I  ",
+    "SII"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "minecraft:firework_star",
+    "count": 1,
+    "components": {
+      "minecraft:item_name": {
+        "text": "公示喇叭"
+      },
+      "minecraft:rarity": "rare",
+      "minecraft:custom_data": {
+        "contribution:item": "speaker"
+      },
+      "minecraft:consumable": {
+        "animation": "none",
+        "consume_seconds": 0.2,
+        "has_consume_particles": false
+      },
+      "minecraft:use_cooldown": {
+        "seconds": 10,
+        "cooldown_group": "contribution:speaker"
+      },
+      "minecraft:item_model": "contribution:speaker",
+      "minecraft:lore": [
+        {
+          "text": "使用后展示副手物品",
+          "color": "gray",
+          "italic": false
+        }
+      ]
+    }
+  }
+}

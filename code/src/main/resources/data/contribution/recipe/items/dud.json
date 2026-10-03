@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "GGG",
+    "GWG",
+    "GGG"
+  ],
+  "key": {
+    "G": "minecraft:gunpowder",
+    "W": "minecraft:water_bucket"
+  },
+  "result": {
+    "id": "minecraft:gunpowder",
+    "count": 8,
+    "components": {
+      "minecraft:item_name": {
+        "text": "哑炮"
+      },
+      "minecraft:rarity": "uncommon",
+      "minecraft:custom_data": {
+        "contribution:item": "dud"
+      },
+      "minecraft:consumable": {
+        "animation": "none",
+        "consume_seconds": 0.1,
+        "has_consume_particles": false,
+        "sound": "minecraft:entity.creeper.primed"
+      },
+      "minecraft:use_cooldown": {
+        "seconds": 1,
+        "cooldown_group": "contribution:dud"
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "minecraft:string",
+  "base": "minecraft:netherite_helmet",
+  "addition": "minecraft:gold_ingot",
+  "result": {
+    "id": "minecraft:netherite_helmet",
+    "components": {
+      "minecraft:item_model": "contribution:crown",
+      "minecraft:max_stack_size": 1,
+      "minecraft:lore": [
+        {
+          "text": "变形帽子",
+          "italic": false,
+          "color": "gray"
+        }
+      ],
+      "minecraft:equippable": {
+        "slot": "head"
+      }
+    }
+  }
+}

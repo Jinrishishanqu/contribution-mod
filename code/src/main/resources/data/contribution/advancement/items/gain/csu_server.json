@@ -1,5 +1,5 @@
 {
-  "parent": "contribution:items/gain/soul_torch",
+  "parent": "contribution:items/root",
   "criteria": {
     "csu_server": {
       "trigger": "minecraft:inventory_changed",
@@ -18,7 +18,7 @@
       "count": 1
     },
     "title": {
-      "text": "左职服务器怎么了"
+      "text": "服务器怎么了"
     },
     "description": {
       "text": "获得烤马铃薯"

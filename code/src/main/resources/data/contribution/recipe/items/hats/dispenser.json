@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "minecraft:string",
+  "base": "minecraft:leather_helmet",
+  "addition": "minecraft:dispenser",
+  "result": {
+    "id": "minecraft:leather_helmet",
+    "components": {
+      "minecraft:item_model": "minecraft:dispenser",
+      "minecraft:max_stack_size": 1,
+      "minecraft:lore": [
+        {
+          "text": "变形帽子",
+          "italic": false,
+          "color": "gray"
+        }
+      ],
+      "minecraft:equippable": {
+        "slot": "head"
+      }
+    }
+  }
+}

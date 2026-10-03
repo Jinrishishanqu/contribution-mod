@@ -1,0 +1,12 @@
+{
+  "criteria": {
+    "unlock": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "contribution:items/hats/tinted_glass"
+    ]
+  }
+}

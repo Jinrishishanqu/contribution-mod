@@ -1,0 +1,12 @@
+{
+  "criteria": {
+    "unlock": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "contribution:items/hats/light_blue_stained_glass"
+    ]
+  }
+}

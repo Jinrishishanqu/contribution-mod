@@ -103,9 +103,10 @@ public final class ItemContentChecks {
         }
         checkExpandedEquipment(ops);
         checkVisualResources(ops, lookup);
-        if (recipes != 89 || advancements != 127 || equipment != 13)
+        checkRestoredItems(ops, winged);
+        if (recipes != 128 || advancements != 164 || equipment != 13)
             throw new AssertionError("Missing content: " + recipes + "/" + advancements + "/" + equipment);
-        System.out.println("ITEM_CONTENT_PASS: 89 recipes, 127 advancements, 13 equipment definitions; all material tools/spears and copper armor assemble; native tooltip IDs, wing models/lore, trim textures, cyan background and two durable elytra verified");
+        System.out.println("ITEM_CONTENT_PASS: 128 recipes, 164 advancements, 13 equipment definitions; all material tools/spears and copper armor assemble; native tooltip IDs, wing models/lore, trim textures, cyan background and two durable elytra verified");
     }
 
     private static void checkExpandedEquipment(RegistryOps<JsonElement> ops) throws Exception {
@@ -178,6 +179,52 @@ public final class ItemContentChecks {
             var fallback = definition.getAsJsonObject("fallback").get("model").getAsString().split(":", 2)[1];
             if (!Files.exists(ROOT.resolve("assets/contribution/models/" + fallback + ".json"))) throw new AssertionError("Missing wing item model");
         }
+    }
+
+    private static void checkRestoredItems(RegistryOps<JsonElement> ops, ItemStack winged) throws Exception {
+        if (FlightDurability.enchantmentInput(winged) != winged) throw new AssertionError("Combat path was changed");
+        boolean previous = FlightDurability.enter();
+        try {
+            var flight = FlightDurability.enchantmentInput(winged);
+            if (!flight.is(Items.ELYTRA) || !flight.get(DataComponents.ENCHANTMENTS).equals(winged.get(DataComponents.ENCHANTMENTS)))
+                throw new AssertionError("Flight must use tool item identity and preserve enchantments");
+            var ordinary = new ItemStack(Items.DIAMOND_CHESTPLATE);
+            if (FlightDurability.enchantmentInput(ordinary) != ordinary) throw new AssertionError("Ordinary armor affected");
+            boolean nested = FlightDurability.enter();
+            FlightDurability.leave(nested);
+            if (!FlightDurability.enchantmentInput(winged).is(Items.ELYTRA)) throw new AssertionError("Nested scope lost");
+        } finally { FlightDurability.leave(previous); }
+        if (FlightDurability.enchantmentInput(winged) != winged) throw new AssertionError("Flight scope leaked");
+        int hats = 0;
+        try (var paths = Files.list(ROOT.resolve("data/contribution/recipe/items/hats"))) {
+            for (var path : paths.toList()) {
+                var definition = json(path).getAsJsonObject();
+                var registry = net.minecraft.core.registries.BuiltInRegistries.ITEM;
+                var input = new ItemStack(registry.getValue(net.minecraft.resources.Identifier.parse(definition.get("base").getAsString())));
+                input.set(DataComponents.CUSTOM_NAME, Component.literal("保留名称"));
+                var recipe = (SmithingTransformRecipe) Recipe.DIRECT_CODEC.parse(ops, definition).getOrThrow();
+                var grid = new SmithingRecipeInput(new ItemStack(Items.STRING), input,
+                        new ItemStack(registry.getValue(net.minecraft.resources.Identifier.parse(definition.get("addition").getAsString()))));
+                var result = recipe.assemble(grid);
+                if (!recipe.matches(grid, null) || result.isEmpty() || result.getMaxStackSize() != 1
+                        || result.get(DataComponents.EQUIPPABLE).slot() != net.minecraft.world.entity.EquipmentSlot.HEAD
+                        || !result.get(DataComponents.CUSTOM_NAME).equals(input.get(DataComponents.CUSTOM_NAME)))
+                    throw new AssertionError("Invalid hat assembly: " + path);
+                hats++;
+            }
+        }
+        if (hats != 37) throw new AssertionError("Missing unique hats");
+        for (var name : List.of("speaker", "dud")) {
+            var recipe = (net.minecraft.world.item.crafting.ShapedRecipe) Recipe.DIRECT_CODEC.parse(ops,
+                    json(ROOT.resolve("data/contribution/recipe/items/" + name + ".json"))).getOrThrow();
+            var output = recipe.assemble(CraftingInput.of(1, 1, List.of(new ItemStack(Items.STONE))));
+            if (!output.has(DataComponents.CONSUMABLE) || !output.has(DataComponents.USE_COOLDOWN)
+                    || !output.get(DataComponents.CUSTOM_DATA).copyTag().getString("contribution:item").orElse("").equals(name))
+                throw new AssertionError("Missing native consumable identity: " + name);
+        }
+        if (Files.exists(ROOT.resolve("data/contribution/advancement/items/gain/gain_torch.json"))
+                || Files.exists(ROOT.resolve("data/contribution/advancement/items/gain/soul_torch.json")))
+            throw new AssertionError("Removed advancements still packaged");
     }
 
     private static boolean sameNativeModifiers(net.minecraft.world.item.component.ItemAttributeModifiers actual,
