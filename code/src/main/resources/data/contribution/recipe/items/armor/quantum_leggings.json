@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_transmute",
+  "category": "equipment",
+  "input": "minecraft:netherite_leggings",
+  "material": "minecraft:ender_pearl",
+  "result": {
+    "id": "minecraft:netherite_leggings",
+    "components": {
+      "minecraft:item_name": {
+        "text": "量子护腿"
+      },
+      "minecraft:rarity": "epic",
+      "minecraft:item_model": "contribution:armor/quantum_leggings",
+      "minecraft:equippable": {
+        "slot": "legs",
+        "asset_id": "contribution:armor/quantum",
+        "equip_sound": "minecraft:item.armor.equip_netherite"
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "parent": "contribution:items/combat/odm_kill",
+  "criteria": {
+    "glory_of_the_past": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "damage": {
+          "taken": {
+            "min": 36.5
+          },
+          "type": {
+            "direct_entity": {
+              "minecraft:entity_type": "minecraft:player"
+            }
+          }
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:netherite_axe",
+      "components": {
+        "minecraft:enchantment_glint_override": true
+      }
+    },
+    "title": {
+      "text": "昔日的荣光"
+    },
+    "description": {
+      "text": "一次攻击造成36.5伤害"
+    }
+  },
+  "requirements": [
+    [
+      "glory_of_the_past"
+    ]
+  ]
+}

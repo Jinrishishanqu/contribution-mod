@@ -1,0 +1,48 @@
+{
+  "parent": "contribution:items/combat/shoot_offground_mob",
+  "criteria": {
+    "odm_kill": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:movement": {
+              "speed": {
+                "min": 30
+              }
+            },
+            "minecraft:flags": {
+              "is_fall_flying": true
+            },
+            "minecraft:equipment": {
+              "mainhand": {
+                "items": "#minecraft:swords"
+              },
+              "offhand": {
+                "items": "#minecraft:swords"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:firework_rocket"
+    },
+    "title": {
+      "text": "立体机动装置"
+    },
+    "description": {
+      "text": "在用鞘翅高速飞行时持双剑斩杀生物"
+    }
+  },
+  "requirements": [
+    [
+      "odm_kill"
+    ]
+  ]
+}

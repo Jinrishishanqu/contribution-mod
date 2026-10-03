@@ -1,0 +1,32 @@
+{
+  "parent": "contribution:items/gain/gain_torch",
+  "criteria": {
+    "soul_torch": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:soul_torch"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:soul_torch",
+      "count": 1
+    },
+    "title": {
+      "text": "寄了"
+    },
+    "description": {
+      "text": "火把社寄了，不建了"
+    }
+  },
+  "requirements": [
+    [
+      "soul_torch"
+    ]
+  ]
+}

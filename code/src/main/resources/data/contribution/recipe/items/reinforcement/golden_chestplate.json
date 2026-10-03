@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "base": "minecraft:golden_chestplate",
+  "addition": "minecraft:netherite_chestplate",
+  "result": {
+    "id": "minecraft:golden_chestplate",
+    "components": {
+      "minecraft:item_name": {
+        "text": "强化金胸甲"
+      },
+      "minecraft:max_damage": 592,
+      "minecraft:damage_resistant": {
+        "types": "#minecraft:is_fire"
+      },
+      "minecraft:attribute_modifiers": [
+        {
+          "type": "minecraft:armor",
+          "amount": 8,
+          "operation": "add_value",
+          "slot": "chest",
+          "id": "contribution:reinforced_chestplate_armor"
+        },
+        {
+          "type": "minecraft:armor_toughness",
+          "amount": 3,
+          "operation": "add_value",
+          "slot": "chest",
+          "id": "contribution:reinforced_chestplate_toughness"
+        },
+        {
+          "type": "minecraft:knockback_resistance",
+          "amount": 0.1,
+          "operation": "add_value",
+          "slot": "chest",
+          "id": "contribution:reinforced_chestplate_knockback"
+        }
+      ]
+    }
+  }
+}

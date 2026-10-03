@@ -1,0 +1,31 @@
+{
+  "parent": "contribution:items/root",
+  "criteria": {
+    "knockdown_boar": {
+      "trigger": "minecraft:entity_killed_player",
+      "conditions": {
+        "killing_blow": {
+          "source_entity": {
+            "minecraft:entity_type": "minecraft:hoglin"
+          }
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:zoglin_spawn_egg"
+    },
+    "title": {
+      "text": "十岁差点打倒野猪"
+    },
+    "description": {
+      "text": "被疣猪兽击败"
+    }
+  },
+  "requirements": [
+    [
+      "knockdown_boar"
+    ]
+  ]
+}

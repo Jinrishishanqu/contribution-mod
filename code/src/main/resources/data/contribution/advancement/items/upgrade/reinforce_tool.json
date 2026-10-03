@@ -1,0 +1,310 @@
+{
+  "parent": "contribution:items/upgrade/add_wing",
+  "criteria": {
+    "golden_sword": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:golden_sword",
+            "components": {
+              "minecraft:attribute_modifiers": [
+                {
+                  "type": "minecraft:attack_damage",
+                  "amount": 7,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_damage"
+                },
+                {
+                  "type": "minecraft:attack_speed",
+                  "amount": -2.4,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_speed"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "golden_pickaxe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:golden_pickaxe",
+            "components": {
+              "minecraft:attribute_modifiers": [
+                {
+                  "type": "minecraft:attack_damage",
+                  "amount": 5,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_damage"
+                },
+                {
+                  "type": "minecraft:attack_speed",
+                  "amount": -2.8,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_speed"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "golden_axe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:golden_axe",
+            "components": {
+              "minecraft:attribute_modifiers": [
+                {
+                  "type": "minecraft:attack_damage",
+                  "amount": 9,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_damage"
+                },
+                {
+                  "type": "minecraft:attack_speed",
+                  "amount": -3,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_speed"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "golden_shovel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:golden_shovel",
+            "components": {
+              "minecraft:attribute_modifiers": [
+                {
+                  "type": "minecraft:attack_damage",
+                  "amount": 5.5,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_damage"
+                },
+                {
+                  "type": "minecraft:attack_speed",
+                  "amount": -3,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_speed"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "golden_hoe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:golden_hoe",
+            "components": {
+              "minecraft:attribute_modifiers": [
+                {
+                  "type": "minecraft:attack_damage",
+                  "amount": 0,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_damage"
+                },
+                {
+                  "type": "minecraft:attack_speed",
+                  "amount": 0,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_speed"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "diamond_sword": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:diamond_sword",
+            "components": {
+              "minecraft:attribute_modifiers": [
+                {
+                  "type": "minecraft:attack_damage",
+                  "amount": 7,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_damage"
+                },
+                {
+                  "type": "minecraft:attack_speed",
+                  "amount": -2.4,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_speed"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "diamond_pickaxe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:diamond_pickaxe",
+            "components": {
+              "minecraft:attribute_modifiers": [
+                {
+                  "type": "minecraft:attack_damage",
+                  "amount": 5,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_damage"
+                },
+                {
+                  "type": "minecraft:attack_speed",
+                  "amount": -2.8,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_speed"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "diamond_axe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:diamond_axe",
+            "components": {
+              "minecraft:attribute_modifiers": [
+                {
+                  "type": "minecraft:attack_damage",
+                  "amount": 9,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_damage"
+                },
+                {
+                  "type": "minecraft:attack_speed",
+                  "amount": -3,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_speed"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "diamond_shovel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:diamond_shovel",
+            "components": {
+              "minecraft:attribute_modifiers": [
+                {
+                  "type": "minecraft:attack_damage",
+                  "amount": 5.5,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_damage"
+                },
+                {
+                  "type": "minecraft:attack_speed",
+                  "amount": -3,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_speed"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "diamond_hoe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:diamond_hoe",
+            "components": {
+              "minecraft:attribute_modifiers": [
+                {
+                  "type": "minecraft:attack_damage",
+                  "amount": 0,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_damage"
+                },
+                {
+                  "type": "minecraft:attack_speed",
+                  "amount": 0,
+                  "operation": "add_value",
+                  "slot": "mainhand",
+                  "id": "contribution:reinforced_attack_speed"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:golden_pickaxe"
+    },
+    "title": {
+      "text": "工具强化"
+    },
+    "description": {
+      "text": "对工具进行下界合金级强化"
+    }
+  },
+  "requirements": [
+    [
+      "golden_sword",
+      "golden_pickaxe",
+      "golden_axe",
+      "golden_shovel",
+      "golden_hoe",
+      "diamond_sword",
+      "diamond_pickaxe",
+      "diamond_axe",
+      "diamond_shovel",
+      "diamond_hoe"
+    ]
+  ]
+}

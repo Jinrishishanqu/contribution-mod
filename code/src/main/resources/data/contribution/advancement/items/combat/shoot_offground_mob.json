@@ -1,0 +1,43 @@
+{
+  "parent": "contribution:items/combat/kill_horse",
+  "criteria": {
+    "shoot_offground_mob": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "damage": {
+          "type": {
+            "is_direct": false,
+            "direct_entity": {
+              "minecraft:entity_type": "#minecraft:arrows"
+            }
+          }
+        },
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:flags": {
+              "is_on_ground": false
+            }
+          }
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:bow"
+    },
+    "title": {
+      "text": "会挽雕弓如满月"
+    },
+    "description": {
+      "text": "用箭射中空中的生物"
+    }
+  },
+  "requirements": [
+    [
+      "shoot_offground_mob"
+    ]
+  ]
+}

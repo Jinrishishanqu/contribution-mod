@@ -1,0 +1,49 @@
+{
+  "parent": "contribution:items/danger/knockdown_boar",
+  "criteria": {
+    "evaporation": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "type": {
+            "tags": [
+              {
+                "expected": true,
+                "id": "minecraft:lava"
+              }
+            ]
+          }
+        },
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:location": {
+              "block": {
+                "blocks": [
+                  "minecraft:water"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:lava_bucket"
+    },
+    "title": {
+      "text": "蒸发"
+    },
+    "description": {
+      "text": "在水中被岩浆烫伤"
+    }
+  },
+  "requirements": [
+    [
+      "evaporation"
+    ]
+  ]
+}

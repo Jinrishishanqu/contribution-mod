@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "contribution:armor/quantum"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "contribution:armor/quantum"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "contribution:armor/quantum"
+      }
+    ]
+  }
+}

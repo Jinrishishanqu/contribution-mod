@@ -1,0 +1,327 @@
+{
+  "parent": "contribution:items/sheep/jeb_",
+  "criteria": {
+    "sheep_village.0b": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "white"
+            }
+          }
+        }
+      }
+    },
+    "sheep_village.1b": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "orange"
+            }
+          }
+        }
+      }
+    },
+    "sheep_village.2b": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "magenta"
+            }
+          }
+        }
+      }
+    },
+    "sheep_village.3b": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "light_blue"
+            }
+          }
+        }
+      }
+    },
+    "sheep_village.4b": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "yellow"
+            }
+          }
+        }
+      }
+    },
+    "sheep_village.5b": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "lime"
+            }
+          }
+        }
+      }
+    },
+    "sheep_village.6b": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "pink"
+            }
+          }
+        }
+      }
+    },
+    "sheep_village.7b": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "gray"
+            }
+          }
+        }
+      }
+    },
+    "sheep_village.8b": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "light_gray"
+            }
+          }
+        }
+      }
+    },
+    "sheep_village.9b": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "cyan"
+            }
+          }
+        }
+      }
+    },
+    "sheep_village.10b": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "purple"
+            }
+          }
+        }
+      }
+    },
+    "sheep_village.11b": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "blue"
+            }
+          }
+        }
+      }
+    },
+    "sheep_village.12b": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "brown"
+            }
+          }
+        }
+      }
+    },
+    "sheep_village.13b": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "green"
+            }
+          }
+        }
+      }
+    },
+    "sheep_village.14b": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "red"
+            }
+          }
+        }
+      }
+    },
+    "sheep_village.15b": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "black"
+            }
+          }
+        }
+      }
+    },
+    "sheep_village.jeb": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep"
+          }
+        },
+        "item": {
+          "items": "minecraft:name_tag",
+          "components": {
+            "minecraft:custom_name": "jeb_"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "sheep_village.0b"
+    ],
+    [
+      "sheep_village.1b"
+    ],
+    [
+      "sheep_village.2b"
+    ],
+    [
+      "sheep_village.3b"
+    ],
+    [
+      "sheep_village.4b"
+    ],
+    [
+      "sheep_village.5b"
+    ],
+    [
+      "sheep_village.6b"
+    ],
+    [
+      "sheep_village.7b"
+    ],
+    [
+      "sheep_village.8b"
+    ],
+    [
+      "sheep_village.9b"
+    ],
+    [
+      "sheep_village.10b"
+    ],
+    [
+      "sheep_village.11b"
+    ],
+    [
+      "sheep_village.12b"
+    ],
+    [
+      "sheep_village.13b"
+    ],
+    [
+      "sheep_village.14b"
+    ],
+    [
+      "sheep_village.15b"
+    ],
+    [
+      "sheep_village.jeb"
+    ]
+  ],
+  "display": {
+    "icon": {
+      "id": "minecraft:sheep_spawn_egg"
+    },
+    "title": {
+      "text": "羊村"
+    },
+    "description": {
+      "text": "与 16 种颜色的羊交互，并用 jeb_ 命名牌命名一只羊"
+    }
+  }
+}

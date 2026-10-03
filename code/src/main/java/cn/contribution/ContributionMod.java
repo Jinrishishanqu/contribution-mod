@@ -30,6 +30,7 @@ public final class ContributionMod implements ModInitializer {
         PayloadTypeRegistry.clientboundPlay().register(ShopSnapshotPayload.TYPE, ShopSnapshotPayload.CODEC);
         PayloadTypeRegistry.clientboundPlay().register(ContributionSnapshotPayload.TYPE, ContributionSnapshotPayload.CODEC);
         IndustryRegistry.bootstrap();
+        ServerLifecycleEvents.SERVER_STARTED.register(cn.contribution.items.ItemResourcePack::export);
         ServerLifecycleEvents.SERVER_STARTED.register(ContributionRuntime::start);
         ServerLifecycleEvents.END_DATA_PACK_RELOAD.register((server, resources, success) -> {
             if (success && ContributionRuntime.statistics() != null) cn.contribution.industry.RuleManager.stage(server);

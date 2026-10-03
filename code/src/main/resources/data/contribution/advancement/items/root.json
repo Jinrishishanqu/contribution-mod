@@ -1,0 +1,27 @@
+{
+  "criteria": {
+    "root": {
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:carrot_on_a_stick",
+      "count": 1
+    },
+    "title": {
+      "text": "更多乐趣"
+    },
+    "description": {
+      "text": "更多合成、装备与探索乐趣"
+    },
+    "background": "minecraft:textures/block/cyan_concrete_powder.png",
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "requirements": [
+    [
+      "root"
+    ]
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "parent": "contribution:items/danger/superconduction",
+  "criteria": {
+    "hurt_in_the_void": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "type": {
+            "tags": [
+              {
+                "expected": true,
+                "id": "minecraft:out_of_world"
+              }
+            ]
+          }
+        },
+        "player": {
+          "type": "minecraft:any_of",
+          "terms": [
+            {
+              "type": "minecraft:location_check",
+              "predicate": {
+                "dimension": "minecraft:overworld",
+                "position": {
+                  "y": {
+                    "max": -129
+                  }
+                }
+              }
+            },
+            {
+              "type": "minecraft:location_check",
+              "predicate": {
+                "dimension": "minecraft:the_nether",
+                "position": {
+                  "y": {
+                    "max": -65
+                  }
+                }
+              }
+            },
+            {
+              "type": "minecraft:location_check",
+              "predicate": {
+                "dimension": "minecraft:the_end",
+                "position": {
+                  "y": {
+                    "max": -65
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:barrier"
+    },
+    "title": {
+      "text": "自走虚空挂"
+    },
+    "description": {
+      "text": "掉入虚空"
+    }
+  },
+  "requirements": [
+    [
+      "hurt_in_the_void"
+    ]
+  ]
+}

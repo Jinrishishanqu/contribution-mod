@@ -1,0 +1,41 @@
+{
+  "parent": "contribution:items/sheep/manyangyang",
+  "criteria": {
+    "nuanyangyang": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "magenta"
+            }
+          }
+        },
+        "item": {
+          "items": [
+            "minecraft:magenta_dye"
+          ]
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:magenta_wool"
+    },
+    "title": {
+      "text": "暖羊羊"
+    },
+    "description": {
+      "text": "将羊染成品红色"
+    }
+  },
+  "requirements": [
+    [
+      "nuanyangyang"
+    ]
+  ]
+}

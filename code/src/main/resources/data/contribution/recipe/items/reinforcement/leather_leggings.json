@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "base": "minecraft:leather_leggings",
+  "addition": "minecraft:netherite_leggings",
+  "result": {
+    "id": "minecraft:leather_leggings",
+    "components": {
+      "minecraft:item_name": {
+        "text": "强化皮革护腿"
+      },
+      "minecraft:max_damage": 555,
+      "minecraft:damage_resistant": {
+        "types": "#minecraft:is_fire"
+      },
+      "minecraft:attribute_modifiers": [
+        {
+          "type": "minecraft:armor",
+          "amount": 6,
+          "operation": "add_value",
+          "slot": "legs",
+          "id": "contribution:reinforced_leggings_armor"
+        },
+        {
+          "type": "minecraft:armor_toughness",
+          "amount": 3,
+          "operation": "add_value",
+          "slot": "legs",
+          "id": "contribution:reinforced_leggings_toughness"
+        },
+        {
+          "type": "minecraft:knockback_resistance",
+          "amount": 0.1,
+          "operation": "add_value",
+          "slot": "legs",
+          "id": "contribution:reinforced_leggings_knockback"
+        }
+      ]
+    }
+  }
+}

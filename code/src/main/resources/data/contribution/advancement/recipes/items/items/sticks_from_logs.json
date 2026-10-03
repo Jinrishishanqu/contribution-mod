@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "unlock": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "contribution:items/sticks_from_logs"
+    ]
+  },
+  "requirements": [
+    [
+      "unlock"
+    ]
+  ]
+}

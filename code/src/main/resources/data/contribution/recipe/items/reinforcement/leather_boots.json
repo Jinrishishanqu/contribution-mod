@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "base": "minecraft:leather_boots",
+  "addition": "minecraft:netherite_boots",
+  "result": {
+    "id": "minecraft:leather_boots",
+    "components": {
+      "minecraft:item_name": {
+        "text": "强化皮革靴子"
+      },
+      "minecraft:max_damage": 481,
+      "minecraft:damage_resistant": {
+        "types": "#minecraft:is_fire"
+      },
+      "minecraft:attribute_modifiers": [
+        {
+          "type": "minecraft:armor",
+          "amount": 3,
+          "operation": "add_value",
+          "slot": "feet",
+          "id": "contribution:reinforced_boots_armor"
+        },
+        {
+          "type": "minecraft:armor_toughness",
+          "amount": 3,
+          "operation": "add_value",
+          "slot": "feet",
+          "id": "contribution:reinforced_boots_toughness"
+        },
+        {
+          "type": "minecraft:knockback_resistance",
+          "amount": 0.1,
+          "operation": "add_value",
+          "slot": "feet",
+          "id": "contribution:reinforced_boots_knockback"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "minecraft:gold"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "minecraft:gold"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "minecraft:gold"
+      }
+    ],
+    "wings": [
+      {
+        "texture": "minecraft:elytra",
+        "use_player_texture": true
+      }
+    ]
+  },
+  "trim_overrides": [
+    {
+      "palette": "minecraft:trim/gold_darker",
+      "when": {
+        "material": "minecraft:gold"
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "parent": "contribution:items/operate/tnt_dupe",
+  "criteria": {
+    "arcadia": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "location": {
+          "type": "minecraft:any_of",
+          "terms": [
+            {
+              "type": "minecraft:location_check",
+              "predicate": {
+                "position": {
+                  "x": {
+                    "min": 100000
+                  }
+                }
+              }
+            },
+            {
+              "type": "minecraft:location_check",
+              "predicate": {
+                "position": {
+                  "x": {
+                    "max": -100000
+                  }
+                }
+              }
+            },
+            {
+              "type": "minecraft:location_check",
+              "predicate": {
+                "position": {
+                  "z": {
+                    "min": 100000
+                  }
+                }
+              }
+            },
+            {
+              "type": "minecraft:location_check",
+              "predicate": {
+                "position": {
+                  "z": {
+                    "max": -100000
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:stripped_cherry_wood",
+      "count": 1
+    },
+    "title": {
+      "text": "世外桃源"
+    },
+    "description": {
+      "text": "在距世界中心任一水平轴至少 100000 格处放置方块"
+    }
+  },
+  "requirements": [
+    [
+      "arcadia"
+    ]
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "contribution:items/root",
+  "criteria": {
+    "bred_cow": {
+      "trigger": "minecraft:bred_animals",
+      "conditions": {
+        "child": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:cow"
+          }
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:cow_spawn_egg"
+    },
+    "title": {
+      "text": "牛牛小小的也很可爱"
+    },
+    "description": {
+      "text": "繁殖得到小牛"
+    }
+  },
+  "requirements": [
+    [
+      "bred_cow"
+    ]
+  ]
+}

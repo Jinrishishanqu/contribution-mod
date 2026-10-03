@@ -1,0 +1,41 @@
+{
+  "parent": "contribution:items/root",
+  "criteria": {
+    "xiyangyang": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "light_blue"
+            }
+          }
+        },
+        "item": {
+          "items": [
+            "minecraft:light_blue_dye"
+          ]
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:light_blue_wool"
+    },
+    "title": {
+      "text": "喜羊羊"
+    },
+    "description": {
+      "text": "将羊染成淡蓝色"
+    }
+  },
+  "requirements": [
+    [
+      "xiyangyang"
+    ]
+  ]
+}

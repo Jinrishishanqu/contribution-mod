@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "base": "minecraft:netherite_chestplate",
+  "addition": "minecraft:elytra",
+  "result": {
+    "id": "minecraft:netherite_chestplate",
+    "components": {
+      "minecraft:max_damage": 592,
+      "minecraft:damage_resistant": {
+        "types": "#minecraft:is_fire"
+      },
+      "minecraft:glider": {},
+      "minecraft:equippable": {
+        "slot": "chest",
+        "asset_id": "contribution:winged/netherite",
+        "equip_sound": "minecraft:item.armor.equip_netherite"
+      }
+    }
+  }
+}

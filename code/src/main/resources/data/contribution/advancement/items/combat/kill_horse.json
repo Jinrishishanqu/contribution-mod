@@ -1,0 +1,34 @@
+{
+  "parent": "contribution:items/root",
+  "criteria": {
+    "kill_horse": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:horse",
+            "minecraft:nbt": "{Tame:1b}"
+          }
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:saddle"
+    },
+    "title": {
+      "text": "马呢？谁马没了？"
+    },
+    "description": {
+      "text": "击杀一匹被驯服的马"
+    }
+  },
+  "requirements": [
+    [
+      "kill_horse"
+    ]
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "parent": "contribution:items/discovery/use_spyglass",
+  "criteria": {
+    "robbery": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:location": {
+              "structures": "#minecraft:village"
+            }
+          }
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:iron_axe",
+      "count": 1
+    },
+    "title": {
+      "text": "——掠——夺——"
+    },
+    "description": {
+      "text": "发现一个村庄"
+    }
+  },
+  "requirements": [
+    [
+      "robbery"
+    ]
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "parent": "contribution:items/danger/warden_sonic",
+  "criteria": {
+    "hit_wall": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "type": {
+            "tags": [
+              {
+                "expected": true,
+                "id": "minecraft:fly_into_wall"
+              }
+            ]
+          },
+          "taken": {
+            "min": 20
+          }
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:elytra",
+      "components": {
+        "minecraft:damage": 431
+      }
+    },
+    "title": {
+      "text": "E=mv²/2"
+    },
+    "description": {
+      "text": "鞘翅撞墙时受到至少 20 点伤害"
+    }
+  },
+  "requirements": [
+    [
+      "hit_wall"
+    ]
+  ]
+}

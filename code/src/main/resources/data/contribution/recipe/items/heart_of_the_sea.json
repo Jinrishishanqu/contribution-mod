@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PPP",
+    "PHP",
+    "PPP"
+  ],
+  "key": {
+    "P": "minecraft:prismarine_crystals",
+    "H": "minecraft:heart_of_the_sea"
+  },
+  "result": {
+    "id": "minecraft:heart_of_the_sea",
+    "count": 2
+  }
+}

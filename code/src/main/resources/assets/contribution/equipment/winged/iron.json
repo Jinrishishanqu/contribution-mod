@@ -1,0 +1,33 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "minecraft:iron"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "minecraft:iron"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "minecraft:iron"
+      }
+    ],
+    "wings": [
+      {
+        "texture": "minecraft:elytra",
+        "use_player_texture": true
+      }
+    ]
+  },
+  "trim_overrides": [
+    {
+      "palette": "minecraft:trim/iron_darker",
+      "when": {
+        "material": "minecraft:iron"
+      }
+    }
+  ]
+}

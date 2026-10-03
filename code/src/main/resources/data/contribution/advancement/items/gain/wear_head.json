@@ -1,0 +1,47 @@
+{
+  "parent": "contribution:items/gain/csu_server",
+  "criteria": {
+    "wear_head": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:player_head"
+            ]
+          }
+        ],
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:equipment": {
+              "head": {
+                "items": [
+                  "minecraft:player_head"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:player_head",
+      "count": 1
+    },
+    "title": {
+      "text": "张冠李戴"
+    },
+    "description": {
+      "text": "戴上玩家头颅"
+    }
+  },
+  "requirements": [
+    [
+      "wear_head"
+    ]
+  ]
+}

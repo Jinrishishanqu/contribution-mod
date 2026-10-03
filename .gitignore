@@ -10,6 +10,7 @@ mysql-test-*.zip
 code/.gradle/
 code/build/
 code/run/
+code/run-items/
 code/logs/
 logs/
 stock-simulation/output/

@@ -1,0 +1,41 @@
+{
+  "parent": "contribution:items/sheep/xiyangyang",
+  "criteria": {
+    "meiyangyang": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "pink"
+            }
+          }
+        },
+        "item": {
+          "items": [
+            "minecraft:pink_dye"
+          ]
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:pink_wool"
+    },
+    "title": {
+      "text": "美羊羊"
+    },
+    "description": {
+      "text": "将羊染成粉色"
+    }
+  },
+  "requirements": [
+    [
+      "meiyangyang"
+    ]
+  ]
+}

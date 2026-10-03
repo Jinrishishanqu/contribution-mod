@@ -1,0 +1,37 @@
+{
+  "parent": "contribution:items/danger/hurt_in_the_void",
+  "criteria": {
+    "warden_sonic": {
+      "trigger": "minecraft:entity_killed_player",
+      "conditions": {
+        "killing_blow": {
+          "source_entity": {
+            "minecraft:entity_type": "minecraft:warden"
+          },
+          "tags": [
+            {
+              "expected": true,
+              "id": "minecraft:sonic_boom"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:echo_shard"
+    },
+    "title": {
+      "text": "总有地上的生灵…"
+    },
+    "description": {
+      "text": "被坚守者用一道音波抹杀"
+    }
+  },
+  "requirements": [
+    [
+      "warden_sonic"
+    ]
+  ]
+}

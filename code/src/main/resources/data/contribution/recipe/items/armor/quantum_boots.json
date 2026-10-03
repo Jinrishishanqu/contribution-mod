@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_transmute",
+  "category": "equipment",
+  "input": "minecraft:netherite_boots",
+  "material": "minecraft:ender_pearl",
+  "result": {
+    "id": "minecraft:netherite_boots",
+    "components": {
+      "minecraft:item_name": {
+        "text": "量子靴子"
+      },
+      "minecraft:rarity": "epic",
+      "minecraft:item_model": "contribution:armor/quantum_boots",
+      "minecraft:equippable": {
+        "slot": "feet",
+        "asset_id": "contribution:armor/quantum",
+        "equip_sound": "minecraft:item.armor.equip_netherite"
+      }
+    }
+  }
+}

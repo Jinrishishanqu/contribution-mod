@@ -1,0 +1,36 @@
+{
+  "parent": "contribution:items/bred/bred_cow",
+  "criteria": {
+    "bred_blue_axolotl": {
+      "trigger": "minecraft:bred_animals",
+      "conditions": {
+        "child": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:axolotl",
+            "minecraft:components": {
+              "minecraft:axolotl/variant": "blue"
+            }
+          }
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:axolotl_bucket"
+    },
+    "title": {
+      "text": "养鱼专业户"
+    },
+    "description": {
+      "text": "繁殖得到蓝色美西螈"
+    }
+  },
+  "requirements": [
+    [
+      "bred_blue_axolotl"
+    ]
+  ]
+}

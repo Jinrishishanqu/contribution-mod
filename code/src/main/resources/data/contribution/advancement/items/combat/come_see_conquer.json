@@ -1,0 +1,41 @@
+{
+  "parent": "contribution:items/combat/glory_of_the_past",
+  "criteria": {
+    "come_see_conquer": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:warden"
+          }
+        },
+        "killing_blow": {
+          "direct_entity": {
+            "minecraft:entity_type": "minecraft:player"
+          },
+          "source_entity": {
+            "minecraft:entity_type": "minecraft:player"
+          }
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:sculk_catalyst"
+    },
+    "title": {
+      "text": "我来，我见，我征服"
+    },
+    "description": {
+      "text": "近战击杀坚守者"
+    }
+  },
+  "requirements": [
+    [
+      "come_see_conquer"
+    ]
+  ]
+}

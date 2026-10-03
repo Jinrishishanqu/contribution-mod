@@ -1,0 +1,298 @@
+{
+  "parent": "contribution:items/operate/declaration_of_independence",
+  "criteria": {
+    "tnt_dupe": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "location": {
+          "type": "minecraft:all_of",
+          "terms": [
+            {
+              "type": "minecraft:location_check",
+              "predicate": {
+                "block": {
+                  "blocks": [
+                    "minecraft:tnt"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "minecraft:any_of",
+              "terms": [
+                {
+                  "type": "minecraft:location_check",
+                  "predicate": {
+                    "block": {
+                      "blocks": [
+                        "minecraft:slime_block"
+                      ]
+                    }
+                  },
+                  "offsetX": 1
+                },
+                {
+                  "type": "minecraft:location_check",
+                  "predicate": {
+                    "block": {
+                      "blocks": [
+                        "minecraft:slime_block"
+                      ]
+                    }
+                  },
+                  "offsetX": -1
+                },
+                {
+                  "type": "minecraft:location_check",
+                  "predicate": {
+                    "block": {
+                      "blocks": [
+                        "minecraft:slime_block"
+                      ]
+                    }
+                  },
+                  "offsetY": 1
+                },
+                {
+                  "type": "minecraft:location_check",
+                  "predicate": {
+                    "block": {
+                      "blocks": [
+                        "minecraft:slime_block"
+                      ]
+                    }
+                  },
+                  "offsetY": -1
+                },
+                {
+                  "type": "minecraft:location_check",
+                  "predicate": {
+                    "block": {
+                      "blocks": [
+                        "minecraft:slime_block"
+                      ]
+                    }
+                  },
+                  "offsetZ": 1
+                },
+                {
+                  "type": "minecraft:location_check",
+                  "predicate": {
+                    "block": {
+                      "blocks": [
+                        "minecraft:slime_block"
+                      ]
+                    }
+                  },
+                  "offsetZ": -1
+                }
+              ]
+            },
+            {
+              "type": "minecraft:any_of",
+              "terms": [
+                {
+                  "type": "minecraft:location_check",
+                  "predicate": {
+                    "block": {
+                      "blocks": [
+                        "minecraft:tube_coral_fan",
+                        "minecraft:tube_coral_wall_fan",
+                        "minecraft:dead_tube_coral_fan",
+                        "minecraft:dead_tube_coral_wall_fan",
+                        "minecraft:brain_coral_fan",
+                        "minecraft:brain_coral_wall_fan",
+                        "minecraft:dead_brain_coral_fan",
+                        "minecraft:dead_brain_coral_wall_fan",
+                        "minecraft:bubble_coral_fan",
+                        "minecraft:bubble_coral_wall_fan",
+                        "minecraft:dead_bubble_coral_fan",
+                        "minecraft:dead_bubble_coral_wall_fan",
+                        "minecraft:fire_coral_fan",
+                        "minecraft:fire_coral_wall_fan",
+                        "minecraft:dead_fire_coral_fan",
+                        "minecraft:dead_fire_coral_wall_fan",
+                        "minecraft:horn_coral_fan",
+                        "minecraft:horn_coral_wall_fan",
+                        "minecraft:dead_horn_coral_fan",
+                        "minecraft:dead_horn_coral_wall_fan"
+                      ]
+                    }
+                  },
+                  "offsetX": -1
+                },
+                {
+                  "type": "minecraft:location_check",
+                  "predicate": {
+                    "block": {
+                      "blocks": [
+                        "minecraft:tube_coral_fan",
+                        "minecraft:tube_coral_wall_fan",
+                        "minecraft:dead_tube_coral_fan",
+                        "minecraft:dead_tube_coral_wall_fan",
+                        "minecraft:brain_coral_fan",
+                        "minecraft:brain_coral_wall_fan",
+                        "minecraft:dead_brain_coral_fan",
+                        "minecraft:dead_brain_coral_wall_fan",
+                        "minecraft:bubble_coral_fan",
+                        "minecraft:bubble_coral_wall_fan",
+                        "minecraft:dead_bubble_coral_fan",
+                        "minecraft:dead_bubble_coral_wall_fan",
+                        "minecraft:fire_coral_fan",
+                        "minecraft:fire_coral_wall_fan",
+                        "minecraft:dead_fire_coral_fan",
+                        "minecraft:dead_fire_coral_wall_fan",
+                        "minecraft:horn_coral_fan",
+                        "minecraft:horn_coral_wall_fan",
+                        "minecraft:dead_horn_coral_fan",
+                        "minecraft:dead_horn_coral_wall_fan"
+                      ]
+                    }
+                  },
+                  "offsetX": 1
+                },
+                {
+                  "type": "minecraft:location_check",
+                  "predicate": {
+                    "block": {
+                      "blocks": [
+                        "minecraft:tube_coral_fan",
+                        "minecraft:tube_coral_wall_fan",
+                        "minecraft:dead_tube_coral_fan",
+                        "minecraft:dead_tube_coral_wall_fan",
+                        "minecraft:brain_coral_fan",
+                        "minecraft:brain_coral_wall_fan",
+                        "minecraft:dead_brain_coral_fan",
+                        "minecraft:dead_brain_coral_wall_fan",
+                        "minecraft:bubble_coral_fan",
+                        "minecraft:bubble_coral_wall_fan",
+                        "minecraft:dead_bubble_coral_fan",
+                        "minecraft:dead_bubble_coral_wall_fan",
+                        "minecraft:fire_coral_fan",
+                        "minecraft:fire_coral_wall_fan",
+                        "minecraft:dead_fire_coral_fan",
+                        "minecraft:dead_fire_coral_wall_fan",
+                        "minecraft:horn_coral_fan",
+                        "minecraft:horn_coral_wall_fan",
+                        "minecraft:dead_horn_coral_fan",
+                        "minecraft:dead_horn_coral_wall_fan"
+                      ]
+                    }
+                  },
+                  "offsetY": -1
+                },
+                {
+                  "type": "minecraft:location_check",
+                  "predicate": {
+                    "block": {
+                      "blocks": [
+                        "minecraft:tube_coral_fan",
+                        "minecraft:tube_coral_wall_fan",
+                        "minecraft:dead_tube_coral_fan",
+                        "minecraft:dead_tube_coral_wall_fan",
+                        "minecraft:brain_coral_fan",
+                        "minecraft:brain_coral_wall_fan",
+                        "minecraft:dead_brain_coral_fan",
+                        "minecraft:dead_brain_coral_wall_fan",
+                        "minecraft:bubble_coral_fan",
+                        "minecraft:bubble_coral_wall_fan",
+                        "minecraft:dead_bubble_coral_fan",
+                        "minecraft:dead_bubble_coral_wall_fan",
+                        "minecraft:fire_coral_fan",
+                        "minecraft:fire_coral_wall_fan",
+                        "minecraft:dead_fire_coral_fan",
+                        "minecraft:dead_fire_coral_wall_fan",
+                        "minecraft:horn_coral_fan",
+                        "minecraft:horn_coral_wall_fan",
+                        "minecraft:dead_horn_coral_fan",
+                        "minecraft:dead_horn_coral_wall_fan"
+                      ]
+                    }
+                  },
+                  "offsetY": 1
+                },
+                {
+                  "type": "minecraft:location_check",
+                  "predicate": {
+                    "block": {
+                      "blocks": [
+                        "minecraft:tube_coral_fan",
+                        "minecraft:tube_coral_wall_fan",
+                        "minecraft:dead_tube_coral_fan",
+                        "minecraft:dead_tube_coral_wall_fan",
+                        "minecraft:brain_coral_fan",
+                        "minecraft:brain_coral_wall_fan",
+                        "minecraft:dead_brain_coral_fan",
+                        "minecraft:dead_brain_coral_wall_fan",
+                        "minecraft:bubble_coral_fan",
+                        "minecraft:bubble_coral_wall_fan",
+                        "minecraft:dead_bubble_coral_fan",
+                        "minecraft:dead_bubble_coral_wall_fan",
+                        "minecraft:fire_coral_fan",
+                        "minecraft:fire_coral_wall_fan",
+                        "minecraft:dead_fire_coral_fan",
+                        "minecraft:dead_fire_coral_wall_fan",
+                        "minecraft:horn_coral_fan",
+                        "minecraft:horn_coral_wall_fan",
+                        "minecraft:dead_horn_coral_fan",
+                        "minecraft:dead_horn_coral_wall_fan"
+                      ]
+                    }
+                  },
+                  "offsetZ": -1
+                },
+                {
+                  "type": "minecraft:location_check",
+                  "predicate": {
+                    "block": {
+                      "blocks": [
+                        "minecraft:tube_coral_fan",
+                        "minecraft:tube_coral_wall_fan",
+                        "minecraft:dead_tube_coral_fan",
+                        "minecraft:dead_tube_coral_wall_fan",
+                        "minecraft:brain_coral_fan",
+                        "minecraft:brain_coral_wall_fan",
+                        "minecraft:dead_brain_coral_fan",
+                        "minecraft:dead_brain_coral_wall_fan",
+                        "minecraft:bubble_coral_fan",
+                        "minecraft:bubble_coral_wall_fan",
+                        "minecraft:dead_bubble_coral_fan",
+                        "minecraft:dead_bubble_coral_wall_fan",
+                        "minecraft:fire_coral_fan",
+                        "minecraft:fire_coral_wall_fan",
+                        "minecraft:dead_fire_coral_fan",
+                        "minecraft:dead_fire_coral_wall_fan",
+                        "minecraft:horn_coral_fan",
+                        "minecraft:horn_coral_wall_fan",
+                        "minecraft:dead_horn_coral_fan",
+                        "minecraft:dead_horn_coral_wall_fan"
+                      ]
+                    }
+                  },
+                  "offsetZ": 1
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:tnt",
+      "count": 1
+    },
+    "title": {
+      "text": "吞噬世界的开端"
+    },
+    "description": {
+      "text": "最后放置 TNT，其相邻方块同时包含黏液块与珊瑚扇"
+    }
+  },
+  "requirements": [
+    [
+      "tnt_dupe"
+    ]
+  ]
+}

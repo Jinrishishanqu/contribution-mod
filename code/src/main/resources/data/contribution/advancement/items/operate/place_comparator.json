@@ -1,0 +1,37 @@
+{
+  "parent": "contribution:items/root",
+  "criteria": {
+    "place_comparator": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "location": {
+          "type": "minecraft:location_check",
+          "predicate": {
+            "block": {
+              "blocks": [
+                "minecraft:comparator"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:comparator",
+      "count": 1
+    },
+    "title": {
+      "text": "Hello,World"
+    },
+    "description": {
+      "text": "放置一个红石比较器"
+    }
+  },
+  "requirements": [
+    [
+      "place_comparator"
+    ]
+  ]
+}

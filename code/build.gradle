@@ -36,7 +36,18 @@ dependencies {
     include "org.flywaydb:flyway-mysql:${project.flyway_version}"
 }
 
+def itemPack = tasks.register('itemResourcePack', Zip) {
+    archiveFileName = "CSU-YSU-items-${project.mod_version}-resource-pack.zip"
+    destinationDirectory = layout.buildDirectory.dir('libs')
+    from('src/main/resources') { include 'assets/contribution/**' }
+    from('src/itemResourcePack') { include 'pack.mcmeta' }
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+
 processResources {
+    dependsOn itemPack
+    from(itemPack) { into 'contribution-packs'; rename { 'items-resource-pack.zip' } }
     inputs.property 'version', project.version
     from('src/main/resources/db/migration') {
         include 'V*.sql'
@@ -166,6 +177,13 @@ tasks.register('verifyResources', JavaExec) {
 }
 tasks.check.dependsOn tasks.verifyResources
 
+tasks.register('verifyItemContent', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.items.ItemContentChecks'
+}
+tasks.check.dependsOn tasks.verifyItemContent
+
 // Launch the distributable JAR, with its nested database libraries instead of development output.
 tasks.register('verifyPackagedServer', JavaExec) {
     dependsOn tasks.jar
@@ -173,7 +191,7 @@ tasks.register('verifyPackagedServer', JavaExec) {
         file.isFile() && !['HikariCP-', 'mysql-connector-j-', 'h2-', 'flyway-', 'protobuf-', 'jackson-', 'lombok-'].any { file.name.startsWith(it) }
     }
     mainClass = 'net.fabricmc.loader.impl.launch.knot.KnotServer'
-    workingDir = file('run')
+    workingDir = file(project.findProperty('validationDir') ?: 'run')
     standardInput = System.in
     args 'nogui'
     doFirst {

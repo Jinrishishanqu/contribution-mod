@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "unlock": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "contribution:items/dropper_from_cobbled_deepslate"
+    ]
+  },
+  "requirements": [
+    [
+      "unlock"
+    ]
+  ]
+}

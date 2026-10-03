@@ -1,0 +1,32 @@
+{
+  "parent": "contribution:items/gain/soul_torch",
+  "criteria": {
+    "csu_server": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:baked_potato"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:baked_potato",
+      "count": 1
+    },
+    "title": {
+      "text": "左职服务器怎么了"
+    },
+    "description": {
+      "text": "获得烤马铃薯"
+    }
+  },
+  "requirements": [
+    [
+      "csu_server"
+    ]
+  ]
+}

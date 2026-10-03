@@ -1,0 +1,25 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "contribution:armor/mark_6"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "contribution:armor/mark_6"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "contribution:armor/mark_6"
+      }
+    ],
+    "wings": [
+      {
+        "texture": "minecraft:elytra",
+        "use_player_texture": true
+      }
+    ]
+  }
+}

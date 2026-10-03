@@ -1,0 +1,41 @@
+{
+  "parent": "contribution:items/sheep/feiyangyang",
+  "criteria": {
+    "manyangyang": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "lime"
+            }
+          }
+        },
+        "item": {
+          "items": [
+            "minecraft:lime_dye"
+          ]
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:lime_wool"
+    },
+    "title": {
+      "text": "慢羊羊"
+    },
+    "description": {
+      "text": "将羊染成黄绿色"
+    }
+  },
+  "requirements": [
+    [
+      "manyangyang"
+    ]
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "parent": "contribution:items/danger/evaporation",
+  "criteria": {
+    "superconduction": {
+      "trigger": "minecraft:lightning_strike",
+      "conditions": {
+        "lightning": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:distance": {
+              "absolute": {
+                "max": 3,
+                "min": 0
+              }
+            }
+          }
+        },
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:location": {
+              "block": {
+                "blocks": [
+                  "minecraft:powder_snow"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:powder_snow_bucket"
+    },
+    "title": {
+      "text": "超导"
+    },
+    "description": {
+      "text": "站在细雪中，附近 3 格内发生雷击"
+    }
+  },
+  "requirements": [
+    [
+      "superconduction"
+    ]
+  ]
+}

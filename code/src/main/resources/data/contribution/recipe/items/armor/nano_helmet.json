@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_transmute",
+  "category": "equipment",
+  "input": "minecraft:netherite_helmet",
+  "material": "minecraft:ghast_tear",
+  "result": {
+    "id": "minecraft:netherite_helmet",
+    "components": {
+      "minecraft:item_name": {
+        "text": "纳米头盔"
+      },
+      "minecraft:rarity": "epic",
+      "minecraft:item_model": "contribution:armor/nano_helmet",
+      "minecraft:equippable": {
+        "slot": "head",
+        "asset_id": "contribution:armor/nano",
+        "equip_sound": "minecraft:item.armor.equip_netherite"
+      }
+    }
+  }
+}

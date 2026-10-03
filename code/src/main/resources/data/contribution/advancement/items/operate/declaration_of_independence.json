@@ -1,0 +1,63 @@
+{
+  "parent": "contribution:items/operate/place_comparator",
+  "criteria": {
+    "declaration_of_independence": {
+      "trigger": "minecraft:any_block_use",
+      "conditions": {
+        "location": {
+          "type": "minecraft:any_of",
+          "terms": [
+            {
+              "type": "minecraft:location_check",
+              "predicate": {
+                "block": {
+                  "blocks": "#minecraft:all_signs",
+                  "nbt": "{front_text:{messages:['我是个傻逼']}}"
+                }
+              }
+            },
+            {
+              "type": "minecraft:location_check",
+              "predicate": {
+                "block": {
+                  "blocks": "#minecraft:all_signs",
+                  "nbt": "{back_text:{messages:['我是个傻逼']}}"
+                }
+              }
+            }
+          ]
+        },
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:equipment": {
+              "mainhand": {
+                "items": [
+                  "minecraft:glow_ink_sac"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:oak_sign",
+      "count": 1
+    },
+    "title": {
+      "text": "OK兄弟们，全体目光向我看齐"
+    },
+    "description": {
+      "text": "用荧光墨囊点亮第一行写有“我是个傻逼”的告示牌"
+    }
+  },
+  "requirements": [
+    [
+      "declaration_of_independence"
+    ]
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "parent": "contribution:items/combat/come_see_conquer",
+  "criteria": {
+    "super_shot": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "damage": {
+          "type": {
+            "tags": [
+              {
+                "expected": true,
+                "id": "minecraft:arrow"
+              }
+            ]
+          },
+          "taken": {
+            "min": 200
+          }
+        },
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:ender_dragon"
+          }
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:dragon_head"
+    },
+    "title": {
+      "text": "矢贯坚石，劲冠三军！"
+    },
+    "description": {
+      "text": "用箭对末影龙单次造成至少 200 点伤害"
+    }
+  },
+  "requirements": [
+    [
+      "super_shot"
+    ]
+  ]
+}

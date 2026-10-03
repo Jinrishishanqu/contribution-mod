@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_transmute",
+  "category": "equipment",
+  "input": "minecraft:netherite_chestplate",
+  "material": "minecraft:ghast_tear",
+  "result": {
+    "id": "minecraft:netherite_chestplate",
+    "components": {
+      "minecraft:item_name": {
+        "text": "纳米胸甲"
+      },
+      "minecraft:rarity": "epic",
+      "minecraft:item_model": "contribution:armor/nano_chestplate",
+      "minecraft:equippable": {
+        "slot": "chest",
+        "asset_id": "contribution:armor/nano",
+        "equip_sound": "minecraft:item.armor.equip_netherite"
+      }
+    }
+  }
+}

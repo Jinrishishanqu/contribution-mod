@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_transmute",
+  "category": "equipment",
+  "input": "minecraft:netherite_boots",
+  "material": "minecraft:iron_ingot",
+  "result": {
+    "id": "minecraft:netherite_boots",
+    "components": {
+      "minecraft:item_name": {
+        "text": "Mark 6靴子"
+      },
+      "minecraft:rarity": "epic",
+      "minecraft:item_model": "contribution:armor/mark_6_boots",
+      "minecraft:equippable": {
+        "slot": "feet",
+        "asset_id": "contribution:armor/mark_6",
+        "equip_sound": "minecraft:item.armor.equip_netherite"
+      }
+    }
+  }
+}

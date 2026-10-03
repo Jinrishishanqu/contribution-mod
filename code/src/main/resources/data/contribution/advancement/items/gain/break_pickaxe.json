@@ -1,0 +1,32 @@
+{
+  "parent": "contribution:items/gain/wear_head",
+  "criteria": {
+    "break_pickaxe": {
+      "trigger": "minecraft:item_durability_changed",
+      "conditions": {
+        "delta": -1,
+        "item": {
+          "items": "minecraft:netherite_pickaxe"
+        },
+        "durability": 0
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:netherite_pickaxe",
+      "count": 1
+    },
+    "title": {
+      "text": "我的神镐！"
+    },
+    "description": {
+      "text": "用坏一个下界合金镐"
+    }
+  },
+  "requirements": [
+    [
+      "break_pickaxe"
+    ]
+  ]
+}

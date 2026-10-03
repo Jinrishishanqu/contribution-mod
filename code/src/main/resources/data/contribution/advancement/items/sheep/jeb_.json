@@ -1,0 +1,42 @@
+{
+  "parent": "contribution:items/sheep/nuanyangyang",
+  "criteria": {
+    "jeb_": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep"
+          }
+        },
+        "item": {
+          "items": "minecraft:name_tag",
+          "components": {
+            "minecraft:custom_name": "jeb_"
+          }
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:name_tag",
+      "components": {
+        "minecraft:custom_name": "jeb_"
+      }
+    },
+    "title": {
+      "text": "彩虹羊"
+    },
+    "description": {
+      "text": "将羊命名为jeb_"
+    }
+  },
+  "requirements": [
+    [
+      "jeb_"
+    ]
+  ]
+}

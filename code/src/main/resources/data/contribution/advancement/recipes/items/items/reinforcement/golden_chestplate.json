@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "unlock": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "contribution:items/reinforcement/golden_chestplate"
+    ]
+  },
+  "requirements": [
+    [
+      "unlock"
+    ]
+  ]
+}

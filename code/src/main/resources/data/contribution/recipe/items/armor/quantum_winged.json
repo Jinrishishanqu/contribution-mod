@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "minecraft:ender_pearl",
+  "base": "minecraft:netherite_chestplate",
+  "addition": "minecraft:elytra",
+  "result": {
+    "id": "minecraft:netherite_chestplate",
+    "components": {
+      "minecraft:item_name": {
+        "text": "量子胸甲"
+      },
+      "minecraft:rarity": "epic",
+      "minecraft:item_model": "contribution:armor/quantum_chestplate",
+      "minecraft:equippable": {
+        "slot": "chest",
+        "asset_id": "contribution:armor/quantum_winged",
+        "equip_sound": "minecraft:item.armor.equip_netherite"
+      },
+      "minecraft:glider": {}
+    }
+  }
+}

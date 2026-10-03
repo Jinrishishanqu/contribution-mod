@@ -1,0 +1,32 @@
+{
+  "parent": "contribution:items/root",
+  "criteria": {
+    "use_spyglass": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:spyglass"
+          ]
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:spyglass",
+      "count": 1
+    },
+    "title": {
+      "text": "概率：0.000114154% 终于找到了"
+    },
+    "description": {
+      "text": "使用望远镜"
+    }
+  },
+  "requirements": [
+    [
+      "use_spyglass"
+    ]
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "parent": "contribution:items/sheep/meiyangyang",
+  "criteria": {
+    "lanyangyang": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep",
+            "minecraft:components": {
+              "minecraft:sheep/color": "yellow"
+            }
+          }
+        },
+        "item": {
+          "items": [
+            "minecraft:yellow_dye"
+          ]
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:yellow_wool"
+    },
+    "title": {
+      "text": "懒羊羊"
+    },
+    "description": {
+      "text": "将羊染成黄色"
+    }
+  },
+  "requirements": [
+    [
+      "lanyangyang"
+    ]
+  ]
+}

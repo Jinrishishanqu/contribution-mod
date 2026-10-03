@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "contribution:armor/nano"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "contribution:armor/nano"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "contribution:armor/nano"
+      }
+    ]
+  }
+}

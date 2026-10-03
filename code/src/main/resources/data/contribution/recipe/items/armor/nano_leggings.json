@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_transmute",
+  "category": "equipment",
+  "input": "minecraft:netherite_leggings",
+  "material": "minecraft:ghast_tear",
+  "result": {
+    "id": "minecraft:netherite_leggings",
+    "components": {
+      "minecraft:item_name": {
+        "text": "纳米护腿"
+      },
+      "minecraft:rarity": "epic",
+      "minecraft:item_model": "contribution:armor/nano_leggings",
+      "minecraft:equippable": {
+        "slot": "legs",
+        "asset_id": "contribution:armor/nano",
+        "equip_sound": "minecraft:item.armor.equip_netherite"
+      }
+    }
+  }
+}

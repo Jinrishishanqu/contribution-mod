@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_transmute",
+  "category": "equipment",
+  "input": "minecraft:netherite_chestplate",
+  "material": "minecraft:ender_pearl",
+  "result": {
+    "id": "minecraft:netherite_chestplate",
+    "components": {
+      "minecraft:item_name": {
+        "text": "量子胸甲"
+      },
+      "minecraft:rarity": "epic",
+      "minecraft:item_model": "contribution:armor/quantum_chestplate",
+      "minecraft:equippable": {
+        "slot": "chest",
+        "asset_id": "contribution:armor/quantum",
+        "equip_sound": "minecraft:item.armor.equip_netherite"
+      }
+    }
+  }
+}
