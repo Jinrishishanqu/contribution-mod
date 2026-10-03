@@ -102,6 +102,18 @@ final class ShopScreen extends Screen {
                 .bounds(l.left + 10, height - 29, 68, 18).build());
         filter();
     }
+    private static final java.util.Map<String, ItemStack> STACKS = new java.util.HashMap<>();
+    static void clearPreviews() { STACKS.clear(); }
+    static ItemStack preview(ShopOffer offer) {
+        String spec = offer.itemSpec();
+        if (STACKS.size() >= 512 && !STACKS.containsKey(spec)) STACKS.clear();
+        return STACKS.computeIfAbsent(spec, key -> {
+            var level = Minecraft.getInstance().level;
+            if (level == null) return ItemStack.EMPTY;
+            try { return cn.contribution.shop.ItemStackSpec.parse(level.registryAccess(), key); }
+            catch (Exception invalid) { return ItemStack.EMPTY; }
+        });
+    }
     private String sortLabel() {
         return switch (sort) { case 1 -> "名称排序"; case 2 -> "价格从低到高"; case 3 -> "价格从高到低"; default -> "商品排序"; };
     }
@@ -178,8 +190,8 @@ final class ShopScreen extends Screen {
         purchase.active = chosen != null;
         g.enableScissor(l.detailLeft + 1, 87, l.right - 11, l.bottom - 1);
         if (chosen != null) {
-            var item = DeliveryService.findItem(chosen.itemId());
-            if (item != null) g.item(new ItemStack(item), l.detailLeft + 6, 92);
+            var item = preview(chosen);
+            if (!item.isEmpty()) g.item(item, l.detailLeft + 6, 92);
             g.text(font, font.plainSubstrByWidth(chosen.name(), l.detailWidth() - 32), l.detailLeft + 27, 94, GOLD, false);
             int textX = l.detailLeft + 7, textWidth = l.detailWidth() - 14;
             g.text(font, "#" + chosen.id() + (chosen.listed() ? " · 已上架" : " · 已下架"), textX, 113, MUTED, false);

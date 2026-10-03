@@ -16,7 +16,16 @@ public final class ContributionUiNetwork {
     }
 
     public static void send(ServerPlayer player, Snapshot snapshot) {
-        ServerPlayNetworking.send(player, new ContributionSnapshotPayload(JSON.toJson(snapshot)));
+        ServerPlayNetworking.send(player, new ContributionSnapshotPayload(JSON.toJson(withNavigation(snapshot))));
+    }
+
+    static Snapshot withNavigation(Snapshot snapshot) {
+        if (snapshot.view().equals("home") || snapshot.actions().stream().anyMatch(action ->
+                action.command().equals("contribution ui back"))) return snapshot;
+        var actions = new java.util.ArrayList<>(snapshot.actions());
+        actions.add(new Action("返回上一页", "contribution ui back"));
+        return new Snapshot(snapshot.title(), snapshot.view(), snapshot.headers(), snapshot.rows(), actions,
+                snapshot.note(), snapshot.fields(), snapshot.rowCommands());
     }
 
     public record Action(String label, String command) { }

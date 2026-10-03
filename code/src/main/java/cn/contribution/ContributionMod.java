@@ -29,6 +29,7 @@ public final class ContributionMod implements ModInitializer {
         PayloadTypeRegistry.clientboundPlay().register(StockSnapshotPayload.TYPE, StockSnapshotPayload.CODEC);
         PayloadTypeRegistry.clientboundPlay().register(ShopSnapshotPayload.TYPE, ShopSnapshotPayload.CODEC);
         PayloadTypeRegistry.clientboundPlay().register(ContributionSnapshotPayload.TYPE, ContributionSnapshotPayload.CODEC);
+        cn.contribution.network.VersionCompatibility.register();
         IndustryRegistry.bootstrap();
         ServerLifecycleEvents.SERVER_STARTED.register(cn.contribution.items.ItemResourcePack::export);
         ServerLifecycleEvents.SERVER_STARTED.register(ContributionRuntime::start);
@@ -37,7 +38,7 @@ public final class ContributionMod implements ModInitializer {
         });
         ServerLifecycleEvents.SERVER_STOPPING.register(ContributionRuntime::stop);
         ServerTickEvents.END_SERVER_TICK.register(ContributionRuntime::tick);
-        CommandRegistrationCallback.EVENT.register((dispatcher, registry, selection) -> ContributionCommands.register(dispatcher));
+        CommandRegistrationCallback.EVENT.register((dispatcher, registry, selection) -> ContributionCommands.register(dispatcher, registry));
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             if (cn.contribution.account.AccountIdentityService.isBotName(handler.player.getGameProfile().name())) return;
             if (ContributionRuntime.checkins() != null) ContributionRuntime.checkins().joined(handler.player.getUUID());

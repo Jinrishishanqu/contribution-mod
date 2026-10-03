@@ -9,5 +9,12 @@ if (-not (Test-Path -LiteralPath (Join-Path $javaHome 'bin\java.exe'))) {
 $env:JAVA_HOME = $javaHome
 $env:GRADLE_USER_HOME = Join-Path $workspaceRoot '.gradle-home'
 
-& (Join-Path $projectRoot 'gradlew.bat') @args
-exit $LASTEXITCODE
+Push-Location -LiteralPath $projectRoot
+try {
+    & (Join-Path $projectRoot 'gradlew.bat') @args
+    $buildExit = $LASTEXITCODE
+    if ($buildExit -eq 0 -and @($args | Where-Object { $_ -match '(^|:)build$' }).Count -gt 0) {
+        & (Join-Path $projectRoot 'install-built-mod.ps1')
+    }
+} finally { Pop-Location }
+exit $buildExit

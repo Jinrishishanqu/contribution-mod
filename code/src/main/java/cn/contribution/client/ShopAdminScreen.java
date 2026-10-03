@@ -26,7 +26,7 @@ final class ShopAdminScreen extends Screen {
         fields.clear();
         int panel = Math.min(420, width - 24); left = (width - panel) / 2; right = left + panel; half = (panel - 30) / 2;
         field("name", "商品名称", offer == null ? "" : offer.name(), left + 10, 48, half, 64);
-        field("item", "物品 ID", offer == null ? "minecraft:torch" : offer.itemId(), left + 20 + half, 48, half, 128);
+        field("item", "物品及组件", offer == null ? "minecraft:torch" : offer.itemSpec(), left + 20 + half, 48, half, 2048);
         field("count", "每份数量（1—64）", offer == null ? "1" : "" + offer.itemCount(), left + 10, 85, half, 2);
         field("price", "售价", offer == null ? "1" : "" + offer.price(), left + 20 + half, 85, half, 10);
         field("order", "排序（小的在前）", offer == null ? "0" : "" + offer.sortOrder(), left + 10, 122, half, 11);

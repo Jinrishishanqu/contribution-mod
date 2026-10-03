@@ -1,10 +1,10 @@
-# CSU-YSU Contribution System 0.1.4
+# CSU-YSU Contribution System 0.1.5
 
 Minecraft Java Edition 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 / Java 25。
 
 ## 安装与使用
 
-将 `build/libs/CSU-YSU-contribution-system-0.1.4.jar` 和匹配版本的 Fabric API 放进服务端 mods 目录。模组只有一份通用 JAR，逻辑在服务端运行；原版客户端无需安装即可进入服务器并使用贡献值、签到、股票和商店的文字/原版 Dialog 界面。若也在客户端安装同一 JAR 和 Fabric API，`/contribution`、`/stock` 和 `/shop` 会打开各自的专用界面。
+将 `build/libs/CSU-YSU-contribution-system-0.1.5.jar` 和匹配版本的 Fabric API 放进服务端 mods 目录。模组只有一份通用 JAR，逻辑在服务端运行；原版客户端无需安装即可进入服务器并使用贡献值、签到、股票和商店的文字/原版 Dialog 界面。若也在客户端安装同一 JAR 和 Fabric API，`/contribution`、`/stock` 和 `/shop` 会打开各自的专用界面。
 
 进入游戏输入 `/contribution` 打开贡献值图形界面。原版客户端使用 26.3 原生 Dialog；安装模组的客户端在账户、流水、统计、行业、签到和管理员页面内保持统一的专用界面，不会跳回 Dialog。`/contribution ui_vanilla`、`/stock ui_vanilla`、`/shop ui_vanilla` 可在已安装客户端模组时分别调试原版界面。股票系统独立使用 `/stock`。文字查询和管理员命令继续可用，完整列表见[命令速查](docs/COMMANDS.md)。
 
@@ -47,7 +47,7 @@ Minecraft Java Edition 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 / J
 
 ## 规则资源
 
-0.1.4 将六类装备/数据内容标准化迁入 JAR：鞘翅与海洋之心、四类便利配方、六材质胸甲添翼、31 项下界合金强化、三套主题盔甲和 37 个纯 JSON 可见进度。无需 `/reload`。外观已内置给安装模组的客户端；原版客户端需要服务器发送附带的资源包 ZIP。ZIP 启动时导出到世界的 `contribution/resource-packs/`，不会自动开启下载端口或替换现有服务器资源包。详见 [内置装备设计](../design/items/builtin-content.md)与[0.1.4 验证记录](docs/VALIDATION-0.1.4.md)。
+0.1.5 将六类装备/数据内容标准化迁入 JAR：鞘翅与海洋之心、四类便利配方、六材质胸甲添翼、31 项下界合金强化、三套主题盔甲和 37 个纯 JSON 可见进度。无需 `/reload`。外观已内置给安装模组的客户端；原版客户端需要服务器发送附带的资源包 ZIP。ZIP 启动时导出到世界的 `contribution/resource-packs/`，不会自动开启下载端口或替换现有服务器资源包。详见 [内置装备设计](../design/items/builtin-content.md)与[0.1.5 验证记录](docs/VALIDATION-0.1.5.md)。
 
 27 个 `craft/place/mine_<行业>.json` 只处理玩家操作，另有 18 个 use/interact 标签。相同动作下一个对象不能重复归类。熔炉产物标签、游戏事件映射与自动化独立。无损可逆合成物品禁止放入 craft 标签。
 
@@ -76,3 +76,9 @@ JAR 已内嵌 H2、MySQL 驱动、连接池及迁移依赖；不要安装 source
 - [贡献值 API](docs/API.md)
 - [运行架构](../design/infrastructure/runtime-architecture.md)
 - [图形界面设计](../design/basic/graphical-interface.md)
+
+## 本机自动替换与版本检查
+
+使用 `run-gradle.ps1 build --offline` 构建成功后自动运行 `install-built-mod.ps1`，将发布 JAR 装入 PCL2 的 26.3-Fabric 0.19.5 实例及 `F:/server/server263/mods`。只替换 `CSU-YSU-contribution-system-*.jar`，旧文件移动到项目的 `mod-backups/<时间>/client|server/`。若文件被正在运行的游戏或服务端锁定，停止它们后运行 `install-built-mod.ps1`；脚本不自动中断游戏或服务器。手工调用 Gradle 绕过此脚本时需另行执行安装脚本。磁盘替换后重启才能加载新版本。
+
+入服时客户端比对贡献模组版本及 Minecraft 版本，不匹配会显示更新提示，不强制断开原版客户端。旧版客户端不支持版本通信时，服务端给出更新至当前版本的聊天提示。

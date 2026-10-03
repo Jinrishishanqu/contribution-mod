@@ -39,7 +39,7 @@ public final class ContributionCommands {
     private ContributionCommands() {
     }
 
-    public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
+    public static void register(CommandDispatcher<CommandSourceStack> dispatcher, net.minecraft.commands.CommandBuildContext registry) {
         dispatcher.register(Commands.literal("contribution")
                 .executes(context -> cn.contribution.ui.ContributionDialogs.openDefault(context.getSource()))
                 .then(Commands.literal("ui_vanilla")
@@ -115,7 +115,7 @@ public final class ContributionCommands {
                                                                         .executes(context -> retry(context, StringArgumentType.getString(context, "note"))))))))))
                 .then(balanceCommand("remove", false)));
         dispatcher.register(StockCommands.command());
-        dispatcher.register(RewardCommands.shopCommand());
+        dispatcher.register(ShopCommands.root(registry));
     }
 
     private static int createAccount(CommandContext<CommandSourceStack> context) {

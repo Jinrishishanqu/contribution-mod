@@ -15,7 +15,16 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 public final class ContributionClient implements ClientModInitializer {
     private static final Gson JSON = new Gson();
     @Override public void onInitializeClient() {
-        ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> StockScreen.clear());
+        ClientPlayNetworking.registerGlobalReceiver(cn.contribution.network.VersionPayload.TYPE, (payload, context) -> {
+            var local = cn.contribution.network.VersionCompatibility.local();
+            context.client().execute(() -> {
+                if (!cn.contribution.network.VersionCompatibility.matches(local, payload))
+                    context.client().gui.chatListener().handleSystemMessage(net.minecraft.network.chat.Component.literal(
+                            cn.contribution.network.VersionCompatibility.notice(local, payload))
+                            .withStyle(net.minecraft.ChatFormatting.YELLOW), false);
+            });
+        });
+        ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> { StockScreen.clear(); ShopScreen.clearPreviews(); });
         ClientPlayNetworking.registerGlobalReceiver(StockSnapshotPayload.TYPE, (payload, context) -> {
             StockUiNetwork.Snapshot snapshot;
             try { snapshot = JSON.fromJson(payload.json(), StockUiNetwork.Snapshot.class); }

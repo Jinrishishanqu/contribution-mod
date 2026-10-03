@@ -48,7 +48,10 @@ final class ContributionScreen extends Screen {
     private final Map<String, String> retainedFields = new HashMap<>();
     private boolean home() { return "home".equals(snapshot.view()); }
     private int top() { return snapshot.fields().isEmpty() ? 68 : 130; }
-    private int bottom() { return height - (snapshot.actions().size() > 4 ? 69 : 45); }
+    private int bottom() {
+        int buttonRows = Math.max(1, (snapshot.actions().size() + 3) / 4);
+        return height - 36 - (buttonRows - 1) * 24;
+    }
     private int rowHeight() {
         return switch (snapshot.view()) {
             case "history" -> 18;
@@ -57,9 +60,24 @@ final class ContributionScreen extends Screen {
         };
     }
     private int capacity() { return Math.max(1, (bottom() - top()) / rowHeight()); }
+    private boolean profile() { return "profile".equals(snapshot.view()); }
+    private int maxScroll() { return profile()
+            ? Math.max(0, (172 - (bottom() - top()) + rowHeight() - 1) / rowHeight())
+            : Math.max(0, snapshot.rows().size() - capacity()); }
+    private final java.util.List<ContributionRowWidget> rowWidgets = new java.util.ArrayList<>();
+    private void syncRows() {
+        scroll = Math.max(0, Math.min(scroll, maxScroll()));
+        for (int slot = 0; slot < rowWidgets.size(); slot++) {
+            int index = scroll + slot;
+            var widget = rowWidgets.get(slot);
+            widget.visible = widget.active = index < snapshot.rowCommands().size()
+                    && !snapshot.rowCommands().get(index).isBlank();
+        }
+    }
 
     @Override protected void init() {
         fields.clear();
+        rowWidgets.clear();
         int fieldCount = snapshot.fields().size();
         if (fieldCount > 0) {
             int fieldWidth = (width - 36 - (fieldCount - 1) * 8) / fieldCount;
@@ -86,7 +104,23 @@ final class ContributionScreen extends Screen {
             addRenderableWidget(Button.builder(Component.literal(action.label()), button -> run(action.command()))
                     .bounds(x, y, buttonWidth, 19).build());
         }
+        addRowWidgets();
     }
+
+    private void addRowWidgets() {
+        if (profile() || snapshot.rowCommands().isEmpty()) return;
+        for (int slot = 0; slot < capacity(); slot++) {
+            final int offset = slot;
+            rowWidgets.add(addRenderableWidget(new ContributionRowWidget(12, top() + slot * rowHeight(),
+                    width - 24, rowHeight() - 2, () -> {
+                        int index = scroll + offset;
+                        if (index < snapshot.rowCommands().size()) command(snapshot.rowCommands().get(index));
+                    })));
+        }
+        syncRows();
+    }
+
+    @Override public boolean isPauseScreen() { return false; }
 
     private static void command(String value) {
         var connection = Minecraft.getInstance().getConnection();
@@ -109,29 +143,19 @@ final class ContributionScreen extends Screen {
     }
 
     @Override public void onClose() {
-        if (home()) super.onClose();
+        if (home()) { super.onClose(); command("contribution ui close"); }
         else {
             super.onClose();
             command("contribution ui back");
         }
     }
 
-    @Override public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
-        if (event.button() == 0 && event.x() >= 12 && event.x() < width - 12
-                && event.y() >= top() && event.y() < bottom()) {
-            int index = scroll + ((int) event.y() - top()) / rowHeight();
-            if (index >= scroll && index < scroll + capacity() && index < snapshot.rowCommands().size()) {
-                command(snapshot.rowCommands().get(index));
-                return true;
-            }
-        }
-        return super.mouseClicked(event, doubleClick);
-    }
+
 
     @Override public boolean mouseScrolled(double x, double y, double horizontal, double vertical) {
         if (y >= top() && y <= bottom()) {
-            scroll = Math.max(0, Math.min(Math.max(0, snapshot.rows().size() - capacity()),
-                    scroll - (int) Math.signum(vertical)));
+            scroll = Math.max(0, Math.min(maxScroll(), scroll - (int) Math.signum(vertical)));
+            syncRows();
             return true;
         }
         return super.mouseScrolled(x, y, horizontal, vertical);
@@ -140,8 +164,11 @@ final class ContributionScreen extends Screen {
     private int[] widths() {
         int available = width - 32;
         return switch (snapshot.view()) {
-            case "history" -> new int[]{82, 58, 47, 65, 75, Math.max(25, available - 327)};
-            case "industries" -> new int[]{92, 57, 74, 72, Math.max(40, available - 295)};
+            case "history" -> new int[]{available * 18 / 100, available * 13 / 100, available * 11 / 100,
+                    available * 15 / 100, available * 17 / 100, available - available * 18 / 100
+                    - available * 13 / 100 - available * 11 / 100 - available * 15 / 100 - available * 17 / 100};
+            case "industries" -> new int[]{available / 5, available / 5, available / 5, available / 5,
+                    available - 4 * (available / 5)};
             case "stats" -> new int[]{available / 3, available / 3, available - 2 * (available / 3)};
             case "account" -> new int[]{available / 6, available / 5, available - available / 6 - available / 5};
             case "accounts" -> new int[]{available / 4, available / 6, available - available / 4 - available / 6};
@@ -160,6 +187,31 @@ final class ContributionScreen extends Screen {
         }
     }
 
+    private void renderProfile(GuiGraphicsExtractor g) {
+        scroll = Math.min(scroll, maxScroll());
+        int y = top() - scroll * rowHeight(), available = width - 32;
+        int[] accountWidths = {available / 6, available / 5, available - available / 6 - available / 5};
+        int[] thirds = {available / 3, available / 3, available - 2 * (available / 3)};
+        g.enableScissor(12, top(), width - 12, bottom());
+        cells(g, List.of("余额", "历史总收入", "UUID"), y, accountWidths, ACCENT);
+        cells(g, snapshot.rows().get(0), y + 17, accountWidths, TEXT);
+        cells(g, List.of("原始放置", "原始挖掘", "个人总建设度"), y + 45, thirds, ACCENT);
+        cells(g, snapshot.rows().get(1), y + 62, thirds, TEXT);
+        g.text(font, "行业建设度", 18, y + 88, ACCENT, false);
+        for (int i = 2; i < snapshot.rows().size(); i++) {
+            int rowY = y + 105 + (i - 2) * 22;
+            g.fill(12, rowY - 4, width - 12, rowY + 15, i % 2 == 0 ? PANEL : PANEL_ALT);
+            cells(g, snapshot.rows().get(i), rowY, thirds, TEXT);
+        }
+        g.disableScissor();
+        if (maxScroll() > 0) {
+            g.fill(width - 12, top(), width - 9, bottom(), 0xFF43546B);
+            int thumb = Math.max(10, (bottom() - top()) * (bottom() - top()) / 172);
+            int thumbY = top() + (bottom() - top() - thumb) * scroll / maxScroll();
+            g.fill(width - 12, thumbY, width - 9, thumbY + thumb, ACCENT);
+        }
+    }
+
     @Override public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float delta) {
         graphics.fill(0, 0, width, height, BACKGROUND);
         graphics.fill(8, 8, width - 8, 52, PANEL);
@@ -169,14 +221,16 @@ final class ContributionScreen extends Screen {
             int fieldWidth = (width - 36 - (snapshot.fields().size() - 1) * 8) / snapshot.fields().size();
             graphics.text(font, snapshot.fields().get(i).label(), 18 + i * (fieldWidth + 8), 60, MUTED, false);
         }
-        if (!home()) {
+        if (profile()) {
+            renderProfile(graphics);
+        } else if (!home()) {
             int[] widths = widths();
             if (!snapshot.headers().isEmpty()) {
                 graphics.fill(12, top() - 14, width - 12, top() - 1, 0xFF30445C);
                 cells(graphics, snapshot.headers(), top() - 11, widths, ACCENT);
             }
             int size = snapshot.rows().size();
-            scroll = Math.min(scroll, Math.max(0, size - capacity()));
+            syncRows();
             if (size == 0 && !snapshot.headers().isEmpty())
                 graphics.text(font, "暂无记录", 18, top() + 8, MUTED, false);
             for (int index = scroll; index < Math.min(size, scroll + capacity()); index++) {

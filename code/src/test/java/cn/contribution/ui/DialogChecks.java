@@ -93,7 +93,10 @@ public final class DialogChecks {
         var decodedShop = new Gson().fromJson(new Gson().toJson(shopSnapshot), cn.contribution.shop.ShopUiNetwork.Snapshot.class);
         if (!decodedShop.editing().equals(shopSnapshot.editing())) throw new AssertionError("Shop editor metadata round-trip");
         var dispatcher = new com.mojang.brigadier.CommandDispatcher<net.minecraft.commands.CommandSourceStack>();
-        dispatcher.register(cn.contribution.command.ShopCommands.root());
+        dispatcher.register(cn.contribution.command.ShopCommands.root(net.minecraft.commands.CommandBuildContext.simple(
+                net.minecraft.data.registries.VanillaRegistries.createReloadableLookup(
+                        net.minecraft.data.registries.VanillaRegistries.createWorldLookup()),
+                net.minecraft.world.flag.FeatureFlags.DEFAULT_FLAGS)));
         var source = new net.minecraft.commands.CommandSourceStack(net.minecraft.commands.CommandSource.NULL,
                 net.minecraft.world.phys.Vec3.ZERO, net.minecraft.world.phys.Vec2.ZERO, null,
                 net.minecraft.server.permissions.PermissionSet.ALL_PERMISSIONS, net.minecraft.network.chat.Component.literal("test"), null);

@@ -184,6 +184,13 @@ tasks.register('verifyItemContent', JavaExec) {
 }
 tasks.check.dependsOn tasks.verifyItemContent
 
+tasks.register('verifyItemComponents', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.shop.ItemComponentChecks'
+}
+tasks.check.dependsOn tasks.verifyItemComponents
+
 // Launch the distributable JAR, with its nested database libraries instead of development output.
 tasks.register('verifyPackagedServer', JavaExec) {
     dependsOn tasks.jar

@@ -67,11 +67,11 @@ public final class ShopService {
             if (!paid.success()) return paid.message();
             UUID delivery = UUID.randomUUID();
             try (PreparedStatement insert = connection.prepareStatement(
-                    "INSERT INTO reward_delivery (delivery_id, player_uuid, item_id, item_count, source, status, created_at) "
-                            + "VALUES (?, ?, ?, ?, ?, 'PENDING', CURRENT_TIMESTAMP(6))")) {
+                    "INSERT INTO reward_delivery (delivery_id, player_uuid, item_id, item_count, source, item_spec, status, created_at) "
+                            + "VALUES (?, ?, ?, ?, ?, ?, 'PENDING', CURRENT_TIMESTAMP(6))")) {
                 insert.setBytes(1, AccountService.uuidBytes(delivery)); insert.setBytes(2, AccountService.uuidBytes(player));
                 insert.setString(3, offer.itemId()); insert.setInt(4, (int) count);
-                insert.setString(5, "shop:" + offer.id()); insert.executeUpdate();
+                insert.setString(5, "shop:" + offer.id()); insert.setString(6, offer.itemSpec()); insert.executeUpdate();
             }
             try (PreparedStatement insert = connection.prepareStatement(
                     "INSERT INTO shop_order (order_id, player_uuid, offer_id, quantity, total_price, delivery_id, created_at) "

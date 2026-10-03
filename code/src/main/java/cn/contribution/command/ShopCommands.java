@@ -15,7 +15,9 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.IdentifierArgument;
+import net.minecraft.commands.arguments.item.ItemArgument;
+import net.minecraft.commands.arguments.item.ItemInput;
+import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
@@ -26,7 +28,7 @@ import java.util.concurrent.CompletableFuture;
 /** Command grammar and authorization; catalog policy lives in ShopCatalog/ShopService. */
 public final class ShopCommands {
     private ShopCommands() { }
-    public static LiteralArgumentBuilder<CommandSourceStack> root() {
+    public static LiteralArgumentBuilder<CommandSourceStack> root(CommandBuildContext registry) {
         var putPrice = Commands.argument("price", IntegerArgumentType.integer(1))
                 .executes(context -> put(context, false))
                 .then(Commands.argument("description", StringArgumentType.greedyString()).executes(context -> put(context, true)));
@@ -42,9 +44,9 @@ public final class ShopCommands {
                 .then(Commands.literal("page").then(Commands.argument("page", IntegerArgumentType.integer(0))
                         .executes(context -> ui(context, () -> ShopDialogs.management(context.getSource(),
                                 IntegerArgumentType.getInteger(context, "page"), "")))))
-                .then(Commands.literal("publish").then(editorArguments(false)))
+                .then(Commands.literal("publish").then(editorArguments(registry, false)))
                 .then(Commands.literal("save").then(Commands.argument("id", LongArgumentType.longArg(1))
-                        .then(Commands.argument("revision", LongArgumentType.longArg(0)).then(editorArguments(true)))));
+                        .then(Commands.argument("revision", LongArgumentType.longArg(0)).then(editorArguments(registry, true)))));
         return Commands.literal("shop")
                 .executes(context -> ui(context, () -> ShopUiNetwork.openDefault(context.getSource())))
                 .then(Commands.literal("ui_vanilla").executes(context -> ui(context, () -> ShopUiNetwork.openVanilla(context.getSource()))))
@@ -66,7 +68,7 @@ public final class ShopCommands {
                     context.getSource().sendSuccess(() -> Component.literal("正在领取待发物品"), false); return 1;
                 }))
                 .then(admin)
-                .then(Commands.literal("put_on").requires(ShopUiNetwork::admin).then(itemArgument()
+                .then(Commands.literal("put_on").requires(ShopUiNetwork::admin).then(itemArgument(registry)
                         .then(Commands.argument("name", StringArgumentType.string())
                                 .then(Commands.argument("count", IntegerArgumentType.integer(1, 64)).then(putPrice)))))
                 .then(Commands.literal("take_off").requires(ShopUiNetwork::admin).then(Commands.argument("id", LongArgumentType.longArg(1))
@@ -81,12 +83,11 @@ public final class ShopCommands {
                         .then(modifyName)));
     }
 
-    private static RequiredArgumentBuilder<CommandSourceStack, Identifier> itemArgument() {
-        return Commands.argument("item", IdentifierArgument.id()).suggests((context, builder) ->
-                SharedSuggestionProvider.suggest(BuiltInRegistries.ITEM.keySet().stream().map(Object::toString), builder));
+    private static RequiredArgumentBuilder<CommandSourceStack, ItemInput> itemArgument(CommandBuildContext registry) {
+        return Commands.argument("item", ItemArgument.item(registry));
     }
-    private static RequiredArgumentBuilder<CommandSourceStack, Identifier> editorArguments(boolean update) {
-        return itemArgument().then(Commands.argument("name", StringArgumentType.string())
+    private static RequiredArgumentBuilder<CommandSourceStack, ItemInput> editorArguments(CommandBuildContext registry, boolean update) {
+        return itemArgument(registry).then(Commands.argument("name", StringArgumentType.string())
                 .then(Commands.argument("count", IntegerArgumentType.integer(1, 64))
                         .then(Commands.argument("price", IntegerArgumentType.integer(1))
                                 .then(Commands.argument("order", IntegerArgumentType.integer())
@@ -99,7 +100,7 @@ public final class ShopCommands {
         try {
             result(context.getSource(), ContributionRuntime.shop().create(new ShopCatalog.Change(
                     string(context, "name"), item(context), IntegerArgumentType.getInteger(context, "count"),
-                    IntegerArgumentType.getInteger(context, "price"), description ? description(context) : "", true, 0)), false);
+                    IntegerArgumentType.getInteger(context, "price"), description ? description(context) : "", true, 0, itemSpec(context))), false);
         } catch (IllegalArgumentException invalid) { return fail(context.getSource(), invalid.getMessage()); }
         return 1;
     }
@@ -120,7 +121,7 @@ public final class ShopCommands {
         try {
             var change = new ShopCatalog.Change(string(context, "name"), item(context),
                     IntegerArgumentType.getInteger(context, "count"), IntegerArgumentType.getInteger(context, "price"),
-                    string(context, "description"), BoolArgumentType.getBool(context, "listed"), IntegerArgumentType.getInteger(context, "order"));
+                    string(context, "description"), BoolArgumentType.getBool(context, "listed"), IntegerArgumentType.getInteger(context, "order"), itemSpec(context));
             result(context.getSource(), update ? ContributionRuntime.shop().modify(id(context), change,
                     LongArgumentType.getLong(context, "revision")) : ContributionRuntime.shop().create(change), true);
             return 1;
@@ -173,7 +174,15 @@ public final class ShopCommands {
     private static long id(CommandContext<CommandSourceStack> context) { return LongArgumentType.getLong(context, "id"); }
     private static String string(CommandContext<CommandSourceStack> context, String name) { return StringArgumentType.getString(context, name); }
     private static String item(CommandContext<CommandSourceStack> context) {
-        return IdentifierArgument.getId(context, "item").toString();
+        return BuiltInRegistries.ITEM.getKey(ItemArgument.getItem(context, "item").item().value()).toString();
+    }
+    private static String itemSpec(CommandContext<CommandSourceStack> context) {
+        String spec = context.getNodes().stream().filter(node -> node.getNode().getName().equals("item"))
+                .findFirst().orElseThrow().getRange().get(context.getInput());
+        if (spec.length() > 2048) throw new IllegalArgumentException("物品组件定义最多 2048 个字符");
+        try { ItemArgument.getItem(context, "item").createItemStack(1); }
+        catch (CommandSyntaxException invalid) { throw new IllegalArgumentException(invalid.getMessage()); }
+        return spec;
     }
     private static Integer optionalInteger(String value) { return value.equals("-") ? null : Integer.valueOf(value); }
     private static String description(CommandContext<CommandSourceStack> context) {

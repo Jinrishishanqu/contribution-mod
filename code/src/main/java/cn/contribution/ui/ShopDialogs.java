@@ -63,7 +63,7 @@ public final class ShopDialogs {
     }
     static net.minecraft.server.dialog.Dialog editorDialog(ShopOffer offer, String message) {
         var inputs = List.of(
-                ContributionDialogs.input("item", "物品 ID", offer == null ? "minecraft:torch" : offer.itemId(), 128),
+                ContributionDialogs.input("item", "物品及组件（原版命令语法）", offer == null ? "minecraft:torch" : offer.itemSpec(), 2048),
                 ContributionDialogs.input("name", "商品名称", offer == null ? "" : offer.name(), 64),
                 ContributionDialogs.input("count", "每份数量（1—64）", offer == null ? "1" : "" + offer.itemCount(), 2),
                 ContributionDialogs.input("price", "售价（正整数）", offer == null ? "1" : "" + offer.price(), 10),

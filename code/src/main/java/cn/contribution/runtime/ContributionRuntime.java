@@ -115,7 +115,6 @@ public final class ContributionRuntime {
         cn.contribution.shop.ShopUiNetwork.clear();
         archive = null;
         cn.contribution.command.RequestLimiter.clear();
-        cn.contribution.ui.AdminDialogOperations.clear();
         cn.contribution.ui.ContributionDialogs.clear();
         lastDatabaseRetryTick = 0;
         ContributionApi.install(null);

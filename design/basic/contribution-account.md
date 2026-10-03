@@ -237,7 +237,7 @@ Java 模组 API 的调用方与 Contribution 运行在同一个 JVM 中，属于
 /contribution remove <玩家> <数量> <原因> <影响历史总收入:true|false> [备注]
 ```
 
-`add` 表示增加余额，`remove` 表示减少余额。除备注外，其余参数均为必填项。布尔值为 `true` 时，`add` 同时增加历史总收入，`remove` 同时减少历史总收入；为 `false` 时只改变余额。图形管理操作暂时使用旧默认规则。成功执行后，账户表和流水表会在同一事务中更新，`operator` 记录为 `command-<执行者>`，`source` 记录为 `contribution:admin_command`；图形操作使用 `contribution:admin_dialog`。
+`add` 表示增加余额，`remove` 表示减少余额。除备注外，其余参数均为必填项。布尔值为 `true` 时，`add` 同时增加历史总收入，`remove` 同时减少历史总收入；为 `false` 时只改变余额。图形管理操作已移除，余额变动仅通过 add/remove 命令。成功执行后，账户表和流水表会在同一事务中更新，`operator` 记录为 `command-<执行者>`，`source` 记录为 `contribution:admin_command`；历史旧图形操作流水可能仍含 `contribution:admin_dialog`，保留用于审计。
 
 管理员不能绕过余额范围和数量范围限制。
 

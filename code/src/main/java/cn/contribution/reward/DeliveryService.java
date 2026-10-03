@@ -26,13 +26,13 @@ public final class DeliveryService {
         if (!busy.add(uuid)) return;
         database.transaction(connection -> {
             try (PreparedStatement query = connection.prepareStatement(
-                    "SELECT delivery_id, item_id, item_count FROM reward_delivery WHERE player_uuid = ? AND "
+                    "SELECT delivery_id, item_id, item_count, item_spec FROM reward_delivery WHERE player_uuid = ? AND "
                             + "(status = 'PENDING' OR (status = 'CLAIMING' AND lease_until < CURRENT_TIMESTAMP(6))) "
                             + "ORDER BY created_at LIMIT 1 FOR UPDATE")) {
                 query.setBytes(1, AccountService.uuidBytes(uuid));
                 try (ResultSet row = query.executeQuery()) {
                     if (!row.next()) return null;
-                    Delivery delivery = new Delivery(AccountService.bytesUuid(row.getBytes(1)), row.getString(2), row.getInt(3));
+                    Delivery delivery = new Delivery(AccountService.bytesUuid(row.getBytes(1)), row.getString(4) == null ? row.getString(2) : row.getString(4), row.getInt(3));
                     try (PreparedStatement reserve = connection.prepareStatement(
                             "UPDATE reward_delivery SET status = 'CLAIMING', lease_until = TIMESTAMPADD(MINUTE, 2, CURRENT_TIMESTAMP(6)) WHERE delivery_id = ?")) {
                         reserve.setBytes(1, AccountService.uuidBytes(delivery.id())); reserve.executeUpdate();
@@ -42,12 +42,16 @@ public final class DeliveryService {
             }
         }).whenComplete((delivery, error) -> player.level().getServer().execute(() -> {
             if (error != null || delivery == null || player.hasDisconnected()) { busy.remove(uuid); return; }
-            Item item = findItem(delivery.itemId());
-            if (item == null) { busy.remove(uuid); return; }
+            ItemStack prototype;
+            try { prototype = cn.contribution.shop.ItemStackSpec.parse(player.level().getServer().registryAccess(), delivery.itemId()); }
+            catch (Exception invalid) {
+                cn.contribution.ContributionMod.LOGGER.warn("Invalid pending item {}; leaving it queued", delivery.id(), invalid);
+                busy.remove(uuid); return;
+            }
             int remaining = delivery.count();
             while (remaining > 0) {
-                int size = Math.min(remaining, item.getDefaultMaxStackSize());
-                ItemStack stack = new ItemStack(item, size);
+                int size = Math.min(remaining, prototype.getMaxStackSize());
+                ItemStack stack = prototype.copyWithCount(size);
                 player.getInventory().add(stack);
                 if (!stack.isEmpty()) player.drop(stack, false, net.minecraft.util.Prediction.SERVER_ONLY);
                 remaining -= size;

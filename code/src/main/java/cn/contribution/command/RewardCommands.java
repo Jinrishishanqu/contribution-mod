@@ -46,8 +46,8 @@ public final class RewardCommands {
                         .then(create).then(createExtension));
     }
 
-    public static LiteralArgumentBuilder<CommandSourceStack> shopCommand() {
-        return ShopCommands.root();
+    public static LiteralArgumentBuilder<CommandSourceStack> shopCommand(net.minecraft.commands.CommandBuildContext registry) {
+        return ShopCommands.root(registry);
     }
 
     private static int status(CommandContext<CommandSourceStack> context) throws com.mojang.brigadier.exceptions.CommandSyntaxException {

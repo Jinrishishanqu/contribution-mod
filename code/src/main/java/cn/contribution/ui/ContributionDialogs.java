@@ -52,6 +52,10 @@ public final class ContributionDialogs {
         try {
             UUID playerId = source.getPlayer().getUUID();
             PAGE_REVISIONS.merge(playerId, 1L, Long::sum);
+            if (request.equals("close")) {
+                BACK_STACK.remove(playerId); CURRENT_PAGE.remove(playerId);
+                return 1;
+            }
             if (request.equals("back")) {
                 Deque<String> stack = BACK_STACK.get(playerId);
                 request = stack == null || stack.isEmpty() ? "home" : stack.pop();
@@ -69,11 +73,11 @@ public final class ContributionDialogs {
             String[] args = request.isBlank() ? new String[]{"home"} : request.trim().split("\\s+", 5);
             String target = args.length > 1 ? args[1] : "self";
             switch (args[0]) {
-                case "prepare", "confirm" -> AdminDialogOperations.handle(source, request);
+                case "prepare", "confirm" -> throw new IllegalArgumentException("账户变动请使用 /contribution add 或 remove");
                 case "home" -> home(source);
                 case "admin" -> adminHome(source);
                 case "account" -> account(source, target);
-                case "stats" -> stats(source, target);
+                case "stats" -> account(source, target);
                 case "industries" -> industries(source);
                 case "checkin" -> checkin(source);
                 case "accounts" -> accounts(source, args.length > 1 ? UUID.fromString(args[1]) : null);
@@ -103,7 +107,7 @@ public final class ContributionDialogs {
         if (clientUi(source)) {
             List<ContributionUiNetwork.Action> actions = new ArrayList<>(List.of(
                     action("我的账户", "account self"), action("我的流水", "history self"),
-                    action("我的统计", "stats self"), action("行业建设度", "industries"),
+                    action("行业建设度", "industries"),
                     action("签到", "checkin")));
             if (admin(source)) actions.add(action("管理员功能", "admin"));
             ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
@@ -111,7 +115,7 @@ public final class ContributionDialogs {
             return;
         }
         List<ActionButton> actions = new ArrayList<>(List.of(button("我的账户", "account self"), button("我的流水", "history self"),
-                button("我的统计", "stats self"), button("行业建设度与繁荣度", "industries"), button("每日签到与活动", "checkin")));
+                button("行业建设度与繁荣度", "industries"), button("每日签到与活动", "checkin")));
         if (admin(source)) actions.add(button("管理员功能", "admin"));
         show(source, "贡献值系统", List.of(), List.of(), actions);
     }
@@ -121,8 +125,7 @@ public final class ContributionDialogs {
             ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
                     "管理员功能", "admin", List.of(), List.of(), List.of(
                     action("账户列表", "accounts"), action("全服流水", "history *"),
-                    new ContributionUiNetwork.Action("查询账户", "contribution ui account $(target)"),
-                    new ContributionUiNetwork.Action("查询统计", "contribution ui stats $(target)"),
+                    new ContributionUiNetwork.Action("查询玩家", "contribution ui account $(target)"),
                     action("首页", "home")), "输入玩家名称或 UUID 以查询其他玩家",
                     List.of(new ContributionUiNetwork.Field("target", "玩家名称或 UUID", "", 64)), List.of()));
             return;
@@ -130,78 +133,45 @@ public final class ContributionDialogs {
         show(source, "管理员功能", List.of(),
                 List.of(input("target", "玩家名称或 UUID", "", 64)),
                 List.of(button("账户列表", "accounts"), button("全服流水", "history *"),
-                        template("查询账户", "contribution ui account $(target)"),
-                        template("查询玩家统计", "contribution ui stats $(target)"), button("首页", "home")));
+                        template("查询玩家", "contribution ui account $(target)"), button("首页", "home")));
     }
     private static void account(CommandSourceStack source, String who) {
         query(source, service().account(target(source, who)), result -> {
             if (result.isEmpty()) { message(source, "账户", "未找到该玩家账户"); return; }
             AccountRecord account = result.get();
-            if (clientUi(source)) {
-                List<ContributionUiNetwork.Action> actions = new ArrayList<>(List.of(
-                        action("查看流水", "history " + who), action("玩家统计", "stats " + who), action("首页", "home")));
-                List<ContributionUiNetwork.Field> fields = new ArrayList<>();
-                if (admin(source)) {
-                    fields.add(new ContributionUiNetwork.Field("amount", "变动数量", "", 11));
-                    fields.add(new ContributionUiNetwork.Field("reason", "原因（最多 64 字）", "", 64));
-                    actions.add(new ContributionUiNetwork.Action("预览变动", "contribution ui prepare "
-                            + account.playerUuid() + " $(amount) $(reason)"));
-                }
-                ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
-                        account.playerName() + " 的账户", "account", List.of("余额", "历史总收入", "UUID"),
-                        List.of(List.of(String.valueOf(account.balance()), String.valueOf(account.totalIncome()),
-                                account.playerUuid().toString())),
-                        actions, "管理员可填写带符号数量和原因后预览", fields, List.of()));
-                return;
-            }
-            List<Input> inputs = new ArrayList<>();
-            List<ActionButton> actions = new ArrayList<>(List.of(button("查看流水", "history " + who), button("玩家统计", "stats " + who), button("首页", "home")));
-            if (admin(source)) {
-                inputs.add(input("amount", "管理员变动数量（正数增加，负数扣除）", "", 11));
-                inputs.add(input("reason", "原因（最多 64 字）", "", 64));
-                actions.add(template("预览账户变动", "contribution ui prepare " + account.playerUuid() + " $(amount) $(reason)"));
-            }
-            show(source, account.playerName() + " 的账户", List.of("余额：" + account.balance(), "历史总收入：" + account.totalIncome(),
-                    "UUID：" + account.playerUuid()), inputs, actions);
-        });
-    }
-    private static void stats(CommandSourceStack source, String who) {
-        query(source, service().account(target(source, who)), account -> {
-            if (account.isEmpty() || ContributionRuntime.statistics() == null) { message(source, "统计", "暂无统计数据"); return; }
-            query(source, ContributionRuntime.statistics().playerSummaryData(account.get().playerUuid()), summary -> {
-                if (clientUi(source)) {
-                    List<List<String>> rows = new ArrayList<>();
-                    var industries = cn.contribution.industry.BuiltInIndustry.values();
-                    for (int i = 0; i < industries.length; i += 3) {
-                        List<String> cells = new ArrayList<>();
-                        for (int column = 0; column < 3; column++) {
-                            var industry = industries[i + column];
-                            cells.add(industry.displayName() + " " + summary.development(industry));
-                        }
-                        rows.add(cells);
-                    }
-                    ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
-                            account.get().playerName() + " 的统计", "stats", List.of("行业建设度", "行业建设度", "行业建设度"), rows,
-                            List.of(action("刷新", "stats " + who), action("首页", "home")),
-                            "放置 " + summary.placed() + "  ·  挖掘 " + summary.mined()));
-                    return;
-                }
-                int[] widths = {20, 20, 20};
-                boolean[] aligned = {false, false, true};
-                List<String> lines = new ArrayList<>();
-                lines.add(DialogTable.row(new int[]{20, 20}, new boolean[]{false, true},
-                        "放置 " + summary.placed(), "挖掘 " + summary.mined()));
+            if (ContributionRuntime.statistics() == null) { message(source, "账户", "统计服务尚未启动"); return; }
+            query(source, ContributionRuntime.statistics().playerSummaryData(account.playerUuid()), summary -> {
                 var industries = cn.contribution.industry.BuiltInIndustry.values();
+                List<List<String>> rows = new ArrayList<>();
+                rows.add(List.of(String.valueOf(account.balance()), String.valueOf(account.totalIncome()),
+                        account.playerUuid().toString()));
+                long total = 0;
+                for (var industry : industries) total += summary.development(industry);
+                rows.add(List.of(String.valueOf(summary.placed()), String.valueOf(summary.mined()), String.valueOf(total)));
                 for (int i = 0; i < industries.length; i += 3) {
-                    String[] cells = new String[3];
+                    List<String> cells = new ArrayList<>();
                     for (int column = 0; column < 3; column++) {
                         var industry = industries[i + column];
-                        cells[column] = industry.displayName() + " " + summary.development(industry);
+                        cells.add(industry.displayName() + " " + summary.development(industry));
                     }
-                    lines.add(DialogTable.row(widths, aligned, cells));
+                    rows.add(cells);
                 }
-                showTable(source, account.get().playerName() + " 的统计", lines, List.of(),
-                        List.of(button("刷新", "stats " + who), button("首页", "home")));
+                if (clientUi(source)) {
+                    ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
+                            account.playerName() + " 的账户与统计", "profile", List.of(), rows,
+                            List.of(action("查看流水", "history " + who), action("刷新", "account " + who),
+                                    action("返回上一页", "back"), action("首页", "home")),
+                            "账户变动仅通过管理员 /contribution add、remove 命令"));
+                    return;
+                }
+                List<String> lines = new ArrayList<>(List.of("余额：" + account.balance()
+                        + " · 历史总收入：" + account.totalIncome(), "UUID：" + account.playerUuid(),
+                        "原始放置：" + summary.placed() + " · 原始挖掘：" + summary.mined() + " · 总建设度：" + total));
+                for (int i = 2; i < rows.size(); i++)
+                    lines.add(DialogTable.row(new int[]{20, 20, 20}, new boolean[]{false, false, false},
+                            rows.get(i).toArray(String[]::new)));
+                showTable(source, account.playerName() + " 的账户与统计", lines, List.of(),
+                        List.of(button("查看流水", "history " + who), button("刷新", "account " + who), button("首页", "home")));
             });
         });
     }
@@ -306,7 +276,10 @@ public final class ContributionDialogs {
                 List<String> rowCommands = page.rows().stream().map(row ->
                         "contribution ui account " + row.playerUuid()).toList();
                 List<ContributionUiNetwork.Action> actions = new ArrayList<>();
+                if (cursor != null) actions.add(action("上一页", "back"));
                 page.nextCursor().ifPresent(next -> actions.add(action("下一页", "accounts " + next)));
+                actions.add(action("返回管理", "admin"));
+                actions.add(action("第一页", "accounts"));
                 actions.add(action("首页", "home"));
                 ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
                         "账户列表", "accounts", List.of("玩家", "余额", "UUID"), rows, actions,
@@ -316,7 +289,9 @@ public final class ContributionDialogs {
             }
             List<ActionButton> actions = new ArrayList<>();
             for (AccountRecord row : page.rows()) actions.add(button(row.playerName() + "：" + row.balance(), "account " + row.playerUuid()));
+            if (cursor != null) actions.add(button("上一页", "back"));
             page.nextCursor().ifPresent(next -> actions.add(button("下一页", "accounts " + next)));
+            actions.add(button("第一页", "accounts")); actions.add(button("返回管理", "admin"));
             actions.add(button("首页", "home"));
             show(source, "账户列表", List.of(page.validCursor() ? "点击账户查看详情" : "翻页位置已失效，请从首页重试"), List.of(), actions);
         });
@@ -340,7 +315,9 @@ public final class ContributionDialogs {
                         action("股票买入", "history " + who + " - type=SPEND source=contribution:stock"),
                         action("股票卖出", "history " + who + " - type=STOCK source=contribution:stock"),
                         action("刷新", "history " + who + " " + (cursor == null ? "-" : cursor) + " " + filter.commandArguments())));
+                if (cursor != null) actions.add(action("上一页", "back"));
                 page.nextCursor().ifPresent(next -> actions.add(action("下一页", "history " + who + " " + next + " " + filter.commandArguments())));
+                actions.add(action("返回上一页", "back"));
                 actions.add(action("第一页", "history " + who + " - " + filter.commandArguments()));
                 actions.add(action("首页", "home"));
                 ContributionUiNetwork.send(source.getPlayer(), new ContributionUiNetwork.Snapshot(
@@ -365,6 +342,7 @@ public final class ContributionDialogs {
             actions.add(template("应用筛选", "contribution ui history " + who + " - $(filters)"));
             actions.add(button("刷新", "history " + who + " " + (cursor == null ? "-" : cursor)
                     + " " + filter.commandArguments()));
+            if (cursor != null) actions.add(button("上一页", "back"));
             page.nextCursor().ifPresent(next -> actions.add(button("下一页", "history " + who + " " + next + " " + filter.commandArguments())));
             actions.add(button("第一页", "history " + who + " - " + filter.commandArguments())); actions.add(button("首页", "home"));
             showTable(source, "流水 · " + who + " · " + zone, lines,

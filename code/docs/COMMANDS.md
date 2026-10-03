@@ -58,7 +58,7 @@
 | `/contribution checkin event create <ID> <标题> <开始日期> <结束日期> <贡献值> [<物品ID> <数量>]` | 在主服定义活动；日期为 `YYYY-MM-DD`，标题含空格时加引号 |
 | `/contribution checkin event create-extension <ID> <标题> <开始日期> <结束日期> <提供者ID> <参数>` | 用已注册的其他模组奖励提供者定义活动 |
 | `/shop admin` | 打开商品管理目录（两种客户端均有界面） |
-| `/shop put_on <物品ID> <名称> <数量> <售价> [描述]` | 自动分配商品编号并上架；中文或含空格的名称需引号 |
+| `/shop put_on <物品[组件]> <名称> <数量> <售价> [描述]` | 自动分配商品编号并上架，支持原版物品组件语法；中文或含空格的名称需引号 |
 | `/shop take_off <编号>` | 下架指定商品，保留订单和待发记录 |
 | `/shop modify <编号> [名称] [数量] [售价] [描述]` | 按顺序修改；填 `-` 保持该字段不变，尾部不填也不变 |
 
@@ -78,3 +78,15 @@
 ```
 
 `/contribution history-next`、`history-search-next`、`accounts-next` 及 `/contribution ui <页面参数>` 用于可点击的翻页或界面内部跳转，普通使用无需手动输入。管理员图形界面也支持点击常用流水类型筛选；复杂条件仍可在高级输入框或文字命令中填写。
+
+## 0.1.5 页面与自定义物品
+
+玩家账户与统计合并；/contribution ui account self 和旧的 /contribution ui stats self 均打开合并页。两套界面均移除管理员账户变动，旧 ui prepare/confirm 不再执行，调整余额仅使用上表的 /contribution add/remove。
+
+商店物品参数接受完整原版组件定义，例如：
+
+```text
+/shop put_on minecraft:diamond_sword[minecraft:custom_name={text:'荣誉剑'},minecraft:enchantments={'minecraft:unbreaking':3}] "荣誉剑" 1 100 纪念装备
+```
+
+组件定义、附魔、模型及默认组件删除会随订单保留；管理表单的物品字段接受同样格式，最多 2048 字符。
