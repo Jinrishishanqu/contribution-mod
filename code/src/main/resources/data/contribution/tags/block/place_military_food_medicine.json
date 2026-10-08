@@ -3,12 +3,8 @@
   "values": [
     "minecraft:brewing_stand",
     "minecraft:cake",
-    "minecraft:carrots",
-    "minecraft:cave_vines",
-    "minecraft:dried_kelp_block",
-    "minecraft:potatoes",
-    "minecraft:sweet_berry_bush",
-    "minecraft:target",
-    "minecraft:tnt"
+    "minecraft:cobweb",
+    "minecraft:powder_snow",
+    "minecraft:smoker"
   ]
 }

@@ -17,5 +17,6 @@ public abstract class ContributionApi {
         instance = api;
     }
 
-    public abstract CompletableFuture<BalanceChangeResult> changeBalance(BalanceChangeRequest request);
+    public abstract CompletableFuture<BalanceChangeResult> changeBalance(
+            BalanceChangeRequest request);
 }

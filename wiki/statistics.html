@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="玩家统计记录成功放置、挖掘的操作次数和各行业累计建设度，可在账户页面或通过命令查询。"><title>玩家统计 · 贡献值模组维基 0.2.6</title><link rel="stylesheet" href="assets/wiki.css"><script defer src="assets/search-index.js"></script><script defer src="assets/site.js"></script></head><body data-current-page="statistics"><a class="skip-link" href="#statistics">跳到正文</a><div class="shell"><aside id="site-navigation" class="sidebar" aria-label="站点导航">
+<a class="brand" href="index.html#home">
+<span class="brand-mark" aria-hidden="true"></span>
+<span class="brand-text"><span class="brand-title">贡献值维基</span><span class="brand-tagline">贡献值经济 · 行业建设度 · 股票市场 · 系统商店</span></span>
+</a>
+<div class="sidebar-search"><label class="visually-hidden" for="site-search">搜索本维基</label><input id="site-search" type="search" placeholder="搜索页面与章节…" autocomplete="off"><div id="site-search-results" class="search-results" hidden></div></div>
+<div class="nav">
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-0"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开始阅读</span></button></h3>
+<ul id="nav-list-0">
+<li><a href="index.html#home" data-nav="home">贡献值模组维基</a></li>
+<li><a href="basics.html#basics" data-nav="basics">玩法入门</a></li>
+<li><a href="features.html#features" data-nav="features">玩法总览</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-1"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">贡献值与建设</span></button></h3>
+<ul id="nav-list-1">
+<li><a href="account.html#account" data-nav="account">贡献值账户</a></li>
+<li><a href="development.html#development" data-nav="development">行业建设度</a></li>
+<li><a href="#statistics" data-nav="statistics">玩家统计</a></li>
+<li><a href="rewards.html#rewards" data-nav="rewards">建设度奖励</a></li>
+<li><a href="checkin.html#checkin" data-nav="checkin">签到与活动</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-2"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">经济交易</span></button></h3>
+<ul id="nav-list-2">
+<li><a href="shop.html#shop" data-nav="shop">系统商店</a></li>
+<li><a href="stock.html#stock" data-nav="stock">股票市场</a></li>
+<li><a href="stock-mechanics.html#stock-mechanics" data-nav="stock-mechanics">股价计算</a></li>
+<li><a href="swan.html#swan" data-nav="swan">黑天鹅事件</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-3"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">物品与进度</span></button></h3>
+<ul id="nav-list-3">
+<li><a href="items.html#items" data-nav="items">物品与装备</a></li>
+<li><a href="special-items.html#special-items" data-nav="special-items">特殊道具</a></li>
+<li><a href="recipes.html#recipes" data-nav="recipes">配方目录</a></li>
+<li><a href="recipes-basics.html#recipes-basics" data-nav="recipes-basics">基础配方</a></li>
+<li><a href="recipes-wings.html#recipes-wings" data-nav="recipes-wings">添翼配方</a></li>
+<li><a href="recipes-reinforcement.html#recipes-reinforcement" data-nav="recipes-reinforcement">强化配方</a></li>
+<li><a href="recipes-armor.html#recipes-armor" data-nav="recipes-armor">主题盔甲配方</a></li>
+<li><a href="recipes-hats.html#recipes-hats" data-nav="recipes-hats">帽子配方</a></li>
+<li><a href="recipes-special.html#recipes-special" data-nav="recipes-special">特殊道具配方</a></li>
+<li><a href="weapon-skins.html#weapon-skins" data-nav="weapon-skins">武器皮肤</a></li>
+<li><a href="advancements.html#advancements" data-nav="advancements">更多乐趣进度</a></li>
+<li><a href="advancement-details.html#advancement-details" data-nav="advancement-details">进度条件</a></li>
+<li><a href="resourcepack.html#resourcepack" data-nav="resourcepack">资源包与外观</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-4"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">操作与命令</span></button></h3>
+<ul id="nav-list-4">
+<li><a href="interface.html#interface" data-nav="interface">界面操作</a></li>
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands-contribution.html#commands-contribution" data-nav="commands-contribution">贡献值命令</a></li>
+<li><a href="commands-checkin.html#commands-checkin" data-nav="commands-checkin">签到命令</a></li>
+<li><a href="commands-stock.html#commands-stock" data-nav="commands-stock">股票命令</a></li>
+<li><a href="commands-shop.html#commands-shop" data-nav="commands-shop">商店命令</a></li>
+<li><a href="commands-account.html#commands-account" data-nav="commands-account">账户管理命令</a></li>
+<li><a href="commands-shop-admin.html#commands-shop-admin" data-nav="commands-shop-admin">商店管理命令</a></li>
+<li><a href="permissions.html#permissions" data-nav="permissions">操作权限</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-5"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">服务器管理</span></button></h3>
+<ul id="nav-list-5">
+<li><a href="installation.html#installation" data-nav="installation">安装</a></li>
+<li><a href="config.html#config" data-nav="config">服务器配置</a></li>
+<li><a href="data.html#data" data-nav="data">数据与存档</a></li>
+<li><a href="operations.html#operations" data-nav="operations">服务器维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-6"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开发与维护</span></button></h3>
+<ul id="nav-list-6">
+<li><a href="api.html#api" data-nav="api">公共接口</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-tools"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">工具</span></button></h3>
+<ul id="nav-list-tools">
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands.xlsx">下载命令工作簿</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+</div>
+<div class="sidebar-footer">版本 0.2.6 · Minecraft 26.3<br>Fabric Loader 0.19.5 · Java 25</div>
+</aside><main class="main"><header class="topbar"><nav class="topbar-crumbs" aria-label="面包屑"><a href="index.html">首页</a><span> / 玩家统计</span></nav><span class="topbar-spacer"></span><button id="mobile-nav" type="button" aria-expanded="false" aria-controls="site-navigation">导航</button><button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">切换主题</button></header><div class="wiki-page" id="statistics" data-page-title="玩家统计">
+<div class="content-panel">
+<div class="page-head">
+<h1 class="page-title">玩家统计</h1>
+<p class="page-summary">玩家统计记录成功放置、挖掘的操作次数和各行业累计建设度，可在账户页面或通过命令查询。</p>
+</div>
+<div class="page-columns">
+<div class="article">
+<div class="toc"><input class="toc-toggle" type="checkbox" id="toc-statistics" checked><label class="toc-head" for="toc-statistics">目录 <span class="toc-toggle-label"><span class="toc-show">[显示]</span><span class="toc-hide">[隐藏]</span></span></label><ol><li><a href="#statistics-查询">查询</a></li><li><a href="#statistics-总放置数量">总放置数量</a></li><li><a href="#statistics-总挖掘数量">总挖掘数量</a></li><li><a href="#statistics-玩家行业建设度">玩家行业建设度</a></li><li><a href="#statistics-补充资料">补充资料</a></li></ol></div>
+<section class="wiki-section" id="statistics-查询">
+<h2>查询</h2>
+<figure class="media-figure"><ol class="visual-flow"><li><img class="item-icon" src="assets/images/icons/minecraft-iron_pickaxe.png" alt="完成操作" width="128" height="128" loading="lazy" decoding="async"><strong>完成操作</strong><span>服务端确认成功</span></li><li><img class="item-icon" src="assets/images/icons/minecraft-book.png" alt="累计统计" width="128" height="128" loading="lazy" decoding="async"><strong>累计统计</strong><span>操作次数与行业建设度</span></li><li><img class="item-icon" src="assets/images/icons/minecraft-paper.png" alt="查询" width="128" height="128" loading="lazy" decoding="async"><strong>查询</strong><span>账户页或统计命令</span></li></ol><figcaption class="media-caption">物品图标用于示意操作顺序</figcaption></figure>
+<pre class="code" data-language="text"><code>/contribution stats
+/contribution stats &lt;玩家&gt;</code></pre>
+<ul><li>所有玩家可以查询自己的统计数据。</li><li>管理员可以通过玩家名称或唯一标识符查询在线或离线玩家。</li><li><code>&lt;玩家&gt;</code> 使用目标选择器时必须恰好选中一名玩家。</li><li>默认输出总放置数量、总挖掘数量以及当前启用行业的累计建设度。</li><li>图形界面已把账户摘要、原始操作统计与行业建设度合并在同一页；命令仍然保留。</li></ul>
+</section>
+<section class="wiki-section" id="statistics-总放置数量">
+<h2>总放置数量</h2>
+<p>玩家直接发起并由服务端确认成功的方块放置，每次操作计 1 次。门和床等一次产生多个方块位置的操作，按整体计数。</p>
+<p>总放置次数记录原始成功操作，包括创造模式操作。该统计独立于行业标签和建设度去重；自动化和环境变化由相应的服务器事件统计处理。</p>
+</section>
+<section class="wiki-section" id="statistics-总挖掘数量">
+<h2>总挖掘数量</h2>
+<p>玩家直接发起并由服务端确认成功的方块破坏，每次操作计 1 次。连带移除多个位置时，仍按一次挖掘计数。</p>
+<p>创造模式的成功破坏计入原始次数。行业建设度另按游戏模式、行业规则和去重结果计算。</p>
+</section>
+<section class="wiki-section" id="statistics-玩家行业建设度">
+<h2>玩家行业建设度</h2>
+<p>玩家行业建设度表示某名玩家通过有效建设行为为各行业贡献的累计建设度，不进行每日重置。合成、放置与挖掘分别通过 <code>craft_&lt;行业路径&gt;.json</code>、<code>place_&lt;行业路径&gt;.json</code> 与 <code>mine_&lt;行业路径&gt;.json</code> 匹配行业，每次事件遵守游戏模式、唯一行业归属和来源计量规则。</p>
+<p>方块放置与挖掘必须先通过 20 游戏刻同位置去重。通过去重后，同一个标准化建设度事件同时增加：对应行业的当日服务器建设度，以及当前玩家在该行业的累计建设度。行业总建设度不在玩家操作发生时直接修改，而是在次日早上 8 点结算时由已完成核算日的当日建设度统一累加。被去重的操作不会增加上述任何建设度；玩家合成没有方块坐标，不适用该去重机制。</p>
+</section>
+<section class="wiki-section" id="statistics-补充资料">
+<h2>补充资料</h2>
+<details class="source-details" id="statistics-系统定位"><summary>数据存储</summary><p>个人统计保存在模组数据库中，单服使用世界内 H2，群组服使用共享 MySQL。数值采用非负 64 位整数，范围为 <span class="math">0</span> 至 <span class="math">2<sup>63</sup>-1</span>。</p>
+<details class="source-details"><summary>统计逻辑标识</summary><div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">逻辑标识</th><th scope="col">含义</th><th scope="col">计数单位</th></tr></thead>
+<tbody>
+<tr><td><code>contribution:total_blocks_placed</code></td><td>玩家累计成功完成的方块放置操作次数</td><td>成功放置操作</td></tr>
+<tr><td><code>contribution:total_blocks_mined</code></td><td>玩家累计成功完成的方块挖掘操作次数</td><td>成功挖掘操作</td></tr>
+<tr><td><code>contribution:industry_development/&lt;行业路径&gt;</code></td><td>玩家在指定行业的累计建设度</td><td>通过行业规则计算的建设度</td></tr>
+</tbody>
+</table></div></details></details>
+<details class="source-details" id="statistics-事件处理顺序"><summary>事件处理顺序</summary><details class="source-details"><summary>成功事件与统计处理顺序</summary><ol><li>服务端确认操作已经成功。</li><li>按本次成功操作增加 1 次玩家总放置或总挖掘统计。</li><li>使用玩家操作标签匹配行业规则。</li><li>执行统计服务器、游戏模式与唯一行业归属校验。</li><li>使用子服、维度、玩家、操作类型、坐标与方块标识符执行 20 游戏刻去重；方块标识符不包含方块状态。</li><li>通过去重后生成一个标准化建设度事件。</li><li>服务器行业聚合器与玩家行业聚合器消费同一个事件。</li></ol>
+<p>某个方块没有行业归属或建设度被去重，不会撤销已经确认的总放置或总挖掘统计。</p></details></details>
+</section>
+<div class="page-footer">贡献值模组维基 · 0.2.6 · <a href="documentation.html#documentation">维基维护</a></div>
+</div>
+<aside class="page-info">
+<div class="page-info-inner">
+<div class="page-info-head">条目概要</div>
+<table class="infobox">
+<tr><th>记录</th><td>放置、挖掘与个人建设度</td></tr>
+<tr><th>查询</th><td><code>/contribution stats</code></td></tr>
+
+</table>
+</div>
+<table class="navbox"><tbody>
+<tr><th class="navbox-top" colspan="2"><span class="navbox-title">贡献值与建设</span></th></tr>
+<tr><th>相关页面</th><td><ul class="hlist"><li><a href="account.html#account">贡献值账户</a></li><li><a href="development.html#development">行业建设度</a></li><li><a href="rewards.html#rewards">建设度奖励</a></li><li><a href="checkin.html#checkin">签到与活动</a></li></ul></td></tr>
+</tbody></table>
+<div class="catlinks"><span>分类：</span><ul><li>贡献值与建设</li></ul></div>
+</aside>
+</div>
+</div>
+</div></main></div></body></html>

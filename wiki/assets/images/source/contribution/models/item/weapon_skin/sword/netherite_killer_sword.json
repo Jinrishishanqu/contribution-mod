@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/sword/netherite_killer_sword"
+  },
+  "parent": "minecraft:item/handheld"
+}

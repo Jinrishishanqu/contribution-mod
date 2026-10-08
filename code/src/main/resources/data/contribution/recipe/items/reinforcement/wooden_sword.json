@@ -6,9 +6,6 @@
   "result": {
     "id": "minecraft:wooden_sword",
     "components": {
-      "minecraft:item_name": {
-        "text": "强化木剑"
-      },
       "minecraft:max_damage": 2031,
       "minecraft:damage_resistant": {
         "types": "#minecraft:is_fire"
@@ -27,6 +24,13 @@
           "operation": "add_value",
           "slot": "mainhand",
           "id": "minecraft:base_attack_speed"
+        }
+      ],
+      "minecraft:lore": [
+        {
+          "color": "gray",
+          "italic": false,
+          "text": "下界合金强化"
         }
       ]
     }

@@ -1,0 +1,193 @@
+{
+  "id": "data",
+  "title": "数据与存档",
+  "summary": "单服数据保存在世界内的 H2 数据库，群组服数据保存在共享 MySQL；统计恢复日志保存在各服世界目录中。",
+  "sections": [
+    {
+      "title": "存储位置",
+      "blocks": [
+        {
+          "type": "gallery",
+          "items": [
+            {
+              "key": "minecraft:chest",
+              "label": "单服 H2",
+              "text": "世界内数据库"
+            },
+            {
+              "key": "minecraft:book",
+              "label": "群组服 MySQL",
+              "text": "共享业务数据"
+            },
+            {
+              "key": "minecraft:paper",
+              "label": "恢复日志",
+              "text": "各服保存统计批次"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "columns": [
+            "部署形态",
+            "权威数据",
+            "本地目录内容"
+          ],
+          "rows": [
+            [
+              "单人 / 单服",
+              "世界目录 `contribution/contribution.mv.db`（嵌入式 H2）",
+              "账户、流水、建设度、恢复日志"
+            ],
+            [
+              "群组服",
+              "共享 MySQL 8.4 中的业务表（全部 `InnoDB`）",
+              "仅本地统计恢复日志"
+            ]
+          ]
+        },
+        {
+          "type": "callout",
+          "style": "warn",
+          "title": "备份方式不同",
+          "text": "单服可以整体备份世界目录下的 `contribution/` 文件夹；群组服必须另行备份 MySQL 数据库，只复制各子服的本地目录会丢失权威数据。备份前先停服，不要在运行时复制数据库文件，也不要手工编辑 `.mv.db`。"
+        }
+      ],
+      "id": "权威数据在哪里"
+    },
+    {
+      "title": "世界目录结构",
+      "blocks": [
+        {
+          "type": "table",
+          "columns": [
+            "路径",
+            "内容"
+          ],
+          "rows": [
+            [
+              "`contribution/contribution.mv.db`",
+              "单机嵌入式数据库文件"
+            ],
+            [
+              "`contribution/statistics-journal/`",
+              "建设度与玩家统计的本地恢复日志"
+            ],
+            [
+              "`contribution/resource-packs/`",
+              "启动时导出的内置外观资源包压缩包"
+            ],
+            [
+              "`config/contribution/server.json`",
+              "运行配置（数据库、身份、奖励）"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "启动时会自动把旧的 `config/contribution/statistics-journal/` 迁移到世界目录下。两处目录同时存在时，模组保留原文件并停止初始化，由管理员核对后处理。"
+        }
+      ],
+      "id": "世界目录结构"
+    },
+    {
+      "title": "主要数据表",
+      "blocks": [
+        {
+          "type": "table",
+          "columns": [
+            "表",
+            "用途"
+          ],
+          "rows": [
+            [
+              "`contribution_account`",
+              "账户：唯一标识符、名称、名称规范值、余额、历史总收入、时间戳"
+            ],
+            [
+              "`contribution_transaction`",
+              "账户流水：流水标识符、幂等标识符、请求哈希、变动前后余额、类型、来源、原因、操作者、子服、时间"
+            ],
+            [
+              "`contribution_transaction_archive`",
+              "超过一年的过期流水归档（MySQL 专有迁移）"
+            ],
+            [
+              "`industry_day_accumulator`",
+              "行业当日累加器，是当日建设度的唯一权威来源"
+            ],
+            [
+              "`industry_daily`",
+              "已结算日的九行业快照"
+            ],
+            [
+              "`industry_state`",
+              "总建设度、最后结算日、指数移动平均与繁荣度"
+            ],
+            [
+              "`player_activity_stats`",
+              "玩家原始放置、挖掘次数"
+            ],
+            [
+              "`player_industry_stats`",
+              "玩家各行业累计建设度"
+            ],
+            [
+              "`player_distance_remainder`",
+              "各移动方式的未折算距离余数"
+            ],
+            [
+              "`player_development_reward`",
+              "建设度奖励已发放贡献值"
+            ],
+            [
+              "`statistics_batch` / `statistics_day_close`",
+              "统计批次身份与内容哈希；每台统计服务器的关日确认"
+            ],
+            [
+              "`scheduled_task_run`",
+              "主服结算的幂等任务、租约与状态"
+            ],
+            [
+              "`contribution_rule_snapshot` / `contribution_rule_epoch`",
+              "规则数据定义的去重快照与「核算日 → 规则哈希」映射"
+            ],
+            [
+              "`checkin_daily` / `checkin_player` / `checkin_event` / `checkin_event_claim`",
+              "每日在线秒数与领取时间、连续周期状态、活动定义、活动领取唯一键"
+            ],
+            [
+              "`shop_offer` / `shop_order` / `reward_delivery`",
+              "共享商品目录、商店订单、待发物品队列"
+            ],
+            [
+              "`account_uuid_migration`",
+              "唯一标识符迁移审计行"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "股票相关表见[股票市场](page:stock)。数据库结构使用 Flyway 版本化数据库语句管理，迁移文件采用 `V<版本>__<说明>.sql` 命名；已发布的历史脚本不得修改，任何结构变化都通过新的递增版本脚本完成。"
+        }
+      ],
+      "id": "主要数据表"
+    },
+    {
+      "title": "结构迁移",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "单机嵌入式库：首次启动自动创建数据库文件与业务表，之后每次启动执行迁移。",
+            "群组服：只有生存服或独立部署流程可以执行 MySQL 迁移，其他子服启动时仅执行 `validate`。",
+            "子服发现结构版本不匹配时会拒绝启用数据库功能，避免多个子服并发修改表结构。",
+            "迁移失败时经济与统计服务保持不可用，日志给出迁移版本与错误摘要（不含口令）。",
+            "破坏性迁移必须先备份，并在维护窗口由管理员显式执行。"
+          ]
+        }
+      ],
+      "id": "迁移的执行者"
+    }
+  ]
+}

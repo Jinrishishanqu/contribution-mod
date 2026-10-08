@@ -1,0 +1,43 @@
+{
+  "credit": "Made with Blockbench",
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        55
+      ],
+      "translation": [
+        0,
+        6.5,
+        -0.25
+      ],
+      "scale": [
+        1.1,
+        1.1,
+        0.85
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -55
+      ],
+      "translation": [
+        0,
+        6.5,
+        -0.25
+      ],
+      "scale": [
+        1.1,
+        1.1,
+        0.85
+      ]
+    }
+  },
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/sword/flarefrost_blade"
+  },
+  "parent": "minecraft:item/handheld"
+}

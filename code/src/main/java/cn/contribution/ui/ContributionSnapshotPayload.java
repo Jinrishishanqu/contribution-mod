@@ -9,9 +9,13 @@ import net.minecraft.resources.Identifier;
 public record ContributionSnapshotPayload(String json) implements CustomPacketPayload {
     public static final Type<ContributionSnapshotPayload> TYPE =
             new Type<>(Identifier.fromNamespaceAndPath("contribution", "contribution_snapshot"));
-    public static final StreamCodec<RegistryFriendlyByteBuf, ContributionSnapshotPayload> CODEC = StreamCodec.of(
-            (buffer, payload) -> buffer.writeUtf(payload.json, 65535),
-            buffer -> new ContributionSnapshotPayload(buffer.readUtf(65535)));
+    public static final StreamCodec<RegistryFriendlyByteBuf, ContributionSnapshotPayload> CODEC =
+            StreamCodec.of(
+                    (buffer, payload) -> buffer.writeUtf(payload.json, 65535),
+                    buffer -> new ContributionSnapshotPayload(buffer.readUtf(65535)));
 
-    @Override public Type<ContributionSnapshotPayload> type() { return TYPE; }
+    @Override
+    public Type<ContributionSnapshotPayload> type() {
+        return TYPE;
+    }
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "contribution:item/armor/quantum_chestplate",
+    "layer1": "contribution:item/armor/quantum_chestplate_overlay"
+  }
+}

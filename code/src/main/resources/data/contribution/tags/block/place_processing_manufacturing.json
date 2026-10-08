@@ -2,16 +2,14 @@
   "replace": false,
   "values": [
     "minecraft:anvil",
-    "minecraft:blast_furnace",
-    "minecraft:cauldron",
     "minecraft:chipped_anvil",
     "minecraft:crafting_table",
     "minecraft:damaged_anvil",
     "minecraft:fletching_table",
-    "minecraft:furnace",
     "minecraft:grindstone",
+    "minecraft:loom",
     "minecraft:smithing_table",
-    "minecraft:smoker",
-    "minecraft:stonecutter"
+    "minecraft:stonecutter",
+    "minecraft:wet_sponge"
   ]
 }

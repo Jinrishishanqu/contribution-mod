@@ -1,0 +1,22 @@
+{
+  "parent": "contribution:item/weapon_skin/sword/earth",
+  "display": {
+    "gui": {
+      "rotation": [
+        0,
+        0,
+        6
+      ],
+      "translation": [
+        40,
+        -36,
+        0
+      ],
+      "scale": [
+        4,
+        4,
+        4
+      ]
+    }
+  }
+}

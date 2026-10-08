@@ -11,18 +11,32 @@ public record BalanceChangeResult(
         OptionalInt balanceBefore,
         OptionalInt balanceAfter,
         boolean replayed,
-        String message
-) {
+        String message) {
     public boolean successful() {
         return status == BalanceChangeStatus.SUCCESS;
     }
 
-    public static BalanceChangeResult rejected(BalanceChangeStatus status, UUID id, String message) {
-        return new BalanceChangeResult(status, id, Optional.empty(), OptionalInt.empty(), OptionalInt.empty(), false, message);
+    public static BalanceChangeResult rejected(
+            BalanceChangeStatus status, UUID id, String message) {
+        return new BalanceChangeResult(
+                status,
+                id,
+                Optional.empty(),
+                OptionalInt.empty(),
+                OptionalInt.empty(),
+                false,
+                message);
     }
 
-    public static BalanceChangeResult success(UUID id, UUID transaction, int before, int after, boolean replayed) {
-        return new BalanceChangeResult(BalanceChangeStatus.SUCCESS, id, Optional.of(transaction),
-                OptionalInt.of(before), OptionalInt.of(after), replayed, "操作成功");
+    public static BalanceChangeResult success(
+            UUID id, UUID transaction, int before, int after, boolean replayed) {
+        return new BalanceChangeResult(
+                BalanceChangeStatus.SUCCESS,
+                id,
+                Optional.of(transaction),
+                OptionalInt.of(before),
+                OptionalInt.of(after),
+                replayed,
+                "操作成功");
     }
 }

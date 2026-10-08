@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="权限决定玩家可以查询的数据和执行的操作。管理功能使用原版管理员权限，并由服务端校验请求。"><title>操作权限 · 贡献值模组维基 0.2.6</title><link rel="stylesheet" href="assets/wiki.css"><script defer src="assets/search-index.js"></script><script defer src="assets/site.js"></script></head><body data-current-page="permissions"><a class="skip-link" href="#permissions">跳到正文</a><div class="shell"><aside id="site-navigation" class="sidebar" aria-label="站点导航">
+<a class="brand" href="index.html#home">
+<span class="brand-mark" aria-hidden="true"></span>
+<span class="brand-text"><span class="brand-title">贡献值维基</span><span class="brand-tagline">贡献值经济 · 行业建设度 · 股票市场 · 系统商店</span></span>
+</a>
+<div class="sidebar-search"><label class="visually-hidden" for="site-search">搜索本维基</label><input id="site-search" type="search" placeholder="搜索页面与章节…" autocomplete="off"><div id="site-search-results" class="search-results" hidden></div></div>
+<div class="nav">
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-0"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开始阅读</span></button></h3>
+<ul id="nav-list-0">
+<li><a href="index.html#home" data-nav="home">贡献值模组维基</a></li>
+<li><a href="basics.html#basics" data-nav="basics">玩法入门</a></li>
+<li><a href="features.html#features" data-nav="features">玩法总览</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-1"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">贡献值与建设</span></button></h3>
+<ul id="nav-list-1">
+<li><a href="account.html#account" data-nav="account">贡献值账户</a></li>
+<li><a href="development.html#development" data-nav="development">行业建设度</a></li>
+<li><a href="statistics.html#statistics" data-nav="statistics">玩家统计</a></li>
+<li><a href="rewards.html#rewards" data-nav="rewards">建设度奖励</a></li>
+<li><a href="checkin.html#checkin" data-nav="checkin">签到与活动</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-2"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">经济交易</span></button></h3>
+<ul id="nav-list-2">
+<li><a href="shop.html#shop" data-nav="shop">系统商店</a></li>
+<li><a href="stock.html#stock" data-nav="stock">股票市场</a></li>
+<li><a href="stock-mechanics.html#stock-mechanics" data-nav="stock-mechanics">股价计算</a></li>
+<li><a href="swan.html#swan" data-nav="swan">黑天鹅事件</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-3"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">物品与进度</span></button></h3>
+<ul id="nav-list-3">
+<li><a href="items.html#items" data-nav="items">物品与装备</a></li>
+<li><a href="special-items.html#special-items" data-nav="special-items">特殊道具</a></li>
+<li><a href="recipes.html#recipes" data-nav="recipes">配方目录</a></li>
+<li><a href="recipes-basics.html#recipes-basics" data-nav="recipes-basics">基础配方</a></li>
+<li><a href="recipes-wings.html#recipes-wings" data-nav="recipes-wings">添翼配方</a></li>
+<li><a href="recipes-reinforcement.html#recipes-reinforcement" data-nav="recipes-reinforcement">强化配方</a></li>
+<li><a href="recipes-armor.html#recipes-armor" data-nav="recipes-armor">主题盔甲配方</a></li>
+<li><a href="recipes-hats.html#recipes-hats" data-nav="recipes-hats">帽子配方</a></li>
+<li><a href="recipes-special.html#recipes-special" data-nav="recipes-special">特殊道具配方</a></li>
+<li><a href="weapon-skins.html#weapon-skins" data-nav="weapon-skins">武器皮肤</a></li>
+<li><a href="advancements.html#advancements" data-nav="advancements">更多乐趣进度</a></li>
+<li><a href="advancement-details.html#advancement-details" data-nav="advancement-details">进度条件</a></li>
+<li><a href="resourcepack.html#resourcepack" data-nav="resourcepack">资源包与外观</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-4"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">操作与命令</span></button></h3>
+<ul id="nav-list-4">
+<li><a href="interface.html#interface" data-nav="interface">界面操作</a></li>
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands-contribution.html#commands-contribution" data-nav="commands-contribution">贡献值命令</a></li>
+<li><a href="commands-checkin.html#commands-checkin" data-nav="commands-checkin">签到命令</a></li>
+<li><a href="commands-stock.html#commands-stock" data-nav="commands-stock">股票命令</a></li>
+<li><a href="commands-shop.html#commands-shop" data-nav="commands-shop">商店命令</a></li>
+<li><a href="commands-account.html#commands-account" data-nav="commands-account">账户管理命令</a></li>
+<li><a href="commands-shop-admin.html#commands-shop-admin" data-nav="commands-shop-admin">商店管理命令</a></li>
+<li><a href="#permissions" data-nav="permissions">操作权限</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-5"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">服务器管理</span></button></h3>
+<ul id="nav-list-5">
+<li><a href="installation.html#installation" data-nav="installation">安装</a></li>
+<li><a href="config.html#config" data-nav="config">服务器配置</a></li>
+<li><a href="data.html#data" data-nav="data">数据与存档</a></li>
+<li><a href="operations.html#operations" data-nav="operations">服务器维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-6"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开发与维护</span></button></h3>
+<ul id="nav-list-6">
+<li><a href="api.html#api" data-nav="api">公共接口</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-tools"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">工具</span></button></h3>
+<ul id="nav-list-tools">
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands.xlsx">下载命令工作簿</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+</div>
+<div class="sidebar-footer">版本 0.2.6 · Minecraft 26.3<br>Fabric Loader 0.19.5 · Java 25</div>
+</aside><main class="main"><header class="topbar"><nav class="topbar-crumbs" aria-label="面包屑"><a href="index.html">首页</a><span> / 操作权限</span></nav><span class="topbar-spacer"></span><button id="mobile-nav" type="button" aria-expanded="false" aria-controls="site-navigation">导航</button><button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">切换主题</button></header><div class="wiki-page" id="permissions" data-page-title="操作权限">
+<div class="content-panel">
+<div class="page-head">
+<h1 class="page-title">操作权限</h1>
+<p class="page-summary">权限决定玩家可以查询的数据和执行的操作。管理功能使用原版管理员权限，并由服务端校验请求。</p>
+</div>
+<div class="page-columns">
+<div class="article">
+<div class="toc"><input class="toc-toggle" type="checkbox" id="toc-permissions" checked><label class="toc-head" for="toc-permissions">目录 <span class="toc-toggle-label"><span class="toc-show">[显示]</span><span class="toc-hide">[隐藏]</span></span></label><ol><li><a href="#permissions-权限矩阵">权限矩阵</a></li><li><a href="#permissions-服务端校验边界">请求校验</a></li></ol></div>
+<section class="wiki-section" id="permissions-权限矩阵">
+<h2>权限矩阵</h2>
+<figure class="media-figure"><ol class="visual-flow"><li><img class="item-icon" src="assets/images/icons/minecraft-paper.png" alt="玩家请求" width="128" height="128" loading="lazy" decoding="async"><strong>玩家请求</strong><span>命令或界面操作</span></li><li><img class="item-icon" src="assets/images/icons/minecraft-shield.png" alt="权限与参数" width="128" height="128" loading="lazy" decoding="async"><strong>权限与参数</strong><span>由服务端校验</span></li><li><img class="item-icon" src="assets/images/icons/minecraft-book.png" alt="执行操作" width="128" height="128" loading="lazy" decoding="async"><strong>执行操作</strong><span>按权限读取或变更</span></li></ol><figcaption class="media-caption">物品图标用于示意操作顺序</figcaption></figure>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">能力</th><th scope="col">普通玩家</th><th scope="col">管理员</th><th scope="col">控制台 / 主服要求</th></tr></thead>
+<tbody>
+<tr><td>查询自己的余额与流水</td><td>✔</td><td>✔</td><td>—</td></tr>
+<tr><td>查询他人余额与流水</td><td>✘</td><td>✔</td><td>—</td></tr>
+<tr><td>查询全服流水</td><td>✘</td><td>✔</td><td>—</td></tr>
+<tr><td>查看账户列表</td><td>✘</td><td>✔</td><td>—</td></tr>
+<tr><td>增加 / 扣除余额</td><td>✘</td><td>✔</td><td>—</td></tr>
+<tr><td>创建与迁移账户</td><td>✘</td><td>✔</td><td><code>migrate</code> 仅主服控制台且无在线玩家</td></tr>
+<tr><td>清理假人账户</td><td>✘</td><td>✔</td><td>破坏性，先备份</td></tr>
+<tr><td>每日签到</td><td>自动</td><td>自动</td><td>—</td></tr>
+<tr><td>创建活动签到</td><td>✘</td><td>✔</td><td>只允许主服务器</td></tr>
+<tr><td>领取活动奖励</td><td>✔</td><td>✔</td><td>—</td></tr>
+<tr><td>浏览与购买商店商品</td><td>✔</td><td>✔</td><td>—</td></tr>
+<tr><td>管理商店目录</td><td>✘</td><td>✔（管理员等级 2）</td><td>—</td></tr>
+<tr><td>股票浏览、交易与查询</td><td>✔</td><td>✔</td><td>—</td></tr>
+</tbody>
+</table></div>
+<p>管理员功能使用原版管理员权限，通常要求等级 2。服务端校验命令和界面请求的权限。</p>
+</section>
+<section class="wiki-section" id="permissions-服务端校验边界">
+<h2>请求校验</h2>
+<ul><li>图形界面只负责展示与发起请求；数量、布尔值、原因与备注的限制仍由服务端强制。</li><li>管理员同样不能绕过余额范围、数量范围与幂等规则。</li><li>纯页面导航不占用交易限流配额，但页面读取本身有间隔与在途限制。</li><li>账户增减通过 增加与扣除余额命令提交，图形页面用于查询。</li></ul>
+</section>
+<div class="page-footer">贡献值模组维基 · 0.2.6 · <a href="documentation.html#documentation">维基维护</a></div>
+</div>
+<aside class="page-info">
+<div class="page-info-inner">
+<div class="page-info-head">条目概要</div>
+<table class="infobox">
+<tr><th>普通玩家</th><td>本人查询与交易</td></tr>
+<tr><th>管理操作</th><td>通常需管理员等级 2</td></tr>
+
+</table>
+</div>
+<table class="navbox"><tbody>
+<tr><th class="navbox-top" colspan="2"><span class="navbox-title">操作与命令</span></th></tr>
+<tr><th>相关页面</th><td><ul class="hlist"><li><a href="interface.html#interface">界面操作</a></li><li><a href="commands.html#commands">命令速查</a></li><li><a href="commands-contribution.html#commands-contribution">贡献值命令</a></li><li><a href="commands-checkin.html#commands-checkin">签到命令</a></li></ul></td></tr>
+</tbody></table>
+<div class="catlinks"><span>分类：</span><ul><li>操作与命令</li></ul></div>
+</aside>
+</div>
+</div>
+</div></main></div></body></html>

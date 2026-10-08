@@ -1,0 +1,196 @@
+{
+  "id": "documentation",
+  "title": "维基维护",
+  "summary": "维基正文按主题维护，配方和进度由资源生成，命令语法由注册树导出；更新脚本同步生成网站与命令表。",
+  "sections": [
+    {
+      "id": "内容设计",
+      "title": "内容设计",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "先确定页面的读者、职责和阅读顺序，再编辑正文。首页提供分类入口，玩法入门指导第一次参与，玩法总览说明范围。物品、配方和特殊道具分别承担类别属性、制作摆放和具体使用。"
+        },
+        {
+          "type": "p",
+          "text": "内容职责矩阵与条目模板维护在 `design/infrastructure/wiki-content-design.md`。普通玩家从入门进入机制和物品；管理员从安装进入配置与维护；开发者查公共接口。"
+        },
+        {
+          "type": "table",
+          "columns": [
+            "内容",
+            "安排"
+          ],
+          "rows": [
+            [
+              "机制",
+              "参与、操作、规则、计算；管理与实现后置"
+            ],
+            [
+              "物品",
+              "获取、使用、属性；图片跟随对应条目"
+            ],
+            [
+              "配方和进度",
+              "实际槽位与条件使用中文说明；原始定义折叠保留"
+            ],
+            [
+              "命令和维护",
+              "步骤、示例、准确语法、权限与结果"
+            ],
+            [
+              "语言",
+              "正文中文；精确命令、路径和标识符使用代码格式"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "title": "文档来源",
+      "blocks": [
+        {
+          "type": "table",
+          "columns": [
+            "位置",
+            "用途"
+          ],
+          "rows": [
+            [
+              "`wiki/index.html`",
+              "网站入口，双击离线阅读；生成产物，不手改"
+            ],
+            [
+              "`wiki/content/site.json`",
+              "导航分组、人工页面顺序与站点信息"
+            ],
+            [
+              "`wiki/content/pages/*.json`",
+              "每个主题独立正文文件，可单独修改"
+            ],
+            [
+              "`wiki/content/names.json`",
+              "实际资源涉及的原版中文名称，未知标识符保留原文"
+            ],
+            [
+              "wiki/assets/wiki.css、site.js",
+              "共享样式和离线搜索、主题、手机导航交互"
+            ],
+            [
+              "`code/tools/wiki-game-content.mjs`",
+              "从实际模组资源生成配方分类和进度触发条件"
+            ],
+            [
+              "`documentation/source/catalog.json`",
+              "命令用途、权限、示例、参数限制以及命令工作簿使用指南"
+            ],
+            [
+              "`documentation/wiki.html`",
+              "保留的旧单文件离线入口，与网站同源生成"
+            ],
+            [
+              "`documentation/commands.xlsx`",
+              "当前实际可执行命令路径及使用指南，两张表"
+            ],
+            [
+              "`documentation/manifest.json`",
+              "源指纹、命令数量、网页/命令工作簿与全站产物的 `SHA-256`"
+            ]
+          ]
+        }
+      ],
+      "id": "在哪里修改"
+    },
+    {
+      "title": "条目写法",
+      "id": "条目写法",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "导语说明主题的定义和主要用途。物品页依次说明获取、用途和属性；机制页说明参与方式、规则、计算和查询；命令页说明使用、示例、语法和权限；维护页说明配置、步骤和结果。"
+        },
+        {
+          "type": "p",
+          "text": "正文描述当前行为。每段集中说明一件事，数量、比较项和参数使用表格。获取方式链接配方，用途链接相关机制；实现细节放在数据章节或折叠项，升级记录集中在运维页。"
+        },
+        {
+          "type": "p",
+          "text": "只有直接影响操作的条件进入正文，例如交易时段、材料、消耗、冷却和权限。普通说明使用段落，提示框用于可能丢失数据或改变交易结果的情形。维护规范与 Minecraft 维基参考条目见 `wiki/README.md`。"
+        }
+      ]
+    },
+    {
+      "title": "正文与生成内容",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "人工主题文件含 `id`、`title`、`summary`、`sections`；每节含 `title` 及 `blocks`。可用段落、列表、表格、代码、公式、提示、卡片、可折叠精确数据与配方网格。",
+            "增加人工页面后，在 `site.json` 的 `pages` 和 `nav` 中登记。引用其他页面用`[标签](page:页面id)`，避免硬编码文件路径。",
+            "配方材料、槽位、数量、产物组件和进度条件从当前模组文件资源源文件直接读取，不能用旧 design/items 原型推测当前玩法。Java 回调的特殊行为仍需人工说明。",
+            "网站页面是独立网页，用普通相对链接导航；无路由器、`fetch`、`CDN`、统计或遥测，正文和目录无需脚本。搜索与主题仅为增强功能。",
+            "只有正常制作并取出结果才触发 `recipe_crafted`；进度的多个条件如何合并按 `requirements` 字段解释，而非凭标题推断。"
+          ]
+        }
+      ],
+      "id": "正文与生成内容"
+    },
+    {
+      "title": "更新流程",
+      "blocks": [
+        {
+          "type": "flow",
+          "items": [
+            {
+              "key": "minecraft:writable_book",
+              "label": "编辑正文",
+              "text": "主题数据定义与命令说明"
+            },
+            {
+              "key": "minecraft:crafting_table",
+              "label": "同步生成",
+              "text": "网站、网页与命令工作簿"
+            },
+            {
+              "key": "minecraft:compass",
+              "label": "校验",
+              "text": "来源与产物哈希"
+            }
+          ],
+          "caption": "物品图标用于示意操作顺序"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "修改对应主题数据定义；涉及命令更新 `catalog.json`；涉及实现同时更新范围内 design 文档，排除的 items、definitions 保持原样。",
+            "运行 code/tools/update-documentation.ps1。脚本导出实际 Brigadier 命令树，同时重建网站、旧网页与命令工作簿，不能只更新其中一个。",
+            "运行 code/run-gradle.ps1 `verifyDocumentation` --offline，检查源指纹及所有产物校验和。",
+            "用浏览器打开 wiki/index.html，核对修改页面、搜索、窄屏显示、材料槽位、数量和触发说明。"
+          ]
+        },
+        {
+          "type": "code",
+          "language": "powershell",
+          "text": ".\\code\\tools\\update-documentation.ps1\n.\\code\\run-gradle.ps1 verifyDocumentation --offline"
+        }
+      ],
+      "id": "更新流程"
+    },
+    {
+      "title": "自动校验",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "生成阶段检查页面标识符、所有内部链接、跨页面章节锚点、静态资源存在性和每页唯一 `H1`。旧网页还检查标签配平。",
+            "`verifyDocumentation` 检查源码、资源、工具、范围内设计和维基人工源的指纹，并逐项验证站点网页、`CSS`、`JS`、搜索索引及网页/命令工作簿校验和。",
+            "搜索索引是生成产物，只校验产物哈希而不作为输入指纹，避免生成循环。",
+            "命令语法来自真实注册树；可选分支独立列出，不人工维护一份可能过期的命令语法列表。"
+          ]
+        }
+      ],
+      "id": "自动校验"
+    }
+  ]
+}

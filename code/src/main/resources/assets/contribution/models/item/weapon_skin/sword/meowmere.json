@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/sword/meowmere"
+  },
+  "parent": "contribution:item/weapon_skin/sword/28"
+}

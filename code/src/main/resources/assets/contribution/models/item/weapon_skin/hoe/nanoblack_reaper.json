@@ -1,0 +1,78 @@
+{
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        40
+      ],
+      "translation": [
+        0,
+        5.25,
+        -0.5
+      ],
+      "scale": [
+        1.8,
+        1.8,
+        0.9
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -40
+      ],
+      "translation": [
+        0,
+        5.25,
+        -0.5
+      ],
+      "scale": [
+        1.8,
+        1.8,
+        0.9
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        -30,
+        -90,
+        0
+      ],
+      "translation": [
+        1.13,
+        6.45,
+        0.38
+      ],
+      "scale": [
+        0.68,
+        0.68,
+        0.68
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        -30,
+        90,
+        0
+      ],
+      "translation": [
+        1.13,
+        6.45,
+        0.38
+      ],
+      "scale": [
+        0.68,
+        0.68,
+        0.68
+      ]
+    }
+  },
+  "textures": {
+    "1": "contribution:item/weapon_skin/hoe/celestial_reaper",
+    "layer0": "contribution:item/weapon_skin/hoe/nanoblack_reaper",
+    "particle": "contribution:item/weapon_skin/hoe/celestial_reaper"
+  },
+  "parent": "minecraft:item/handheld"
+}

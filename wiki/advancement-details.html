@@ -1,0 +1,4046 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="「更多乐趣」包含 36 个显示进度，完成相应的活动、装备和状态条件后获得。"><title>进度条件 · 贡献值模组维基 0.2.6</title><link rel="stylesheet" href="assets/wiki.css"><script defer src="assets/search-index.js"></script><script defer src="assets/site.js"></script></head><body data-current-page="advancement-details"><a class="skip-link" href="#advancement-details">跳到正文</a><div class="shell"><aside id="site-navigation" class="sidebar" aria-label="站点导航">
+<a class="brand" href="index.html#home">
+<span class="brand-mark" aria-hidden="true"></span>
+<span class="brand-text"><span class="brand-title">贡献值维基</span><span class="brand-tagline">贡献值经济 · 行业建设度 · 股票市场 · 系统商店</span></span>
+</a>
+<div class="sidebar-search"><label class="visually-hidden" for="site-search">搜索本维基</label><input id="site-search" type="search" placeholder="搜索页面与章节…" autocomplete="off"><div id="site-search-results" class="search-results" hidden></div></div>
+<div class="nav">
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-0"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开始阅读</span></button></h3>
+<ul id="nav-list-0">
+<li><a href="index.html#home" data-nav="home">贡献值模组维基</a></li>
+<li><a href="basics.html#basics" data-nav="basics">玩法入门</a></li>
+<li><a href="features.html#features" data-nav="features">玩法总览</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-1"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">贡献值与建设</span></button></h3>
+<ul id="nav-list-1">
+<li><a href="account.html#account" data-nav="account">贡献值账户</a></li>
+<li><a href="development.html#development" data-nav="development">行业建设度</a></li>
+<li><a href="statistics.html#statistics" data-nav="statistics">玩家统计</a></li>
+<li><a href="rewards.html#rewards" data-nav="rewards">建设度奖励</a></li>
+<li><a href="checkin.html#checkin" data-nav="checkin">签到与活动</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-2"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">经济交易</span></button></h3>
+<ul id="nav-list-2">
+<li><a href="shop.html#shop" data-nav="shop">系统商店</a></li>
+<li><a href="stock.html#stock" data-nav="stock">股票市场</a></li>
+<li><a href="stock-mechanics.html#stock-mechanics" data-nav="stock-mechanics">股价计算</a></li>
+<li><a href="swan.html#swan" data-nav="swan">黑天鹅事件</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-3"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">物品与进度</span></button></h3>
+<ul id="nav-list-3">
+<li><a href="items.html#items" data-nav="items">物品与装备</a></li>
+<li><a href="special-items.html#special-items" data-nav="special-items">特殊道具</a></li>
+<li><a href="recipes.html#recipes" data-nav="recipes">配方目录</a></li>
+<li><a href="recipes-basics.html#recipes-basics" data-nav="recipes-basics">基础配方</a></li>
+<li><a href="recipes-wings.html#recipes-wings" data-nav="recipes-wings">添翼配方</a></li>
+<li><a href="recipes-reinforcement.html#recipes-reinforcement" data-nav="recipes-reinforcement">强化配方</a></li>
+<li><a href="recipes-armor.html#recipes-armor" data-nav="recipes-armor">主题盔甲配方</a></li>
+<li><a href="recipes-hats.html#recipes-hats" data-nav="recipes-hats">帽子配方</a></li>
+<li><a href="recipes-special.html#recipes-special" data-nav="recipes-special">特殊道具配方</a></li>
+<li><a href="weapon-skins.html#weapon-skins" data-nav="weapon-skins">武器皮肤</a></li>
+<li><a href="advancements.html#advancements" data-nav="advancements">更多乐趣进度</a></li>
+<li><a href="#advancement-details" data-nav="advancement-details">进度条件</a></li>
+<li><a href="resourcepack.html#resourcepack" data-nav="resourcepack">资源包与外观</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-4"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">操作与命令</span></button></h3>
+<ul id="nav-list-4">
+<li><a href="interface.html#interface" data-nav="interface">界面操作</a></li>
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands-contribution.html#commands-contribution" data-nav="commands-contribution">贡献值命令</a></li>
+<li><a href="commands-checkin.html#commands-checkin" data-nav="commands-checkin">签到命令</a></li>
+<li><a href="commands-stock.html#commands-stock" data-nav="commands-stock">股票命令</a></li>
+<li><a href="commands-shop.html#commands-shop" data-nav="commands-shop">商店命令</a></li>
+<li><a href="commands-account.html#commands-account" data-nav="commands-account">账户管理命令</a></li>
+<li><a href="commands-shop-admin.html#commands-shop-admin" data-nav="commands-shop-admin">商店管理命令</a></li>
+<li><a href="permissions.html#permissions" data-nav="permissions">操作权限</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-5"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">服务器管理</span></button></h3>
+<ul id="nav-list-5">
+<li><a href="installation.html#installation" data-nav="installation">安装</a></li>
+<li><a href="config.html#config" data-nav="config">服务器配置</a></li>
+<li><a href="data.html#data" data-nav="data">数据与存档</a></li>
+<li><a href="operations.html#operations" data-nav="operations">服务器维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-6"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开发与维护</span></button></h3>
+<ul id="nav-list-6">
+<li><a href="api.html#api" data-nav="api">公共接口</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-tools"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">工具</span></button></h3>
+<ul id="nav-list-tools">
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands.xlsx">下载命令工作簿</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+</div>
+<div class="sidebar-footer">版本 0.2.6 · Minecraft 26.3<br>Fabric Loader 0.19.5 · Java 25</div>
+</aside><main class="main"><header class="topbar"><nav class="topbar-crumbs" aria-label="面包屑"><a href="index.html">首页</a><span> / 进度条件</span></nav><span class="topbar-spacer"></span><button id="mobile-nav" type="button" aria-expanded="false" aria-controls="site-navigation">导航</button><button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">切换主题</button></header><div class="wiki-page" id="advancement-details" data-page-title="进度条件">
+<div class="content-panel">
+<div class="page-head">
+<h1 class="page-title">进度条件</h1>
+<p class="page-summary">「更多乐趣」包含 36 个显示进度，完成相应的活动、装备和状态条件后获得。</p>
+</div>
+<div class="page-columns">
+<div class="article">
+<div class="toc"><input class="toc-toggle" type="checkbox" id="toc-advancement-details" checked><label class="toc-head" for="toc-advancement-details">目录 <span class="toc-toggle-label"><span class="toc-show">[显示]</span><span class="toc-hide">[隐藏]</span></span></label><ol><li><a href="#advancement-details-如何查看和触发">查看与完成</a></li><li><a href="#advancement-details-养鱼专业户">养鱼专业户</a></li><li><a href="#advancement-details-牛牛小小的也很可爱">牛牛小小的也很可爱</a></li><li><a href="#advancement-details-我来-我见-我征服">我来，我见，我征服</a></li><li><a href="#advancement-details-昔日的荣光">昔日的荣光</a></li><li><a href="#advancement-details-马呢？谁马没了？">马呢？谁马没了？</a></li><li><a href="#advancement-details-立体机动装置">立体机动装置</a></li><li><a href="#advancement-details-会挽雕弓如满月">会挽雕弓如满月</a></li><li><a href="#advancement-details-矢贯坚石-劲冠三军！">矢贯坚石，劲冠三军！</a></li><li><a href="#advancement-details-蒸发">蒸发</a></li><li><a href="#advancement-details-e=mv²-2">E=mv²/2</a></li><li><a href="#advancement-details-自走虚空挂">自走虚空挂</a></li><li><a href="#advancement-details-十岁差点打倒野猪">十岁差点打倒野猪</a></li><li><a href="#advancement-details-超导">超导</a></li><li><a href="#advancement-details-总有地上的生灵…">总有地上的生灵…</a></li><li><a href="#advancement-details-integer-的极限">Integer 的极限</a></li><li><a href="#advancement-details-——掠——夺——">——掠——夺——</a></li><li><a href="#advancement-details-概率-0-000114154%-终于找到了">概率：0.000114154% 终于找到了</a></li><li><a href="#advancement-details-我的神镐！">我的神镐！</a></li><li><a href="#advancement-details-服务器怎么了">服务器怎么了</a></li><li><a href="#advancement-details-张冠李戴">张冠李戴</a></li><li><a href="#advancement-details-世外桃源">世外桃源</a></li><li><a href="#advancement-details-ok兄弟们-全体目光向我看齐">OK兄弟们，全体目光向我看齐</a></li><li><a href="#advancement-details-hello-world">Hello,World</a></li><li><a href="#advancement-details-吞噬世界的开端">吞噬世界的开端</a></li><li><a href="#advancement-details-更多乐趣">更多乐趣</a></li><li><a href="#advancement-details-沸羊羊">沸羊羊</a></li><li><a href="#advancement-details-彩虹羊">彩虹羊</a></li><li><a href="#advancement-details-懒羊羊">懒羊羊</a></li><li><a href="#advancement-details-慢羊羊">慢羊羊</a></li><li><a href="#advancement-details-美羊羊">美羊羊</a></li><li><a href="#advancement-details-暖羊羊">暖羊羊</a></li><li><a href="#advancement-details-羊村">羊村</a></li><li><a href="#advancement-details-喜羊羊">喜羊羊</a></li><li><a href="#advancement-details-如虎添翼">如虎添翼</a></li><li><a href="#advancement-details-盔甲强化">盔甲强化</a></li><li><a href="#advancement-details-工具强化">工具强化</a></li></ol></div>
+<section class="wiki-section" id="advancement-details-如何查看和触发">
+<h2>查看与完成</h2>
+<p>默认按 <code>L</code> 打开进度界面，选择「更多乐趣」。下表依次列出操作、条件和奖励。父节点用于组织显示树。</p>
+<p>另有 128 个隐藏节点用于配方解锁。制作方式见<a class="wikilink" href="recipes.html#recipes">配方目录</a>。条件表中的「满足任一分支」表示任选其一，「满足全部分支」表示各分支都要满足。</p>
+</section>
+<section class="wiki-section" id="advancement-details-养鱼专业户">
+<h2>养鱼专业户</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-axolotl_bucket.png" alt="养鱼专业户" width="128" height="128" loading="lazy" decoding="async"><figcaption>繁殖得到蓝色美西螈</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>完成动物繁殖</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>繁殖后代 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>繁殖后代 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>繁殖后代 / 实体条件 / 实体种类</td><td>美西螈</td></tr>
+<tr><td>繁殖后代 / 实体条件 / 数据组件 / 美西螈变种</td><td>蓝色</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/bred/bred_blue_axolotl</code>。父节点：<code>contribution:items/bred/bred_cow</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/bred/bred_cow&quot;,
+  &quot;criteria&quot;: {
+    &quot;bred_blue_axolotl&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:bred_animals&quot;,
+      &quot;conditions&quot;: {
+        &quot;child&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:axolotl&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:axolotl/variant&quot;: &quot;blue&quot;
+            }
+          }
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:axolotl_bucket&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;养鱼专业户&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;繁殖得到蓝色美西螈&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;bred_blue_axolotl&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-牛牛小小的也很可爱">
+<h2>牛牛小小的也很可爱</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-cow_spawn_egg.png" alt="牛牛小小的也很可爱" width="128" height="128" loading="lazy" decoding="async"><figcaption>繁殖得到小牛</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>完成动物繁殖</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>繁殖后代 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>繁殖后代 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>繁殖后代 / 实体条件 / 实体种类</td><td>牛</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/bred/bred_cow</code>。父节点：<code>contribution:items/root</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/root&quot;,
+  &quot;criteria&quot;: {
+    &quot;bred_cow&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:bred_animals&quot;,
+      &quot;conditions&quot;: {
+        &quot;child&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:cow&quot;
+          }
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:cow_spawn_egg&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;牛牛小小的也很可爱&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;繁殖得到小牛&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;bred_cow&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-我来-我见-我征服">
+<h2>我来，我见，我征服</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-sculk_catalyst.png" alt="我来，我见，我征服" width="128" height="128" loading="lazy" decoding="async"><figcaption>近战击杀坚守者</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>玩家击杀实体</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>监守者</td></tr>
+<tr><td>致命伤害 / 直接伤害实体 / 实体种类</td><td>玩家</td></tr>
+<tr><td>致命伤害 / 伤害来源 / 实体种类</td><td>玩家</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/combat/come_see_conquer</code>。父节点：<code>contribution:items/combat/glory_of_the_past</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/combat/glory_of_the_past&quot;,
+  &quot;criteria&quot;: {
+    &quot;come_see_conquer&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_killed_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:warden&quot;
+          }
+        },
+        &quot;killing_blow&quot;: {
+          &quot;direct_entity&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:player&quot;
+          },
+          &quot;source_entity&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:player&quot;
+          }
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:sculk_catalyst&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;我来，我见，我征服&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;近战击杀坚守者&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;come_see_conquer&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-昔日的荣光">
+<h2>昔日的荣光</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-netherite_axe.png" alt="昔日的荣光" width="128" height="128" loading="lazy" decoding="async"><figcaption>一次攻击造成36.5伤害</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>玩家对实体造成伤害</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>伤害条件 / 实际受到的伤害 / 至少</td><td>36.5</td></tr>
+<tr><td>伤害条件 / 条件类型 / 直接伤害实体 / 实体种类</td><td>玩家</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/combat/glory_of_the_past</code>。父节点：<code>contribution:items/combat/odm_kill</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/combat/odm_kill&quot;,
+  &quot;criteria&quot;: {
+    &quot;glory_of_the_past&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_hurt_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;damage&quot;: {
+          &quot;taken&quot;: {
+            &quot;min&quot;: 36.5
+          },
+          &quot;type&quot;: {
+            &quot;direct_entity&quot;: {
+              &quot;minecraft:entity_type&quot;: &quot;minecraft:player&quot;
+            }
+          }
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:netherite_axe&quot;,
+      &quot;components&quot;: {
+        &quot;minecraft:enchantment_glint_override&quot;: true
+      }
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;昔日的荣光&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;一次攻击造成36.5伤害&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;glory_of_the_past&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-马呢？谁马没了？">
+<h2>马呢？谁马没了？</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-saddle.png" alt="马呢？谁马没了？" width="128" height="128" loading="lazy" decoding="async"><figcaption>击杀一匹被驯服的马</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>玩家击杀实体</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>马</td></tr>
+<tr><td>目标实体 / 实体条件 / 精确数据</td><td>已驯服</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/combat/kill_horse</code>。父节点：<code>contribution:items/root</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/root&quot;,
+  &quot;criteria&quot;: {
+    &quot;kill_horse&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_killed_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:horse&quot;,
+            &quot;minecraft:nbt&quot;: &quot;{Tame:1b}&quot;
+          }
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:saddle&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;马呢？谁马没了？&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;击杀一匹被驯服的马&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;kill_horse&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-立体机动装置">
+<h2>立体机动装置</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-firework_rocket.png" alt="立体机动装置" width="128" height="128" loading="lazy" decoding="async"><figcaption>在用鞘翅高速飞行时持双剑斩杀生物</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>玩家击杀实体</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>玩家 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>玩家 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>玩家 / 实体条件 / 移动 / 移动速度 / 至少</td><td>30</td></tr>
+<tr><td>玩家 / 实体条件 / 状态 / 正在滑翔</td><td>是</td></tr>
+<tr><td>玩家 / 实体条件 / 装备 / 主手 / 匹配物品</td><td>任意剑</td></tr>
+<tr><td>玩家 / 实体条件 / 装备 / 副手 / 匹配物品</td><td>任意剑</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/combat/odm_kill</code>。父节点：<code>contribution:items/combat/shoot_offground_mob</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/combat/shoot_offground_mob&quot;,
+  &quot;criteria&quot;: {
+    &quot;odm_kill&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_killed_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;player&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:movement&quot;: {
+              &quot;speed&quot;: {
+                &quot;min&quot;: 30
+              }
+            },
+            &quot;minecraft:flags&quot;: {
+              &quot;is_fall_flying&quot;: true
+            },
+            &quot;minecraft:equipment&quot;: {
+              &quot;mainhand&quot;: {
+                &quot;items&quot;: &quot;#minecraft:swords&quot;
+              },
+              &quot;offhand&quot;: {
+                &quot;items&quot;: &quot;#minecraft:swords&quot;
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:firework_rocket&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;立体机动装置&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;在用鞘翅高速飞行时持双剑斩杀生物&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;odm_kill&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-会挽雕弓如满月">
+<h2>会挽雕弓如满月</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-bow.png" alt="会挽雕弓如满月" width="128" height="128" loading="lazy" decoding="async"><figcaption>用箭射中空中的生物</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>玩家对实体造成伤害</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>伤害条件 / 条件类型 / 直接伤害</td><td>否</td></tr>
+<tr><td>伤害条件 / 条件类型 / 直接伤害实体 / 实体种类</td><td>任意箭</td></tr>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 状态 / 在地面</td><td>否</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/combat/shoot_offground_mob</code>。父节点：<code>contribution:items/combat/kill_horse</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/combat/kill_horse&quot;,
+  &quot;criteria&quot;: {
+    &quot;shoot_offground_mob&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_hurt_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;damage&quot;: {
+          &quot;type&quot;: {
+            &quot;is_direct&quot;: false,
+            &quot;direct_entity&quot;: {
+              &quot;minecraft:entity_type&quot;: &quot;#minecraft:arrows&quot;
+            }
+          }
+        },
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:flags&quot;: {
+              &quot;is_on_ground&quot;: false
+            }
+          }
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:bow&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;会挽雕弓如满月&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;用箭射中空中的生物&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;shoot_offground_mob&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-矢贯坚石-劲冠三军！">
+<h2>矢贯坚石，劲冠三军！</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-dragon_head.png" alt="矢贯坚石，劲冠三军！" width="128" height="128" loading="lazy" decoding="async"><figcaption>用箭对末影龙单次造成至少 200 点伤害</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>玩家对实体造成伤害</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>伤害条件 / 条件类型 / 结构标签 / 第 1 项 / 要求值</td><td>是</td></tr>
+<tr><td>伤害条件 / 条件类型 / 结构标签 / 第 1 项 / 实体种类</td><td>箭</td></tr>
+<tr><td>伤害条件 / 实际受到的伤害 / 至少</td><td>200</td></tr>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>末影龙</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/combat/super_shot</code>。父节点：<code>contribution:items/combat/come_see_conquer</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/combat/come_see_conquer&quot;,
+  &quot;criteria&quot;: {
+    &quot;super_shot&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_hurt_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;damage&quot;: {
+          &quot;type&quot;: {
+            &quot;tags&quot;: [
+              {
+                &quot;expected&quot;: true,
+                &quot;id&quot;: &quot;minecraft:arrow&quot;
+              }
+            ]
+          },
+          &quot;taken&quot;: {
+            &quot;min&quot;: 200
+          }
+        },
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:ender_dragon&quot;
+          }
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:dragon_head&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;矢贯坚石，劲冠三军！&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;用箭对末影龙单次造成至少 200 点伤害&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;super_shot&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-蒸发">
+<h2>蒸发</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-lava_bucket.png" alt="蒸发" width="128" height="128" loading="lazy" decoding="async"><figcaption>在水中被岩浆烫伤</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>玩家受到伤害</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>伤害条件 / 条件类型 / 结构标签 / 第 1 项 / 要求值</td><td>是</td></tr>
+<tr><td>伤害条件 / 条件类型 / 结构标签 / 第 1 项 / 实体种类</td><td>熔岩</td></tr>
+<tr><td>玩家 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>玩家 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>玩家 / 实体条件 / 位置条件 / 方块条件 / 方块种类 / 第 1 项</td><td>水</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/danger/evaporation</code>。父节点：<code>contribution:items/danger/knockdown_boar</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/danger/knockdown_boar&quot;,
+  &quot;criteria&quot;: {
+    &quot;evaporation&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:entity_hurt_player&quot;,
+      &quot;conditions&quot;: {
+        &quot;damage&quot;: {
+          &quot;type&quot;: {
+            &quot;tags&quot;: [
+              {
+                &quot;expected&quot;: true,
+                &quot;id&quot;: &quot;minecraft:lava&quot;
+              }
+            ]
+          }
+        },
+        &quot;player&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:location&quot;: {
+              &quot;block&quot;: {
+                &quot;blocks&quot;: [
+                  &quot;minecraft:water&quot;
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:lava_bucket&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;蒸发&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;在水中被岩浆烫伤&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;evaporation&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-e=mv²-2">
+<h2>E=mv²/2</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-elytra.png" alt="E=mv²/2" width="128" height="128" loading="lazy" decoding="async"><figcaption>鞘翅撞墙时受到至少 20 点伤害</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>玩家受到伤害</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>伤害条件 / 条件类型 / 结构标签 / 第 1 项 / 要求值</td><td>是</td></tr>
+<tr><td>伤害条件 / 条件类型 / 结构标签 / 第 1 项 / 实体种类</td><td>撞墙伤害</td></tr>
+<tr><td>伤害条件 / 实际受到的伤害 / 至少</td><td>20</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/danger/hit_wall</code>。父节点：<code>contribution:items/danger/warden_sonic</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/danger/warden_sonic&quot;,
+  &quot;criteria&quot;: {
+    &quot;hit_wall&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:entity_hurt_player&quot;,
+      &quot;conditions&quot;: {
+        &quot;damage&quot;: {
+          &quot;type&quot;: {
+            &quot;tags&quot;: [
+              {
+                &quot;expected&quot;: true,
+                &quot;id&quot;: &quot;minecraft:fly_into_wall&quot;
+              }
+            ]
+          },
+          &quot;taken&quot;: {
+            &quot;min&quot;: 20
+          }
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:elytra&quot;,
+      &quot;components&quot;: {
+        &quot;minecraft:damage&quot;: 431
+      }
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;E=mv²/2&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;鞘翅撞墙时受到至少 20 点伤害&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;hit_wall&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-自走虚空挂">
+<h2>自走虚空挂</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-barrier.png" alt="自走虚空挂" width="128" height="128" loading="lazy" decoding="async"><figcaption>掉入虚空</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>玩家受到伤害</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>伤害条件 / 条件类型 / 结构标签 / 第 1 项 / 要求值</td><td>是</td></tr>
+<tr><td>伤害条件 / 条件类型 / 结构标签 / 第 1 项 / 实体种类</td><td>虚空伤害</td></tr>
+<tr><td>玩家 / 条件类型</td><td>满足任一分支</td></tr>
+<tr><td>玩家 / 子条件 / 第 1 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>玩家 / 子条件 / 第 1 项 / 实体条件 / 维度</td><td>主世界</td></tr>
+<tr><td>玩家 / 子条件 / 第 1 项 / 实体条件 / 位置 / Y 坐标 / 至多</td><td>-129</td></tr>
+<tr><td>玩家 / 子条件 / 第 2 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>玩家 / 子条件 / 第 2 项 / 实体条件 / 维度</td><td>下界</td></tr>
+<tr><td>玩家 / 子条件 / 第 2 项 / 实体条件 / 位置 / Y 坐标 / 至多</td><td>-65</td></tr>
+<tr><td>玩家 / 子条件 / 第 3 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>玩家 / 子条件 / 第 3 项 / 实体条件 / 维度</td><td>末地</td></tr>
+<tr><td>玩家 / 子条件 / 第 3 项 / 实体条件 / 位置 / Y 坐标 / 至多</td><td>-65</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/danger/hurt_in_the_void</code>。父节点：<code>contribution:items/danger/superconduction</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/danger/superconduction&quot;,
+  &quot;criteria&quot;: {
+    &quot;hurt_in_the_void&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:entity_hurt_player&quot;,
+      &quot;conditions&quot;: {
+        &quot;damage&quot;: {
+          &quot;type&quot;: {
+            &quot;tags&quot;: [
+              {
+                &quot;expected&quot;: true,
+                &quot;id&quot;: &quot;minecraft:out_of_world&quot;
+              }
+            ]
+          }
+        },
+        &quot;player&quot;: {
+          &quot;type&quot;: &quot;minecraft:any_of&quot;,
+          &quot;terms&quot;: [
+            {
+              &quot;type&quot;: &quot;minecraft:location_check&quot;,
+              &quot;predicate&quot;: {
+                &quot;dimension&quot;: &quot;minecraft:overworld&quot;,
+                &quot;position&quot;: {
+                  &quot;y&quot;: {
+                    &quot;max&quot;: -129
+                  }
+                }
+              }
+            },
+            {
+              &quot;type&quot;: &quot;minecraft:location_check&quot;,
+              &quot;predicate&quot;: {
+                &quot;dimension&quot;: &quot;minecraft:the_nether&quot;,
+                &quot;position&quot;: {
+                  &quot;y&quot;: {
+                    &quot;max&quot;: -65
+                  }
+                }
+              }
+            },
+            {
+              &quot;type&quot;: &quot;minecraft:location_check&quot;,
+              &quot;predicate&quot;: {
+                &quot;dimension&quot;: &quot;minecraft:the_end&quot;,
+                &quot;position&quot;: {
+                  &quot;y&quot;: {
+                    &quot;max&quot;: -65
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:barrier&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;自走虚空挂&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;掉入虚空&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;hurt_in_the_void&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-十岁差点打倒野猪">
+<h2>十岁差点打倒野猪</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-zoglin_spawn_egg.png" alt="十岁差点打倒野猪" width="128" height="128" loading="lazy" decoding="async"><figcaption>被疣猪兽击败</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>玩家被实体击杀</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>致命伤害 / 伤害来源 / 实体种类</td><td>疣猪兽</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/danger/knockdown_boar</code>。父节点：<code>contribution:items/root</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/root&quot;,
+  &quot;criteria&quot;: {
+    &quot;knockdown_boar&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:entity_killed_player&quot;,
+      &quot;conditions&quot;: {
+        &quot;killing_blow&quot;: {
+          &quot;source_entity&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:hoglin&quot;
+          }
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:zoglin_spawn_egg&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;十岁差点打倒野猪&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;被疣猪兽击败&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;knockdown_boar&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-超导">
+<h2>超导</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-powder_snow_bucket.png" alt="超导" width="128" height="128" loading="lazy" decoding="async"><figcaption>站在细雪中，附近 3 格内发生雷击</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>附近发生雷击</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>雷击条件 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>雷击条件 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>雷击条件 / 实体条件 / 距离 / 直线距离 / 至多</td><td>3</td></tr>
+<tr><td>雷击条件 / 实体条件 / 距离 / 直线距离 / 至少</td><td>0</td></tr>
+<tr><td>玩家 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>玩家 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>玩家 / 实体条件 / 位置条件 / 方块条件 / 方块种类 / 第 1 项</td><td>细雪</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/danger/superconduction</code>。父节点：<code>contribution:items/danger/evaporation</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/danger/evaporation&quot;,
+  &quot;criteria&quot;: {
+    &quot;superconduction&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:lightning_strike&quot;,
+      &quot;conditions&quot;: {
+        &quot;lightning&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:distance&quot;: {
+              &quot;absolute&quot;: {
+                &quot;max&quot;: 3,
+                &quot;min&quot;: 0
+              }
+            }
+          }
+        },
+        &quot;player&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:location&quot;: {
+              &quot;block&quot;: {
+                &quot;blocks&quot;: [
+                  &quot;minecraft:powder_snow&quot;
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:powder_snow_bucket&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;超导&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;站在细雪中，附近 3 格内发生雷击&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;superconduction&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-总有地上的生灵…">
+<h2>总有地上的生灵…</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-echo_shard.png" alt="总有地上的生灵…" width="128" height="128" loading="lazy" decoding="async"><figcaption>被坚守者用一道音波抹杀</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>玩家被实体击杀</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>致命伤害 / 伤害来源 / 实体种类</td><td>监守者</td></tr>
+<tr><td>致命伤害 / 结构标签 / 第 1 项 / 要求值</td><td>是</td></tr>
+<tr><td>致命伤害 / 结构标签 / 第 1 项 / 实体种类</td><td>音爆伤害</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/danger/warden_sonic</code>。父节点：<code>contribution:items/danger/hurt_in_the_void</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/danger/hurt_in_the_void&quot;,
+  &quot;criteria&quot;: {
+    &quot;warden_sonic&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:entity_killed_player&quot;,
+      &quot;conditions&quot;: {
+        &quot;killing_blow&quot;: {
+          &quot;source_entity&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:warden&quot;
+          },
+          &quot;tags&quot;: [
+            {
+              &quot;expected&quot;: true,
+              &quot;id&quot;: &quot;minecraft:sonic_boom&quot;
+            }
+          ]
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:echo_shard&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;总有地上的生灵…&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;被坚守者用一道音波抹杀&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;warden_sonic&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-integer-的极限">
+<h2>Integer 的极限</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-grass_block.png" alt="Integer 的极限" width="128" height="128" loading="lazy" decoding="async"><figcaption>访问边境</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>位置条件检查</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>玩家 / 条件类型</td><td>满足任一分支</td></tr>
+<tr><td>玩家 / 子条件 / 第 1 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>玩家 / 子条件 / 第 1 项 / 实体条件 / 位置 / X 坐标 / 至少</td><td>29999920</td></tr>
+<tr><td>玩家 / 子条件 / 第 2 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>玩家 / 子条件 / 第 2 项 / 实体条件 / 位置 / X 坐标 / 至多</td><td>-29999920</td></tr>
+<tr><td>玩家 / 子条件 / 第 3 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>玩家 / 子条件 / 第 3 项 / 实体条件 / 位置 / Z 坐标 / 至少</td><td>29999920</td></tr>
+<tr><td>玩家 / 子条件 / 第 4 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>玩家 / 子条件 / 第 4 项 / 实体条件 / 位置 / Z 坐标 / 至多</td><td>-29999920</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/discovery/border</code>。父节点：<code>contribution:items/discovery/robbery</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/discovery/robbery&quot;,
+  &quot;criteria&quot;: {
+    &quot;border&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:location&quot;,
+      &quot;conditions&quot;: {
+        &quot;player&quot;: {
+          &quot;type&quot;: &quot;minecraft:any_of&quot;,
+          &quot;terms&quot;: [
+            {
+              &quot;type&quot;: &quot;minecraft:location_check&quot;,
+              &quot;predicate&quot;: {
+                &quot;position&quot;: {
+                  &quot;x&quot;: {
+                    &quot;min&quot;: 29999920
+                  }
+                }
+              }
+            },
+            {
+              &quot;type&quot;: &quot;minecraft:location_check&quot;,
+              &quot;predicate&quot;: {
+                &quot;position&quot;: {
+                  &quot;x&quot;: {
+                    &quot;max&quot;: -29999920
+                  }
+                }
+              }
+            },
+            {
+              &quot;type&quot;: &quot;minecraft:location_check&quot;,
+              &quot;predicate&quot;: {
+                &quot;position&quot;: {
+                  &quot;z&quot;: {
+                    &quot;min&quot;: 29999920
+                  }
+                }
+              }
+            },
+            {
+              &quot;type&quot;: &quot;minecraft:location_check&quot;,
+              &quot;predicate&quot;: {
+                &quot;position&quot;: {
+                  &quot;z&quot;: {
+                    &quot;max&quot;: -29999920
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:grass_block&quot;,
+      &quot;count&quot;: 1
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;Integer 的极限&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;访问边境&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;border&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-——掠——夺——">
+<h2>——掠——夺——</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-iron_axe.png" alt="——掠——夺——" width="128" height="128" loading="lazy" decoding="async"><figcaption>发现一个村庄</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>位置条件检查</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>玩家 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>玩家 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>玩家 / 实体条件 / 位置条件 / 结构</td><td>任意村庄结构</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/discovery/robbery</code>。父节点：<code>contribution:items/discovery/use_spyglass</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/discovery/use_spyglass&quot;,
+  &quot;criteria&quot;: {
+    &quot;robbery&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:location&quot;,
+      &quot;conditions&quot;: {
+        &quot;player&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:location&quot;: {
+              &quot;structures&quot;: &quot;#minecraft:village&quot;
+            }
+          }
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:iron_axe&quot;,
+      &quot;count&quot;: 1
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;——掠——夺——&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;发现一个村庄&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;robbery&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-概率-0-000114154%-终于找到了">
+<h2>概率：0.000114154% 终于找到了</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-spyglass.png" alt="概率：0.000114154% 终于找到了" width="128" height="128" loading="lazy" decoding="async"><figcaption>使用望远镜</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>正在使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>使用物品 / 匹配物品 / 第 1 项</td><td>望远镜</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/discovery/use_spyglass</code>。父节点：<code>contribution:items/root</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/root&quot;,
+  &quot;criteria&quot;: {
+    &quot;use_spyglass&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:using_item&quot;,
+      &quot;conditions&quot;: {
+        &quot;item&quot;: {
+          &quot;items&quot;: [
+            &quot;minecraft:spyglass&quot;
+          ]
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:spyglass&quot;,
+      &quot;count&quot;: 1
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;概率：0.000114154% 终于找到了&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;使用望远镜&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;use_spyglass&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-我的神镐！">
+<h2>我的神镐！</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-netherite_pickaxe.png" alt="我的神镐！" width="128" height="128" loading="lazy" decoding="async"><figcaption>用坏一个下界合金镐</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>物品耐久变化</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>耐久变化</td><td>-1</td></tr>
+<tr><td>使用物品 / 匹配物品</td><td>下界合金镐</td></tr>
+<tr><td>剩余耐久</td><td>0</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/gain/break_pickaxe</code>。父节点：<code>contribution:items/gain/wear_head</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/gain/wear_head&quot;,
+  &quot;criteria&quot;: {
+    &quot;break_pickaxe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:item_durability_changed&quot;,
+      &quot;conditions&quot;: {
+        &quot;delta&quot;: -1,
+        &quot;item&quot;: {
+          &quot;items&quot;: &quot;minecraft:netherite_pickaxe&quot;
+        },
+        &quot;durability&quot;: 0
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:netherite_pickaxe&quot;,
+      &quot;count&quot;: 1
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;我的神镐！&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;用坏一个下界合金镐&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;break_pickaxe&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-服务器怎么了">
+<h2>服务器怎么了</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-baked_potato.png" alt="服务器怎么了" width="128" height="128" loading="lazy" decoding="async"><figcaption>获得烤马铃薯</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>背包内容发生变化</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>匹配物品 / 第 1 项 / 匹配物品</td><td>烤马铃薯</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/gain/csu_server</code>。父节点：<code>contribution:items/root</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/root&quot;,
+  &quot;criteria&quot;: {
+    &quot;csu_server&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:inventory_changed&quot;,
+      &quot;conditions&quot;: {
+        &quot;items&quot;: [
+          {
+            &quot;items&quot;: &quot;minecraft:baked_potato&quot;
+          }
+        ]
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:baked_potato&quot;,
+      &quot;count&quot;: 1
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;服务器怎么了&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;获得烤马铃薯&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;csu_server&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-张冠李戴">
+<h2>张冠李戴</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-player_head.png" alt="张冠李戴" width="128" height="128" loading="lazy" decoding="async"><figcaption>戴上玩家头颅</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>背包内容发生变化</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>匹配物品 / 第 1 项 / 匹配物品 / 第 1 项</td><td>玩家的头</td></tr>
+<tr><td>玩家 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>玩家 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>玩家 / 实体条件 / 装备 / 头部装备 / 匹配物品 / 第 1 项</td><td>玩家的头</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/gain/wear_head</code>。父节点：<code>contribution:items/gain/csu_server</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/gain/csu_server&quot;,
+  &quot;criteria&quot;: {
+    &quot;wear_head&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:inventory_changed&quot;,
+      &quot;conditions&quot;: {
+        &quot;items&quot;: [
+          {
+            &quot;items&quot;: [
+              &quot;minecraft:player_head&quot;
+            ]
+          }
+        ],
+        &quot;player&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:equipment&quot;: {
+              &quot;head&quot;: {
+                &quot;items&quot;: [
+                  &quot;minecraft:player_head&quot;
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:player_head&quot;,
+      &quot;count&quot;: 1
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;张冠李戴&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;戴上玩家头颅&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;wear_head&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-世外桃源">
+<h2>世外桃源</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-stripped_cherry_wood.png" alt="世外桃源" width="128" height="128" loading="lazy" decoding="async"><figcaption>在距世界中心任一水平轴至少 100000 格处放置方块</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>成功放置方块</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>位置条件 / 条件类型</td><td>满足任一分支</td></tr>
+<tr><td>位置条件 / 子条件 / 第 1 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 子条件 / 第 1 项 / 实体条件 / 位置 / X 坐标 / 至少</td><td>100000</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 实体条件 / 位置 / X 坐标 / 至多</td><td>-100000</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 实体条件 / 位置 / Z 坐标 / 至少</td><td>100000</td></tr>
+<tr><td>位置条件 / 子条件 / 第 4 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 子条件 / 第 4 项 / 实体条件 / 位置 / Z 坐标 / 至多</td><td>-100000</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/operate/arcadia</code>。父节点：<code>contribution:items/operate/tnt_dupe</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/operate/tnt_dupe&quot;,
+  &quot;criteria&quot;: {
+    &quot;arcadia&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:placed_block&quot;,
+      &quot;conditions&quot;: {
+        &quot;location&quot;: {
+          &quot;type&quot;: &quot;minecraft:any_of&quot;,
+          &quot;terms&quot;: [
+            {
+              &quot;type&quot;: &quot;minecraft:location_check&quot;,
+              &quot;predicate&quot;: {
+                &quot;position&quot;: {
+                  &quot;x&quot;: {
+                    &quot;min&quot;: 100000
+                  }
+                }
+              }
+            },
+            {
+              &quot;type&quot;: &quot;minecraft:location_check&quot;,
+              &quot;predicate&quot;: {
+                &quot;position&quot;: {
+                  &quot;x&quot;: {
+                    &quot;max&quot;: -100000
+                  }
+                }
+              }
+            },
+            {
+              &quot;type&quot;: &quot;minecraft:location_check&quot;,
+              &quot;predicate&quot;: {
+                &quot;position&quot;: {
+                  &quot;z&quot;: {
+                    &quot;min&quot;: 100000
+                  }
+                }
+              }
+            },
+            {
+              &quot;type&quot;: &quot;minecraft:location_check&quot;,
+              &quot;predicate&quot;: {
+                &quot;position&quot;: {
+                  &quot;z&quot;: {
+                    &quot;max&quot;: -100000
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:stripped_cherry_wood&quot;,
+      &quot;count&quot;: 1
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;世外桃源&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;在距世界中心任一水平轴至少 100000 格处放置方块&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;arcadia&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-ok兄弟们-全体目光向我看齐">
+<h2>OK兄弟们，全体目光向我看齐</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-oak_sign.png" alt="OK兄弟们，全体目光向我看齐" width="128" height="128" loading="lazy" decoding="async"><figcaption>用荧光墨囊点亮第一行写有“我是个傻逼”的告示牌</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>与方块交互</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>位置条件 / 条件类型</td><td>满足任一分支</td></tr>
+<tr><td>位置条件 / 子条件 / 第 1 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类</td><td>任意告示牌</td></tr>
+<tr><td>位置条件 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 精确数据</td><td>正面文字包含「我是个傻逼」</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类</td><td>任意告示牌</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 精确数据</td><td>背面文字包含「我是个傻逼」</td></tr>
+<tr><td>玩家 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>玩家 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>玩家 / 实体条件 / 装备 / 主手 / 匹配物品 / 第 1 项</td><td>荧光墨囊</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/operate/declaration_of_independence</code>。父节点：<code>contribution:items/operate/place_comparator</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/operate/place_comparator&quot;,
+  &quot;criteria&quot;: {
+    &quot;declaration_of_independence&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:any_block_use&quot;,
+      &quot;conditions&quot;: {
+        &quot;location&quot;: {
+          &quot;type&quot;: &quot;minecraft:any_of&quot;,
+          &quot;terms&quot;: [
+            {
+              &quot;type&quot;: &quot;minecraft:location_check&quot;,
+              &quot;predicate&quot;: {
+                &quot;block&quot;: {
+                  &quot;blocks&quot;: &quot;#minecraft:all_signs&quot;,
+                  &quot;nbt&quot;: &quot;{front_text:{messages:[&#39;我是个傻逼&#39;]}}&quot;
+                }
+              }
+            },
+            {
+              &quot;type&quot;: &quot;minecraft:location_check&quot;,
+              &quot;predicate&quot;: {
+                &quot;block&quot;: {
+                  &quot;blocks&quot;: &quot;#minecraft:all_signs&quot;,
+                  &quot;nbt&quot;: &quot;{back_text:{messages:[&#39;我是个傻逼&#39;]}}&quot;
+                }
+              }
+            }
+          ]
+        },
+        &quot;player&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:equipment&quot;: {
+              &quot;mainhand&quot;: {
+                &quot;items&quot;: [
+                  &quot;minecraft:glow_ink_sac&quot;
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:oak_sign&quot;,
+      &quot;count&quot;: 1
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;OK兄弟们，全体目光向我看齐&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;用荧光墨囊点亮第一行写有“我是个傻逼”的告示牌&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;declaration_of_independence&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-hello-world">
+<h2>Hello,World</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-comparator.png" alt="Hello,World" width="128" height="128" loading="lazy" decoding="async"><figcaption>放置一个红石比较器</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>成功放置方块</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>位置条件 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 实体条件 / 方块条件 / 方块种类 / 第 1 项</td><td>红石比较器</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/operate/place_comparator</code>。父节点：<code>contribution:items/root</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/root&quot;,
+  &quot;criteria&quot;: {
+    &quot;place_comparator&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:placed_block&quot;,
+      &quot;conditions&quot;: {
+        &quot;location&quot;: {
+          &quot;type&quot;: &quot;minecraft:location_check&quot;,
+          &quot;predicate&quot;: {
+            &quot;block&quot;: {
+              &quot;blocks&quot;: [
+                &quot;minecraft:comparator&quot;
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:comparator&quot;,
+      &quot;count&quot;: 1
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;Hello,World&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;放置一个红石比较器&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;place_comparator&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-吞噬世界的开端">
+<h2>吞噬世界的开端</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-tnt.png" alt="吞噬世界的开端" width="128" height="128" loading="lazy" decoding="async"><figcaption>最后放置 炸药，其相邻方块同时包含黏液块与珊瑚扇</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>成功放置方块</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>位置条件 / 条件类型</td><td>满足全部分支</td></tr>
+<tr><td>位置条件 / 子条件 / 第 1 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 1 项</td><td>炸药</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 条件类型</td><td>满足任一分支</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 子条件 / 第 1 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 1 项</td><td>黏液块</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 子条件 / 第 1 项 / 相邻 X 偏移</td><td>1</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 子条件 / 第 2 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 1 项</td><td>黏液块</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 子条件 / 第 2 项 / 相邻 X 偏移</td><td>-1</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 子条件 / 第 3 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 1 项</td><td>黏液块</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 子条件 / 第 3 项 / 相邻 Y 偏移</td><td>1</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 子条件 / 第 4 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 1 项</td><td>黏液块</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 子条件 / 第 4 项 / 相邻 Y 偏移</td><td>-1</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 子条件 / 第 5 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 1 项</td><td>黏液块</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 子条件 / 第 5 项 / 相邻 Z 偏移</td><td>1</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 子条件 / 第 6 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 1 项</td><td>黏液块</td></tr>
+<tr><td>位置条件 / 子条件 / 第 2 项 / 子条件 / 第 6 项 / 相邻 Z 偏移</td><td>-1</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 条件类型</td><td>满足任一分支</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 1 项</td><td>管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 2 项</td><td>墙上的管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 3 项</td><td>失活的管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 4 项</td><td>墙上的失活管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 5 项</td><td>脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 6 项</td><td>墙上的脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 7 项</td><td>失活的脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 8 项</td><td>墙上的失活脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 9 项</td><td>气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 10 项</td><td>墙上的气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 11 项</td><td>失活的气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 12 项</td><td>墙上的失活气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 13 项</td><td>火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 14 项</td><td>墙上的火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 15 项</td><td>失活的火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 16 项</td><td>墙上的失活火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 17 项</td><td>鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 18 项</td><td>墙上的鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 19 项</td><td>失活的鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 实体条件 / 方块条件 / 方块种类 / 第 20 项</td><td>墙上的失活鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 1 项 / 相邻 X 偏移</td><td>-1</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 1 项</td><td>管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 2 项</td><td>墙上的管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 3 项</td><td>失活的管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 4 项</td><td>墙上的失活管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 5 项</td><td>脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 6 项</td><td>墙上的脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 7 项</td><td>失活的脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 8 项</td><td>墙上的失活脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 9 项</td><td>气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 10 项</td><td>墙上的气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 11 项</td><td>失活的气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 12 项</td><td>墙上的失活气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 13 项</td><td>火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 14 项</td><td>墙上的火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 15 项</td><td>失活的火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 16 项</td><td>墙上的失活火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 17 项</td><td>鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 18 项</td><td>墙上的鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 19 项</td><td>失活的鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 实体条件 / 方块条件 / 方块种类 / 第 20 项</td><td>墙上的失活鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 2 项 / 相邻 X 偏移</td><td>1</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 1 项</td><td>管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 2 项</td><td>墙上的管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 3 项</td><td>失活的管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 4 项</td><td>墙上的失活管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 5 项</td><td>脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 6 项</td><td>墙上的脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 7 项</td><td>失活的脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 8 项</td><td>墙上的失活脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 9 项</td><td>气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 10 项</td><td>墙上的气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 11 项</td><td>失活的气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 12 项</td><td>墙上的失活气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 13 项</td><td>火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 14 项</td><td>墙上的火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 15 项</td><td>失活的火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 16 项</td><td>墙上的失活火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 17 项</td><td>鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 18 项</td><td>墙上的鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 19 项</td><td>失活的鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 实体条件 / 方块条件 / 方块种类 / 第 20 项</td><td>墙上的失活鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 3 项 / 相邻 Y 偏移</td><td>-1</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 1 项</td><td>管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 2 项</td><td>墙上的管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 3 项</td><td>失活的管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 4 项</td><td>墙上的失活管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 5 项</td><td>脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 6 项</td><td>墙上的脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 7 项</td><td>失活的脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 8 项</td><td>墙上的失活脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 9 项</td><td>气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 10 项</td><td>墙上的气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 11 项</td><td>失活的气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 12 项</td><td>墙上的失活气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 13 项</td><td>火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 14 项</td><td>墙上的火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 15 项</td><td>失活的火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 16 项</td><td>墙上的失活火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 17 项</td><td>鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 18 项</td><td>墙上的鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 19 项</td><td>失活的鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 实体条件 / 方块条件 / 方块种类 / 第 20 项</td><td>墙上的失活鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 4 项 / 相邻 Y 偏移</td><td>1</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 1 项</td><td>管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 2 项</td><td>墙上的管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 3 项</td><td>失活的管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 4 项</td><td>墙上的失活管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 5 项</td><td>脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 6 项</td><td>墙上的脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 7 项</td><td>失活的脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 8 项</td><td>墙上的失活脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 9 项</td><td>气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 10 项</td><td>墙上的气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 11 项</td><td>失活的气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 12 项</td><td>墙上的失活气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 13 项</td><td>火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 14 项</td><td>墙上的火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 15 项</td><td>失活的火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 16 项</td><td>墙上的失活火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 17 项</td><td>鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 18 项</td><td>墙上的鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 19 项</td><td>失活的鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 实体条件 / 方块条件 / 方块种类 / 第 20 项</td><td>墙上的失活鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 5 项 / 相邻 Z 偏移</td><td>-1</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 条件类型</td><td>位置检查</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 1 项</td><td>管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 2 项</td><td>墙上的管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 3 项</td><td>失活的管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 4 项</td><td>墙上的失活管珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 5 项</td><td>脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 6 项</td><td>墙上的脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 7 项</td><td>失活的脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 8 项</td><td>墙上的失活脑纹珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 9 项</td><td>气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 10 项</td><td>墙上的气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 11 项</td><td>失活的气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 12 项</td><td>墙上的失活气泡珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 13 项</td><td>火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 14 项</td><td>墙上的火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 15 项</td><td>失活的火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 16 项</td><td>墙上的失活火珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 17 项</td><td>鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 18 项</td><td>墙上的鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 19 项</td><td>失活的鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 实体条件 / 方块条件 / 方块种类 / 第 20 项</td><td>墙上的失活鹿角珊瑚扇</td></tr>
+<tr><td>位置条件 / 子条件 / 第 3 项 / 子条件 / 第 6 项 / 相邻 Z 偏移</td><td>1</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/operate/tnt_dupe</code>。父节点：<code>contribution:items/operate/declaration_of_independence</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/operate/declaration_of_independence&quot;,
+  &quot;criteria&quot;: {
+    &quot;tnt_dupe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:placed_block&quot;,
+      &quot;conditions&quot;: {
+        &quot;location&quot;: {
+          &quot;type&quot;: &quot;minecraft:all_of&quot;,
+          &quot;terms&quot;: [
+            {
+              &quot;type&quot;: &quot;minecraft:location_check&quot;,
+              &quot;predicate&quot;: {
+                &quot;block&quot;: {
+                  &quot;blocks&quot;: [
+                    &quot;minecraft:tnt&quot;
+                  ]
+                }
+              }
+            },
+            {
+              &quot;type&quot;: &quot;minecraft:any_of&quot;,
+              &quot;terms&quot;: [
+                {
+                  &quot;type&quot;: &quot;minecraft:location_check&quot;,
+                  &quot;predicate&quot;: {
+                    &quot;block&quot;: {
+                      &quot;blocks&quot;: [
+                        &quot;minecraft:slime_block&quot;
+                      ]
+                    }
+                  },
+                  &quot;offsetX&quot;: 1
+                },
+                {
+                  &quot;type&quot;: &quot;minecraft:location_check&quot;,
+                  &quot;predicate&quot;: {
+                    &quot;block&quot;: {
+                      &quot;blocks&quot;: [
+                        &quot;minecraft:slime_block&quot;
+                      ]
+                    }
+                  },
+                  &quot;offsetX&quot;: -1
+                },
+                {
+                  &quot;type&quot;: &quot;minecraft:location_check&quot;,
+                  &quot;predicate&quot;: {
+                    &quot;block&quot;: {
+                      &quot;blocks&quot;: [
+                        &quot;minecraft:slime_block&quot;
+                      ]
+                    }
+                  },
+                  &quot;offsetY&quot;: 1
+                },
+                {
+                  &quot;type&quot;: &quot;minecraft:location_check&quot;,
+                  &quot;predicate&quot;: {
+                    &quot;block&quot;: {
+                      &quot;blocks&quot;: [
+                        &quot;minecraft:slime_block&quot;
+                      ]
+                    }
+                  },
+                  &quot;offsetY&quot;: -1
+                },
+                {
+                  &quot;type&quot;: &quot;minecraft:location_check&quot;,
+                  &quot;predicate&quot;: {
+                    &quot;block&quot;: {
+                      &quot;blocks&quot;: [
+                        &quot;minecraft:slime_block&quot;
+                      ]
+                    }
+                  },
+                  &quot;offsetZ&quot;: 1
+                },
+                {
+                  &quot;type&quot;: &quot;minecraft:location_check&quot;,
+                  &quot;predicate&quot;: {
+                    &quot;block&quot;: {
+                      &quot;blocks&quot;: [
+                        &quot;minecraft:slime_block&quot;
+                      ]
+                    }
+                  },
+                  &quot;offsetZ&quot;: -1
+                }
+              ]
+            },
+            {
+              &quot;type&quot;: &quot;minecraft:any_of&quot;,
+              &quot;terms&quot;: [
+                {
+                  &quot;type&quot;: &quot;minecraft:location_check&quot;,
+                  &quot;predicate&quot;: {
+                    &quot;block&quot;: {
+                      &quot;blocks&quot;: [
+                        &quot;minecraft:tube_coral_fan&quot;,
+                        &quot;minecraft:tube_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_tube_coral_fan&quot;,
+                        &quot;minecraft:dead_tube_coral_wall_fan&quot;,
+                        &quot;minecraft:brain_coral_fan&quot;,
+                        &quot;minecraft:brain_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_brain_coral_fan&quot;,
+                        &quot;minecraft:dead_brain_coral_wall_fan&quot;,
+                        &quot;minecraft:bubble_coral_fan&quot;,
+                        &quot;minecraft:bubble_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_bubble_coral_fan&quot;,
+                        &quot;minecraft:dead_bubble_coral_wall_fan&quot;,
+                        &quot;minecraft:fire_coral_fan&quot;,
+                        &quot;minecraft:fire_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_fire_coral_fan&quot;,
+                        &quot;minecraft:dead_fire_coral_wall_fan&quot;,
+                        &quot;minecraft:horn_coral_fan&quot;,
+                        &quot;minecraft:horn_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_horn_coral_fan&quot;,
+                        &quot;minecraft:dead_horn_coral_wall_fan&quot;
+                      ]
+                    }
+                  },
+                  &quot;offsetX&quot;: -1
+                },
+                {
+                  &quot;type&quot;: &quot;minecraft:location_check&quot;,
+                  &quot;predicate&quot;: {
+                    &quot;block&quot;: {
+                      &quot;blocks&quot;: [
+                        &quot;minecraft:tube_coral_fan&quot;,
+                        &quot;minecraft:tube_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_tube_coral_fan&quot;,
+                        &quot;minecraft:dead_tube_coral_wall_fan&quot;,
+                        &quot;minecraft:brain_coral_fan&quot;,
+                        &quot;minecraft:brain_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_brain_coral_fan&quot;,
+                        &quot;minecraft:dead_brain_coral_wall_fan&quot;,
+                        &quot;minecraft:bubble_coral_fan&quot;,
+                        &quot;minecraft:bubble_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_bubble_coral_fan&quot;,
+                        &quot;minecraft:dead_bubble_coral_wall_fan&quot;,
+                        &quot;minecraft:fire_coral_fan&quot;,
+                        &quot;minecraft:fire_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_fire_coral_fan&quot;,
+                        &quot;minecraft:dead_fire_coral_wall_fan&quot;,
+                        &quot;minecraft:horn_coral_fan&quot;,
+                        &quot;minecraft:horn_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_horn_coral_fan&quot;,
+                        &quot;minecraft:dead_horn_coral_wall_fan&quot;
+                      ]
+                    }
+                  },
+                  &quot;offsetX&quot;: 1
+                },
+                {
+                  &quot;type&quot;: &quot;minecraft:location_check&quot;,
+                  &quot;predicate&quot;: {
+                    &quot;block&quot;: {
+                      &quot;blocks&quot;: [
+                        &quot;minecraft:tube_coral_fan&quot;,
+                        &quot;minecraft:tube_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_tube_coral_fan&quot;,
+                        &quot;minecraft:dead_tube_coral_wall_fan&quot;,
+                        &quot;minecraft:brain_coral_fan&quot;,
+                        &quot;minecraft:brain_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_brain_coral_fan&quot;,
+                        &quot;minecraft:dead_brain_coral_wall_fan&quot;,
+                        &quot;minecraft:bubble_coral_fan&quot;,
+                        &quot;minecraft:bubble_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_bubble_coral_fan&quot;,
+                        &quot;minecraft:dead_bubble_coral_wall_fan&quot;,
+                        &quot;minecraft:fire_coral_fan&quot;,
+                        &quot;minecraft:fire_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_fire_coral_fan&quot;,
+                        &quot;minecraft:dead_fire_coral_wall_fan&quot;,
+                        &quot;minecraft:horn_coral_fan&quot;,
+                        &quot;minecraft:horn_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_horn_coral_fan&quot;,
+                        &quot;minecraft:dead_horn_coral_wall_fan&quot;
+                      ]
+                    }
+                  },
+                  &quot;offsetY&quot;: -1
+                },
+                {
+                  &quot;type&quot;: &quot;minecraft:location_check&quot;,
+                  &quot;predicate&quot;: {
+                    &quot;block&quot;: {
+                      &quot;blocks&quot;: [
+                        &quot;minecraft:tube_coral_fan&quot;,
+                        &quot;minecraft:tube_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_tube_coral_fan&quot;,
+                        &quot;minecraft:dead_tube_coral_wall_fan&quot;,
+                        &quot;minecraft:brain_coral_fan&quot;,
+                        &quot;minecraft:brain_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_brain_coral_fan&quot;,
+                        &quot;minecraft:dead_brain_coral_wall_fan&quot;,
+                        &quot;minecraft:bubble_coral_fan&quot;,
+                        &quot;minecraft:bubble_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_bubble_coral_fan&quot;,
+                        &quot;minecraft:dead_bubble_coral_wall_fan&quot;,
+                        &quot;minecraft:fire_coral_fan&quot;,
+                        &quot;minecraft:fire_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_fire_coral_fan&quot;,
+                        &quot;minecraft:dead_fire_coral_wall_fan&quot;,
+                        &quot;minecraft:horn_coral_fan&quot;,
+                        &quot;minecraft:horn_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_horn_coral_fan&quot;,
+                        &quot;minecraft:dead_horn_coral_wall_fan&quot;
+                      ]
+                    }
+                  },
+                  &quot;offsetY&quot;: 1
+                },
+                {
+                  &quot;type&quot;: &quot;minecraft:location_check&quot;,
+                  &quot;predicate&quot;: {
+                    &quot;block&quot;: {
+                      &quot;blocks&quot;: [
+                        &quot;minecraft:tube_coral_fan&quot;,
+                        &quot;minecraft:tube_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_tube_coral_fan&quot;,
+                        &quot;minecraft:dead_tube_coral_wall_fan&quot;,
+                        &quot;minecraft:brain_coral_fan&quot;,
+                        &quot;minecraft:brain_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_brain_coral_fan&quot;,
+                        &quot;minecraft:dead_brain_coral_wall_fan&quot;,
+                        &quot;minecraft:bubble_coral_fan&quot;,
+                        &quot;minecraft:bubble_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_bubble_coral_fan&quot;,
+                        &quot;minecraft:dead_bubble_coral_wall_fan&quot;,
+                        &quot;minecraft:fire_coral_fan&quot;,
+                        &quot;minecraft:fire_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_fire_coral_fan&quot;,
+                        &quot;minecraft:dead_fire_coral_wall_fan&quot;,
+                        &quot;minecraft:horn_coral_fan&quot;,
+                        &quot;minecraft:horn_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_horn_coral_fan&quot;,
+                        &quot;minecraft:dead_horn_coral_wall_fan&quot;
+                      ]
+                    }
+                  },
+                  &quot;offsetZ&quot;: -1
+                },
+                {
+                  &quot;type&quot;: &quot;minecraft:location_check&quot;,
+                  &quot;predicate&quot;: {
+                    &quot;block&quot;: {
+                      &quot;blocks&quot;: [
+                        &quot;minecraft:tube_coral_fan&quot;,
+                        &quot;minecraft:tube_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_tube_coral_fan&quot;,
+                        &quot;minecraft:dead_tube_coral_wall_fan&quot;,
+                        &quot;minecraft:brain_coral_fan&quot;,
+                        &quot;minecraft:brain_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_brain_coral_fan&quot;,
+                        &quot;minecraft:dead_brain_coral_wall_fan&quot;,
+                        &quot;minecraft:bubble_coral_fan&quot;,
+                        &quot;minecraft:bubble_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_bubble_coral_fan&quot;,
+                        &quot;minecraft:dead_bubble_coral_wall_fan&quot;,
+                        &quot;minecraft:fire_coral_fan&quot;,
+                        &quot;minecraft:fire_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_fire_coral_fan&quot;,
+                        &quot;minecraft:dead_fire_coral_wall_fan&quot;,
+                        &quot;minecraft:horn_coral_fan&quot;,
+                        &quot;minecraft:horn_coral_wall_fan&quot;,
+                        &quot;minecraft:dead_horn_coral_fan&quot;,
+                        &quot;minecraft:dead_horn_coral_wall_fan&quot;
+                      ]
+                    }
+                  },
+                  &quot;offsetZ&quot;: 1
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:tnt&quot;,
+      &quot;count&quot;: 1
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;吞噬世界的开端&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;最后放置 TNT，其相邻方块同时包含黏液块与珊瑚扇&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;tnt_dupe&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-更多乐趣">
+<h2>更多乐趣</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-carrot_on_a_stick.png" alt="更多乐趣" width="128" height="128" loading="lazy" decoding="async"><figcaption>更多合成、装备与探索乐趣</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>位置条件检查</p></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/root</code>。父节点：<code>无（根节点）</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;criteria&quot;: {
+    &quot;root&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:location&quot;
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:carrot_on_a_stick&quot;,
+      &quot;count&quot;: 1
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;更多乐趣&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;更多合成、装备与探索乐趣&quot;
+    },
+    &quot;background&quot;: &quot;contribution:gui/advancements/backgrounds/cyan_concrete_powder&quot;,
+    &quot;show_toast&quot;: false,
+    &quot;announce_to_chat&quot;: false
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;root&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-沸羊羊">
+<h2>沸羊羊</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-brown_wool.png" alt="沸羊羊" width="128" height="128" loading="lazy" decoding="async"><figcaption>将羊染成棕色</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<p>目标羊交互前的颜色为 棕色，使用物品为 棕色染料。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>棕色</td></tr>
+<tr><td>使用物品 / 匹配物品 / 第 1 项</td><td>棕色染料</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/sheep/feiyangyang</code>。父节点：<code>contribution:items/sheep/lanyangyang</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/sheep/lanyangyang&quot;,
+  &quot;criteria&quot;: {
+    &quot;feiyangyang&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;brown&quot;
+            }
+          }
+        },
+        &quot;item&quot;: {
+          &quot;items&quot;: [
+            &quot;minecraft:brown_dye&quot;
+          ]
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:brown_wool&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;沸羊羊&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;将羊染成棕色&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;feiyangyang&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-彩虹羊">
+<h2>彩虹羊</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-name_tag.png" alt="彩虹羊" width="128" height="128" loading="lazy" decoding="async"><figcaption>将羊命名为jeb_</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>使用物品 / 匹配物品</td><td>命名牌</td></tr>
+<tr><td>使用物品 / 数据组件 / 自定义名称</td><td>命名为 <code>jeb_</code></td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/sheep/jeb_</code>。父节点：<code>contribution:items/sheep/nuanyangyang</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/sheep/nuanyangyang&quot;,
+  &quot;criteria&quot;: {
+    &quot;jeb_&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;
+          }
+        },
+        &quot;item&quot;: {
+          &quot;items&quot;: &quot;minecraft:name_tag&quot;,
+          &quot;components&quot;: {
+            &quot;minecraft:custom_name&quot;: &quot;jeb_&quot;
+          }
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:name_tag&quot;,
+      &quot;components&quot;: {
+        &quot;minecraft:custom_name&quot;: &quot;jeb_&quot;
+      }
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;彩虹羊&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;将羊命名为jeb_&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;jeb_&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-懒羊羊">
+<h2>懒羊羊</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-yellow_wool.png" alt="懒羊羊" width="128" height="128" loading="lazy" decoding="async"><figcaption>将羊染成黄色</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<p>目标羊交互前的颜色为 黄色，使用物品为 黄色染料。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>黄色</td></tr>
+<tr><td>使用物品 / 匹配物品 / 第 1 项</td><td>黄色染料</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/sheep/lanyangyang</code>。父节点：<code>contribution:items/sheep/meiyangyang</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/sheep/meiyangyang&quot;,
+  &quot;criteria&quot;: {
+    &quot;lanyangyang&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;yellow&quot;
+            }
+          }
+        },
+        &quot;item&quot;: {
+          &quot;items&quot;: [
+            &quot;minecraft:yellow_dye&quot;
+          ]
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:yellow_wool&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;懒羊羊&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;将羊染成黄色&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;lanyangyang&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-慢羊羊">
+<h2>慢羊羊</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-lime_wool.png" alt="慢羊羊" width="128" height="128" loading="lazy" decoding="async"><figcaption>将羊染成黄绿色</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<p>目标羊交互前的颜色为 黄绿色，使用物品为 黄绿色染料。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>黄绿色</td></tr>
+<tr><td>使用物品 / 匹配物品 / 第 1 项</td><td>黄绿色染料</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/sheep/manyangyang</code>。父节点：<code>contribution:items/sheep/feiyangyang</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/sheep/feiyangyang&quot;,
+  &quot;criteria&quot;: {
+    &quot;manyangyang&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;lime&quot;
+            }
+          }
+        },
+        &quot;item&quot;: {
+          &quot;items&quot;: [
+            &quot;minecraft:lime_dye&quot;
+          ]
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:lime_wool&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;慢羊羊&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;将羊染成黄绿色&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;manyangyang&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-美羊羊">
+<h2>美羊羊</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-pink_wool.png" alt="美羊羊" width="128" height="128" loading="lazy" decoding="async"><figcaption>将羊染成粉色</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<p>目标羊交互前的颜色为 粉红色，使用物品为 粉红色染料。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>粉红色</td></tr>
+<tr><td>使用物品 / 匹配物品 / 第 1 项</td><td>粉红色染料</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/sheep/meiyangyang</code>。父节点：<code>contribution:items/sheep/xiyangyang</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/sheep/xiyangyang&quot;,
+  &quot;criteria&quot;: {
+    &quot;meiyangyang&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;pink&quot;
+            }
+          }
+        },
+        &quot;item&quot;: {
+          &quot;items&quot;: [
+            &quot;minecraft:pink_dye&quot;
+          ]
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:pink_wool&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;美羊羊&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;将羊染成粉色&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;meiyangyang&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-暖羊羊">
+<h2>暖羊羊</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-magenta_wool.png" alt="暖羊羊" width="128" height="128" loading="lazy" decoding="async"><figcaption>将羊染成品红色</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<p>目标羊交互前的颜色为 品红色，使用物品为 品红色染料。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>品红色</td></tr>
+<tr><td>使用物品 / 匹配物品 / 第 1 项</td><td>品红色染料</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/sheep/nuanyangyang</code>。父节点：<code>contribution:items/sheep/manyangyang</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/sheep/manyangyang&quot;,
+  &quot;criteria&quot;: {
+    &quot;nuanyangyang&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;magenta&quot;
+            }
+          }
+        },
+        &quot;item&quot;: {
+          &quot;items&quot;: [
+            &quot;minecraft:magenta_dye&quot;
+          ]
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:magenta_wool&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;暖羊羊&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;将羊染成品红色&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;nuanyangyang&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-羊村">
+<h2>羊村</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-sheep_spawn_egg.png" alt="羊村" width="128" height="128" loading="lazy" decoding="async"><figcaption>与 16 种颜色的羊交互，并用 jeb_ 命名牌命名一只羊</figcaption></figure>
+<p>完成条件：共 17 组，每组完成其中任意一项，全部组均完成后获得进度。</p>
+<section class="entry-section"><h3>第 1 组 · 选项 1</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>白色</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 2 组 · 选项 1</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>橙色</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 3 组 · 选项 1</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>品红色</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 4 组 · 选项 1</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>淡蓝色</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 5 组 · 选项 1</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>黄色</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 6 组 · 选项 1</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>黄绿色</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 7 组 · 选项 1</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>粉红色</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 8 组 · 选项 1</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>灰色</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 9 组 · 选项 1</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>淡灰色</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 10 组 · 选项 1</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>青色</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 11 组 · 选项 1</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>紫色</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 12 组 · 选项 1</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>蓝色</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 13 组 · 选项 1</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>棕色</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 14 组 · 选项 1</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>绿色</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 15 组 · 选项 1</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>红色</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 16 组 · 选项 1</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>黑色</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 17 组 · 选项 1</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>使用物品 / 匹配物品</td><td>命名牌</td></tr>
+<tr><td>使用物品 / 数据组件 / 自定义名称</td><td>命名为 <code>jeb_</code></td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/sheep/sheep_village</code>。父节点：<code>contribution:items/sheep/jeb_</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/sheep/jeb_&quot;,
+  &quot;criteria&quot;: {
+    &quot;sheep_village.0b&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;white&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;sheep_village.1b&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;orange&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;sheep_village.2b&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;magenta&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;sheep_village.3b&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;light_blue&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;sheep_village.4b&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;yellow&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;sheep_village.5b&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;lime&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;sheep_village.6b&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;pink&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;sheep_village.7b&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;gray&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;sheep_village.8b&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;light_gray&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;sheep_village.9b&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;cyan&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;sheep_village.10b&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;purple&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;sheep_village.11b&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;blue&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;sheep_village.12b&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;brown&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;sheep_village.13b&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;green&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;sheep_village.14b&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;red&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;sheep_village.15b&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;black&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;sheep_village.jeb&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;
+          }
+        },
+        &quot;item&quot;: {
+          &quot;items&quot;: &quot;minecraft:name_tag&quot;,
+          &quot;components&quot;: {
+            &quot;minecraft:custom_name&quot;: &quot;jeb_&quot;
+          }
+        }
+      }
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;sheep_village.0b&quot;
+    ],
+    [
+      &quot;sheep_village.1b&quot;
+    ],
+    [
+      &quot;sheep_village.2b&quot;
+    ],
+    [
+      &quot;sheep_village.3b&quot;
+    ],
+    [
+      &quot;sheep_village.4b&quot;
+    ],
+    [
+      &quot;sheep_village.5b&quot;
+    ],
+    [
+      &quot;sheep_village.6b&quot;
+    ],
+    [
+      &quot;sheep_village.7b&quot;
+    ],
+    [
+      &quot;sheep_village.8b&quot;
+    ],
+    [
+      &quot;sheep_village.9b&quot;
+    ],
+    [
+      &quot;sheep_village.10b&quot;
+    ],
+    [
+      &quot;sheep_village.11b&quot;
+    ],
+    [
+      &quot;sheep_village.12b&quot;
+    ],
+    [
+      &quot;sheep_village.13b&quot;
+    ],
+    [
+      &quot;sheep_village.14b&quot;
+    ],
+    [
+      &quot;sheep_village.15b&quot;
+    ],
+    [
+      &quot;sheep_village.jeb&quot;
+    ]
+  ],
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:sheep_spawn_egg&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;羊村&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;与 16 种颜色的羊交互，并用 jeb_ 命名牌命名一只羊&quot;
+    }
+  }
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-喜羊羊">
+<h2>喜羊羊</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-light_blue_wool.png" alt="喜羊羊" width="128" height="128" loading="lazy" decoding="async"><figcaption>将羊染成淡蓝色</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<p>目标羊交互前的颜色为 淡蓝色，使用物品为 淡蓝色染料。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>对实体使用物品</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>目标实体 / 条件类型</td><td>实体条件</td></tr>
+<tr><td>目标实体 / 目标实体</td><td>当前判定实体</td></tr>
+<tr><td>目标实体 / 实体条件 / 实体种类</td><td>绵羊</td></tr>
+<tr><td>目标实体 / 实体条件 / 数据组件 / 羊的颜色</td><td>淡蓝色</td></tr>
+<tr><td>使用物品 / 匹配物品 / 第 1 项</td><td>淡蓝色染料</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/sheep/xiyangyang</code>。父节点：<code>contribution:items/root</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/root&quot;,
+  &quot;criteria&quot;: {
+    &quot;xiyangyang&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:player_interacted_with_entity&quot;,
+      &quot;conditions&quot;: {
+        &quot;entity&quot;: {
+          &quot;type&quot;: &quot;minecraft:entity_properties&quot;,
+          &quot;entity&quot;: &quot;this&quot;,
+          &quot;predicate&quot;: {
+            &quot;minecraft:entity_type&quot;: &quot;minecraft:sheep&quot;,
+            &quot;minecraft:components&quot;: {
+              &quot;minecraft:sheep/color&quot;: &quot;light_blue&quot;
+            }
+          }
+        },
+        &quot;item&quot;: {
+          &quot;items&quot;: [
+            &quot;minecraft:light_blue_dye&quot;
+          ]
+        }
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:light_blue_wool&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;喜羊羊&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;将羊染成淡蓝色&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;xiyangyang&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-如虎添翼">
+<h2>如虎添翼</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-elytra.png" alt="如虎添翼" width="128" height="128" loading="lazy" decoding="async"><figcaption>对胸甲进行“添翼”升级</figcaption></figure>
+<p>完成条件：满足下列要求。</p>
+<section class="entry-section"><h3>操作与条件</h3><p>背包内容发生变化</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>匹配物品 / 第 1 项 / 数据组件 / 滑翔能力</td><td>已设置</td></tr>
+<tr><td>匹配物品 / 第 1 项 / 匹配物品 / 第 1 项</td><td>皮革外套</td></tr>
+<tr><td>匹配物品 / 第 1 项 / 匹配物品 / 第 2 项</td><td>锁链胸甲</td></tr>
+<tr><td>匹配物品 / 第 1 项 / 匹配物品 / 第 3 项</td><td>铜胸甲</td></tr>
+<tr><td>匹配物品 / 第 1 项 / 匹配物品 / 第 4 项</td><td>铁胸甲</td></tr>
+<tr><td>匹配物品 / 第 1 项 / 匹配物品 / 第 5 项</td><td>金胸甲</td></tr>
+<tr><td>匹配物品 / 第 1 项 / 匹配物品 / 第 6 项</td><td>钻石胸甲</td></tr>
+<tr><td>匹配物品 / 第 1 项 / 匹配物品 / 第 7 项</td><td>下界合金胸甲</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/upgrade/add_wing</code>。父节点：<code>contribution:items/root</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/root&quot;,
+  &quot;criteria&quot;: {
+    &quot;add_wing&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:inventory_changed&quot;,
+      &quot;conditions&quot;: {
+        &quot;items&quot;: [
+          {
+            &quot;components&quot;: {
+              &quot;minecraft:glider&quot;: {}
+            },
+            &quot;items&quot;: [
+              &quot;minecraft:leather_chestplate&quot;,
+              &quot;minecraft:chainmail_chestplate&quot;,
+              &quot;minecraft:copper_chestplate&quot;,
+              &quot;minecraft:iron_chestplate&quot;,
+              &quot;minecraft:golden_chestplate&quot;,
+              &quot;minecraft:diamond_chestplate&quot;,
+              &quot;minecraft:netherite_chestplate&quot;
+            ]
+          }
+        ]
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:elytra&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;如虎添翼&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;对胸甲进行“添翼”升级&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;add_wing&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-盔甲强化">
+<h2>盔甲强化</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-golden_chestplate.png" alt="盔甲强化" width="128" height="128" loading="lazy" decoding="async"><figcaption>对盔甲进行下界合金级强化</figcaption></figure>
+<p>完成条件：共 1 组，每组完成其中任意一项，全部组均完成后获得进度。</p>
+<p>完成对应配方并取出结果时触发，材料见<a class="wikilink" href="recipes-reinforcement.html#recipes-reinforcement">强化配方</a>。</p>
+<section class="entry-section"><h3>第 1 组 · 选项 25</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>minecraft:copper_boots · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 17</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>铁护腿 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 18</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>钻石护腿 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 19</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>钻石胸甲 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 20</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>铁胸甲 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 21</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>锁链胸甲 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 22</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>minecraft:copper_helmet · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 23</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>铜胸甲 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 24</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>minecraft:copper_leggings · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 9</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>钻石靴子 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 10</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>皮革外套 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 11</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>铁头盔 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 12</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>钻石头盔 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 13</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>皮革靴子 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 14</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>锁链护腿 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 15</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>皮革裤子 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 16</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>金护腿 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 1</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>金胸甲 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 2</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>锁链头盔 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 3</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>铁靴子 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 4</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>海龟壳 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 5</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>金靴子 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 6</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>皮革帽子 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 7</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>锁链靴子 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 8</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>金头盔 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/upgrade/reinforce_armor</code>。父节点：<code>contribution:items/upgrade/reinforce_tool</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/upgrade/reinforce_tool&quot;,
+  &quot;criteria&quot;: {
+    &quot;copper_boots&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/copper_boots&quot;
+        ]
+      }
+    },
+    &quot;iron_leggings&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/iron_leggings&quot;
+        ]
+      }
+    },
+    &quot;diamond_leggings&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/diamond_leggings&quot;
+        ]
+      }
+    },
+    &quot;diamond_chestplate&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/diamond_chestplate&quot;
+        ]
+      }
+    },
+    &quot;iron_chestplate&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/iron_chestplate&quot;
+        ]
+      }
+    },
+    &quot;chainmail_chestplate&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/chainmail_chestplate&quot;
+        ]
+      }
+    },
+    &quot;copper_helmet&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/copper_helmet&quot;
+        ]
+      }
+    },
+    &quot;copper_chestplate&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/copper_chestplate&quot;
+        ]
+      }
+    },
+    &quot;copper_leggings&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/copper_leggings&quot;
+        ]
+      }
+    },
+    &quot;diamond_boots&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/diamond_boots&quot;
+        ]
+      }
+    },
+    &quot;leather_chestplate&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/leather_chestplate&quot;
+        ]
+      }
+    },
+    &quot;iron_helmet&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/iron_helmet&quot;
+        ]
+      }
+    },
+    &quot;diamond_helmet&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/diamond_helmet&quot;
+        ]
+      }
+    },
+    &quot;leather_boots&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/leather_boots&quot;
+        ]
+      }
+    },
+    &quot;chainmail_leggings&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/chainmail_leggings&quot;
+        ]
+      }
+    },
+    &quot;leather_leggings&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/leather_leggings&quot;
+        ]
+      }
+    },
+    &quot;golden_leggings&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/golden_leggings&quot;
+        ]
+      }
+    },
+    &quot;golden_chestplate&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/golden_chestplate&quot;
+        ]
+      }
+    },
+    &quot;chainmail_helmet&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/chainmail_helmet&quot;
+        ]
+      }
+    },
+    &quot;iron_boots&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/iron_boots&quot;
+        ]
+      }
+    },
+    &quot;turtle_helmet&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/turtle_helmet&quot;
+        ]
+      }
+    },
+    &quot;golden_boots&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/golden_boots&quot;
+        ]
+      }
+    },
+    &quot;leather_helmet&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/leather_helmet&quot;
+        ]
+      }
+    },
+    &quot;chainmail_boots&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/chainmail_boots&quot;
+        ]
+      }
+    },
+    &quot;golden_helmet&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/golden_helmet&quot;
+        ]
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:golden_chestplate&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;盔甲强化&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;对盔甲进行下界合金级强化&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;golden_chestplate&quot;,
+      &quot;chainmail_helmet&quot;,
+      &quot;iron_boots&quot;,
+      &quot;turtle_helmet&quot;,
+      &quot;golden_boots&quot;,
+      &quot;leather_helmet&quot;,
+      &quot;chainmail_boots&quot;,
+      &quot;golden_helmet&quot;,
+      &quot;diamond_boots&quot;,
+      &quot;leather_chestplate&quot;,
+      &quot;iron_helmet&quot;,
+      &quot;diamond_helmet&quot;,
+      &quot;leather_boots&quot;,
+      &quot;chainmail_leggings&quot;,
+      &quot;leather_leggings&quot;,
+      &quot;golden_leggings&quot;,
+      &quot;iron_leggings&quot;,
+      &quot;diamond_leggings&quot;,
+      &quot;diamond_chestplate&quot;,
+      &quot;iron_chestplate&quot;,
+      &quot;chainmail_chestplate&quot;,
+      &quot;copper_helmet&quot;,
+      &quot;copper_chestplate&quot;,
+      &quot;copper_leggings&quot;,
+      &quot;copper_boots&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="advancement-details-工具强化">
+<h2>工具强化</h2>
+<figure class="entry-illustration"><img class="item-icon" src="assets/images/icons/minecraft-golden_pickaxe.png" alt="工具强化" width="128" height="128" loading="lazy" decoding="async"><figcaption>对工具进行下界合金级强化</figcaption></figure>
+<p>完成条件：共 1 组，每组完成其中任意一项，全部组均完成后获得进度。</p>
+<p>完成对应配方并取出结果时触发，材料见<a class="wikilink" href="recipes-reinforcement.html#recipes-reinforcement">强化配方</a>。</p>
+<section class="entry-section"><h3>第 1 组 · 选项 33</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>铁锄 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 34</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>minecraft:iron_spear · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 35</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>minecraft:golden_spear · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 36</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>minecraft:diamond_spear · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 25</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>minecraft:copper_axe · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 26</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>minecraft:copper_shovel · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 27</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>minecraft:copper_hoe · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 28</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>minecraft:copper_spear · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 29</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>铁剑 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 30</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>铁镐 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 31</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>铁斧 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 32</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>铁锹 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 17</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>石剑 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 18</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>石镐 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 19</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>石斧 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 20</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>石锹 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 21</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>石锄 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 22</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>minecraft:stone_spear · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 23</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>minecraft:copper_sword · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 24</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>minecraft:copper_pickaxe · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 9</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>金镐 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 10</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>钻石锹 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 11</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>木剑 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 12</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>木镐 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 13</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>木斧 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 14</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>木锹 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 15</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>木锄 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 16</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>minecraft:wooden_spear · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 1</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>钻石剑 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 2</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>钻石斧 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 3</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>金锄 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 4</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>金锹 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 5</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>钻石镐 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 6</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>金斧 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 7</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>钻石锄 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<section class="entry-section"><h3>第 1 组 · 选项 8</h3><p>完成指定配方并取出结果</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">要求</th><th scope="col">条件</th></tr></thead>
+<tbody>
+<tr><td>完成配方 / 第 1 项</td><td>金剑 · 强化</td></tr>
+</tbody>
+</table></div></section>
+<details class="source-details"><summary>进度数据</summary><p>进度标识符：<code>contribution:items/upgrade/reinforce_tool</code>。父节点：<code>contribution:items/upgrade/add_wing</code>。显示类型：普通进度。隐藏：否。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;parent&quot;: &quot;contribution:items/upgrade/add_wing&quot;,
+  &quot;criteria&quot;: {
+    &quot;iron_hoe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/iron_hoe&quot;
+        ]
+      }
+    },
+    &quot;iron_spear&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/iron_spear&quot;
+        ]
+      }
+    },
+    &quot;golden_spear&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/golden_spear&quot;
+        ]
+      }
+    },
+    &quot;diamond_spear&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/diamond_spear&quot;
+        ]
+      }
+    },
+    &quot;copper_axe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/copper_axe&quot;
+        ]
+      }
+    },
+    &quot;copper_shovel&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/copper_shovel&quot;
+        ]
+      }
+    },
+    &quot;copper_hoe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/copper_hoe&quot;
+        ]
+      }
+    },
+    &quot;copper_spear&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/copper_spear&quot;
+        ]
+      }
+    },
+    &quot;iron_sword&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/iron_sword&quot;
+        ]
+      }
+    },
+    &quot;iron_pickaxe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/iron_pickaxe&quot;
+        ]
+      }
+    },
+    &quot;iron_axe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/iron_axe&quot;
+        ]
+      }
+    },
+    &quot;iron_shovel&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/iron_shovel&quot;
+        ]
+      }
+    },
+    &quot;stone_sword&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/stone_sword&quot;
+        ]
+      }
+    },
+    &quot;stone_pickaxe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/stone_pickaxe&quot;
+        ]
+      }
+    },
+    &quot;stone_axe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/stone_axe&quot;
+        ]
+      }
+    },
+    &quot;stone_shovel&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/stone_shovel&quot;
+        ]
+      }
+    },
+    &quot;stone_hoe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/stone_hoe&quot;
+        ]
+      }
+    },
+    &quot;stone_spear&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/stone_spear&quot;
+        ]
+      }
+    },
+    &quot;copper_sword&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/copper_sword&quot;
+        ]
+      }
+    },
+    &quot;copper_pickaxe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/copper_pickaxe&quot;
+        ]
+      }
+    },
+    &quot;golden_pickaxe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/golden_pickaxe&quot;
+        ]
+      }
+    },
+    &quot;diamond_shovel&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/diamond_shovel&quot;
+        ]
+      }
+    },
+    &quot;wooden_sword&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/wooden_sword&quot;
+        ]
+      }
+    },
+    &quot;wooden_pickaxe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/wooden_pickaxe&quot;
+        ]
+      }
+    },
+    &quot;wooden_axe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/wooden_axe&quot;
+        ]
+      }
+    },
+    &quot;wooden_shovel&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/wooden_shovel&quot;
+        ]
+      }
+    },
+    &quot;wooden_hoe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/wooden_hoe&quot;
+        ]
+      }
+    },
+    &quot;wooden_spear&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/wooden_spear&quot;
+        ]
+      }
+    },
+    &quot;diamond_sword&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/diamond_sword&quot;
+        ]
+      }
+    },
+    &quot;diamond_axe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/diamond_axe&quot;
+        ]
+      }
+    },
+    &quot;golden_hoe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/golden_hoe&quot;
+        ]
+      }
+    },
+    &quot;golden_shovel&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/golden_shovel&quot;
+        ]
+      }
+    },
+    &quot;diamond_pickaxe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/diamond_pickaxe&quot;
+        ]
+      }
+    },
+    &quot;golden_axe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/golden_axe&quot;
+        ]
+      }
+    },
+    &quot;diamond_hoe&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/diamond_hoe&quot;
+        ]
+      }
+    },
+    &quot;golden_sword&quot;: {
+      &quot;trigger&quot;: &quot;minecraft:recipe_crafted&quot;,
+      &quot;conditions&quot;: {
+        &quot;recipes&quot;: [
+          &quot;contribution:items/reinforcement/golden_sword&quot;
+        ]
+      }
+    }
+  },
+  &quot;display&quot;: {
+    &quot;icon&quot;: {
+      &quot;id&quot;: &quot;minecraft:golden_pickaxe&quot;
+    },
+    &quot;title&quot;: {
+      &quot;text&quot;: &quot;工具强化&quot;
+    },
+    &quot;description&quot;: {
+      &quot;text&quot;: &quot;对工具进行下界合金级强化&quot;
+    }
+  },
+  &quot;requirements&quot;: [
+    [
+      &quot;diamond_sword&quot;,
+      &quot;diamond_axe&quot;,
+      &quot;golden_hoe&quot;,
+      &quot;golden_shovel&quot;,
+      &quot;diamond_pickaxe&quot;,
+      &quot;golden_axe&quot;,
+      &quot;diamond_hoe&quot;,
+      &quot;golden_sword&quot;,
+      &quot;golden_pickaxe&quot;,
+      &quot;diamond_shovel&quot;,
+      &quot;wooden_sword&quot;,
+      &quot;wooden_pickaxe&quot;,
+      &quot;wooden_axe&quot;,
+      &quot;wooden_shovel&quot;,
+      &quot;wooden_hoe&quot;,
+      &quot;wooden_spear&quot;,
+      &quot;stone_sword&quot;,
+      &quot;stone_pickaxe&quot;,
+      &quot;stone_axe&quot;,
+      &quot;stone_shovel&quot;,
+      &quot;stone_hoe&quot;,
+      &quot;stone_spear&quot;,
+      &quot;copper_sword&quot;,
+      &quot;copper_pickaxe&quot;,
+      &quot;copper_axe&quot;,
+      &quot;copper_shovel&quot;,
+      &quot;copper_hoe&quot;,
+      &quot;copper_spear&quot;,
+      &quot;iron_sword&quot;,
+      &quot;iron_pickaxe&quot;,
+      &quot;iron_axe&quot;,
+      &quot;iron_shovel&quot;,
+      &quot;iron_hoe&quot;,
+      &quot;iron_spear&quot;,
+      &quot;golden_spear&quot;,
+      &quot;diamond_spear&quot;
+    ]
+  ]
+}</code></pre></details>
+</section>
+<div class="page-footer">贡献值模组维基 · 0.2.6 · <a href="documentation.html#documentation">维基维护</a></div>
+</div>
+<aside class="page-info">
+<div class="page-info-inner">
+<div class="page-info-head">条目概要</div>
+<table class="infobox">
+<tr><th>显示进度</th><td>36 个</td></tr>
+<tr><th>查看</th><td><code>L</code> → 更多乐趣</td></tr>
+
+</table>
+</div>
+<table class="navbox"><tbody>
+<tr><th class="navbox-top" colspan="2"><span class="navbox-title">物品与进度</span></th></tr>
+<tr><th>相关页面</th><td><ul class="hlist"><li><a href="items.html#items">物品与装备</a></li><li><a href="special-items.html#special-items">特殊道具</a></li><li><a href="recipes.html#recipes">配方目录</a></li><li><a href="recipes-basics.html#recipes-basics">基础配方</a></li></ul></td></tr>
+</tbody></table>
+<div class="catlinks"><span>分类：</span><ul><li>物品与进度</li></ul></div>
+</aside>
+</div>
+</div>
+</div></main></div></body></html>

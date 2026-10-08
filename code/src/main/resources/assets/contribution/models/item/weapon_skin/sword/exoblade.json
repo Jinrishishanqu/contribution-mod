@@ -1,0 +1,66 @@
+{
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        55
+      ],
+      "translation": [
+        0,
+        7.75,
+        -0.75
+      ],
+      "scale": [
+        1.3,
+        1.3,
+        0.85
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -55
+      ],
+      "translation": [
+        0,
+        7.75,
+        -0.75
+      ],
+      "scale": [
+        1.3,
+        1.3,
+        0.85
+      ]
+    },
+    "gui": {
+      "rotation": [
+        0,
+        0,
+        10
+      ],
+      "translation": [
+        0,
+        1.5,
+        0
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        10
+      ],
+      "translation": [
+        0,
+        1.5,
+        0
+      ]
+    }
+  },
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/sword/exoblade"
+  },
+  "parent": "minecraft:item/handheld"
+}

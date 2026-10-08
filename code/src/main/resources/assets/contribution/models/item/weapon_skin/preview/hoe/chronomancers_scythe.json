@@ -1,0 +1,22 @@
+{
+  "parent": "contribution:item/weapon_skin/hoe/chronomancers_scythe",
+  "display": {
+    "gui": {
+      "rotation": [
+        0,
+        0,
+        11.25
+      ],
+      "translation": [
+        38,
+        -40,
+        0
+      ],
+      "scale": [
+        4,
+        4,
+        4
+      ]
+    }
+  }
+}

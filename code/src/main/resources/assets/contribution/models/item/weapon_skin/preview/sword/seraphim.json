@@ -1,0 +1,22 @@
+{
+  "parent": "contribution:item/weapon_skin/sword/seraphim",
+  "display": {
+    "gui": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        40,
+        -40,
+        0
+      ],
+      "scale": [
+        4,
+        4,
+        4
+      ]
+    }
+  }
+}

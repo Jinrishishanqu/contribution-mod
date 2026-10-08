@@ -6,6 +6,7 @@ import cn.contribution.api.BalanceChangeType;
 import cn.contribution.config.ServerConfig;
 import cn.contribution.database.DatabaseService;
 import cn.contribution.database.DatabaseState;
+
 import net.minecraft.resources.Identifier;
 
 import java.nio.file.Files;
@@ -17,7 +18,8 @@ public final class AccountIdentityChecks {
     public static void main(String[] args) throws Exception {
         ServerConfig config = new ServerConfig();
         config.database.mode = "embedded";
-        Path path = Files.createTempDirectory(Path.of("build"), "identity-").resolve("contribution");
+        Path path =
+                Files.createTempDirectory(Path.of("build"), "identity-").resolve("contribution");
         try (DatabaseService db = new DatabaseService(config, path)) {
             check(db.start().join() == DatabaseState.AVAILABLE, "migration");
             AccountIdentityService identities = new AccountIdentityService(db);
@@ -25,72 +27,174 @@ public final class AccountIdentityChecks {
             UUID oldId = UUID.randomUUID(), newId = UUID.randomUUID();
             check(identities.create(oldId, "OldHolder").join().startsWith("已创建"), "create old");
             check(identities.create(newId, "NewHolder").join().startsWith("已创建"), "create target");
-            check(identities.create(UUID.randomUUID(), "OldHolder").join().contains("已属于"), "name conflict");
-            accounts.changeBalance(new BalanceChangeRequest(UUID.randomUUID(), AccountTarget.byUuid(oldId), 325,
-                    BalanceChangeType.EXTERNAL, Identifier.parse("contribution:test"), "测试", "")).join();
-            db.transaction(connection -> {
-                try (var insert = connection.prepareStatement(
-                        "INSERT INTO player_activity_stats (player_uuid, player_name, player_name_normalized, total_placed, total_mined, updated_at) "
-                                + "VALUES (?, 'OldHolder', 'oldholder', 4, 2, CURRENT_TIMESTAMP(6))")) {
-                    insert.setBytes(1, AccountService.uuidBytes(oldId)); insert.executeUpdate();
-                }
-                return null;
-            }).join();
-            check(identities.migrate(oldId, newId).join().startsWith("已迁移"), "migrate into empty target");
-            check(accounts.account(AccountTarget.byUuid(oldId)).join().isEmpty(), "old UUID removed");
+            check(
+                    identities.create(UUID.randomUUID(), "OldHolder").join().contains("已属于"),
+                    "name conflict");
+            accounts.changeBalance(
+                            new BalanceChangeRequest(
+                                    UUID.randomUUID(),
+                                    AccountTarget.byUuid(oldId),
+                                    325,
+                                    BalanceChangeType.EXTERNAL,
+                                    Identifier.parse("contribution:test"),
+                                    "测试",
+                                    ""))
+                    .join();
+            db.transaction(
+                            connection -> {
+                                try (var insert =
+                                        connection.prepareStatement(
+                                                "INSERT INTO player_activity_stats (player_uuid,"
+                                                    + " player_name, player_name_normalized,"
+                                                    + " total_placed, total_mined, updated_at)"
+                                                    + " VALUES (?, 'OldHolder', 'oldholder', 4, 2,"
+                                                    + " CURRENT_TIMESTAMP(6))")) {
+                                    insert.setBytes(1, AccountService.uuidBytes(oldId));
+                                    insert.executeUpdate();
+                                }
+                                try (var insert =
+                                        connection.prepareStatement(
+                                                "INSERT INTO player_development_total"
+                                                    + " (player_uuid,development) VALUES (?,6)")) {
+                                    insert.setBytes(1, AccountService.uuidBytes(oldId));
+                                    insert.executeUpdate();
+                                }
+                                return null;
+                            })
+                    .join();
+            check(
+                    identities.migrate(oldId, newId).join().startsWith("已迁移"),
+                    "migrate into empty target");
+            check(
+                    accounts.account(AccountTarget.byUuid(oldId)).join().isEmpty(),
+                    "old UUID removed");
             var migrated = accounts.account(AccountTarget.byUuid(newId)).join().orElseThrow();
-            check(migrated.balance() == 325 && migrated.totalIncome() == 325 && migrated.playerName().equals("NewHolder"),
+            check(
+                    migrated.balance() == 325
+                            && migrated.totalIncome() == 325
+                            && migrated.playerName().equals("NewHolder"),
                     "balance, income and target name preserved");
-            check(accounts.historyPage(AccountTarget.byUuid(newId), null, 20, 90).join().orElseThrow().rows().size() == 1,
+            check(
+                    accounts.historyPage(AccountTarget.byUuid(newId), null, 20, 90)
+                                    .join()
+                                    .orElseThrow()
+                                    .rows()
+                                    .size()
+                            == 1,
                     "transaction follows target UUID");
-            db.transaction(connection -> {
-                try (var query = connection.prepareStatement(
-                        "SELECT player_name, total_placed FROM player_activity_stats WHERE player_uuid = ?")) {
-                    query.setBytes(1, AccountService.uuidBytes(newId));
-                    try (var rows = query.executeQuery()) {
-                        check(rows.next() && rows.getString(1).equals("NewHolder") && rows.getLong(2) == 4,
-                                "statistics follow target UUID");
-                    }
-                }
-                try (var query = connection.prepareStatement(
-                        "SELECT COUNT(*) FROM account_uuid_migration WHERE source_uuid = ? AND target_uuid = ?")) {
-                    query.setBytes(1, AccountService.uuidBytes(oldId)); query.setBytes(2, AccountService.uuidBytes(newId));
-                    try (var rows = query.executeQuery()) { rows.next(); check(rows.getInt(1) == 1, "audit row"); }
-                }
-                return null;
-            }).join();
-            check(identities.migrate(oldId, newId).join().contains("没有账户"), "repeat cannot apply twice");
+            db.transaction(
+                            connection -> {
+                                try (var query =
+                                        connection.prepareStatement(
+                                                "SELECT player_name, total_placed FROM"
+                                                        + " player_activity_stats WHERE player_uuid"
+                                                        + " = ?")) {
+                                    query.setBytes(1, AccountService.uuidBytes(newId));
+                                    try (var rows = query.executeQuery()) {
+                                        check(
+                                                rows.next()
+                                                        && rows.getString(1).equals("NewHolder")
+                                                        && rows.getLong(2) == 4,
+                                                "statistics follow target UUID");
+                                    }
+                                }
+                                try (var query =
+                                        connection.prepareStatement(
+                                                "SELECT development FROM player_development_total"
+                                                        + " WHERE player_uuid=?")) {
+                                    query.setBytes(1, AccountService.uuidBytes(newId));
+                                    try (var rows = query.executeQuery()) {
+                                        check(
+                                                rows.next() && rows.getInt(1) == 6,
+                                                "development total follows target UUID");
+                                    }
+                                }
+                                try (var query =
+                                        connection.prepareStatement(
+                                                "SELECT COUNT(*) FROM account_uuid_migration WHERE"
+                                                        + " source_uuid = ? AND target_uuid = ?")) {
+                                    query.setBytes(1, AccountService.uuidBytes(oldId));
+                                    query.setBytes(2, AccountService.uuidBytes(newId));
+                                    try (var rows = query.executeQuery()) {
+                                        rows.next();
+                                        check(rows.getInt(1) == 1, "audit row");
+                                    }
+                                }
+                                return null;
+                            })
+                    .join();
+            check(
+                    identities.migrate(oldId, newId).join().contains("没有账户"),
+                    "repeat cannot apply twice");
             UUID another = UUID.randomUUID();
             check(identities.create(another, "Another").join().startsWith("已创建"), "create another");
-            check(identities.migrate(newId, another).join().startsWith("已迁移"), "pristine account allowed");
+            check(
+                    identities.migrate(newId, another).join().startsWith("已迁移"),
+                    "pristine account allowed");
             UUID occupied = UUID.randomUUID();
-            check(identities.create(occupied, "Occupied").join().startsWith("已创建"), "create occupied target");
-            accounts.changeBalance(new BalanceChangeRequest(UUID.randomUUID(), AccountTarget.byUuid(occupied), 1,
-                    BalanceChangeType.EXTERNAL, Identifier.parse("contribution:test"), "目标已有数据", "")).join();
-            check(identities.migrate(another, occupied).join().contains("禁止覆盖"), "occupied account is rejected");
-            check(accounts.account(AccountTarget.byUuid(another)).join().orElseThrow().balance() == 325,
+            check(
+                    identities.create(occupied, "Occupied").join().startsWith("已创建"),
+                    "create occupied target");
+            accounts.changeBalance(
+                            new BalanceChangeRequest(
+                                    UUID.randomUUID(),
+                                    AccountTarget.byUuid(occupied),
+                                    1,
+                                    BalanceChangeType.EXTERNAL,
+                                    Identifier.parse("contribution:test"),
+                                    "目标已有数据",
+                                    ""))
+                    .join();
+            check(
+                    identities.migrate(another, occupied).join().contains("禁止覆盖"),
+                    "occupied account is rejected");
+            check(
+                    accounts.account(AccountTarget.byUuid(another)).join().orElseThrow().balance()
+                            == 325,
                     "failed migration leaves source unchanged");
             UUID bot = UUID.randomUUID();
             accounts.registerPlayer(bot, "bot_Test").join();
-            check(accounts.account(AccountTarget.byUuid(bot)).join().isEmpty(), "bot join does not create account");
-            check(identities.create(bot, "bot_Test").join().contains("不创建"), "admin cannot create bot account");
-            db.transaction(connection -> {
-                try (var insert = connection.prepareStatement(
-                        "INSERT INTO contribution_account (player_uuid, player_name, player_name_normalized, balance, total_income, created_at, updated_at) "
-                                + "VALUES (?, 'bot_Test', 'bot_test', 0, 0, CURRENT_TIMESTAMP(6), CURRENT_TIMESTAMP(6))")) {
-                    insert.setBytes(1, AccountService.uuidBytes(bot)); insert.executeUpdate();
-                }
-                try (var insert = connection.prepareStatement(
-                        "INSERT INTO checkin_daily (player_uuid, calendar_day, online_seconds) VALUES (?, CURRENT_DATE, 60)")) {
-                    insert.setBytes(1, AccountService.uuidBytes(bot)); insert.executeUpdate();
-                }
-                return null;
-            }).join();
+            check(
+                    accounts.account(AccountTarget.byUuid(bot)).join().isEmpty(),
+                    "bot join does not create account");
+            check(
+                    identities.create(bot, "bot_Test").join().contains("不创建"),
+                    "admin cannot create bot account");
+            db.transaction(
+                            connection -> {
+                                try (var insert =
+                                        connection.prepareStatement(
+                                                "INSERT INTO contribution_account (player_uuid,"
+                                                        + " player_name, player_name_normalized,"
+                                                        + " balance, total_income, created_at,"
+                                                        + " updated_at) VALUES (?, 'bot_Test',"
+                                                        + " 'bot_test', 0, 0, CURRENT_TIMESTAMP(6),"
+                                                        + " CURRENT_TIMESTAMP(6))")) {
+                                    insert.setBytes(1, AccountService.uuidBytes(bot));
+                                    insert.executeUpdate();
+                                }
+                                try (var insert =
+                                        connection.prepareStatement(
+                                                "INSERT INTO checkin_daily (player_uuid,"
+                                                    + " calendar_day, online_seconds) VALUES (?,"
+                                                    + " CURRENT_DATE, 60)")) {
+                                    insert.setBytes(1, AccountService.uuidBytes(bot));
+                                    insert.executeUpdate();
+                                }
+                                return null;
+                            })
+                    .join();
             check(identities.removeBotAccounts().join() == 1, "remove only legacy bot account");
-            check(accounts.account(AccountTarget.byUuid(bot)).join().isEmpty(), "legacy bot removed");
-            check(accounts.account(AccountTarget.byUuid(another)).join().isPresent(), "real account preserved");
+            check(
+                    accounts.account(AccountTarget.byUuid(bot)).join().isEmpty(),
+                    "legacy bot removed");
+            check(
+                    accounts.account(AccountTarget.byUuid(another)).join().isPresent(),
+                    "real account preserved");
             check(identities.removeBotAccounts().join() == 0, "repeat bot cleanup is safe");
-            System.out.println("IDENTITY_PASS: creation, UUID migration, history, stats, audit, replay protection");
+            System.out.println(
+                    "IDENTITY_PASS: creation, UUID migration, history, stats, audit, replay"
+                            + " protection");
         }
     }
 

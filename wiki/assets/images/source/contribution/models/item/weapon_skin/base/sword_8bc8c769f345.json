@@ -1,0 +1,39 @@
+{
+  "parent": "contribution:item/weapon_skin/sword/28",
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        55
+      ],
+      "translation": [
+        0,
+        7,
+        0.5
+      ],
+      "scale": [
+        1.2,
+        1.2,
+        0.85
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -55
+      ],
+      "translation": [
+        0,
+        7,
+        0.5
+      ],
+      "scale": [
+        1.2,
+        1.2,
+        0.85
+      ]
+    }
+  }
+}

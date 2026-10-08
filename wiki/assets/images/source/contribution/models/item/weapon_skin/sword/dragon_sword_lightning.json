@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/sword/dragon_sword_lightning"
+  },
+  "parent": "contribution:item/weapon_skin/sword/28"
+}

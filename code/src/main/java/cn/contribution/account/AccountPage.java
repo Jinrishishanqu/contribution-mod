@@ -14,6 +14,8 @@ public record AccountPage(List<AccountRecord> rows, boolean hasMore, boolean val
     }
 
     public Optional<UUID> nextCursor() {
-        return hasMore && !rows.isEmpty() ? Optional.of(rows.getLast().playerUuid()) : Optional.empty();
+        return hasMore && !rows.isEmpty()
+                ? Optional.of(rows.getLast().playerUuid())
+                : Optional.empty();
     }
 }

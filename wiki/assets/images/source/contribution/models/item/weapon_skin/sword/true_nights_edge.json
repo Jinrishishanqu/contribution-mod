@@ -1,0 +1,42 @@
+{
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        55
+      ],
+      "translation": [
+        0,
+        8,
+        0.5
+      ],
+      "scale": [
+        1.2,
+        1.2,
+        0.85
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -55
+      ],
+      "translation": [
+        0,
+        8,
+        0.5
+      ],
+      "scale": [
+        1.2,
+        1.2,
+        0.85
+      ]
+    }
+  },
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/sword/true_nights_edge"
+  },
+  "parent": "contribution:item/weapon_skin/sword/28"
+}

@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "brand": {
+    "title": "贡献值模组维基",
+    "shortTitle": "贡献值维基",
+    "tagline": "贡献值经济 · 行业建设度 · 股票市场 · 系统商店",
+    "description": "Minecraft Java 版贡献值模组的玩法、物品、配方与服务器管理参考。"
+  },
+  "nav": [
+    {
+      "title": "开始阅读",
+      "items": [
+        {
+          "page": "home"
+        },
+        {
+          "page": "basics"
+        },
+        {
+          "page": "features"
+        }
+      ]
+    },
+    {
+      "title": "贡献值与建设",
+      "items": [
+        {
+          "page": "account"
+        },
+        {
+          "page": "development"
+        },
+        {
+          "page": "statistics"
+        },
+        {
+          "page": "rewards"
+        },
+        {
+          "page": "checkin"
+        }
+      ]
+    },
+    {
+      "title": "经济交易",
+      "items": [
+        {
+          "page": "shop"
+        },
+        {
+          "page": "stock"
+        },
+        {
+          "page": "stock-mechanics"
+        },
+        {
+          "page": "swan"
+        }
+      ]
+    },
+    {
+      "title": "物品与进度",
+      "items": [
+        {
+          "page": "items"
+        },
+        {
+          "page": "special-items"
+        },
+        {
+          "page": "recipes"
+        },
+        {
+          "page": "recipes-basics"
+        },
+        {
+          "page": "recipes-wings"
+        },
+        {
+          "page": "recipes-reinforcement"
+        },
+        {
+          "page": "recipes-armor"
+        },
+        {
+          "page": "recipes-hats"
+        },
+        {
+          "page": "recipes-special"
+        },
+        {
+          "page": "weapon-skins"
+        },
+        {
+          "page": "advancements"
+        },
+        {
+          "page": "advancement-details"
+        },
+        {
+          "page": "resourcepack"
+        }
+      ]
+    },
+    {
+      "title": "操作与命令",
+      "items": [
+        {
+          "page": "interface"
+        },
+        {
+          "page": "commands"
+        },
+        {
+          "page": "commands-contribution"
+        },
+        {
+          "page": "commands-checkin"
+        },
+        {
+          "page": "commands-stock"
+        },
+        {
+          "page": "commands-shop"
+        },
+        {
+          "page": "commands-account"
+        },
+        {
+          "page": "commands-shop-admin"
+        },
+        {
+          "page": "permissions"
+        }
+      ]
+    },
+    {
+      "title": "服务器管理",
+      "items": [
+        {
+          "page": "installation"
+        },
+        {
+          "page": "config"
+        },
+        {
+          "page": "data"
+        },
+        {
+          "page": "operations"
+        }
+      ]
+    },
+    {
+      "title": "开发与维护",
+      "items": [
+        {
+          "page": "api"
+        },
+        {
+          "page": "documentation"
+        }
+      ]
+    }
+  ],
+  "pages": [
+    "home",
+    "features",
+    "basics",
+    "installation",
+    "account",
+    "development",
+    "statistics",
+    "rewards",
+    "checkin",
+    "shop",
+    "stock",
+    "stock-mechanics",
+    "swan",
+    "items",
+    "advancements",
+    "resourcepack",
+    "interface",
+    "permissions",
+    "config",
+    "data",
+    "operations",
+    "api",
+    "commands",
+    "commands-contribution",
+    "commands-account",
+    "commands-checkin",
+    "commands-stock",
+    "commands-shop",
+    "commands-shop-admin",
+    "documentation",
+    "special-items"
+  ]
+}

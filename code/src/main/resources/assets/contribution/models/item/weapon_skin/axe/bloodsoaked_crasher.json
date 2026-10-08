@@ -1,0 +1,42 @@
+{
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        55
+      ],
+      "translation": [
+        0,
+        5,
+        0.75
+      ],
+      "scale": [
+        1.2,
+        1.2,
+        1.2
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -55
+      ],
+      "translation": [
+        0,
+        5,
+        0.75
+      ],
+      "scale": [
+        1.2,
+        1.2,
+        1.2
+      ]
+    }
+  },
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/axe/bloodsoaked_crasher"
+  },
+  "parent": "contribution:item/weapon_skin/axe/big_axe"
+}

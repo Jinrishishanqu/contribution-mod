@@ -1,0 +1,179 @@
+{
+  "id": "checkin",
+  "title": "签到与活动",
+  "summary": "签到提供每日在线奖励和活动奖励。每日签到在在线时长达标后自动完成，活动奖励在期限内手动领取。",
+  "sections": [
+    {
+      "title": "每日在线签到",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "每日签到按配置时区的现实自然日计算，默认时区为 `Asia/Shanghai`。玩家在当天累计在线满 600 秒后自动签到，跨服在线时间合计，挂机时长也计入。"
+        },
+        {
+          "type": "p",
+          "text": "输入 `/contribution checkin` 或打开贡献值首页的「每日签到与活动」查看今日状态。名称以 `bot_` 开头的假人不累计签到时间。"
+        },
+        {
+          "type": "details",
+          "title": "在线时长的保存",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "服务端约每 20 游戏刻采样在线时间，按完整秒归入相应日期，并保留不足 1 秒的余量；离线时补计最后一段。至多每 60 秒批量落库，正常停服提交剩余时间，异常断电可能损失最后不足一分钟。跨服记录合并到同一玩家与日期。"
+            }
+          ]
+        }
+      ],
+      "id": "每日在线签到"
+    },
+    {
+      "title": "七日周期奖励",
+      "blocks": [
+        {
+          "type": "gallery",
+          "items": [
+            {
+              "key": "minecraft:clock",
+              "label": "累计在线",
+              "text": "当天共 600 秒"
+            },
+            {
+              "key": "minecraft:emerald",
+              "label": "自动签到",
+              "text": "七日周期奖励"
+            },
+            {
+              "key": "minecraft:book",
+              "label": "活动奖励",
+              "text": "期限内另行领取"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "columns": [
+            "周期天数",
+            "第 1 天",
+            "第 2 天",
+            "第 3 天",
+            "第 4 天",
+            "第 5 天",
+            "第 6 天",
+            "第 7 天"
+          ],
+          "rows": [
+            [
+              "默认奖励（贡献值）",
+              "10",
+              "10",
+              "10",
+              "10",
+              "15",
+              "25",
+              "25"
+            ]
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "周期默认 7 天；连续自然日签到推进一天，漏签则从第 1 天重开，完成第 7 天后次日也从第 1 天开始。",
+            "签到奖励、日期与周期状态在一笔事务内更新。",
+            "奖励为 0 时仍登记签到，但不产生零金额流水。",
+            "非零奖励使用 `CHECK_IN` 流水，增加余额与历史总收入。",
+            "余额或历史收入已满时暂不标记领取，随后累计的在线时间不会丢失，可在后续在线批次再尝试。",
+            "成功时发送聊天反馈；`/contribution checkin` 与贡献值首页的「每日签到与活动」显示今日状态。"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "`config/contribution/server.json` 的 `rewards.timeZone`、`dailyRequiredSeconds`、`dailyCycleRewards` 可分别配置时区、所需在线秒数和各日奖励。"
+        }
+      ],
+      "id": "七日周期奖励"
+    },
+    {
+      "title": "活动签到",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "管理员在主服务器定义活动标识符、标题、开始与结束现实日期，以及奖励。活动日期采用同一配置时区，起止两日均包含；每名玩家在活动期限内通过 `/contribution checkin claim <活动ID>` 领取一次。活动签到不要求当天累计在线 10 分钟，与每日签到相互独立。活动定义与领取记录存入共享数据库，群组服不会因切服重复领取。"
+        },
+        {
+          "type": "table",
+          "columns": [
+            "创建方式",
+            "命令",
+            "奖励内容"
+          ],
+          "rows": [
+            [
+              "仅贡献值",
+              "`/contribution checkin event create <id> <标题> <开始> <结束> <贡献值>`",
+              "贡献值，金额可为 0"
+            ],
+            [
+              "贡献值 + 物品",
+              "`/contribution checkin event create <id> <标题> <开始> <结束> <贡献值> <物品> <数量>`",
+              "贡献值与原版物品，数量 1—2304"
+            ],
+            [
+              "扩展提供者",
+              "`/contribution checkin event create-extension <id> <标题> <开始> <结束> <提供者> <数据>`",
+              "由其他模组注册的奖励提供者决定"
+            ]
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "贡献值使用 `EVENT_CHECK_IN` 流水，计入历史总收入。",
+            "物品在同一数据库事务内写入 `reward_delivery` 领取队列；玩家在线时自动尝试交付，也可以用 `/shop claim` 再次领取。",
+            "当前版本只提供创建，不提供直接编辑已经发布的活动；需要变更活动时使用新的活动标识符，以免已领取玩家出现奖励歧义。",
+            "`/contribution checkin events` 或贡献值界面可查看当前可领取的活动。"
+          ]
+        }
+      ],
+      "id": "活动签到"
+    },
+    {
+      "id": "补充资料",
+      "title": "管理与数据",
+      "blocks": [
+        {
+          "type": "details",
+          "anchor": "checkin-给模组作者的扩展点",
+          "title": "奖励提供者",
+          "blocks": [
+            {
+              "type": "details",
+              "title": "注册与调用约束",
+              "blocks": [
+                {
+                  "type": "p",
+                  "text": "其他模组可通过 `EventRewardRegistry.register(key, handler)` 注册额外奖励提供者，管理员再用 `create-extension` 创建对应活动。"
+                },
+                {
+                  "type": "code",
+                  "language": "java",
+                  "text": "EventRewardRegistry.register(\"yourmod:badge\", (connection, playerUuid, claimId, data) -> {\n    // 使用提供的 connection，在自己的业务表登记 playerUuid 的徽章。\n    // 不要在此访问 Minecraft 世界、背包、网络或等待其他线程。\n});"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "处理器在领取事务内执行，只能使用提供的数据库连接，不得访问世界或网络；异常会让整笔活动领取回滚。",
+                    "提供者必须在服务器启动、玩家领取活动之前注册；未注册的键会被拒绝，对应活动也不能创建。",
+                    "`claimId` 是本次领取的唯一标识，可作为提供者自己业务表的幂等键。",
+                    "扩展处理器只应修改自己拥有的表，不得直接修改贡献值账户或流水。",
+                    "这是额外奖励的扩展点，而不是允许管理员任意执行服务器命令。"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

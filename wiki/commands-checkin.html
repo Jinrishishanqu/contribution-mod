@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="签到命令用于查询每日状态、浏览和领取活动奖励，以及由管理员创建活动。"><title>签到命令 · 贡献值模组维基 0.2.6</title><link rel="stylesheet" href="assets/wiki.css"><script defer src="assets/search-index.js"></script><script defer src="assets/site.js"></script></head><body data-current-page="commands-checkin"><a class="skip-link" href="#commands-checkin">跳到正文</a><div class="shell"><aside id="site-navigation" class="sidebar" aria-label="站点导航">
+<a class="brand" href="index.html#home">
+<span class="brand-mark" aria-hidden="true"></span>
+<span class="brand-text"><span class="brand-title">贡献值维基</span><span class="brand-tagline">贡献值经济 · 行业建设度 · 股票市场 · 系统商店</span></span>
+</a>
+<div class="sidebar-search"><label class="visually-hidden" for="site-search">搜索本维基</label><input id="site-search" type="search" placeholder="搜索页面与章节…" autocomplete="off"><div id="site-search-results" class="search-results" hidden></div></div>
+<div class="nav">
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-0"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开始阅读</span></button></h3>
+<ul id="nav-list-0">
+<li><a href="index.html#home" data-nav="home">贡献值模组维基</a></li>
+<li><a href="basics.html#basics" data-nav="basics">玩法入门</a></li>
+<li><a href="features.html#features" data-nav="features">玩法总览</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-1"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">贡献值与建设</span></button></h3>
+<ul id="nav-list-1">
+<li><a href="account.html#account" data-nav="account">贡献值账户</a></li>
+<li><a href="development.html#development" data-nav="development">行业建设度</a></li>
+<li><a href="statistics.html#statistics" data-nav="statistics">玩家统计</a></li>
+<li><a href="rewards.html#rewards" data-nav="rewards">建设度奖励</a></li>
+<li><a href="checkin.html#checkin" data-nav="checkin">签到与活动</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-2"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">经济交易</span></button></h3>
+<ul id="nav-list-2">
+<li><a href="shop.html#shop" data-nav="shop">系统商店</a></li>
+<li><a href="stock.html#stock" data-nav="stock">股票市场</a></li>
+<li><a href="stock-mechanics.html#stock-mechanics" data-nav="stock-mechanics">股价计算</a></li>
+<li><a href="swan.html#swan" data-nav="swan">黑天鹅事件</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-3"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">物品与进度</span></button></h3>
+<ul id="nav-list-3">
+<li><a href="items.html#items" data-nav="items">物品与装备</a></li>
+<li><a href="special-items.html#special-items" data-nav="special-items">特殊道具</a></li>
+<li><a href="recipes.html#recipes" data-nav="recipes">配方目录</a></li>
+<li><a href="recipes-basics.html#recipes-basics" data-nav="recipes-basics">基础配方</a></li>
+<li><a href="recipes-wings.html#recipes-wings" data-nav="recipes-wings">添翼配方</a></li>
+<li><a href="recipes-reinforcement.html#recipes-reinforcement" data-nav="recipes-reinforcement">强化配方</a></li>
+<li><a href="recipes-armor.html#recipes-armor" data-nav="recipes-armor">主题盔甲配方</a></li>
+<li><a href="recipes-hats.html#recipes-hats" data-nav="recipes-hats">帽子配方</a></li>
+<li><a href="recipes-special.html#recipes-special" data-nav="recipes-special">特殊道具配方</a></li>
+<li><a href="weapon-skins.html#weapon-skins" data-nav="weapon-skins">武器皮肤</a></li>
+<li><a href="advancements.html#advancements" data-nav="advancements">更多乐趣进度</a></li>
+<li><a href="advancement-details.html#advancement-details" data-nav="advancement-details">进度条件</a></li>
+<li><a href="resourcepack.html#resourcepack" data-nav="resourcepack">资源包与外观</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-4"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">操作与命令</span></button></h3>
+<ul id="nav-list-4">
+<li><a href="interface.html#interface" data-nav="interface">界面操作</a></li>
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands-contribution.html#commands-contribution" data-nav="commands-contribution">贡献值命令</a></li>
+<li><a href="#commands-checkin" data-nav="commands-checkin">签到命令</a></li>
+<li><a href="commands-stock.html#commands-stock" data-nav="commands-stock">股票命令</a></li>
+<li><a href="commands-shop.html#commands-shop" data-nav="commands-shop">商店命令</a></li>
+<li><a href="commands-account.html#commands-account" data-nav="commands-account">账户管理命令</a></li>
+<li><a href="commands-shop-admin.html#commands-shop-admin" data-nav="commands-shop-admin">商店管理命令</a></li>
+<li><a href="permissions.html#permissions" data-nav="permissions">操作权限</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-5"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">服务器管理</span></button></h3>
+<ul id="nav-list-5">
+<li><a href="installation.html#installation" data-nav="installation">安装</a></li>
+<li><a href="config.html#config" data-nav="config">服务器配置</a></li>
+<li><a href="data.html#data" data-nav="data">数据与存档</a></li>
+<li><a href="operations.html#operations" data-nav="operations">服务器维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-6"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开发与维护</span></button></h3>
+<ul id="nav-list-6">
+<li><a href="api.html#api" data-nav="api">公共接口</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-tools"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">工具</span></button></h3>
+<ul id="nav-list-tools">
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands.xlsx">下载命令工作簿</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+</div>
+<div class="sidebar-footer">版本 0.2.6 · Minecraft 26.3<br>Fabric Loader 0.19.5 · Java 25</div>
+</aside><main class="main"><header class="topbar"><nav class="topbar-crumbs" aria-label="面包屑"><a href="index.html">首页</a><span> / 签到命令</span></nav><span class="topbar-spacer"></span><button id="mobile-nav" type="button" aria-expanded="false" aria-controls="site-navigation">导航</button><button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">切换主题</button></header><div class="wiki-page" id="commands-checkin" data-page-title="签到命令">
+<div class="content-panel">
+<div class="page-head">
+<h1 class="page-title">签到命令</h1>
+<p class="page-summary">签到命令用于查询每日状态、浏览和领取活动奖励，以及由管理员创建活动。</p>
+</div>
+<div class="page-columns">
+<div class="article">
+<div class="toc"><input class="toc-toggle" type="checkbox" id="toc-commands-checkin" checked><label class="toc-head" for="toc-commands-checkin">目录 <span class="toc-toggle-label"><span class="toc-show">[显示]</span><span class="toc-hide">[隐藏]</span></span></label><ol><li><a href="#commands-checkin-用途">使用</a></li><li><a href="#commands-checkin-示例">示例</a></li><li><a href="#commands-checkin-命令路径">本模块命令路径</a></li></ol></div>
+<section class="wiki-section" id="commands-checkin-用途">
+<h2>使用</h2>
+<p>签到命令分为玩家侧与管理侧：玩家查看并领取活动奖励，管理员在主服务器定义活动。</p>
+<ul><li>每日在线签到没有手动领取命令：当天累计在线满 600 秒后自动发放。</li><li><code>/contribution checkin events</code> 列出当前可领取的活动；<code>claim &lt;活动ID&gt;</code> 每名玩家每个活动只能领取一次。</li><li>活动日期为 <code>YYYY-MM-DD</code> 的现实日期，采用配置时区，起止两日均包含。</li><li>活动创建只允许在主服务器执行；当前版本只提供创建，不提供编辑已发布的活动。</li><li><code>create-extension</code> 需要由其他模组先注册奖励提供者，否则活动无法创建。</li></ul>
+</section>
+<section class="wiki-section" id="commands-checkin-示例">
+<h2>示例</h2>
+<pre class="code" data-language="text"><code>/contribution checkin
+/contribution checkin events
+/contribution checkin claim festival</code></pre>
+</section>
+<section class="wiki-section" id="commands-checkin-命令路径"><h2>本模块命令路径</h2>
+<p>共 6 条命令路径，权限、示例与参数要求列在各条目中。</p>
+<div class="cmd-list">
+<article class="cmd" data-search="签到 /contribution checkin 查看在线签到状态、活动；管理活动创建与领取。 查看/领取：玩家；event 子命令：管理员且主服 /contribution checkin claim festival create 日期为 yyyy-mm-dd，首尾日期均包含；每日签到自动发放。create-extension 需要已注册提供者。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution checkin</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>查看在线签到状态、活动；管理活动创建与领取。</dd>
+<dt>权限</dt><dd>查看/领取：玩家；event 子命令：管理员且主服</dd>
+<dt>示例</dt><dd><code>/contribution checkin claim festival</code></dd>
+<dt>参数与限制</dt><dd>create 日期为 YYYY-MM-DD，首尾日期均包含；每日签到自动发放。create-extension 需要已注册提供者。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="签到 /contribution checkin claim &lt;eventid&gt; 领取指定活动奖励，每名玩家每活动最多一次。 玩家 /contribution checkin claim festival 只可在活动日期内领取，日期按配置时区。 eventid: 单词（不能含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution checkin claim &lt;eventId&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>领取指定活动奖励，每名玩家每活动最多一次。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/contribution checkin claim festival</code></dd>
+<dt>参数与限制</dt><dd>只可在活动日期内领取，日期按配置时区。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>eventId: 单词（不能含空格）;</code></details>
+</article>
+<article class="cmd" data-search="签到 /contribution checkin event create &lt;id&gt; &lt;title&gt; &lt;start&gt; &lt;end&gt; &lt;contribution&gt; 创建仅贡献值奖励的活动签到。 管理员；只允许主服务器创建 /contribution checkin event create festival &quot;庆典&quot; 2026-10-01 2026-10-07 100 日期首尾包含；金额可为 0；标识符不可重复。 id: 单词（不能含空格）; title: 字符串（空格需引号）; start: 单词（不能含空格）; end: 单词（不能含空格）; contribution: integer(0);">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution checkin event create &lt;id&gt; &lt;title&gt; &lt;start&gt; &lt;end&gt; &lt;contribution&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>创建仅贡献值奖励的活动签到。</dd>
+<dt>权限</dt><dd>管理员；只允许主服务器创建</dd>
+<dt>示例</dt><dd><code>/contribution checkin event create festival &quot;庆典&quot; 2026-10-01 2026-10-07 100</code></dd>
+<dt>参数与限制</dt><dd>日期首尾包含；金额可为 0；标识符不可重复。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: 单词（不能含空格）; title: 字符串（空格需引号）; start: 单词（不能含空格）; end: 单词（不能含空格）; contribution: integer(0);</code></details>
+</article>
+<article class="cmd" data-search="签到 /contribution checkin event create &lt;id&gt; &lt;title&gt; &lt;start&gt; &lt;end&gt; &lt;contribution&gt; &lt;item&gt; &lt;count&gt; 创建贡献值与物品混合奖励的活动。 管理员；只允许主服务器创建 /contribution checkin event create festival &quot;庆典&quot; 2026-10-01 2026-10-07 100 minecraft:diamond 2 此 item 是普通物品标识符，不是商店的组件物品参数；数量 1—2304。 id: 单词（不能含空格）; title: 字符串（空格需引号）; start: 单词（不能含空格）; end: 单词（不能含空格）; contribution: integer(0); item: 单词（不能含空格）; count: integer(1, 2304);">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution checkin event create &lt;id&gt; &lt;title&gt; &lt;start&gt; &lt;end&gt; &lt;contribution&gt; &lt;item&gt; &lt;count&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>创建贡献值与物品混合奖励的活动。</dd>
+<dt>权限</dt><dd>管理员；只允许主服务器创建</dd>
+<dt>示例</dt><dd><code>/contribution checkin event create festival &quot;庆典&quot; 2026-10-01 2026-10-07 100 minecraft:diamond 2</code></dd>
+<dt>参数与限制</dt><dd>此 item 是普通物品标识符，不是商店的组件物品参数；数量 1—2304。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: 单词（不能含空格）; title: 字符串（空格需引号）; start: 单词（不能含空格）; end: 单词（不能含空格）; contribution: integer(0); item: 单词（不能含空格）; count: integer(1, 2304);</code></details>
+</article>
+<article class="cmd" data-search="签到 /contribution checkin event create-extension &lt;id&gt; &lt;title&gt; &lt;start&gt; &lt;end&gt; &lt;provider&gt; &lt;data&gt; 使用已注册扩展奖励提供者创建签到活动。 管理员；只允许主服务器创建 /contribution checkin event create-extension festival &quot;庆典&quot; 2026-10-01 2026-10-07 example:reward &quot;{}&quot; 提供者须由其他模组注册；处理器只用领取事务的数据库连接，不能任意执行命令。 id: 单词（不能含空格）; title: 字符串（空格需引号）; start: 单词（不能含空格）; end: 单词（不能含空格）; provider: 单词（不能含空格）; data: 字符串（空格需引号）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution checkin event create-extension &lt;id&gt; &lt;title&gt; &lt;start&gt; &lt;end&gt; &lt;provider&gt; &lt;data&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>使用已注册扩展奖励提供者创建签到活动。</dd>
+<dt>权限</dt><dd>管理员；只允许主服务器创建</dd>
+<dt>示例</dt><dd><code>/contribution checkin event create-extension festival &quot;庆典&quot; 2026-10-01 2026-10-07 example:reward &quot;{}&quot;</code></dd>
+<dt>参数与限制</dt><dd>提供者须由其他模组注册；处理器只用领取事务的数据库连接，不能任意执行命令。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: 单词（不能含空格）; title: 字符串（空格需引号）; start: 单词（不能含空格）; end: 单词（不能含空格）; provider: 单词（不能含空格）; data: 字符串（空格需引号）;</code></details>
+</article>
+<article class="cmd" data-search="签到 /contribution checkin events 列出可领取的活动签到。 玩家 /contribution checkin events 与每日在线签到独立。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution checkin events</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>列出可领取的活动签到。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/contribution checkin events</code></dd>
+<dt>参数与限制</dt><dd>与每日在线签到独立。</dd>
+</dl>
+
+</article>
+</div>
+</section>
+<div class="page-footer">贡献值模组维基 · 0.2.6 · <a href="documentation.html#documentation">维基维护</a></div>
+</div>
+<aside class="page-info">
+<div class="page-info-inner">
+<div class="page-info-head">条目概要</div>
+<table class="infobox">
+<tr><th>命令根</th><td><code>/contribution checkin</code></td></tr>
+<tr><th>权限</th><td>见各命令权限栏</td></tr>
+<tr><th>命令路径</th><td>6 条</td></tr>
+</table>
+</div>
+<table class="navbox"><tbody>
+<tr><th class="navbox-top" colspan="2"><span class="navbox-title">操作与命令</span></th></tr>
+<tr><th>相关页面</th><td><ul class="hlist"><li><a href="interface.html#interface">界面操作</a></li><li><a href="commands.html#commands">命令速查</a></li><li><a href="commands-contribution.html#commands-contribution">贡献值命令</a></li><li><a href="commands-stock.html#commands-stock">股票命令</a></li></ul></td></tr>
+</tbody></table>
+<div class="catlinks"><span>分类：</span><ul><li>操作与命令</li></ul></div>
+</aside>
+</div>
+</div>
+</div></main></div></body></html>

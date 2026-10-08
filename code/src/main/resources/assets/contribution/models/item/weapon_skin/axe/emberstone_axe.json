@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/axe/emberstone_axe"
+  },
+  "parent": "minecraft:item/handheld"
+}

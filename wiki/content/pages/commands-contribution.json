@@ -1,0 +1,43 @@
+{
+  "id": "commands-contribution",
+  "title": "贡献值命令",
+  "summary": "贡献值命令用于打开主界面、查询账户与流水、查看统计和排行榜，以及诊断服务状态。",
+  "sections": [
+    {
+      "title": "使用",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "这一组命令是贡献值系统面向所有玩家的入口：打开图形界面、查询余额与流水、按游标翻页。除账户列表与全服流水外，普通玩家都可以使用自己的数据部分。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "`/contribution` 打开首页；已安装客户端模组时使用专用界面，否则使用原版对话界面。",
+            "`/contribution leaderboard` 打开排行榜，默认富豪榜，按当前贡献余额排序；其他榜在界面内切换。",
+            "`/contribution diagnose` 需要管理员等级 2 或控制台权限，诊断并触发安全恢复，聊天栏反馈初始及复查报告。",
+            "`/contribution ui <页面>` 主要供界面按钮调用，也可以在聊天栏直接使用。",
+            "账户列表与游标命令属于管理员工具，返回的游标由上一页提供，不需要手动构造。",
+            "流水查询默认每页 20 条，单次最多 100 条；普通玩家只能查询最近 90 天的本人流水。"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "`/contribution ui` 接受 `home`、`account self`、`history self`、`industries`、`checkin`、`admin`、`accounts`、`admin_search`、`back`、`previous`、`close` 等页面标识，语义见[界面操作](page:interface)。"
+        }
+      ],
+      "id": "用途"
+    },
+    {
+      "title": "示例",
+      "id": "示例",
+      "blocks": [
+        {
+          "type": "code",
+          "language": "text",
+          "text": "/contribution\n/contribution query\n/contribution stats\n/contribution history"
+        }
+      ]
+    }
+  ]
+}

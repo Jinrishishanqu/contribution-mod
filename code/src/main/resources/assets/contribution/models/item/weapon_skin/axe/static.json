@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/axe/static"
+  }
+}

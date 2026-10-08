@@ -1,0 +1,321 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:component",
+    "component": "minecraft:item_name",
+    "cases": [
+      {
+        "when": "龙霜骨血剑",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/dragon_sword_ice"
+        }
+      },
+      {
+        "when": "龙炎骨血剑",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/dragon_sword_fire"
+        }
+      },
+      {
+        "when": "龙霆骨血剑",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/dragon_sword_lightning"
+        }
+      },
+      {
+        "when": "天顶剑",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/zenith"
+        }
+      },
+      {
+        "when": "下界合金杀手",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/netherite_killer_sword"
+        }
+      },
+      {
+        "when": "附魔剑",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/enchanted_sword"
+        }
+      },
+      {
+        "when": "养蜂人",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/bee_keeper"
+        }
+      },
+      {
+        "when": "星怒",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/starfury"
+        }
+      },
+      {
+        "when": "断钢剑",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/excalibur"
+        }
+      },
+      {
+        "when": "永夜刃",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/nights_edge"
+        }
+      },
+      {
+        "when": "真·永夜刃",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/true_nights_edge"
+        }
+      },
+      {
+        "when": "泰拉刃",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/terra_blade"
+        }
+      },
+      {
+        "when": "彩虹猫之刃",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/meowmere"
+        }
+      },
+      {
+        "when": "山铜剑",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/orichalcum_sword"
+        }
+      },
+      {
+        "when": "虚空之蚀",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/void_touched_blade"
+        }
+      },
+      {
+        "when": "飞龙",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/flying_dragon"
+        }
+      },
+      {
+        "when": "星光",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/starlight"
+        }
+      },
+      {
+        "when": "鸿蒙方舟",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/ark_of_the_cosmos"
+        }
+      },
+      {
+        "when": "绚辉圣剑",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/iridescent_excalibur"
+        }
+      },
+      {
+        "when": "雄伟之护",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/majestic_guard"
+        }
+      },
+      {
+        "when": "禅心剑",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/ataraxia"
+        }
+      },
+      {
+        "when": "炽天使",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/seraphim"
+        }
+      },
+      {
+        "when": "龙破斩",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/draconic_destruction"
+        }
+      },
+      {
+        "when": "鬼妖村正",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/murasama"
+        }
+      },
+      {
+        "when": "破坏重剑",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/devastation"
+        }
+      },
+      {
+        "when": "元素方舟",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/ark_of_the_elements"
+        }
+      },
+      {
+        "when": "巨剑夜光",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/darklight_greatsword"
+        }
+      },
+      {
+        "when": "破灭魔王剑",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/devils_devastation"
+        }
+      },
+      {
+        "when": "无限大地",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/earth"
+        }
+      },
+      {
+        "when": "崇高誓约之剑",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/exalted_oathblade"
+        }
+      },
+      {
+        "when": "宙能波纹剑",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/excelsus"
+        }
+      },
+      {
+        "when": "炎霜之刃",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/flarefrost_blade"
+        }
+      },
+      {
+        "when": "誓约与禁忌之刃",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/forbidden_oathblade"
+        }
+      },
+      {
+        "when": "银河·巨蟹座",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/galaxia2"
+        }
+      },
+      {
+        "when": "银河·摩羯座",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/galaxia"
+        }
+      },
+      {
+        "when": "地狱龙锋",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/hellkite"
+        }
+      },
+      {
+        "when": "旧神阔剑",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/old_lord_claymore"
+        }
+      },
+      {
+        "when": "全能之刃",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/omniblade"
+        }
+      },
+      {
+        "when": "携序之剑",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/orderbringer"
+        }
+      },
+      {
+        "when": "月炎之锋",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/stellar_striker"
+        }
+      },
+      {
+        "when": "暴政",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/the_enforcer"
+        }
+      },
+      {
+        "when": "血石斩切刃",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/the_mutilator"
+        }
+      },
+      {
+        "when": "星流之刃",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/exoblade"
+        }
+      },
+      {
+        "when": "金刚狼爪",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/sword/wolverine"
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "contribution:item/weapon_skin/sword/static"
+    }
+  }
+}

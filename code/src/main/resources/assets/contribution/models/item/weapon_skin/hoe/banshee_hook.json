@@ -1,0 +1,76 @@
+{
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        45
+      ],
+      "translation": [
+        0,
+        3.75,
+        1.75
+      ],
+      "scale": [
+        1.5,
+        1.5,
+        1
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -45
+      ],
+      "translation": [
+        0,
+        3.75,
+        1.75
+      ],
+      "scale": [
+        1.5,
+        1.5,
+        1
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        -30,
+        -90,
+        0
+      ],
+      "translation": [
+        0.38,
+        4.2,
+        0.38
+      ],
+      "scale": [
+        0.68,
+        0.68,
+        0.68
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        -30,
+        90,
+        0
+      ],
+      "translation": [
+        0.38,
+        4.2,
+        0.38
+      ],
+      "scale": [
+        0.68,
+        0.68,
+        0.68
+      ]
+    }
+  },
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/hoe/banshee_hook"
+  },
+  "parent": "minecraft:item/handheld"
+}

@@ -1,0 +1,76 @@
+{
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        35
+      ],
+      "translation": [
+        0,
+        5.25,
+        2.75
+      ],
+      "scale": [
+        2,
+        2,
+        1
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -35
+      ],
+      "translation": [
+        0,
+        5.25,
+        2.75
+      ],
+      "scale": [
+        2,
+        2,
+        1
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        25
+      ],
+      "translation": [
+        1.13,
+        5.95,
+        -0.37
+      ],
+      "scale": [
+        1,
+        1,
+        0.68
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -25
+      ],
+      "translation": [
+        1.13,
+        5.95,
+        -0.37
+      ],
+      "scale": [
+        1,
+        1,
+        0.68
+      ]
+    }
+  },
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/hoe/deaths_ascension"
+  },
+  "parent": "minecraft:item/handheld"
+}

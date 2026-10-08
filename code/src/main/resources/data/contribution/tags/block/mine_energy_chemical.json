@@ -1,4 +1,16 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    "minecraft:cinnabar",
+    "minecraft:coal_block",
+    "minecraft:coal_ore",
+    "minecraft:creaking_heart",
+    "minecraft:deepslate_coal_ore",
+    "minecraft:magma_block",
+    "minecraft:potent_sulfur",
+    "minecraft:resin_block",
+    "minecraft:resin_clump",
+    "minecraft:sulfur",
+    "minecraft:sulfur_spike"
+  ]
 }

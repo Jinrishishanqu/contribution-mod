@@ -1,0 +1,6 @@
+{
+  "parent": "contribution:item/weapon_skin/base/sword_cbcc7cb78667",
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/sword/ark_of_the_cosmos"
+  }
+}

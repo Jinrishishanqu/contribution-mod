@@ -1,0 +1,22 @@
+{
+  "parent": "contribution:item/weapon_skin/sword/excelsus",
+  "display": {
+    "gui": {
+      "rotation": [
+        0,
+        0,
+        9
+      ],
+      "translation": [
+        40,
+        -34,
+        0
+      ],
+      "scale": [
+        4,
+        4,
+        4
+      ]
+    }
+  }
+}

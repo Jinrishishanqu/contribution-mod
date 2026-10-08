@@ -10,10 +10,28 @@ import java.util.Map;
 import java.util.Set;
 
 /** A bounded, server-validated search of the online transaction table. */
-public record HistoryFilter(String type, String source, String serverId, Instant fromInclusive,
-                            Instant untilExclusive, String commandArguments) {
-    private static final Set<String> TYPES = Set.of(
-            "ADMIN", "CHECK_IN", "EVENT_CHECK_IN", "DEVELOP", "SHOP_BUY", "SPEND", "STOCK", "BONUS", "EXTERNAL", "REFUND", "TAX", "STOCK_BUY", "STOCK_SELL");
+public record HistoryFilter(
+        String type,
+        String source,
+        String serverId,
+        Instant fromInclusive,
+        Instant untilExclusive,
+        String commandArguments) {
+    private static final Set<String> TYPES =
+            Set.of(
+                    "ADMIN",
+                    "CHECK_IN",
+                    "EVENT_CHECK_IN",
+                    "DEVELOP",
+                    "SHOP_BUY",
+                    "SPEND",
+                    "STOCK",
+                    "BONUS",
+                    "EXTERNAL",
+                    "REFUND",
+                    "TAX",
+                    "STOCK_BUY",
+                    "STOCK_SELL");
 
     public static HistoryFilter empty() {
         return new HistoryFilter(null, null, null, null, null, "");
@@ -48,7 +66,8 @@ public record HistoryFilter(String type, String source, String serverId, Instant
         LocalDate fromDate = parseDate(values.get("from"), "开始日期");
         LocalDate toDate = parseDate(values.get("to"), "结束日期");
         LocalDate earliest = LocalDate.now(ZoneOffset.UTC).minusDays(maxAgeDays);
-        if (maxAgeDays == 365 && fromDate == null && toDate != null) fromDate = toDate.minusDays(364);
+        if (maxAgeDays == 365 && fromDate == null && toDate != null)
+            fromDate = toDate.minusDays(364);
         if (maxAgeDays == 365 && fromDate != null) {
             if (toDate == null) toDate = fromDate.plusDays(364);
             if (java.time.temporal.ChronoUnit.DAYS.between(fromDate, toDate) >= 365) {
@@ -70,7 +89,10 @@ public record HistoryFilter(String type, String source, String serverId, Instant
         append(command, "server", server);
         append(command, "from", fromDate == null ? null : fromDate.toString());
         append(command, "to", toDate == null ? null : toDate.toString());
-        return new HistoryFilter(type, source, server,
+        return new HistoryFilter(
+                type,
+                source,
+                server,
                 fromDate == null ? null : fromDate.atStartOfDay().toInstant(ZoneOffset.UTC),
                 toDate == null ? null : toDate.plusDays(1).atStartOfDay().toInstant(ZoneOffset.UTC),
                 command.toString());
@@ -89,7 +111,8 @@ public record HistoryFilter(String type, String source, String serverId, Instant
         }
         try {
             LocalDate date = LocalDate.parse(value);
-            if (date.getYear() < 1001 || date.getYear() > 9998) throw new IllegalArgumentException(name + "超出数据库日期范围");
+            if (date.getYear() < 1001 || date.getYear() > 9998)
+                throw new IllegalArgumentException(name + "超出数据库日期范围");
             return date;
         } catch (DateTimeParseException error) {
             throw new IllegalArgumentException(name + "应使用 YYYY-MM-DD（UTC）", error);

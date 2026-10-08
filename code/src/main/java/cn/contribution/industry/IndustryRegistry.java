@@ -8,8 +8,7 @@ public final class IndustryRegistry {
     private static final Map<BuiltInIndustry, IndustryTagSet> BUILT_INS =
             new EnumMap<>(BuiltInIndustry.class);
 
-    private IndustryRegistry() {
-    }
+    private IndustryRegistry() {}
 
     public static void bootstrap() {
         if (!BUILT_INS.isEmpty()) {

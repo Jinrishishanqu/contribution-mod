@@ -15,9 +15,13 @@ final class OnlineTimeAccumulator {
     private final ZoneId zone;
     private final Map<UUID, Long> cursors = new HashMap<>();
 
-    OnlineTimeAccumulator(ZoneId zone) { this.zone = zone; }
+    OnlineTimeAccumulator(ZoneId zone) {
+        this.zone = zone;
+    }
 
-    void joined(UUID player, long nowMs) { cursors.putIfAbsent(player, nowMs); }
+    void joined(UUID player, long nowMs) {
+        cursors.putIfAbsent(player, nowMs);
+    }
 
     Map<Key, Integer> sample(Collection<UUID> online, long nowMs) {
         Set<UUID> active = new HashSet<>(online);
@@ -38,7 +42,10 @@ final class OnlineTimeAccumulator {
     }
 
     private void accumulate(Map<Key, Integer> gained, UUID player, long previous, long nowMs) {
-        if (nowMs < previous) { cursors.put(player, nowMs); return; }
+        if (nowMs < previous) {
+            cursors.put(player, nowMs);
+            return;
+        }
         long seconds = (nowMs - previous) / 1000;
         if (seconds == 0) return;
         long cursor = previous;
@@ -54,5 +61,5 @@ final class OnlineTimeAccumulator {
         if (cursors.containsKey(player)) cursors.put(player, cursor);
     }
 
-    record Key(UUID player, LocalDate day) { }
+    record Key(UUID player, LocalDate day) {}
 }

@@ -1,4 +1,10 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    "minecraft:heavy_core",
+    "minecraft:spawner",
+    "minecraft:tnt",
+    "minecraft:trial_spawner",
+    "minecraft:vault"
+  ]
 }

@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="公共接口供其他 Fabric 模组在逻辑服务端提交贡献值变更，余额变更通过异步请求执行。"><title>公共接口 · 贡献值模组维基 0.2.6</title><link rel="stylesheet" href="assets/wiki.css"><script defer src="assets/search-index.js"></script><script defer src="assets/site.js"></script></head><body data-current-page="api"><a class="skip-link" href="#api">跳到正文</a><div class="shell"><aside id="site-navigation" class="sidebar" aria-label="站点导航">
+<a class="brand" href="index.html#home">
+<span class="brand-mark" aria-hidden="true"></span>
+<span class="brand-text"><span class="brand-title">贡献值维基</span><span class="brand-tagline">贡献值经济 · 行业建设度 · 股票市场 · 系统商店</span></span>
+</a>
+<div class="sidebar-search"><label class="visually-hidden" for="site-search">搜索本维基</label><input id="site-search" type="search" placeholder="搜索页面与章节…" autocomplete="off"><div id="site-search-results" class="search-results" hidden></div></div>
+<div class="nav">
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-0"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开始阅读</span></button></h3>
+<ul id="nav-list-0">
+<li><a href="index.html#home" data-nav="home">贡献值模组维基</a></li>
+<li><a href="basics.html#basics" data-nav="basics">玩法入门</a></li>
+<li><a href="features.html#features" data-nav="features">玩法总览</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-1"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">贡献值与建设</span></button></h3>
+<ul id="nav-list-1">
+<li><a href="account.html#account" data-nav="account">贡献值账户</a></li>
+<li><a href="development.html#development" data-nav="development">行业建设度</a></li>
+<li><a href="statistics.html#statistics" data-nav="statistics">玩家统计</a></li>
+<li><a href="rewards.html#rewards" data-nav="rewards">建设度奖励</a></li>
+<li><a href="checkin.html#checkin" data-nav="checkin">签到与活动</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-2"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">经济交易</span></button></h3>
+<ul id="nav-list-2">
+<li><a href="shop.html#shop" data-nav="shop">系统商店</a></li>
+<li><a href="stock.html#stock" data-nav="stock">股票市场</a></li>
+<li><a href="stock-mechanics.html#stock-mechanics" data-nav="stock-mechanics">股价计算</a></li>
+<li><a href="swan.html#swan" data-nav="swan">黑天鹅事件</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-3"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">物品与进度</span></button></h3>
+<ul id="nav-list-3">
+<li><a href="items.html#items" data-nav="items">物品与装备</a></li>
+<li><a href="special-items.html#special-items" data-nav="special-items">特殊道具</a></li>
+<li><a href="recipes.html#recipes" data-nav="recipes">配方目录</a></li>
+<li><a href="recipes-basics.html#recipes-basics" data-nav="recipes-basics">基础配方</a></li>
+<li><a href="recipes-wings.html#recipes-wings" data-nav="recipes-wings">添翼配方</a></li>
+<li><a href="recipes-reinforcement.html#recipes-reinforcement" data-nav="recipes-reinforcement">强化配方</a></li>
+<li><a href="recipes-armor.html#recipes-armor" data-nav="recipes-armor">主题盔甲配方</a></li>
+<li><a href="recipes-hats.html#recipes-hats" data-nav="recipes-hats">帽子配方</a></li>
+<li><a href="recipes-special.html#recipes-special" data-nav="recipes-special">特殊道具配方</a></li>
+<li><a href="weapon-skins.html#weapon-skins" data-nav="weapon-skins">武器皮肤</a></li>
+<li><a href="advancements.html#advancements" data-nav="advancements">更多乐趣进度</a></li>
+<li><a href="advancement-details.html#advancement-details" data-nav="advancement-details">进度条件</a></li>
+<li><a href="resourcepack.html#resourcepack" data-nav="resourcepack">资源包与外观</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-4"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">操作与命令</span></button></h3>
+<ul id="nav-list-4">
+<li><a href="interface.html#interface" data-nav="interface">界面操作</a></li>
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands-contribution.html#commands-contribution" data-nav="commands-contribution">贡献值命令</a></li>
+<li><a href="commands-checkin.html#commands-checkin" data-nav="commands-checkin">签到命令</a></li>
+<li><a href="commands-stock.html#commands-stock" data-nav="commands-stock">股票命令</a></li>
+<li><a href="commands-shop.html#commands-shop" data-nav="commands-shop">商店命令</a></li>
+<li><a href="commands-account.html#commands-account" data-nav="commands-account">账户管理命令</a></li>
+<li><a href="commands-shop-admin.html#commands-shop-admin" data-nav="commands-shop-admin">商店管理命令</a></li>
+<li><a href="permissions.html#permissions" data-nav="permissions">操作权限</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-5"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">服务器管理</span></button></h3>
+<ul id="nav-list-5">
+<li><a href="installation.html#installation" data-nav="installation">安装</a></li>
+<li><a href="config.html#config" data-nav="config">服务器配置</a></li>
+<li><a href="data.html#data" data-nav="data">数据与存档</a></li>
+<li><a href="operations.html#operations" data-nav="operations">服务器维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-6"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开发与维护</span></button></h3>
+<ul id="nav-list-6">
+<li><a href="#api" data-nav="api">公共接口</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-tools"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">工具</span></button></h3>
+<ul id="nav-list-tools">
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands.xlsx">下载命令工作簿</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+</div>
+<div class="sidebar-footer">版本 0.2.6 · Minecraft 26.3<br>Fabric Loader 0.19.5 · Java 25</div>
+</aside><main class="main"><header class="topbar"><nav class="topbar-crumbs" aria-label="面包屑"><a href="index.html">首页</a><span> / 公共接口</span></nav><span class="topbar-spacer"></span><button id="mobile-nav" type="button" aria-expanded="false" aria-controls="site-navigation">导航</button><button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">切换主题</button></header><div class="wiki-page" id="api" data-page-title="公共接口">
+<div class="content-panel">
+<div class="page-head">
+<h1 class="page-title">公共接口</h1>
+<p class="page-summary">公共接口供其他 Fabric 模组在逻辑服务端提交贡献值变更，余额变更通过异步请求执行。</p>
+</div>
+<div class="page-columns">
+<div class="article">
+<div class="toc"><input class="toc-toggle" type="checkbox" id="toc-api" checked><label class="toc-head" for="toc-api">目录 <span class="toc-toggle-label"><span class="toc-show">[显示]</span><span class="toc-hide">[隐藏]</span></span></label><ol><li><a href="#api-入口与依赖">入口与依赖</a></li><li><a href="#api-请求字段">请求字段</a></li><li><a href="#api-异步与线程规则">调用示例与线程</a></li><li><a href="#api-返回状态">返回状态</a></li><li><a href="#api-幂等与重试">幂等与重试</a></li><li><a href="#api-信任边界与-api-边界">调用约束</a></li></ol></div>
+<section class="wiki-section" id="api-入口与依赖">
+<h2>入口与依赖</h2>
+<ul><li>模组通过 <code>cn.contribution.api</code> 包提供稳定的公共接口。其他模组只能依赖该包，不应直接访问账户仓库、数据库连接、流水服务或其他内部实现。</li><li>公共入口为 <code>ContributionApi</code>；接口只能在逻辑服务端调用。</li><li>贡献值模组尚未发布到 Maven 仓库时，可以把开发模组文件放进调用模组的 <code>libs</code> 目录并用 <code>compileOnly</code> 引用。</li><li>接口不分别提供 <code>add</code> 和 <code>remove</code> 函数：所有余额变更统一通过 <code>changeBalance</code> 提交，使数值校验、余额检查、历史总收入更新、幂等检查和流水写入无法被调用方绕过。</li></ul>
+<pre class="code" data-language="java"><code>CompletableFuture&lt;BalanceChangeResult&gt; changeBalance(
+        BalanceChangeRequest request
+);</code></pre>
+</section>
+<section class="wiki-section" id="api-请求字段">
+<h2>请求字段</h2>
+<figure class="media-figure"><ol class="visual-flow"><li><img class="item-icon" src="assets/images/icons/minecraft-writable_book.png" alt="构造请求" width="128" height="128" loading="lazy" decoding="async"><strong>构造请求</strong><span>余额变更请求</span></li><li><img class="item-icon" src="assets/images/icons/minecraft-redstone.png" alt="异步提交" width="128" height="128" loading="lazy" decoding="async"><strong>异步提交</strong><span>异步余额变更</span></li><li><img class="item-icon" src="assets/images/icons/minecraft-paper.png" alt="处理结果" width="128" height="128" loading="lazy" decoding="async"><strong>处理结果</strong><span>余额变更结果</span></li></ol><figcaption class="media-caption">物品图标用于示意操作顺序</figcaption></figure>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">字段</th><th scope="col">类型</th><th scope="col">说明</th></tr></thead>
+<tbody>
+<tr><td><code>idempotencyId</code></td><td><code>UUID</code></td><td>调用方为一次业务操作生成的全局唯一幂等标识符</td></tr>
+<tr><td><code>target</code></td><td><code>AccountTarget</code></td><td>通过玩家唯一标识符或玩家名称指定的单个账户；接口不接受目标选择器</td></tr>
+<tr><td><code>amount</code></td><td><code>int</code></td><td>带符号的余额变动量；正数增加，负数减少，不能为 <code>0</code></td></tr>
+<tr><td><code>type</code></td><td><code>BalanceChangeType</code></td><td>目前支持 <code>EXTERNAL</code> 与 <code>REFUND</code></td></tr>
+<tr><td><code>source</code></td><td><code>Identifier</code></td><td>调用来源，例如 <code>quest_mod:quest_reward</code>；字符串形式最多 128 个字符</td></tr>
+<tr><td><code>reason</code></td><td><code>String</code></td><td>流水原因，最多 64 个字符</td></tr>
+<tr><td><code>note</code></td><td><code>String</code></td><td>可选备注，最多 64 个字符</td></tr>
+<tr><td><code>affectTotalIncome</code></td><td><code>boolean</code></td><td>是否将带符号的 <code>amount</code> 同步作用于历史总收入；退款必须为 <code>false</code></td></tr>
+</tbody>
+</table></div>
+<p><code>EXTERNAL</code> 允许正向或负向变动。旧的七参数构造器保留原默认规则：正向 <code>EXTERNAL</code> 计入历史总收入，负向 <code>EXTERNAL</code> 不影响历史总收入；新的八参数构造器可明确传入 <code>affectTotalIncome</code>。<code>REFUND</code> 的 <code>amount</code> 必须为正数，且 <code>affectTotalIncome</code> 必须为 <code>false</code>。</p>
+</section>
+<section class="wiki-section" id="api-异步与线程规则">
+<h2>调用示例与线程</h2>
+<ul><li><code>changeBalance</code> 异步执行数据库操作。调用方不得在服务器主线程使用 <code>join()</code>、<code>get()</code> 或其他阻塞方式等待结果。</li><li><code>CompletableFuture</code> 的完成回调不保证位于服务器线程；需要修改世界、访问实体或向玩家发送消息时，必须通过 <code>MinecraftServer.execute</code> 返回服务器线程。</li><li>客户端界面需要修改余额时，必须先向服务端发送经过校验的请求，再由服务端调用接口。</li></ul>
+<pre class="code" data-language="java"><code>ContributionApi.getInstance()
+        .changeBalance(request)
+        .thenAccept(result -&gt; {
+            server.execute(() -&gt; {
+                if (result.successful()) {
+                    // 使用 result.balanceAfter() 反馈余额
+                } else {
+                    // 使用 result.message() 反馈失败原因
+                }
+            });
+        });</code></pre>
+</section>
+<section class="wiki-section" id="api-返回状态">
+<h2>返回状态</h2>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">状态</th><th scope="col">含义</th></tr></thead>
+<tbody>
+<tr><td><code>SUCCESS</code></td><td>操作成功，或幂等重试取得了原成功结果</td></tr>
+<tr><td><code>ACCOUNT_NOT_FOUND</code></td><td>玩家名称或唯一标识符对应的账户不存在</td></tr>
+<tr><td><code>INVALID_AMOUNT</code></td><td>数量为 <code>0</code>、超出范围，或不符合操作类型要求</td></tr>
+<tr><td><code>INVALID_TEXT</code></td><td>原因、备注或来源标识不符合要求</td></tr>
+<tr><td><code>INSUFFICIENT_BALANCE</code></td><td>扣款后余额将小于 <code>0</code>，或历史总收入将小于 <code>0</code>（反馈「历史总收入不足」）</td></tr>
+<tr><td><code>BALANCE_OVERFLOW</code></td><td>操作后的余额或历史总收入将超过 <span class="math">2<sup>31</sup>-1</span></td></tr>
+<tr><td><code>DATABASE_UNAVAILABLE</code></td><td>数据服务不可用或结果暂时无法确认；必须沿用原幂等标识符重试</td></tr>
+<tr><td><code>IN_PROGRESS</code></td><td>为兼容保留；当前实现不会主动返回该状态</td></tr>
+<tr><td><code>IDEMPOTENCY_CONFLICT</code></td><td>相同幂等标识符被用于内容不同的请求</td></tr>
+</tbody>
+</table></div>
+<p>参数错误、余额或历史总收入不足等可预期的业务失败通过 <code>BalanceChangeResult</code> 返回，不使用异常表示。结果中的可选数值使用 <code>OptionalInt</code>，流水标识符使用 <code>Optional&lt;UUID&gt;</code>，不使用 <code>0</code> 或负数作为缺失值。兼容版本可以增加新的结果状态，因此调用方处理状态时必须保留未知状态分支。</p>
+</section>
+<section class="wiki-section" id="api-幂等与重试">
+<h2>幂等与重试</h2>
+<ol><li>创建并持久化业务记录与幂等标识符。</li><li>构造不可变的 <code>BalanceChangeRequest</code>。</li><li>调用 <code>changeBalance</code>，不阻塞服务器主线程。</li><li>检查 <code>BalanceChangeStatus</code>。</li><li>仅在 <code>SUCCESS</code> 之后执行依赖余额变更成功的后续操作。</li><li><code>IN_PROGRESS</code>、超时或 <code>DATABASE_UNAVAILABLE</code> 后，使用原请求重试。</li><li>业务失败时保留原结果，不使用新幂等标识符暗中重做同一操作。</li></ol>
+<div class="msgbox msgbox-danger"><span class="msgbox-icon" aria-hidden="true">✖</span><div class="msgbox-body"><span class="msgbox-title">不要在重试时生成新唯一标识符</span><span class="msgbox-text">每次重试都调用 <code>UUID.randomUUID()</code> 会让系统把每次尝试视为新交易，造成重复发放或重复扣款。幂等重试取得原成功结果时状态仍为 <code>SUCCESS</code>，同时 <code>replayed()</code> 返回 <code>true</code>。</span></div></div>
+</section>
+<section class="wiki-section" id="api-信任边界与-api-边界">
+<h2>调用约束</h2>
+<p>Java 模组接口的调用方与贡献值模组运行在同一个 Java 虚拟机中，属于服务器管理员主动安装的受信任代码。<code>source</code> 用于审计、统计、日志和可选的来源白名单，不作为无法伪造的安全身份凭证。接口仍会独立执行全部参数、数值和余额校验。</p>
+<p>其他模组不得：</p>
+<ul><li>直接修改账户表或流水表；</li><li>获取并长期持有数据库连接；</li><li>绕过余额上下限或单次数量范围；</li><li>自行计算变动前后余额；</li><li>自行生成流水标识符；</li><li>从客户端直接调用余额变更；</li><li>把 <code>IDEMPOTENCY_CONFLICT</code> 当作普通网络错误重试。</li></ul>
+<p>公共接口遵循语义化版本：<code>cn.contribution.api</code> 中的类型在同一主版本内保持源代码与二进制兼容；删除类型、修改函数签名或改变既有状态语义时必须增加主版本。</p>
+</section>
+<div class="page-footer">贡献值模组维基 · 0.2.6 · <a href="documentation.html#documentation">维基维护</a></div>
+</div>
+<aside class="page-info">
+<div class="page-info-inner">
+<div class="page-info-head">条目概要</div>
+<table class="infobox">
+<tr><th>环境</th><td>逻辑服务端</td></tr>
+<tr><th>入口</th><td><code>ContributionApi</code></td></tr>
+<tr><th>执行方式</th><td>异步请求</td></tr>
+
+</table>
+</div>
+<table class="navbox"><tbody>
+<tr><th class="navbox-top" colspan="2"><span class="navbox-title">开发与维护</span></th></tr>
+<tr><th>相关页面</th><td><ul class="hlist"><li><a href="documentation.html#documentation">维基维护</a></li></ul></td></tr>
+</tbody></table>
+<div class="catlinks"><span>分类：</span><ul><li>开发与维护</li></ul></div>
+</aside>
+</div>
+</div>
+</div></main></div></body></html>

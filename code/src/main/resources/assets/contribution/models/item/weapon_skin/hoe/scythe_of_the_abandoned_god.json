@@ -1,0 +1,42 @@
+{
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        55
+      ],
+      "translation": [
+        0,
+        3.25,
+        0.75
+      ],
+      "scale": [
+        2,
+        2,
+        1
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -55
+      ],
+      "translation": [
+        0,
+        3.25,
+        0.75
+      ],
+      "scale": [
+        2,
+        2,
+        1
+      ]
+    }
+  },
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/hoe/scythe_of_the_abandoned_god"
+  },
+  "parent": "minecraft:item/handheld"
+}

@@ -1,0 +1,22 @@
+{
+  "parent": "contribution:item/weapon_skin/sword/omniblade",
+  "display": {
+    "gui": {
+      "rotation": [
+        0,
+        180,
+        65.25
+      ],
+      "translation": [
+        39,
+        -34,
+        0
+      ],
+      "scale": [
+        4,
+        4,
+        4
+      ]
+    }
+  }
+}

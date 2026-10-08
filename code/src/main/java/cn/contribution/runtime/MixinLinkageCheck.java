@@ -2,31 +2,43 @@ package cn.contribution.runtime;
 
 final class MixinLinkageCheck {
     private static final String[] TARGETS = {
-            "net.minecraft.world.item.BlockItem",
-            "net.minecraft.world.inventory.ResultSlot",
-            "net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity",
-            "net.minecraft.world.level.block.CrafterBlock",
-            "net.minecraft.world.inventory.MerchantResultSlot",
-            "net.minecraft.world.entity.animal.Animal",
-            "net.minecraft.world.entity.TamableAnimal",
-            "net.minecraft.world.entity.projectile.FishingHook",
-            "net.minecraft.world.inventory.SmithingMenu",
-            "net.minecraft.world.inventory.AnvilMenu",
-            "net.minecraft.world.inventory.ItemCombinerMenu",
-            "net.minecraft.world.inventory.EnchantmentMenu",
-            "net.minecraft.world.level.block.entity.BrewingStandBlockEntity",
-            "net.minecraft.world.entity.monster.zombie.ZombieVillager",
-            "net.minecraft.world.entity.animal.cow.AbstractCow",
-            "net.minecraft.world.entity.animal.goat.Goat",
-            "net.minecraft.world.entity.player.Player",
-            "net.minecraft.world.entity.LivingEntity",
-            "net.minecraft.server.level.ServerPlayer",
-            "net.minecraft.world.item.ItemStack",
-            "net.minecraft.server.level.ServerPlayerGameMode"
+        "net.minecraft.world.item.BlockItem",
+        "net.minecraft.world.inventory.ResultSlot",
+        "net.minecraft.world.level.block.entity.CampfireBlockEntity",
+        "net.minecraft.world.entity.item.PrimedTnt",
+        "net.minecraft.world.entity.animal.equine.AbstractHorse",
+        "net.minecraft.world.item.NameTagItem",
+        "net.minecraft.world.inventory.StonecutterMenu",
+        "net.minecraft.world.inventory.LoomMenu",
+        "net.minecraft.world.inventory.GrindstoneMenu",
+        "net.minecraft.world.inventory.StonecutterMenu$2",
+        "net.minecraft.world.inventory.LoomMenu$6",
+        "net.minecraft.world.inventory.GrindstoneMenu$4",
+        "net.minecraft.world.level.block.piston.PistonBaseBlock",
+        "net.minecraft.world.level.block.entity.HopperBlockEntity",
+        "net.minecraft.core.dispenser.DefaultDispenseItemBehavior",
+        "net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity",
+        "net.minecraft.world.level.block.CrafterBlock",
+        "net.minecraft.world.inventory.MerchantResultSlot",
+        "net.minecraft.world.entity.animal.Animal",
+        "net.minecraft.world.entity.TamableAnimal",
+        "net.minecraft.world.entity.projectile.FishingHook",
+        "net.minecraft.world.inventory.SmithingMenu",
+        "net.minecraft.world.inventory.AnvilMenu",
+        "net.minecraft.world.inventory.ItemCombinerMenu",
+        "net.minecraft.world.inventory.EnchantmentMenu",
+        "net.minecraft.world.level.block.entity.BrewingStandBlockEntity",
+        "net.minecraft.world.entity.monster.zombie.ZombieVillager",
+        "net.minecraft.world.entity.animal.cow.AbstractCow",
+        "net.minecraft.world.entity.animal.goat.Goat",
+        "net.minecraft.world.entity.player.Player",
+        "net.minecraft.world.entity.LivingEntity",
+        "net.minecraft.server.level.ServerPlayer",
+        "net.minecraft.world.item.ItemStack",
+        "net.minecraft.server.level.ServerPlayerGameMode"
     };
 
-    private MixinLinkageCheck() {
-    }
+    private MixinLinkageCheck() {}
 
     static void verify() {
         ClassLoader loader = MixinLinkageCheck.class.getClassLoader();
@@ -34,7 +46,8 @@ final class MixinLinkageCheck {
             try {
                 Class.forName(target, false, loader);
             } catch (ClassNotFoundException error) {
-                throw new IllegalStateException("Missing Minecraft 26.3 Mixin target: " + target, error);
+                throw new IllegalStateException(
+                        "Missing Minecraft 26.3 Mixin target: " + target, error);
             }
         }
     }

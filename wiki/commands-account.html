@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="账户管理命令用于增减余额、创建账户、迁移唯一标识符和清理假人账户，需要管理员权限。"><title>账户管理命令 · 贡献值模组维基 0.2.6</title><link rel="stylesheet" href="assets/wiki.css"><script defer src="assets/search-index.js"></script><script defer src="assets/site.js"></script></head><body data-current-page="commands-account"><a class="skip-link" href="#commands-account">跳到正文</a><div class="shell"><aside id="site-navigation" class="sidebar" aria-label="站点导航">
+<a class="brand" href="index.html#home">
+<span class="brand-mark" aria-hidden="true"></span>
+<span class="brand-text"><span class="brand-title">贡献值维基</span><span class="brand-tagline">贡献值经济 · 行业建设度 · 股票市场 · 系统商店</span></span>
+</a>
+<div class="sidebar-search"><label class="visually-hidden" for="site-search">搜索本维基</label><input id="site-search" type="search" placeholder="搜索页面与章节…" autocomplete="off"><div id="site-search-results" class="search-results" hidden></div></div>
+<div class="nav">
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-0"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开始阅读</span></button></h3>
+<ul id="nav-list-0">
+<li><a href="index.html#home" data-nav="home">贡献值模组维基</a></li>
+<li><a href="basics.html#basics" data-nav="basics">玩法入门</a></li>
+<li><a href="features.html#features" data-nav="features">玩法总览</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-1"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">贡献值与建设</span></button></h3>
+<ul id="nav-list-1">
+<li><a href="account.html#account" data-nav="account">贡献值账户</a></li>
+<li><a href="development.html#development" data-nav="development">行业建设度</a></li>
+<li><a href="statistics.html#statistics" data-nav="statistics">玩家统计</a></li>
+<li><a href="rewards.html#rewards" data-nav="rewards">建设度奖励</a></li>
+<li><a href="checkin.html#checkin" data-nav="checkin">签到与活动</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-2"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">经济交易</span></button></h3>
+<ul id="nav-list-2">
+<li><a href="shop.html#shop" data-nav="shop">系统商店</a></li>
+<li><a href="stock.html#stock" data-nav="stock">股票市场</a></li>
+<li><a href="stock-mechanics.html#stock-mechanics" data-nav="stock-mechanics">股价计算</a></li>
+<li><a href="swan.html#swan" data-nav="swan">黑天鹅事件</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-3"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">物品与进度</span></button></h3>
+<ul id="nav-list-3">
+<li><a href="items.html#items" data-nav="items">物品与装备</a></li>
+<li><a href="special-items.html#special-items" data-nav="special-items">特殊道具</a></li>
+<li><a href="recipes.html#recipes" data-nav="recipes">配方目录</a></li>
+<li><a href="recipes-basics.html#recipes-basics" data-nav="recipes-basics">基础配方</a></li>
+<li><a href="recipes-wings.html#recipes-wings" data-nav="recipes-wings">添翼配方</a></li>
+<li><a href="recipes-reinforcement.html#recipes-reinforcement" data-nav="recipes-reinforcement">强化配方</a></li>
+<li><a href="recipes-armor.html#recipes-armor" data-nav="recipes-armor">主题盔甲配方</a></li>
+<li><a href="recipes-hats.html#recipes-hats" data-nav="recipes-hats">帽子配方</a></li>
+<li><a href="recipes-special.html#recipes-special" data-nav="recipes-special">特殊道具配方</a></li>
+<li><a href="weapon-skins.html#weapon-skins" data-nav="weapon-skins">武器皮肤</a></li>
+<li><a href="advancements.html#advancements" data-nav="advancements">更多乐趣进度</a></li>
+<li><a href="advancement-details.html#advancement-details" data-nav="advancement-details">进度条件</a></li>
+<li><a href="resourcepack.html#resourcepack" data-nav="resourcepack">资源包与外观</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-4"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">操作与命令</span></button></h3>
+<ul id="nav-list-4">
+<li><a href="interface.html#interface" data-nav="interface">界面操作</a></li>
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands-contribution.html#commands-contribution" data-nav="commands-contribution">贡献值命令</a></li>
+<li><a href="commands-checkin.html#commands-checkin" data-nav="commands-checkin">签到命令</a></li>
+<li><a href="commands-stock.html#commands-stock" data-nav="commands-stock">股票命令</a></li>
+<li><a href="commands-shop.html#commands-shop" data-nav="commands-shop">商店命令</a></li>
+<li><a href="#commands-account" data-nav="commands-account">账户管理命令</a></li>
+<li><a href="commands-shop-admin.html#commands-shop-admin" data-nav="commands-shop-admin">商店管理命令</a></li>
+<li><a href="permissions.html#permissions" data-nav="permissions">操作权限</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-5"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">服务器管理</span></button></h3>
+<ul id="nav-list-5">
+<li><a href="installation.html#installation" data-nav="installation">安装</a></li>
+<li><a href="config.html#config" data-nav="config">服务器配置</a></li>
+<li><a href="data.html#data" data-nav="data">数据与存档</a></li>
+<li><a href="operations.html#operations" data-nav="operations">服务器维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-6"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开发与维护</span></button></h3>
+<ul id="nav-list-6">
+<li><a href="api.html#api" data-nav="api">公共接口</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-tools"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">工具</span></button></h3>
+<ul id="nav-list-tools">
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands.xlsx">下载命令工作簿</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+</div>
+<div class="sidebar-footer">版本 0.2.6 · Minecraft 26.3<br>Fabric Loader 0.19.5 · Java 25</div>
+</aside><main class="main"><header class="topbar"><nav class="topbar-crumbs" aria-label="面包屑"><a href="index.html">首页</a><span> / 账户管理命令</span></nav><span class="topbar-spacer"></span><button id="mobile-nav" type="button" aria-expanded="false" aria-controls="site-navigation">导航</button><button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">切换主题</button></header><div class="wiki-page" id="commands-account" data-page-title="账户管理命令">
+<div class="content-panel">
+<div class="page-head">
+<h1 class="page-title">账户管理命令</h1>
+<p class="page-summary">账户管理命令用于增减余额、创建账户、迁移唯一标识符和清理假人账户，需要管理员权限。</p>
+</div>
+<div class="page-columns">
+<div class="article">
+<div class="toc"><input class="toc-toggle" type="checkbox" id="toc-commands-account" checked><label class="toc-head" for="toc-commands-account">目录 <span class="toc-toggle-label"><span class="toc-show">[显示]</span><span class="toc-hide">[隐藏]</span></span></label><ol><li><a href="#commands-account-用途">使用</a></li><li><a href="#commands-account-示例">示例</a></li><li><a href="#commands-account-命令路径">本模块命令路径</a></li></ol></div>
+<section class="wiki-section" id="commands-account-用途">
+<h2>使用</h2>
+<p>这一组是管理员专用的经济操作入口。所有命令都在服务端的同一数据库事务内完成账户更新与流水写入，并遵守余额范围与幂等约束。</p>
+<ul><li><code>add</code> / <code>remove</code> 的金额分别为 1—2147483647 与 1—2147483648；布尔参数决定是否同步影响历史总收入。</li><li>目标支持玩家名称、唯一标识符或玩家选择器；选择器必须恰好选中一名玩家，多目标选择器会被拒绝。</li><li>每次命令先返回请求标识符与可点击的原请求重试文本，再异步执行。</li><li><code>retry</code> 必须使用完全相同的目标、金额、原因、收入标志与备注，否则视为幂等冲突。</li><li><code>account migrate</code> 只允许在主服务器控制台且没有在线玩家时执行，执行前必须备份。</li><li><code>bot_check</code> 是破坏性清理，不会回滚已计入服务器建设度的历史汇总。</li></ul>
+<div class="msgbox msgbox-warn"><span class="msgbox-icon" aria-hidden="true">⚠</span><div class="msgbox-body"><span class="msgbox-title">重试使用原请求</span><span class="msgbox-text">结果不明时使用 <code>/contribution retry &lt;原请求UUID&gt; …</code>，不要重新执行 <code>add</code> / <code>remove</code>，否则会生成新的幂等标识符并可能重复变动余额。</span></div></div>
+</section>
+<section class="wiki-section" id="commands-account-示例">
+<h2>示例</h2>
+<pre class="code" data-language="text"><code>/contribution add Steve 100 服务器活动 true
+/contribution remove Steve 20 商店调整 false</code></pre>
+</section>
+<section class="wiki-section" id="commands-account-命令路径"><h2>本模块命令路径</h2>
+<p>共 12 条命令路径，权限、示例与参数要求列在各条目中。</p>
+<div class="cmd-list">
+<article class="cmd" data-search="账户管理 /contribution account create &lt;uuid&gt; &lt;name&gt; 创建账户；安全迁移唯一标识符身份及关联数据。 管理员；migrate 仅主服控制台且没有在线玩家 /contribution account create &lt;唯一标识符&gt; playername migrate 必须 confirm，源/目标身份及目标数据均校验；先备份。 uuid: 单词（不能含空格）; name: 单词（不能含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution account create &lt;uuid&gt; &lt;name&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>创建账户；安全迁移唯一标识符身份及关联数据。</dd>
+<dt>权限</dt><dd>管理员；migrate 仅主服控制台且没有在线玩家</dd>
+<dt>示例</dt><dd><code>/contribution account create &lt;唯一标识符&gt; PlayerName</code></dd>
+<dt>参数与限制</dt><dd>migrate 必须 confirm，源/目标身份及目标数据均校验；先备份。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>uuid: 单词（不能含空格）; name: 单词（不能含空格）;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution account migrate &lt;sourceuuid&gt; &lt;targetuuid&gt; confirm 把源唯一标识符的账户及关联数据迁移到目标唯一标识符。 主服务器控制台管理员；无在线玩家 /contribution account migrate &lt;源唯一标识符&gt; &lt;目标唯一标识符&gt; confirm 执行前备份；目标须满足空账户/身份约束，不是合并余额。 sourceuuid: 单词（不能含空格）; targetuuid: 单词（不能含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution account migrate &lt;sourceUuid&gt; &lt;targetUuid&gt; confirm</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>把源唯一标识符的账户及关联数据迁移到目标唯一标识符。</dd>
+<dt>权限</dt><dd>主服务器控制台管理员；无在线玩家</dd>
+<dt>示例</dt><dd><code>/contribution account migrate &lt;源唯一标识符&gt; &lt;目标唯一标识符&gt; confirm</code></dd>
+<dt>参数与限制</dt><dd>执行前备份；目标须满足空账户/身份约束，不是合并余额。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>sourceUuid: 单词（不能含空格）; targetUuid: 单词（不能含空格）;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution add &lt;selected&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; 增加贡献值，可指定是否增加历史总收入。 管理员 /contribution add caozei 100 &quot;活动奖励&quot; true 金额≥1 且≤2147483647；原因及备注最多 64 字符；目标支持名称、唯一标识符或玩家选择器。 selected: 玩家选择器; amount: longarg(1, 2147483647); reason: 字符串（空格需引号）; affecttotalincome: true|false;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution add &lt;selected&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>增加贡献值，可指定是否增加历史总收入。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution add CaoZei 100 &quot;活动奖励&quot; true</code></dd>
+<dt>参数与限制</dt><dd>金额≥1 且≤2147483647；原因及备注最多 64 字符；目标支持名称、唯一标识符或玩家选择器。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>selected: 玩家选择器; amount: longArg(1, 2147483647); reason: 字符串（空格需引号）; affectTotalIncome: true|false;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution add &lt;selected&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; &lt;note&gt; 增加贡献值，可指定是否增加历史总收入。 管理员 /contribution add caozei 100 &quot;活动奖励&quot; true 金额≥1 且≤2147483647；原因及备注最多 64 字符；目标支持名称、唯一标识符或玩家选择器。 selected: 玩家选择器; amount: longarg(1, 2147483647); reason: 字符串（空格需引号）; affecttotalincome: true|false; note: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution add &lt;selected&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt; &lt;note&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>增加贡献值，可指定是否增加历史总收入。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution add CaoZei 100 &quot;活动奖励&quot; true</code></dd>
+<dt>参数与限制</dt><dd>金额≥1 且≤2147483647；原因及备注最多 64 字符；目标支持名称、唯一标识符或玩家选择器。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>selected: 玩家选择器; amount: longArg(1, 2147483647); reason: 字符串（空格需引号）; affectTotalIncome: true|false; note: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution add &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; 增加贡献值，可指定是否增加历史总收入。 管理员 /contribution add caozei 100 &quot;活动奖励&quot; true 金额≥1 且≤2147483647；原因及备注最多 64 字符；目标支持名称、唯一标识符或玩家选择器。 target: 单词（不能含空格）; amount: longarg(1, 2147483647); reason: 字符串（空格需引号）; affecttotalincome: true|false;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution add &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>增加贡献值，可指定是否增加历史总收入。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution add CaoZei 100 &quot;活动奖励&quot; true</code></dd>
+<dt>参数与限制</dt><dd>金额≥1 且≤2147483647；原因及备注最多 64 字符；目标支持名称、唯一标识符或玩家选择器。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>target: 单词（不能含空格）; amount: longArg(1, 2147483647); reason: 字符串（空格需引号）; affectTotalIncome: true|false;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution add &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; &lt;note&gt; 增加贡献值，可指定是否增加历史总收入。 管理员 /contribution add caozei 100 &quot;活动奖励&quot; true 金额≥1 且≤2147483647；原因及备注最多 64 字符；目标支持名称、唯一标识符或玩家选择器。 target: 单词（不能含空格）; amount: longarg(1, 2147483647); reason: 字符串（空格需引号）; affecttotalincome: true|false; note: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution add &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt; &lt;note&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>增加贡献值，可指定是否增加历史总收入。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution add CaoZei 100 &quot;活动奖励&quot; true</code></dd>
+<dt>参数与限制</dt><dd>金额≥1 且≤2147483647；原因及备注最多 64 字符；目标支持名称、唯一标识符或玩家选择器。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>target: 单词（不能含空格）; amount: longArg(1, 2147483647); reason: 字符串（空格需引号）; affectTotalIncome: true|false; note: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution remove &lt;selected&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; 扣除贡献值，可指定是否减少历史总收入。 管理员 /contribution remove caozei 50 &quot;管理扣款&quot; false 金额≥1 且≤2147483648；余额不可为负；选取多目标逐人处理。 selected: 玩家选择器; amount: longarg(1, 2147483648); reason: 字符串（空格需引号）; affecttotalincome: true|false;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution remove &lt;selected&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>扣除贡献值，可指定是否减少历史总收入。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution remove CaoZei 50 &quot;管理扣款&quot; false</code></dd>
+<dt>参数与限制</dt><dd>金额≥1 且≤2147483648；余额不可为负；选取多目标逐人处理。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>selected: 玩家选择器; amount: longArg(1, 2147483648); reason: 字符串（空格需引号）; affectTotalIncome: true|false;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution remove &lt;selected&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; &lt;note&gt; 扣除贡献值，可指定是否减少历史总收入。 管理员 /contribution remove caozei 50 &quot;管理扣款&quot; false 金额≥1 且≤2147483648；余额不可为负；选取多目标逐人处理。 selected: 玩家选择器; amount: longarg(1, 2147483648); reason: 字符串（空格需引号）; affecttotalincome: true|false; note: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution remove &lt;selected&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt; &lt;note&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>扣除贡献值，可指定是否减少历史总收入。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution remove CaoZei 50 &quot;管理扣款&quot; false</code></dd>
+<dt>参数与限制</dt><dd>金额≥1 且≤2147483648；余额不可为负；选取多目标逐人处理。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>selected: 玩家选择器; amount: longArg(1, 2147483648); reason: 字符串（空格需引号）; affectTotalIncome: true|false; note: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution remove &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; 扣除贡献值，可指定是否减少历史总收入。 管理员 /contribution remove caozei 50 &quot;管理扣款&quot; false 金额≥1 且≤2147483648；余额不可为负；选取多目标逐人处理。 target: 单词（不能含空格）; amount: longarg(1, 2147483648); reason: 字符串（空格需引号）; affecttotalincome: true|false;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution remove &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>扣除贡献值，可指定是否减少历史总收入。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution remove CaoZei 50 &quot;管理扣款&quot; false</code></dd>
+<dt>参数与限制</dt><dd>金额≥1 且≤2147483648；余额不可为负；选取多目标逐人处理。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>target: 单词（不能含空格）; amount: longArg(1, 2147483648); reason: 字符串（空格需引号）; affectTotalIncome: true|false;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution remove &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; &lt;note&gt; 扣除贡献值，可指定是否减少历史总收入。 管理员 /contribution remove caozei 50 &quot;管理扣款&quot; false 金额≥1 且≤2147483648；余额不可为负；选取多目标逐人处理。 target: 单词（不能含空格）; amount: longarg(1, 2147483648); reason: 字符串（空格需引号）; affecttotalincome: true|false; note: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution remove &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt; &lt;note&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>扣除贡献值，可指定是否减少历史总收入。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution remove CaoZei 50 &quot;管理扣款&quot; false</code></dd>
+<dt>参数与限制</dt><dd>金额≥1 且≤2147483648；余额不可为负；选取多目标逐人处理。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>target: 单词（不能含空格）; amount: longArg(1, 2147483648); reason: 字符串（空格需引号）; affectTotalIncome: true|false; note: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution retry &lt;id&gt; &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; 沿用原请求唯一标识符重试不确定结果的账户变动。 管理员 /contribution retry &lt;唯一标识符&gt; caozei 100 &quot;活动奖励&quot; true 金额带符号；目标、金额、原因、收入标志、备注必须与原请求完全一致。 id: 单词（不能含空格）; target: 单词（不能含空格）; amount: longarg(-2147483648, 2147483647); reason: 字符串（空格需引号）; affecttotalincome: true|false;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution retry &lt;id&gt; &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>沿用原请求唯一标识符重试不确定结果的账户变动。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution retry &lt;唯一标识符&gt; CaoZei 100 &quot;活动奖励&quot; true</code></dd>
+<dt>参数与限制</dt><dd>金额带符号；目标、金额、原因、收入标志、备注必须与原请求完全一致。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: 单词（不能含空格）; target: 单词（不能含空格）; amount: longArg(-2147483648, 2147483647); reason: 字符串（空格需引号）; affectTotalIncome: true|false;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution retry &lt;id&gt; &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; &lt;note&gt; 沿用原请求唯一标识符重试不确定结果的账户变动。 管理员 /contribution retry &lt;唯一标识符&gt; caozei 100 &quot;活动奖励&quot; true 金额带符号；目标、金额、原因、收入标志、备注必须与原请求完全一致。 id: 单词（不能含空格）; target: 单词（不能含空格）; amount: longarg(-2147483648, 2147483647); reason: 字符串（空格需引号）; affecttotalincome: true|false; note: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution retry &lt;id&gt; &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt; &lt;note&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>沿用原请求唯一标识符重试不确定结果的账户变动。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution retry &lt;唯一标识符&gt; CaoZei 100 &quot;活动奖励&quot; true</code></dd>
+<dt>参数与限制</dt><dd>金额带符号；目标、金额、原因、收入标志、备注必须与原请求完全一致。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: 单词（不能含空格）; target: 单词（不能含空格）; amount: longArg(-2147483648, 2147483647); reason: 字符串（空格需引号）; affectTotalIncome: true|false; note: 尾部文本（可含空格）;</code></details>
+</article>
+</div>
+</section>
+<div class="page-footer">贡献值模组维基 · 0.2.6 · <a href="documentation.html#documentation">维基维护</a></div>
+</div>
+<aside class="page-info">
+<div class="page-info-inner">
+<div class="page-info-head">条目概要</div>
+<table class="infobox">
+<tr><th>命令根</th><td><code>/contribution</code></td></tr>
+<tr><th>权限</th><td>见各命令权限栏</td></tr>
+<tr><th>命令路径</th><td>12 条</td></tr>
+</table>
+</div>
+<table class="navbox"><tbody>
+<tr><th class="navbox-top" colspan="2"><span class="navbox-title">操作与命令</span></th></tr>
+<tr><th>相关页面</th><td><ul class="hlist"><li><a href="interface.html#interface">界面操作</a></li><li><a href="commands.html#commands">命令速查</a></li><li><a href="commands-contribution.html#commands-contribution">贡献值命令</a></li><li><a href="commands-checkin.html#commands-checkin">签到命令</a></li></ul></td></tr>
+</tbody></table>
+<div class="catlinks"><span>分类：</span><ul><li>操作与命令</li></ul></div>
+</aside>
+</div>
+</div>
+</div></main></div></body></html>

@@ -1,0 +1,43 @@
+{
+  "credit": "Made with Blockbench",
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        55
+      ],
+      "translation": [
+        0,
+        7.75,
+        -0.25
+      ],
+      "scale": [
+        1.2,
+        1.2,
+        0.85
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -55
+      ],
+      "translation": [
+        0,
+        7.75,
+        -0.25
+      ],
+      "scale": [
+        1.2,
+        1.2,
+        0.85
+      ]
+    }
+  },
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/sword/exalted_oathblade"
+  },
+  "parent": "minecraft:item/handheld"
+}

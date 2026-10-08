@@ -73,6 +73,46 @@ java {
     withSourcesJar()
 }
 
+def formatterJar = file('../.test-tools/google-java-format-1.37.0-all-deps.jar')
+['formatJava': ['--replace'], 'verifyJavaStyle': ['--dry-run', '--set-exit-if-changed']].each { taskName, flags ->
+    tasks.register(taskName, JavaExec) {
+        classpath = files(formatterJar)
+        mainClass = 'com.google.googlejavaformat.java.Main'
+        ['api', 'file', 'parser', 'tree', 'util', 'code'].each { packageName ->
+            jvmArgs "--add-exports=jdk.compiler/com.sun.tools.javac.${packageName}=ALL-UNNAMED"
+        }
+        args '--aosp'
+        args flags
+        doFirst {
+            if (!formatterJar.exists()) throw new GradleException('Run tools/setup-formatter.ps1 first')
+            args fileTree('src').matching { include '**/*.java' }.files.sort().collect { it.absolutePath }
+        }
+    }
+}
+['exportCommandReference': [], 'verifyDocumentation': ['verify']].each { taskName, arguments ->
+    tasks.register(taskName, JavaExec) {
+        dependsOn tasks.testClasses
+        classpath = sourceSets.test.runtimeClasspath
+        mainClass = 'cn.contribution.docs.CommandReferenceChecks'
+        args arguments
+    }
+}
+tasks.check.dependsOn tasks.verifyJavaStyle, tasks.verifyDocumentation
+
+tasks.register('verifyDatabaseLifecycle', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.database.DatabaseLifecycleChecks'
+}
+tasks.check.dependsOn tasks.verifyDatabaseLifecycle
+
+tasks.register('verifyStockChart', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.stock.StockChartChecks'
+}
+tasks.check.dependsOn tasks.verifyStockChart
+
 tasks.register('verifyAccountQueries', JavaExec) {
     dependsOn tasks.testClasses
     classpath = sourceSets.test.runtimeClasspath
@@ -117,11 +157,25 @@ tasks.register('verifyEmbeddedStatistics', JavaExec) {
     mainClass = 'cn.contribution.industry.StatisticsIntegrationChecks'
     args 'embedded'
 }
+
+tasks.register('verifyMeasuredStatistics', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.industry.MeasuredStatisticsChecks'
+}
+tasks.check.dependsOn tasks.verifyMeasuredStatistics
 tasks.register('verifyEmbeddedPersistence', JavaExec) {
     dependsOn tasks.testClasses
     classpath = sourceSets.test.runtimeClasspath
     mainClass = 'cn.contribution.account.EmbeddedPersistenceChecks'
 }
+tasks.register('verifyStockModel', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.stock.StockModelChecks'
+}
+tasks.check.dependsOn tasks.verifyStockModel
+
 tasks.register('verifyEmbeddedStocks', JavaExec) {
     dependsOn tasks.testClasses
     classpath = sourceSets.test.runtimeClasspath
@@ -144,6 +198,17 @@ tasks.register('verifyMySqlRewards', JavaExec) {
     args 'mysql'
 }
 tasks.check.dependsOn tasks.verifyRewards
+tasks.register('verifyRewardPages', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.industry.DevelopmentRewardPageChecks'
+}
+tasks.register('verifyOnlineRoster', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.stock.OnlinePlayerSnapshotChecks'
+}
+tasks.check.dependsOn tasks.verifyRewardPages, tasks.verifyOnlineRoster
 tasks.check.dependsOn tasks.verifyAccountIdentity
 tasks.register('verifyMySqlStocks', JavaExec) {
     dependsOn tasks.testClasses
@@ -156,6 +221,20 @@ tasks.register('verifyConfigCompatibility', JavaExec) {
     classpath = sourceSets.test.runtimeClasspath
     mainClass = 'cn.contribution.config.ConfigCompatibilityChecks'
 }
+
+tasks.register('verifyMaintenance', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.runtime.MaintenanceChecks'
+}
+tasks.check.dependsOn tasks.verifyMaintenance
+
+tasks.register('verifyLeaderboards', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.account.LeaderboardChecks'
+}
+tasks.check.dependsOn tasks.verifyLeaderboards
 tasks.register('verifyDialogs', JavaExec) {
     dependsOn tasks.testClasses
     classpath = sourceSets.test.runtimeClasspath
@@ -183,6 +262,13 @@ tasks.register('verifyItemContent', JavaExec) {
     mainClass = 'cn.contribution.items.ItemContentChecks'
 }
 tasks.check.dependsOn tasks.verifyItemContent
+
+tasks.register('verifyWeaponSkins', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.items.WeaponSkinChecks'
+}
+tasks.check.dependsOn tasks.verifyWeaponSkins
 
 tasks.register('verifyItemComponents', JavaExec) {
     dependsOn tasks.testClasses
@@ -212,6 +298,13 @@ tasks.check.dependsOn tasks.verifyAccountQueries, tasks.verifyDistanceAccounting
         tasks.verifyEmbeddedAccounts, tasks.verifyEmbeddedStatistics, tasks.verifyEmbeddedPersistence,
         tasks.verifyEmbeddedStocks,
         tasks.verifyConfigCompatibility
+
+tasks.register('verifyDevelopmentTotals', JavaExec) {
+    dependsOn tasks.testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'cn.contribution.industry.DevelopmentTotalsChecks'
+}
+tasks.check.dependsOn tasks.verifyDevelopmentTotals
 
 publishing {
     publications {

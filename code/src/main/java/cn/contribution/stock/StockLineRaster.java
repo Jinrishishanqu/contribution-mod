@@ -2,9 +2,10 @@ package cn.contribution.stock;
 
 /** Integer line rasterization shared by the stock chart and its regression check. */
 public final class StockLineRaster {
-    private StockLineRaster() { }
+    private StockLineRaster() {}
 
-    @FunctionalInterface public interface PixelSink {
+    @FunctionalInterface
+    public interface PixelSink {
         void draw(int x, int y);
     }
 
@@ -16,27 +17,39 @@ public final class StockLineRaster {
             sink.draw(x0, y0);
             if (x0 == x1 && y0 == y1) return;
             int twice = 2 * error;
-            if (twice >= dy) { error += dy; x0 += sx; }
-            if (twice <= dx) { error += dx; y0 += sy; }
+            if (twice >= dy) {
+                error += dy;
+                x0 += sx;
+            }
+            if (twice <= dx) {
+                error += dx;
+                y0 += sy;
+            }
         }
     }
 
     /** Adds a one-pixel orthogonal bridge at diagonal steps, keeping a thin 4-connected line. */
     public static void traceConnected(int x0, int y0, int x1, int y1, PixelSink sink) {
         int[] previous = {Integer.MIN_VALUE, Integer.MIN_VALUE};
-        trace(x0, y0, x1, y1, (x, y) -> {
-            if (previous[0] != Integer.MIN_VALUE && x != previous[0] && y != previous[1]) {
-                sink.draw(previous[0], y);
-            }
-            sink.draw(x, y);
-            previous[0] = x;
-            previous[1] = y;
-        });
+        trace(
+                x0,
+                y0,
+                x1,
+                y1,
+                (x, y) -> {
+                    if (previous[0] != Integer.MIN_VALUE && x != previous[0] && y != previous[1]) {
+                        sink.draw(previous[0], y);
+                    }
+                    sink.draw(x, y);
+                    previous[0] = x;
+                    previous[1] = y;
+                });
     }
 
     /** Keeps the market graph's horizontal axis fixed to its requested game-day window. */
     public static int dayX(long day, long firstDay, long lastDay, int x, int width) {
-        if (width < 2) throw new IllegalArgumentException("Chart width must be at least two pixels");
+        if (width < 2)
+            throw new IllegalArgumentException("Chart width must be at least two pixels");
         if (lastDay <= firstDay) return x + width / 2;
         double fraction = (day - (double) firstDay) / (lastDay - (double) firstDay);
         return x + (int) Math.round(Math.max(0.0, Math.min(1.0, fraction)) * (width - 1));

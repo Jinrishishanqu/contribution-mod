@@ -1,0 +1,117 @@
+{
+  "id": "resourcepack",
+  "title": "资源包与外观",
+  "summary": "资源包提供主题盔甲、添翼胸甲、帽子和武器皮肤的纹理与模型，可供原版客户端加载。",
+  "sections": [
+    {
+      "title": "加载外观",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "客户端安装同版模组后自动加载内置外观。原版客户端接受服务器提供的资源包后，也能显示物品模型与纹理。道具规则由服务器提供。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "已安装客户端模组：使用与服务器一致的版本进入游戏。",
+            "原版客户端：连接服务器时接受外观资源包。",
+            "服务器使用合并资源包时，由管理员把本模组素材加入统一的分发包。"
+          ]
+        }
+      ],
+      "id": "为什么要额外分发"
+    },
+    {
+      "title": "导出与分发",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "服务器启动后，在 `<世界>/contribution/resource-packs/` 找到当前版本的外观压缩包。",
+            "把压缩包放到可供客户端下载的资源包地址；已有其他资源包时先合并。",
+            "在 `server.properties` 配置 `resource-pack` 与 `resource-pack-sha1`，重启服务器后检查客户端接收结果。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "p",
+          "text": "同版本导出文件保留，更新版本时生成新文件。`require-resource-pack=false` 允许玩家拒绝资源包后继续进入服务器。"
+        },
+        {
+          "type": "details",
+          "title": "构建产物位置",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "构建输出 `code/build/libs/CSU-YSU-items-<版本>-resource-pack.zip`，同一包也内嵌于模组。"
+            }
+          ]
+        }
+      ],
+      "id": "资源包的生成与导出"
+    },
+    {
+      "title": "包含的纹理",
+      "blocks": [
+        {
+          "type": "gallery",
+          "items": [
+            {
+              "key": "model:contribution:winged/diamond",
+              "label": "钻石添翼胸甲"
+            },
+            {
+              "key": "model:contribution:armor/nano_chestplate",
+              "label": "纳米胸甲"
+            },
+            {
+              "key": "model:contribution:armor/quantum_chestplate",
+              "label": "量子胸甲"
+            },
+            {
+              "key": "model:contribution:speaker",
+              "label": "公示喇叭"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "主题盔甲、添翼胸甲及帽子的物品和装备外观。",
+            "六类武器皮肤的手持、物品栏及展示模型。",
+            "胸甲染色、纹饰和翼装图层。",
+            "「更多乐趣」进度背景和界面图标。"
+          ]
+        },
+        {
+          "type": "details",
+          "title": "资源来源与装备图层",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "主题装甲采用项目提供的纹理，成人装甲纹理复用到婴儿装备层。翅膀纹饰层使用透明纹理，胸甲保留纹饰。完整素材来源见 `code/THIRD_PARTY_NOTICES.md`。"
+            }
+          ]
+        }
+      ],
+      "id": "包含的纹理"
+    },
+    {
+      "id": "补充资料",
+      "title": "补充资料",
+      "blocks": [
+        {
+          "type": "details",
+          "anchor": "resourcepack-本地开发工作流",
+          "title": "本地开发工作流",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "`run-gradle.ps1 build` 成功后会自动备份并替换两处模组文件，以及指定客户端 `resourcepacks` 中本模组的旧压缩包；客户端在资源包选项中选择新版本压缩包后显示更新后的外观。"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="贡献值账户保存玩家的余额、历史总收入和交易流水，以玩家唯一标识符区分身份。"><title>贡献值账户 · 贡献值模组维基 0.2.6</title><link rel="stylesheet" href="assets/wiki.css"><script defer src="assets/search-index.js"></script><script defer src="assets/site.js"></script></head><body data-current-page="account"><a class="skip-link" href="#account">跳到正文</a><div class="shell"><aside id="site-navigation" class="sidebar" aria-label="站点导航">
+<a class="brand" href="index.html#home">
+<span class="brand-mark" aria-hidden="true"></span>
+<span class="brand-text"><span class="brand-title">贡献值维基</span><span class="brand-tagline">贡献值经济 · 行业建设度 · 股票市场 · 系统商店</span></span>
+</a>
+<div class="sidebar-search"><label class="visually-hidden" for="site-search">搜索本维基</label><input id="site-search" type="search" placeholder="搜索页面与章节…" autocomplete="off"><div id="site-search-results" class="search-results" hidden></div></div>
+<div class="nav">
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-0"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开始阅读</span></button></h3>
+<ul id="nav-list-0">
+<li><a href="index.html#home" data-nav="home">贡献值模组维基</a></li>
+<li><a href="basics.html#basics" data-nav="basics">玩法入门</a></li>
+<li><a href="features.html#features" data-nav="features">玩法总览</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-1"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">贡献值与建设</span></button></h3>
+<ul id="nav-list-1">
+<li><a href="#account" data-nav="account">贡献值账户</a></li>
+<li><a href="development.html#development" data-nav="development">行业建设度</a></li>
+<li><a href="statistics.html#statistics" data-nav="statistics">玩家统计</a></li>
+<li><a href="rewards.html#rewards" data-nav="rewards">建设度奖励</a></li>
+<li><a href="checkin.html#checkin" data-nav="checkin">签到与活动</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-2"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">经济交易</span></button></h3>
+<ul id="nav-list-2">
+<li><a href="shop.html#shop" data-nav="shop">系统商店</a></li>
+<li><a href="stock.html#stock" data-nav="stock">股票市场</a></li>
+<li><a href="stock-mechanics.html#stock-mechanics" data-nav="stock-mechanics">股价计算</a></li>
+<li><a href="swan.html#swan" data-nav="swan">黑天鹅事件</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-3"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">物品与进度</span></button></h3>
+<ul id="nav-list-3">
+<li><a href="items.html#items" data-nav="items">物品与装备</a></li>
+<li><a href="special-items.html#special-items" data-nav="special-items">特殊道具</a></li>
+<li><a href="recipes.html#recipes" data-nav="recipes">配方目录</a></li>
+<li><a href="recipes-basics.html#recipes-basics" data-nav="recipes-basics">基础配方</a></li>
+<li><a href="recipes-wings.html#recipes-wings" data-nav="recipes-wings">添翼配方</a></li>
+<li><a href="recipes-reinforcement.html#recipes-reinforcement" data-nav="recipes-reinforcement">强化配方</a></li>
+<li><a href="recipes-armor.html#recipes-armor" data-nav="recipes-armor">主题盔甲配方</a></li>
+<li><a href="recipes-hats.html#recipes-hats" data-nav="recipes-hats">帽子配方</a></li>
+<li><a href="recipes-special.html#recipes-special" data-nav="recipes-special">特殊道具配方</a></li>
+<li><a href="weapon-skins.html#weapon-skins" data-nav="weapon-skins">武器皮肤</a></li>
+<li><a href="advancements.html#advancements" data-nav="advancements">更多乐趣进度</a></li>
+<li><a href="advancement-details.html#advancement-details" data-nav="advancement-details">进度条件</a></li>
+<li><a href="resourcepack.html#resourcepack" data-nav="resourcepack">资源包与外观</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-4"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">操作与命令</span></button></h3>
+<ul id="nav-list-4">
+<li><a href="interface.html#interface" data-nav="interface">界面操作</a></li>
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands-contribution.html#commands-contribution" data-nav="commands-contribution">贡献值命令</a></li>
+<li><a href="commands-checkin.html#commands-checkin" data-nav="commands-checkin">签到命令</a></li>
+<li><a href="commands-stock.html#commands-stock" data-nav="commands-stock">股票命令</a></li>
+<li><a href="commands-shop.html#commands-shop" data-nav="commands-shop">商店命令</a></li>
+<li><a href="commands-account.html#commands-account" data-nav="commands-account">账户管理命令</a></li>
+<li><a href="commands-shop-admin.html#commands-shop-admin" data-nav="commands-shop-admin">商店管理命令</a></li>
+<li><a href="permissions.html#permissions" data-nav="permissions">操作权限</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-5"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">服务器管理</span></button></h3>
+<ul id="nav-list-5">
+<li><a href="installation.html#installation" data-nav="installation">安装</a></li>
+<li><a href="config.html#config" data-nav="config">服务器配置</a></li>
+<li><a href="data.html#data" data-nav="data">数据与存档</a></li>
+<li><a href="operations.html#operations" data-nav="operations">服务器维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-6"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开发与维护</span></button></h3>
+<ul id="nav-list-6">
+<li><a href="api.html#api" data-nav="api">公共接口</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-tools"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">工具</span></button></h3>
+<ul id="nav-list-tools">
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands.xlsx">下载命令工作簿</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+</div>
+<div class="sidebar-footer">版本 0.2.6 · Minecraft 26.3<br>Fabric Loader 0.19.5 · Java 25</div>
+</aside><main class="main"><header class="topbar"><nav class="topbar-crumbs" aria-label="面包屑"><a href="index.html">首页</a><span> / 贡献值账户</span></nav><span class="topbar-spacer"></span><button id="mobile-nav" type="button" aria-expanded="false" aria-controls="site-navigation">导航</button><button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">切换主题</button></header><div class="wiki-page" id="account" data-page-title="贡献值账户">
+<div class="content-panel">
+<div class="page-head">
+<h1 class="page-title">贡献值账户</h1>
+<p class="page-summary">贡献值账户保存玩家的余额、历史总收入和交易流水，以玩家唯一标识符区分身份。</p>
+</div>
+<div class="page-columns">
+<div class="article">
+<div class="toc"><input class="toc-toggle" type="checkbox" id="toc-account" checked><label class="toc-head" for="toc-account">目录 <span class="toc-toggle-label"><span class="toc-show">[显示]</span><span class="toc-hide">[隐藏]</span></span></label><ol><li><a href="#account-账户身份">账户身份</a></li><li><a href="#account-余额从哪里来-到哪里去">收入与支出</a></li><li><a href="#account-查询余额与流水">查询余额与流水</a></li><li><a href="#account-0-2-3-排行榜与旧数据升级">排行榜</a></li><li><a href="#account-数值规则">数值规则</a></li><li><a href="#account-反馈文本">操作结果</a></li><li><a href="#account-补充资料">管理与数据</a></li></ol></div>
+<section class="wiki-section" id="account-账户身份">
+<h2>账户身份</h2>
+<p>玩家首次进入服务器时自动创建账户，初始余额和历史总收入均为 0。账户以唯一标识符区分身份，玩家名称用于查找和显示。</p>
+<ul><li>名称以 <code>bot_</code> 开头的假人不建立账户；前缀匹配忽略大小写。</li><li>查询和管理支持在线或离线玩家的名称、唯一标识符。</li><li>玩家选择器用于单账户操作时须恰好选择一名玩家。</li><li>玩家更名或唯一标识符变化由管理员核对身份后处理，参见本页账户迁移。</li></ul>
+</section>
+<section class="wiki-section" id="account-余额从哪里来-到哪里去">
+<h2>收入与支出</h2>
+<figure class="media-figure"><ol class="visual-flow"><li><img class="item-icon" src="assets/images/icons/minecraft-emerald.png" alt="收入" width="128" height="128" loading="lazy" decoding="async"><strong>收入</strong><span>签到与建设度奖励</span></li><li><img class="item-icon" src="assets/images/icons/minecraft-book.png" alt="账户" width="128" height="128" loading="lazy" decoding="async"><strong>账户</strong><span>余额和历史总收入</span></li><li><img class="item-icon" src="assets/images/icons/minecraft-paper.png" alt="流水" width="128" height="128" loading="lazy" decoding="async"><strong>流水</strong><span>每次变动留存记录</span></li></ol><figcaption class="media-caption">物品图标用于示意操作顺序</figcaption></figure>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">流水类型</th><th scope="col">含义</th><th scope="col">影响历史总收入</th></tr></thead>
+<tbody>
+<tr><td><code>ADMIN</code></td><td>管理员命令</td><td>由命令的布尔参数决定</td></tr>
+<tr><td><code>CHECK_IN</code></td><td>每日签到收益</td><td>是</td></tr>
+<tr><td><code>EVENT_CHECK_IN</code></td><td>活动签到的贡献值奖励</td><td>是</td></tr>
+<tr><td><code>DEVELOP</code></td><td>服务器建设度奖励</td><td>只增加余额和历史总收入</td></tr>
+<tr><td><code>SHOP_BUY</code></td><td>商店购买扣款</td><td>否</td></tr>
+<tr><td><code>SPEND</code></td><td>消费扣款（股票买入使用此类型）</td><td>否</td></tr>
+<tr><td><code>STOCK</code></td><td>股票卖出到账</td><td>否</td></tr>
+<tr><td><code>BONUS</code></td><td>额外收益</td><td>按调用方指定</td></tr>
+<tr><td><code>EXTERNAL</code></td><td>外部模组调用</td><td>按调用方指定</td></tr>
+<tr><td><code>REFUND</code></td><td>退款（含股票退市返还）</td><td>否，始终为 0</td></tr>
+<tr><td><code>TAX</code></td><td>收税扣款</td><td>按调用方指定</td></tr>
+</tbody>
+</table></div>
+<p>退款会增加余额，但完全不影响历史总收入。它是一笔新的业务操作，必须使用新的幂等标识符，不能复用原扣款操作的幂等标识符。</p>
+</section>
+<section class="wiki-section" id="account-查询余额与流水">
+<h2>查询余额与流水</h2>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">命令</th><th scope="col">权限</th><th scope="col">功能</th></tr></thead>
+<tbody>
+<tr><td><code>/contribution query</code></td><td>所有玩家</td><td>查询自己的余额和历史总收入</td></tr>
+<tr><td><code>/contribution query &lt;玩家&gt;</code></td><td>管理员</td><td>查询指定玩家的余额和历史总收入</td></tr>
+<tr><td><code>/contribution accounts</code></td><td>管理员</td><td>以聊天分页方式查看所有玩家的账户情况</td></tr>
+<tr><td><code>/contribution history</code></td><td>所有玩家</td><td>查看自己的流水记录</td></tr>
+<tr><td><code>/contribution history &lt;玩家&gt;</code> / <code>history *</code></td><td>管理员</td><td>查看指定玩家或全服流水</td></tr>
+<tr><td><code>/contribution history-search &lt;范围&gt; &lt;条件…&gt;</code></td><td>自己 / 管理员可查他人或全服</td><td>按类型、来源、子服与时间范围筛选流水</td></tr>
+</tbody>
+</table></div>
+<p><code>&lt;玩家&gt;</code> 支持目标选择器、玩家名称或唯一标识符；目标选择器必须恰好选中一名玩家。流水查询默认按 <code>created_at</code>、<code>record_no</code> 倒序排列并使用二者组成的游标分页，不使用大偏移量分页。</p>
+<ul><li>默认每页 20 条，单次请求最多返回 100 条。</li><li>普通玩家默认最多查询最近 90 天的本人流水。</li><li>管理员单次查询范围最多 365 天，可查询归档表；仅指定 <code>from</code> 时向后补足 365 天，仅指定 <code>to</code> 时向前补足 365 天。</li><li>筛选条件写作 <code>名称=值</code>，支持 <code>type</code>、<code>source</code>、<code>server</code>、<code>from</code>、<code>to</code>；<code>from</code>/<code>to</code> 为 <code>UTC</code> 的 <code>YYYY-MM-DD</code> 且包含 <code>to</code> 当天。</li></ul>
+<pre class="code" data-language="text"><code>/contribution history-search self type=EXTERNAL from=2026-09-01
+/contribution history-search * server=survival to=2026-09-28</code></pre>
+<p>数据库统一以 <code>UTC</code> 保存时间，图形界面按配置的 <code>rewards.timeZone</code> 显示为 <code>MM-dd HH:mm</code>（默认 <code>Asia/Shanghai</code>）。但筛选条件的日期始终按 <code>UTC</code> 日界线计算，界面会注明这一区别。</p>
+</section>
+<section class="wiki-section" id="account-0-2-3-排行榜与旧数据升级">
+<h2>排行榜</h2>
+<p>余额、历史总收入、总建设度和各行业建设度可在<a class="wikilink" href="operations.html#operations">公开排行榜</a>中查看。每榜显示前 100 名，数据缓存 15 秒。</p>
+</section>
+<section class="wiki-section" id="account-数值规则">
+<h2>数值规则</h2>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">项目</th><th scope="col">规则</th></tr></thead>
+<tbody>
+<tr><td>代币类型</td><td>整数</td></tr>
+<tr><td>账户余额</td><td>不允许为负数，范围 <span class="math">0</span> 至 <span class="math">2<sup>31</sup>-1</span></td></tr>
+<tr><td>历史总收入</td><td>范围 <span class="math">0</span> 至 <span class="math">2<sup>31</sup>-1</span></td></tr>
+<tr><td>单次数量变动</td><td><span class="math">-2<sup>31</sup></span> 至 <span class="math">2<sup>31</sup>-1</span></td></tr>
+<tr><td>原因 / 备注长度</td><td>各最多 64 个字符</td></tr>
+<tr><td>来源标识长度</td><td>最多 128 个字符</td></tr>
+</tbody>
+</table></div>
+<p>历史总收入默认累计除退款外的所有正向代币变动，负向变动不影响它。管理员命令或外部接口可以显式指定本次是否影响历史总收入：指定 <code>true</code> 时，正向变动增加、负向变动减少相同数量；指定 <code>false</code> 时不改变。退款始终不影响历史总收入。</p>
+</section>
+<section class="wiki-section" id="account-反馈文本">
+<h2>操作结果</h2>
+<p>文字命令统一使用 <code>[贡献值]</code> 前缀；图形页面用标题与正文反馈。参数语法错误与权限拒绝也可能由原版命令框架直接显示。</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">场景</th><th scope="col">反馈</th></tr></thead>
+<tbody>
+<tr><td>选择多个目标</td><td>目标选择器必须恰好选择一名玩家</td></tr>
+<tr><td>账户不存在</td><td>未找到该玩家账户</td></tr>
+<tr><td>余额不足</td><td>余额不足</td></tr>
+<tr><td>历史总收入不足</td><td>历史总收入不足</td></tr>
+<tr><td>数值溢出</td><td>余额或历史总收入超过上限</td></tr>
+<tr><td>文本无效</td><td>来源、原因或备注无效</td></tr>
+<tr><td>数据库异常</td><td>数据服务暂时不可用，请稍后重试</td></tr>
+<tr><td>幂等冲突</td><td>幂等标识符已用于不同请求</td></tr>
+<tr><td>请求过快</td><td>操作过快，请稍后重试</td></tr>
+<tr><td>查询成功</td><td><code>&lt;玩家&gt;：余额 &lt;余额&gt;，历史总收入 &lt;历史总收入&gt;</code></td></tr>
+<tr><td>操作成功</td><td><code>操作成功，余额 &lt;之前&gt; → &lt;之后&gt;，流水 ID &lt;流水ID&gt;</code></td></tr>
+</tbody>
+</table></div>
+<p>失败请求不创建成功流水。提交状态不确定时，「稍后重试」指沿用原请求与幂等标识符，不代表可以重复创建新交易。</p>
+</section>
+<section class="wiki-section" id="account-补充资料">
+<h2>管理与数据</h2>
+<details class="source-details" id="account-管理员增减余额"><summary>管理员增减余额</summary><pre class="code" data-language="text"><code>/contribution add &lt;玩家&gt; &lt;数量&gt; &lt;原因&gt; &lt;影响历史总收入:true|false&gt; [备注]
+/contribution remove &lt;玩家&gt; &lt;数量&gt; &lt;原因&gt; &lt;影响历史总收入:true|false&gt; [备注]</code></pre>
+<ul><li><code>add</code> 增加余额，<code>remove</code> 减少余额；除备注外其余参数均为必填。</li><li>布尔值为 <code>true</code> 时，<code>add</code> 同时增加历史总收入，<code>remove</code> 同时减少历史总收入；为 <code>false</code> 时只改变余额。</li><li>管理员不能绕过余额范围和数量范围限制。</li><li>每次命令先返回请求标识符与可点击的原请求重试文本，再异步执行。</li><li>成功执行后，<code>operator</code> 记录为 <code>command-&lt;执行者&gt;</code>，<code>source</code> 记录为 <code>contribution:admin_command</code>。</li><li>余额变动通过管理命令提交，图形界面用于查询。</li></ul></details>
+<details class="source-details" id="account-幂等与重试"><summary>幂等与重试</summary><p>每次操作都具有全局唯一的流水标识符与幂等标识符，流水表分别为这两个字段建立唯一约束。幂等检查、账户行锁、余额校验、账户更新与流水写入必须在同一个数据库事务中完成。</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">情况</th><th scope="col">系统行为</th></tr></thead>
+<tbody>
+<tr><td>幂等标识符不存在</td><td>执行操作</td></tr>
+<tr><td>操作已经完成</td><td>返回原操作结果，不重复修改账户</td></tr>
+<tr><td>操作正在执行</td><td>异步调用等待事务结果；<code>IN_PROGRESS</code> 仅作为兼容状态保留，不主动返回</td></tr>
+<tr><td>操作失败且事务已回滚</td><td>使用原幂等标识符重新执行</td></tr>
+</tbody>
+</table></div>
+<div class="msgbox msgbox-warn"><span class="msgbox-icon" aria-hidden="true">⚠</span><div class="msgbox-body"><span class="msgbox-title">重试必须原样重发</span><span class="msgbox-text">网络超时或结果不明时，只能使用完全相同的请求与原幂等标识符重试。同一幂等标识符对应的目标、数量、类型、来源、原因、备注或历史收入标志发生变化时，返回 <code>IDEMPOTENCY_CONFLICT</code>。管理员的 <code>/contribution retry</code> 和商店的 <code>/shop retry</code> 就是这一规则的命令入口。</span></div></div></details>
+<details class="source-details" id="account-流水的归档"><summary>流水的归档</summary><ul><li>在线流水表至少保留一年；超过一年且已完整过期的 <code>UTC</code> 自然月会搬入同库的 <code>contribution_transaction_archive</code>。</li><li>归档在主服务器游戏时间 8:00—18:00 运行，每 600 游戏刻最多搬移 500 条；复制与删除处于同一事务。</li><li>流水与幂等标识符永久保留，归档记录仍可由管理员查询，但不参与普通玩家的即时分页。</li><li>未完整过期的月份暂留在在线表中。</li></ul></details>
+<details class="source-details" id="account-创建账户与-uuid-迁移"><summary>创建账户与唯一标识符迁移</summary><p><code>/contribution account create &lt;UUID&gt; &lt;玩家名称&gt;</code> 仅当该唯一标识符尚无账户、该名称也未被其他唯一标识符占用时创建余额与历史总收入均为零的账户。名称冲突不会静默绑定到错误唯一标识符，而是提示管理员先核对旧账户。</p>
+<p><code>/contribution account migrate &lt;旧UUID&gt; &lt;新UUID&gt; confirm</code> 把旧唯一标识符的账户与全部关联数据转到新唯一标识符。</p>
+<ul><li>仅允许在主服务器控制台、该服务器没有在线玩家时执行。群组服运维还应先停止其他子服、备份共享数据库并处理完结果不确定的交易。</li><li>目标唯一标识符可以没有账户；若已存在，必须是完全空白的账户。有任何余额、历史收入、流水、统计、股票交易、持仓或返还都会拒绝，不会覆盖或合并。</li><li>迁移在同一数据库事务和行锁中更新账户、在线与归档流水、玩家统计、交通距离余量、股票持仓与交易、批量请求和退市返还，并写入 <code>account_uuid_migration</code> 审计行。</li><li>迁移后，旧唯一标识符发出的未完成请求不应继续重试。</li></ul></details>
+<details class="source-details" id="account-假人账户清理"><summary>假人账户清理</summary><p><code>/contribution bot_check</code> 在一笔数据库事务中找出当前名称仍为 <code>bot_</code> 前缀的账户，并删除账户及该唯一标识符的流水、玩家统计、股票持仓与交易、退市返还、签到、商店与奖励记录。</p>
+<div class="msgbox msgbox-danger"><span class="msgbox-icon" aria-hidden="true">✖</span><div class="msgbox-body"><span class="msgbox-title">这是破坏性操作</span><span class="msgbox-text">该命令不会回滚已经计入服务器全局建设度的历史汇总，清理后也无法从模组内恢复被删的玩家记录。执行前必须备份数据库。非 <code>bot_</code> 账户不受影响。</span></div></div></details>
+</section>
+<div class="page-footer">贡献值模组维基 · 0.2.6 · <a href="documentation.html#documentation">维基维护</a></div>
+</div>
+<aside class="page-info">
+<div class="page-info-inner">
+<div class="page-info-head">条目概要</div>
+<table class="infobox">
+<tr><th>初始余额</th><td>0 贡献值</td></tr>
+<tr><th>查询</th><td><code>/contribution balance</code></td></tr>
+<tr><th>流水</th><td><code>/contribution history</code></td></tr>
+
+</table>
+</div>
+<table class="navbox"><tbody>
+<tr><th class="navbox-top" colspan="2"><span class="navbox-title">贡献值与建设</span></th></tr>
+<tr><th>相关页面</th><td><ul class="hlist"><li><a href="development.html#development">行业建设度</a></li><li><a href="statistics.html#statistics">玩家统计</a></li><li><a href="rewards.html#rewards">建设度奖励</a></li><li><a href="checkin.html#checkin">签到与活动</a></li></ul></td></tr>
+</tbody></table>
+<div class="catlinks"><span>分类：</span><ul><li>贡献值与建设</li></ul></div>
+</aside>
+</div>
+</div>
+</div></main></div></body></html>

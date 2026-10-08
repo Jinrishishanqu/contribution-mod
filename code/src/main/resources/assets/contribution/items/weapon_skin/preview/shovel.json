@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:component",
+    "component": "minecraft:item_name",
+    "cases": [
+      {
+        "when": "铁铲",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/preview/shovel/iron_shovel"
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "contribution:item/weapon_skin/preview/shovel/iron_shovel"
+    }
+  }
+}

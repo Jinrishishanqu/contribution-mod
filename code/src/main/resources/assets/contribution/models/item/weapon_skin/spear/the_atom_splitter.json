@@ -1,0 +1,77 @@
+{
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/spear/the_atom_splitter"
+  },
+  "parent": "item/generated",
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        5,
+        -90,
+        -40
+      ],
+      "translation": [
+        0,
+        2,
+        2
+      ],
+      "scale": [
+        1.7,
+        1.7,
+        0.85
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        5,
+        90,
+        40
+      ],
+      "translation": [
+        0,
+        2,
+        2
+      ],
+      "scale": [
+        1.7,
+        1.7,
+        0.85
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        35,
+        -90,
+        0
+      ],
+      "translation": [
+        3.13,
+        2,
+        0.13
+      ],
+      "scale": [
+        1.36,
+        1.36,
+        0.68
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        35,
+        90,
+        0
+      ],
+      "translation": [
+        3.13,
+        2,
+        0.13
+      ],
+      "scale": [
+        1.36,
+        1.36,
+        0.68
+      ]
+    }
+  },
+  "gui_light": "front"
+}

@@ -38,83 +38,116 @@ public final class AccountService extends ContributionApi {
 
     public CompletableFuture<Void> registerPlayer(UUID uuid, String name) {
         if (AccountIdentityService.isBotName(name)) return CompletableFuture.completedFuture(null);
-        return database.transaction(connection -> {
-            try (PreparedStatement statement = connection.prepareStatement(
-                    "INSERT IGNORE INTO contribution_account "
-                            + "(player_uuid, player_name, player_name_normalized, balance, total_income, created_at, updated_at) "
-                            + "VALUES (?, ?, ?, 0, 0, CURRENT_TIMESTAMP(6), CURRENT_TIMESTAMP(6))")) {
-                statement.setBytes(1, uuidBytes(uuid));
-                statement.setString(2, name);
-                statement.setString(3, name.toLowerCase(Locale.ROOT));
-                statement.executeUpdate();
-            }
-            return null;
-        });
+        return database.transaction(
+                connection -> {
+                    try (PreparedStatement statement =
+                            connection.prepareStatement(
+                                    "INSERT IGNORE INTO contribution_account (player_uuid,"
+                                        + " player_name, player_name_normalized, balance,"
+                                        + " total_income, created_at, updated_at) VALUES (?, ?, ?,"
+                                        + " 0, 0, CURRENT_TIMESTAMP(6), CURRENT_TIMESTAMP(6))")) {
+                        statement.setBytes(1, uuidBytes(uuid));
+                        statement.setString(2, name);
+                        statement.setString(3, name.toLowerCase(Locale.ROOT));
+                        statement.executeUpdate();
+                    }
+                    return null;
+                });
     }
 
     public CompletableFuture<Optional<AccountRecord>> account(AccountTarget target) {
         return database.transaction(connection -> findAccount(connection, target, false));
     }
 
-    public CompletableFuture<Optional<HistoryPage>> historyPage(AccountTarget target, UUID before,
-                                                                 int limit, int maxAgeDays) {
+    public CompletableFuture<Optional<HistoryPage>> historyPage(
+            AccountTarget target, UUID before, int limit, int maxAgeDays) {
         return historyPage(target, before, limit, maxAgeDays, HistoryFilter.empty());
     }
 
-    public CompletableFuture<Optional<HistoryPage>> historyPage(AccountTarget target, UUID before,
-                                                                 int limit, int maxAgeDays, HistoryFilter filter) {
-        return database.transaction(connection -> {
-            Optional<AccountRecord> account = findAccount(connection, target, false);
-            if (account.isEmpty()) {
-                return Optional.empty();
-            }
-            return Optional.of(loadHistoryPage(connection, account.get().playerUuid(), before, limit, maxAgeDays, filter));
-        });
+    public CompletableFuture<Optional<HistoryPage>> historyPage(
+            AccountTarget target, UUID before, int limit, int maxAgeDays, HistoryFilter filter) {
+        return database.transaction(
+                connection -> {
+                    Optional<AccountRecord> account = findAccount(connection, target, false);
+                    if (account.isEmpty()) {
+                        return Optional.empty();
+                    }
+                    return Optional.of(
+                            loadHistoryPage(
+                                    connection,
+                                    account.get().playerUuid(),
+                                    before,
+                                    limit,
+                                    maxAgeDays,
+                                    filter));
+                });
     }
 
     public CompletableFuture<HistoryPage> allHistoryPage(UUID before, int limit, int maxAgeDays) {
         return allHistoryPage(before, limit, maxAgeDays, HistoryFilter.empty());
     }
 
-    public CompletableFuture<HistoryPage> allHistoryPage(UUID before, int limit, int maxAgeDays, HistoryFilter filter) {
-        return database.transaction(connection -> loadHistoryPage(connection, null, before, limit, maxAgeDays, filter));
+    public CompletableFuture<HistoryPage> allHistoryPage(
+            UUID before, int limit, int maxAgeDays, HistoryFilter filter) {
+        return database.transaction(
+                connection -> loadHistoryPage(connection, null, before, limit, maxAgeDays, filter));
     }
 
-    private static HistoryPage loadHistoryPage(Connection connection, UUID playerUuid, UUID before,
-                                                int limit, int maxAgeDays, HistoryFilter filter) throws SQLException {
+    private static HistoryPage loadHistoryPage(
+            Connection connection,
+            UUID playerUuid,
+            UUID before,
+            int limit,
+            int maxAgeDays,
+            HistoryFilter filter)
+            throws SQLException {
         if (limit < 1 || limit > 100 || maxAgeDays < 1 || maxAgeDays > 365 || filter == null) {
             throw new IllegalArgumentException("Invalid history query bounds");
         }
         Instant cutoff = Instant.now().minusSeconds(maxAgeDays * 86_400L);
-        if (filter.fromInclusive() != null && (maxAgeDays == 365 || filter.fromInclusive().isAfter(cutoff))) {
+        if (filter.fromInclusive() != null
+                && (maxAgeDays == 365 || filter.fromInclusive().isAfter(cutoff))) {
             cutoff = filter.fromInclusive();
         }
         Cursor cursor = null;
         if (before != null) {
             cursor = findCursor(connection, before);
-            if (cursor == null || (playerUuid != null && !playerUuid.equals(cursor.playerUuid()))
+            if (cursor == null
+                    || (playerUuid != null && !playerUuid.equals(cursor.playerUuid()))
                     || cursor.createdAt().isBefore(cutoff)
-                    || (filter.untilExclusive() != null && !cursor.createdAt().isBefore(filter.untilExclusive()))
+                    || (filter.untilExclusive() != null
+                            && !cursor.createdAt().isBefore(filter.untilExclusive()))
                     || (filter.type() != null && !filter.type().equals(cursor.type()))
                     || (filter.source() != null && !filter.source().equals(cursor.source()))
-                    || (filter.serverId() != null && !filter.serverId().equals(cursor.serverId()))) {
+                    || (filter.serverId() != null
+                            && !filter.serverId().equals(cursor.serverId()))) {
                 return HistoryPage.invalidCursor();
             }
         }
-        String sql = "SELECT transaction_id, player_name, amount, balance_after, type, reason, created_at "
-                + "FROM " + (maxAgeDays == 365 ? "(SELECT * FROM contribution_transaction UNION ALL SELECT * FROM contribution_transaction_archive) transactions" : "contribution_transaction") + " WHERE created_at >= ?"
-                + (filter.untilExclusive() == null ? "" : " AND created_at < ?")
-                + (playerUuid == null ? "" : " AND player_uuid = ?")
-                + (filter.type() == null ? "" : " AND type = ?")
-                + (filter.source() == null ? "" : " AND source = ?")
-                + (filter.serverId() == null ? "" : " AND server_id = ?")
-                + (cursor == null ? "" : " AND (created_at < ? OR (created_at = ? AND record_no < ?))")
-                + " ORDER BY created_at DESC, record_no DESC LIMIT ?";
+        String sql =
+                "SELECT transaction_id, player_name, amount, balance_after, type, reason,"
+                        + " created_at FROM "
+                        + (maxAgeDays == 365
+                                ? "(SELECT * FROM contribution_transaction UNION ALL SELECT * FROM"
+                                        + " contribution_transaction_archive) transactions"
+                                : "contribution_transaction")
+                        + " WHERE created_at >= ?"
+                        + (filter.untilExclusive() == null ? "" : " AND created_at < ?")
+                        + (playerUuid == null ? "" : " AND player_uuid = ?")
+                        + (filter.type() == null ? "" : " AND type = ?")
+                        + (filter.source() == null ? "" : " AND source = ?")
+                        + (filter.serverId() == null ? "" : " AND server_id = ?")
+                        + (cursor == null
+                                ? ""
+                                : " AND (created_at < ? OR (created_at = ? AND record_no < ?))")
+                        + " ORDER BY created_at DESC, record_no DESC LIMIT ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             int parameter = 1;
             statement.setObject(parameter++, LocalDateTime.ofInstant(cutoff, ZoneOffset.UTC));
             if (filter.untilExclusive() != null) {
-                statement.setObject(parameter++, LocalDateTime.ofInstant(filter.untilExclusive(), ZoneOffset.UTC));
+                statement.setObject(
+                        parameter++,
+                        LocalDateTime.ofInstant(filter.untilExclusive(), ZoneOffset.UTC));
             }
             if (playerUuid != null) {
                 statement.setBytes(parameter++, uuidBytes(playerUuid));
@@ -141,138 +174,224 @@ public final class AccountService extends ContributionApi {
                     if (result.size() == limit) {
                         return new HistoryPage(result, true, true);
                     }
-                    result.add(new TransactionRecord(bytesUuid(rows.getBytes(1)), rows.getString(2), rows.getInt(3),
-                            rows.getInt(4), rows.getString(5), rows.getString(6),
-                            rows.getObject(7, LocalDateTime.class).toInstant(ZoneOffset.UTC)));
+                    result.add(
+                            new TransactionRecord(
+                                    bytesUuid(rows.getBytes(1)),
+                                    rows.getString(2),
+                                    rows.getInt(3),
+                                    rows.getInt(4),
+                                    rows.getString(5),
+                                    rows.getString(6),
+                                    rows.getObject(7, LocalDateTime.class)
+                                            .toInstant(ZoneOffset.UTC)));
                 }
                 return new HistoryPage(result, false, true);
             }
         }
     }
 
-    private static Cursor findCursor(Connection connection, UUID transactionId) throws SQLException {
-        try (PreparedStatement statement = connection.prepareStatement(
-                "SELECT record_no, player_uuid, created_at, type, source, server_id "
-                        + "FROM (SELECT * FROM contribution_transaction UNION ALL SELECT * FROM contribution_transaction_archive) transactions WHERE transaction_id = ?")) {
+    private static Cursor findCursor(Connection connection, UUID transactionId)
+            throws SQLException {
+        try (PreparedStatement statement =
+                connection.prepareStatement(
+                        "SELECT record_no, player_uuid, created_at, type, source, server_id FROM"
+                            + " (SELECT * FROM contribution_transaction UNION ALL SELECT * FROM"
+                            + " contribution_transaction_archive) transactions WHERE transaction_id"
+                            + " = ?")) {
             statement.setBytes(1, uuidBytes(transactionId));
             try (ResultSet rows = statement.executeQuery()) {
-                return rows.next() ? new Cursor(rows.getLong(1), bytesUuid(rows.getBytes(2)),
-                        rows.getObject(3, LocalDateTime.class).toInstant(ZoneOffset.UTC),
-                        rows.getString(4), rows.getString(5), rows.getString(6)) : null;
+                return rows.next()
+                        ? new Cursor(
+                                rows.getLong(1),
+                                bytesUuid(rows.getBytes(2)),
+                                rows.getObject(3, LocalDateTime.class).toInstant(ZoneOffset.UTC),
+                                rows.getString(4),
+                                rows.getString(5),
+                                rows.getString(6))
+                        : null;
             }
         }
     }
 
-    private record Cursor(long recordNo, UUID playerUuid, Instant createdAt,
-                          String type, String source, String serverId) {
-    }
+    private record Cursor(
+            long recordNo,
+            UUID playerUuid,
+            Instant createdAt,
+            String type,
+            String source,
+            String serverId) {}
 
     public CompletableFuture<AccountPage> searchAccounts(String prefix, int limit) {
-        if (prefix.length() > 64 || limit < 1 || limit > 100) throw new IllegalArgumentException("Invalid account search");
+        if (prefix.length() > 64 || limit < 1 || limit > 100)
+            throw new IllegalArgumentException("Invalid account search");
         try {
-            return account(AccountTarget.byUuid(UUID.fromString(prefix))).thenApply(found ->
-                    new AccountPage(found.stream().toList(), false, true));
-        } catch (IllegalArgumentException ignored) { }
-        String pattern = prefix.toLowerCase(Locale.ROOT).replace("!", "!!").replace("%", "!%").replace("_", "!_") + "%";
-        return database.transaction(connection -> {
-            try (var statement = connection.prepareStatement("SELECT player_uuid, player_name, balance, total_income FROM contribution_account "
-                    + "WHERE player_name_normalized LIKE ? ESCAPE '!' ORDER BY player_name_normalized LIMIT ?")) {
-                statement.setString(1, pattern); statement.setInt(2, limit);
-                List<AccountRecord> result = new ArrayList<>();
-                try (var rows = statement.executeQuery()) {
-                    while (rows.next()) result.add(new AccountRecord(bytesUuid(rows.getBytes(1)), rows.getString(2), rows.getInt(3), rows.getInt(4)));
-                }
-                return new AccountPage(result, false, true);
-            }
-        });
+            return account(AccountTarget.byUuid(UUID.fromString(prefix)))
+                    .thenApply(found -> new AccountPage(found.stream().toList(), false, true));
+        } catch (IllegalArgumentException ignored) {
+        }
+        String pattern =
+                prefix.toLowerCase(Locale.ROOT)
+                                .replace("!", "!!")
+                                .replace("%", "!%")
+                                .replace("_", "!_")
+                        + "%";
+        return database.transaction(
+                connection -> {
+                    try (var statement =
+                            connection.prepareStatement(
+                                    "SELECT player_uuid, player_name, balance, total_income FROM"
+                                        + " contribution_account WHERE player_name_normalized LIKE"
+                                        + " ? ESCAPE '!' ORDER BY player_name_normalized LIMIT"
+                                        + " ?")) {
+                        statement.setString(1, pattern);
+                        statement.setInt(2, limit);
+                        List<AccountRecord> result = new ArrayList<>();
+                        try (var rows = statement.executeQuery()) {
+                            while (rows.next())
+                                result.add(
+                                        new AccountRecord(
+                                                bytesUuid(rows.getBytes(1)),
+                                                rows.getString(2),
+                                                rows.getInt(3),
+                                                rows.getInt(4)));
+                        }
+                        return new AccountPage(result, false, true);
+                    }
+                });
     }
 
     public CompletableFuture<AccountPage> allAccountsPage(UUID before, int limit) {
-        return database.transaction(connection -> {
-            if (limit < 1 || limit > 100) {
-                throw new IllegalArgumentException("Invalid account page size");
-            }
-            String cursorName = null;
-            if (before != null) {
-                try (PreparedStatement cursor = connection.prepareStatement(
-                        "SELECT player_name_normalized FROM contribution_account WHERE player_uuid = ?")) {
-                    cursor.setBytes(1, uuidBytes(before));
-                    try (ResultSet rows = cursor.executeQuery()) {
-                        if (!rows.next()) {
-                            return AccountPage.invalidCursor();
-                        }
-                        cursorName = rows.getString(1);
+        return database.transaction(
+                connection -> {
+                    if (limit < 1 || limit > 100) {
+                        throw new IllegalArgumentException("Invalid account page size");
                     }
-                }
-            }
-            try (PreparedStatement statement = connection.prepareStatement(
-                    "SELECT player_uuid, player_name, balance, total_income FROM contribution_account "
-                            + (cursorName == null ? "" : "WHERE player_name_normalized > ? ")
-                            + "ORDER BY player_name_normalized LIMIT ?")) {
-                int parameter = 1;
-                if (cursorName != null) {
-                    statement.setString(parameter++, cursorName);
-                }
-                statement.setInt(parameter, limit + 1);
-                try (ResultSet rows = statement.executeQuery()) {
-                    List<AccountRecord> result = new ArrayList<>();
-                    while (rows.next()) {
-                        if (result.size() == limit) {
-                            return new AccountPage(result, true, true);
+                    String cursorName = null;
+                    if (before != null) {
+                        try (PreparedStatement cursor =
+                                connection.prepareStatement(
+                                        "SELECT player_name_normalized FROM contribution_account"
+                                                + " WHERE player_uuid = ?")) {
+                            cursor.setBytes(1, uuidBytes(before));
+                            try (ResultSet rows = cursor.executeQuery()) {
+                                if (!rows.next()) {
+                                    return AccountPage.invalidCursor();
+                                }
+                                cursorName = rows.getString(1);
+                            }
                         }
-                        result.add(new AccountRecord(bytesUuid(rows.getBytes(1)), rows.getString(2),
-                                rows.getInt(3), rows.getInt(4)));
                     }
-                    return new AccountPage(result, false, true);
-                }
-            }
-        });
+                    try (PreparedStatement statement =
+                            connection.prepareStatement(
+                                    "SELECT player_uuid, player_name, balance, total_income FROM"
+                                            + " contribution_account "
+                                            + (cursorName == null
+                                                    ? ""
+                                                    : "WHERE player_name_normalized > ? ")
+                                            + "ORDER BY player_name_normalized LIMIT ?")) {
+                        int parameter = 1;
+                        if (cursorName != null) {
+                            statement.setString(parameter++, cursorName);
+                        }
+                        statement.setInt(parameter, limit + 1);
+                        try (ResultSet rows = statement.executeQuery()) {
+                            List<AccountRecord> result = new ArrayList<>();
+                            while (rows.next()) {
+                                if (result.size() == limit) {
+                                    return new AccountPage(result, true, true);
+                                }
+                                result.add(
+                                        new AccountRecord(
+                                                bytesUuid(rows.getBytes(1)),
+                                                rows.getString(2),
+                                                rows.getInt(3),
+                                                rows.getInt(4)));
+                            }
+                            return new AccountPage(result, false, true);
+                        }
+                    }
+                });
     }
 
     @Override
     public CompletableFuture<BalanceChangeResult> changeBalance(BalanceChangeRequest request) {
-        return change(request, request == null || request.type() == null ? "EXTERNAL" : request.type().name(),
-                request == null || request.source() == null ? "unknown" : request.source().toString());
+        return change(
+                request,
+                request == null || request.type() == null ? "EXTERNAL" : request.type().name(),
+                request == null || request.source() == null
+                        ? "unknown"
+                        : request.source().toString());
     }
 
-    public CompletableFuture<BalanceChangeResult> changeAdmin(BalanceChangeRequest request, String operator) {
+    public CompletableFuture<BalanceChangeResult> changeAdmin(
+            BalanceChangeRequest request, String operator) {
         return change(request, "ADMIN", "command-" + operator);
     }
 
-    private CompletableFuture<BalanceChangeResult> change(BalanceChangeRequest request, String storedType, String operator) {
+    private CompletableFuture<BalanceChangeResult> change(
+            BalanceChangeRequest request, String storedType, String operator) {
         UUID id = request == null ? null : request.idempotencyId();
         BalanceChangeResult invalid = validate(request);
         if (invalid != null) {
             return CompletableFuture.completedFuture(invalid);
         }
         byte[] hash = requestHash(request, storedType);
-        byte[] legacyHash = request.affectTotalIncome() == (request.amount() > 0 && request.type() != BalanceChangeType.REFUND)
-                ? requestHash(request, storedType, false) : null;
-        return database.transaction(connection -> apply(connection, request, storedType, operator, hash, legacyHash))
-                .exceptionallyCompose(error -> {
-                    ContributionMod.LOGGER.warn("Account operation needs idempotency recovery: id={} error={}",
-                            id, error.getClass().getSimpleName());
-                    return database.transaction(connection -> {
-                        BalanceChangeResult replay = findReplay(connection, request.idempotencyId(), hash, legacyHash);
-                        if (replay != null) {
-                            return replay;
-                        }
-                        throw new SQLException("Account transaction failed", error);
-                    }).exceptionally(ignored -> BalanceChangeResult.rejected(
-                            BalanceChangeStatus.DATABASE_UNAVAILABLE, id, "数据服务暂时不可用，请稍后重试"));
-                });
+        byte[] legacyHash =
+                request.affectTotalIncome()
+                                == (request.amount() > 0
+                                        && request.type() != BalanceChangeType.REFUND)
+                        ? requestHash(request, storedType, false)
+                        : null;
+        return database.transaction(
+                        connection ->
+                                apply(connection, request, storedType, operator, hash, legacyHash))
+                .exceptionallyCompose(
+                        error -> {
+                            ContributionMod.LOGGER.warn(
+                                    "Account operation needs idempotency recovery: id={} error={}",
+                                    id,
+                                    error.getClass().getSimpleName());
+                            return database.transaction(
+                                            connection -> {
+                                                BalanceChangeResult replay =
+                                                        findReplay(
+                                                                connection,
+                                                                request.idempotencyId(),
+                                                                hash,
+                                                                legacyHash);
+                                                if (replay != null) {
+                                                    return replay;
+                                                }
+                                                throw new SQLException(
+                                                        "Account transaction failed", error);
+                                            })
+                                    .exceptionally(
+                                            ignored ->
+                                                    BalanceChangeResult.rejected(
+                                                            BalanceChangeStatus
+                                                                    .DATABASE_UNAVAILABLE,
+                                                            id,
+                                                            "数据服务暂时不可用，请稍后重试"));
+                        });
     }
 
-    private BalanceChangeResult apply(Connection connection, BalanceChangeRequest request, String storedType,
-                                      String operator, byte[] hash, byte[] legacyHash) throws SQLException {
-        BalanceChangeResult replay = findReplay(connection, request.idempotencyId(), hash, legacyHash);
+    private BalanceChangeResult apply(
+            Connection connection,
+            BalanceChangeRequest request,
+            String storedType,
+            String operator,
+            byte[] hash,
+            byte[] legacyHash)
+            throws SQLException {
+        BalanceChangeResult replay =
+                findReplay(connection, request.idempotencyId(), hash, legacyHash);
         if (replay != null) {
             return replay;
         }
         Optional<AccountRecord> found = findAccount(connection, request.target(), true);
         if (found.isEmpty()) {
-            return BalanceChangeResult.rejected(BalanceChangeStatus.ACCOUNT_NOT_FOUND,
-                    request.idempotencyId(), "未找到该玩家账户");
+            return BalanceChangeResult.rejected(
+                    BalanceChangeStatus.ACCOUNT_NOT_FOUND, request.idempotencyId(), "未找到该玩家账户");
         }
         AccountRecord account = found.get();
         replay = findReplay(connection, request.idempotencyId(), hash, legacyHash);
@@ -281,32 +400,36 @@ public final class AccountService extends ContributionApi {
         }
         long next = (long) account.balance() + request.amount();
         if (next < 0) {
-            return BalanceChangeResult.rejected(BalanceChangeStatus.INSUFFICIENT_BALANCE,
-                    request.idempotencyId(), "余额不足");
+            return BalanceChangeResult.rejected(
+                    BalanceChangeStatus.INSUFFICIENT_BALANCE, request.idempotencyId(), "余额不足");
         }
         int income = request.affectTotalIncome() ? request.amount() : 0;
         long nextIncome = (long) account.totalIncome() + income;
         if (nextIncome < 0) {
-            return BalanceChangeResult.rejected(BalanceChangeStatus.INSUFFICIENT_BALANCE,
-                    request.idempotencyId(), "历史总收入不足");
+            return BalanceChangeResult.rejected(
+                    BalanceChangeStatus.INSUFFICIENT_BALANCE, request.idempotencyId(), "历史总收入不足");
         }
         if (next > Integer.MAX_VALUE || nextIncome > Integer.MAX_VALUE) {
-            return BalanceChangeResult.rejected(BalanceChangeStatus.BALANCE_OVERFLOW,
-                    request.idempotencyId(), "余额或历史总收入超过上限");
+            return BalanceChangeResult.rejected(
+                    BalanceChangeStatus.BALANCE_OVERFLOW, request.idempotencyId(), "余额或历史总收入超过上限");
         }
         UUID transactionId = UUID.randomUUID();
-        try (PreparedStatement update = connection.prepareStatement(
-                "UPDATE contribution_account SET balance = ?, total_income = total_income + ?, "
-                        + "updated_at = CURRENT_TIMESTAMP(6) WHERE player_uuid = ?")) {
+        try (PreparedStatement update =
+                connection.prepareStatement(
+                        "UPDATE contribution_account SET balance = ?, total_income = total_income +"
+                                + " ?, updated_at = CURRENT_TIMESTAMP(6) WHERE player_uuid = ?")) {
             update.setInt(1, (int) next);
             update.setInt(2, income);
             update.setBytes(3, uuidBytes(account.playerUuid()));
             update.executeUpdate();
         }
-        try (PreparedStatement insert = connection.prepareStatement(
-                "INSERT INTO contribution_transaction (transaction_id, idempotency_id, request_hash, player_uuid, "
-                        + "player_name, amount, income_delta, balance_before, balance_after, type, source, reason, "
-                        + "operator, server_id, created_at, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP(6), ?)")) {
+        try (PreparedStatement insert =
+                connection.prepareStatement(
+                        "INSERT INTO contribution_transaction (transaction_id, idempotency_id,"
+                            + " request_hash, player_uuid, player_name, amount, income_delta,"
+                            + " balance_before, balance_after, type, source, reason, operator,"
+                            + " server_id, created_at, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,"
+                            + " ?, ?, ?, ?, CURRENT_TIMESTAMP(6), ?)")) {
             insert.setBytes(1, uuidBytes(transactionId));
             insert.setBytes(2, uuidBytes(request.idempotencyId()));
             insert.setBytes(3, hash);
@@ -324,14 +447,18 @@ public final class AccountService extends ContributionApi {
             insert.setString(15, request.note());
             insert.executeUpdate();
         }
-        return BalanceChangeResult.success(request.idempotencyId(), transactionId, account.balance(), (int) next, false);
+        return BalanceChangeResult.success(
+                request.idempotencyId(), transactionId, account.balance(), (int) next, false);
     }
 
-    private static BalanceChangeResult findReplay(Connection connection, UUID id, byte[] hash,
-                                                  byte[] legacyHash) throws SQLException {
-        try (PreparedStatement statement = connection.prepareStatement(
-                "SELECT transaction_id, request_hash, balance_before, balance_after "
-                        + "FROM (SELECT * FROM contribution_transaction UNION ALL SELECT * FROM contribution_transaction_archive) transactions WHERE idempotency_id = ?")) {
+    private static BalanceChangeResult findReplay(
+            Connection connection, UUID id, byte[] hash, byte[] legacyHash) throws SQLException {
+        try (PreparedStatement statement =
+                connection.prepareStatement(
+                        "SELECT transaction_id, request_hash, balance_before, balance_after FROM"
+                            + " (SELECT * FROM contribution_transaction UNION ALL SELECT * FROM"
+                            + " contribution_transaction_archive) transactions WHERE idempotency_id"
+                            + " = ?")) {
             statement.setBytes(1, uuidBytes(id));
             try (ResultSet rows = statement.executeQuery()) {
                 if (!rows.next()) {
@@ -340,19 +467,24 @@ public final class AccountService extends ContributionApi {
                 byte[] storedHash = rows.getBytes(2);
                 if (!MessageDigest.isEqual(hash, storedHash)
                         && (legacyHash == null || !MessageDigest.isEqual(legacyHash, storedHash))) {
-                    return BalanceChangeResult.rejected(BalanceChangeStatus.IDEMPOTENCY_CONFLICT,
-                            id, "幂等 ID 已用于不同请求");
+                    return BalanceChangeResult.rejected(
+                            BalanceChangeStatus.IDEMPOTENCY_CONFLICT, id, "幂等 ID 已用于不同请求");
                 }
-                return BalanceChangeResult.success(id, bytesUuid(rows.getBytes(1)), rows.getInt(3), rows.getInt(4), true);
+                return BalanceChangeResult.success(
+                        id, bytesUuid(rows.getBytes(1)), rows.getInt(3), rows.getInt(4), true);
             }
         }
     }
 
-    private static Optional<AccountRecord> findAccount(Connection connection, AccountTarget target, boolean lock)
-            throws SQLException {
-        String sql = "SELECT player_uuid, player_name, balance, total_income FROM contribution_account WHERE "
-                + (target.playerUuid() != null ? "player_uuid = ?" : "player_name_normalized = ?")
-                + (lock ? " FOR UPDATE" : "");
+    private static Optional<AccountRecord> findAccount(
+            Connection connection, AccountTarget target, boolean lock) throws SQLException {
+        String sql =
+                "SELECT player_uuid, player_name, balance, total_income FROM contribution_account"
+                        + " WHERE "
+                        + (target.playerUuid() != null
+                                ? "player_uuid = ?"
+                                : "player_name_normalized = ?")
+                        + (lock ? " FOR UPDATE" : "");
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             if (target.playerUuid() != null) {
                 statement.setBytes(1, uuidBytes(target.playerUuid()));
@@ -363,8 +495,12 @@ public final class AccountService extends ContributionApi {
                 if (!rows.next()) {
                     return Optional.empty();
                 }
-                return Optional.of(new AccountRecord(bytesUuid(rows.getBytes(1)), rows.getString(2),
-                        rows.getInt(3), rows.getInt(4)));
+                return Optional.of(
+                        new AccountRecord(
+                                bytesUuid(rows.getBytes(1)),
+                                rows.getString(2),
+                                rows.getInt(3),
+                                rows.getInt(4)));
             }
         }
     }
@@ -374,31 +510,40 @@ public final class AccountService extends ContributionApi {
         if (request == null || id == null || request.target() == null || request.type() == null) {
             return BalanceChangeResult.rejected(BalanceChangeStatus.INVALID_AMOUNT, id, "请求参数不完整");
         }
-        if (request.amount() == 0 || (request.type() == BalanceChangeType.REFUND && request.amount() < 0)) {
-            return BalanceChangeResult.rejected(BalanceChangeStatus.INVALID_AMOUNT, id, "数量或退款类型无效");
+        if (request.amount() == 0
+                || (request.type() == BalanceChangeType.REFUND && request.amount() < 0)) {
+            return BalanceChangeResult.rejected(
+                    BalanceChangeStatus.INVALID_AMOUNT, id, "数量或退款类型无效");
         }
         if (request.type() == BalanceChangeType.REFUND && request.affectTotalIncome()) {
-            return BalanceChangeResult.rejected(BalanceChangeStatus.INVALID_AMOUNT, id, "退款不影响历史总收入");
+            return BalanceChangeResult.rejected(
+                    BalanceChangeStatus.INVALID_AMOUNT, id, "退款不影响历史总收入");
         }
-        if (request.source() == null || request.source().toString().length() > 128
-                || !validText(request.reason(), false) || !validText(request.note(), true)) {
+        if (request.source() == null
+                || request.source().toString().length() > 128
+                || !validText(request.reason(), false)
+                || !validText(request.note(), true)) {
             return BalanceChangeResult.rejected(BalanceChangeStatus.INVALID_TEXT, id, "来源、原因或备注无效");
         }
         return null;
     }
 
     private static boolean validText(String text, boolean optional) {
-        return text != null && (optional || !text.isBlank()) && text.codePointCount(0, text.length()) <= 64;
+        return text != null
+                && (optional || !text.isBlank())
+                && text.codePointCount(0, text.length()) <= 64;
     }
 
     private static byte[] requestHash(BalanceChangeRequest request, String storedType) {
         return requestHash(request, storedType, true);
     }
 
-    private static byte[] requestHash(BalanceChangeRequest request, String storedType, boolean includeIncomeFlag) {
-        String normalized = request.target().playerUuid() != null
-                ? request.target().playerUuid().toString()
-                : request.target().playerName().toLowerCase(Locale.ROOT);
+    private static byte[] requestHash(
+            BalanceChangeRequest request, String storedType, boolean includeIncomeFlag) {
+        String normalized =
+                request.target().playerUuid() != null
+                        ? request.target().playerUuid().toString()
+                        : request.target().playerName().toLowerCase(Locale.ROOT);
         StringBuilder value = new StringBuilder();
         appendHashField(value, storedType);
         appendHashField(value, normalized);
@@ -407,9 +552,11 @@ public final class AccountService extends ContributionApi {
         appendHashField(value, request.source().toString());
         appendHashField(value, request.reason());
         appendHashField(value, request.note());
-        if (includeIncomeFlag) appendHashField(value, Boolean.toString(request.affectTotalIncome()));
+        if (includeIncomeFlag)
+            appendHashField(value, Boolean.toString(request.affectTotalIncome()));
         try {
-            return MessageDigest.getInstance("SHA-256").digest(value.toString().getBytes(StandardCharsets.UTF_8));
+            return MessageDigest.getInstance("SHA-256")
+                    .digest(value.toString().getBytes(StandardCharsets.UTF_8));
         } catch (NoSuchAlgorithmException impossible) {
             throw new IllegalStateException(impossible);
         }
@@ -420,7 +567,10 @@ public final class AccountService extends ContributionApi {
     }
 
     public static byte[] uuidBytes(UUID uuid) {
-        return ByteBuffer.allocate(16).putLong(uuid.getMostSignificantBits()).putLong(uuid.getLeastSignificantBits()).array();
+        return ByteBuffer.allocate(16)
+                .putLong(uuid.getMostSignificantBits())
+                .putLong(uuid.getLeastSignificantBits())
+                .array();
     }
 
     public static UUID bytesUuid(byte[] bytes) {

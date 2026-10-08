@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="贡献值命令用于打开主界面、查询账户与流水、查看统计和排行榜，以及诊断服务状态。"><title>贡献值命令 · 贡献值模组维基 0.2.6</title><link rel="stylesheet" href="assets/wiki.css"><script defer src="assets/search-index.js"></script><script defer src="assets/site.js"></script></head><body data-current-page="commands-contribution"><a class="skip-link" href="#commands-contribution">跳到正文</a><div class="shell"><aside id="site-navigation" class="sidebar" aria-label="站点导航">
+<a class="brand" href="index.html#home">
+<span class="brand-mark" aria-hidden="true"></span>
+<span class="brand-text"><span class="brand-title">贡献值维基</span><span class="brand-tagline">贡献值经济 · 行业建设度 · 股票市场 · 系统商店</span></span>
+</a>
+<div class="sidebar-search"><label class="visually-hidden" for="site-search">搜索本维基</label><input id="site-search" type="search" placeholder="搜索页面与章节…" autocomplete="off"><div id="site-search-results" class="search-results" hidden></div></div>
+<div class="nav">
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-0"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开始阅读</span></button></h3>
+<ul id="nav-list-0">
+<li><a href="index.html#home" data-nav="home">贡献值模组维基</a></li>
+<li><a href="basics.html#basics" data-nav="basics">玩法入门</a></li>
+<li><a href="features.html#features" data-nav="features">玩法总览</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-1"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">贡献值与建设</span></button></h3>
+<ul id="nav-list-1">
+<li><a href="account.html#account" data-nav="account">贡献值账户</a></li>
+<li><a href="development.html#development" data-nav="development">行业建设度</a></li>
+<li><a href="statistics.html#statistics" data-nav="statistics">玩家统计</a></li>
+<li><a href="rewards.html#rewards" data-nav="rewards">建设度奖励</a></li>
+<li><a href="checkin.html#checkin" data-nav="checkin">签到与活动</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-2"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">经济交易</span></button></h3>
+<ul id="nav-list-2">
+<li><a href="shop.html#shop" data-nav="shop">系统商店</a></li>
+<li><a href="stock.html#stock" data-nav="stock">股票市场</a></li>
+<li><a href="stock-mechanics.html#stock-mechanics" data-nav="stock-mechanics">股价计算</a></li>
+<li><a href="swan.html#swan" data-nav="swan">黑天鹅事件</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-3"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">物品与进度</span></button></h3>
+<ul id="nav-list-3">
+<li><a href="items.html#items" data-nav="items">物品与装备</a></li>
+<li><a href="special-items.html#special-items" data-nav="special-items">特殊道具</a></li>
+<li><a href="recipes.html#recipes" data-nav="recipes">配方目录</a></li>
+<li><a href="recipes-basics.html#recipes-basics" data-nav="recipes-basics">基础配方</a></li>
+<li><a href="recipes-wings.html#recipes-wings" data-nav="recipes-wings">添翼配方</a></li>
+<li><a href="recipes-reinforcement.html#recipes-reinforcement" data-nav="recipes-reinforcement">强化配方</a></li>
+<li><a href="recipes-armor.html#recipes-armor" data-nav="recipes-armor">主题盔甲配方</a></li>
+<li><a href="recipes-hats.html#recipes-hats" data-nav="recipes-hats">帽子配方</a></li>
+<li><a href="recipes-special.html#recipes-special" data-nav="recipes-special">特殊道具配方</a></li>
+<li><a href="weapon-skins.html#weapon-skins" data-nav="weapon-skins">武器皮肤</a></li>
+<li><a href="advancements.html#advancements" data-nav="advancements">更多乐趣进度</a></li>
+<li><a href="advancement-details.html#advancement-details" data-nav="advancement-details">进度条件</a></li>
+<li><a href="resourcepack.html#resourcepack" data-nav="resourcepack">资源包与外观</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-4"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">操作与命令</span></button></h3>
+<ul id="nav-list-4">
+<li><a href="interface.html#interface" data-nav="interface">界面操作</a></li>
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="#commands-contribution" data-nav="commands-contribution">贡献值命令</a></li>
+<li><a href="commands-checkin.html#commands-checkin" data-nav="commands-checkin">签到命令</a></li>
+<li><a href="commands-stock.html#commands-stock" data-nav="commands-stock">股票命令</a></li>
+<li><a href="commands-shop.html#commands-shop" data-nav="commands-shop">商店命令</a></li>
+<li><a href="commands-account.html#commands-account" data-nav="commands-account">账户管理命令</a></li>
+<li><a href="commands-shop-admin.html#commands-shop-admin" data-nav="commands-shop-admin">商店管理命令</a></li>
+<li><a href="permissions.html#permissions" data-nav="permissions">操作权限</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-5"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">服务器管理</span></button></h3>
+<ul id="nav-list-5">
+<li><a href="installation.html#installation" data-nav="installation">安装</a></li>
+<li><a href="config.html#config" data-nav="config">服务器配置</a></li>
+<li><a href="data.html#data" data-nav="data">数据与存档</a></li>
+<li><a href="operations.html#operations" data-nav="operations">服务器维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-6"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开发与维护</span></button></h3>
+<ul id="nav-list-6">
+<li><a href="api.html#api" data-nav="api">公共接口</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-tools"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">工具</span></button></h3>
+<ul id="nav-list-tools">
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands.xlsx">下载命令工作簿</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+</div>
+<div class="sidebar-footer">版本 0.2.6 · Minecraft 26.3<br>Fabric Loader 0.19.5 · Java 25</div>
+</aside><main class="main"><header class="topbar"><nav class="topbar-crumbs" aria-label="面包屑"><a href="index.html">首页</a><span> / 贡献值命令</span></nav><span class="topbar-spacer"></span><button id="mobile-nav" type="button" aria-expanded="false" aria-controls="site-navigation">导航</button><button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">切换主题</button></header><div class="wiki-page" id="commands-contribution" data-page-title="贡献值命令">
+<div class="content-panel">
+<div class="page-head">
+<h1 class="page-title">贡献值命令</h1>
+<p class="page-summary">贡献值命令用于打开主界面、查询账户与流水、查看统计和排行榜，以及诊断服务状态。</p>
+</div>
+<div class="page-columns">
+<div class="article">
+<div class="toc"><input class="toc-toggle" type="checkbox" id="toc-commands-contribution" checked><label class="toc-head" for="toc-commands-contribution">目录 <span class="toc-toggle-label"><span class="toc-show">[显示]</span><span class="toc-hide">[隐藏]</span></span></label><ol><li><a href="#commands-contribution-用途">使用</a></li><li><a href="#commands-contribution-示例">示例</a></li><li><a href="#commands-contribution-命令路径">本模块命令路径</a></li></ol></div>
+<section class="wiki-section" id="commands-contribution-用途">
+<h2>使用</h2>
+<p>这一组命令是贡献值系统面向所有玩家的入口：打开图形界面、查询余额与流水、按游标翻页。除账户列表与全服流水外，普通玩家都可以使用自己的数据部分。</p>
+<ul><li><code>/contribution</code> 打开首页；已安装客户端模组时使用专用界面，否则使用原版对话界面。</li><li><code>/contribution leaderboard</code> 打开排行榜，默认富豪榜，按当前贡献余额排序；其他榜在界面内切换。</li><li><code>/contribution diagnose</code> 需要管理员等级 2 或控制台权限，诊断并触发安全恢复，聊天栏反馈初始及复查报告。</li><li><code>/contribution ui &lt;页面&gt;</code> 主要供界面按钮调用，也可以在聊天栏直接使用。</li><li>账户列表与游标命令属于管理员工具，返回的游标由上一页提供，不需要手动构造。</li><li>流水查询默认每页 20 条，单次最多 100 条；普通玩家只能查询最近 90 天的本人流水。</li></ul>
+<p><code>/contribution ui</code> 接受 <code>home</code>、<code>account self</code>、<code>history self</code>、<code>industries</code>、<code>checkin</code>、<code>admin</code>、<code>accounts</code>、<code>admin_search</code>、<code>back</code>、<code>previous</code>、<code>close</code> 等页面标识，语义见<a class="wikilink" href="interface.html#interface">界面操作</a>。</p>
+</section>
+<section class="wiki-section" id="commands-contribution-示例">
+<h2>示例</h2>
+<pre class="code" data-language="text"><code>/contribution
+/contribution query
+/contribution stats
+/contribution history</code></pre>
+</section>
+<section class="wiki-section" id="commands-contribution-命令路径"><h2>本模块命令路径</h2>
+<p>共 19 条命令路径，权限、示例与参数要求列在各条目中。</p>
+<div class="cmd-list">
+<article class="cmd" data-search="贡献值 /contribution 打开首页；已安装客户端模组使用专用界面，否则使用原版对话界面。 玩家 /contribution 经济数据存于服务端。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开首页；已安装客户端模组使用专用界面，否则使用原版对话界面。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/contribution</code></dd>
+<dt>参数与限制</dt><dd>经济数据存于服务端。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="贡献值 /contribution accounts 按唯一标识符游标分页列出账户。 管理员 /contribution accounts 账户列表支持点击查看账户与统计。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution accounts</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>按唯一标识符游标分页列出账户。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution accounts</code></dd>
+<dt>参数与限制</dt><dd>账户列表支持点击查看账户与统计。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="贡献值 /contribution accounts-next &lt;cursor&gt; 从指定唯一标识符游标继续账户列表。 管理员 /contribution accounts-next &lt;上一页返回的唯一标识符&gt; 内部翻页命令；使用真实游标。 cursor: 单词（不能含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution accounts-next &lt;cursor&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>从指定唯一标识符游标继续账户列表。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution accounts-next &lt;上一页返回的唯一标识符&gt;</code></dd>
+<dt>参数与限制</dt><dd>内部翻页命令；使用真实游标。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>cursor: 单词（不能含空格）;</code></details>
+</article>
+<article class="cmd" data-search="贡献值 /contribution bot_check 清理 bot_ 前缀机器人账户及关联数据。 管理员 /contribution bot_check 破坏性清理：执行前备份数据库。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution bot_check</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>清理 bot_ 前缀机器人账户及关联数据。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution bot_check</code></dd>
+<dt>参数与限制</dt><dd>破坏性清理：执行前备份数据库。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="贡献值 /contribution diagnose 诊断数据库、市场时钟、规则、统计和核算，自动触发安全恢复并反馈聊天报告。 管理员（管理员等级 2）或控制台 /contribution diagnose 每实例一个会话、15 秒冷却；异步查询，约 100tick 后复查。仅重连与正常任务重试，不删数据、不跳过关账、不强制解锁；配置冲突等需人工处理。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution diagnose</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>诊断数据库、市场时钟、规则、统计和核算，自动触发安全恢复并反馈聊天报告。</dd>
+<dt>权限</dt><dd>管理员（管理员等级 2）或控制台</dd>
+<dt>示例</dt><dd><code>/contribution diagnose</code></dd>
+<dt>参数与限制</dt><dd>每实例一个会话、15 秒冷却；异步查询，约 100tick 后复查。仅重连与正常任务重试，不删数据、不跳过关账、不强制解锁；配置冲突等需人工处理。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="贡献值 /contribution history 查看自身或指定账户流水。 自己：玩家；他人或全服：管理员 /contribution history 普通玩家查询窗口 90 天；管理员最长 365 天。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution history</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>查看自身或指定账户流水。</dd>
+<dt>权限</dt><dd>自己：玩家；他人或全服：管理员</dd>
+<dt>示例</dt><dd><code>/contribution history</code></dd>
+<dt>参数与限制</dt><dd>普通玩家查询窗口 90 天；管理员最长 365 天。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="贡献值 /contribution history &lt;target&gt; 查看自身或指定账户流水。 自己：玩家；他人或全服：管理员 /contribution history 普通玩家查询窗口 90 天；管理员最长 365 天。 target: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution history &lt;target&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>查看自身或指定账户流水。</dd>
+<dt>权限</dt><dd>自己：玩家；他人或全服：管理员</dd>
+<dt>示例</dt><dd><code>/contribution history</code></dd>
+<dt>参数与限制</dt><dd>普通玩家查询窗口 90 天；管理员最长 365 天。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>target: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="贡献值 /contribution history-next &lt;cursor&gt; 按流水游标继续查询，不使用 offset 扫描。 自己：玩家；指定目标：管理员 /contribution history-next &lt;游标&gt; 游标由上一页提供。 cursor: 单词（不能含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution history-next &lt;cursor&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>按流水游标继续查询，不使用 OFFSET 扫描。</dd>
+<dt>权限</dt><dd>自己：玩家；指定目标：管理员</dd>
+<dt>示例</dt><dd><code>/contribution history-next &lt;游标&gt;</code></dd>
+<dt>参数与限制</dt><dd>游标由上一页提供。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>cursor: 单词（不能含空格）;</code></details>
+</article>
+<article class="cmd" data-search="贡献值 /contribution history-next &lt;cursor&gt; &lt;target&gt; 按流水游标继续查询，不使用 offset 扫描。 自己：玩家；指定目标：管理员 /contribution history-next &lt;游标&gt; 游标由上一页提供。 cursor: 单词（不能含空格）; target: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution history-next &lt;cursor&gt; &lt;target&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>按流水游标继续查询，不使用 OFFSET 扫描。</dd>
+<dt>权限</dt><dd>自己：玩家；指定目标：管理员</dd>
+<dt>示例</dt><dd><code>/contribution history-next &lt;游标&gt;</code></dd>
+<dt>参数与限制</dt><dd>游标由上一页提供。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>cursor: 单词（不能含空格）; target: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="贡献值 /contribution history-search &lt;request&gt; 按范围、类型和时间筛选流水。 自己：玩家；他人/全服：管理员 /contribution history-search self type=shop_buy 范围 self、玩家名称/唯一标识符或管理员全服 *；条件 type/source/server/from/to=值。日期 yyyy-mm-dd 按 utc，显示按配置时区。 request: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution history-search &lt;request&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>按范围、类型和时间筛选流水。</dd>
+<dt>权限</dt><dd>自己：玩家；他人/全服：管理员</dd>
+<dt>示例</dt><dd><code>/contribution history-search self type=SHOP_BUY</code></dd>
+<dt>参数与限制</dt><dd>范围 self、玩家名称/唯一标识符或管理员全服 *；条件 type/source/server/from/to=值。日期 YYYY-MM-DD 按 UTC，显示按配置时区。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>request: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="贡献值 /contribution history-search-next &lt;cursor&gt; &lt;request&gt; 在相同筛选条件下继续游标分页。 自己：玩家；他人/全服：管理员 /contribution history-search-next &lt;游标&gt; self type=shop_buy 保留原查询条件。 cursor: 单词（不能含空格）; request: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution history-search-next &lt;cursor&gt; &lt;request&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>在相同筛选条件下继续游标分页。</dd>
+<dt>权限</dt><dd>自己：玩家；他人/全服：管理员</dd>
+<dt>示例</dt><dd><code>/contribution history-search-next &lt;游标&gt; self type=SHOP_BUY</code></dd>
+<dt>参数与限制</dt><dd>保留原查询条件。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>cursor: 单词（不能含空格）; request: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="贡献值 /contribution leaderboard 打开排行榜，默认展示按当前贡献余额排序的富豪榜。 玩家 /contribution leaderboard 首页也有入口；可切换历史总收入、总建设度和九行业榜。每榜前 100 名、每页 8 名、缓存 15 秒；未提交的建设度暂不计入。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution leaderboard</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开排行榜，默认展示按当前贡献余额排序的富豪榜。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/contribution leaderboard</code></dd>
+<dt>参数与限制</dt><dd>首页也有入口；可切换历史总收入、总建设度和九行业榜。每榜前 100 名、每页 8 名、缓存 15 秒；未提交的建设度暂不计入。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="贡献值 /contribution query 查看自身或指定玩家余额、历史总收入。 自己：玩家；指定目标：管理员 /contribution query caozei 目标可为名称或唯一标识符。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution query</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>查看自身或指定玩家余额、历史总收入。</dd>
+<dt>权限</dt><dd>自己：玩家；指定目标：管理员</dd>
+<dt>示例</dt><dd><code>/contribution query CaoZei</code></dd>
+<dt>参数与限制</dt><dd>目标可为名称或唯一标识符。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="贡献值 /contribution query &lt;target&gt; 查看自身或指定玩家余额、历史总收入。 自己：玩家；指定目标：管理员 /contribution query caozei 目标可为名称或唯一标识符。 target: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution query &lt;target&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>查看自身或指定玩家余额、历史总收入。</dd>
+<dt>权限</dt><dd>自己：玩家；指定目标：管理员</dd>
+<dt>示例</dt><dd><code>/contribution query CaoZei</code></dd>
+<dt>参数与限制</dt><dd>目标可为名称或唯一标识符。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>target: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="贡献值 /contribution stats 查看原始放置/挖掘次数与九行业累计建设度。 自己：玩家；他人：管理员 /contribution stats 界面已合并账户与统计；命令仍保留。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution stats</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>查看原始放置/挖掘次数与九行业累计建设度。</dd>
+<dt>权限</dt><dd>自己：玩家；他人：管理员</dd>
+<dt>示例</dt><dd><code>/contribution stats</code></dd>
+<dt>参数与限制</dt><dd>界面已合并账户与统计；命令仍保留。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="贡献值 /contribution stats &lt;target&gt; 查看原始放置/挖掘次数与九行业累计建设度。 自己：玩家；他人：管理员 /contribution stats 界面已合并账户与统计；命令仍保留。 target: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution stats &lt;target&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>查看原始放置/挖掘次数与九行业累计建设度。</dd>
+<dt>权限</dt><dd>自己：玩家；他人：管理员</dd>
+<dt>示例</dt><dd><code>/contribution stats</code></dd>
+<dt>参数与限制</dt><dd>界面已合并账户与统计；命令仍保留。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>target: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="贡献值 /contribution ui 打开指定页面或执行导航；主要供界面按钮使用。 玩家；管理页仍校验管理员权限 /contribution ui home 页面：home、account self、history self、industries、checkin、leaderboards（默认富豪榜）、`leaderboard_industries`、ranking &lt;类别&gt; &lt;0 起页码&gt;、admin、accounts、`admin_search`、back、previous、close。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution ui</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开指定页面或执行导航；主要供界面按钮使用。</dd>
+<dt>权限</dt><dd>玩家；管理页仍校验管理员权限</dd>
+<dt>示例</dt><dd><code>/contribution ui home</code></dd>
+<dt>参数与限制</dt><dd>页面：home、account self、history self、industries、checkin、leaderboards（默认富豪榜）、<code>leaderboard_industries</code>、ranking &lt;类别&gt; &lt;0 起页码&gt;、admin、accounts、<code>admin_search</code>、back、previous、close。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="贡献值 /contribution ui &lt;page&gt; 打开指定页面或执行导航；主要供界面按钮使用。 玩家；管理页仍校验管理员权限 /contribution ui home 页面：home、account self、history self、industries、checkin、leaderboards（默认富豪榜）、`leaderboard_industries`、ranking &lt;类别&gt; &lt;0 起页码&gt;、admin、accounts、`admin_search`、back、previous、close。 page: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution ui &lt;page&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开指定页面或执行导航；主要供界面按钮使用。</dd>
+<dt>权限</dt><dd>玩家；管理页仍校验管理员权限</dd>
+<dt>示例</dt><dd><code>/contribution ui home</code></dd>
+<dt>参数与限制</dt><dd>页面：home、account self、history self、industries、checkin、leaderboards（默认富豪榜）、<code>leaderboard_industries</code>、ranking &lt;类别&gt; &lt;0 起页码&gt;、admin、accounts、<code>admin_search</code>、back、previous、close。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>page: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="贡献值 /contribution ui_vanilla 强制使用原版对话界面，方便调试兼容性。 玩家 /contribution ui_vanilla 重新 /contribution 恢复自动选择。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution ui_vanilla</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>强制使用原版对话界面，方便调试兼容性。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/contribution ui_vanilla</code></dd>
+<dt>参数与限制</dt><dd>重新 /contribution 恢复自动选择。</dd>
+</dl>
+
+</article>
+</div>
+</section>
+<div class="page-footer">贡献值模组维基 · 0.2.6 · <a href="documentation.html#documentation">维基维护</a></div>
+</div>
+<aside class="page-info">
+<div class="page-info-inner">
+<div class="page-info-head">条目概要</div>
+<table class="infobox">
+<tr><th>命令根</th><td><code>/contribution</code></td></tr>
+<tr><th>权限</th><td>见各命令权限栏</td></tr>
+<tr><th>命令路径</th><td>19 条</td></tr>
+</table>
+</div>
+<table class="navbox"><tbody>
+<tr><th class="navbox-top" colspan="2"><span class="navbox-title">操作与命令</span></th></tr>
+<tr><th>相关页面</th><td><ul class="hlist"><li><a href="interface.html#interface">界面操作</a></li><li><a href="commands.html#commands">命令速查</a></li><li><a href="commands-checkin.html#commands-checkin">签到命令</a></li><li><a href="commands-stock.html#commands-stock">股票命令</a></li></ul></td></tr>
+</tbody></table>
+<div class="catlinks"><span>分类：</span><ul><li>操作与命令</li></ul></div>
+</aside>
+</div>
+</div>
+</div></main></div></body></html>

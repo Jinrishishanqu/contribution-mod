@@ -6,9 +6,6 @@
   "result": {
     "id": "minecraft:leather_chestplate",
     "components": {
-      "minecraft:item_name": {
-        "text": "强化皮革胸甲"
-      },
       "minecraft:max_damage": 592,
       "minecraft:damage_resistant": {
         "types": "#minecraft:is_fire"
@@ -34,6 +31,13 @@
           "operation": "add_value",
           "slot": "chest",
           "id": "contribution:reinforced_chestplate_knockback"
+        }
+      ],
+      "minecraft:lore": [
+        {
+          "color": "gray",
+          "italic": false,
+          "text": "下界合金强化"
         }
       ]
     }

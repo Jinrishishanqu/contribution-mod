@@ -1,0 +1,97 @@
+{
+  "id": "features",
+  "title": "玩法总览",
+  "summary": "模组的玩法分为贡献值经济、行业建设、股票交易和物品扩展，各模块共享账户与统计数据。",
+  "sections": [
+    {
+      "title": "玩法分类",
+      "blocks": [
+        {
+          "type": "gallery",
+          "items": [
+            {
+              "key": "minecraft:emerald",
+              "label": "账户"
+            },
+            {
+              "key": "minecraft:iron_pickaxe",
+              "label": "建设度"
+            },
+            {
+              "key": "minecraft:clock",
+              "label": "签到"
+            },
+            {
+              "key": "minecraft:chest",
+              "label": "商店"
+            },
+            {
+              "key": "minecraft:gold_ingot",
+              "label": "股票"
+            },
+            {
+              "key": "model:contribution:armor/nano_chestplate",
+              "label": "纳米胸甲"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "columns": [
+            "类别",
+            "内容",
+            "查阅"
+          ],
+          "rows": [
+            [
+              "贡献值",
+              "账户、建设度奖励、每日签到与活动奖励",
+              "[账户](page:account) · [奖励](page:rewards) · [签到](page:checkin)"
+            ],
+            [
+              "行业建设",
+              "九行业的活动计量、个人统计、每日结算与繁荣度",
+              "[行业建设度](page:development) · [玩家统计](page:statistics)"
+            ],
+            [
+              "经济交易",
+              "系统商店、股票买卖、股价与黑天鹅事件",
+              "[商店](page:shop) · [股票](page:stock)"
+            ],
+            [
+              "装备与道具",
+              "添翼、强化、主题盔甲、帽子和特殊道具",
+              "[物品与装备](page:items) · [特殊道具](page:special-items)"
+            ],
+            [
+              "挑战与外观",
+              "更多乐趣进度、六类武器皮肤与资源包",
+              "[进度](page:advancements) · [皮肤](page:weapon-skins)"
+            ]
+          ]
+        }
+      ],
+      "id": "已实现"
+    },
+    {
+      "title": "模块之间的关系",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "玩家活动同时记录个人统计和服务器行业建设度。个人建设度用于发放贡献值奖励，服务器每日建设度用于计算行业繁荣度。股票市场根据繁荣度和自适应尺度调整股价。签到奖励、商店消费和股票交易记录在贡献值账户流水中。"
+        }
+      ],
+      "id": "模块之间的关系"
+    },
+    {
+      "title": "玩法范围",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "行业活动按九个内置行业记录；服务器管理员通过标签和事件规则调整计量范围。商店由系统出售商品，股票由系统按当日价格成交。客户端界面、原版对话界面和文字命令共享服务器数据。"
+        }
+      ],
+      "id": "尚未实现"
+    }
+  ]
+}

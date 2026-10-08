@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="行业建设度按九个行业记录有效建设、生产和游玩活动，并在每日结算后计算行业繁荣度。"><title>行业建设度 · 贡献值模组维基 0.2.6</title><link rel="stylesheet" href="assets/wiki.css"><script defer src="assets/search-index.js"></script><script defer src="assets/site.js"></script></head><body data-current-page="development"><a class="skip-link" href="#development">跳到正文</a><div class="shell"><aside id="site-navigation" class="sidebar" aria-label="站点导航">
+<a class="brand" href="index.html#home">
+<span class="brand-mark" aria-hidden="true"></span>
+<span class="brand-text"><span class="brand-title">贡献值维基</span><span class="brand-tagline">贡献值经济 · 行业建设度 · 股票市场 · 系统商店</span></span>
+</a>
+<div class="sidebar-search"><label class="visually-hidden" for="site-search">搜索本维基</label><input id="site-search" type="search" placeholder="搜索页面与章节…" autocomplete="off"><div id="site-search-results" class="search-results" hidden></div></div>
+<div class="nav">
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-0"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开始阅读</span></button></h3>
+<ul id="nav-list-0">
+<li><a href="index.html#home" data-nav="home">贡献值模组维基</a></li>
+<li><a href="basics.html#basics" data-nav="basics">玩法入门</a></li>
+<li><a href="features.html#features" data-nav="features">玩法总览</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-1"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">贡献值与建设</span></button></h3>
+<ul id="nav-list-1">
+<li><a href="account.html#account" data-nav="account">贡献值账户</a></li>
+<li><a href="#development" data-nav="development">行业建设度</a></li>
+<li><a href="statistics.html#statistics" data-nav="statistics">玩家统计</a></li>
+<li><a href="rewards.html#rewards" data-nav="rewards">建设度奖励</a></li>
+<li><a href="checkin.html#checkin" data-nav="checkin">签到与活动</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-2"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">经济交易</span></button></h3>
+<ul id="nav-list-2">
+<li><a href="shop.html#shop" data-nav="shop">系统商店</a></li>
+<li><a href="stock.html#stock" data-nav="stock">股票市场</a></li>
+<li><a href="stock-mechanics.html#stock-mechanics" data-nav="stock-mechanics">股价计算</a></li>
+<li><a href="swan.html#swan" data-nav="swan">黑天鹅事件</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-3"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">物品与进度</span></button></h3>
+<ul id="nav-list-3">
+<li><a href="items.html#items" data-nav="items">物品与装备</a></li>
+<li><a href="special-items.html#special-items" data-nav="special-items">特殊道具</a></li>
+<li><a href="recipes.html#recipes" data-nav="recipes">配方目录</a></li>
+<li><a href="recipes-basics.html#recipes-basics" data-nav="recipes-basics">基础配方</a></li>
+<li><a href="recipes-wings.html#recipes-wings" data-nav="recipes-wings">添翼配方</a></li>
+<li><a href="recipes-reinforcement.html#recipes-reinforcement" data-nav="recipes-reinforcement">强化配方</a></li>
+<li><a href="recipes-armor.html#recipes-armor" data-nav="recipes-armor">主题盔甲配方</a></li>
+<li><a href="recipes-hats.html#recipes-hats" data-nav="recipes-hats">帽子配方</a></li>
+<li><a href="recipes-special.html#recipes-special" data-nav="recipes-special">特殊道具配方</a></li>
+<li><a href="weapon-skins.html#weapon-skins" data-nav="weapon-skins">武器皮肤</a></li>
+<li><a href="advancements.html#advancements" data-nav="advancements">更多乐趣进度</a></li>
+<li><a href="advancement-details.html#advancement-details" data-nav="advancement-details">进度条件</a></li>
+<li><a href="resourcepack.html#resourcepack" data-nav="resourcepack">资源包与外观</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-4"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">操作与命令</span></button></h3>
+<ul id="nav-list-4">
+<li><a href="interface.html#interface" data-nav="interface">界面操作</a></li>
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands-contribution.html#commands-contribution" data-nav="commands-contribution">贡献值命令</a></li>
+<li><a href="commands-checkin.html#commands-checkin" data-nav="commands-checkin">签到命令</a></li>
+<li><a href="commands-stock.html#commands-stock" data-nav="commands-stock">股票命令</a></li>
+<li><a href="commands-shop.html#commands-shop" data-nav="commands-shop">商店命令</a></li>
+<li><a href="commands-account.html#commands-account" data-nav="commands-account">账户管理命令</a></li>
+<li><a href="commands-shop-admin.html#commands-shop-admin" data-nav="commands-shop-admin">商店管理命令</a></li>
+<li><a href="permissions.html#permissions" data-nav="permissions">操作权限</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-5"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">服务器管理</span></button></h3>
+<ul id="nav-list-5">
+<li><a href="installation.html#installation" data-nav="installation">安装</a></li>
+<li><a href="config.html#config" data-nav="config">服务器配置</a></li>
+<li><a href="data.html#data" data-nav="data">数据与存档</a></li>
+<li><a href="operations.html#operations" data-nav="operations">服务器维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-6"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开发与维护</span></button></h3>
+<ul id="nav-list-6">
+<li><a href="api.html#api" data-nav="api">公共接口</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-tools"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">工具</span></button></h3>
+<ul id="nav-list-tools">
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands.xlsx">下载命令工作簿</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+</div>
+<div class="sidebar-footer">版本 0.2.6 · Minecraft 26.3<br>Fabric Loader 0.19.5 · Java 25</div>
+</aside><main class="main"><header class="topbar"><nav class="topbar-crumbs" aria-label="面包屑"><a href="index.html">首页</a><span> / 行业建设度</span></nav><span class="topbar-spacer"></span><button id="mobile-nav" type="button" aria-expanded="false" aria-controls="site-navigation">导航</button><button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">切换主题</button></header><div class="wiki-page" id="development" data-page-title="行业建设度">
+<div class="content-panel">
+<div class="page-head">
+<h1 class="page-title">行业建设度</h1>
+<p class="page-summary">行业建设度按九个行业记录有效建设、生产和游玩活动，并在每日结算后计算行业繁荣度。</p>
+</div>
+<div class="page-columns">
+<div class="article">
+<div class="toc"><input class="toc-toggle" type="checkbox" id="toc-development" checked><label class="toc-head" for="toc-development">目录 <span class="toc-toggle-label"><span class="toc-show">[显示]</span><span class="toc-hide">[隐藏]</span></span></label><ol><li><a href="#development-范围与行业">行业</a></li><li><a href="#development-统计服务器与游戏模式">统计服务器与游戏模式</a></li><li><a href="#development-五类玩家标签">玩家活动</a></li><li><a href="#development-交通距离">交通距离</a></li><li><a href="#development-核算日与每日结算">核算日与每日结算</a></li><li><a href="#development-繁荣度公式">繁荣度公式</a></li><li><a href="#development-补充资料">管理与数据</a></li></ol></div>
+<section class="wiki-section" id="development-范围与行业">
+<h2>行业</h2>
+<figure class="media-figure"><div class="item-gallery compact"><figure class="gallery-item"><img class="item-icon" src="assets/images/icons/minecraft-crafting_table.png" alt="土建园林" width="128" height="128" loading="lazy" decoding="async"><figcaption>土建园林</figcaption></figure><figure class="gallery-item"><img class="item-icon" src="assets/images/icons/minecraft-iron_pickaxe.png" alt="采矿冶金" width="128" height="128" loading="lazy" decoding="async"><figcaption>采矿冶金</figcaption></figure><figure class="gallery-item"><img class="item-icon" src="assets/images/icons/minecraft-redstone.png" alt="能源化工" width="128" height="128" loading="lazy" decoding="async"><figcaption>能源化工</figcaption></figure><figure class="gallery-item"><img class="item-icon" src="assets/images/icons/minecraft-smithing_table.png" alt="加工制造" width="128" height="128" loading="lazy" decoding="async"><figcaption>加工制造</figcaption></figure><figure class="gallery-item"><img class="item-icon" src="assets/images/icons/minecraft-enchanted_book.png" alt="科技魔法" width="128" height="128" loading="lazy" decoding="async"><figcaption>科技魔法</figcaption></figure><figure class="gallery-item"><img class="item-icon" src="assets/images/icons/minecraft-wheat.png" alt="农林牧渔" width="128" height="128" loading="lazy" decoding="async"><figcaption>农林牧渔</figcaption></figure><figure class="gallery-item"><img class="item-icon" src="assets/images/icons/minecraft-bread.png" alt="军工食药" width="128" height="128" loading="lazy" decoding="async"><figcaption>军工食药</figcaption></figure><figure class="gallery-item"><img class="item-icon" src="assets/images/icons/minecraft-minecart.png" alt="流通服务" width="128" height="128" loading="lazy" decoding="async"><figcaption>流通服务</figcaption></figure><figure class="gallery-item"><img class="item-icon" src="assets/images/icons/minecraft-writable_book.png" alt="文教民生" width="128" height="128" loading="lazy" decoding="async"><figcaption>文教民生</figcaption></figure></div></figure>
+<p>有效活动按九个行业累计。个人建设度用于贡献值奖励，服务器行业建设度在每日结算后用于繁荣度计算。</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">行业</th><th scope="col">主要来源</th></tr></thead>
+<tbody>
+<tr><td>土建园林</td><td>放置与合成建筑材料、装饰方块</td></tr>
+<tr><td>采矿冶金</td><td>挖掘矿石、熔炉矿物产物、冶炼</td></tr>
+<tr><td>能源化工</td><td>熔炉化工产物、相关合成</td></tr>
+<tr><td>加工制造</td><td>合成器产物、锻造、铁砧、加工类合成</td></tr>
+<tr><td>科技魔法</td><td>附魔、红石与科技类合成</td></tr>
+<tr><td>农林牧渔</td><td>繁殖、驯服、剪毛、挤奶、钓鱼、农牧合成</td></tr>
+<tr><td>军工食药</td><td>敌对生物击杀、酿造、食物与药品</td></tr>
+<tr><td>流通服务</td><td>村民交易及八类交通距离</td></tr>
+<tr><td>文教民生</td><td>书籍、告示牌、民生类方块与物品</td></tr>
+</tbody>
+</table></div>
+<p>每个行业维护当日建设度、已结算总建设度、长期指数移动平均、近期指数移动平均与繁荣度。</p>
+<details class="source-details"><summary>行业标识符</summary><div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">行业</th><th scope="col">稳定标识符</th></tr></thead>
+<tbody>
+<tr><td>土建园林</td><td><code>construction_landscaping</code></td></tr>
+<tr><td>采矿冶金</td><td><code>mining_metallurgy</code></td></tr>
+<tr><td>能源化工</td><td><code>energy_chemical</code></td></tr>
+<tr><td>加工制造</td><td><code>processing_manufacturing</code></td></tr>
+<tr><td>科技魔法</td><td><code>technology_magic</code></td></tr>
+<tr><td>农林牧渔</td><td><code>agriculture_forestry_livestock_fishery</code></td></tr>
+<tr><td>军工食药</td><td><code>military_food_medicine</code></td></tr>
+<tr><td>流通服务</td><td><code>circulation_services</code></td></tr>
+<tr><td>文教民生</td><td><code>culture_education_livelihood</code></td></tr>
+</tbody>
+</table></div></details>
+</section>
+<section class="wiki-section" id="development-统计服务器与游戏模式">
+<h2>统计服务器与游戏模式</h2>
+<ul><li>只有配置 <code>statisticsServers</code> 列出的服务器采集统计，默认只有 <code>survival</code>；其他服务器不采集。</li><li>群组服所有统计服务器连接同一个 MySQL，同一玩家在不同统计服务器产生的数据汇总到同一账户。</li><li>玩家行业建设度只接受生存或冒险模式下产生的行为。</li><li>原始放置、挖掘次数也记录创造模式的成功操作。</li><li>机器生产计入服务器建设度；明确归属玩家的活动同时累计个人建设度。</li></ul>
+</section>
+<section class="wiki-section" id="development-五类玩家标签">
+<h2>玩家活动</h2>
+<p>玩家直接操作通过标签匹配行业。同一个动作下，一个对象最多属于一个行业；重复配置会让整份候选规则被拒绝。</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">标签</th><th scope="col">注册表</th><th scope="col">有效计数口径</th></tr></thead>
+<tbody>
+<tr><td><code>craft_&lt;行业&gt;.json</code></td><td>物品</td><td>实际转移到玩家的合成产物，同玩家同业累计每 64 个计 1 点，包括快捷移动键点击与快捷交换</td></tr>
+<tr><td><code>place_&lt;行业&gt;.json</code></td><td>方块</td><td>玩家成功放置操作，每次 1</td></tr>
+<tr><td><code>mine_&lt;行业&gt;.json</code></td><td>方块</td><td>玩家成功挖掘操作，每次 1</td></tr>
+<tr><td><code>use_&lt;行业&gt;.json</code></td><td>物品</td><td>完成食用、饮用的实际消耗数量，以及可明确归属玩家的实际耐久损失</td></tr>
+<tr><td><code>interact_&lt;行业&gt;.json</code></td><td>方块</td><td>服务端交互后方块状态改变或手持物品数量减少，每次 1</td></tr>
+</tbody>
+</table></div>
+<ul><li><code>craft</code>/<code>place</code>/<code>mine</code> 共 27 个标签只统计玩家直接操作，不用于自动合成器、机器、爆炸或环境变化。</li><li><code>use</code>/<code>interact</code> 另有 18 个标签，空标签合法。</li><li>默认物品使用来源包含食物、饮品、武器、防具、采掘工具、农具等；默认方块交互来源包含堆肥桶、浆果、蜂巢、耕作地表、炼药锅、音符盒及唱片机等。</li><li>打开界面不计入交互；方块交互默认排除持有 <code>BlockItem</code> 的路径，避免同一次放置被重复计为交互。</li><li><code>place</code>/<code>mine</code> 按实际方块标识符匹配，不按物品标识符匹配；火把与墙上火把等不同方块类型分别列入。</li><li>玩家合成按同玩家、同行业累计产物数，默认每 64 个计 1 点；不同产物可合计，余量跨批次、核算日、重启与跨服保留。放置与挖掘按成功操作次数计量。</li></ul>
+</section>
+<section class="wiki-section" id="development-交通距离">
+<h2>交通距离</h2>
+<ul><li>交通统计采用原版服务端移动增量，按玩家当前的滑翔或乘坐状态分类。</li><li>单次增量超过 16 格时作为异常跳变丢弃；创造与旁观模式不计。</li><li>厘米增量转换为百万分之一格的整数进入批次。按「玩家唯一标识符 + 移动方式」保存余数，跨日、离线、重启和跨服继续累计。</li><li>数据库事务对余数行加锁，把余数更新、服务器建设度、个人行业建设度和批次幂等标记一起提交。</li><li>重载改变距离单位后，尚未折算的真实距离按新单位换算，不清空余数。</li></ul>
+</section>
+<section class="wiki-section" id="development-核算日与每日结算">
+<h2>核算日与每日结算</h2>
+<p>主服务器以主世界游戏时钟划分核算日：<span class="math">d=max(0,⌊(T-2000)/24000⌋)</span>，正常核算区间为每天 8:00 至次日 8:00。游戏内睡眠跳时不会错过 8:00 边界；首次安装所在的区间视为不完整日，建设度与累计总量照常保留，但不用于指数移动平均初始化；安装前的历史游戏日不补造零值记录。</p>
+<ol><li>主服务器到达新核算日后发布该日规则。</li><li>其他统计服务器每 100 游戏刻查询一次主服发布的核算日，不使用各自世界时间决定日期。</li><li>子服观察到切日后短暂停止采集，先提交旧批次再切换；跨服观察切日最多约 5 秒加数据库延迟的同步窗口。</li><li>主服务器必须等待所有指定统计服务器确认旧日提交完毕，才结算旧日。未在线或未恢复的统计服务器会阻止结算，不被当作零建设度。</li><li>结算按日顺序追赶，以任务表唯一键和行锁保证重复启动不会重算。一日内九个行业的每日快照、总量、指数移动平均、繁荣度与任务成功状态在同一事务中提交。</li><li>正常结算从 8 点开始，失败重试与历史追赶只在 8:00—18:00 的安全窗口运行；日常事件采集不受该窗口限制。</li></ol>
+<p>定义 <span class="math">n</span> 为按事件单位大小换算后的有效单位数、<span class="math">u</span> 为单位建设度，则当日增量 <span class="math">Δ D<sub>d</sub>=nu</span>。不设置每日建设度上限；累计值采用 <span class="math">0</span> 至 <span class="math">2<sup>63</sup>-1</span> 的非负整数，达到存储上限时饱和于最大值，不回绕、也不会取消已经成功的游戏操作。</p>
+<div class="msgbox msgbox-warn"><span class="msgbox-icon" aria-hidden="true">⚠</span><div class="msgbox-body"><span class="msgbox-title">时间倒退的保护</span><span class="msgbox-text">主服时间倒退到数据库已记录日期之前时暂停规则切换，不能覆盖已结算历史。</span></div></div>
+</section>
+<section class="wiki-section" id="development-繁荣度公式">
+<h2>繁荣度公式</h2>
+<p>记 <span class="math">x<sub>t</sub></span> 为第 <span class="math">t</span> 个完整核算日的行业建设度、<span class="math">L<sub>t</sub></span> 为长期日建设度指数移动平均、<span class="math">R<sub>t</sub></span> 为近期日建设度指数移动平均、<span class="math">P<sub>t</sub></span> 为繁荣度。第一个完整日只保存建设度，指数移动平均为 <code>NULL</code>，繁荣度显示为 0。第二个完整日结束后初始化：</p>
+<div class="formula"><span class="math">L<sub>2</sub>=R<sub>2</sub>=<span class="frac"><span class="num">x<sub>1</sub>+x<sub>2</sub></span><span class="den">2</span></span></span></div>
+<p>两日均为 0 时也正常初始化。自第三个完整日起：</p>
+<div class="formula"><span class="math">L<sub>t</sub>=0.99L<sub>t-1</sub>+0.01x<sub>t</sub>,   R<sub>t</sub>=0.8R<sub>t-1</sub>+0.2x<sub>t</sub></span></div>
+<p>先更新指数移动平均，再计算繁荣度：</p>
+<div class="formula"><span class="math">P<sub>t</sub>=0.7<span class="frac"><span class="num">R<sub>t</sub>-L<sub>t</sub></span><span class="den">L<sub>t</sub>+1</span></span>+0.3<span class="frac"><span class="num">x<sub>t</sub>-L<sub>t</sub></span><span class="den">L<sub>t</sub>+1</span></span></span></div>
+<ul><li>初始化两日均零时繁荣度为0，每天稳定建设也为0；分母加一只避免除零，建设减少仍为负。</li><li>任一完整日的零值都参与后续计算。</li><li>数据库使用 <code>DECIMAL(30,8)</code>，Java 使用 <code>BigDecimal</code>，中间指数移动平均与除法以 8 位小数四舍五入。</li></ul>
+</section>
+<section class="wiki-section" id="development-补充资料">
+<h2>管理与数据</h2>
+<details class="source-details" id="development-游戏事件映射"><summary>游戏事件映射</summary><p>游戏事件在生产或动作完成时记录有效数量，并按对应事件的计量单位换算建设度。交通默认每 10 格计 1 点，其他事件的单位值和单位大小见服务器事件映射。管理员可通过数据包调整已有事件的行业、单位建设度 <code>unit_value</code> 和单位大小 <code>unit_size</code>。</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">来源</th><th scope="col">完成时机与归属</th><th scope="col">默认行业</th></tr></thead>
+<tbody>
+<tr><td>熔炉 / 高炉 / 烟熏炉</td><td>输出槽实际增加产物后；独立产物标签区分矿物、化工、建筑材料和食物，只增加服务器建设度</td><td>采矿冶金 / 能源化工 / 加工制造 / 军工食药</td></tr>
+<tr><td>合成器</td><td>配方成功生成产物后，只增加服务器建设度</td><td>加工制造</td></tr>
+<tr><td>繁殖、驯服、治愈</td><td>成功完成动作，能明确关联玩家时同时增加个人与服务器建设度</td><td>农林牧渔 / 军工食药</td></tr>
+<tr><td>剪毛、挤奶、钓鱼</td><td>实际产物生成；不以普通拾取作为来源</td><td>农林牧渔</td></tr>
+<tr><td>敌对生物击杀</td><td>生存或冒险玩家完成击杀；按原版 <code>MONSTER</code> 分类，环境死亡不计</td><td>军工食药</td></tr>
+<tr><td>村民交易</td><td>输入扣除、交易完成后计一次，不按打开界面或选择条目计数</td><td>流通服务</td></tr>
+<tr><td>锻造、铁砧、附魔、酿造</td><td>成功取出修改结果、附魔成功或酿造完成；没有明确玩家的自动生产只计服务器</td><td>加工制造 / 科技魔法 / 军工食药</td></tr>
+<tr><td>交通距离</td><td>鞘翅、马、船、矿车、猪、炽足兽、快乐恶魂和鹦鹉螺八类有效移动</td><td>流通服务</td></tr>
+</tbody>
+</table></div>
+<details class="source-details"><summary>采集范围</summary><p>采集依据实际完成的生产或操作结果。普通步行、在线时长、普通拾取、自然生长、机器空转和容器存取不产生该类建设度。事件标识符与计量类型须对应已有适配器。</p></details></details>
+<details class="source-details" id="development-方块操作与交互去重"><summary>方块操作与交互去重</summary><p>一次放置、挖掘无论影响多少方块位置都按一次操作统计，门和床等不会按部件数量累计。原始玩家放置、挖掘次数不受去重影响，但行业建设度会受影响。</p>
+<p>去重键为 <span class="math">K=(s,d,u,a,x,y,z,b)</span>，其中 <span class="math">s</span> 为子服、<span class="math">d</span> 为维度、<span class="math">u</span> 为玩家唯一标识符、<span class="math">a</span> 为放置/挖掘/交互、<span class="math">(x,y,z)</span> 为本次操作的目标锚点、<span class="math">b</span> 为方块注册标识符。不比较朝向、开关、含水等方块状态；不同动作独立去重；多方块操作只报一个锚点事件。</p>
+<p>若 <span class="math">t</span> 为当前游戏刻、<span class="math">t<sub>K</sub></span> 为同键上次成功操作游戏刻，则只有首次出现或满足 <span class="math">t-t<sub>K</sub>≥ 20</span> 时才增加行业建设度。</p>
+<ul><li>被去重的操作仍会更新上次观察时间，所以连续快速往返操作不会每秒自动获得一次分数。</li><li>交互还必须先通过结果检查（方块状态改变或手持物品数量减少）。</li><li>服务器与个人行业累计使用同一个去重结果。</li><li>缓存只在本服内存保留，每 20 游戏刻清理过期项，最多 50,000 个键；重启不恢复一秒内的缓存。</li></ul></details>
+<details class="source-details" id="development-各行业标签规模"><summary>标签数据</summary><details class="source-details"><summary>标签成员数量与审核来源</summary><p>下表统计当前资源中各行业标签包含的注册项数量，帮助判断某个行业实际覆盖哪些玩法。空标签表示该动作在当前版本没有对应定义，完整注册项见资源中的 <code>all_items.json</code>、<code>all_blocks.json</code>。</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">行业</th><th scope="col">合成 craft</th><th scope="col">放置 place</th><th scope="col">挖掘 mine</th><th scope="col">使用 use</th><th scope="col">交互 interact</th></tr></thead>
+<tbody>
+<tr><td>土建园林</td><td>0</td><td>779</td><td>763</td><td>0</td><td>0</td></tr>
+<tr><td>采矿冶金</td><td>0</td><td>2</td><td>87</td><td>21</td><td>0</td></tr>
+<tr><td>能源化工</td><td>42</td><td>3</td><td>11</td><td>0</td><td>4</td></tr>
+<tr><td>加工制造</td><td>809</td><td>10</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>科技魔法</td><td>38</td><td>107</td><td>8</td><td>0</td><td>0</td></tr>
+<tr><td>农林牧渔</td><td>3</td><td>57</td><td>237</td><td>9</td><td>10</td></tr>
+<tr><td>军工食药</td><td>94</td><td>5</td><td>5</td><td>77</td><td>0</td></tr>
+<tr><td>流通服务</td><td>37</td><td>37</td><td>18</td><td>0</td><td>0</td></tr>
+<tr><td>文教民生</td><td>42</td><td>206</td><td>0</td><td>0</td><td>3</td></tr>
+</tbody>
+</table></div>
+<ul><li>另有 <code>process_furnace_mineral</code>(9)、<code>process_furnace_chemical</code>(4)、<code>process_furnace_material</code>(4)、<code>process_furnace_food</code>(9) 四个熔炉产物分类标签，只用于机器生产，不再在取出时重复计数。</li><li>可逆合成排除表中的 37 个物品禁止写入 <code>craft</code> 标签，启动和重载时都会校验。运行时清单为 <code>data/contribution/contribution/reversible_craft_exclusions.json</code>，中文审核表见 <code>design/definitions/可逆合成排除表.csv</code>。</li><li>中文审核表（游戏事件映射、合成、放置、挖掘、可逆合成排除）位于 <code>design/definitions/</code>，模组运行时不读取，仅供人工审核。</li></ul></details></details>
+<details class="source-details" id="development-热重载与规则快照"><summary>规则配置</summary><p>主服执行原版 <code>/reload</code> 后解析标签与事件映射，构造不可变的成员快照。跨行业重复对象、未知行业、非法事件、非正整数和可逆 <code>craft</code> 产物都会拒绝整份候选配置，旧配置继续生效；合格候选在下一游戏日 8 点发布，重载不会立刻改变当日行业匹配。</p>
+<ul><li>数据库的 <code>contribution_rule_snapshot</code> 按 <code>SHA-256</code> 保存去重后的规则数据定义；<code>contribution_rule_epoch</code> 保存核算日到规则哈希的对应关系。</li><li>子服直接使用主服发布的规则快照，不按自己的数据包私自改变行业规则。</li><li>启动时加载历史快照，保证旧统计日志仍按原规则重放。</li><li>当前 <code>config_version=1</code> 表示规则结构版本，具体业务规则身份以 <code>config_hash</code> 和核算日为准。</li></ul></details>
+</section>
+<div class="page-footer">贡献值模组维基 · 0.2.6 · <a href="documentation.html#documentation">维基维护</a></div>
+</div>
+<aside class="page-info">
+<div class="page-info-inner">
+<div class="page-info-head">条目概要</div>
+<table class="infobox">
+<tr><th>行业</th><td>9 个</td></tr>
+<tr><th>结算</th><td>游戏时间 8:00</td></tr>
+<tr><th>合成计量</th><td>每 64 个产物计 1 点</td></tr>
+
+</table>
+</div>
+<table class="navbox"><tbody>
+<tr><th class="navbox-top" colspan="2"><span class="navbox-title">贡献值与建设</span></th></tr>
+<tr><th>相关页面</th><td><ul class="hlist"><li><a href="account.html#account">贡献值账户</a></li><li><a href="statistics.html#statistics">玩家统计</a></li><li><a href="rewards.html#rewards">建设度奖励</a></li><li><a href="checkin.html#checkin">签到与活动</a></li></ul></td></tr>
+</tbody></table>
+<div class="catlinks"><span>分类：</span><ul><li>贡献值与建设</li></ul></div>
+</aside>
+</div>
+</div>
+</div></main></div></body></html>

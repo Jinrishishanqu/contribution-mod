@@ -16,6 +16,7 @@ code/logs/
 logs/
 stock-simulation/output/
 .sheet-work/
+code/tools/node_modules/
 __pycache__/
 *.pyc
 *.log
@@ -30,3 +31,15 @@ __pycache__/
 **/config/contribution/server.json
 .idea/
 *.iml
+
+# Local review outputs; keep the approved stock definition workbook
+/outputs/*
+!/outputs/stock-map-26.3-20261006/
+/outputs/stock-map-26.3-20261006/*
+!/outputs/stock-map-26.3-20261006/股票候选物品-行业映射表.xlsx
+
+# Local crash reports and screenshots
+/error-history/
+
+# Extracted vanilla Minecraft resources and data; local reference only
+/pack/

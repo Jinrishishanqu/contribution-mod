@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="系统商店以贡献值出售物品。玩家浏览目录并购买，管理员设置商品、售价和上架状态。"><title>系统商店 · 贡献值模组维基 0.2.6</title><link rel="stylesheet" href="assets/wiki.css"><script defer src="assets/search-index.js"></script><script defer src="assets/site.js"></script></head><body data-current-page="shop"><a class="skip-link" href="#shop">跳到正文</a><div class="shell"><aside id="site-navigation" class="sidebar" aria-label="站点导航">
+<a class="brand" href="index.html#home">
+<span class="brand-mark" aria-hidden="true"></span>
+<span class="brand-text"><span class="brand-title">贡献值维基</span><span class="brand-tagline">贡献值经济 · 行业建设度 · 股票市场 · 系统商店</span></span>
+</a>
+<div class="sidebar-search"><label class="visually-hidden" for="site-search">搜索本维基</label><input id="site-search" type="search" placeholder="搜索页面与章节…" autocomplete="off"><div id="site-search-results" class="search-results" hidden></div></div>
+<div class="nav">
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-0"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开始阅读</span></button></h3>
+<ul id="nav-list-0">
+<li><a href="index.html#home" data-nav="home">贡献值模组维基</a></li>
+<li><a href="basics.html#basics" data-nav="basics">玩法入门</a></li>
+<li><a href="features.html#features" data-nav="features">玩法总览</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-1"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">贡献值与建设</span></button></h3>
+<ul id="nav-list-1">
+<li><a href="account.html#account" data-nav="account">贡献值账户</a></li>
+<li><a href="development.html#development" data-nav="development">行业建设度</a></li>
+<li><a href="statistics.html#statistics" data-nav="statistics">玩家统计</a></li>
+<li><a href="rewards.html#rewards" data-nav="rewards">建设度奖励</a></li>
+<li><a href="checkin.html#checkin" data-nav="checkin">签到与活动</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-2"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">经济交易</span></button></h3>
+<ul id="nav-list-2">
+<li><a href="#shop" data-nav="shop">系统商店</a></li>
+<li><a href="stock.html#stock" data-nav="stock">股票市场</a></li>
+<li><a href="stock-mechanics.html#stock-mechanics" data-nav="stock-mechanics">股价计算</a></li>
+<li><a href="swan.html#swan" data-nav="swan">黑天鹅事件</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-3"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">物品与进度</span></button></h3>
+<ul id="nav-list-3">
+<li><a href="items.html#items" data-nav="items">物品与装备</a></li>
+<li><a href="special-items.html#special-items" data-nav="special-items">特殊道具</a></li>
+<li><a href="recipes.html#recipes" data-nav="recipes">配方目录</a></li>
+<li><a href="recipes-basics.html#recipes-basics" data-nav="recipes-basics">基础配方</a></li>
+<li><a href="recipes-wings.html#recipes-wings" data-nav="recipes-wings">添翼配方</a></li>
+<li><a href="recipes-reinforcement.html#recipes-reinforcement" data-nav="recipes-reinforcement">强化配方</a></li>
+<li><a href="recipes-armor.html#recipes-armor" data-nav="recipes-armor">主题盔甲配方</a></li>
+<li><a href="recipes-hats.html#recipes-hats" data-nav="recipes-hats">帽子配方</a></li>
+<li><a href="recipes-special.html#recipes-special" data-nav="recipes-special">特殊道具配方</a></li>
+<li><a href="weapon-skins.html#weapon-skins" data-nav="weapon-skins">武器皮肤</a></li>
+<li><a href="advancements.html#advancements" data-nav="advancements">更多乐趣进度</a></li>
+<li><a href="advancement-details.html#advancement-details" data-nav="advancement-details">进度条件</a></li>
+<li><a href="resourcepack.html#resourcepack" data-nav="resourcepack">资源包与外观</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-4"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">操作与命令</span></button></h3>
+<ul id="nav-list-4">
+<li><a href="interface.html#interface" data-nav="interface">界面操作</a></li>
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands-contribution.html#commands-contribution" data-nav="commands-contribution">贡献值命令</a></li>
+<li><a href="commands-checkin.html#commands-checkin" data-nav="commands-checkin">签到命令</a></li>
+<li><a href="commands-stock.html#commands-stock" data-nav="commands-stock">股票命令</a></li>
+<li><a href="commands-shop.html#commands-shop" data-nav="commands-shop">商店命令</a></li>
+<li><a href="commands-account.html#commands-account" data-nav="commands-account">账户管理命令</a></li>
+<li><a href="commands-shop-admin.html#commands-shop-admin" data-nav="commands-shop-admin">商店管理命令</a></li>
+<li><a href="permissions.html#permissions" data-nav="permissions">操作权限</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-5"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">服务器管理</span></button></h3>
+<ul id="nav-list-5">
+<li><a href="installation.html#installation" data-nav="installation">安装</a></li>
+<li><a href="config.html#config" data-nav="config">服务器配置</a></li>
+<li><a href="data.html#data" data-nav="data">数据与存档</a></li>
+<li><a href="operations.html#operations" data-nav="operations">服务器维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-6"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开发与维护</span></button></h3>
+<ul id="nav-list-6">
+<li><a href="api.html#api" data-nav="api">公共接口</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-tools"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">工具</span></button></h3>
+<ul id="nav-list-tools">
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands.xlsx">下载命令工作簿</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+</div>
+<div class="sidebar-footer">版本 0.2.6 · Minecraft 26.3<br>Fabric Loader 0.19.5 · Java 25</div>
+</aside><main class="main"><header class="topbar"><nav class="topbar-crumbs" aria-label="面包屑"><a href="index.html">首页</a><span> / 系统商店</span></nav><span class="topbar-spacer"></span><button id="mobile-nav" type="button" aria-expanded="false" aria-controls="site-navigation">导航</button><button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">切换主题</button></header><div class="wiki-page" id="shop" data-page-title="系统商店">
+<div class="content-panel">
+<div class="page-head">
+<h1 class="page-title">系统商店</h1>
+<p class="page-summary">系统商店以贡献值出售物品。玩家浏览目录并购买，管理员设置商品、售价和上架状态。</p>
+</div>
+<div class="page-columns">
+<div class="article">
+<div class="toc"><input class="toc-toggle" type="checkbox" id="toc-shop" checked><label class="toc-head" for="toc-shop">目录 <span class="toc-toggle-label"><span class="toc-show">[显示]</span><span class="toc-hide">[隐藏]</span></span></label><ol><li><a href="#shop-定位与范围">浏览商品</a></li><li><a href="#shop-两套界面">界面操作</a></li><li><a href="#shop-默认商品">默认商品</a></li><li><a href="#shop-购买与交付">购买与交付</a></li><li><a href="#shop-一次性武器皮肤">一次性武器皮肤</a></li><li><a href="#shop-补充资料">管理与数据</a></li></ol></div>
+<section class="wiki-section" id="shop-定位与范围">
+<h2>浏览商品</h2>
+<p>输入 <code>/shop</code> 打开商店，选择商品并填写购买份数。商品由系统供应，售价以目录显示的贡献值为单位。原版客户端使用原版对话界面，安装客户端模组后使用专用页面。</p>
+</section>
+<section class="wiki-section" id="shop-两套界面">
+<h2>界面操作</h2>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">操作</th><th scope="col">方法</th></tr></thead>
+<tbody>
+<tr><td>查找</td><td>按名称、物品标识符或商品编号搜索，可按目录顺序、名称或价格排序</td></tr>
+<tr><td>查看</td><td>选择商品查看每份数量、售价和描述</td></tr>
+<tr><td>购买</td><td>填写份数后提交；原版对话界面可直接购买一份</td></tr>
+<tr><td>刷新</td><td>更新目录，同时保留本次搜索、排序、选择和滚动位置</td></tr>
+<tr><td>返回</td><td>按 <code>Esc</code> 返回上级或关闭商店</td></tr>
+</tbody>
+</table></div>
+<p>原版对话界面每页显示最多 8 件商品。购买多份可使用 <code>/shop buy &lt;商品编号&gt; &lt;份数&gt;</code>。</p>
+<details class="source-details"><summary>界面显示与控件</summary><div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">界面</th><th scope="col">形态与能力</th></tr></thead>
+<tbody>
+<tr><td>专用客户端面板</td><td>最大宽度 460 界面逻辑像素，左侧两列商品卡片，搜索框与目录共用边界；点击卡片更新右侧名称、编号、物品、数量、价格与描述；可滚轮滚动并显示只读滚动条；搜索支持名称、物品标识符与商品编号，可选择配置顺序、名称或价格排序</td></tr>
+<tr><td>原版对话界面</td><td>每页最多 8 件商品，显示编号、数量、售价及描述，可直接购买一份、分页、刷新、领取待发物品；购买更多用 <code>/shop buy &lt;编号&gt; &lt;份数&gt;</code>；管理员入口与表单不需要客户端模组</td></tr>
+</tbody>
+</table></div>
+<ul><li>刷新和购买后的自动刷新保留搜索、排序、选中商品、份数和滚动位置；退出后重新 <code>/shop</code> 打开则重置。</li><li>卡片作为真实控件注册，而不是仅绘制命中区域；管理员目录复用同一双列选择布局，编辑页独立且在返回时重新建立控件。</li><li>操作失败在专用界面显示提示，同时发送聊天反馈；专用页面不暂停单人世界。</li></ul></details>
+</section>
+<section class="wiki-section" id="shop-默认商品">
+<h2>默认商品</h2>
+<figure class="media-figure"><div class="item-gallery"><figure class="gallery-item"><img class="item-icon" src="assets/images/icons/minecraft-bread.png" alt="面包" width="128" height="128" loading="lazy" decoding="async"><figcaption>面包<small>每份 4 个 · 20 贡献值</small></figcaption></figure><figure class="gallery-item"><img class="item-icon" src="assets/images/icons/minecraft-torch.png" alt="火把" width="128" height="128" loading="lazy" decoding="async"><figcaption>火把<small>每份 16 个 · 20 贡献值</small></figcaption></figure><figure class="gallery-item"><img class="item-icon" src="assets/images/icons/minecraft-iron_pickaxe.png" alt="铁镐" width="128" height="128" loading="lazy" decoding="async"><figcaption>铁镐<small>每份 1 个 · 80 贡献值</small></figcaption></figure></div></figure>
+<p>这些商品在首次创建商店目录时导入。管理员可以修改商品和售价，购买时以服务器目录为准。原初武器是独立的一组外观商品。</p>
+</section>
+<section class="wiki-section" id="shop-购买与交付">
+<h2>购买与交付</h2>
+<ol><li>选择商品并填写份数，核对每份数量与总价。</li><li>提交购买后，服务器检查商品状态和余额，成功时扣除贡献值并记录订单。</li><li>购买成功后自动尝试交付。待发物品可使用 <code>/shop claim</code> 领取，断线或跨服后仍可领取。</li></ol>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">项目</th><th scope="col">规则</th></tr></thead>
+<tbody>
+<tr><td>单次份数</td><td>1—64 份</td></tr>
+<tr><td>单次物品总量</td><td>最多 2304 个</td></tr>
+<tr><td>总价</td><td>最多 2147483647 贡献值</td></tr>
+<tr><td>背包不足</td><td>物品掉落在玩家附近</td></tr>
+<tr><td>历史总收入</td><td>购买保持原累计收入</td></tr>
+</tbody>
+</table></div>
+<p>界面提示目录已更新时，先刷新再购买。余额不足或商品下架时，本次购买不扣款。订单结果暂时不明时，使用 <code>/shop retry</code> 沿用原订单，见<a class="wikilink" href="commands-shop.html#commands-shop">商店命令</a>。</p>
+<details class="source-details"><summary>订单校验与交付恢复</summary><ul><li>购买使用共享数据库的当前商品记录；商品行锁保证与编辑同步。</li><li>客户端界面附带商品版本，目录过期时拒绝成交并提示刷新，不按玩家没看到的新价格扣款。</li><li>文字命令省略版本时，以服务器当时的商品价格成交。</li><li>余额不足或商品已下架时不扣款、不创建订单或流水。</li><li>单笔 1—64 份，最多 2304 个物品，总价不超过 <span class="math">2<sup>31</sup>-1</span>。</li><li>成功时在同一事务中锁账户、扣款、写 <code>SHOP_BUY</code> 流水、创建 <code>shop_order</code> 与 <code>reward_delivery</code>。购买不影响历史总收入。</li><li>订单有全局唯一标识符；结果不明时用 <code>/shop retry &lt;订单ID&gt; &lt;商品ID&gt; &lt;份数&gt;</code> 沿用原请求。即使之后商品改价或下架，已提交订单仍返回原结果，不重复扣款或创建待发记录。换玩家、商品或份数使用同一订单标识符会被拒绝。</li></ul>
+<details class="source-details"><summary>物品交付与故障恢复</summary><p>购买成功后，待发记录支持断线或跨服后领取。背包放不下的物品掉落在玩家附近。短租约协调各服交付；背包操作和数据库确认分开完成，交付后、确认前崩溃可能重复发物品。</p></details></details>
+</section>
+<section class="wiki-section" id="shop-一次性武器皮肤">
+<h2>一次性武器皮肤</h2>
+<figure class="media-figure single-figure"><div class="item-gallery"><figure class="gallery-item"><img class="item-icon" src="assets/images/icons/model-contribution-weapon_skin-sword.png" alt="原初剑" width="128" height="128" loading="lazy" decoding="async"><figcaption>原初剑<small>右键选择外观</small></figcaption></figure></div></figure>
+<p>商店默认提供原初剑、斧、镐、锄、铲和矛，每份 1 件，初始售价 100 贡献值。原初物品是可选择外观的烟火之星；主手使用后打开皮肤列表，预览并确认即可获得对应的金质武器或工具。管理员可以调整商品价格及上下架状态。</p>
+<p>预览期间保留原初物品，确认后完成一次性定型。皮肤成品可以按对应金质装备配方强化。获取与使用见<a class="wikilink" href="special-items.html#special-items">特殊道具</a>，外观列表见<a class="wikilink" href="weapon-skins.html#weapon-skins">武器皮肤</a>。</p>
+<details class="source-details"><summary>原初商品的组件定义</summary><p>主服务器启动时补齐缺失的原初商品，保留已有商品设置。示例：<code>/shop put_on item minecraft:firework_star[max_stack_size=1,item_model=&#39;contribution:weapon_skin/sword&#39;,item_name=&#39;原初剑&#39;] &quot;原初剑&quot; 1 100 右键选择一次外观</code>。其他类别使用对应模型路径与名称。模型选择依据 <code>item_name</code>，铁砧命名使用 <code>custom_name</code>。</p></details>
+</section>
+<section class="wiki-section" id="shop-补充资料">
+<h2>管理与数据</h2>
+<details class="source-details" id="shop-商品与目录"><summary>商品与目录</summary><ul><li>商品统一保存在数据库的 <code>shop_offer</code> 表中，群组服共享同一个目录。</li><li>每件商品自动分配稳定、不可复用的正整数编号。</li><li>商品字段包括：名称、物品标识符、完整物品定义 <code>item_spec</code>、每份数量、售价、描述、上架状态、排序值和编辑版本。</li><li>名称最多 64 字，描述最多 512 字，每份 1—64 个物品，售价 1—2147483647 贡献值。</li><li>物品必须存在于服务器注册表中；排序值越小越靠前，相同排序值按编号排列。</li><li>当前最多保留 256 件商品（包含已下架商品），以约束快照大小、查询和客户端筛选开销。</li></ul>
+<p>主服务器第一次升级或创建数据库时会自动从 <code>rewards.shopOffers</code> 导入初始商品，并保留旧字符串标识符（如 <code>bread</code>、<code>torch</code>）作为购买与旧订单重试的兼容别名；默认导入面包、火把、铁镐。导入只进行一次，之后重启或修改配置文件都不会覆盖目录。</p>
+<p><code>/shop take_off</code> 只把商品下架，不会删除商品、历史订单或待发物品，管理员可以再次上架。</p></details>
+<details class="source-details" id="shop-管理员操作"><summary>管理员操作</summary><p>管理员等级 2 的玩家可点击商店右上角「管理」，或执行 <code>/shop admin</code>。管理目录显示已上架及已下架商品，选中后点击「编辑商品」；「新建商品」打开完整表单。表单可修改名称、物品及组件、数量、价格、排序、描述及上架状态。</p>
+<pre class="code" data-language="text"><code>/shop put_on &lt;物品[组件]&gt; &lt;名称&gt; &lt;每份数量&gt; &lt;售价&gt; [描述]
+/shop take_off &lt;商品编号&gt;
+/shop modify &lt;商品编号&gt; [名称] [每份数量] [售价] [描述]</code></pre>
+<ul><li><code>put_on</code> 自动分配编号并上架，排序默认 0。</li><li><code>modify</code> 按名称、数量、售价、描述的顺序填写；只修改后面的字段时，前面填 <code>-</code> 保持不变，未填写的尾部字段不变；描述填 <code>&quot;&quot;</code> 清空。</li><li>中文名称或含空格的名称用引号；描述可直接填写多个词。</li><li>物品、状态和排序可以在完整管理表单中修改。</li><li>保存时校验编辑版本：其他管理员已经修改时拒绝覆盖，并保留输入供修改或重读。</li><li>原版对话界面的模板转义有限：名称和描述不要含双引号、反斜杠；复杂文字用正确转义的管理员命令填写。</li></ul>
+<pre class="code" data-language="text"><code>/shop modify 4 - - 35     # 只修改售价，其余保持不变</code></pre></details>
+<details class="source-details" id="shop-自定义物品组件"><summary>自定义物品组件</summary><p>上架及编辑物品使用 26.3 原版 <code>ItemArgument</code>/<code>ItemParser</code>，与 <code>/item ... with &lt;物品&gt;</code> 的物品参数相同，不自行拆分物品组件定义。支持附魔、自定义名称、属性、模型、药水、耐久、自定义数据以及 <code>!组件</code> 删除默认组件。<code>/shop put_on item &lt;物品及组件&gt; ...</code>手写定义；<code>/shop put_on hand_item &lt;名称&gt; &lt;数量&gt; &lt;售价&gt; [描述]</code>保存主手完整组件快照，不消耗原物品，仅玩家可用，超长或不能无损往返会拒绝。旧直接物品语法兼容。数量独立由「每份数量」字段定义，不要在物品定义中混入 <code>count</code>。</p>
+<pre class="code" data-language="text"><code>/shop put_on minecraft:diamond_sword[minecraft:custom_name={text:&#39;荣誉剑&#39;},minecraft:enchantments={&#39;minecraft:unbreaking&#39;:3}] &quot;荣誉剑&quot; 1 100 纪念装备</code></pre>
+<ul><li>完整定义最多 2048 个字符；未知组件、无效组件值及尾随内容会被原版解析器拒绝。</li><li>数据库仍保留纯注册表标识符用于查询，并另存完整定义。</li><li>购买时把完整定义拷贝到待发记录，与扣款在同一事务内完成；之后编辑或下架商品不会改变已付款的物品。</li><li>交付在服务器主线程用当前注册表解析一次，按组件指定的最大堆叠数拆分副本，保留全部组件。</li><li>解析失败不发出普通物品替代，也不丢弃待发记录，记录警告留待管理员排查。</li><li>跨服必须安装相同注册项、数据包与模组。旧活动奖励和旧待发记录仍支持普通物品标识符。</li></ul></details>
+<details class="source-details" id="shop-性能"><summary>查询与数据处理</summary><details class="source-details"><summary>目录读取、控件复用和缓存</summary><ul><li>目录、编辑、购买都在现有有界数据库线程池中执行，不阻塞游戏主线程。</li><li>服务器仅在玩家请求时读取商品快照；客户端搜索或排序变化时重建缓存，不逐帧访问数据库或重新排序。</li><li>每页只注册当前容量的卡片控件，滚动复用这些控件。</li><li>客户端商品图标按完整定义预览，最多缓存 512 个样品，离服清空。</li><li>文本快照最大长度提升至 1 MiB 以容纳目录中的组件信息；目录数量仍最多 256 件。</li></ul></details></details>
+</section>
+<div class="page-footer">贡献值模组维基 · 0.2.6 · <a href="documentation.html#documentation">维基维护</a></div>
+</div>
+<aside class="page-info">
+<div class="page-info-inner">
+<div class="page-info-head">条目概要</div>
+<table class="infobox">
+<tr><th>货币</th><td>贡献值</td></tr>
+<tr><th>入口</th><td><code>/shop</code></td></tr>
+<tr><th>单笔购买</th><td>1—64 份</td></tr>
+
+</table>
+</div>
+<table class="navbox"><tbody>
+<tr><th class="navbox-top" colspan="2"><span class="navbox-title">经济交易</span></th></tr>
+<tr><th>相关页面</th><td><ul class="hlist"><li><a href="stock.html#stock">股票市场</a></li><li><a href="stock-mechanics.html#stock-mechanics">股价计算</a></li><li><a href="swan.html#swan">黑天鹅事件</a></li></ul></td></tr>
+</tbody></table>
+<div class="catlinks"><span>分类：</span><ul><li>经济交易</li></ul></div>
+</aside>
+</div>
+</div>
+</div></main></div></body></html>

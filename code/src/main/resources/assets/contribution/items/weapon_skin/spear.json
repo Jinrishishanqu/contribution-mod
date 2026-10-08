@@ -1,0 +1,432 @@
+{
+  "swap_animation_scale": 1.95,
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:component",
+    "component": "minecraft:item_name",
+    "cases": [
+      {
+        "when": "破晓之光",
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:display_context",
+          "cases": [
+            {
+              "when": [
+                "gui",
+                "ground",
+                "fixed",
+                "on_shelf"
+              ],
+              "model": {
+                "type": "minecraft:model",
+                "model": "contribution:item/weapon_skin/spear/gui/day_break"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "contribution:item/weapon_skin/spear/day_break"
+          }
+        }
+      },
+      {
+        "when": "北极",
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:display_context",
+          "cases": [
+            {
+              "when": [
+                "gui",
+                "ground",
+                "fixed",
+                "on_shelf"
+              ],
+              "model": {
+                "type": "minecraft:model",
+                "model": "contribution:item/weapon_skin/spear/gui/north_pole"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "contribution:item/weapon_skin/spear/north_pole"
+          }
+        }
+      },
+      {
+        "when": "翠芒尖枪",
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:display_context",
+          "cases": [
+            {
+              "when": [
+                "gui",
+                "ground",
+                "fixed",
+                "on_shelf"
+              ],
+              "model": {
+                "type": "minecraft:model",
+                "model": "contribution:item/weapon_skin/spear/gui/botanic_piercer"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "contribution:item/weapon_skin/spear/botanic_piercer"
+          }
+        }
+      },
+      {
+        "when": "巨龙之怒",
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:display_context",
+          "cases": [
+            {
+              "when": [
+                "gui",
+                "ground",
+                "fixed",
+                "on_shelf"
+              ],
+              "model": {
+                "type": "minecraft:model",
+                "model": "contribution:item/weapon_skin/spear/gui/dragon_rage"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "contribution:item/weapon_skin/spear/dragon_rage"
+          }
+        }
+      },
+      {
+        "when": "元素长枪",
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:display_context",
+          "cases": [
+            {
+              "when": [
+                "gui",
+                "ground",
+                "fixed",
+                "on_shelf"
+              ],
+              "model": {
+                "type": "minecraft:model",
+                "model": "contribution:item/weapon_skin/spear/gui/elemental_lance"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "contribution:item/weapon_skin/spear/elemental_lance"
+          }
+        }
+      },
+      {
+        "when": "深渊潮涌",
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:display_context",
+          "cases": [
+            {
+              "when": [
+                "gui",
+                "ground",
+                "fixed",
+                "on_shelf"
+              ],
+              "model": {
+                "type": "minecraft:model",
+                "model": "contribution:item/weapon_skin/spear/gui/enebreus_tides"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "contribution:item/weapon_skin/spear/enebreus_tides"
+          }
+        }
+      },
+      {
+        "when": "镀金鸟喙",
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:display_context",
+          "cases": [
+            {
+              "when": [
+                "gui",
+                "ground",
+                "fixed",
+                "on_shelf"
+              ],
+              "model": {
+                "type": "minecraft:model",
+                "model": "contribution:item/weapon_skin/spear/gui/gilded_proboscis"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "contribution:item/weapon_skin/spear/gilded_proboscis"
+          }
+        }
+      },
+      {
+        "when": "天底",
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:display_context",
+          "cases": [
+            {
+              "when": [
+                "gui",
+                "ground",
+                "fixed",
+                "on_shelf"
+              ],
+              "model": {
+                "type": "minecraft:model",
+                "model": "contribution:item/weapon_skin/spear/gui/nadir"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "contribution:item/weapon_skin/spear/nadir"
+          }
+        }
+      },
+      {
+        "when": "暗夜凝视",
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:display_context",
+          "cases": [
+            {
+              "when": [
+                "gui",
+                "ground",
+                "fixed",
+                "on_shelf"
+              ],
+              "model": {
+                "type": "minecraft:model",
+                "model": "contribution:item/weapon_skin/spear/gui/nights_gaze"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "contribution:item/weapon_skin/spear/nights_gaze"
+          }
+        }
+      },
+      {
+        "when": "半影裂片",
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:display_context",
+          "cases": [
+            {
+              "when": [
+                "gui",
+                "ground",
+                "fixed",
+                "on_shelf"
+              ],
+              "model": {
+                "type": "minecraft:model",
+                "model": "contribution:item/weapon_skin/spear/gui/shard_of_antumbra"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "contribution:item/weapon_skin/spear/shard_of_antumbra"
+          }
+        }
+      },
+      {
+        "when": "宇宙暗流",
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:display_context",
+          "cases": [
+            {
+              "when": [
+                "gui",
+                "ground",
+                "fixed",
+                "on_shelf"
+              ],
+              "model": {
+                "type": "minecraft:model",
+                "model": "contribution:item/weapon_skin/spear/gui/stream_gouge"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "contribution:item/weapon_skin/spear/stream_gouge"
+          }
+        }
+      },
+      {
+        "when": "微元劫裂者",
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:display_context",
+          "cases": [
+            {
+              "when": [
+                "gui",
+                "ground",
+                "fixed",
+                "on_shelf"
+              ],
+              "model": {
+                "type": "minecraft:model",
+                "model": "contribution:item/weapon_skin/spear/gui/the_atom_splitter"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "contribution:item/weapon_skin/spear/the_atom_splitter"
+          }
+        }
+      },
+      {
+        "when": "恣睢",
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:display_context",
+          "cases": [
+            {
+              "when": [
+                "gui",
+                "ground",
+                "fixed",
+                "on_shelf"
+              ],
+              "model": {
+                "type": "minecraft:model",
+                "model": "contribution:item/weapon_skin/spear/gui/violence"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "contribution:item/weapon_skin/spear/violence"
+          }
+        }
+      },
+      {
+        "when": "火山之矛",
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:display_context",
+          "cases": [
+            {
+              "when": [
+                "gui",
+                "ground",
+                "fixed",
+                "on_shelf"
+              ],
+              "model": {
+                "type": "minecraft:model",
+                "model": "contribution:item/weapon_skin/spear/gui/vulcanite_lance"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "contribution:item/weapon_skin/spear/vulcanite_lance"
+          }
+        }
+      },
+      {
+        "when": "狂龙翼火",
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:display_context",
+          "cases": [
+            {
+              "when": [
+                "gui",
+                "ground",
+                "fixed",
+                "on_shelf"
+              ],
+              "model": {
+                "type": "minecraft:model",
+                "model": "contribution:item/weapon_skin/spear/gui/wrathwing"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "contribution:item/weapon_skin/spear/wrathwing"
+          }
+        }
+      },
+      {
+        "when": "日蚀之陨",
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:display_context",
+          "cases": [
+            {
+              "when": [
+                "gui",
+                "ground",
+                "fixed",
+                "on_shelf"
+              ],
+              "model": {
+                "type": "minecraft:model",
+                "model": "contribution:item/weapon_skin/spear/gui/eclipses_fall"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "contribution:item/weapon_skin/spear/eclipses_fall"
+          }
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:select",
+      "property": "minecraft:display_context",
+      "cases": [
+        {
+          "when": [
+            "gui",
+            "ground",
+            "fixed",
+            "on_shelf"
+          ],
+          "model": {
+            "type": "minecraft:model",
+            "model": "contribution:item/weapon_skin/spear/static"
+          }
+        }
+      ],
+      "fallback": {
+        "type": "minecraft:model",
+        "model": "contribution:item/weapon_skin/spear/static_in_hand"
+      }
+    }
+  }
+}

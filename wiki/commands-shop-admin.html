@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="商店管理命令用于创建商品、修改商品信息和上下架，也可打开完整的管理表单。"><title>商店管理命令 · 贡献值模组维基 0.2.6</title><link rel="stylesheet" href="assets/wiki.css"><script defer src="assets/search-index.js"></script><script defer src="assets/site.js"></script></head><body data-current-page="commands-shop-admin"><a class="skip-link" href="#commands-shop-admin">跳到正文</a><div class="shell"><aside id="site-navigation" class="sidebar" aria-label="站点导航">
+<a class="brand" href="index.html#home">
+<span class="brand-mark" aria-hidden="true"></span>
+<span class="brand-text"><span class="brand-title">贡献值维基</span><span class="brand-tagline">贡献值经济 · 行业建设度 · 股票市场 · 系统商店</span></span>
+</a>
+<div class="sidebar-search"><label class="visually-hidden" for="site-search">搜索本维基</label><input id="site-search" type="search" placeholder="搜索页面与章节…" autocomplete="off"><div id="site-search-results" class="search-results" hidden></div></div>
+<div class="nav">
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-0"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开始阅读</span></button></h3>
+<ul id="nav-list-0">
+<li><a href="index.html#home" data-nav="home">贡献值模组维基</a></li>
+<li><a href="basics.html#basics" data-nav="basics">玩法入门</a></li>
+<li><a href="features.html#features" data-nav="features">玩法总览</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-1"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">贡献值与建设</span></button></h3>
+<ul id="nav-list-1">
+<li><a href="account.html#account" data-nav="account">贡献值账户</a></li>
+<li><a href="development.html#development" data-nav="development">行业建设度</a></li>
+<li><a href="statistics.html#statistics" data-nav="statistics">玩家统计</a></li>
+<li><a href="rewards.html#rewards" data-nav="rewards">建设度奖励</a></li>
+<li><a href="checkin.html#checkin" data-nav="checkin">签到与活动</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-2"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">经济交易</span></button></h3>
+<ul id="nav-list-2">
+<li><a href="shop.html#shop" data-nav="shop">系统商店</a></li>
+<li><a href="stock.html#stock" data-nav="stock">股票市场</a></li>
+<li><a href="stock-mechanics.html#stock-mechanics" data-nav="stock-mechanics">股价计算</a></li>
+<li><a href="swan.html#swan" data-nav="swan">黑天鹅事件</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-3"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">物品与进度</span></button></h3>
+<ul id="nav-list-3">
+<li><a href="items.html#items" data-nav="items">物品与装备</a></li>
+<li><a href="special-items.html#special-items" data-nav="special-items">特殊道具</a></li>
+<li><a href="recipes.html#recipes" data-nav="recipes">配方目录</a></li>
+<li><a href="recipes-basics.html#recipes-basics" data-nav="recipes-basics">基础配方</a></li>
+<li><a href="recipes-wings.html#recipes-wings" data-nav="recipes-wings">添翼配方</a></li>
+<li><a href="recipes-reinforcement.html#recipes-reinforcement" data-nav="recipes-reinforcement">强化配方</a></li>
+<li><a href="recipes-armor.html#recipes-armor" data-nav="recipes-armor">主题盔甲配方</a></li>
+<li><a href="recipes-hats.html#recipes-hats" data-nav="recipes-hats">帽子配方</a></li>
+<li><a href="recipes-special.html#recipes-special" data-nav="recipes-special">特殊道具配方</a></li>
+<li><a href="weapon-skins.html#weapon-skins" data-nav="weapon-skins">武器皮肤</a></li>
+<li><a href="advancements.html#advancements" data-nav="advancements">更多乐趣进度</a></li>
+<li><a href="advancement-details.html#advancement-details" data-nav="advancement-details">进度条件</a></li>
+<li><a href="resourcepack.html#resourcepack" data-nav="resourcepack">资源包与外观</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-4"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">操作与命令</span></button></h3>
+<ul id="nav-list-4">
+<li><a href="interface.html#interface" data-nav="interface">界面操作</a></li>
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands-contribution.html#commands-contribution" data-nav="commands-contribution">贡献值命令</a></li>
+<li><a href="commands-checkin.html#commands-checkin" data-nav="commands-checkin">签到命令</a></li>
+<li><a href="commands-stock.html#commands-stock" data-nav="commands-stock">股票命令</a></li>
+<li><a href="commands-shop.html#commands-shop" data-nav="commands-shop">商店命令</a></li>
+<li><a href="commands-account.html#commands-account" data-nav="commands-account">账户管理命令</a></li>
+<li><a href="#commands-shop-admin" data-nav="commands-shop-admin">商店管理命令</a></li>
+<li><a href="permissions.html#permissions" data-nav="permissions">操作权限</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-5"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">服务器管理</span></button></h3>
+<ul id="nav-list-5">
+<li><a href="installation.html#installation" data-nav="installation">安装</a></li>
+<li><a href="config.html#config" data-nav="config">服务器配置</a></li>
+<li><a href="data.html#data" data-nav="data">数据与存档</a></li>
+<li><a href="operations.html#operations" data-nav="operations">服务器维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-6"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开发与维护</span></button></h3>
+<ul id="nav-list-6">
+<li><a href="api.html#api" data-nav="api">公共接口</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-tools"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">工具</span></button></h3>
+<ul id="nav-list-tools">
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands.xlsx">下载命令工作簿</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+</div>
+<div class="sidebar-footer">版本 0.2.6 · Minecraft 26.3<br>Fabric Loader 0.19.5 · Java 25</div>
+</aside><main class="main"><header class="topbar"><nav class="topbar-crumbs" aria-label="面包屑"><a href="index.html">首页</a><span> / 商店管理命令</span></nav><span class="topbar-spacer"></span><button id="mobile-nav" type="button" aria-expanded="false" aria-controls="site-navigation">导航</button><button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">切换主题</button></header><div class="wiki-page" id="commands-shop-admin" data-page-title="商店管理命令">
+<div class="content-panel">
+<div class="page-head">
+<h1 class="page-title">商店管理命令</h1>
+<p class="page-summary">商店管理命令用于创建商品、修改商品信息和上下架，也可打开完整的管理表单。</p>
+</div>
+<div class="page-columns">
+<div class="article">
+<div class="toc"><input class="toc-toggle" type="checkbox" id="toc-commands-shop-admin" checked><label class="toc-head" for="toc-commands-shop-admin">目录 <span class="toc-toggle-label"><span class="toc-show">[显示]</span><span class="toc-hide">[隐藏]</span></span></label><ol><li><a href="#commands-shop-admin-用途">使用</a></li><li><a href="#commands-shop-admin-示例">示例</a></li><li><a href="#commands-shop-admin-命令路径">本模块命令路径</a></li></ol></div>
+<section class="wiki-section" id="commands-shop-admin-用途">
+<h2>使用</h2>
+<p>商店管理需要管理员等级 2。<code>/shop admin</code> 打开图形管理界面；<code>put_on</code>、<code>take_off</code>、<code>modify</code> 提供文字入口，<code>publish</code> / <code>save</code> 是图形表单的提交命令。</p>
+<ul><li><code>put_on</code> 自动分配稳定、不可复用的商品编号，排序默认 0。</li><li><code>modify</code> 按名称、数量、售价、描述的顺序填写；只改后面的字段时前面填 <code>-</code>，未填写的尾部字段保持不变，描述填 <code>&quot;&quot;</code> 清空。</li><li><code>save</code> 必须携带编辑页加载的实际 <code>revision</code>，其他管理员已经修改时拒绝覆盖。</li><li>物品参数使用原版物品参数，可以携带数据组件；完整定义最多 2048 字符。</li><li><code>take_off</code> 只下架，不删除商品、历史订单或待发物品。</li><li>目录最多保留 256 件商品（含已下架商品）。</li></ul>
+</section>
+<section class="wiki-section" id="commands-shop-admin-示例">
+<h2>示例</h2>
+<pre class="code" data-language="text"><code>/shop admin
+/shop modify 1 - - 35
+/shop take_off 1</code></pre>
+</section>
+<section class="wiki-section" id="commands-shop-admin-命令路径"><h2>本模块命令路径</h2>
+<p>共 18 条命令路径，权限、示例与参数要求列在各条目中。</p>
+<div class="cmd-list">
+<article class="cmd" data-search="商店管理 /shop admin 管理目录、创建、编辑、保存或发布商品。 管理员 /shop admin publish/save 是表单提交入口；save 必须携带 revision；完整字段包含排序与上架状态。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop admin</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>管理目录、创建、编辑、保存或发布商品。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop admin</code></dd>
+<dt>参数与限制</dt><dd>publish/save 是表单提交入口；save 必须携带 revision；完整字段包含排序与上架状态。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="商店管理 /shop admin create 管理目录、创建、编辑、保存或发布商品。 管理员 /shop admin publish/save 是表单提交入口；save 必须携带 revision；完整字段包含排序与上架状态。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop admin create</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>管理目录、创建、编辑、保存或发布商品。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop admin</code></dd>
+<dt>参数与限制</dt><dd>publish/save 是表单提交入口；save 必须携带 revision；完整字段包含排序与上架状态。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="商店管理 /shop admin edit &lt;id&gt; 管理目录、创建、编辑、保存或发布商品。 管理员 /shop admin publish/save 是表单提交入口；save 必须携带 revision；完整字段包含排序与上架状态。 id: longarg(1);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop admin edit &lt;id&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>管理目录、创建、编辑、保存或发布商品。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop admin</code></dd>
+<dt>参数与限制</dt><dd>publish/save 是表单提交入口；save 必须携带 revision；完整字段包含排序与上架状态。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: longArg(1);</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop admin page &lt;page&gt; 管理目录、创建、编辑、保存或发布商品。 管理员 /shop admin publish/save 是表单提交入口；save 必须携带 revision；完整字段包含排序与上架状态。 page: integer(0);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop admin page &lt;page&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>管理目录、创建、编辑、保存或发布商品。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop admin</code></dd>
+<dt>参数与限制</dt><dd>publish/save 是表单提交入口；save 必须携带 revision；完整字段包含排序与上架状态。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>page: integer(0);</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop admin publish &lt;item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;order&gt; &lt;listed&gt; &lt;description&gt; 提交完整新商品表单，设置物品、排序、状态和描述。 管理员 /shop admin publish minecraft:torch &quot;火把&quot; 16 20 0 true &quot;照明&quot; 物品可带组件；数量 1—64、售价≥1，排序为整数，上架状态：`true` 为上架，`false` 为下架。 item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); order: integer(); listed: true|false; description: 字符串（空格需引号）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop admin publish &lt;item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;order&gt; &lt;listed&gt; &lt;description&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>提交完整新商品表单，设置物品、排序、状态和描述。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop admin publish minecraft:torch &quot;火把&quot; 16 20 0 true &quot;照明&quot;</code></dd>
+<dt>参数与限制</dt><dd>物品可带组件；数量 1—64、售价≥1，排序为整数，上架状态：<code>true</code> 为上架，<code>false</code> 为下架。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); order: integer(); listed: true|false; description: 字符串（空格需引号）;</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop admin save &lt;id&gt; &lt;revision&gt; &lt;item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;order&gt; &lt;listed&gt; &lt;description&gt; 保存已有商品完整字段，拒绝过期编辑版本。 管理员 /shop admin save 1 0 minecraft:torch &quot;火把&quot; 16 20 0 true &quot;照明&quot; revision 必须使用编辑页加载的实际版本；此例 0 只适用于版本 0 商品。 id: longarg(1); revision: longarg(0); item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); order: integer(); listed: true|false; description: 字符串（空格需引号）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop admin save &lt;id&gt; &lt;revision&gt; &lt;item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;order&gt; &lt;listed&gt; &lt;description&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>保存已有商品完整字段，拒绝过期编辑版本。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop admin save 1 0 minecraft:torch &quot;火把&quot; 16 20 0 true &quot;照明&quot;</code></dd>
+<dt>参数与限制</dt><dd>revision 必须使用编辑页加载的实际版本；此例 0 只适用于版本 0 商品。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: longArg(1); revision: longArg(0); item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); order: integer(); listed: true|false; description: 字符串（空格需引号）;</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop modify &lt;id&gt; 打开编辑页或按顺序修改名称、数量、售价、描述。 管理员 /shop modify 1 - - 35 - 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。 id: longarg(1);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop modify &lt;id&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开编辑页或按顺序修改名称、数量、售价、描述。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop modify 1 - - 35</code></dd>
+<dt>参数与限制</dt><dd>- 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: longArg(1);</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop modify &lt;id&gt; &lt;name&gt; 打开编辑页或按顺序修改名称、数量、售价、描述。 管理员 /shop modify 1 - - 35 - 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。 id: longarg(1); name: 字符串（空格需引号）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop modify &lt;id&gt; &lt;name&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开编辑页或按顺序修改名称、数量、售价、描述。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop modify 1 - - 35</code></dd>
+<dt>参数与限制</dt><dd>- 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: longArg(1); name: 字符串（空格需引号）;</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop modify &lt;id&gt; &lt;name&gt; &lt;count&gt; 打开编辑页或按顺序修改名称、数量、售价、描述。 管理员 /shop modify 1 - - 35 - 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。 id: longarg(1); name: 字符串（空格需引号）; count: 单词（不能含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop modify &lt;id&gt; &lt;name&gt; &lt;count&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开编辑页或按顺序修改名称、数量、售价、描述。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop modify 1 - - 35</code></dd>
+<dt>参数与限制</dt><dd>- 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: longArg(1); name: 字符串（空格需引号）; count: 单词（不能含空格）;</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop modify &lt;id&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; 打开编辑页或按顺序修改名称、数量、售价、描述。 管理员 /shop modify 1 - - 35 - 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。 id: longarg(1); name: 字符串（空格需引号）; count: 单词（不能含空格）; price: 单词（不能含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop modify &lt;id&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开编辑页或按顺序修改名称、数量、售价、描述。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop modify 1 - - 35</code></dd>
+<dt>参数与限制</dt><dd>- 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: longArg(1); name: 字符串（空格需引号）; count: 单词（不能含空格）; price: 单词（不能含空格）;</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop modify &lt;id&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;description&gt; 打开编辑页或按顺序修改名称、数量、售价、描述。 管理员 /shop modify 1 - - 35 - 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。 id: longarg(1); name: 字符串（空格需引号）; count: 单词（不能含空格）; price: 单词（不能含空格）; description: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop modify &lt;id&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;description&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开编辑页或按顺序修改名称、数量、售价、描述。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop modify 1 - - 35</code></dd>
+<dt>参数与限制</dt><dd>- 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: longArg(1); name: 字符串（空格需引号）; count: 单词（不能含空格）; price: 单词（不能含空格）; description: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop put_on &lt;legacy_item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; 上架商品，自动分配不可复用编号。 管理员 /shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品 支持 item &lt;物品及组件&gt;或 `hand_item`（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。 legacy_item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop put_on &lt;legacy_item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>上架商品，自动分配不可复用编号。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品</code></dd>
+<dt>参数与限制</dt><dd>支持 item &lt;物品及组件&gt;或 <code>hand_item</code>（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>legacy_item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1);</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop put_on &lt;legacy_item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;description&gt; 上架商品，自动分配不可复用编号。 管理员 /shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品 支持 item &lt;物品及组件&gt;或 `hand_item`（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。 legacy_item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); description: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop put_on &lt;legacy_item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;description&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>上架商品，自动分配不可复用编号。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品</code></dd>
+<dt>参数与限制</dt><dd>支持 item &lt;物品及组件&gt;或 <code>hand_item</code>（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>legacy_item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); description: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop put_on hand_item &lt;name&gt; &lt;count&gt; &lt;price&gt; 上架商品，自动分配不可复用编号。 管理员 /shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品 支持 item &lt;物品及组件&gt;或 `hand_item`（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。 name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop put_on hand_item &lt;name&gt; &lt;count&gt; &lt;price&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>上架商品，自动分配不可复用编号。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品</code></dd>
+<dt>参数与限制</dt><dd>支持 item &lt;物品及组件&gt;或 <code>hand_item</code>（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1);</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop put_on hand_item &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;description&gt; 上架商品，自动分配不可复用编号。 管理员 /shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品 支持 item &lt;物品及组件&gt;或 `hand_item`（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。 name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); description: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop put_on hand_item &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;description&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>上架商品，自动分配不可复用编号。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品</code></dd>
+<dt>参数与限制</dt><dd>支持 item &lt;物品及组件&gt;或 <code>hand_item</code>（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); description: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop put_on item &lt;item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; 上架商品，自动分配不可复用编号。 管理员 /shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品 支持 item &lt;物品及组件&gt;或 `hand_item`（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。 item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop put_on item &lt;item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>上架商品，自动分配不可复用编号。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品</code></dd>
+<dt>参数与限制</dt><dd>支持 item &lt;物品及组件&gt;或 <code>hand_item</code>（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1);</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop put_on item &lt;item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;description&gt; 上架商品，自动分配不可复用编号。 管理员 /shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品 支持 item &lt;物品及组件&gt;或 `hand_item`（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。 item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); description: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop put_on item &lt;item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;description&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>上架商品，自动分配不可复用编号。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品</code></dd>
+<dt>参数与限制</dt><dd>支持 item &lt;物品及组件&gt;或 <code>hand_item</code>（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); description: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop take_off &lt;id&gt; 按编号下架，保留历史与待发订单。 管理员 /shop take_off 1 不会删除记录。 id: longarg(1);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop take_off &lt;id&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>按编号下架，保留历史与待发订单。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop take_off 1</code></dd>
+<dt>参数与限制</dt><dd>不会删除记录。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: longArg(1);</code></details>
+</article>
+</div>
+</section>
+<div class="page-footer">贡献值模组维基 · 0.2.6 · <a href="documentation.html#documentation">维基维护</a></div>
+</div>
+<aside class="page-info">
+<div class="page-info-inner">
+<div class="page-info-head">条目概要</div>
+<table class="infobox">
+<tr><th>命令根</th><td><code>/shop</code></td></tr>
+<tr><th>权限</th><td>见各命令权限栏</td></tr>
+<tr><th>命令路径</th><td>18 条</td></tr>
+</table>
+</div>
+<table class="navbox"><tbody>
+<tr><th class="navbox-top" colspan="2"><span class="navbox-title">操作与命令</span></th></tr>
+<tr><th>相关页面</th><td><ul class="hlist"><li><a href="interface.html#interface">界面操作</a></li><li><a href="commands.html#commands">命令速查</a></li><li><a href="commands-contribution.html#commands-contribution">贡献值命令</a></li><li><a href="commands-checkin.html#commands-checkin">签到命令</a></li></ul></td></tr>
+</tbody></table>
+<div class="catlinks"><span>分类：</span><ul><li>操作与命令</li></ul></div>
+</aside>
+</div>
+</div>
+</div></main></div></body></html>

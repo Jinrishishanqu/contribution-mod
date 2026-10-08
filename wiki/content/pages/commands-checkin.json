@@ -1,0 +1,38 @@
+{
+  "id": "commands-checkin",
+  "title": "签到命令",
+  "summary": "签到命令用于查询每日状态、浏览和领取活动奖励，以及由管理员创建活动。",
+  "sections": [
+    {
+      "title": "使用",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "签到命令分为玩家侧与管理侧：玩家查看并领取活动奖励，管理员在主服务器定义活动。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "每日在线签到没有手动领取命令：当天累计在线满 600 秒后自动发放。",
+            "`/contribution checkin events` 列出当前可领取的活动；`claim <活动ID>` 每名玩家每个活动只能领取一次。",
+            "活动日期为 `YYYY-MM-DD` 的现实日期，采用配置时区，起止两日均包含。",
+            "活动创建只允许在主服务器执行；当前版本只提供创建，不提供编辑已发布的活动。",
+            "`create-extension` 需要由其他模组先注册奖励提供者，否则活动无法创建。"
+          ]
+        }
+      ],
+      "id": "用途"
+    },
+    {
+      "title": "示例",
+      "id": "示例",
+      "blocks": [
+        {
+          "type": "code",
+          "language": "text",
+          "text": "/contribution checkin\n/contribution checkin events\n/contribution checkin claim festival"
+        }
+      ]
+    }
+  ]
+}

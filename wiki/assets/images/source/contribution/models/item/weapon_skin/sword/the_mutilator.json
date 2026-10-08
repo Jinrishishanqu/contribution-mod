@@ -1,0 +1,66 @@
+{
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        55
+      ],
+      "translation": [
+        0,
+        7.25,
+        -0.25
+      ],
+      "scale": [
+        1.2,
+        1.2,
+        0.85
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -55
+      ],
+      "translation": [
+        0,
+        7.25,
+        -0.25
+      ],
+      "scale": [
+        1.2,
+        1.2,
+        0.85
+      ]
+    },
+    "gui": {
+      "rotation": [
+        0,
+        0,
+        6
+      ],
+      "translation": [
+        0,
+        1,
+        0
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        6
+      ],
+      "translation": [
+        0,
+        1,
+        0
+      ]
+    }
+  },
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/sword/the_mutilator"
+  },
+  "parent": "minecraft:item/handheld"
+}

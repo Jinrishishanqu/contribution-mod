@@ -1,11 +1,14 @@
 package cn.contribution.industry;
 
 import cn.contribution.runtime.ContributionRuntime;
+
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.world.entity.animal.happyghast.HappyGhast;
+import net.minecraft.world.entity.animal.nautilus.AbstractNautilus;
 import net.minecraft.world.entity.animal.pig.Pig;
 import net.minecraft.world.entity.monster.Strider;
 import net.minecraft.world.entity.vehicle.boat.AbstractBoat;
@@ -16,8 +19,7 @@ public final class PlayerDistanceAdapter {
     private static final int MAX_INCREMENT_CENTIMETERS = 1_600;
     private static final long MICROBLOCKS_PER_CENTIMETER = 10_000L;
 
-    private PlayerDistanceAdapter() {
-    }
+    private PlayerDistanceAdapter() {}
 
     public static void completed(ServerPlayer player, Identifier statistic, int centimeters) {
         StatisticsService service = ContributionRuntime.statistics();
@@ -38,6 +40,10 @@ public final class PlayerDistanceAdapter {
             mode = "pig";
         } else if (statistic.equals(Stats.STRIDER_ONE_CM) && vehicle instanceof Strider) {
             mode = "strider";
+        } else if (statistic.equals(Stats.HAPPY_GHAST_ONE_CM) && vehicle instanceof HappyGhast) {
+            mode = "happy_ghast";
+        } else if (statistic.equals(Stats.NAUTILUS_ONE_CM) && vehicle instanceof AbstractNautilus) {
+            mode = "nautilus";
         }
         if (mode != null) {
             service.distance(player, mode, centimeters * MICROBLOCKS_PER_CENTIMETER);

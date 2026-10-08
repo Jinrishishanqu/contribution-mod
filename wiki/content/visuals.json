@@ -1,0 +1,854 @@
+{
+  "home": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "minecraft:emerald",
+        "label": "贡献值账户"
+      },
+      {
+        "key": "minecraft:iron_pickaxe",
+        "label": "行业建设"
+      },
+      {
+        "key": "minecraft:gold_ingot",
+        "label": "股票市场"
+      },
+      {
+        "key": "model:contribution:winged/diamond",
+        "label": "钻石添翼胸甲"
+      }
+    ]
+  },
+  "features": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "minecraft:emerald",
+        "label": "账户"
+      },
+      {
+        "key": "minecraft:iron_pickaxe",
+        "label": "建设度"
+      },
+      {
+        "key": "minecraft:clock",
+        "label": "签到"
+      },
+      {
+        "key": "minecraft:chest",
+        "label": "商店"
+      },
+      {
+        "key": "minecraft:gold_ingot",
+        "label": "股票"
+      },
+      {
+        "key": "model:contribution:armor/nano_chestplate",
+        "label": "纳米胸甲"
+      }
+    ]
+  },
+  "basics": {
+    "type": "flow",
+    "items": [
+      {
+        "key": "minecraft:iron_pickaxe",
+        "label": "有效活动",
+        "text": "合成、放置、挖掘与生产"
+      },
+      {
+        "key": "minecraft:book",
+        "label": "行业建设度",
+        "text": "按来源累计"
+      },
+      {
+        "key": "minecraft:emerald",
+        "label": "贡献值奖励",
+        "text": "按个人建设度折算"
+      },
+      {
+        "key": "minecraft:chest",
+        "label": "消费与交易",
+        "text": "商店购买或股票买卖"
+      }
+    ],
+    "caption": "物品图标用于示意操作顺序"
+  },
+  "account": {
+    "type": "flow",
+    "items": [
+      {
+        "key": "minecraft:emerald",
+        "label": "收入",
+        "text": "签到与建设度奖励"
+      },
+      {
+        "key": "minecraft:book",
+        "label": "账户",
+        "text": "余额和历史总收入"
+      },
+      {
+        "key": "minecraft:paper",
+        "label": "流水",
+        "text": "每次变动留存记录"
+      }
+    ],
+    "caption": "物品图标用于示意操作顺序"
+  },
+  "development": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "minecraft:crafting_table",
+        "label": "土建园林"
+      },
+      {
+        "key": "minecraft:iron_pickaxe",
+        "label": "采矿冶金"
+      },
+      {
+        "key": "minecraft:redstone",
+        "label": "能源化工"
+      },
+      {
+        "key": "minecraft:smithing_table",
+        "label": "加工制造"
+      },
+      {
+        "key": "minecraft:enchanted_book",
+        "label": "科技魔法"
+      },
+      {
+        "key": "minecraft:wheat",
+        "label": "农林牧渔"
+      },
+      {
+        "key": "minecraft:bread",
+        "label": "军工食药"
+      },
+      {
+        "key": "minecraft:minecart",
+        "label": "流通服务"
+      },
+      {
+        "key": "minecraft:writable_book",
+        "label": "文教民生"
+      }
+    ],
+    "compact": true
+  },
+  "statistics": {
+    "type": "flow",
+    "items": [
+      {
+        "key": "minecraft:iron_pickaxe",
+        "label": "完成操作",
+        "text": "服务端确认成功"
+      },
+      {
+        "key": "minecraft:book",
+        "label": "累计统计",
+        "text": "操作次数与行业建设度"
+      },
+      {
+        "key": "minecraft:paper",
+        "label": "查询",
+        "text": "账户页或 stats 命令"
+      }
+    ],
+    "caption": "物品图标用于示意操作顺序"
+  },
+  "rewards": {
+    "type": "flow",
+    "items": [
+      {
+        "key": "minecraft:iron_pickaxe",
+        "label": "个人建设度",
+        "text": "九行业累计量"
+      },
+      {
+        "key": "minecraft:paper",
+        "label": "权重计算",
+        "text": "应发总量减去已发量"
+      },
+      {
+        "key": "minecraft:emerald",
+        "label": "自动入账",
+        "text": "默认每 300 秒扫描"
+      }
+    ],
+    "caption": "物品图标用于示意操作顺序"
+  },
+  "checkin": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "minecraft:clock",
+        "label": "累计在线",
+        "text": "当天共 600 秒"
+      },
+      {
+        "key": "minecraft:emerald",
+        "label": "自动签到",
+        "text": "七日周期奖励"
+      },
+      {
+        "key": "minecraft:book",
+        "label": "活动奖励",
+        "text": "期限内另行领取"
+      }
+    ]
+  },
+  "shop": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "minecraft:bread",
+        "label": "面包",
+        "text": "默认 4 个 / 20 贡献值"
+      },
+      {
+        "key": "minecraft:torch",
+        "label": "火把",
+        "text": "默认 16 个 / 20 贡献值"
+      },
+      {
+        "key": "minecraft:iron_pickaxe",
+        "label": "铁镐",
+        "text": "默认 1 个 / 80 贡献值"
+      },
+      {
+        "key": "model:contribution:weapon_skin/sword",
+        "label": "原初剑",
+        "text": "右键选择外观"
+      }
+    ]
+  },
+  "stock": {
+    "type": "flow",
+    "items": [
+      {
+        "key": "minecraft:clock",
+        "label": "8:00",
+        "text": "日核算与新股上市"
+      },
+      {
+        "key": "minecraft:gold_ingot",
+        "label": "10:00—14:00",
+        "text": "按当日价格买卖"
+      },
+      {
+        "key": "minecraft:emerald",
+        "label": "14:00",
+        "text": "退市持股结算"
+      }
+    ],
+    "caption": "物品图标用于示意操作顺序"
+  },
+  "stock-mechanics": {
+    "type": "flow",
+    "items": [
+      {
+        "key": "minecraft:book",
+        "label": "繁荣度与尺度",
+        "text": "确定建设增长趋势"
+      },
+      {
+        "key": "minecraft:redstone",
+        "label": "价格计算",
+        "text": "独立噪声与自适应幅度"
+      },
+      {
+        "key": "minecraft:gold_ingot",
+        "label": "当日股价",
+        "text": "应用价格边界"
+      }
+    ],
+    "caption": "物品图标用于示意操作顺序"
+  },
+  "swan": {
+    "type": "flow",
+    "items": [
+      {
+        "key": "minecraft:compass",
+        "label": "随机考察",
+        "text": "两名玩家、四个行业"
+      },
+      {
+        "key": "minecraft:iron_pickaxe",
+        "label": "建设窗口",
+        "text": "比较个人建设度增量"
+      },
+      {
+        "key": "minecraft:gold_ingot",
+        "label": "下次核算",
+        "text": "好天鹅 +40%，坏天鹅 −25%"
+      }
+    ],
+    "caption": "物品图标用于示意操作顺序"
+  },
+  "items": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "model:contribution:winged/diamond",
+        "label": "钻石添翼胸甲"
+      },
+      {
+        "key": "model:contribution:armor/mark_6_chestplate",
+        "label": "马克六型 胸甲"
+      },
+      {
+        "key": "model:contribution:armor/nano_chestplate",
+        "label": "纳米胸甲"
+      },
+      {
+        "key": "model:contribution:armor/quantum_chestplate",
+        "label": "量子胸甲"
+      },
+      {
+        "key": "model:contribution:speaker",
+        "label": "公示喇叭"
+      },
+      {
+        "key": "model:minecraft:anvil",
+        "label": "铁砧帽子"
+      }
+    ]
+  },
+  "advancements": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "minecraft:experience_bottle",
+        "label": "活动挑战"
+      },
+      {
+        "key": "minecraft:diamond_pickaxe",
+        "label": "装备升级"
+      },
+      {
+        "key": "minecraft:compass",
+        "label": "探索挑战"
+      }
+    ]
+  },
+  "resourcepack": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "model:contribution:winged/diamond",
+        "label": "钻石添翼胸甲"
+      },
+      {
+        "key": "model:contribution:armor/nano_chestplate",
+        "label": "纳米胸甲"
+      },
+      {
+        "key": "model:contribution:armor/quantum_chestplate",
+        "label": "量子胸甲"
+      },
+      {
+        "key": "model:contribution:speaker",
+        "label": "公示喇叭"
+      }
+    ]
+  },
+  "special-items": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "model:contribution:speaker",
+        "label": "公示喇叭"
+      },
+      {
+        "key": "minecraft:gunpowder",
+        "label": "哑炮"
+      },
+      {
+        "key": "minecraft:player_head",
+        "label": "玩家头颅"
+      },
+      {
+        "key": "model:contribution:weapon_skin/sword",
+        "label": "原初剑"
+      }
+    ]
+  },
+  "installation": {
+    "type": "flow",
+    "items": [
+      {
+        "key": "minecraft:book",
+        "label": "安装环境",
+        "text": "Minecraft、Java 和 Fabric"
+      },
+      {
+        "key": "minecraft:chest",
+        "label": "放入 模组文件",
+        "text": "服务端 mods 目录"
+      },
+      {
+        "key": "minecraft:compass",
+        "label": "进入服务器",
+        "text": "客户端模组可选"
+      }
+    ],
+    "caption": "物品图标用于示意操作顺序"
+  },
+  "interface": {
+    "type": "flow",
+    "items": [
+      {
+        "key": "minecraft:book",
+        "label": "打开页面",
+        "text": "贡献值、股票或商店"
+      },
+      {
+        "key": "minecraft:paper",
+        "label": "浏览和筛选",
+        "text": "查询服务端数据"
+      },
+      {
+        "key": "minecraft:compass",
+        "label": "返回与关闭",
+        "text": "`Esc` 返回上级"
+      }
+    ],
+    "caption": "物品图标用于示意操作顺序"
+  },
+  "permissions": {
+    "type": "flow",
+    "items": [
+      {
+        "key": "minecraft:paper",
+        "label": "玩家请求",
+        "text": "命令或界面操作"
+      },
+      {
+        "key": "minecraft:shield",
+        "label": "权限与参数",
+        "text": "由服务端校验"
+      },
+      {
+        "key": "minecraft:book",
+        "label": "执行操作",
+        "text": "按权限读取或变更"
+      }
+    ],
+    "caption": "物品图标用于示意操作顺序"
+  },
+  "config": {
+    "type": "flow",
+    "items": [
+      {
+        "key": "minecraft:writable_book",
+        "label": "编辑配置",
+        "text": "server.json"
+      },
+      {
+        "key": "minecraft:chest",
+        "label": "同步节点",
+        "text": "数据库、身份和奖励设置"
+      },
+      {
+        "key": "minecraft:clock",
+        "label": "重启生效",
+        "text": "启动时读取"
+      }
+    ],
+    "caption": "物品图标用于示意操作顺序"
+  },
+  "data": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "minecraft:chest",
+        "label": "单服 H2",
+        "text": "世界内数据库"
+      },
+      {
+        "key": "minecraft:book",
+        "label": "群组服 MySQL",
+        "text": "共享业务数据"
+      },
+      {
+        "key": "minecraft:paper",
+        "label": "恢复日志",
+        "text": "各服保存统计批次"
+      }
+    ]
+  },
+  "operations": {
+    "type": "flow",
+    "items": [
+      {
+        "key": "minecraft:chest",
+        "label": "备份",
+        "text": "停服保存世界与数据库"
+      },
+      {
+        "key": "minecraft:compass",
+        "label": "检查状态",
+        "text": "诊断时钟与结算进度"
+      },
+      {
+        "key": "minecraft:book",
+        "label": "恢复服务",
+        "text": "按原批次和请求处理"
+      }
+    ],
+    "caption": "流程示意"
+  },
+  "api": {
+    "type": "flow",
+    "items": [
+      {
+        "key": "minecraft:writable_book",
+        "label": "构造请求",
+        "text": "BalanceChangeRequest"
+      },
+      {
+        "key": "minecraft:redstone",
+        "label": "异步提交",
+        "text": "changeBalance"
+      },
+      {
+        "key": "minecraft:paper",
+        "label": "处理结果",
+        "text": "BalanceChangeResult"
+      }
+    ],
+    "caption": "物品图标用于示意操作顺序"
+  },
+  "commands": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "minecraft:emerald",
+        "label": "账户命令"
+      },
+      {
+        "key": "minecraft:clock",
+        "label": "签到命令"
+      },
+      {
+        "key": "minecraft:gold_ingot",
+        "label": "股票命令"
+      },
+      {
+        "key": "minecraft:chest",
+        "label": "商店命令"
+      }
+    ]
+  },
+  "commands-contribution": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "minecraft:emerald",
+        "label": "余额查询"
+      },
+      {
+        "key": "minecraft:paper",
+        "label": "交易流水"
+      },
+      {
+        "key": "minecraft:iron_pickaxe",
+        "label": "玩家统计"
+      }
+    ]
+  },
+  "commands-account": {
+    "type": "flow",
+    "items": [
+      {
+        "key": "minecraft:paper",
+        "label": "选择账户",
+        "text": "名称或 玩家唯一标识符"
+      },
+      {
+        "key": "minecraft:emerald",
+        "label": "提交变动",
+        "text": "金额与收入标志"
+      },
+      {
+        "key": "minecraft:book",
+        "label": "查看结果",
+        "text": "余额及流水 标识符"
+      }
+    ],
+    "caption": "流程示意"
+  },
+  "commands-checkin": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "minecraft:clock",
+        "label": "每日状态"
+      },
+      {
+        "key": "minecraft:book",
+        "label": "活动列表"
+      },
+      {
+        "key": "minecraft:emerald",
+        "label": "活动领取"
+      }
+    ]
+  },
+  "commands-stock": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "minecraft:gold_ingot",
+        "label": "市场"
+      },
+      {
+        "key": "minecraft:book",
+        "label": "持仓"
+      },
+      {
+        "key": "minecraft:paper",
+        "label": "价格历史"
+      }
+    ]
+  },
+  "commands-shop": {
+    "type": "flow",
+    "items": [
+      {
+        "key": "minecraft:chest",
+        "label": "选择商品",
+        "text": "目录编号"
+      },
+      {
+        "key": "minecraft:emerald",
+        "label": "购买份数",
+        "text": "按目录价格扣款"
+      },
+      {
+        "key": "minecraft:bread",
+        "label": "物品交付",
+        "text": "自动尝试或 claim"
+      }
+    ],
+    "caption": "流程示意"
+  },
+  "commands-shop-admin": {
+    "type": "flow",
+    "items": [
+      {
+        "key": "minecraft:writable_book",
+        "label": "商品定义",
+        "text": "物品、数量与售价"
+      },
+      {
+        "key": "minecraft:chest",
+        "label": "发布或编辑",
+        "text": "上架、下架与版本"
+      },
+      {
+        "key": "minecraft:paper",
+        "label": "保存目录",
+        "text": "群组服共享"
+      }
+    ],
+    "caption": "流程示意"
+  },
+  "documentation": {
+    "type": "flow",
+    "items": [
+      {
+        "key": "minecraft:writable_book",
+        "label": "编辑正文",
+        "text": "主题 数据定义 与命令说明"
+      },
+      {
+        "key": "minecraft:crafting_table",
+        "label": "同步生成",
+        "text": "网站、网页 与 命令工作簿"
+      },
+      {
+        "key": "minecraft:compass",
+        "label": "校验",
+        "text": "来源与产物哈希"
+      }
+    ],
+    "caption": "物品图标用于示意操作顺序"
+  },
+  "recipes": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "minecraft:crafting_table",
+        "label": "基础合成"
+      },
+      {
+        "key": "model:contribution:winged/diamond",
+        "label": "钻石添翼胸甲"
+      },
+      {
+        "key": "minecraft:netherite_upgrade_smithing_template",
+        "label": "装备强化"
+      },
+      {
+        "key": "model:contribution:armor/nano_chestplate",
+        "label": "纳米胸甲"
+      },
+      {
+        "key": "model:minecraft:anvil",
+        "label": "变形帽子"
+      },
+      {
+        "key": "model:contribution:speaker",
+        "label": "公示喇叭"
+      }
+    ]
+  },
+  "recipes-basics": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "minecraft:elytra",
+        "label": "鞘翅复制"
+      },
+      {
+        "key": "minecraft:heart_of_the_sea",
+        "label": "海洋之心复制"
+      },
+      {
+        "key": "minecraft:chest",
+        "label": "原木制箱子"
+      }
+    ]
+  },
+  "recipes-wings": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "model:contribution:winged/leather",
+        "label": "皮革添翼"
+      },
+      {
+        "key": "model:contribution:winged/iron",
+        "label": "铁质添翼"
+      },
+      {
+        "key": "model:contribution:winged/diamond",
+        "label": "钻石添翼胸甲"
+      },
+      {
+        "key": "model:contribution:winged/netherite",
+        "label": "下界合金添翼"
+      }
+    ]
+  },
+  "recipes-reinforcement": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "minecraft:netherite_upgrade_smithing_template",
+        "label": "升级模板"
+      },
+      {
+        "key": "minecraft:diamond_pickaxe",
+        "label": "原材质装备"
+      },
+      {
+        "key": "minecraft:netherite_pickaxe",
+        "label": "同部位下界合金装备"
+      }
+    ]
+  },
+  "recipes-armor": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "model:contribution:armor/mark_6_chestplate",
+        "label": "马克六型 胸甲"
+      },
+      {
+        "key": "model:contribution:armor/nano_chestplate",
+        "label": "纳米胸甲"
+      },
+      {
+        "key": "model:contribution:armor/quantum_chestplate",
+        "label": "量子胸甲"
+      }
+    ]
+  },
+  "recipes-hats": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "model:minecraft:anvil",
+        "label": "铁砧帽子"
+      },
+      {
+        "key": "model:minecraft:azalea",
+        "label": "杜鹃帽子"
+      },
+      {
+        "key": "model:minecraft:decorated_pot",
+        "label": "饰纹陶罐帽子"
+      },
+      {
+        "key": "model:minecraft:shield",
+        "label": "盾牌帽子"
+      }
+    ]
+  },
+  "recipes-special": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "model:contribution:speaker",
+        "label": "公示喇叭"
+      },
+      {
+        "key": "minecraft:gunpowder",
+        "label": "哑炮"
+      }
+    ]
+  },
+  "advancement-details": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "minecraft:experience_bottle",
+        "label": "完成活动条件"
+      },
+      {
+        "key": "minecraft:diamond_pickaxe",
+        "label": "完成升级配方"
+      },
+      {
+        "key": "minecraft:compass",
+        "label": "探索与位置条件"
+      }
+    ]
+  },
+  "weapon-skins": {
+    "type": "gallery",
+    "items": [
+      {
+        "key": "skin:sword/龙霜骨血剑",
+        "label": "龙霜骨血剑"
+      },
+      {
+        "key": "skin:axe/玫瑰石英斧",
+        "label": "玫瑰石英斧"
+      },
+      {
+        "key": "skin:pickaxe/终级碾碎器",
+        "label": "终级碾碎器"
+      },
+      {
+        "key": "skin:spear/破晓之光",
+        "label": "破晓之光"
+      }
+    ]
+  }
+}

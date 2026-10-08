@@ -6,9 +6,6 @@
   "result": {
     "id": "minecraft:diamond_helmet",
     "components": {
-      "minecraft:item_name": {
-        "text": "强化钻石头盔"
-      },
       "minecraft:max_damage": 407,
       "minecraft:damage_resistant": {
         "types": "#minecraft:is_fire"
@@ -34,6 +31,13 @@
           "operation": "add_value",
           "slot": "head",
           "id": "contribution:reinforced_helmet_knockback"
+        }
+      ],
+      "minecraft:lore": [
+        {
+          "color": "gray",
+          "italic": false,
+          "text": "下界合金强化"
         }
       ]
     }

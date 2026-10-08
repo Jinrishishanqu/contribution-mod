@@ -4,6 +4,7 @@ import cn.contribution.ContributionMod;
 import cn.contribution.account.AccountService;
 import cn.contribution.config.ServerConfig;
 import cn.contribution.database.DatabaseService;
+
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -13,17 +14,17 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.nio.charset.StandardCharsets;
-import java.nio.channels.Channels;
-import java.nio.channels.FileChannel;
-import java.io.IOException;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.nio.channels.Channels;
+import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.AtomicMoveNotSupportedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.AtomicMoveNotSupportedException;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
 import java.security.MessageDigest;
@@ -36,12 +37,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
-import java.util.HashSet;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
@@ -60,15 +61,18 @@ public final class StatisticsService {
     private final Map<IndustryDayKey, Long> industry = new HashMap<>();
     private final Map<PlayerKey, PlayerCounts> player = new HashMap<>();
     private final Map<PlayerIndustryKey, Long> playerIndustry = new HashMap<>();
-    private final Map<DistanceDayKey, Long> distance = new HashMap<>();
-    private final Map<DedupKey, Integer> recentBlocks = new HashMap<>();
+    private final CounterBuffer<DistanceDayKey> distance = new CounterBuffer<>();
+    private final CounterBuffer<MeasuredStatistics.Key> measured = new CounterBuffer<>();
+    private final ExpiringDedup<DedupKey> recentBlocks = new ExpiringDedup<>(MAX_BUFFER_KEYS, 20);
     private final List<Batch> pending = new ArrayList<>();
     private final Set<UUID> journaled = new HashSet<>();
-    private final ExecutorService journalExecutor = Executors.newSingleThreadExecutor(runnable -> {
-        Thread thread = new Thread(runnable, "contribution-statistics-journal");
-        thread.setDaemon(true);
-        return thread;
-    });
+    private final ExecutorService journalExecutor =
+            Executors.newSingleThreadExecutor(
+                    runnable -> {
+                        Thread thread = new Thread(runnable, "contribution-statistics-journal");
+                        thread.setDaemon(true);
+                        return thread;
+                    });
     private final Path journalDirectory;
     private int lastFlushTick;
     private int pendingKeyCount;
@@ -79,16 +83,27 @@ public final class StatisticsService {
     private long lastClosedDay = -1;
     private int nextCloseRetryTick;
     private int nextCapacityWarning;
+    private long nextPendingErrorNotice;
 
     public StatisticsService(DatabaseService database, ServerConfig config) {
-        this(database, config, FabricLoader.getInstance().getConfigDir().resolve("contribution/statistics-journal"), RuleManager.current());
+        this(
+                database,
+                config,
+                FabricLoader.getInstance()
+                        .getConfigDir()
+                        .resolve("contribution/statistics-journal"),
+                RuleManager.current());
     }
 
     public StatisticsService(DatabaseService database, ServerConfig config, Path journalDirectory) {
         this(database, config, journalDirectory, RuleManager.current());
     }
 
-    StatisticsService(DatabaseService database, ServerConfig config, Path journalDirectory, RuleSnapshot snapshot) {
+    StatisticsService(
+            DatabaseService database,
+            ServerConfig config,
+            Path journalDirectory,
+            RuleSnapshot snapshot) {
         this.database = database;
         this.config = config;
         this.configHash = snapshot.hash();
@@ -99,26 +114,37 @@ public final class StatisticsService {
             Files.createDirectories(journalDirectory);
             try (var paths = Files.list(journalDirectory)) {
                 long size = 0;
-                for (Path path : paths.filter(value -> value.toString().endsWith(".bin")).toList()) size += Files.size(path);
-                if (size > MAX_JOURNAL_BYTES) throw new IOException("Recovery logs exceed 64 MiB; preserve and inspect them before restart");
+                for (Path path : paths.filter(value -> value.toString().endsWith(".bin")).toList())
+                    size += Files.size(path);
+                if (size > MAX_JOURNAL_BYTES)
+                    throw new IOException(
+                            "Recovery logs exceed 64 MiB; preserve and inspect them before"
+                                    + " restart");
             }
             try (var files = Files.list(journalDirectory)) {
                 files.filter(path -> path.getFileName().toString().endsWith(".bin"))
-                        .sorted(Comparator.comparingLong(StatisticsService::journalModifiedTime)
-                                .thenComparing(Path::toString)).forEach(path -> {
-                            try {
-                                Batch batch = readJournal(path);
-                                if (batch.sequence > 0) {
-                                    nextBatchSequence = Math.max(nextBatchSequence, batch.sequence + 1);
-                                }
-                                pending.add(batch);
-                                pendingKeyCount += batch.keyCount();
-                                if (pendingKeyCount > MAX_BUFFER_KEYS) throw new IOException("Recovery entries exceed memory safety limit");
-                                journaled.add(batch.id);
-                            } catch (IOException error) {
-                                throw new IllegalStateException("Invalid statistics recovery log: " + path, error);
-                            }
-                        });
+                        .sorted(
+                                Comparator.comparingLong(StatisticsService::journalModifiedTime)
+                                        .thenComparing(Path::toString))
+                        .forEach(
+                                path -> {
+                                    try {
+                                        Batch batch = readJournal(path);
+                                        if (batch.sequence > 0) {
+                                            nextBatchSequence =
+                                                    Math.max(nextBatchSequence, batch.sequence + 1);
+                                        }
+                                        pending.add(batch);
+                                        pendingKeyCount += batch.keyCount();
+                                        if (pendingKeyCount > MAX_BUFFER_KEYS)
+                                            throw new IOException(
+                                                    "Recovery entries exceed memory safety limit");
+                                        journaled.add(batch.id);
+                                    } catch (IOException error) {
+                                        throw new IllegalStateException(
+                                                "Invalid statistics recovery log: " + path, error);
+                                    }
+                                });
                 pending.sort(Comparator.comparingLong(Batch::sequence));
             }
         } catch (IOException error) {
@@ -126,14 +152,15 @@ public final class StatisticsService {
         }
     }
 
-    public void block(ServerPlayer actor, BlockPos pos, BlockState state, IndustryMatcher.Action action) {
+    public void block(
+            ServerPlayer actor, BlockPos pos, BlockState state, IndustryMatcher.Action action) {
         if (!collecting(actor.level().getServer())) {
             return;
         }
-        if (!hasCapacity(actor.level().getServer(), player.containsKey(new PlayerKey(actor.getUUID(), actor.getGameProfile().name())) ? 0 : 1)) {
+        PlayerKey who = new PlayerKey(actor.getUUID(), actor.getGameProfile().name());
+        if (!hasCapacity(actor.level().getServer(), player.containsKey(who) ? 0 : 1)) {
             return;
         }
-        PlayerKey who = new PlayerKey(actor.getUUID(), actor.getGameProfile().name());
         PlayerCounts counts = player.computeIfAbsent(who, unused -> new PlayerCounts());
         if (action == IndustryMatcher.Action.PLACE) {
             counts.placed = StatisticMath.add(counts.placed, 1);
@@ -144,13 +171,15 @@ public final class StatisticsService {
             return;
         }
         int tick = actor.level().getServer().getTickCount();
-        DedupKey key = new DedupKey(config.serverId, actor.level().dimension().identifier().toString(),
-                who.uuid, action, pos.asLong(), BuiltInRegistries.BLOCK.getKey(state.getBlock()).toString());
-        if (!recentBlocks.containsKey(key) && recentBlocks.size() >= MAX_BUFFER_KEYS) return;
-        Integer previous = recentBlocks.put(key, tick);
-        if (previous != null && tick - previous < 20) {
-            return;
-        }
+        DedupKey key =
+                new DedupKey(
+                        config.serverId,
+                        actor.level().dimension().identifier().toString(),
+                        who.uuid,
+                        action,
+                        pos.asLong(),
+                        BuiltInRegistries.BLOCK.getKey(state.getBlock()).toString());
+        if (!recentBlocks.accept(key, tick)) return;
         IndustryMatcher.match(action, null, state).ifPresent(found -> add(actor, found, 1));
     }
 
@@ -159,71 +188,110 @@ public final class StatisticsService {
             return;
         }
         IndustryMatcher.match(IndustryMatcher.Action.CRAFT, produced, null)
-                .ifPresent(found -> add(actor, found, produced.getCount()));
+                .ifPresent(
+                        found -> {
+                            String event = "contribution:craft/" + found.path();
+                            // Until the next rule epoch, preserve the old day's published
+                            // semantics.
+                            if (eventRules.rule(event) == null)
+                                add(actor, found, produced.getCount());
+                            else
+                                gameEvent(
+                                        actor.level().getServer(),
+                                        event,
+                                        produced.getCount(),
+                                        actor);
+                        });
     }
 
     public void usedItem(ServerPlayer actor, ItemStack before, long quantity) {
         if (!collecting(actor.level().getServer()) || !eligible(actor) || quantity <= 0) return;
-        IndustryMatcher.match(IndustryMatcher.Action.USE, before, null).ifPresent(found -> add(actor, found, quantity));
+        IndustryMatcher.match(IndustryMatcher.Action.USE, before, null)
+                .ifPresent(found -> add(actor, found, quantity));
     }
 
     public void interacted(ServerPlayer actor, BlockPos pos, BlockState before) {
         if (!collecting(actor.level().getServer()) || !eligible(actor)) return;
         int tick = actor.level().getServer().getTickCount();
-        DedupKey key = new DedupKey(config.serverId, actor.level().dimension().identifier().toString(), actor.getUUID(),
-                IndustryMatcher.Action.INTERACT, pos.asLong(), BuiltInRegistries.BLOCK.getKey(before.getBlock()).toString());
-        if (!recentBlocks.containsKey(key) && recentBlocks.size() >= MAX_BUFFER_KEYS) return;
-        Integer previous = recentBlocks.put(key, tick);
-        if (previous != null && tick - previous < 20) return;
-        IndustryMatcher.match(IndustryMatcher.Action.INTERACT, null, before).ifPresent(found -> add(actor, found, 1));
+        DedupKey key =
+                new DedupKey(
+                        config.serverId,
+                        actor.level().dimension().identifier().toString(),
+                        actor.getUUID(),
+                        IndustryMatcher.Action.INTERACT,
+                        pos.asLong(),
+                        BuiltInRegistries.BLOCK.getKey(before.getBlock()).toString());
+        if (!recentBlocks.accept(key, tick)) return;
+        IndustryMatcher.match(IndustryMatcher.Action.INTERACT, null, before)
+                .ifPresent(found -> add(actor, found, 1));
     }
 
-    public void gameEvent(MinecraftServer server, String eventId, long quantity, ServerPlayer actor) {
+    public void gameEvent(
+            MinecraftServer server, String eventId, long quantity, ServerPlayer actor) {
         if (!collecting(server) || quantity <= 0 || (actor != null && !eligible(actor))) {
             return;
         }
         GameEventRules.Rule rule = eventRules.rule(eventId);
         if (rule == null) {
+            // Upgraded adapters can run while yesterday's immutable epoch is still active.
+            if (GameEventRules.loadBuiltIn().rule(eventId) != null) return;
             throw new IllegalArgumentException("Unknown game event ID: " + eventId);
         }
-        long units = quantity / rule.unitSize();
-        if (units == 0) {
-            return;
-        }
-        long amount = StatisticMath.multiply(units, rule.unitValue());
-        add(server, actor, rule.industry(), amount);
+        var key =
+                new MeasuredStatistics.Key(
+                        RuleManager.day(server),
+                        actor == null ? MeasuredStatistics.WORLD : actor.getUUID(),
+                        eventId);
+        if (!hasCapacity(server, measured.containsKey(key) ? 0 : 1)) return;
+        measured.add(key, quantity);
     }
 
-    /** The sampler reports measured movement; conversion and remainder are committed with the statistics batch. */
+    /**
+     * The sampler reports measured movement; conversion and remainder are committed with the
+     * statistics batch.
+     */
     public void distance(ServerPlayer actor, String mode, long microblocks) {
         if (!collecting(actor.level().getServer()) || !eligible(actor) || microblocks <= 0) {
             return;
         }
+        if (eventRules.rule("contribution:logistics/distance/" + mode) == null) return;
         long day = RuleManager.day(actor.level().getServer());
-        if (!hasCapacity(actor.level().getServer(), distance.containsKey(new DistanceDayKey(day, actor.getUUID(), mode)) ? 0 : 1)) return;
-        distance.merge(new DistanceDayKey(day, actor.getUUID(), mode), microblocks, StatisticMath::add);
+        DistanceDayKey key = new DistanceDayKey(day, actor.getUUID(), mode);
+        if (!hasCapacity(actor.level().getServer(), distance.containsKey(key) ? 0 : 1)) return;
+        distance.add(key, microblocks);
     }
 
     private void add(ServerPlayer actor, BuiltInIndustry found, long amount) {
         add(actor.level().getServer(), actor, found, amount);
     }
 
-    private void add(MinecraftServer server, ServerPlayer actor, BuiltInIndustry found, long amount) {
+    private void add(
+            MinecraftServer server, ServerPlayer actor, BuiltInIndustry found, long amount) {
         long day = RuleManager.day(server);
         int required = industry.containsKey(new IndustryDayKey(day, found.path())) ? 0 : 1;
-        if (actor != null && !playerIndustry.containsKey(new PlayerIndustryKey(actor.getUUID(), found.path()))) required++;
+        if (actor != null
+                && !playerIndustry.containsKey(
+                        new PlayerIndustryKey(actor.getUUID(), found.path()))) required++;
         if (!hasCapacity(server, required)) return;
         industry.merge(new IndustryDayKey(day, found.path()), amount, StatisticMath::add);
         if (actor != null) {
-            playerIndustry.merge(new PlayerIndustryKey(actor.getUUID(), found.path()), amount, StatisticMath::add);
+            playerIndustry.merge(
+                    new PlayerIndustryKey(actor.getUUID(), found.path()),
+                    amount,
+                    StatisticMath::add);
         }
     }
 
     public void tick(MinecraftServer server) {
         int tick = server.getTickCount();
-        if (tick % 20 == 0) recentBlocks.entrySet().removeIf(entry -> tick - entry.getValue() >= 20);
-        if (tick - lastFlushTick >= 100 || industry.size() + player.size()
-                + playerIndustry.size() + distance.size() >= 500) {
+        if (tick % 20 == 0) recentBlocks.expire(tick);
+        if (tick - lastFlushTick >= 100
+                || industry.size()
+                                + player.size()
+                                + playerIndustry.size()
+                                + distance.size()
+                                + measured.size()
+                        >= 500) {
             lastFlushTick = tick;
             flush(server);
         }
@@ -231,33 +299,46 @@ public final class StatisticsService {
     }
 
     private void closeCompletedDays(MinecraftServer server) {
-        if (!enabled() || !RuleManager.historyReady() || closingDay || !isDrained() || server.getTickCount() < nextCloseRetryTick) {
+        if (!enabled()
+                || !RuleManager.historyReady()
+                || closingDay
+                || server.getTickCount() < nextCloseRetryTick) {
             return;
         }
-        long clock = server.overworld().getOverworldClockTime();
         long today = RuleManager.day(server);
-        if (today <= 0 || (config.mainServer && !RuleManager.settlementWindow(server)) || lastClosedDay >= today - 1) {
+        if (today <= 0
+                || server.getTickCount() % 20 != 0
+                || lastClosedDay >= today - 1
+                || (config.mainServer && !RuleManager.settlementWindow(server))
+                || !isDrainedThrough(today - 1)) {
             return;
         }
         long latestComplete = today - 1;
         closingDay = true;
         database.transaction(connection -> markClosedDays(connection, latestComplete))
-                .whenComplete((closed, error) -> server.execute(() -> {
-                    closingDay = false;
-                    if (error == null) {
-                        lastClosedDay = Math.max(lastClosedDay, closed);
-                    } else {
-                        nextCloseRetryTick = server.getTickCount() + 600;
-                        ContributionMod.LOGGER.warn("Statistics day close is pending for server_id={}: {}",
-                                config.serverId, error.toString());
-                    }
-                }));
+                .whenComplete(
+                        (closed, error) ->
+                                server.execute(
+                                        () -> {
+                                            closingDay = false;
+                                            if (error == null) {
+                                                lastClosedDay = Math.max(lastClosedDay, closed);
+                                            } else {
+                                                nextCloseRetryTick = server.getTickCount() + 600;
+                                                ContributionMod.LOGGER.warn(
+                                                        "Statistics day close is pending for"
+                                                                + " server_id={}: {}",
+                                                        config.serverId,
+                                                        error.toString());
+                                            }
+                                        }));
     }
 
-    private long markClosedDays(Connection connection, long latestComplete) throws SQLException {
+    long markClosedDays(Connection connection, long latestComplete) throws SQLException {
         long nextDay = RuleManager.firstDay(connection);
-        try (PreparedStatement query = connection.prepareStatement(
-                "SELECT MAX(game_day) FROM statistics_day_close WHERE server_id = ?")) {
+        try (PreparedStatement query =
+                connection.prepareStatement(
+                        "SELECT MAX(game_day) FROM statistics_day_close WHERE server_id = ?")) {
             query.setString(1, config.serverId);
             try (ResultSet rows = query.executeQuery()) {
                 rows.next();
@@ -271,11 +352,15 @@ public final class StatisticsService {
             return latestComplete;
         }
         long through = Math.min(latestComplete, nextDay + 31);
-        try (PreparedStatement insert = connection.prepareStatement(
-                "INSERT IGNORE INTO statistics_day_close (server_id, game_day, config_hash, closed_at) "
-                        + "VALUES (?, ?, ?, CURRENT_TIMESTAMP(6))");
-             PreparedStatement check = connection.prepareStatement(
-                     "SELECT config_hash FROM statistics_day_close WHERE server_id = ? AND game_day = ?")) {
+        try (PreparedStatement insert =
+                        connection.prepareStatement(
+                                "INSERT IGNORE INTO statistics_day_close (server_id, game_day,"
+                                        + " config_hash, closed_at) VALUES (?, ?, ?,"
+                                        + " CURRENT_TIMESTAMP(6))");
+                PreparedStatement check =
+                        connection.prepareStatement(
+                                "SELECT config_hash FROM statistics_day_close WHERE server_id = ?"
+                                        + " AND game_day = ?")) {
             for (long day = nextDay; day <= through; day++) {
                 byte[] dayHash = RuleManager.dayHash(connection, day, configHash);
                 insert.setString(1, config.serverId);
@@ -286,7 +371,11 @@ public final class StatisticsService {
                 check.setLong(2, day);
                 try (ResultSet rows = check.executeQuery()) {
                     if (!rows.next() || !MessageDigest.isEqual(dayHash, rows.getBytes(1))) {
-                        throw new SQLException("Statistics day close config mismatch: " + config.serverId + "/" + day);
+                        throw new SQLException(
+                                "Statistics day close config mismatch: "
+                                        + config.serverId
+                                        + "/"
+                                        + day);
                     }
                 }
             }
@@ -298,66 +387,163 @@ public final class StatisticsService {
         if (!enabled() || !RuleManager.historyReady() || flushing || journaling) {
             return;
         }
-        if (!industry.isEmpty() || !player.isEmpty() || !playerIndustry.isEmpty() || !distance.isEmpty()) {
-            Batch batch = new Batch(UUID.randomUUID(), nextBatchSequence++, configHash.clone(),
-                    new HashMap<>(industry), copyPlayers(player),
-                    new HashMap<>(playerIndustry), new HashMap<>(distance));
+        if (!industry.isEmpty()
+                || !player.isEmpty()
+                || !playerIndustry.isEmpty()
+                || !distance.isEmpty()
+                || !measured.isEmpty()) {
+            Batch batch =
+                    new Batch(
+                            UUID.randomUUID(),
+                            nextBatchSequence++,
+                            configHash.clone(),
+                            new HashMap<>(industry),
+                            copyPlayers(player),
+                            new HashMap<>(playerIndustry),
+                            distance.snapshot(),
+                            measured.snapshot());
             pending.add(batch);
             pendingKeyCount += batch.keyCount();
             industry.clear();
             player.clear();
             playerIndustry.clear();
             distance.clear();
+            measured.clear();
         }
-        if (pending.isEmpty()) {
+        pumpPending(server);
+    }
+
+    public void requestRecovery(MinecraftServer server) {
+        nextCloseRetryTick = 0;
+        flush(server);
+    }
+
+    /** Continue durable backlog without collecting fresh buffers on every database callback. */
+    private void pumpPending(MinecraftServer server) {
+        if (flushing || journaling || pending.isEmpty()) {
             return;
         }
         Batch batch = pending.getFirst();
         if (!journaled.contains(batch.id)) {
             journaling = true;
-            CompletableFuture.runAsync(() -> {
-                try {
-                    writeJournal(batch);
-                } catch (IOException error) {
-                    throw new IllegalStateException(error);
-                }
-            }, journalExecutor).whenComplete((unused, error) -> server.execute(() -> {
-                journaling = false;
-                if (error == null) {
-                    journaled.add(batch.id);
-                    flush(server);
-                } else {
-                    ContributionMod.LOGGER.warn("Statistics journal write failed: {}", error.toString());
-                }
-            }));
+            CompletableFuture.runAsync(
+                            () -> {
+                                try {
+                                    writeJournal(batch);
+                                } catch (IOException error) {
+                                    throw new IllegalStateException(error);
+                                }
+                            },
+                            journalExecutor)
+                    .whenComplete(
+                            (unused, error) ->
+                                    server.execute(
+                                            () -> {
+                                                journaling = false;
+                                                if (error == null) {
+                                                    journaled.add(batch.id);
+                                                    pumpPending(server);
+                                                } else {
+                                                    ContributionMod.LOGGER.warn(
+                                                            "Statistics journal write failed: {}",
+                                                            error.toString());
+                                                }
+                                            }));
             return;
         }
         flushing = true;
-        database.transaction(connection -> {
-            writeBatch(connection, batch);
-            return null;
-        }).whenComplete((unused, error) -> server.execute(() -> {
-            flushing = false;
-            if (error == null) {
-                pending.remove(batch);
-                pendingKeyCount -= batch.keyCount();
-                journaled.remove(batch.id);
-                CompletableFuture.runAsync(() -> {
-                    try {
-                        Files.deleteIfExists(journalPath(batch.id));
-                    } catch (IOException deletionError) {
-                        ContributionMod.LOGGER.warn("Cannot remove applied statistics journal {}", batch.id, deletionError);
-                    }
-                }, journalExecutor);
-            } else if (server.getTickCount() % 1200 < 100) {
-                ContributionMod.LOGGER.warn("Statistics batch remains pending: {}", error.toString());
-            }
-        }));
+        database.transaction(
+                        connection -> {
+                            writeBatch(connection, batch);
+                            return null;
+                        })
+                .whenComplete(
+                        (unused, error) ->
+                                server.execute(
+                                        () -> {
+                                            flushing = false;
+                                            if (error == null) {
+                                                pending.remove(batch);
+                                                pendingKeyCount -= batch.keyCount();
+                                                journaled.remove(batch.id);
+                                                CompletableFuture.runAsync(
+                                                        () -> {
+                                                            try {
+                                                                Files.deleteIfExists(
+                                                                        journalPath(batch.id));
+                                                            } catch (IOException deletionError) {
+                                                                ContributionMod.LOGGER.warn(
+                                                                        "Cannot remove applied"
+                                                                            + " statistics journal"
+                                                                            + " {}",
+                                                                        batch.id,
+                                                                        deletionError);
+                                                            }
+                                                        },
+                                                        journalExecutor);
+                                                pumpPending(server);
+                                            } else if (System.nanoTime()
+                                                    >= nextPendingErrorNotice) {
+                                                nextPendingErrorNotice =
+                                                        System.nanoTime()
+                                                                + TimeUnit.MINUTES.toNanos(1);
+                                                ContributionMod.LOGGER.warn(
+                                                        "STATISTICS_BATCH_FAILED batch={}"
+                                                            + " sequence={} pendingKeys={} (journal"
+                                                            + " retained)",
+                                                        batch.id,
+                                                        batch.sequence,
+                                                        pendingKeyCount,
+                                                        error);
+                                            }
+                                        }));
     }
 
     public boolean isDrained() {
-        return !flushing && !journaling && pending.isEmpty() && industry.isEmpty()
-                && player.isEmpty() && playerIndustry.isEmpty() && distance.isEmpty();
+        return !flushing
+                && !journaling
+                && pending.isEmpty()
+                && industry.isEmpty()
+                && player.isEmpty()
+                && playerIndustry.isEmpty()
+                && distance.isEmpty()
+                && measured.isEmpty();
+    }
+
+    /**
+     * Only dated industry/distance entries can change a closed day's industry result. In-flight
+     * batches stay in pending until the commit callback, so historical writes remain a barrier.
+     * Undated player totals do not participate in industry settlement. Called only on the server
+     * thread; rule changes still require the full isDrained barrier.
+     */
+    public boolean isDrainedThrough(long day) {
+        if (industry.keySet().stream().anyMatch(key -> key.day() <= day)
+                || distance.keySet().stream().anyMatch(key -> key.day() <= day)
+                || measured.keySet().stream().anyMatch(key -> key.day() <= day)) return false;
+        return pending.stream().noneMatch(batch -> batch.affectsThrough(day));
+    }
+
+    public String diagnosticState() {
+        return "enabled="
+                + enabled()
+                + " pendingBatches="
+                + pending.size()
+                + " pendingKeys="
+                + pendingKeyCount
+                + " bufferedKeys="
+                + (industry.size()
+                        + distance.size()
+                        + measured.size()
+                        + player.size()
+                        + playerIndustry.size())
+                + " flushing="
+                + flushing
+                + " journaling="
+                + journaling
+                + " journalFull="
+                + journalFull
+                + " lastClosedDay="
+                + lastClosedDay;
     }
 
     public void close() {
@@ -369,31 +555,49 @@ public final class StatisticsService {
         } catch (InterruptedException error) {
             Thread.currentThread().interrupt();
         }
-        if (!industry.isEmpty() || !player.isEmpty() || !playerIndustry.isEmpty() || !distance.isEmpty()) {
-            pending.add(new Batch(UUID.randomUUID(), nextBatchSequence++, configHash.clone(),
-                    new HashMap<>(industry), copyPlayers(player),
-                    new HashMap<>(playerIndustry), new HashMap<>(distance)));
+        if (!industry.isEmpty()
+                || !player.isEmpty()
+                || !playerIndustry.isEmpty()
+                || !distance.isEmpty()
+                || !measured.isEmpty()) {
+            pending.add(
+                    new Batch(
+                            UUID.randomUUID(),
+                            nextBatchSequence++,
+                            configHash.clone(),
+                            new HashMap<>(industry),
+                            copyPlayers(player),
+                            new HashMap<>(playerIndustry),
+                            distance.snapshot(),
+                            measured.snapshot()));
         }
         for (Batch batch : pending) {
             if (!journaled.contains(batch.id)) {
                 try {
                     writeJournal(batch);
                 } catch (IOException error) {
-                    ContributionMod.LOGGER.error("Cannot persist pending statistics batch {}", batch.id, error);
+                    ContributionMod.LOGGER.error(
+                            "Cannot persist pending statistics batch {}", batch.id, error);
                 }
             }
         }
     }
 
     private int bufferedKeys() {
-        return industry.size() + player.size() + playerIndustry.size() + distance.size() + pendingKeyCount;
+        return industry.size()
+                + player.size()
+                + playerIndustry.size()
+                + distance.size()
+                + measured.size()
+                + pendingKeyCount;
     }
 
     private boolean hasCapacity(MinecraftServer server, int additional) {
         if (bufferedKeys() + additional <= MAX_BUFFER_KEYS) return true;
         if (server.getTickCount() >= nextCapacityWarning) {
             nextCapacityWarning = server.getTickCount() + 1200;
-            ContributionMod.LOGGER.warn("Statistics buffer reached 50000 keys; new keys are paused until recovery");
+            ContributionMod.LOGGER.warn(
+                    "Statistics buffer reached 50000 keys; new keys are paused until recovery");
         }
         return false;
     }
@@ -412,10 +616,16 @@ public final class StatisticsService {
 
     private void writeJournal(Batch batch) throws IOException {
         Path temporary = journalDirectory.resolve(batch.id + ".tmp");
-        try (FileChannel channel = FileChannel.open(temporary, StandardOpenOption.CREATE,
-                StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
-             DataOutputStream output = new DataOutputStream(new BufferedOutputStream(Channels.newOutputStream(channel)))) {
-            output.writeInt(0x43535534);
+        try (FileChannel channel =
+                        FileChannel.open(
+                                temporary,
+                                StandardOpenOption.CREATE,
+                                StandardOpenOption.TRUNCATE_EXISTING,
+                                StandardOpenOption.WRITE);
+                DataOutputStream output =
+                        new DataOutputStream(
+                                new BufferedOutputStream(Channels.newOutputStream(channel)))) {
+            output.writeInt(0x43535535);
             output.writeLong(batch.id.getMostSignificantBits());
             output.writeLong(batch.id.getLeastSignificantBits());
             output.writeLong(batch.sequence);
@@ -446,20 +656,31 @@ public final class StatisticsService {
                 output.writeUTF(entry.getKey().mode);
                 output.writeLong(entry.getValue());
             }
+            output.writeInt(batch.measured.size());
+            for (var entry : batch.measured.entrySet()) {
+                output.writeLong(entry.getKey().day());
+                writeUuid(output, entry.getKey().actor());
+                output.writeUTF(entry.getKey().event());
+                output.writeLong(entry.getValue());
+            }
             output.flush();
             channel.force(true);
         }
         try {
             long bytes = Files.size(temporary);
             try (var files = Files.list(journalDirectory)) {
-                for (Path path : files.filter(value -> value.toString().endsWith(".bin")).toList()) bytes += Files.size(path);
+                for (Path path : files.filter(value -> value.toString().endsWith(".bin")).toList())
+                    bytes += Files.size(path);
             }
             if (bytes > MAX_JOURNAL_BYTES) {
                 journalFull = true;
                 Files.deleteIfExists(temporary);
                 throw new IOException("Statistics recovery log reached 64 MiB; collection paused");
             }
-            Files.move(temporary, journalPath(batch.id), StandardCopyOption.ATOMIC_MOVE,
+            Files.move(
+                    temporary,
+                    journalPath(batch.id),
+                    StandardCopyOption.ATOMIC_MOVE,
                     StandardCopyOption.REPLACE_EXISTING);
             journalFull = false;
         } catch (AtomicMoveNotSupportedException unsupported) {
@@ -469,13 +690,17 @@ public final class StatisticsService {
     }
 
     private static Batch readJournal(Path path) throws IOException {
-        try (DataInputStream input = new DataInputStream(new BufferedInputStream(Files.newInputStream(path)))) {
+        try (DataInputStream input =
+                new DataInputStream(new BufferedInputStream(Files.newInputStream(path)))) {
             int format = input.readInt();
-            if (format != 0x43535532 && format != 0x43535533 && format != 0x43535534) {
+            if (format != 0x43535532
+                    && format != 0x43535533
+                    && format != 0x43535534
+                    && format != 0x43535535) {
                 throw new IOException("Unsupported statistics journal version");
             }
             UUID id = new UUID(input.readLong(), input.readLong());
-            long sequence = format == 0x43535534 ? input.readLong() : 0;
+            long sequence = format >= 0x43535534 ? input.readLong() : 0;
             if (sequence < 0) {
                 throw new IOException("Invalid statistics journal sequence");
             }
@@ -486,7 +711,8 @@ public final class StatisticsService {
             Map<IndustryDayKey, Long> industry = new HashMap<>();
             int industryCount = boundedCount(input.readInt());
             for (int index = 0; index < industryCount; index++) {
-                industry.put(new IndustryDayKey(input.readLong(), input.readUTF()), input.readLong());
+                industry.put(
+                        new IndustryDayKey(input.readLong(), input.readUTF()), input.readLong());
             }
             Map<PlayerKey, PlayerCounts> player = new HashMap<>();
             int playerCount = boundedCount(input.readInt());
@@ -500,16 +726,29 @@ public final class StatisticsService {
             Map<PlayerIndustryKey, Long> playerIndustry = new HashMap<>();
             int playerIndustryCount = boundedCount(input.readInt());
             for (int index = 0; index < playerIndustryCount; index++) {
-                playerIndustry.put(new PlayerIndustryKey(readUuid(input), input.readUTF()), input.readLong());
+                playerIndustry.put(
+                        new PlayerIndustryKey(readUuid(input), input.readUTF()), input.readLong());
             }
             Map<DistanceDayKey, Long> distance = new HashMap<>();
-            if (format == 0x43535533 || format == 0x43535534) {
+            if (format >= 0x43535533) {
                 int distanceCount = boundedCount(input.readInt());
                 for (int index = 0; index < distanceCount; index++) {
-                    distance.put(new DistanceDayKey(input.readLong(), readUuid(input), input.readUTF()), input.readLong());
+                    distance.put(
+                            new DistanceDayKey(input.readLong(), readUuid(input), input.readUTF()),
+                            input.readLong());
                 }
             }
-            return new Batch(id, sequence, configHash, industry, player, playerIndustry, distance);
+            Map<MeasuredStatistics.Key, Long> measured = new HashMap<>();
+            if (format >= 0x43535535) {
+                int count = boundedCount(input.readInt());
+                for (int i = 0; i < count; i++)
+                    measured.put(
+                            new MeasuredStatistics.Key(
+                                    input.readLong(), readUuid(input), input.readUTF()),
+                            input.readLong());
+            }
+            return new Batch(
+                    id, sequence, configHash, industry, player, playerIndustry, distance, measured);
         }
     }
 
@@ -531,22 +770,43 @@ public final class StatisticsService {
 
     void writeBatch(Connection connection, Batch batch) throws SQLException {
         byte[] payloadHash = sha256(batch.canonical().getBytes(StandardCharsets.UTF_8));
-        long gameDay = Math.max(batch.industry.keySet().stream().mapToLong(IndustryDayKey::day).max().orElse(0),
-                batch.distance.keySet().stream().mapToLong(DistanceDayKey::day).max().orElse(0));
-        try (PreparedStatement insert = connection.prepareStatement(
-                "INSERT IGNORE INTO statistics_batch (batch_id, server_id, game_day, config_version, config_hash, "
-                        + "payload_hash, created_at, applied_at) VALUES (?, ?, ?, 1, ?, ?, CURRENT_TIMESTAMP(6), CURRENT_TIMESTAMP(6))")) {
+        long gameDay =
+                Math.max(
+                        batch.industry.keySet().stream()
+                                .mapToLong(IndustryDayKey::day)
+                                .max()
+                                .orElse(0),
+                        batch.distance.keySet().stream()
+                                .mapToLong(DistanceDayKey::day)
+                                .max()
+                                .orElse(0));
+        gameDay =
+                Math.max(
+                        gameDay,
+                        batch.measured.keySet().stream()
+                                .mapToLong(MeasuredStatistics.Key::day)
+                                .max()
+                                .orElse(0));
+        try (PreparedStatement insert =
+                connection.prepareStatement(
+                        "INSERT IGNORE INTO statistics_batch (batch_id, server_id, game_day,"
+                            + " config_version, config_hash, payload_hash, created_at, applied_at)"
+                            + " VALUES (?, ?, ?, 1, ?, ?, CURRENT_TIMESTAMP(6),"
+                            + " CURRENT_TIMESTAMP(6))")) {
             insert.setBytes(1, AccountService.uuidBytes(batch.id));
             insert.setString(2, config.serverId);
             insert.setLong(3, gameDay);
             insert.setBytes(4, batch.configHash);
             insert.setBytes(5, payloadHash);
             if (insert.executeUpdate() == 0) {
-                try (PreparedStatement check = connection.prepareStatement(
-                        "SELECT payload_hash, config_hash FROM statistics_batch WHERE batch_id = ?")) {
+                try (PreparedStatement check =
+                        connection.prepareStatement(
+                                "SELECT payload_hash, config_hash FROM statistics_batch WHERE"
+                                        + " batch_id = ?")) {
                     check.setBytes(1, AccountService.uuidBytes(batch.id));
                     try (ResultSet rows = check.executeQuery()) {
-                        if (!rows.next() || !MessageDigest.isEqual(payloadHash, rows.getBytes(1))
+                        if (!rows.next()
+                                || !MessageDigest.isEqual(payloadHash, rows.getBytes(1))
                                 || !MessageDigest.isEqual(batch.configHash, rows.getBytes(2))) {
                             throw new SQLException("Statistics batch idempotency conflict");
                         }
@@ -558,24 +818,47 @@ public final class StatisticsService {
         Map<IndustryDayKey, Long> industryDeltas = new HashMap<>(batch.industry);
         Map<PlayerIndustryKey, Long> playerIndustryDeltas = new HashMap<>(batch.playerIndustry);
         RuleSnapshot snapshot = RuleManager.snapshot(batch.configHash);
-        if (snapshot == null && !Arrays.equals(configHash, batch.configHash) && !batch.distance.isEmpty())
-            throw new SQLException("Historical distance rule snapshot is missing; recovery batch retained");
-        GameEventRules batchRules = snapshot == null && Arrays.equals(configHash, batch.configHash) ? eventRules
-                : snapshot == null ? GameEventRules.loadBuiltIn() : new GameEventRules(snapshot.events);
-        convertDistance(connection, batch.distance, industryDeltas, playerIndustryDeltas, batchRules);
-        List<Map.Entry<IndustryDayKey, Long>> industryEntries = new ArrayList<>(industryDeltas.entrySet());
-        industryEntries.sort(Comparator.comparingLong((Map.Entry<IndustryDayKey, Long> entry) -> entry.getKey().day)
-                .thenComparing(entry -> entry.getKey().industry));
-        try (PreparedStatement create = connection.prepareStatement(
-                "INSERT IGNORE INTO industry_day_accumulator "
-                        + "(game_day, industry_id, development, config_version, config_hash, updated_at) "
-                        + "VALUES (?, ?, 0, 1, ?, CURRENT_TIMESTAMP(6))");
-             PreparedStatement check = connection.prepareStatement(
-                     "SELECT config_hash FROM industry_day_accumulator "
-                             + "WHERE game_day = ? AND industry_id = ? FOR UPDATE");
-             PreparedStatement update = connection.prepareStatement(
-                     "UPDATE industry_day_accumulator SET development = LEAST(9223372036854775807, CAST(development AS DECIMAL(30,0)) + ?), "
-                             + "updated_at = CURRENT_TIMESTAMP(6) WHERE game_day = ? AND industry_id = ?")) {
+        if (snapshot == null
+                && !Arrays.equals(configHash, batch.configHash)
+                && (!batch.distance.isEmpty() || !batch.measured.isEmpty()))
+            throw new SQLException(
+                    "Historical distance rule snapshot is missing; recovery batch retained");
+        GameEventRules batchRules =
+                snapshot == null && Arrays.equals(configHash, batch.configHash)
+                        ? eventRules
+                        : snapshot == null
+                                ? GameEventRules.loadBuiltIn()
+                                : new GameEventRules(snapshot.events);
+        convertDistance(
+                connection, batch.distance, industryDeltas, playerIndustryDeltas, batchRules);
+        MeasuredStatistics.apply(
+                connection,
+                config.serverId,
+                batch.measured,
+                batchRules,
+                industryDeltas,
+                playerIndustryDeltas);
+        List<Map.Entry<IndustryDayKey, Long>> industryEntries =
+                new ArrayList<>(industryDeltas.entrySet());
+        industryEntries.sort(
+                Comparator.comparingLong(
+                                (Map.Entry<IndustryDayKey, Long> entry) -> entry.getKey().day)
+                        .thenComparing(entry -> entry.getKey().industry));
+        try (PreparedStatement create =
+                        connection.prepareStatement(
+                                "INSERT IGNORE INTO industry_day_accumulator (game_day,"
+                                    + " industry_id, development, config_version, config_hash,"
+                                    + " updated_at) VALUES (?, ?, 0, 1, ?, CURRENT_TIMESTAMP(6))");
+                PreparedStatement check =
+                        connection.prepareStatement(
+                                "SELECT config_hash FROM industry_day_accumulator "
+                                        + "WHERE game_day = ? AND industry_id = ? FOR UPDATE");
+                PreparedStatement update =
+                        connection.prepareStatement(
+                                "UPDATE industry_day_accumulator SET development ="
+                                        + " LEAST(9223372036854775807, CAST(development AS"
+                                        + " DECIMAL(30,0)) + ?), updated_at = CURRENT_TIMESTAMP(6)"
+                                        + " WHERE game_day = ? AND industry_id = ?")) {
             for (var entry : industryEntries) {
                 long day = entry.getKey().day;
                 String industryId = "contribution:" + entry.getKey().industry;
@@ -586,8 +869,13 @@ public final class StatisticsService {
                 check.setLong(1, day);
                 check.setString(2, industryId);
                 try (ResultSet rows = check.executeQuery()) {
-                    if (!rows.next() || !MessageDigest.isEqual(batch.configHash, rows.getBytes(1))) {
-                        throw new SQLException("Industry config hash mismatch for " + industryId + " on day " + day);
+                    if (!rows.next()
+                            || !MessageDigest.isEqual(batch.configHash, rows.getBytes(1))) {
+                        throw new SQLException(
+                                "Industry config hash mismatch for "
+                                        + industryId
+                                        + " on day "
+                                        + day);
                     }
                 }
                 update.setLong(1, entry.getValue());
@@ -596,11 +884,15 @@ public final class StatisticsService {
                 update.executeUpdate();
             }
         }
-        try (PreparedStatement statement = connection.prepareStatement(
-                "INSERT INTO player_activity_stats (player_uuid, player_name, player_name_normalized, total_placed, total_mined, updated_at) "
-                        + "VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP(6)) ON DUPLICATE KEY UPDATE "
-                        + "total_placed = LEAST(9223372036854775807, CAST(total_placed AS DECIMAL(30,0)) + VALUES(total_placed)), total_mined = LEAST(9223372036854775807, CAST(total_mined AS DECIMAL(30,0)) + VALUES(total_mined)), "
-                        + "updated_at = CURRENT_TIMESTAMP(6)")) {
+        try (PreparedStatement statement =
+                connection.prepareStatement(
+                        "INSERT INTO player_activity_stats (player_uuid, player_name,"
+                            + " player_name_normalized, total_placed, total_mined, updated_at)"
+                            + " VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP(6)) ON DUPLICATE KEY"
+                            + " UPDATE total_placed = LEAST(9223372036854775807, CAST(total_placed"
+                            + " AS DECIMAL(30,0)) + VALUES(total_placed)), total_mined ="
+                            + " LEAST(9223372036854775807, CAST(total_mined AS DECIMAL(30,0)) +"
+                            + " VALUES(total_mined)), updated_at = CURRENT_TIMESTAMP(6)")) {
             for (var entry : batch.player.entrySet()) {
                 statement.setBytes(1, AccountService.uuidBytes(entry.getKey().uuid));
                 statement.setString(2, entry.getKey().name);
@@ -611,10 +903,20 @@ public final class StatisticsService {
             }
             statement.executeBatch();
         }
-        try (PreparedStatement statement = connection.prepareStatement(
-                "INSERT INTO player_industry_stats (player_uuid, industry_id, development, updated_at) "
-                        + "VALUES (?, ?, ?, CURRENT_TIMESTAMP(6)) ON DUPLICATE KEY UPDATE "
-                        + "development = LEAST(9223372036854775807, CAST(development AS DECIMAL(30,0)) + VALUES(development)), updated_at = CURRENT_TIMESTAMP(6)")) {
+        var changedPlayers =
+                playerIndustryDeltas.keySet().stream()
+                        .map(key -> key.uuid)
+                        .distinct()
+                        .sorted()
+                        .toList();
+        PlayerDevelopmentTotals.lock(connection, changedPlayers);
+        try (PreparedStatement statement =
+                connection.prepareStatement(
+                        "INSERT INTO player_industry_stats (player_uuid, industry_id, development,"
+                            + " updated_at) VALUES (?, ?, ?, CURRENT_TIMESTAMP(6)) ON DUPLICATE KEY"
+                            + " UPDATE development = LEAST(9223372036854775807, CAST(development AS"
+                            + " DECIMAL(30,0)) + VALUES(development)), updated_at ="
+                            + " CURRENT_TIMESTAMP(6)")) {
             for (var entry : playerIndustryDeltas.entrySet()) {
                 statement.setBytes(1, AccountService.uuidBytes(entry.getKey().uuid));
                 statement.setString(2, "contribution:" + entry.getKey().industry);
@@ -623,32 +925,46 @@ public final class StatisticsService {
             }
             statement.executeBatch();
         }
+        PlayerDevelopmentTotals.refresh(connection, changedPlayers);
     }
 
-    private void convertDistance(Connection connection, Map<DistanceDayKey, Long> raw,
-                                 Map<IndustryDayKey, Long> industryDeltas,
-                                 Map<PlayerIndustryKey, Long> playerIndustryDeltas, GameEventRules batchRules) throws SQLException {
+    private void convertDistance(
+            Connection connection,
+            Map<DistanceDayKey, Long> raw,
+            Map<IndustryDayKey, Long> industryDeltas,
+            Map<PlayerIndustryKey, Long> playerIndustryDeltas,
+            GameEventRules batchRules)
+            throws SQLException {
         if (raw.isEmpty()) {
             return;
         }
         List<Map.Entry<DistanceDayKey, Long>> entries = new ArrayList<>(raw.entrySet());
-        entries.sort(Comparator.comparingLong((Map.Entry<DistanceDayKey, Long> entry) -> entry.getKey().day)
-                .thenComparing(entry -> entry.getKey().uuid.toString())
-                .thenComparing(entry -> entry.getKey().mode));
-        try (PreparedStatement create = connection.prepareStatement(
-                "INSERT IGNORE INTO player_distance_remainder "
-                        + "(player_uuid, movement_type, remainder_micro, updated_at) "
-                        + "VALUES (?, ?, 0, CURRENT_TIMESTAMP(6))");
-             PreparedStatement query = connection.prepareStatement(
-                     "SELECT remainder_micro FROM player_distance_remainder "
-                             + "WHERE player_uuid = ? AND movement_type = ? FOR UPDATE");
-             PreparedStatement update = connection.prepareStatement(
-                     "UPDATE player_distance_remainder SET remainder_micro = ?, updated_at = CURRENT_TIMESTAMP(6) "
-                             + "WHERE player_uuid = ? AND movement_type = ?")) {
+        entries.sort(
+                Comparator.comparingLong(
+                                (Map.Entry<DistanceDayKey, Long> entry) -> entry.getKey().day)
+                        .thenComparing(entry -> entry.getKey().uuid.toString())
+                        .thenComparing(entry -> entry.getKey().mode));
+        try (PreparedStatement create =
+                        connection.prepareStatement(
+                                "INSERT IGNORE INTO player_distance_remainder (player_uuid,"
+                                    + " movement_type, remainder_micro, updated_at) VALUES (?, ?,"
+                                    + " 0, CURRENT_TIMESTAMP(6))");
+                PreparedStatement query =
+                        connection.prepareStatement(
+                                "SELECT remainder_micro FROM player_distance_remainder "
+                                        + "WHERE player_uuid = ? AND movement_type = ? FOR UPDATE");
+                PreparedStatement update =
+                        connection.prepareStatement(
+                                "UPDATE player_distance_remainder SET remainder_micro = ?,"
+                                    + " updated_at = CURRENT_TIMESTAMP(6) WHERE player_uuid = ? AND"
+                                    + " movement_type = ?")) {
             for (var entry : entries) {
                 DistanceDayKey key = entry.getKey();
-                GameEventRules.Rule rule = batchRules.rule("contribution:logistics/distance/" + key.mode);
-                if (rule == null || !"distance_block".equals(rule.measure()) || entry.getValue() <= 0) {
+                GameEventRules.Rule rule =
+                        batchRules.rule("contribution:logistics/distance/" + key.mode);
+                if (rule == null
+                        || !"distance_block".equals(rule.measure())
+                        || entry.getValue() <= 0) {
                     throw new SQLException("Invalid distance batch event: " + key.mode);
                 }
                 long threshold = Math.multiplyExact(rule.unitSize(), 1_000_000L);
@@ -677,9 +993,14 @@ public final class StatisticsService {
                 update.executeUpdate();
                 if (result.completeUnits() > 0) {
                     long points = StatisticMath.multiply(result.completeUnits(), rule.unitValue());
-                    industryDeltas.merge(new IndustryDayKey(key.day, rule.industry().path()), points, StatisticMath::add);
-                    playerIndustryDeltas.merge(new PlayerIndustryKey(key.uuid, rule.industry().path()),
-                            points, StatisticMath::add);
+                    industryDeltas.merge(
+                            new IndustryDayKey(key.day, rule.industry().path()),
+                            points,
+                            StatisticMath::add);
+                    playerIndustryDeltas.merge(
+                            new PlayerIndustryKey(key.uuid, rule.industry().path()),
+                            points,
+                            StatisticMath::add);
                 }
             }
         }
@@ -691,9 +1012,13 @@ public final class StatisticsService {
         }
 
         public String description() {
-            StringBuilder text = new StringBuilder("放置：").append(placed).append("，挖掘：").append(mined);
+            StringBuilder text =
+                    new StringBuilder("放置：").append(placed).append("，挖掘：").append(mined);
             for (BuiltInIndustry industry : BuiltInIndustry.values())
-                text.append("；").append(industry.displayName()).append("：").append(development(industry));
+                text.append("；")
+                        .append(industry.displayName())
+                        .append("：")
+                        .append(development(industry));
             return text.toString();
         }
     }
@@ -703,42 +1028,52 @@ public final class StatisticsService {
     }
 
     public CompletableFuture<PlayerSummary> playerSummaryData(UUID uuid) {
-        return database.transaction(connection -> {
-            long placed = 0;
-            long mined = 0;
-            try (PreparedStatement statement = connection.prepareStatement(
-                    "SELECT total_placed, total_mined FROM player_activity_stats WHERE player_uuid = ?")) {
-                statement.setBytes(1, AccountService.uuidBytes(uuid));
-                try (ResultSet rows = statement.executeQuery()) {
-                    if (rows.next()) {
-                        placed = rows.getLong(1);
-                        mined = rows.getLong(2);
+        return database.transaction(
+                connection -> {
+                    long placed = 0;
+                    long mined = 0;
+                    try (PreparedStatement statement =
+                            connection.prepareStatement(
+                                    "SELECT total_placed, total_mined FROM player_activity_stats"
+                                            + " WHERE player_uuid = ?")) {
+                        statement.setBytes(1, AccountService.uuidBytes(uuid));
+                        try (ResultSet rows = statement.executeQuery()) {
+                            if (rows.next()) {
+                                placed = rows.getLong(1);
+                                mined = rows.getLong(2);
+                            }
+                        }
                     }
-                }
-            }
-            Map<String, Long> values = new LinkedHashMap<>();
-            try (PreparedStatement statement = connection.prepareStatement(
-                    "SELECT industry_id, development FROM player_industry_stats WHERE player_uuid = ? ORDER BY industry_id")) {
-                statement.setBytes(1, AccountService.uuidBytes(uuid));
-                try (ResultSet rows = statement.executeQuery()) {
-                    while (rows.next()) {
-                        values.put(rows.getString(1), rows.getLong(2));
+                    Map<String, Long> values = new LinkedHashMap<>();
+                    try (PreparedStatement statement =
+                            connection.prepareStatement(
+                                    "SELECT industry_id, development FROM player_industry_stats"
+                                            + " WHERE player_uuid = ? ORDER BY industry_id")) {
+                        statement.setBytes(1, AccountService.uuidBytes(uuid));
+                        try (ResultSet rows = statement.executeQuery()) {
+                            while (rows.next()) {
+                                values.put(rows.getString(1), rows.getLong(2));
+                            }
+                        }
                     }
-                }
-            }
-            return new PlayerSummary(placed, mined, Map.copyOf(values));
-        });
+                    return new PlayerSummary(placed, mined, Map.copyOf(values));
+                });
     }
 
     private boolean enabled() {
         return Arrays.asList(config.statisticsServers).contains(config.serverId);
     }
 
-    private boolean collecting(MinecraftServer server) { return enabled() && !journalFull && RuleManager.collecting(server); }
+    private boolean collecting(MinecraftServer server) {
+        return enabled() && !journalFull && RuleManager.collecting(server);
+    }
 
     public void activate(RuleSnapshot snapshot) {
-        if (!isDrained()) throw new IllegalStateException("Cannot change rules with pending statistics");
-        configHash = snapshot.hash(); activeRuleHash = configHash.clone(); eventRules = new GameEventRules(snapshot.events);
+        if (!isDrained())
+            throw new IllegalStateException("Cannot change rules with pending statistics");
+        configHash = snapshot.hash();
+        activeRuleHash = configHash.clone();
+        eventRules = new GameEventRules(snapshot.events);
     }
 
     private static boolean eligible(ServerPlayer player) {
@@ -748,12 +1083,13 @@ public final class StatisticsService {
 
     private static Map<PlayerKey, PlayerCounts> copyPlayers(Map<PlayerKey, PlayerCounts> source) {
         Map<PlayerKey, PlayerCounts> copy = new HashMap<>();
-        source.forEach((key, value) -> {
-            PlayerCounts counts = new PlayerCounts();
-            counts.placed = value.placed;
-            counts.mined = value.mined;
-            copy.put(key, counts);
-        });
+        source.forEach(
+                (key, value) -> {
+                    PlayerCounts counts = new PlayerCounts();
+                    counts.placed = value.placed;
+                    counts.mined = value.mined;
+                    copy.put(key, counts);
+                });
         return copy;
     }
 
@@ -769,10 +1105,12 @@ public final class StatisticsService {
             for (var item : BuiltInRegistries.ITEM) {
                 String matched = null;
                 for (BuiltInIndustry industry : BuiltInIndustry.values()) {
-                    if (item.builtInRegistryHolder().is(IndustryTags.forIndustry(industry).craft())) {
+                    if (item.builtInRegistryHolder()
+                            .is(IndustryTags.forIndustry(industry).craft())) {
                         if (matched != null) {
-                            throw new IllegalStateException("Item is assigned to two craft industries: "
-                                    + BuiltInRegistries.ITEM.getKey(item));
+                            throw new IllegalStateException(
+                                    "Item is assigned to two craft industries: "
+                                            + BuiltInRegistries.ITEM.getKey(item));
                         }
                         matched = industry.path();
                     }
@@ -782,26 +1120,39 @@ public final class StatisticsService {
                 }
             }
             for (var block : BuiltInRegistries.BLOCK) {
-                for (IndustryMatcher.Action action : List.of(IndustryMatcher.Action.PLACE, IndustryMatcher.Action.MINE)) {
+                for (IndustryMatcher.Action action :
+                        List.of(IndustryMatcher.Action.PLACE, IndustryMatcher.Action.MINE)) {
                     String matched = null;
                     for (BuiltInIndustry industry : BuiltInIndustry.values()) {
                         IndustryTagSet tags = IndustryTags.forIndustry(industry);
-                        if (block.builtInRegistryHolder().is(action == IndustryMatcher.Action.PLACE
-                                ? tags.place() : tags.mine())) {
+                        if (block.builtInRegistryHolder()
+                                .is(
+                                        action == IndustryMatcher.Action.PLACE
+                                                ? tags.place()
+                                                : tags.mine())) {
                             if (matched != null) {
-                                throw new IllegalStateException("Block is assigned to two " + action
-                                        + " industries: " + BuiltInRegistries.BLOCK.getKey(block));
+                                throw new IllegalStateException(
+                                        "Block is assigned to two "
+                                                + action
+                                                + " industries: "
+                                                + BuiltInRegistries.BLOCK.getKey(block));
                             }
                             matched = industry.path();
                         }
                     }
                     if (matched != null) {
-                        members.add(action.name() + "/" + matched + "/" + BuiltInRegistries.BLOCK.getKey(block));
+                        members.add(
+                                action.name()
+                                        + "/"
+                                        + matched
+                                        + "/"
+                                        + BuiltInRegistries.BLOCK.getKey(block));
                     }
                 }
             }
             members.sort(String::compareTo);
-            members.forEach(member -> digest.update((member + "\n").getBytes(StandardCharsets.UTF_8)));
+            members.forEach(
+                    member -> digest.update((member + "\n").getBytes(StandardCharsets.UTF_8)));
             return digest.digest();
         } catch (NoSuchAlgorithmException impossible) {
             throw new IllegalStateException(impossible);
@@ -822,11 +1173,19 @@ public final class StatisticsService {
             for (BuiltInIndustry industry : BuiltInIndustry.values()) {
                 for (String action : List.of("craft", "place", "mine")) {
                     String registry = action.equals("craft") ? "item" : "block";
-                    updateResourceHash(digest, "/data/contribution/tags/" + registry + "/"
-                            + action + "_" + industry.path() + ".json");
+                    updateResourceHash(
+                            digest,
+                            "/data/contribution/tags/"
+                                    + registry
+                                    + "/"
+                                    + action
+                                    + "_"
+                                    + industry.path()
+                                    + ".json");
                 }
             }
-            updateResourceHash(digest, "/data/contribution/contribution/game_event_industry_map.json");
+            updateResourceHash(
+                    digest, "/data/contribution/contribution/game_event_industry_map.json");
             return digest.digest();
         } catch (NoSuchAlgorithmException | IOException error) {
             throw new IllegalStateException("Cannot fingerprint built-in industry rules", error);
@@ -843,29 +1202,70 @@ public final class StatisticsService {
         }
     }
 
-    record IndustryDayKey(long day, String industry) { }
-    record PlayerKey(UUID uuid, String name) { }
-    record PlayerIndustryKey(UUID uuid, String industry) { }
-    record DistanceDayKey(long day, UUID uuid, String mode) { }
-    private record DedupKey(String server, String dimension, UUID player, IndustryMatcher.Action action,
-                            long pos, String block) { }
+    record IndustryDayKey(long day, String industry) {}
+
+    record PlayerKey(UUID uuid, String name) {}
+
+    record PlayerIndustryKey(UUID uuid, String industry) {}
+
+    record DistanceDayKey(long day, UUID uuid, String mode) {}
+
+    private record DedupKey(
+            String server,
+            String dimension,
+            UUID player,
+            IndustryMatcher.Action action,
+            long pos,
+            String block) {}
+
     static final class PlayerCounts {
         long placed;
         long mined;
     }
-    record Batch(UUID id, long sequence, byte[] configHash,
-                         Map<IndustryDayKey, Long> industry, Map<PlayerKey, PlayerCounts> player,
-                         Map<PlayerIndustryKey, Long> playerIndustry, Map<DistanceDayKey, Long> distance) {
+
+    record Batch(
+            UUID id,
+            long sequence,
+            byte[] configHash,
+            Map<IndustryDayKey, Long> industry,
+            Map<PlayerKey, PlayerCounts> player,
+            Map<PlayerIndustryKey, Long> playerIndustry,
+            Map<DistanceDayKey, Long> distance,
+            Map<MeasuredStatistics.Key, Long> measured) {
+        Batch(
+                UUID id,
+                long sequence,
+                byte[] configHash,
+                Map<IndustryDayKey, Long> industry,
+                Map<PlayerKey, PlayerCounts> player,
+                Map<PlayerIndustryKey, Long> playerIndustry,
+                Map<DistanceDayKey, Long> distance) {
+            this(id, sequence, configHash, industry, player, playerIndustry, distance, Map.of());
+        }
+
+        boolean affectsThrough(long day) {
+            return industry.keySet().stream().anyMatch(key -> key.day() <= day)
+                    || distance.keySet().stream().anyMatch(key -> key.day() <= day)
+                    || measured.keySet().stream().anyMatch(key -> key.day() <= day);
+        }
+
         private int keyCount() {
-            return industry.size() + player.size() + playerIndustry.size() + distance.size();
+            return industry.size()
+                    + player.size()
+                    + playerIndustry.size()
+                    + distance.size()
+                    + measured.size();
         }
 
         private String canonical() {
             List<String> entries = new ArrayList<>();
             industry.forEach((key, value) -> entries.add("I:" + key + ":" + value));
-            player.forEach((key, value) -> entries.add("P:" + key + ":" + value.placed + ":" + value.mined));
+            player.forEach(
+                    (key, value) ->
+                            entries.add("P:" + key + ":" + value.placed + ":" + value.mined));
             playerIndustry.forEach((key, value) -> entries.add("PI:" + key + ":" + value));
             distance.forEach((key, value) -> entries.add("D:" + key + ":" + value));
+            measured.forEach((key, value) -> entries.add("M:" + key + ":" + value));
             entries.sort(String::compareTo);
             return String.join("\n", entries);
         }

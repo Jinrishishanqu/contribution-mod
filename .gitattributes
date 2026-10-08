@@ -1,0 +1,13 @@
+*.java text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.mjs text eol=lf
+*.html text eol=lf
+*.gradle text eol=lf
+*.properties text eol=lf
+*.sql text eol=lf
+*.ps1 text eol=lf
+*.xlsx binary
+*.png binary
+*.zip binary
+*.jar binary

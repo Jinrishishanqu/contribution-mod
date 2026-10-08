@@ -1,0 +1,16 @@
+{
+  "minecraft_version": "26.3",
+  "source_workbook_sha256": "876a35486bf3e503de9ed79e47d747d1f6ca5f4cbd9a305fb53d4a5aaf4e097b",
+  "item_count": 1535,
+  "industry_counts": {
+    "contribution:construction_landscaping": 391,
+    "contribution:mining_metallurgy": 77,
+    "contribution:energy_chemical": 56,
+    "contribution:processing_manufacturing": 512,
+    "contribution:technology_magic": 86,
+    "contribution:agriculture_forestry_livestock_fishery": 133,
+    "contribution:military_food_medicine": 102,
+    "contribution:circulation_services": 62,
+    "contribution:culture_education_livelihood": 116
+  }
+}

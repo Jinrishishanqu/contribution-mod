@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="商店命令用于浏览商品、购买指定份数、领取待发物品和查询原订单的执行结果。"><title>商店命令 · 贡献值模组维基 0.2.6</title><link rel="stylesheet" href="assets/wiki.css"><script defer src="assets/search-index.js"></script><script defer src="assets/site.js"></script></head><body data-current-page="commands-shop"><a class="skip-link" href="#commands-shop">跳到正文</a><div class="shell"><aside id="site-navigation" class="sidebar" aria-label="站点导航">
+<a class="brand" href="index.html#home">
+<span class="brand-mark" aria-hidden="true"></span>
+<span class="brand-text"><span class="brand-title">贡献值维基</span><span class="brand-tagline">贡献值经济 · 行业建设度 · 股票市场 · 系统商店</span></span>
+</a>
+<div class="sidebar-search"><label class="visually-hidden" for="site-search">搜索本维基</label><input id="site-search" type="search" placeholder="搜索页面与章节…" autocomplete="off"><div id="site-search-results" class="search-results" hidden></div></div>
+<div class="nav">
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-0"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开始阅读</span></button></h3>
+<ul id="nav-list-0">
+<li><a href="index.html#home" data-nav="home">贡献值模组维基</a></li>
+<li><a href="basics.html#basics" data-nav="basics">玩法入门</a></li>
+<li><a href="features.html#features" data-nav="features">玩法总览</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-1"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">贡献值与建设</span></button></h3>
+<ul id="nav-list-1">
+<li><a href="account.html#account" data-nav="account">贡献值账户</a></li>
+<li><a href="development.html#development" data-nav="development">行业建设度</a></li>
+<li><a href="statistics.html#statistics" data-nav="statistics">玩家统计</a></li>
+<li><a href="rewards.html#rewards" data-nav="rewards">建设度奖励</a></li>
+<li><a href="checkin.html#checkin" data-nav="checkin">签到与活动</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-2"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">经济交易</span></button></h3>
+<ul id="nav-list-2">
+<li><a href="shop.html#shop" data-nav="shop">系统商店</a></li>
+<li><a href="stock.html#stock" data-nav="stock">股票市场</a></li>
+<li><a href="stock-mechanics.html#stock-mechanics" data-nav="stock-mechanics">股价计算</a></li>
+<li><a href="swan.html#swan" data-nav="swan">黑天鹅事件</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-3"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">物品与进度</span></button></h3>
+<ul id="nav-list-3">
+<li><a href="items.html#items" data-nav="items">物品与装备</a></li>
+<li><a href="special-items.html#special-items" data-nav="special-items">特殊道具</a></li>
+<li><a href="recipes.html#recipes" data-nav="recipes">配方目录</a></li>
+<li><a href="recipes-basics.html#recipes-basics" data-nav="recipes-basics">基础配方</a></li>
+<li><a href="recipes-wings.html#recipes-wings" data-nav="recipes-wings">添翼配方</a></li>
+<li><a href="recipes-reinforcement.html#recipes-reinforcement" data-nav="recipes-reinforcement">强化配方</a></li>
+<li><a href="recipes-armor.html#recipes-armor" data-nav="recipes-armor">主题盔甲配方</a></li>
+<li><a href="recipes-hats.html#recipes-hats" data-nav="recipes-hats">帽子配方</a></li>
+<li><a href="recipes-special.html#recipes-special" data-nav="recipes-special">特殊道具配方</a></li>
+<li><a href="weapon-skins.html#weapon-skins" data-nav="weapon-skins">武器皮肤</a></li>
+<li><a href="advancements.html#advancements" data-nav="advancements">更多乐趣进度</a></li>
+<li><a href="advancement-details.html#advancement-details" data-nav="advancement-details">进度条件</a></li>
+<li><a href="resourcepack.html#resourcepack" data-nav="resourcepack">资源包与外观</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-4"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">操作与命令</span></button></h3>
+<ul id="nav-list-4">
+<li><a href="interface.html#interface" data-nav="interface">界面操作</a></li>
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands-contribution.html#commands-contribution" data-nav="commands-contribution">贡献值命令</a></li>
+<li><a href="commands-checkin.html#commands-checkin" data-nav="commands-checkin">签到命令</a></li>
+<li><a href="commands-stock.html#commands-stock" data-nav="commands-stock">股票命令</a></li>
+<li><a href="#commands-shop" data-nav="commands-shop">商店命令</a></li>
+<li><a href="commands-account.html#commands-account" data-nav="commands-account">账户管理命令</a></li>
+<li><a href="commands-shop-admin.html#commands-shop-admin" data-nav="commands-shop-admin">商店管理命令</a></li>
+<li><a href="permissions.html#permissions" data-nav="permissions">操作权限</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-5"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">服务器管理</span></button></h3>
+<ul id="nav-list-5">
+<li><a href="installation.html#installation" data-nav="installation">安装</a></li>
+<li><a href="config.html#config" data-nav="config">服务器配置</a></li>
+<li><a href="data.html#data" data-nav="data">数据与存档</a></li>
+<li><a href="operations.html#operations" data-nav="operations">服务器维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-6"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开发与维护</span></button></h3>
+<ul id="nav-list-6">
+<li><a href="api.html#api" data-nav="api">公共接口</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-tools"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">工具</span></button></h3>
+<ul id="nav-list-tools">
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands.xlsx">下载命令工作簿</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+</div>
+<div class="sidebar-footer">版本 0.2.6 · Minecraft 26.3<br>Fabric Loader 0.19.5 · Java 25</div>
+</aside><main class="main"><header class="topbar"><nav class="topbar-crumbs" aria-label="面包屑"><a href="index.html">首页</a><span> / 商店命令</span></nav><span class="topbar-spacer"></span><button id="mobile-nav" type="button" aria-expanded="false" aria-controls="site-navigation">导航</button><button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">切换主题</button></header><div class="wiki-page" id="commands-shop" data-page-title="商店命令">
+<div class="content-panel">
+<div class="page-head">
+<h1 class="page-title">商店命令</h1>
+<p class="page-summary">商店命令用于浏览商品、购买指定份数、领取待发物品和查询原订单的执行结果。</p>
+</div>
+<div class="page-columns">
+<div class="article">
+<div class="toc"><input class="toc-toggle" type="checkbox" id="toc-commands-shop" checked><label class="toc-head" for="toc-commands-shop">目录 <span class="toc-toggle-label"><span class="toc-show">[显示]</span><span class="toc-hide">[隐藏]</span></span></label><ol><li><a href="#commands-shop-用途">使用</a></li><li><a href="#commands-shop-示例">示例</a></li><li><a href="#commands-shop-命令路径">本模块命令路径</a></li></ol></div>
+<section class="wiki-section" id="commands-shop-用途">
+<h2>使用</h2>
+<p><code>/shop</code> 打开共享商品目录。原版客户端通过 26.3 原版对话界面浏览与购买，安装同一模组的客户端使用专用界面；两种界面共享同一个数据库目录与同一套校验。</p>
+<ul><li>原版对话界面每页最多 8 件商品，可直接购买一份；购买更多使用 <code>/shop buy &lt;编号&gt; &lt;份数&gt;</code>。</li><li>客户端界面会附带商品版本；目录过期时拒绝成交并提示刷新，不按玩家没看到的新价格扣款。</li><li>文字命令省略版本时，以服务器当时的商品价格成交。</li><li><code>claim</code> 领取商店与活动签到的待发物品；背包放不下的部分掉落在玩家附近。</li><li>结果不明时使用 <code>/shop retry &lt;订单ID&gt; &lt;商品ID&gt; &lt;份数&gt;</code>，商品与份数不得改变。</li></ul>
+</section>
+<section class="wiki-section" id="commands-shop-示例">
+<h2>示例</h2>
+<pre class="code" data-language="text"><code>/shop
+/shop buy 1 2
+/shop claim</code></pre>
+</section>
+<section class="wiki-section" id="commands-shop-命令路径"><h2>本模块命令路径</h2>
+<p>共 9 条命令路径，权限、示例与参数要求列在各条目中。</p>
+<div class="cmd-list">
+<article class="cmd" data-search="商店 /shop 打开服务器共享商品目录。 玩家 /shop 已安装模组使用客户端界面，未安装也可用原版对话界面。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开服务器共享商品目录。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/shop</code></dd>
+<dt>参数与限制</dt><dd>已安装模组使用客户端界面，未安装也可用原版对话界面。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="商店 /shop back 返回商店上级页面。 玩家 /shop back 导航用途。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop back</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>返回商店上级页面。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/shop back</code></dd>
+<dt>参数与限制</dt><dd>导航用途。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="商店 /shop buy &lt;offer&gt; &lt;quantity&gt; 按商品编号购买指定份数。 玩家 /shop buy 1 2 份数 1—64；可附带商品 revision 防止按过期价格下单；最多 2304 个物品。 offer: 单词（不能含空格）; quantity: integer(1, 64);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop buy &lt;offer&gt; &lt;quantity&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>按商品编号购买指定份数。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/shop buy 1 2</code></dd>
+<dt>参数与限制</dt><dd>份数 1—64；可附带商品 revision 防止按过期价格下单；最多 2304 个物品。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>offer: 单词（不能含空格）; quantity: integer(1, 64);</code></details>
+</article>
+<article class="cmd" data-search="商店 /shop buy &lt;offer&gt; &lt;quantity&gt; &lt;revision&gt; 按商品编号购买指定份数。 玩家 /shop buy 1 2 份数 1—64；可附带商品 revision 防止按过期价格下单；最多 2304 个物品。 offer: 单词（不能含空格）; quantity: integer(1, 64); revision: longarg(0);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop buy &lt;offer&gt; &lt;quantity&gt; &lt;revision&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>按商品编号购买指定份数。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/shop buy 1 2</code></dd>
+<dt>参数与限制</dt><dd>份数 1—64；可附带商品 revision 防止按过期价格下单；最多 2304 个物品。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>offer: 单词（不能含空格）; quantity: integer(1, 64); revision: longArg(0);</code></details>
+</article>
+<article class="cmd" data-search="商店 /shop claim 领取商店/活动待发物品。 玩家 /shop claim 背包放不下的物品掉落附近；崩溃窗口不保证跨数据库语句与背包严格一次交付。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop claim</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>领取商店/活动待发物品。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/shop claim</code></dd>
+<dt>参数与限制</dt><dd>背包放不下的物品掉落附近；崩溃窗口不保证跨数据库语句与背包严格一次交付。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="商店 /shop page &lt;page&gt; 打开原版商品目录指定页。 玩家 /shop page 0 页码从 0 开始；每页最多 8 件商品。 page: integer(0);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop page &lt;page&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开原版商品目录指定页。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/shop page 0</code></dd>
+<dt>参数与限制</dt><dd>页码从 0 开始；每页最多 8 件商品。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>page: integer(0);</code></details>
+</article>
+<article class="cmd" data-search="商店 /shop refresh 重新读取商品列表，保留当前会话筛选。 玩家 /shop refresh 不重建商品数据。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop refresh</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>重新读取商品列表，保留当前会话筛选。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/shop refresh</code></dd>
+<dt>参数与限制</dt><dd>不重建商品数据。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="商店 /shop retry &lt;orderid&gt; &lt;offer&gt; &lt;quantity&gt; 沿用原订单唯一标识符重试购买。 玩家 /shop retry &lt;唯一标识符&gt; 1 2 商品和份数不得改变；旧字符串别名也兼容。 orderid: 单词（不能含空格）; offer: 单词（不能含空格）; quantity: integer(1, 64);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop retry &lt;orderId&gt; &lt;offer&gt; &lt;quantity&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>沿用原订单唯一标识符重试购买。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/shop retry &lt;唯一标识符&gt; 1 2</code></dd>
+<dt>参数与限制</dt><dd>商品和份数不得改变；旧字符串别名也兼容。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>orderId: 单词（不能含空格）; offer: 单词（不能含空格）; quantity: integer(1, 64);</code></details>
+</article>
+<article class="cmd" data-search="商店 /shop ui_vanilla 强制原版商店及管理界面。 玩家 /shop ui_vanilla 导航保持原版模式，重新 /shop 恢复自动选择。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop ui_vanilla</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>强制原版商店及管理界面。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/shop ui_vanilla</code></dd>
+<dt>参数与限制</dt><dd>导航保持原版模式，重新 /shop 恢复自动选择。</dd>
+</dl>
+
+</article>
+</div>
+</section>
+<div class="page-footer">贡献值模组维基 · 0.2.6 · <a href="documentation.html#documentation">维基维护</a></div>
+</div>
+<aside class="page-info">
+<div class="page-info-inner">
+<div class="page-info-head">条目概要</div>
+<table class="infobox">
+<tr><th>命令根</th><td><code>/shop</code></td></tr>
+<tr><th>权限</th><td>见各命令权限栏</td></tr>
+<tr><th>命令路径</th><td>9 条</td></tr>
+</table>
+</div>
+<table class="navbox"><tbody>
+<tr><th class="navbox-top" colspan="2"><span class="navbox-title">操作与命令</span></th></tr>
+<tr><th>相关页面</th><td><ul class="hlist"><li><a href="interface.html#interface">界面操作</a></li><li><a href="commands.html#commands">命令速查</a></li><li><a href="commands-contribution.html#commands-contribution">贡献值命令</a></li><li><a href="commands-checkin.html#commands-checkin">签到命令</a></li></ul></td></tr>
+</tbody></table>
+<div class="catlinks"><span>分类：</span><ul><li>操作与命令</li></ul></div>
+</aside>
+</div>
+</div>
+</div></main></div></body></html>

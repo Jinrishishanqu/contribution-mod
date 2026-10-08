@@ -6,10 +6,20 @@
   "result": {
     "id": "minecraft:diamond_shovel",
     "components": {
-      "minecraft:item_name": {
-        "text": "强化钻石锹"
-      },
       "minecraft:max_damage": 2031,
+      "minecraft:tool": {
+        "rules": [
+          {
+            "blocks": "#minecraft:incorrect_for_netherite_tool",
+            "correct_for_drops": false
+          },
+          {
+            "blocks": "#minecraft:mineable/shovel",
+            "speed": 8.0,
+            "correct_for_drops": true
+          }
+        ]
+      },
       "minecraft:damage_resistant": {
         "types": "#minecraft:is_fire"
       },
@@ -27,6 +37,13 @@
           "operation": "add_value",
           "slot": "mainhand",
           "id": "minecraft:base_attack_speed"
+        }
+      ],
+      "minecraft:lore": [
+        {
+          "color": "gray",
+          "italic": false,
+          "text": "下界合金强化"
         }
       ]
     }

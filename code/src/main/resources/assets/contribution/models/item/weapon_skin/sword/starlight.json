@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/sword/starlight"
+  },
+  "parent": "contribution:item/weapon_skin/sword/24"
+}

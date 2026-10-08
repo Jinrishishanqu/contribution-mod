@@ -1,0 +1,6 @@
+{
+  "parent": "contribution:item/weapon_skin/base/sword_0d32a37525fb",
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/sword/galaxia2_overlay"
+  }
+}

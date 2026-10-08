@@ -1,0 +1,971 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="命令用于打开界面、查询数据和执行交易或管理操作，按贡献值、账户、签到、股票与商店分类。"><title>命令速查 · 贡献值模组维基 0.2.6</title><link rel="stylesheet" href="assets/wiki.css"><script defer src="assets/search-index.js"></script><script defer src="assets/site.js"></script></head><body data-current-page="commands"><a class="skip-link" href="#commands">跳到正文</a><div class="shell"><aside id="site-navigation" class="sidebar" aria-label="站点导航">
+<a class="brand" href="index.html#home">
+<span class="brand-mark" aria-hidden="true"></span>
+<span class="brand-text"><span class="brand-title">贡献值维基</span><span class="brand-tagline">贡献值经济 · 行业建设度 · 股票市场 · 系统商店</span></span>
+</a>
+<div class="sidebar-search"><label class="visually-hidden" for="site-search">搜索本维基</label><input id="site-search" type="search" placeholder="搜索页面与章节…" autocomplete="off"><div id="site-search-results" class="search-results" hidden></div></div>
+<div class="nav">
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-0"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开始阅读</span></button></h3>
+<ul id="nav-list-0">
+<li><a href="index.html#home" data-nav="home">贡献值模组维基</a></li>
+<li><a href="basics.html#basics" data-nav="basics">玩法入门</a></li>
+<li><a href="features.html#features" data-nav="features">玩法总览</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-1"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">贡献值与建设</span></button></h3>
+<ul id="nav-list-1">
+<li><a href="account.html#account" data-nav="account">贡献值账户</a></li>
+<li><a href="development.html#development" data-nav="development">行业建设度</a></li>
+<li><a href="statistics.html#statistics" data-nav="statistics">玩家统计</a></li>
+<li><a href="rewards.html#rewards" data-nav="rewards">建设度奖励</a></li>
+<li><a href="checkin.html#checkin" data-nav="checkin">签到与活动</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-2"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">经济交易</span></button></h3>
+<ul id="nav-list-2">
+<li><a href="shop.html#shop" data-nav="shop">系统商店</a></li>
+<li><a href="stock.html#stock" data-nav="stock">股票市场</a></li>
+<li><a href="stock-mechanics.html#stock-mechanics" data-nav="stock-mechanics">股价计算</a></li>
+<li><a href="swan.html#swan" data-nav="swan">黑天鹅事件</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-3"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">物品与进度</span></button></h3>
+<ul id="nav-list-3">
+<li><a href="items.html#items" data-nav="items">物品与装备</a></li>
+<li><a href="special-items.html#special-items" data-nav="special-items">特殊道具</a></li>
+<li><a href="recipes.html#recipes" data-nav="recipes">配方目录</a></li>
+<li><a href="recipes-basics.html#recipes-basics" data-nav="recipes-basics">基础配方</a></li>
+<li><a href="recipes-wings.html#recipes-wings" data-nav="recipes-wings">添翼配方</a></li>
+<li><a href="recipes-reinforcement.html#recipes-reinforcement" data-nav="recipes-reinforcement">强化配方</a></li>
+<li><a href="recipes-armor.html#recipes-armor" data-nav="recipes-armor">主题盔甲配方</a></li>
+<li><a href="recipes-hats.html#recipes-hats" data-nav="recipes-hats">帽子配方</a></li>
+<li><a href="recipes-special.html#recipes-special" data-nav="recipes-special">特殊道具配方</a></li>
+<li><a href="weapon-skins.html#weapon-skins" data-nav="weapon-skins">武器皮肤</a></li>
+<li><a href="advancements.html#advancements" data-nav="advancements">更多乐趣进度</a></li>
+<li><a href="advancement-details.html#advancement-details" data-nav="advancement-details">进度条件</a></li>
+<li><a href="resourcepack.html#resourcepack" data-nav="resourcepack">资源包与外观</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-4"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">操作与命令</span></button></h3>
+<ul id="nav-list-4">
+<li><a href="interface.html#interface" data-nav="interface">界面操作</a></li>
+<li><a href="#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands-contribution.html#commands-contribution" data-nav="commands-contribution">贡献值命令</a></li>
+<li><a href="commands-checkin.html#commands-checkin" data-nav="commands-checkin">签到命令</a></li>
+<li><a href="commands-stock.html#commands-stock" data-nav="commands-stock">股票命令</a></li>
+<li><a href="commands-shop.html#commands-shop" data-nav="commands-shop">商店命令</a></li>
+<li><a href="commands-account.html#commands-account" data-nav="commands-account">账户管理命令</a></li>
+<li><a href="commands-shop-admin.html#commands-shop-admin" data-nav="commands-shop-admin">商店管理命令</a></li>
+<li><a href="permissions.html#permissions" data-nav="permissions">操作权限</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-5"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">服务器管理</span></button></h3>
+<ul id="nav-list-5">
+<li><a href="installation.html#installation" data-nav="installation">安装</a></li>
+<li><a href="config.html#config" data-nav="config">服务器配置</a></li>
+<li><a href="data.html#data" data-nav="data">数据与存档</a></li>
+<li><a href="operations.html#operations" data-nav="operations">服务器维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-6"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开发与维护</span></button></h3>
+<ul id="nav-list-6">
+<li><a href="api.html#api" data-nav="api">公共接口</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-tools"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">工具</span></button></h3>
+<ul id="nav-list-tools">
+<li><a href="#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands.xlsx">下载命令工作簿</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+</div>
+<div class="sidebar-footer">版本 0.2.6 · Minecraft 26.3<br>Fabric Loader 0.19.5 · Java 25</div>
+</aside><main class="main"><header class="topbar"><nav class="topbar-crumbs" aria-label="面包屑"><a href="index.html">首页</a><span> / 命令速查</span></nav><span class="topbar-spacer"></span><button id="mobile-nav" type="button" aria-expanded="false" aria-controls="site-navigation">导航</button><button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">切换主题</button></header><div class="wiki-page" id="commands" data-page-title="命令速查">
+<div class="content-panel">
+<div class="page-head">
+<h1 class="page-title">命令速查</h1>
+<p class="page-summary">命令用于打开界面、查询数据和执行交易或管理操作，按贡献值、账户、签到、股票与商店分类。</p>
+</div>
+<div class="page-columns">
+<div class="article">
+<div class="toc"><input class="toc-toggle" type="checkbox" id="toc-commands" checked><label class="toc-head" for="toc-commands">目录 <span class="toc-toggle-label"><span class="toc-show">[显示]</span><span class="toc-hide">[隐藏]</span></span></label><ol><li><a href="#commands-语法">语法</a></li><li><a href="#commands-modules">模块一览</a></li><li><a href="#commands-all">全部命令路径</a></li><li><a href="#commands-参见">参见</a></li></ol></div>
+<h2 id="commands-语法">语法</h2>
+<p>命令以 <code>/</code> 开头。尖括号 <code>&lt;&gt;</code> 表示必填参数，方括号 <code>[]</code> 表示可选参数。使用时将参数占位替换为实际值；含空格的名称用引号包围。可选尾部参数的每条执行路径分别列出。</p>
+<p>普通玩家可查询本人数据、领取奖励和交易。管理命令通常要求管理员等级 2；账户迁移等命令另有主服务器或控制台要求，见各命令的权限栏。</p>
+<h2 id="commands-modules">模块一览</h2>
+<div class="cards" data-columns="3">
+<div class="card"><div class="card-body"><div class="card-title"><a class="wikilink" href="commands-contribution.html#commands-contribution">贡献值命令</a></div><p>贡献值命令用于打开主界面、查询账户与流水、查看统计和排行榜，以及诊断服务状态。</p></div></div>
+<div class="card"><div class="card-body"><div class="card-title"><a class="wikilink" href="commands-account.html#commands-account">账户管理命令</a></div><p>账户管理命令用于增减余额、创建账户、迁移唯一标识符和清理假人账户，需要管理员权限。</p></div></div>
+<div class="card"><div class="card-body"><div class="card-title"><a class="wikilink" href="commands-checkin.html#commands-checkin">签到命令</a></div><p>签到命令用于查询每日状态、浏览和领取活动奖励，以及由管理员创建活动。</p></div></div>
+<div class="card"><div class="card-body"><div class="card-title"><a class="wikilink" href="commands-stock.html#commands-stock">股票命令</a></div><p>股票命令用于查询市场和持仓、买卖股票、查看历史价格，以及领取退市返还。</p></div></div>
+<div class="card"><div class="card-body"><div class="card-title"><a class="wikilink" href="commands-shop.html#commands-shop">商店命令</a></div><p>商店命令用于浏览商品、购买指定份数、领取待发物品和查询原订单的执行结果。</p></div></div>
+<div class="card"><div class="card-body"><div class="card-title"><a class="wikilink" href="commands-shop-admin.html#commands-shop-admin">商店管理命令</a></div><p>商店管理命令用于创建商品、修改商品信息和上下架，也可打开完整的管理表单。</p></div></div>
+</div>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">模块</th><th scope="col">命令根</th><th scope="col">路径数</th></tr></thead>
+<tbody>
+<tr><td>贡献值</td><td><code>/contribution</code>、<code>/contribution accounts</code>、<code>/contribution bot_check</code>、<code>/contribution diagnose</code>、<code>/contribution history</code>、<code>/contribution leaderboard</code>、<code>/contribution query</code>、<code>/contribution stats</code>、<code>/contribution ui</code>、<code>/contribution ui_vanilla</code></td><td>19</td></tr>
+<tr><td>账户管理</td><td><code>/contribution account</code>、<code>/contribution add</code>、<code>/contribution remove</code>、<code>/contribution retry</code></td><td>12</td></tr>
+<tr><td>签到</td><td><code>/contribution checkin</code></td><td>6</td></tr>
+<tr><td>商店</td><td><code>/shop</code>、<code>/shop back</code>、<code>/shop buy</code>、<code>/shop claim</code>、<code>/shop page</code>、<code>/shop refresh</code>、<code>/shop retry</code>、<code>/shop ui_vanilla</code></td><td>9</td></tr>
+<tr><td>商店管理</td><td><code>/shop admin</code>、<code>/shop modify</code>、<code>/shop put_on</code>、<code>/shop take_off</code></td><td>18</td></tr>
+<tr><td>股票</td><td><code>/stock</code>、<code>/stock batch</code>、<code>/stock browse</code>、<code>/stock buy</code>、<code>/stock check</code>、<code>/stock claim</code>、<code>/stock portfolio</code>、<code>/stock retry</code>、<code>/stock sell</code>、<code>/stock ui_vanilla</code></td><td>13</td></tr>
+<tr><td>武器皮肤</td><td><code>/weapon_skin page</code>、<code>/weapon_skin preview</code>、<code>/weapon_skin select</code></td><td>3</td></tr>
+</tbody>
+</table></div>
+<h2 id="commands-all">全部命令路径</h2>
+<div class="toolbar"><label for="search">筛选命令</label><input id="search" placeholder="例如 shop、管理员、签到、retry" type="search" autocomplete="off"><span id="count" aria-live="polite"></span></div>
+<h3 class="cmd-group">贡献值<span class="cmd-group-count">19 条</span></h3>
+<div class="cmd-list">
+<article class="cmd" data-search="贡献值 /contribution 打开首页；已安装客户端模组使用专用界面，否则使用原版对话界面。 玩家 /contribution 经济数据存于服务端。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开首页；已安装客户端模组使用专用界面，否则使用原版对话界面。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/contribution</code></dd>
+<dt>参数与限制</dt><dd>经济数据存于服务端。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="贡献值 /contribution accounts 按唯一标识符游标分页列出账户。 管理员 /contribution accounts 账户列表支持点击查看账户与统计。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution accounts</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>按唯一标识符游标分页列出账户。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution accounts</code></dd>
+<dt>参数与限制</dt><dd>账户列表支持点击查看账户与统计。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="贡献值 /contribution accounts-next &lt;cursor&gt; 从指定唯一标识符游标继续账户列表。 管理员 /contribution accounts-next &lt;上一页返回的唯一标识符&gt; 内部翻页命令；使用真实游标。 cursor: 单词（不能含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution accounts-next &lt;cursor&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>从指定唯一标识符游标继续账户列表。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution accounts-next &lt;上一页返回的唯一标识符&gt;</code></dd>
+<dt>参数与限制</dt><dd>内部翻页命令；使用真实游标。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>cursor: 单词（不能含空格）;</code></details>
+</article>
+<article class="cmd" data-search="贡献值 /contribution bot_check 清理 bot_ 前缀机器人账户及关联数据。 管理员 /contribution bot_check 破坏性清理：执行前备份数据库。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution bot_check</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>清理 bot_ 前缀机器人账户及关联数据。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution bot_check</code></dd>
+<dt>参数与限制</dt><dd>破坏性清理：执行前备份数据库。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="贡献值 /contribution diagnose 诊断数据库、市场时钟、规则、统计和核算，自动触发安全恢复并反馈聊天报告。 管理员（管理员等级 2）或控制台 /contribution diagnose 每实例一个会话、15 秒冷却；异步查询，约 100tick 后复查。仅重连与正常任务重试，不删数据、不跳过关账、不强制解锁；配置冲突等需人工处理。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution diagnose</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>诊断数据库、市场时钟、规则、统计和核算，自动触发安全恢复并反馈聊天报告。</dd>
+<dt>权限</dt><dd>管理员（管理员等级 2）或控制台</dd>
+<dt>示例</dt><dd><code>/contribution diagnose</code></dd>
+<dt>参数与限制</dt><dd>每实例一个会话、15 秒冷却；异步查询，约 100tick 后复查。仅重连与正常任务重试，不删数据、不跳过关账、不强制解锁；配置冲突等需人工处理。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="贡献值 /contribution history 查看自身或指定账户流水。 自己：玩家；他人或全服：管理员 /contribution history 普通玩家查询窗口 90 天；管理员最长 365 天。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution history</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>查看自身或指定账户流水。</dd>
+<dt>权限</dt><dd>自己：玩家；他人或全服：管理员</dd>
+<dt>示例</dt><dd><code>/contribution history</code></dd>
+<dt>参数与限制</dt><dd>普通玩家查询窗口 90 天；管理员最长 365 天。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="贡献值 /contribution history &lt;target&gt; 查看自身或指定账户流水。 自己：玩家；他人或全服：管理员 /contribution history 普通玩家查询窗口 90 天；管理员最长 365 天。 target: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution history &lt;target&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>查看自身或指定账户流水。</dd>
+<dt>权限</dt><dd>自己：玩家；他人或全服：管理员</dd>
+<dt>示例</dt><dd><code>/contribution history</code></dd>
+<dt>参数与限制</dt><dd>普通玩家查询窗口 90 天；管理员最长 365 天。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>target: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="贡献值 /contribution history-next &lt;cursor&gt; 按流水游标继续查询，不使用 offset 扫描。 自己：玩家；指定目标：管理员 /contribution history-next &lt;游标&gt; 游标由上一页提供。 cursor: 单词（不能含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution history-next &lt;cursor&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>按流水游标继续查询，不使用 OFFSET 扫描。</dd>
+<dt>权限</dt><dd>自己：玩家；指定目标：管理员</dd>
+<dt>示例</dt><dd><code>/contribution history-next &lt;游标&gt;</code></dd>
+<dt>参数与限制</dt><dd>游标由上一页提供。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>cursor: 单词（不能含空格）;</code></details>
+</article>
+<article class="cmd" data-search="贡献值 /contribution history-next &lt;cursor&gt; &lt;target&gt; 按流水游标继续查询，不使用 offset 扫描。 自己：玩家；指定目标：管理员 /contribution history-next &lt;游标&gt; 游标由上一页提供。 cursor: 单词（不能含空格）; target: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution history-next &lt;cursor&gt; &lt;target&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>按流水游标继续查询，不使用 OFFSET 扫描。</dd>
+<dt>权限</dt><dd>自己：玩家；指定目标：管理员</dd>
+<dt>示例</dt><dd><code>/contribution history-next &lt;游标&gt;</code></dd>
+<dt>参数与限制</dt><dd>游标由上一页提供。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>cursor: 单词（不能含空格）; target: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="贡献值 /contribution history-search &lt;request&gt; 按范围、类型和时间筛选流水。 自己：玩家；他人/全服：管理员 /contribution history-search self type=shop_buy 范围 self、玩家名称/唯一标识符或管理员全服 *；条件 type/source/server/from/to=值。日期 yyyy-mm-dd 按 utc，显示按配置时区。 request: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution history-search &lt;request&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>按范围、类型和时间筛选流水。</dd>
+<dt>权限</dt><dd>自己：玩家；他人/全服：管理员</dd>
+<dt>示例</dt><dd><code>/contribution history-search self type=SHOP_BUY</code></dd>
+<dt>参数与限制</dt><dd>范围 self、玩家名称/唯一标识符或管理员全服 *；条件 type/source/server/from/to=值。日期 YYYY-MM-DD 按 UTC，显示按配置时区。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>request: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="贡献值 /contribution history-search-next &lt;cursor&gt; &lt;request&gt; 在相同筛选条件下继续游标分页。 自己：玩家；他人/全服：管理员 /contribution history-search-next &lt;游标&gt; self type=shop_buy 保留原查询条件。 cursor: 单词（不能含空格）; request: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution history-search-next &lt;cursor&gt; &lt;request&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>在相同筛选条件下继续游标分页。</dd>
+<dt>权限</dt><dd>自己：玩家；他人/全服：管理员</dd>
+<dt>示例</dt><dd><code>/contribution history-search-next &lt;游标&gt; self type=SHOP_BUY</code></dd>
+<dt>参数与限制</dt><dd>保留原查询条件。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>cursor: 单词（不能含空格）; request: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="贡献值 /contribution leaderboard 打开排行榜，默认展示按当前贡献余额排序的富豪榜。 玩家 /contribution leaderboard 首页也有入口；可切换历史总收入、总建设度和九行业榜。每榜前 100 名、每页 8 名、缓存 15 秒；未提交的建设度暂不计入。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution leaderboard</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开排行榜，默认展示按当前贡献余额排序的富豪榜。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/contribution leaderboard</code></dd>
+<dt>参数与限制</dt><dd>首页也有入口；可切换历史总收入、总建设度和九行业榜。每榜前 100 名、每页 8 名、缓存 15 秒；未提交的建设度暂不计入。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="贡献值 /contribution query 查看自身或指定玩家余额、历史总收入。 自己：玩家；指定目标：管理员 /contribution query caozei 目标可为名称或唯一标识符。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution query</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>查看自身或指定玩家余额、历史总收入。</dd>
+<dt>权限</dt><dd>自己：玩家；指定目标：管理员</dd>
+<dt>示例</dt><dd><code>/contribution query CaoZei</code></dd>
+<dt>参数与限制</dt><dd>目标可为名称或唯一标识符。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="贡献值 /contribution query &lt;target&gt; 查看自身或指定玩家余额、历史总收入。 自己：玩家；指定目标：管理员 /contribution query caozei 目标可为名称或唯一标识符。 target: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution query &lt;target&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>查看自身或指定玩家余额、历史总收入。</dd>
+<dt>权限</dt><dd>自己：玩家；指定目标：管理员</dd>
+<dt>示例</dt><dd><code>/contribution query CaoZei</code></dd>
+<dt>参数与限制</dt><dd>目标可为名称或唯一标识符。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>target: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="贡献值 /contribution stats 查看原始放置/挖掘次数与九行业累计建设度。 自己：玩家；他人：管理员 /contribution stats 界面已合并账户与统计；命令仍保留。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution stats</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>查看原始放置/挖掘次数与九行业累计建设度。</dd>
+<dt>权限</dt><dd>自己：玩家；他人：管理员</dd>
+<dt>示例</dt><dd><code>/contribution stats</code></dd>
+<dt>参数与限制</dt><dd>界面已合并账户与统计；命令仍保留。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="贡献值 /contribution stats &lt;target&gt; 查看原始放置/挖掘次数与九行业累计建设度。 自己：玩家；他人：管理员 /contribution stats 界面已合并账户与统计；命令仍保留。 target: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution stats &lt;target&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>查看原始放置/挖掘次数与九行业累计建设度。</dd>
+<dt>权限</dt><dd>自己：玩家；他人：管理员</dd>
+<dt>示例</dt><dd><code>/contribution stats</code></dd>
+<dt>参数与限制</dt><dd>界面已合并账户与统计；命令仍保留。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>target: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="贡献值 /contribution ui 打开指定页面或执行导航；主要供界面按钮使用。 玩家；管理页仍校验管理员权限 /contribution ui home 页面：home、account self、history self、industries、checkin、leaderboards（默认富豪榜）、`leaderboard_industries`、ranking &lt;类别&gt; &lt;0 起页码&gt;、admin、accounts、`admin_search`、back、previous、close。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution ui</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开指定页面或执行导航；主要供界面按钮使用。</dd>
+<dt>权限</dt><dd>玩家；管理页仍校验管理员权限</dd>
+<dt>示例</dt><dd><code>/contribution ui home</code></dd>
+<dt>参数与限制</dt><dd>页面：home、account self、history self、industries、checkin、leaderboards（默认富豪榜）、<code>leaderboard_industries</code>、ranking &lt;类别&gt; &lt;0 起页码&gt;、admin、accounts、<code>admin_search</code>、back、previous、close。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="贡献值 /contribution ui &lt;page&gt; 打开指定页面或执行导航；主要供界面按钮使用。 玩家；管理页仍校验管理员权限 /contribution ui home 页面：home、account self、history self、industries、checkin、leaderboards（默认富豪榜）、`leaderboard_industries`、ranking &lt;类别&gt; &lt;0 起页码&gt;、admin、accounts、`admin_search`、back、previous、close。 page: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution ui &lt;page&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开指定页面或执行导航；主要供界面按钮使用。</dd>
+<dt>权限</dt><dd>玩家；管理页仍校验管理员权限</dd>
+<dt>示例</dt><dd><code>/contribution ui home</code></dd>
+<dt>参数与限制</dt><dd>页面：home、account self、history self、industries、checkin、leaderboards（默认富豪榜）、<code>leaderboard_industries</code>、ranking &lt;类别&gt; &lt;0 起页码&gt;、admin、accounts、<code>admin_search</code>、back、previous、close。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>page: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="贡献值 /contribution ui_vanilla 强制使用原版对话界面，方便调试兼容性。 玩家 /contribution ui_vanilla 重新 /contribution 恢复自动选择。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution ui_vanilla</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>强制使用原版对话界面，方便调试兼容性。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/contribution ui_vanilla</code></dd>
+<dt>参数与限制</dt><dd>重新 /contribution 恢复自动选择。</dd>
+</dl>
+
+</article>
+</div>
+<h3 class="cmd-group">账户管理<span class="cmd-group-count">12 条</span></h3>
+<div class="cmd-list">
+<article class="cmd" data-search="账户管理 /contribution account create &lt;uuid&gt; &lt;name&gt; 创建账户；安全迁移唯一标识符身份及关联数据。 管理员；migrate 仅主服控制台且没有在线玩家 /contribution account create &lt;唯一标识符&gt; playername migrate 必须 confirm，源/目标身份及目标数据均校验；先备份。 uuid: 单词（不能含空格）; name: 单词（不能含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution account create &lt;uuid&gt; &lt;name&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>创建账户；安全迁移唯一标识符身份及关联数据。</dd>
+<dt>权限</dt><dd>管理员；migrate 仅主服控制台且没有在线玩家</dd>
+<dt>示例</dt><dd><code>/contribution account create &lt;唯一标识符&gt; PlayerName</code></dd>
+<dt>参数与限制</dt><dd>migrate 必须 confirm，源/目标身份及目标数据均校验；先备份。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>uuid: 单词（不能含空格）; name: 单词（不能含空格）;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution account migrate &lt;sourceuuid&gt; &lt;targetuuid&gt; confirm 把源唯一标识符的账户及关联数据迁移到目标唯一标识符。 主服务器控制台管理员；无在线玩家 /contribution account migrate &lt;源唯一标识符&gt; &lt;目标唯一标识符&gt; confirm 执行前备份；目标须满足空账户/身份约束，不是合并余额。 sourceuuid: 单词（不能含空格）; targetuuid: 单词（不能含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution account migrate &lt;sourceUuid&gt; &lt;targetUuid&gt; confirm</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>把源唯一标识符的账户及关联数据迁移到目标唯一标识符。</dd>
+<dt>权限</dt><dd>主服务器控制台管理员；无在线玩家</dd>
+<dt>示例</dt><dd><code>/contribution account migrate &lt;源唯一标识符&gt; &lt;目标唯一标识符&gt; confirm</code></dd>
+<dt>参数与限制</dt><dd>执行前备份；目标须满足空账户/身份约束，不是合并余额。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>sourceUuid: 单词（不能含空格）; targetUuid: 单词（不能含空格）;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution add &lt;selected&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; 增加贡献值，可指定是否增加历史总收入。 管理员 /contribution add caozei 100 &quot;活动奖励&quot; true 金额≥1 且≤2147483647；原因及备注最多 64 字符；目标支持名称、唯一标识符或玩家选择器。 selected: 玩家选择器; amount: longarg(1, 2147483647); reason: 字符串（空格需引号）; affecttotalincome: true|false;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution add &lt;selected&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>增加贡献值，可指定是否增加历史总收入。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution add CaoZei 100 &quot;活动奖励&quot; true</code></dd>
+<dt>参数与限制</dt><dd>金额≥1 且≤2147483647；原因及备注最多 64 字符；目标支持名称、唯一标识符或玩家选择器。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>selected: 玩家选择器; amount: longArg(1, 2147483647); reason: 字符串（空格需引号）; affectTotalIncome: true|false;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution add &lt;selected&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; &lt;note&gt; 增加贡献值，可指定是否增加历史总收入。 管理员 /contribution add caozei 100 &quot;活动奖励&quot; true 金额≥1 且≤2147483647；原因及备注最多 64 字符；目标支持名称、唯一标识符或玩家选择器。 selected: 玩家选择器; amount: longarg(1, 2147483647); reason: 字符串（空格需引号）; affecttotalincome: true|false; note: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution add &lt;selected&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt; &lt;note&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>增加贡献值，可指定是否增加历史总收入。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution add CaoZei 100 &quot;活动奖励&quot; true</code></dd>
+<dt>参数与限制</dt><dd>金额≥1 且≤2147483647；原因及备注最多 64 字符；目标支持名称、唯一标识符或玩家选择器。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>selected: 玩家选择器; amount: longArg(1, 2147483647); reason: 字符串（空格需引号）; affectTotalIncome: true|false; note: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution add &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; 增加贡献值，可指定是否增加历史总收入。 管理员 /contribution add caozei 100 &quot;活动奖励&quot; true 金额≥1 且≤2147483647；原因及备注最多 64 字符；目标支持名称、唯一标识符或玩家选择器。 target: 单词（不能含空格）; amount: longarg(1, 2147483647); reason: 字符串（空格需引号）; affecttotalincome: true|false;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution add &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>增加贡献值，可指定是否增加历史总收入。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution add CaoZei 100 &quot;活动奖励&quot; true</code></dd>
+<dt>参数与限制</dt><dd>金额≥1 且≤2147483647；原因及备注最多 64 字符；目标支持名称、唯一标识符或玩家选择器。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>target: 单词（不能含空格）; amount: longArg(1, 2147483647); reason: 字符串（空格需引号）; affectTotalIncome: true|false;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution add &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; &lt;note&gt; 增加贡献值，可指定是否增加历史总收入。 管理员 /contribution add caozei 100 &quot;活动奖励&quot; true 金额≥1 且≤2147483647；原因及备注最多 64 字符；目标支持名称、唯一标识符或玩家选择器。 target: 单词（不能含空格）; amount: longarg(1, 2147483647); reason: 字符串（空格需引号）; affecttotalincome: true|false; note: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution add &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt; &lt;note&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>增加贡献值，可指定是否增加历史总收入。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution add CaoZei 100 &quot;活动奖励&quot; true</code></dd>
+<dt>参数与限制</dt><dd>金额≥1 且≤2147483647；原因及备注最多 64 字符；目标支持名称、唯一标识符或玩家选择器。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>target: 单词（不能含空格）; amount: longArg(1, 2147483647); reason: 字符串（空格需引号）; affectTotalIncome: true|false; note: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution remove &lt;selected&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; 扣除贡献值，可指定是否减少历史总收入。 管理员 /contribution remove caozei 50 &quot;管理扣款&quot; false 金额≥1 且≤2147483648；余额不可为负；选取多目标逐人处理。 selected: 玩家选择器; amount: longarg(1, 2147483648); reason: 字符串（空格需引号）; affecttotalincome: true|false;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution remove &lt;selected&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>扣除贡献值，可指定是否减少历史总收入。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution remove CaoZei 50 &quot;管理扣款&quot; false</code></dd>
+<dt>参数与限制</dt><dd>金额≥1 且≤2147483648；余额不可为负；选取多目标逐人处理。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>selected: 玩家选择器; amount: longArg(1, 2147483648); reason: 字符串（空格需引号）; affectTotalIncome: true|false;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution remove &lt;selected&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; &lt;note&gt; 扣除贡献值，可指定是否减少历史总收入。 管理员 /contribution remove caozei 50 &quot;管理扣款&quot; false 金额≥1 且≤2147483648；余额不可为负；选取多目标逐人处理。 selected: 玩家选择器; amount: longarg(1, 2147483648); reason: 字符串（空格需引号）; affecttotalincome: true|false; note: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution remove &lt;selected&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt; &lt;note&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>扣除贡献值，可指定是否减少历史总收入。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution remove CaoZei 50 &quot;管理扣款&quot; false</code></dd>
+<dt>参数与限制</dt><dd>金额≥1 且≤2147483648；余额不可为负；选取多目标逐人处理。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>selected: 玩家选择器; amount: longArg(1, 2147483648); reason: 字符串（空格需引号）; affectTotalIncome: true|false; note: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution remove &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; 扣除贡献值，可指定是否减少历史总收入。 管理员 /contribution remove caozei 50 &quot;管理扣款&quot; false 金额≥1 且≤2147483648；余额不可为负；选取多目标逐人处理。 target: 单词（不能含空格）; amount: longarg(1, 2147483648); reason: 字符串（空格需引号）; affecttotalincome: true|false;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution remove &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>扣除贡献值，可指定是否减少历史总收入。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution remove CaoZei 50 &quot;管理扣款&quot; false</code></dd>
+<dt>参数与限制</dt><dd>金额≥1 且≤2147483648；余额不可为负；选取多目标逐人处理。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>target: 单词（不能含空格）; amount: longArg(1, 2147483648); reason: 字符串（空格需引号）; affectTotalIncome: true|false;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution remove &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; &lt;note&gt; 扣除贡献值，可指定是否减少历史总收入。 管理员 /contribution remove caozei 50 &quot;管理扣款&quot; false 金额≥1 且≤2147483648；余额不可为负；选取多目标逐人处理。 target: 单词（不能含空格）; amount: longarg(1, 2147483648); reason: 字符串（空格需引号）; affecttotalincome: true|false; note: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution remove &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt; &lt;note&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>扣除贡献值，可指定是否减少历史总收入。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution remove CaoZei 50 &quot;管理扣款&quot; false</code></dd>
+<dt>参数与限制</dt><dd>金额≥1 且≤2147483648；余额不可为负；选取多目标逐人处理。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>target: 单词（不能含空格）; amount: longArg(1, 2147483648); reason: 字符串（空格需引号）; affectTotalIncome: true|false; note: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution retry &lt;id&gt; &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; 沿用原请求唯一标识符重试不确定结果的账户变动。 管理员 /contribution retry &lt;唯一标识符&gt; caozei 100 &quot;活动奖励&quot; true 金额带符号；目标、金额、原因、收入标志、备注必须与原请求完全一致。 id: 单词（不能含空格）; target: 单词（不能含空格）; amount: longarg(-2147483648, 2147483647); reason: 字符串（空格需引号）; affecttotalincome: true|false;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution retry &lt;id&gt; &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>沿用原请求唯一标识符重试不确定结果的账户变动。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution retry &lt;唯一标识符&gt; CaoZei 100 &quot;活动奖励&quot; true</code></dd>
+<dt>参数与限制</dt><dd>金额带符号；目标、金额、原因、收入标志、备注必须与原请求完全一致。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: 单词（不能含空格）; target: 单词（不能含空格）; amount: longArg(-2147483648, 2147483647); reason: 字符串（空格需引号）; affectTotalIncome: true|false;</code></details>
+</article>
+<article class="cmd" data-search="账户管理 /contribution retry &lt;id&gt; &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affecttotalincome&gt; &lt;note&gt; 沿用原请求唯一标识符重试不确定结果的账户变动。 管理员 /contribution retry &lt;唯一标识符&gt; caozei 100 &quot;活动奖励&quot; true 金额带符号；目标、金额、原因、收入标志、备注必须与原请求完全一致。 id: 单词（不能含空格）; target: 单词（不能含空格）; amount: longarg(-2147483648, 2147483647); reason: 字符串（空格需引号）; affecttotalincome: true|false; note: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution retry &lt;id&gt; &lt;target&gt; &lt;amount&gt; &lt;reason&gt; &lt;affectTotalIncome&gt; &lt;note&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>沿用原请求唯一标识符重试不确定结果的账户变动。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/contribution retry &lt;唯一标识符&gt; CaoZei 100 &quot;活动奖励&quot; true</code></dd>
+<dt>参数与限制</dt><dd>金额带符号；目标、金额、原因、收入标志、备注必须与原请求完全一致。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: 单词（不能含空格）; target: 单词（不能含空格）; amount: longArg(-2147483648, 2147483647); reason: 字符串（空格需引号）; affectTotalIncome: true|false; note: 尾部文本（可含空格）;</code></details>
+</article>
+</div>
+<h3 class="cmd-group">签到<span class="cmd-group-count">6 条</span></h3>
+<div class="cmd-list">
+<article class="cmd" data-search="签到 /contribution checkin 查看在线签到状态、活动；管理活动创建与领取。 查看/领取：玩家；event 子命令：管理员且主服 /contribution checkin claim festival create 日期为 yyyy-mm-dd，首尾日期均包含；每日签到自动发放。create-extension 需要已注册提供者。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution checkin</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>查看在线签到状态、活动；管理活动创建与领取。</dd>
+<dt>权限</dt><dd>查看/领取：玩家；event 子命令：管理员且主服</dd>
+<dt>示例</dt><dd><code>/contribution checkin claim festival</code></dd>
+<dt>参数与限制</dt><dd>create 日期为 YYYY-MM-DD，首尾日期均包含；每日签到自动发放。create-extension 需要已注册提供者。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="签到 /contribution checkin claim &lt;eventid&gt; 领取指定活动奖励，每名玩家每活动最多一次。 玩家 /contribution checkin claim festival 只可在活动日期内领取，日期按配置时区。 eventid: 单词（不能含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution checkin claim &lt;eventId&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>领取指定活动奖励，每名玩家每活动最多一次。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/contribution checkin claim festival</code></dd>
+<dt>参数与限制</dt><dd>只可在活动日期内领取，日期按配置时区。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>eventId: 单词（不能含空格）;</code></details>
+</article>
+<article class="cmd" data-search="签到 /contribution checkin event create &lt;id&gt; &lt;title&gt; &lt;start&gt; &lt;end&gt; &lt;contribution&gt; 创建仅贡献值奖励的活动签到。 管理员；只允许主服务器创建 /contribution checkin event create festival &quot;庆典&quot; 2026-10-01 2026-10-07 100 日期首尾包含；金额可为 0；标识符不可重复。 id: 单词（不能含空格）; title: 字符串（空格需引号）; start: 单词（不能含空格）; end: 单词（不能含空格）; contribution: integer(0);">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution checkin event create &lt;id&gt; &lt;title&gt; &lt;start&gt; &lt;end&gt; &lt;contribution&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>创建仅贡献值奖励的活动签到。</dd>
+<dt>权限</dt><dd>管理员；只允许主服务器创建</dd>
+<dt>示例</dt><dd><code>/contribution checkin event create festival &quot;庆典&quot; 2026-10-01 2026-10-07 100</code></dd>
+<dt>参数与限制</dt><dd>日期首尾包含；金额可为 0；标识符不可重复。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: 单词（不能含空格）; title: 字符串（空格需引号）; start: 单词（不能含空格）; end: 单词（不能含空格）; contribution: integer(0);</code></details>
+</article>
+<article class="cmd" data-search="签到 /contribution checkin event create &lt;id&gt; &lt;title&gt; &lt;start&gt; &lt;end&gt; &lt;contribution&gt; &lt;item&gt; &lt;count&gt; 创建贡献值与物品混合奖励的活动。 管理员；只允许主服务器创建 /contribution checkin event create festival &quot;庆典&quot; 2026-10-01 2026-10-07 100 minecraft:diamond 2 此 item 是普通物品标识符，不是商店的组件物品参数；数量 1—2304。 id: 单词（不能含空格）; title: 字符串（空格需引号）; start: 单词（不能含空格）; end: 单词（不能含空格）; contribution: integer(0); item: 单词（不能含空格）; count: integer(1, 2304);">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution checkin event create &lt;id&gt; &lt;title&gt; &lt;start&gt; &lt;end&gt; &lt;contribution&gt; &lt;item&gt; &lt;count&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>创建贡献值与物品混合奖励的活动。</dd>
+<dt>权限</dt><dd>管理员；只允许主服务器创建</dd>
+<dt>示例</dt><dd><code>/contribution checkin event create festival &quot;庆典&quot; 2026-10-01 2026-10-07 100 minecraft:diamond 2</code></dd>
+<dt>参数与限制</dt><dd>此 item 是普通物品标识符，不是商店的组件物品参数；数量 1—2304。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: 单词（不能含空格）; title: 字符串（空格需引号）; start: 单词（不能含空格）; end: 单词（不能含空格）; contribution: integer(0); item: 单词（不能含空格）; count: integer(1, 2304);</code></details>
+</article>
+<article class="cmd" data-search="签到 /contribution checkin event create-extension &lt;id&gt; &lt;title&gt; &lt;start&gt; &lt;end&gt; &lt;provider&gt; &lt;data&gt; 使用已注册扩展奖励提供者创建签到活动。 管理员；只允许主服务器创建 /contribution checkin event create-extension festival &quot;庆典&quot; 2026-10-01 2026-10-07 example:reward &quot;{}&quot; 提供者须由其他模组注册；处理器只用领取事务的数据库连接，不能任意执行命令。 id: 单词（不能含空格）; title: 字符串（空格需引号）; start: 单词（不能含空格）; end: 单词（不能含空格）; provider: 单词（不能含空格）; data: 字符串（空格需引号）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution checkin event create-extension &lt;id&gt; &lt;title&gt; &lt;start&gt; &lt;end&gt; &lt;provider&gt; &lt;data&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>使用已注册扩展奖励提供者创建签到活动。</dd>
+<dt>权限</dt><dd>管理员；只允许主服务器创建</dd>
+<dt>示例</dt><dd><code>/contribution checkin event create-extension festival &quot;庆典&quot; 2026-10-01 2026-10-07 example:reward &quot;{}&quot;</code></dd>
+<dt>参数与限制</dt><dd>提供者须由其他模组注册；处理器只用领取事务的数据库连接，不能任意执行命令。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: 单词（不能含空格）; title: 字符串（空格需引号）; start: 单词（不能含空格）; end: 单词（不能含空格）; provider: 单词（不能含空格）; data: 字符串（空格需引号）;</code></details>
+</article>
+<article class="cmd" data-search="签到 /contribution checkin events 列出可领取的活动签到。 玩家 /contribution checkin events 与每日在线签到独立。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/contribution checkin events</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>列出可领取的活动签到。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/contribution checkin events</code></dd>
+<dt>参数与限制</dt><dd>与每日在线签到独立。</dd>
+</dl>
+
+</article>
+</div>
+<h3 class="cmd-group">商店<span class="cmd-group-count">9 条</span></h3>
+<div class="cmd-list">
+<article class="cmd" data-search="商店 /shop 打开服务器共享商品目录。 玩家 /shop 已安装模组使用客户端界面，未安装也可用原版对话界面。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开服务器共享商品目录。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/shop</code></dd>
+<dt>参数与限制</dt><dd>已安装模组使用客户端界面，未安装也可用原版对话界面。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="商店 /shop back 返回商店上级页面。 玩家 /shop back 导航用途。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop back</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>返回商店上级页面。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/shop back</code></dd>
+<dt>参数与限制</dt><dd>导航用途。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="商店 /shop buy &lt;offer&gt; &lt;quantity&gt; 按商品编号购买指定份数。 玩家 /shop buy 1 2 份数 1—64；可附带商品 revision 防止按过期价格下单；最多 2304 个物品。 offer: 单词（不能含空格）; quantity: integer(1, 64);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop buy &lt;offer&gt; &lt;quantity&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>按商品编号购买指定份数。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/shop buy 1 2</code></dd>
+<dt>参数与限制</dt><dd>份数 1—64；可附带商品 revision 防止按过期价格下单；最多 2304 个物品。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>offer: 单词（不能含空格）; quantity: integer(1, 64);</code></details>
+</article>
+<article class="cmd" data-search="商店 /shop buy &lt;offer&gt; &lt;quantity&gt; &lt;revision&gt; 按商品编号购买指定份数。 玩家 /shop buy 1 2 份数 1—64；可附带商品 revision 防止按过期价格下单；最多 2304 个物品。 offer: 单词（不能含空格）; quantity: integer(1, 64); revision: longarg(0);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop buy &lt;offer&gt; &lt;quantity&gt; &lt;revision&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>按商品编号购买指定份数。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/shop buy 1 2</code></dd>
+<dt>参数与限制</dt><dd>份数 1—64；可附带商品 revision 防止按过期价格下单；最多 2304 个物品。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>offer: 单词（不能含空格）; quantity: integer(1, 64); revision: longArg(0);</code></details>
+</article>
+<article class="cmd" data-search="商店 /shop claim 领取商店/活动待发物品。 玩家 /shop claim 背包放不下的物品掉落附近；崩溃窗口不保证跨数据库语句与背包严格一次交付。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop claim</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>领取商店/活动待发物品。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/shop claim</code></dd>
+<dt>参数与限制</dt><dd>背包放不下的物品掉落附近；崩溃窗口不保证跨数据库语句与背包严格一次交付。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="商店 /shop page &lt;page&gt; 打开原版商品目录指定页。 玩家 /shop page 0 页码从 0 开始；每页最多 8 件商品。 page: integer(0);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop page &lt;page&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开原版商品目录指定页。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/shop page 0</code></dd>
+<dt>参数与限制</dt><dd>页码从 0 开始；每页最多 8 件商品。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>page: integer(0);</code></details>
+</article>
+<article class="cmd" data-search="商店 /shop refresh 重新读取商品列表，保留当前会话筛选。 玩家 /shop refresh 不重建商品数据。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop refresh</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>重新读取商品列表，保留当前会话筛选。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/shop refresh</code></dd>
+<dt>参数与限制</dt><dd>不重建商品数据。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="商店 /shop retry &lt;orderid&gt; &lt;offer&gt; &lt;quantity&gt; 沿用原订单唯一标识符重试购买。 玩家 /shop retry &lt;唯一标识符&gt; 1 2 商品和份数不得改变；旧字符串别名也兼容。 orderid: 单词（不能含空格）; offer: 单词（不能含空格）; quantity: integer(1, 64);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop retry &lt;orderId&gt; &lt;offer&gt; &lt;quantity&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>沿用原订单唯一标识符重试购买。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/shop retry &lt;唯一标识符&gt; 1 2</code></dd>
+<dt>参数与限制</dt><dd>商品和份数不得改变；旧字符串别名也兼容。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>orderId: 单词（不能含空格）; offer: 单词（不能含空格）; quantity: integer(1, 64);</code></details>
+</article>
+<article class="cmd" data-search="商店 /shop ui_vanilla 强制原版商店及管理界面。 玩家 /shop ui_vanilla 导航保持原版模式，重新 /shop 恢复自动选择。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop ui_vanilla</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>强制原版商店及管理界面。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/shop ui_vanilla</code></dd>
+<dt>参数与限制</dt><dd>导航保持原版模式，重新 /shop 恢复自动选择。</dd>
+</dl>
+
+</article>
+</div>
+<h3 class="cmd-group">商店管理<span class="cmd-group-count">18 条</span></h3>
+<div class="cmd-list">
+<article class="cmd" data-search="商店管理 /shop admin 管理目录、创建、编辑、保存或发布商品。 管理员 /shop admin publish/save 是表单提交入口；save 必须携带 revision；完整字段包含排序与上架状态。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop admin</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>管理目录、创建、编辑、保存或发布商品。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop admin</code></dd>
+<dt>参数与限制</dt><dd>publish/save 是表单提交入口；save 必须携带 revision；完整字段包含排序与上架状态。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="商店管理 /shop admin create 管理目录、创建、编辑、保存或发布商品。 管理员 /shop admin publish/save 是表单提交入口；save 必须携带 revision；完整字段包含排序与上架状态。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop admin create</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>管理目录、创建、编辑、保存或发布商品。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop admin</code></dd>
+<dt>参数与限制</dt><dd>publish/save 是表单提交入口；save 必须携带 revision；完整字段包含排序与上架状态。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="商店管理 /shop admin edit &lt;id&gt; 管理目录、创建、编辑、保存或发布商品。 管理员 /shop admin publish/save 是表单提交入口；save 必须携带 revision；完整字段包含排序与上架状态。 id: longarg(1);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop admin edit &lt;id&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>管理目录、创建、编辑、保存或发布商品。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop admin</code></dd>
+<dt>参数与限制</dt><dd>publish/save 是表单提交入口；save 必须携带 revision；完整字段包含排序与上架状态。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: longArg(1);</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop admin page &lt;page&gt; 管理目录、创建、编辑、保存或发布商品。 管理员 /shop admin publish/save 是表单提交入口；save 必须携带 revision；完整字段包含排序与上架状态。 page: integer(0);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop admin page &lt;page&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>管理目录、创建、编辑、保存或发布商品。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop admin</code></dd>
+<dt>参数与限制</dt><dd>publish/save 是表单提交入口；save 必须携带 revision；完整字段包含排序与上架状态。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>page: integer(0);</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop admin publish &lt;item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;order&gt; &lt;listed&gt; &lt;description&gt; 提交完整新商品表单，设置物品、排序、状态和描述。 管理员 /shop admin publish minecraft:torch &quot;火把&quot; 16 20 0 true &quot;照明&quot; 物品可带组件；数量 1—64、售价≥1，排序为整数，上架状态：`true` 为上架，`false` 为下架。 item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); order: integer(); listed: true|false; description: 字符串（空格需引号）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop admin publish &lt;item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;order&gt; &lt;listed&gt; &lt;description&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>提交完整新商品表单，设置物品、排序、状态和描述。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop admin publish minecraft:torch &quot;火把&quot; 16 20 0 true &quot;照明&quot;</code></dd>
+<dt>参数与限制</dt><dd>物品可带组件；数量 1—64、售价≥1，排序为整数，上架状态：<code>true</code> 为上架，<code>false</code> 为下架。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); order: integer(); listed: true|false; description: 字符串（空格需引号）;</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop admin save &lt;id&gt; &lt;revision&gt; &lt;item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;order&gt; &lt;listed&gt; &lt;description&gt; 保存已有商品完整字段，拒绝过期编辑版本。 管理员 /shop admin save 1 0 minecraft:torch &quot;火把&quot; 16 20 0 true &quot;照明&quot; revision 必须使用编辑页加载的实际版本；此例 0 只适用于版本 0 商品。 id: longarg(1); revision: longarg(0); item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); order: integer(); listed: true|false; description: 字符串（空格需引号）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop admin save &lt;id&gt; &lt;revision&gt; &lt;item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;order&gt; &lt;listed&gt; &lt;description&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>保存已有商品完整字段，拒绝过期编辑版本。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop admin save 1 0 minecraft:torch &quot;火把&quot; 16 20 0 true &quot;照明&quot;</code></dd>
+<dt>参数与限制</dt><dd>revision 必须使用编辑页加载的实际版本；此例 0 只适用于版本 0 商品。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: longArg(1); revision: longArg(0); item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); order: integer(); listed: true|false; description: 字符串（空格需引号）;</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop modify &lt;id&gt; 打开编辑页或按顺序修改名称、数量、售价、描述。 管理员 /shop modify 1 - - 35 - 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。 id: longarg(1);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop modify &lt;id&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开编辑页或按顺序修改名称、数量、售价、描述。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop modify 1 - - 35</code></dd>
+<dt>参数与限制</dt><dd>- 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: longArg(1);</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop modify &lt;id&gt; &lt;name&gt; 打开编辑页或按顺序修改名称、数量、售价、描述。 管理员 /shop modify 1 - - 35 - 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。 id: longarg(1); name: 字符串（空格需引号）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop modify &lt;id&gt; &lt;name&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开编辑页或按顺序修改名称、数量、售价、描述。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop modify 1 - - 35</code></dd>
+<dt>参数与限制</dt><dd>- 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: longArg(1); name: 字符串（空格需引号）;</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop modify &lt;id&gt; &lt;name&gt; &lt;count&gt; 打开编辑页或按顺序修改名称、数量、售价、描述。 管理员 /shop modify 1 - - 35 - 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。 id: longarg(1); name: 字符串（空格需引号）; count: 单词（不能含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop modify &lt;id&gt; &lt;name&gt; &lt;count&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开编辑页或按顺序修改名称、数量、售价、描述。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop modify 1 - - 35</code></dd>
+<dt>参数与限制</dt><dd>- 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: longArg(1); name: 字符串（空格需引号）; count: 单词（不能含空格）;</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop modify &lt;id&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; 打开编辑页或按顺序修改名称、数量、售价、描述。 管理员 /shop modify 1 - - 35 - 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。 id: longarg(1); name: 字符串（空格需引号）; count: 单词（不能含空格）; price: 单词（不能含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop modify &lt;id&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开编辑页或按顺序修改名称、数量、售价、描述。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop modify 1 - - 35</code></dd>
+<dt>参数与限制</dt><dd>- 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: longArg(1); name: 字符串（空格需引号）; count: 单词（不能含空格）; price: 单词（不能含空格）;</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop modify &lt;id&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;description&gt; 打开编辑页或按顺序修改名称、数量、售价、描述。 管理员 /shop modify 1 - - 35 - 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。 id: longarg(1); name: 字符串（空格需引号）; count: 单词（不能含空格）; price: 单词（不能含空格）; description: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop modify &lt;id&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;description&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开编辑页或按顺序修改名称、数量、售价、描述。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop modify 1 - - 35</code></dd>
+<dt>参数与限制</dt><dd>- 保留对应字段，省略尾部保持不变；物品、排序、状态通过完整管理表单修改。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: longArg(1); name: 字符串（空格需引号）; count: 单词（不能含空格）; price: 单词（不能含空格）; description: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop put_on &lt;legacy_item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; 上架商品，自动分配不可复用编号。 管理员 /shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品 支持 item &lt;物品及组件&gt;或 `hand_item`（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。 legacy_item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop put_on &lt;legacy_item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>上架商品，自动分配不可复用编号。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品</code></dd>
+<dt>参数与限制</dt><dd>支持 item &lt;物品及组件&gt;或 <code>hand_item</code>（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>legacy_item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1);</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop put_on &lt;legacy_item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;description&gt; 上架商品，自动分配不可复用编号。 管理员 /shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品 支持 item &lt;物品及组件&gt;或 `hand_item`（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。 legacy_item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); description: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop put_on &lt;legacy_item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;description&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>上架商品，自动分配不可复用编号。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品</code></dd>
+<dt>参数与限制</dt><dd>支持 item &lt;物品及组件&gt;或 <code>hand_item</code>（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>legacy_item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); description: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop put_on hand_item &lt;name&gt; &lt;count&gt; &lt;price&gt; 上架商品，自动分配不可复用编号。 管理员 /shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品 支持 item &lt;物品及组件&gt;或 `hand_item`（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。 name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop put_on hand_item &lt;name&gt; &lt;count&gt; &lt;price&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>上架商品，自动分配不可复用编号。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品</code></dd>
+<dt>参数与限制</dt><dd>支持 item &lt;物品及组件&gt;或 <code>hand_item</code>（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1);</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop put_on hand_item &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;description&gt; 上架商品，自动分配不可复用编号。 管理员 /shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品 支持 item &lt;物品及组件&gt;或 `hand_item`（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。 name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); description: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop put_on hand_item &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;description&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>上架商品，自动分配不可复用编号。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品</code></dd>
+<dt>参数与限制</dt><dd>支持 item &lt;物品及组件&gt;或 <code>hand_item</code>（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); description: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop put_on item &lt;item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; 上架商品，自动分配不可复用编号。 管理员 /shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品 支持 item &lt;物品及组件&gt;或 `hand_item`（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。 item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop put_on item &lt;item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>上架商品，自动分配不可复用编号。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品</code></dd>
+<dt>参数与限制</dt><dd>支持 item &lt;物品及组件&gt;或 <code>hand_item</code>（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1);</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop put_on item &lt;item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;description&gt; 上架商品，自动分配不可复用编号。 管理员 /shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品 支持 item &lt;物品及组件&gt;或 `hand_item`（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。 item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); description: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop put_on item &lt;item&gt; &lt;name&gt; &lt;count&gt; &lt;price&gt; &lt;description&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>上架商品，自动分配不可复用编号。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop put_on minecraft:torch &quot;火把&quot; 16 20 照明用品</code></dd>
+<dt>参数与限制</dt><dd>支持 item &lt;物品及组件&gt;或 <code>hand_item</code>（玩家主手完整组件快照，不消耗）；旧直接物品语法兼容。每份数量 1—64，与手持数量独立；售价正整数，名称≤64 字、描述≤512 字，组件定义≤2048 字符。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>item: 原版物品[数据组件]; name: 字符串（空格需引号）; count: integer(1, 64); price: integer(1); description: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="商店管理 /shop take_off &lt;id&gt; 按编号下架，保留历史与待发订单。 管理员 /shop take_off 1 不会删除记录。 id: longarg(1);">
+<h3 class="cmd-head"><code class="cmd-syntax">/shop take_off &lt;id&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>按编号下架，保留历史与待发订单。</dd>
+<dt>权限</dt><dd>管理员</dd>
+<dt>示例</dt><dd><code>/shop take_off 1</code></dd>
+<dt>参数与限制</dt><dd>不会删除记录。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: longArg(1);</code></details>
+</article>
+</div>
+<h3 class="cmd-group">股票<span class="cmd-group-count">13 条</span></h3>
+<div class="cmd-list">
+<article class="cmd" data-search="股票 /stock 打开股市首页；专用客户端与原版后备界面自动选择。 玩家 /stock 第 3 游戏日起开放，10:00—14:00 交易，8:00 结算。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/stock</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>打开股市首页；专用客户端与原版后备界面自动选择。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/stock</code></dd>
+<dt>参数与限制</dt><dd>第 3 游戏日起开放，10:00—14:00 交易，8:00 结算。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="股票 /stock batch &lt;side&gt; &lt;quantity&gt; &lt;stockids&gt; 逐只执行批量买入或卖出并返回批次唯一标识符。 玩家 /stock batch buy 100 16,25,54 最多 20 只、编号不可重复；逐只成交，不是全批原子事务。 side: 单词（不能含空格）; quantity: integer(1, 10000); stockids: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/stock batch &lt;side&gt; &lt;quantity&gt; &lt;stockIds&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>逐只执行批量买入或卖出并返回批次唯一标识符。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/stock batch buy 100 16,25,54</code></dd>
+<dt>参数与限制</dt><dd>最多 20 只、编号不可重复；逐只成交，不是全批原子事务。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>side: 单词（不能含空格）; quantity: integer(1, 10000); stockIds: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="股票 /stock batch-retry &lt;id&gt; &lt;side&gt; &lt;quantity&gt; &lt;stockids&gt; 用原批次唯一标识符重试未完成股票交易。 玩家 /stock batch-retry &lt;唯一标识符&gt; buy 100 16,25,54 side、数量、编号及顺序必须保持原请求。 id: 单词（不能含空格）; side: 单词（不能含空格）; quantity: integer(1, 10000); stockids: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/stock batch-retry &lt;id&gt; &lt;side&gt; &lt;quantity&gt; &lt;stockIds&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>用原批次唯一标识符重试未完成股票交易。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/stock batch-retry &lt;唯一标识符&gt; buy 100 16,25,54</code></dd>
+<dt>参数与限制</dt><dd>side、数量、编号及顺序必须保持原请求。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: 单词（不能含空格）; side: 单词（不能含空格）; quantity: integer(1, 10000); stockIds: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="股票 /stock browse &lt;sort&gt; 按排序与筛选打开原版市场列表。 玩家 /stock browse price sort：name、price、change、risk、owned；此入口使用原版对话界面。 sort: 单词（不能含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/stock browse &lt;sort&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>按排序与筛选打开原版市场列表。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/stock browse price</code></dd>
+<dt>参数与限制</dt><dd>sort：name、price、change、risk、owned；此入口使用原版对话界面。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>sort: 单词（不能含空格）;</code></details>
+</article>
+<article class="cmd" data-search="股票 /stock browse &lt;sort&gt; &lt;filter&gt; 按排序与筛选打开原版市场列表。 玩家 /stock browse price sort：name、price、change、risk、owned；此入口使用原版对话界面。 sort: 单词（不能含空格）; filter: 尾部文本（可含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/stock browse &lt;sort&gt; &lt;filter&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>按排序与筛选打开原版市场列表。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/stock browse price</code></dd>
+<dt>参数与限制</dt><dd>sort：name、price、change、risk、owned；此入口使用原版对话界面。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>sort: 单词（不能含空格）; filter: 尾部文本（可含空格）;</code></details>
+</article>
+<article class="cmd" data-search="股票 /stock buy &lt;symbol&gt; &lt;quantity&gt; 按当前当日股价买入。 玩家 /stock buy 54 100 数量 1—10000；symbol 为股票编号，不是商品编号；主服时钟必须新鲜可用。 symbol: 单词（不能含空格）; quantity: integer(1, 10000);">
+<h3 class="cmd-head"><code class="cmd-syntax">/stock buy &lt;symbol&gt; &lt;quantity&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>按当前当日股价买入。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/stock buy 54 100</code></dd>
+<dt>参数与限制</dt><dd>数量 1—10000；symbol 为股票编号，不是商品编号；主服时钟必须新鲜可用。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>symbol: 单词（不能含空格）; quantity: integer(1, 10000);</code></details>
+</article>
+<article class="cmd" data-search="股票 /stock check &lt;symbol&gt; 查看股票详情和历史走势。 玩家 /stock check 54 all range：week(7 日)、month(30 日)、year(360 日)、all(上市以来)；默认 360 日。 symbol: 单词（不能含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/stock check &lt;symbol&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>查看股票详情和历史走势。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/stock check 54 all</code></dd>
+<dt>参数与限制</dt><dd>range：week(7 日)、month(30 日)、year(360 日)、all(上市以来)；默认 360 日。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>symbol: 单词（不能含空格）;</code></details>
+</article>
+<article class="cmd" data-search="股票 /stock check &lt;symbol&gt; &lt;range&gt; 查看股票详情和历史走势。 玩家 /stock check 54 all range：week(7 日)、month(30 日)、year(360 日)、all(上市以来)；默认 360 日。 symbol: 单词（不能含空格）; range: 单词（不能含空格）;">
+<h3 class="cmd-head"><code class="cmd-syntax">/stock check &lt;symbol&gt; &lt;range&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>查看股票详情和历史走势。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/stock check 54 all</code></dd>
+<dt>参数与限制</dt><dd>range：week(7 日)、month(30 日)、year(360 日)、all(上市以来)；默认 360 日。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>symbol: 单词（不能含空格）; range: 单词（不能含空格）;</code></details>
+</article>
+<article class="cmd" data-search="股票 /stock claim 领取退市退款等待发贡献值。 玩家 /stock claim 退市退款不计入历史总收入。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/stock claim</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>领取退市退款等待发贡献值。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/stock claim</code></dd>
+<dt>参数与限制</dt><dd>退市退款不计入历史总收入。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="股票 /stock portfolio 查看个人持仓、成本及盈亏。 玩家 /stock portfolio 不修改账户。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/stock portfolio</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>查看个人持仓、成本及盈亏。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/stock portfolio</code></dd>
+<dt>参数与限制</dt><dd>不修改账户。</dd>
+</dl>
+
+</article>
+<article class="cmd" data-search="股票 /stock retry &lt;id&gt; &lt;side&gt; &lt;symbol&gt; &lt;quantity&gt; 用原交易唯一标识符重试单只股票交易。 玩家 /stock retry &lt;唯一标识符&gt; buy 54 100 仅重试原请求，不生成第二笔扣款。 id: 单词（不能含空格）; side: 单词（不能含空格）; symbol: 单词（不能含空格）; quantity: integer(1, 10000);">
+<h3 class="cmd-head"><code class="cmd-syntax">/stock retry &lt;id&gt; &lt;side&gt; &lt;symbol&gt; &lt;quantity&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>用原交易唯一标识符重试单只股票交易。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/stock retry &lt;唯一标识符&gt; buy 54 100</code></dd>
+<dt>参数与限制</dt><dd>仅重试原请求，不生成第二笔扣款。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>id: 单词（不能含空格）; side: 单词（不能含空格）; symbol: 单词（不能含空格）; quantity: integer(1, 10000);</code></details>
+</article>
+<article class="cmd" data-search="股票 /stock sell &lt;symbol&gt; &lt;quantity&gt; 按当前当日股价卖出持仓。 玩家 /stock sell 54 100 数量 1—10000；持仓与账户在事务中更新。 symbol: 单词（不能含空格）; quantity: integer(1, 10000);">
+<h3 class="cmd-head"><code class="cmd-syntax">/stock sell &lt;symbol&gt; &lt;quantity&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>按当前当日股价卖出持仓。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/stock sell 54 100</code></dd>
+<dt>参数与限制</dt><dd>数量 1—10000；持仓与账户在事务中更新。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>symbol: 单词（不能含空格）; quantity: integer(1, 10000);</code></details>
+</article>
+<article class="cmd" data-search="股票 /stock ui_vanilla 强制原版股票原版对话界面。 玩家 /stock ui_vanilla 重新 /stock 恢复自动选择。 无参数">
+<h3 class="cmd-head"><code class="cmd-syntax">/stock ui_vanilla</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>强制原版股票原版对话界面。</dd>
+<dt>权限</dt><dd>玩家</dd>
+<dt>示例</dt><dd><code>/stock ui_vanilla</code></dd>
+<dt>参数与限制</dt><dd>重新 /stock 恢复自动选择。</dd>
+</dl>
+
+</article>
+</div>
+<h3 class="cmd-group">武器皮肤<span class="cmd-group-count">3 条</span></h3>
+<div class="cmd-list">
+<article class="cmd" data-search="武器皮肤 /weapon_skin page &lt;token&gt; &lt;index&gt; 原版对话界面内部翻页和一次性外观确认。 玩家；必须有右键创建的有效令牌会话 右键主手原初物品，通过界面选择 token 由服务端发放，index 为零起始页号或当前类别外观序号；校验完整主手组件，定型后不能再改。不是生成或任意改名命令。 token: 单词（不能含空格）; index: integer(0);">
+<h3 class="cmd-head"><code class="cmd-syntax">/weapon_skin page &lt;token&gt; &lt;index&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>原版对话界面内部翻页和一次性外观确认。</dd>
+<dt>权限</dt><dd>玩家；必须有右键创建的有效令牌会话</dd>
+<dt>示例</dt><dd><code>右键主手原初物品，通过界面选择</code></dd>
+<dt>参数与限制</dt><dd>token 由服务端发放，index 为零起始页号或当前类别外观序号；校验完整主手组件，定型后不能再改。不是生成或任意改名命令。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>token: 单词（不能含空格）; index: integer(0);</code></details>
+</article>
+<article class="cmd" data-search="武器皮肤 /weapon_skin preview &lt;token&gt; &lt;index&gt; 原版对话界面内部显示真实成品图标预览，不消耗原初物品。 玩家；必须有右键创建的有效令牌会话 右键主手原初物品，点击外观名称预览，再确认定型 token 由服务端发放，index 为当前类别外观序号；校验完整主手组件。预览 `esc` 返回该皮肤所在列表页，关闭直接退出。外观需要资源包。 token: 单词（不能含空格）; index: integer(0);">
+<h3 class="cmd-head"><code class="cmd-syntax">/weapon_skin preview &lt;token&gt; &lt;index&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>原版对话界面内部显示真实成品图标预览，不消耗原初物品。</dd>
+<dt>权限</dt><dd>玩家；必须有右键创建的有效令牌会话</dd>
+<dt>示例</dt><dd><code>右键主手原初物品，点击外观名称预览，再确认定型</code></dd>
+<dt>参数与限制</dt><dd>token 由服务端发放，index 为当前类别外观序号；校验完整主手组件。预览 <code>Esc</code> 返回该皮肤所在列表页，关闭直接退出。外观需要资源包。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>token: 单词（不能含空格）; index: integer(0);</code></details>
+</article>
+<article class="cmd" data-search="武器皮肤 /weapon_skin select &lt;token&gt; &lt;index&gt; 原版对话界面内部一次性外观确认。 玩家；必须有右键创建的有效令牌会话 右键主手原初物品，通过界面选择 token 由服务端发放，index 为当前类别外观序号；校验完整主手组件，定型后不能再改。不是生成或任意改名命令。 token: 单词（不能含空格）; index: integer(0);">
+<h3 class="cmd-head"><code class="cmd-syntax">/weapon_skin select &lt;token&gt; &lt;index&gt;</code></h3>
+<dl class="cmd-facts">
+<dt>功能</dt><dd>原版对话界面内部一次性外观确认。</dd>
+<dt>权限</dt><dd>玩家；必须有右键创建的有效令牌会话</dd>
+<dt>示例</dt><dd><code>右键主手原初物品，通过界面选择</code></dd>
+<dt>参数与限制</dt><dd>token 由服务端发放，index 为当前类别外观序号；校验完整主手组件，定型后不能再改。不是生成或任意改名命令。</dd>
+</dl>
+<details class="source-details"><summary>原版参数类型</summary><code>token: 单词（不能含空格）; index: integer(0);</code></details>
+</article>
+</div>
+<h2 id="commands-参见">参见</h2>
+<ul><li><a class="wikilink" href="permissions.html#permissions">权限与限流</a> —— 谁能执行哪些操作，以及服务端如何重新校验。</li><li><a class="wikilink" href="interface.html#interface">界面操作</a> —— <code>/contribution ui</code> 的页面标识与导航语义。</li><li><a class="wikilink" href="account.html#account">贡献值账户</a> —— <code>add</code> / <code>remove</code> / <code>retry</code> 的数值与幂等约束。</li><li><a class="wikilink" href="stock.html#stock">股票市场</a> —— <code>buy</code> / <code>sell</code> / <code>batch</code> / <code>retry</code> 的交易规则与重试方式。</li><li><a class="wikilink" href="shop.html#shop">系统商店</a> —— <code>put_on</code> / <code>modify</code> / <code>admin</code> 的目录管理流程与版本校验。</li></ul>
+<div class="page-footer">贡献值模组维基 · 0.2.6 · <a href="documentation.html#documentation">维基维护</a></div>
+</div>
+<aside class="page-info">
+<div class="page-info-inner">
+<div class="page-info-head">条目概要</div>
+<table class="infobox">
+<tr><th>命令根</th><td><code>/contribution · /stock · /shop</code></td></tr>
+<tr><th>权限</th><td>见各命令权限栏</td></tr>
+<tr><th>命令路径</th><td>80 条</td></tr>
+</table>
+</div>
+<table class="navbox"><tbody>
+<tr><th class="navbox-top" colspan="2"><span class="navbox-title">操作与命令</span></th></tr>
+<tr><th>相关页面</th><td><ul class="hlist"><li><a href="interface.html#interface">界面操作</a></li><li><a href="commands-contribution.html#commands-contribution">贡献值命令</a></li><li><a href="commands-checkin.html#commands-checkin">签到命令</a></li><li><a href="commands-stock.html#commands-stock">股票命令</a></li></ul></td></tr>
+</tbody></table>
+<div class="catlinks"><span>分类：</span><ul><li>操作与命令</li></ul></div>
+</aside>
+</div>
+</div>
+</div></main></div></body></html>

@@ -1,3 +1,4 @@
+$ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $workspaceRoot = Split-Path -Parent $projectRoot
 $javaHome = Join-Path $workspaceRoot '.jdk\microsoft-jdk-25.0.4'
@@ -11,6 +12,9 @@ $env:GRADLE_USER_HOME = Join-Path $workspaceRoot '.gradle-home'
 
 Push-Location -LiteralPath $projectRoot
 try {
+    if (@($args | Where-Object { $_ -match '(^|:)build$' }).Count -gt 0) {
+        & (Join-Path $projectRoot 'tools\update-documentation.ps1')
+    }
     & (Join-Path $projectRoot 'gradlew.bat') @args
     $buildExit = $LASTEXITCODE
     if ($buildExit -eq 0 -and @($args | Where-Object { $_ -match '(^|:)build$' }).Count -gt 0) {

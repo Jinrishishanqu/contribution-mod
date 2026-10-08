@@ -6,9 +6,6 @@
   "result": {
     "id": "minecraft:chainmail_leggings",
     "components": {
-      "minecraft:item_name": {
-        "text": "强化锁链护腿"
-      },
       "minecraft:max_damage": 555,
       "minecraft:damage_resistant": {
         "types": "#minecraft:is_fire"
@@ -34,6 +31,13 @@
           "operation": "add_value",
           "slot": "legs",
           "id": "contribution:reinforced_leggings_knockback"
+        }
+      ],
+      "minecraft:lore": [
+        {
+          "color": "gray",
+          "italic": false,
+          "text": "下界合金强化"
         }
       ]
     }

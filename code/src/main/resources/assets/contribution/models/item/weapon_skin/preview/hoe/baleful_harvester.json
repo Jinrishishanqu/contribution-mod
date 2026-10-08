@@ -1,0 +1,22 @@
+{
+  "parent": "contribution:item/weapon_skin/hoe/baleful_harvester",
+  "display": {
+    "gui": {
+      "rotation": [
+        0,
+        0,
+        20
+      ],
+      "translation": [
+        35,
+        -37,
+        0
+      ],
+      "scale": [
+        3.6,
+        3.6,
+        3.6
+      ]
+    }
+  }
+}

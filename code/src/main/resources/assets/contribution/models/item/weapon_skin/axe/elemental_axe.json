@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/axe/elemental_axe"
+  },
+  "parent": "contribution:item/weapon_skin/axe/big_axe"
+}

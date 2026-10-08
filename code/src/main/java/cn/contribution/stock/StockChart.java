@@ -9,19 +9,23 @@ public final class StockChart {
     private static final int HEIGHT = 32;
     private static final int[] DOTS = {1, 2, 4, 64, 8, 16, 32, 128};
 
-    private StockChart() { }
+    private StockChart() {}
 
     /** Retain the most recent non-flat move when today's price is unchanged. */
     public static int lastMovement(List<StockView.PricePoint> prices) {
         if (prices == null) return 0;
         for (int index = prices.size() - 1; index > 0; index--) {
-            int direction = Integer.compare(prices.get(index).price(), prices.get(index - 1).price());
+            int direction =
+                    Integer.compare(prices.get(index).price(), prices.get(index - 1).price());
             if (direction != 0) return direction;
         }
         return 0;
     }
 
-    /** One-pass min/max buckets keep the full time span and spikes without sending every historic day. */
+    /**
+     * One-pass min/max buckets keep the full time span and spikes without sending every historic
+     * day.
+     */
     public static final class ExtremaSampler {
         private final int total;
         private final int bucketCount;
@@ -32,7 +36,8 @@ public final class StockChart {
         private StockView.PricePoint high;
 
         public ExtremaSampler(int total, int maxPoints) {
-            if (total < 0 || maxPoints < 4) throw new IllegalArgumentException("Invalid chart sample size");
+            if (total < 0 || maxPoints < 4)
+                throw new IllegalArgumentException("Invalid chart sample size");
             this.total = total;
             this.bucketCount = Math.max(1, (maxPoints - 2) / 2);
         }
@@ -44,7 +49,10 @@ public final class StockChart {
                 output.add(point);
             } else {
                 int target = (int) ((long) (index - 1) * bucketCount / (total - 2));
-                if (target != bucket) { flush(); bucket = target; }
+                if (target != bucket) {
+                    flush();
+                    bucket = target;
+                }
                 if (low == null || point.price() < low.price()) low = point;
                 if (high == null || point.price() > high.price()) high = point;
             }
@@ -72,22 +80,37 @@ public final class StockChart {
 
     public static List<String> draw(List<StockView.PricePoint> points) {
         if (points.isEmpty()) return List.of("暂无股价记录");
-        int min = points.stream().mapToInt(StockView.PricePoint::price).min().orElse(0);
-        int max = points.stream().mapToInt(StockView.PricePoint::price).max().orElse(0);
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        for (var point : points) {
+            min = Math.min(min, point.price());
+            max = Math.max(max, point.price());
+        }
+        long firstDay = points.getFirst().day();
+        long lastDay = points.getLast().day();
         boolean[][] pixels = new boolean[HEIGHT][WIDTH];
         int previousX = -1, previousY = -1;
         for (int i = 0; i < points.size(); i++) {
-            int x = points.size() == 1 ? WIDTH / 2 : i * (WIDTH - 1) / (points.size() - 1);
-            int y = min == max ? HEIGHT / 2 : (int) Math.round((max - points.get(i).price()) * (HEIGHT - 1.0) / (max - min));
+            int x = StockLineRaster.dayX(points.get(i).day(), firstDay, lastDay, 0, WIDTH);
+            int y =
+                    min == max
+                            ? HEIGHT / 2
+                            : (int)
+                                    Math.round(
+                                            (max - points.get(i).price())
+                                                    * (HEIGHT - 1.0)
+                                                    / (max - min));
             if (previousX < 0) pixels[y][x] = true;
             else {
-                for (int cursor = previousX; cursor <= x; cursor++) {
-                    double fraction = x == previousX ? 1 : (cursor - previousX) / (double) (x - previousX);
-                    int lineY = (int) Math.round(previousY + (y - previousY) * fraction);
-                    pixels[Math.max(0, Math.min(HEIGHT - 1, lineY))][cursor] = true;
-                }
+                StockLineRaster.traceConnected(
+                        previousX,
+                        previousY,
+                        x,
+                        y,
+                        (pixelX, pixelY) -> pixels[pixelY][pixelX] = true);
             }
-            previousX = x; previousY = y;
+            previousX = x;
+            previousY = y;
         }
         List<String> lines = new ArrayList<>();
         lines.add("最高 " + max + "  ── 股价走势 ──  最低 " + min);
@@ -95,9 +118,10 @@ public final class StockChart {
             StringBuilder text = new StringBuilder("│");
             for (int col = 0; col < WIDTH / 2; col++) {
                 int mask = 0;
-                for (int dy = 0; dy < 4; dy++) for (int dx = 0; dx < 2; dx++) {
-                    if (pixels[row * 4 + dy][col * 2 + dx]) mask |= DOTS[dx * 4 + dy];
-                }
+                for (int dy = 0; dy < 4; dy++)
+                    for (int dx = 0; dx < 2; dx++) {
+                        if (pixels[row * 4 + dy][col * 2 + dx]) mask |= DOTS[dx * 4 + dy];
+                    }
                 text.append((char) (0x2800 + mask));
             }
             lines.add(text.toString());

@@ -4,6 +4,7 @@ import cn.contribution.ContributionMod;
 import cn.contribution.account.AccountService;
 import cn.contribution.config.ServerConfig;
 import cn.contribution.database.DatabaseService;
+
 import net.minecraft.server.MinecraftServer;
 
 import java.math.BigDecimal;
@@ -24,49 +25,74 @@ public final class IndustrySettlement {
     private boolean running;
     private long lastRequested = Long.MIN_VALUE;
     private int nextRetryTick;
+    private long nextMissingCloseNotice;
 
     public IndustrySettlement(DatabaseService database, ServerConfig config) {
         this.database = database;
         this.config = config;
     }
 
+    public void requestRecovery() {
+        nextRetryTick = 0;
+        lastRequested = Long.MIN_VALUE;
+    }
+
     public void tick(MinecraftServer server, StatisticsService statistics) {
-        long clock = server.overworld().getOverworldClockTime();
         long today = RuleManager.day(server);
-        if (!RuleManager.historyReady() || today <= 0 || !RuleManager.settlementWindow(server) || running || !statistics.isDrained()
-                || server.getTickCount() < nextRetryTick) {
+        if (!RuleManager.historyReady()
+                || today <= 0
+                || !RuleManager.settlementWindow(server)
+                || running
+                || server.getTickCount() < nextRetryTick
+                || lastRequested == today - 1
+                || !statistics.isDrainedThrough(today - 1)) {
             return;
         }
         long latestComplete = today - 1;
-        if (lastRequested == latestComplete) {
-            return;
-        }
         running = true;
-        database.transaction(connection -> acquireNext(connection, latestComplete))
-                .thenCompose(acquired -> acquired == null ? CompletableFuture.completedFuture(null)
-                        : acquired.completed ? CompletableFuture.completedFuture(acquired.day)
-                        : database.transaction(connection -> {
-                            settle(connection, acquired.day, acquired.runId);
-                            return acquired.day;
-                        }))
-                .whenComplete((completed, error) -> server.execute(() -> {
-            running = false;
-            if (error == null && completed != null) {
-                lastRequested = completed;
-            } else {
-                nextRetryTick = server.getTickCount() + 600;
-            }
-            if (error != null) {
-                ContributionMod.LOGGER.warn("Industry settlement is pending: {}", error.toString());
-            }
-        }));
+        settleNext(latestComplete)
+                .whenComplete(
+                        (completed, error) ->
+                                server.execute(
+                                        () -> {
+                                            running = false;
+                                            if (error == null && completed != null) {
+                                                lastRequested = completed;
+                                            } else {
+                                                nextRetryTick = server.getTickCount() + 600;
+                                            }
+                                            if (error != null) {
+                                                ContributionMod.LOGGER.warn(
+                                                        "Industry settlement is pending: {}",
+                                                        error.toString());
+                                            }
+                                        }));
     }
 
-    private Acquisition acquireNext(Connection connection, long latestComplete) throws SQLException {
+    /** One bounded, asynchronous recovery step, shared by normal ticks and recovery checks. */
+    CompletableFuture<Long> settleNext(long latestComplete) {
+        return database.transaction(connection -> acquireNext(connection, latestComplete))
+                .thenCompose(
+                        acquired -> {
+                            if (acquired == null) return CompletableFuture.completedFuture(null);
+                            if (acquired.completed)
+                                return CompletableFuture.completedFuture(acquired.day);
+                            return database.transaction(
+                                    connection -> {
+                                        settle(connection, acquired.day, acquired.runId);
+                                        return acquired.day;
+                                    });
+                        });
+    }
+
+    private Acquisition acquireNext(Connection connection, long latestComplete)
+            throws SQLException {
         String taskName = "industry_daily_settlement";
         long day = RuleManager.firstDay(connection);
-        try (PreparedStatement latest = connection.prepareStatement(
-                "SELECT MAX(game_day) FROM scheduled_task_run WHERE task_name = ? AND status = 'SUCCEEDED'")) {
+        try (PreparedStatement latest =
+                connection.prepareStatement(
+                        "SELECT MAX(game_day) FROM scheduled_task_run WHERE task_name = ? AND"
+                                + " status = 'SUCCEEDED'")) {
             latest.setString(1, taskName);
             try (ResultSet rows = latest.executeQuery()) {
                 rows.next();
@@ -84,11 +110,12 @@ public final class IndustrySettlement {
         }
         UUID proposedId = UUID.randomUUID();
         int inserted;
-        try (PreparedStatement insert = connection.prepareStatement(
-                "INSERT IGNORE INTO scheduled_task_run (task_name, game_day, run_id, status, attempt_count, "
-                        + "started_at, updated_at, lease_until) "
-                        + "VALUES (?, ?, ?, 'RUNNING', 1, CURRENT_TIMESTAMP(6), CURRENT_TIMESTAMP(6), "
-                        + "CURRENT_TIMESTAMP(6) + INTERVAL '5' MINUTE)")) {
+        try (PreparedStatement insert =
+                connection.prepareStatement(
+                        "INSERT IGNORE INTO scheduled_task_run (task_name, game_day, run_id,"
+                            + " status, attempt_count, started_at, updated_at, lease_until) VALUES"
+                            + " (?, ?, ?, 'RUNNING', 1, CURRENT_TIMESTAMP(6), CURRENT_TIMESTAMP(6),"
+                            + " CURRENT_TIMESTAMP(6) + INTERVAL '5' MINUTE)")) {
             insert.setString(1, taskName);
             insert.setLong(2, day);
             insert.setBytes(3, AccountService.uuidBytes(proposedId));
@@ -97,9 +124,11 @@ public final class IndustrySettlement {
         if (inserted == 1) {
             return new Acquisition(day, proposedId, false);
         }
-        try (PreparedStatement state = connection.prepareStatement(
-                "SELECT status, run_id, lease_until <= CURRENT_TIMESTAMP(6) "
-                        + "FROM scheduled_task_run WHERE task_name = ? AND game_day = ? FOR UPDATE")) {
+        try (PreparedStatement state =
+                connection.prepareStatement(
+                        "SELECT status, run_id, lease_until <= CURRENT_TIMESTAMP(6) FROM"
+                                + " scheduled_task_run WHERE task_name = ? AND game_day = ? FOR"
+                                + " UPDATE")) {
             state.setString(1, taskName);
             state.setLong(2, day);
             try (ResultSet rows = state.executeQuery()) {
@@ -114,11 +143,14 @@ public final class IndustrySettlement {
                     return null;
                 }
                 UUID existingId = AccountService.bytesUuid(rows.getBytes(2));
-                try (PreparedStatement retry = connection.prepareStatement(
-                        "UPDATE scheduled_task_run SET status = 'RUNNING', attempt_count = attempt_count + 1, "
-                                + "started_at = CURRENT_TIMESTAMP(6), updated_at = CURRENT_TIMESTAMP(6), "
-                                + "lease_until = CURRENT_TIMESTAMP(6) + INTERVAL '5' MINUTE, "
-                                + "completed_at = NULL, failure_code = NULL WHERE task_name = ? AND game_day = ?")) {
+                try (PreparedStatement retry =
+                        connection.prepareStatement(
+                                "UPDATE scheduled_task_run SET status = 'RUNNING', attempt_count ="
+                                    + " attempt_count + 1, started_at = CURRENT_TIMESTAMP(6),"
+                                    + " updated_at = CURRENT_TIMESTAMP(6), lease_until ="
+                                    + " CURRENT_TIMESTAMP(6) + INTERVAL '5' MINUTE, completed_at ="
+                                    + " NULL, failure_code = NULL WHERE task_name = ? AND game_day"
+                                    + " = ?")) {
                     retry.setString(1, taskName);
                     retry.setLong(2, day);
                     retry.executeUpdate();
@@ -128,20 +160,37 @@ public final class IndustrySettlement {
         }
     }
 
-    private boolean allStatisticsServersClosed(Connection connection, long day) throws SQLException {
+    private boolean allStatisticsServersClosed(Connection connection, long day)
+            throws SQLException {
         byte[] expectedHash = RuleManager.dayHash(connection, day, StatisticsService.ruleHash());
-        try (PreparedStatement statement = connection.prepareStatement(
-                "SELECT config_hash FROM statistics_day_close WHERE server_id = ? AND game_day = ?")) {
+        try (PreparedStatement statement =
+                connection.prepareStatement(
+                        "SELECT config_hash FROM statistics_day_close WHERE server_id = ? AND"
+                                + " game_day = ?")) {
             for (String serverId : config.statisticsServers) {
                 statement.setString(1, serverId);
                 statement.setLong(2, day);
                 try (ResultSet rows = statement.executeQuery()) {
                     if (!rows.next()) {
+                        long now = System.nanoTime();
+                        if (now >= nextMissingCloseNotice) {
+                            nextMissingCloseNotice =
+                                    now + java.util.concurrent.TimeUnit.MINUTES.toNanos(1);
+                            ContributionMod.LOGGER.warn(
+                                    "INDUSTRY_WAITING_FOR_CLOSE day={} missingServer={}"
+                                            + " configuredServers={}",
+                                    day,
+                                    serverId,
+                                    java.util.Arrays.toString(config.statisticsServers));
+                        }
                         return false;
                     }
                     if (!MessageDigest.isEqual(expectedHash, rows.getBytes(1))) {
-                        throw new SQLException("Statistics configuration differs on server " + serverId
-                                + " for game day " + day);
+                        throw new SQLException(
+                                "Statistics configuration differs on server "
+                                        + serverId
+                                        + " for game day "
+                                        + day);
                     }
                 }
             }
@@ -151,13 +200,15 @@ public final class IndustrySettlement {
 
     private void settle(Connection connection, long day, UUID runId) throws SQLException {
         String taskName = "industry_daily_settlement";
-        try (PreparedStatement state = connection.prepareStatement(
-                "SELECT status, run_id FROM scheduled_task_run "
-                        + "WHERE task_name = ? AND game_day = ? FOR UPDATE")) {
+        try (PreparedStatement state =
+                connection.prepareStatement(
+                        "SELECT status, run_id FROM scheduled_task_run "
+                                + "WHERE task_name = ? AND game_day = ? FOR UPDATE")) {
             state.setString(1, taskName);
             state.setLong(2, day);
             try (ResultSet rows = state.executeQuery()) {
-                if (!rows.next() || !"RUNNING".equals(rows.getString(1))
+                if (!rows.next()
+                        || !"RUNNING".equals(rows.getString(1))
                         || !runId.equals(AccountService.bytesUuid(rows.getBytes(2)))) {
                     throw new SQLException("Scheduled settlement lease was not held");
                 }
@@ -166,23 +217,28 @@ public final class IndustrySettlement {
         for (BuiltInIndustry industry : BuiltInIndustry.values()) {
             settleIndustry(connection, day, industry);
         }
-        try (PreparedStatement done = connection.prepareStatement(
-                "UPDATE scheduled_task_run SET status = 'SUCCEEDED', updated_at = CURRENT_TIMESTAMP(6), "
-                        + "completed_at = CURRENT_TIMESTAMP(6), lease_until = NULL, failure_code = NULL "
-                        + "WHERE task_name = ? AND game_day = ?")) {
+        try (PreparedStatement done =
+                connection.prepareStatement(
+                        "UPDATE scheduled_task_run SET status = 'SUCCEEDED', updated_at ="
+                                + " CURRENT_TIMESTAMP(6), completed_at = CURRENT_TIMESTAMP(6),"
+                                + " lease_until = NULL, failure_code = NULL WHERE task_name = ? AND"
+                                + " game_day = ?")) {
             done.setString(1, taskName);
             done.setLong(2, day);
             done.executeUpdate();
         }
     }
 
-    void settleIndustry(Connection connection, long day, BuiltInIndustry industry) throws SQLException {
+    void settleIndustry(Connection connection, long day, BuiltInIndustry industry)
+            throws SQLException {
         String id = "contribution:" + industry.path();
         byte[] hash = RuleManager.dayHash(connection, day, StatisticsService.ruleHash());
-        try (PreparedStatement insert = connection.prepareStatement(
-                "INSERT IGNORE INTO industry_state (industry_id, last_settled_game_day, total_development, "
-                        + "long_ema, short_ema, prosperity, config_version, config_hash, updated_at) "
-                        + "VALUES (?, NULL, 0, NULL, NULL, 0, 1, ?, CURRENT_TIMESTAMP(6))")) {
+        try (PreparedStatement insert =
+                connection.prepareStatement(
+                        "INSERT IGNORE INTO industry_state (industry_id, last_settled_game_day,"
+                            + " total_development, long_ema, short_ema, prosperity, config_version,"
+                            + " config_hash, updated_at) VALUES (?, NULL, 0, NULL, NULL, 0, 1, ?,"
+                            + " CURRENT_TIMESTAMP(6))")) {
             insert.setString(1, id);
             insert.setBytes(2, hash);
             insert.executeUpdate();
@@ -191,9 +247,10 @@ public final class IndustrySettlement {
         Long last;
         BigDecimal oldLong;
         BigDecimal oldShort;
-        try (PreparedStatement query = connection.prepareStatement(
-                "SELECT last_settled_game_day, total_development, long_ema, short_ema "
-                        + "FROM industry_state WHERE industry_id = ? FOR UPDATE")) {
+        try (PreparedStatement query =
+                connection.prepareStatement(
+                        "SELECT last_settled_game_day, total_development, long_ema, short_ema "
+                                + "FROM industry_state WHERE industry_id = ? FOR UPDATE")) {
             query.setString(1, id);
             try (ResultSet rows = query.executeQuery()) {
                 rows.next();
@@ -208,8 +265,10 @@ public final class IndustrySettlement {
             return;
         }
         long daily = 0;
-        try (PreparedStatement query = connection.prepareStatement(
-                "SELECT development FROM industry_day_accumulator WHERE game_day = ? AND industry_id = ?")) {
+        try (PreparedStatement query =
+                connection.prepareStatement(
+                        "SELECT development FROM industry_day_accumulator WHERE game_day = ? AND"
+                                + " industry_id = ?")) {
             query.setLong(1, day);
             query.setString(2, id);
             try (ResultSet rows = query.executeQuery()) {
@@ -222,34 +281,43 @@ public final class IndustrySettlement {
         BigDecimal nextLong = null;
         BigDecimal nextShort = null;
         BigDecimal prosperity = BigDecimal.ZERO;
-        // The deployment day may be partial. Keep its totals but initialize EMA from two subsequent full days.
+        // The deployment day may be partial. Keep its totals but initialize EMA from two subsequent
+        // full days.
         long firstDay = RuleManager.firstDay(connection);
         boolean hasEpoch;
-        try (var query = connection.prepareStatement("SELECT EXISTS(SELECT 1 FROM contribution_rule_epoch)"); var rows = query.executeQuery()) {
-            rows.next(); hasEpoch = rows.getBoolean(1);
+        try (var query =
+                        connection.prepareStatement(
+                                "SELECT EXISTS(SELECT 1 FROM contribution_rule_epoch)");
+                var rows = query.executeQuery()) {
+            rows.next();
+            hasEpoch = rows.getBoolean(1);
         }
         if (last != null && (!hasEpoch || day > firstDay + 1)) {
             if (oldLong == null) {
                 long previous = previousDaily(connection, id, last);
-                nextLong = x.add(BigDecimal.valueOf(previous)).divide(BigDecimal.valueOf(2), 8, RoundingMode.HALF_UP);
+                nextLong =
+                        x.add(BigDecimal.valueOf(previous))
+                                .divide(BigDecimal.valueOf(2), 8, RoundingMode.HALF_UP);
                 nextShort = nextLong;
             } else {
-                nextLong = oldLong.multiply(LONG_KEEP).add(x.multiply(new BigDecimal("0.01")))
-                        .setScale(8, RoundingMode.HALF_UP);
-                nextShort = oldShort.multiply(SHORT_KEEP).add(x.multiply(new BigDecimal("0.2")))
-                        .setScale(8, RoundingMode.HALF_UP);
+                nextLong =
+                        oldLong.multiply(LONG_KEEP)
+                                .add(x.multiply(new BigDecimal("0.01")))
+                                .setScale(8, RoundingMode.HALF_UP);
+                nextShort =
+                        oldShort.multiply(SHORT_KEEP)
+                                .add(x.multiply(new BigDecimal("0.2")))
+                                .setScale(8, RoundingMode.HALF_UP);
             }
-            BigDecimal denominator = nextLong.add(BigDecimal.ONE);
-            prosperity = nextShort.subtract(nextLong).subtract(BigDecimal.ONE)
-                    .multiply(new BigDecimal("0.7")).divide(denominator, 8, RoundingMode.HALF_UP)
-                    .add(x.subtract(nextLong).subtract(BigDecimal.ONE)
-                            .multiply(new BigDecimal("0.3")).divide(denominator, 8, RoundingMode.HALF_UP));
+            prosperity = IndustryProsperity.calculate(daily, nextLong, nextShort);
         }
         long nextTotal = StatisticMath.add(total, daily);
-        try (PreparedStatement update = connection.prepareStatement(
-                "UPDATE industry_state SET last_settled_game_day = ?, total_development = ?, long_ema = ?, "
-                        + "short_ema = ?, prosperity = ?, config_version = 1, config_hash = ?, "
-                        + "updated_at = CURRENT_TIMESTAMP(6) WHERE industry_id = ?")) {
+        try (PreparedStatement update =
+                connection.prepareStatement(
+                        "UPDATE industry_state SET last_settled_game_day = ?, total_development ="
+                            + " ?, long_ema = ?, short_ema = ?, prosperity = ?, config_version = 1,"
+                            + " config_hash = ?, updated_at = CURRENT_TIMESTAMP(6) WHERE"
+                            + " industry_id = ?")) {
             update.setLong(1, day);
             update.setLong(2, nextTotal);
             update.setBigDecimal(3, nextLong);
@@ -259,10 +327,12 @@ public final class IndustrySettlement {
             update.setString(7, id);
             update.executeUpdate();
         }
-        try (PreparedStatement insert = connection.prepareStatement(
-                "INSERT INTO industry_daily (game_day, industry_id, daily_development, total_development, "
-                        + "long_ema, short_ema, prosperity, config_version, config_hash, settled_at) "
-                        + "VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?, CURRENT_TIMESTAMP(6))")) {
+        try (PreparedStatement insert =
+                connection.prepareStatement(
+                        "INSERT INTO industry_daily (game_day, industry_id, daily_development,"
+                            + " total_development, long_ema, short_ema, prosperity, config_version,"
+                            + " config_hash, prosperity_version, settled_at) VALUES (?, ?, ?, ?, ?,"
+                            + " ?, ?, 1, ?, 2, CURRENT_TIMESTAMP(6))")) {
             insert.setLong(1, day);
             insert.setString(2, id);
             insert.setLong(3, daily);
@@ -275,9 +345,12 @@ public final class IndustrySettlement {
         }
     }
 
-    private static long previousDaily(Connection connection, String industry, long day) throws SQLException {
-        try (PreparedStatement query = connection.prepareStatement(
-                "SELECT daily_development FROM industry_daily WHERE game_day = ? AND industry_id = ?")) {
+    private static long previousDaily(Connection connection, String industry, long day)
+            throws SQLException {
+        try (PreparedStatement query =
+                connection.prepareStatement(
+                        "SELECT daily_development FROM industry_daily WHERE game_day = ? AND"
+                                + " industry_id = ?")) {
             query.setLong(1, day);
             query.setString(2, industry);
             try (ResultSet rows = query.executeQuery()) {
@@ -286,5 +359,5 @@ public final class IndustrySettlement {
         }
     }
 
-    private record Acquisition(long day, UUID runId, boolean completed) { }
+    private record Acquisition(long day, UUID runId, boolean completed) {}
 }

@@ -17,3 +17,12 @@ Fabric Loader, Fabric API, Minecraft-provided Gson and SLF4J are supplied by the
 The 0.1.4 cosmetic pack uses 22 PNGs supplied in this workspace's prototype datapack: Mark 6 (ironman), nano, and quantum armor. Three humanoid textures are also reused for baby humanoid equipment layers, giving 25 packaged PNGs. Paths and JSON definitions were rewritten under the contribution namespace; no external texture archive or third-party executable was downloaded.
 
 The prototype attributes the nano and quantum designs to Industrial Craft 2. It did not include a separate license or original artist identification for these PNGs. They are used at the project owner's explicit request; this notice does not assert ownership or grant rights beyond the rights held by the project owner. Confirm original asset permissions before independently licensing or redistributing those images. Minecraft textures are referenced by ID, not copied into the cosmetic ZIP.
+## Development tooling
+
+google-java-format 1.37.0 (Google, Apache-2.0) is used only for source formatting and validation; it is not included in the mod JAR. Source: https://github.com/google/google-java-format ; license: https://github.com/google/google-java-format/blob/master/LICENSE .
+
+The HTML/XLSX authoring workflow uses the configured @oai/artifact-tool development runtime. It is not distributed with the mod and is not required on Minecraft clients or servers.
+
+## Wiki illustration snapshot
+
+The standalone Wiki copies selected Minecraft textures and model definitions from the project owner's extracted `pack/assets/minecraft` directory, together with current contribution cosmetic assets. Minecraft assets remain the property of their original rights holders. `wiki/content/media.json` records original paths and SHA-256 values; `wiki/assets/images/source` preserves the selected originals, and `icons` contains derived static thumbnails. No external image archive or third-party rendering code is used. The prior cosmetic ZIP behavior is unchanged.

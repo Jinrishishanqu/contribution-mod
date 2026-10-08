@@ -18,19 +18,30 @@ final class StockScrollbar {
         this.viewport = Math.max(1, viewport);
     }
 
-    boolean scrollable() { return maximum > 0 && bottom > top; }
-    int top() { return top; }
-    int bottom() { return bottom; }
+    boolean scrollable() {
+        return maximum > 0 && bottom > top;
+    }
+
+    int top() {
+        return top;
+    }
+
+    int bottom() {
+        return bottom;
+    }
 
     int thumbHeight() {
         int track = Math.max(1, bottom - top);
-        return scrollable() ? Math.clamp((int) Math.round(track * (double) viewport / (viewport + maximum)),
-                Math.min(MIN_THUMB, track), track) : track;
+        return scrollable()
+                ? Math.clamp(
+                        (int) Math.round(track * (double) viewport / (viewport + maximum)),
+                        Math.min(MIN_THUMB, track),
+                        track)
+                : track;
     }
 
     int thumbTop() {
         int travel = bottom - top - thumbHeight();
         return top + (maximum == 0 ? 0 : (int) Math.round(travel * (double) scroll / maximum));
     }
-
 }

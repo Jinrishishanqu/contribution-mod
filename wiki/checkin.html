@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="签到提供每日在线奖励和活动奖励。每日签到在在线时长达标后自动完成，活动奖励在期限内手动领取。"><title>签到与活动 · 贡献值模组维基 0.2.6</title><link rel="stylesheet" href="assets/wiki.css"><script defer src="assets/search-index.js"></script><script defer src="assets/site.js"></script></head><body data-current-page="checkin"><a class="skip-link" href="#checkin">跳到正文</a><div class="shell"><aside id="site-navigation" class="sidebar" aria-label="站点导航">
+<a class="brand" href="index.html#home">
+<span class="brand-mark" aria-hidden="true"></span>
+<span class="brand-text"><span class="brand-title">贡献值维基</span><span class="brand-tagline">贡献值经济 · 行业建设度 · 股票市场 · 系统商店</span></span>
+</a>
+<div class="sidebar-search"><label class="visually-hidden" for="site-search">搜索本维基</label><input id="site-search" type="search" placeholder="搜索页面与章节…" autocomplete="off"><div id="site-search-results" class="search-results" hidden></div></div>
+<div class="nav">
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-0"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开始阅读</span></button></h3>
+<ul id="nav-list-0">
+<li><a href="index.html#home" data-nav="home">贡献值模组维基</a></li>
+<li><a href="basics.html#basics" data-nav="basics">玩法入门</a></li>
+<li><a href="features.html#features" data-nav="features">玩法总览</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-1"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">贡献值与建设</span></button></h3>
+<ul id="nav-list-1">
+<li><a href="account.html#account" data-nav="account">贡献值账户</a></li>
+<li><a href="development.html#development" data-nav="development">行业建设度</a></li>
+<li><a href="statistics.html#statistics" data-nav="statistics">玩家统计</a></li>
+<li><a href="rewards.html#rewards" data-nav="rewards">建设度奖励</a></li>
+<li><a href="#checkin" data-nav="checkin">签到与活动</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-2"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">经济交易</span></button></h3>
+<ul id="nav-list-2">
+<li><a href="shop.html#shop" data-nav="shop">系统商店</a></li>
+<li><a href="stock.html#stock" data-nav="stock">股票市场</a></li>
+<li><a href="stock-mechanics.html#stock-mechanics" data-nav="stock-mechanics">股价计算</a></li>
+<li><a href="swan.html#swan" data-nav="swan">黑天鹅事件</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-3"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">物品与进度</span></button></h3>
+<ul id="nav-list-3">
+<li><a href="items.html#items" data-nav="items">物品与装备</a></li>
+<li><a href="special-items.html#special-items" data-nav="special-items">特殊道具</a></li>
+<li><a href="recipes.html#recipes" data-nav="recipes">配方目录</a></li>
+<li><a href="recipes-basics.html#recipes-basics" data-nav="recipes-basics">基础配方</a></li>
+<li><a href="recipes-wings.html#recipes-wings" data-nav="recipes-wings">添翼配方</a></li>
+<li><a href="recipes-reinforcement.html#recipes-reinforcement" data-nav="recipes-reinforcement">强化配方</a></li>
+<li><a href="recipes-armor.html#recipes-armor" data-nav="recipes-armor">主题盔甲配方</a></li>
+<li><a href="recipes-hats.html#recipes-hats" data-nav="recipes-hats">帽子配方</a></li>
+<li><a href="recipes-special.html#recipes-special" data-nav="recipes-special">特殊道具配方</a></li>
+<li><a href="weapon-skins.html#weapon-skins" data-nav="weapon-skins">武器皮肤</a></li>
+<li><a href="advancements.html#advancements" data-nav="advancements">更多乐趣进度</a></li>
+<li><a href="advancement-details.html#advancement-details" data-nav="advancement-details">进度条件</a></li>
+<li><a href="resourcepack.html#resourcepack" data-nav="resourcepack">资源包与外观</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-4"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">操作与命令</span></button></h3>
+<ul id="nav-list-4">
+<li><a href="interface.html#interface" data-nav="interface">界面操作</a></li>
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands-contribution.html#commands-contribution" data-nav="commands-contribution">贡献值命令</a></li>
+<li><a href="commands-checkin.html#commands-checkin" data-nav="commands-checkin">签到命令</a></li>
+<li><a href="commands-stock.html#commands-stock" data-nav="commands-stock">股票命令</a></li>
+<li><a href="commands-shop.html#commands-shop" data-nav="commands-shop">商店命令</a></li>
+<li><a href="commands-account.html#commands-account" data-nav="commands-account">账户管理命令</a></li>
+<li><a href="commands-shop-admin.html#commands-shop-admin" data-nav="commands-shop-admin">商店管理命令</a></li>
+<li><a href="permissions.html#permissions" data-nav="permissions">操作权限</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-5"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">服务器管理</span></button></h3>
+<ul id="nav-list-5">
+<li><a href="installation.html#installation" data-nav="installation">安装</a></li>
+<li><a href="config.html#config" data-nav="config">服务器配置</a></li>
+<li><a href="data.html#data" data-nav="data">数据与存档</a></li>
+<li><a href="operations.html#operations" data-nav="operations">服务器维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-6"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开发与维护</span></button></h3>
+<ul id="nav-list-6">
+<li><a href="api.html#api" data-nav="api">公共接口</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-tools"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">工具</span></button></h3>
+<ul id="nav-list-tools">
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands.xlsx">下载命令工作簿</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+</div>
+<div class="sidebar-footer">版本 0.2.6 · Minecraft 26.3<br>Fabric Loader 0.19.5 · Java 25</div>
+</aside><main class="main"><header class="topbar"><nav class="topbar-crumbs" aria-label="面包屑"><a href="index.html">首页</a><span> / 签到与活动</span></nav><span class="topbar-spacer"></span><button id="mobile-nav" type="button" aria-expanded="false" aria-controls="site-navigation">导航</button><button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">切换主题</button></header><div class="wiki-page" id="checkin" data-page-title="签到与活动">
+<div class="content-panel">
+<div class="page-head">
+<h1 class="page-title">签到与活动</h1>
+<p class="page-summary">签到提供每日在线奖励和活动奖励。每日签到在在线时长达标后自动完成，活动奖励在期限内手动领取。</p>
+</div>
+<div class="page-columns">
+<div class="article">
+<div class="toc"><input class="toc-toggle" type="checkbox" id="toc-checkin" checked><label class="toc-head" for="toc-checkin">目录 <span class="toc-toggle-label"><span class="toc-show">[显示]</span><span class="toc-hide">[隐藏]</span></span></label><ol><li><a href="#checkin-每日在线签到">每日在线签到</a></li><li><a href="#checkin-七日周期奖励">七日周期奖励</a></li><li><a href="#checkin-活动签到">活动签到</a></li><li><a href="#checkin-补充资料">管理与数据</a></li></ol></div>
+<section class="wiki-section" id="checkin-每日在线签到">
+<h2>每日在线签到</h2>
+<p>每日签到按配置时区的现实自然日计算，默认时区为 <code>Asia/Shanghai</code>。玩家在当天累计在线满 600 秒后自动签到，跨服在线时间合计，挂机时长也计入。</p>
+<p>输入 <code>/contribution checkin</code> 或打开贡献值首页的「每日签到与活动」查看今日状态。名称以 <code>bot_</code> 开头的假人不累计签到时间。</p>
+<details class="source-details"><summary>在线时长的保存</summary><p>服务端约每 20 游戏刻采样在线时间，按完整秒归入相应日期，并保留不足 1 秒的余量；离线时补计最后一段。至多每 60 秒批量落库，正常停服提交剩余时间，异常断电可能损失最后不足一分钟。跨服记录合并到同一玩家与日期。</p></details>
+</section>
+<section class="wiki-section" id="checkin-七日周期奖励">
+<h2>七日周期奖励</h2>
+<figure class="media-figure"><div class="item-gallery"><figure class="gallery-item"><img class="item-icon" src="assets/images/icons/minecraft-clock.png" alt="累计在线" width="128" height="128" loading="lazy" decoding="async"><figcaption>累计在线<small>当天共 600 秒</small></figcaption></figure><figure class="gallery-item"><img class="item-icon" src="assets/images/icons/minecraft-emerald.png" alt="自动签到" width="128" height="128" loading="lazy" decoding="async"><figcaption>自动签到<small>七日周期奖励</small></figcaption></figure><figure class="gallery-item"><img class="item-icon" src="assets/images/icons/minecraft-book.png" alt="活动奖励" width="128" height="128" loading="lazy" decoding="async"><figcaption>活动奖励<small>期限内另行领取</small></figcaption></figure></div></figure>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">周期天数</th><th scope="col">第 1 天</th><th scope="col">第 2 天</th><th scope="col">第 3 天</th><th scope="col">第 4 天</th><th scope="col">第 5 天</th><th scope="col">第 6 天</th><th scope="col">第 7 天</th></tr></thead>
+<tbody>
+<tr><td>默认奖励（贡献值）</td><td>10</td><td>10</td><td>10</td><td>10</td><td>15</td><td>25</td><td>25</td></tr>
+</tbody>
+</table></div>
+<ul><li>周期默认 7 天；连续自然日签到推进一天，漏签则从第 1 天重开，完成第 7 天后次日也从第 1 天开始。</li><li>签到奖励、日期与周期状态在一笔事务内更新。</li><li>奖励为 0 时仍登记签到，但不产生零金额流水。</li><li>非零奖励使用 <code>CHECK_IN</code> 流水，增加余额与历史总收入。</li><li>余额或历史收入已满时暂不标记领取，随后累计的在线时间不会丢失，可在后续在线批次再尝试。</li><li>成功时发送聊天反馈；<code>/contribution checkin</code> 与贡献值首页的「每日签到与活动」显示今日状态。</li></ul>
+<p><code>config/contribution/server.json</code> 的 <code>rewards.timeZone</code>、<code>dailyRequiredSeconds</code>、<code>dailyCycleRewards</code> 可分别配置时区、所需在线秒数和各日奖励。</p>
+</section>
+<section class="wiki-section" id="checkin-活动签到">
+<h2>活动签到</h2>
+<p>管理员在主服务器定义活动标识符、标题、开始与结束现实日期，以及奖励。活动日期采用同一配置时区，起止两日均包含；每名玩家在活动期限内通过 <code>/contribution checkin claim &lt;活动ID&gt;</code> 领取一次。活动签到不要求当天累计在线 10 分钟，与每日签到相互独立。活动定义与领取记录存入共享数据库，群组服不会因切服重复领取。</p>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">创建方式</th><th scope="col">命令</th><th scope="col">奖励内容</th></tr></thead>
+<tbody>
+<tr><td>仅贡献值</td><td><code>/contribution checkin event create &lt;id&gt; &lt;标题&gt; &lt;开始&gt; &lt;结束&gt; &lt;贡献值&gt;</code></td><td>贡献值，金额可为 0</td></tr>
+<tr><td>贡献值 + 物品</td><td><code>/contribution checkin event create &lt;id&gt; &lt;标题&gt; &lt;开始&gt; &lt;结束&gt; &lt;贡献值&gt; &lt;物品&gt; &lt;数量&gt;</code></td><td>贡献值与原版物品，数量 1—2304</td></tr>
+<tr><td>扩展提供者</td><td><code>/contribution checkin event create-extension &lt;id&gt; &lt;标题&gt; &lt;开始&gt; &lt;结束&gt; &lt;提供者&gt; &lt;数据&gt;</code></td><td>由其他模组注册的奖励提供者决定</td></tr>
+</tbody>
+</table></div>
+<ul><li>贡献值使用 <code>EVENT_CHECK_IN</code> 流水，计入历史总收入。</li><li>物品在同一数据库事务内写入 <code>reward_delivery</code> 领取队列；玩家在线时自动尝试交付，也可以用 <code>/shop claim</code> 再次领取。</li><li>当前版本只提供创建，不提供直接编辑已经发布的活动；需要变更活动时使用新的活动标识符，以免已领取玩家出现奖励歧义。</li><li><code>/contribution checkin events</code> 或贡献值界面可查看当前可领取的活动。</li></ul>
+</section>
+<section class="wiki-section" id="checkin-补充资料">
+<h2>管理与数据</h2>
+<details class="source-details" id="checkin-给模组作者的扩展点"><summary>奖励提供者</summary><details class="source-details"><summary>注册与调用约束</summary><p>其他模组可通过 <code>EventRewardRegistry.register(key, handler)</code> 注册额外奖励提供者，管理员再用 <code>create-extension</code> 创建对应活动。</p>
+<pre class="code" data-language="java"><code>EventRewardRegistry.register(&quot;yourmod:badge&quot;, (connection, playerUuid, claimId, data) -&gt; {
+    // 使用提供的 connection，在自己的业务表登记 playerUuid 的徽章。
+    // 不要在此访问 Minecraft 世界、背包、网络或等待其他线程。
+});</code></pre>
+<ul><li>处理器在领取事务内执行，只能使用提供的数据库连接，不得访问世界或网络；异常会让整笔活动领取回滚。</li><li>提供者必须在服务器启动、玩家领取活动之前注册；未注册的键会被拒绝，对应活动也不能创建。</li><li><code>claimId</code> 是本次领取的唯一标识，可作为提供者自己业务表的幂等键。</li><li>扩展处理器只应修改自己拥有的表，不得直接修改贡献值账户或流水。</li><li>这是额外奖励的扩展点，而不是允许管理员任意执行服务器命令。</li></ul></details></details>
+</section>
+<div class="page-footer">贡献值模组维基 · 0.2.6 · <a href="documentation.html#documentation">维基维护</a></div>
+</div>
+<aside class="page-info">
+<div class="page-info-inner">
+<div class="page-info-head">条目概要</div>
+<table class="infobox">
+<tr><th>每日要求</th><td>在线累计 10 分钟</td></tr>
+<tr><th>奖励周期</th><td>7 天</td></tr>
+<tr><th>活动奖励</th><td>期限内手动领取</td></tr>
+
+</table>
+</div>
+<table class="navbox"><tbody>
+<tr><th class="navbox-top" colspan="2"><span class="navbox-title">贡献值与建设</span></th></tr>
+<tr><th>相关页面</th><td><ul class="hlist"><li><a href="account.html#account">贡献值账户</a></li><li><a href="development.html#development">行业建设度</a></li><li><a href="statistics.html#statistics">玩家统计</a></li><li><a href="rewards.html#rewards">建设度奖励</a></li></ul></td></tr>
+</tbody></table>
+<div class="catlinks"><span>分类：</span><ul><li>贡献值与建设</li></ul></div>
+</aside>
+</div>
+</div>
+</div></main></div></body></html>

@@ -1,0 +1,84 @@
+{
+  "credit": "Made with Blockbench",
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        45
+      ],
+      "translation": [
+        0,
+        8.25,
+        2
+      ],
+      "scale": [
+        2,
+        2,
+        1
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -45
+      ],
+      "translation": [
+        0,
+        8.25,
+        2
+      ],
+      "scale": [
+        2,
+        2,
+        1
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        -30,
+        -90,
+        0
+      ],
+      "translation": [
+        0.38,
+        4.2,
+        0.38
+      ],
+      "scale": [
+        0.68,
+        0.68,
+        0.68
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        -30,
+        90,
+        0
+      ],
+      "translation": [
+        0.38,
+        4.2,
+        0.38
+      ],
+      "scale": [
+        0.68,
+        0.68,
+        0.68
+      ]
+    },
+    "gui": {
+      "translation": [
+        0.25,
+        0,
+        0
+      ]
+    }
+  },
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/hoe/molten_amputator"
+  },
+  "parent": "minecraft:item/handheld"
+}

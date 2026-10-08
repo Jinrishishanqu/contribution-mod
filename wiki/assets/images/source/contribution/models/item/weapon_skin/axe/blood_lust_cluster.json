@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/axe/blood_lust_cluster"
+  },
+  "parent": "contribution:item/weapon_skin/axe/big_axe"
+}

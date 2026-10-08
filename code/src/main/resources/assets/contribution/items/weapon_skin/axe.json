@@ -1,0 +1,111 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:component",
+    "component": "minecraft:item_name",
+    "cases": [
+      {
+        "when": "玫瑰石英斧",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/axe/gilded_quartz_axe"
+        }
+      },
+      {
+        "when": "余烬斧",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/axe/emberstone_axe"
+        }
+      },
+      {
+        "when": "海王斧",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/axe/neptunium_axe"
+        }
+      },
+      {
+        "when": "焚罪飞斧",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/axe/seeking_scorcher"
+        }
+      },
+      {
+        "when": "血沫重斧",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/axe/bloodsoaked_crasher"
+        }
+      },
+      {
+        "when": "嗜血狂斧",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/axe/blood_lust_cluster"
+        }
+      },
+      {
+        "when": "元素之斧",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/axe/elemental_axe"
+        }
+      },
+      {
+        "when": "银河溃灭者",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/axe/galaxy_smasher"
+        }
+      },
+      {
+        "when": "格拉克斯",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/axe/grax"
+        }
+      },
+      {
+        "when": "炼狱",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/axe/inferna_cutter"
+        }
+      },
+      {
+        "when": "星云锤斧",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/axe/nebula_hamaxe"
+        }
+      },
+      {
+        "when": "幽灵锤斧",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/axe/spectre_hamaxe"
+        }
+      },
+      {
+        "when": "地壳斧正者",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/axe/tectonic_truncator"
+        }
+      },
+      {
+        "when": "钛金战斧",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/axe/titanium_waraxe"
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "contribution:item/weapon_skin/axe/static"
+    }
+  }
+}

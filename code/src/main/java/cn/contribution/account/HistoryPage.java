@@ -15,6 +15,7 @@ public record HistoryPage(List<TransactionRecord> rows, boolean hasMore, boolean
 
     public Optional<UUID> nextCursor() {
         return hasMore && !rows.isEmpty()
-                ? Optional.of(rows.getLast().transactionId()) : Optional.empty();
+                ? Optional.of(rows.getLast().transactionId())
+                : Optional.empty();
     }
 }

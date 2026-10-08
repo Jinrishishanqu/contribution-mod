@@ -1,0 +1,6 @@
+{
+  "parent": "contribution:item/weapon_skin/base/sword_8bc8c769f345",
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/sword/terra_blade"
+  }
+}

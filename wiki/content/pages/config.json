@@ -1,0 +1,142 @@
+{
+  "id": "config",
+  "title": "服务器配置",
+  "summary": "服务器配置保存在 config/contribution/server.json，包含数据库、服务器身份、统计范围和奖励设置。",
+  "sections": [
+    {
+      "title": "文件位置与格式",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "运行配置使用 UTF-8 编码的数据定义，默认路径为 `config/contribution/server.json`。",
+            "该文件已被 `.gitignore` 排除，不要提交含口令的副本。",
+            "数据库口令可以写入仅服务器可读的配置文件，也可以由环境变量 `CONTRIBUTION_DB_PASSWORD` 覆盖。",
+            "日志与错误反馈使用隐去凭据的连接摘要。"
+          ]
+        }
+      ],
+      "id": "文件位置与格式"
+    },
+    {
+      "title": "字段分组",
+      "blocks": [
+        {
+          "type": "table",
+          "columns": [
+            "分组",
+            "关键字段",
+            "生效方式"
+          ],
+          "rows": [
+            [
+              "数据库",
+              "`database.mode`（`embedded` / `mysql`）、地址、凭据、连接池大小、工作线程数",
+              "启动时读取，修改需重启"
+            ],
+            [
+              "服务器身份",
+              "`serverId`、`mainServer`、`statisticsServers`",
+              "启动时读取，修改需重启"
+            ],
+            [
+              "奖励与签到",
+              "`rewards.developmentWeights`、扫描间隔、`rewards.timeZone`、`dailyRequiredSeconds`、`dailyCycleRewards`",
+              "启动时读取，且写入共享数据库指纹，各服必须一致"
+            ],
+            [
+              "商店初始目录",
+              "`rewards.shopOffers`",
+              "只在首次创建数据库时导入，之后以共享目录表为准"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "旧配置没有 `mode` 字段时：`enabled=true` 自动按 MySQL 读取，`enabled=false` 自动按嵌入式模式读取。"
+        }
+      ],
+      "id": "字段分组"
+    },
+    {
+      "title": "修改与生效",
+      "blocks": [
+        {
+          "type": "flow",
+          "items": [
+            {
+              "key": "minecraft:writable_book",
+              "label": "编辑配置",
+              "text": "server.json"
+            },
+            {
+              "key": "minecraft:chest",
+              "label": "同步节点",
+              "text": "数据库、身份和奖励设置"
+            },
+            {
+              "key": "minecraft:clock",
+              "label": "重启生效",
+              "text": "启动时读取"
+            }
+          ],
+          "caption": "物品图标用于示意操作顺序"
+        },
+        {
+          "type": "table",
+          "columns": [
+            "内容",
+            "是否可热重载",
+            "说明"
+          ],
+          "rows": [
+            [
+              "内置行业标签与事件映射",
+              "✔（主服 `/reload`）",
+              "校验通过后在下一游戏日 8 点切换"
+            ],
+            [
+              "统计批次的服务器集合",
+              "✘",
+              "启动时读取"
+            ],
+            [
+              "数据库地址、凭据、身份",
+              "✘",
+              "启动时读取"
+            ],
+            [
+              "奖励权重、时区、签到参数",
+              "✘",
+              "启动时读取，并受指纹一致性约束"
+            ],
+            [
+              "商店目录",
+              "✘（但可用管理界面随时修改）",
+              "目录以共享数据库为准"
+            ]
+          ]
+        }
+      ],
+      "id": "热重载能改什么"
+    },
+    {
+      "title": "奖励配置指纹",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "主服务器把奖励相关配置的规范化 `SHA-256` 指纹写入共享数据库的 `reward_configuration` 表；每笔发放和购买都会核对指纹，不一致时拒绝操作。修改这些配置后应同步所有子服并重启。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "纳入指纹：建设度权重与扫描间隔、现实日时区、签到秒数与周期奖励。",
+            "不纳入指纹：商店商品目录（价格与商品以共享数据库为准）。",
+            "纳入指纹的配置改变后，各服不一致会导致购买与发放被拒绝。"
+          ]
+        }
+      ],
+      "id": "奖励配置指纹"
+    }
+  ]
+}

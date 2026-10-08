@@ -1,0 +1,22 @@
+{
+  "parent": "contribution:item/weapon_skin/sword/wolverine",
+  "display": {
+    "gui": {
+      "rotation": [
+        22.5,
+        -50,
+        -20
+      ],
+      "translation": [
+        32,
+        -28,
+        0
+      ],
+      "scale": [
+        4,
+        4,
+        4
+      ]
+    }
+  }
+}

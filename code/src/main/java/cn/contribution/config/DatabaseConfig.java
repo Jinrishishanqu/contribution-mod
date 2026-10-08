@@ -2,7 +2,8 @@ package cn.contribution.config;
 
 public final class DatabaseConfig {
     public String mode = "embedded";
-    public String jdbcUrl = "jdbc:mysql://127.0.0.1:3306/contribution?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC";
+    public String jdbcUrl =
+            "jdbc:mysql://127.0.0.1:3306/contribution?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC";
     public String username = "contribution";
     public String password = "";
     public int maximumPoolSize = 4;

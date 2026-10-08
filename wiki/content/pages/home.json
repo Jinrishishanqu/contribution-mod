@@ -1,0 +1,174 @@
+{
+  "id": "home",
+  "title": "贡献值模组维基",
+  "summary": "贡献值模组通过行业建设、签到和交易提供服务器内的经济玩法，并加入装备、配方与「更多乐趣」进度。",
+  "sections": [
+    {
+      "title": "开始阅读",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "第一次参与可从[玩法入门](page:basics)开始；按类别查找内容可用[玩法总览](page:features)。下面列出账户、交易、物品和管理资料的入口。"
+        }
+      ],
+      "id": "欢迎来到贡献值模组-wiki"
+    },
+    {
+      "title": "贡献值与交易",
+      "blocks": [
+        {
+          "type": "cards",
+          "columns": 2,
+          "items": [
+            {
+              "page": "account",
+              "title": "贡献值账户",
+              "text": "查余额、收入与交易流水。",
+              "image": "minecraft:emerald"
+            },
+            {
+              "page": "development",
+              "title": "行业建设度",
+              "text": "查看九行业和有效活动计量。",
+              "image": "minecraft:iron_pickaxe"
+            },
+            {
+              "page": "checkin",
+              "title": "签到与活动",
+              "text": "领取每日在线奖励和活动奖励。",
+              "image": "minecraft:clock"
+            },
+            {
+              "page": "shop",
+              "title": "系统商店",
+              "text": "浏览商品、购买并领取物品。",
+              "image": "minecraft:chest"
+            },
+            {
+              "page": "stock",
+              "title": "股票市场",
+              "text": "了解交易时段、持仓和退市返还。",
+              "image": "minecraft:gold_ingot"
+            },
+            {
+              "page": "features",
+              "title": "玩法总览",
+              "text": "按类别查找模组提供的内容。",
+              "image": "minecraft:book"
+            }
+          ]
+        }
+      ],
+      "id": "快速导航"
+    },
+    {
+      "title": "物品与进度",
+      "blocks": [
+        {
+          "type": "cards",
+          "columns": 2,
+          "items": [
+            {
+              "page": "items",
+              "title": "物品与装备",
+              "text": "添翼、强化、主题盔甲和变形帽子。",
+              "image": "model:contribution:winged/diamond"
+            },
+            {
+              "page": "recipes",
+              "title": "配方目录",
+              "text": "按工作站查材料、摆放和产物。",
+              "image": "minecraft:crafting_table"
+            },
+            {
+              "page": "special-items",
+              "title": "特殊道具",
+              "text": "公示喇叭、哑炮、头颅与原初武器。",
+              "image": "model:contribution:speaker"
+            },
+            {
+              "page": "weapon-skins",
+              "title": "武器皮肤",
+              "text": "查看六类武器与工具的外观图鉴。",
+              "image": "skin:sword/龙霜骨血剑"
+            },
+            {
+              "page": "advancements",
+              "title": "更多乐趣进度",
+              "text": "查看挑战类别和完成方式。",
+              "image": "minecraft:experience_bottle"
+            },
+            {
+              "page": "resourcepack",
+              "title": "外观资源包",
+              "text": "加载物品模型和主题纹理。",
+              "image": "model:contribution:armor/nano_chestplate"
+            }
+          ]
+        }
+      ],
+      "id": "制作-获取和触发详情"
+    },
+    {
+      "title": "安装、管理与开发",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "服务器管理员：[安装](page:installation) → [服务器配置](page:config) → [服务器维护](page:operations)。",
+            "需要准确语法：[命令速查](page:commands)，或下载[命令工作簿](file:commands.xlsx)。",
+            "模组开发者：[公共接口](page:api)。维基编辑者：[维基维护](page:documentation)。"
+          ]
+        }
+      ],
+      "id": "从哪里开始"
+    },
+    {
+      "title": "版本与运行环境",
+      "blocks": [
+        {
+          "type": "table",
+          "columns": [
+            "项目",
+            "值"
+          ],
+          "rows": [
+            [
+              "当前版本",
+              "`0.2.6`"
+            ],
+            [
+              "Minecraft",
+              "Java 版 26.3"
+            ],
+            [
+              "Fabric Loader",
+              "0.19.5"
+            ],
+            [
+              "Fabric API",
+              "0.161.0+26.3"
+            ],
+            [
+              "Java",
+              "25"
+            ],
+            [
+              "模组标识符",
+              "`contribution`"
+            ],
+            [
+              "客户端要求",
+              "可选。原版客户端可直接进服并使用全部功能"
+            ],
+            [
+              "数据库",
+              "单机/单服自动创建世界内嵌入式 H2；群组服共享 MySQL 8.4"
+            ]
+          ]
+        }
+      ],
+      "id": "版本与运行环境"
+    }
+  ]
+}

@@ -6,9 +6,6 @@
   "result": {
     "id": "minecraft:golden_spear",
     "components": {
-      "minecraft:item_name": {
-        "text": "强化金矛"
-      },
       "minecraft:max_damage": 2031,
       "minecraft:damage_resistant": {
         "types": "#minecraft:is_fire"
@@ -51,7 +48,14 @@
         "damage_multiplier": 1.2,
         "sound": "minecraft:item.spear.use",
         "hit_sound": "minecraft:item.spear.hit"
-      }
+      },
+      "minecraft:lore": [
+        {
+          "color": "gray",
+          "italic": false,
+          "text": "下界合金强化"
+        }
+      ]
     }
   }
 }

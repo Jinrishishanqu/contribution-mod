@@ -8,8 +8,7 @@ import java.util.UUID;
 public final class ShearingContext {
     private static final ThreadLocal<Actor> CURRENT = new ThreadLocal<>();
 
-    private ShearingContext() {
-    }
+    private ShearingContext() {}
 
     public static void enter(ServerPlayer player, LivingEntity target) {
         CURRENT.set(new Actor(player, target.getUUID()));
@@ -24,5 +23,5 @@ public final class ShearingContext {
         return actor != null && actor.target.equals(target.getUUID()) ? actor.player : null;
     }
 
-    private record Actor(ServerPlayer player, UUID target) { }
+    private record Actor(ServerPlayer player, UUID target) {}
 }

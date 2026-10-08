@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="马克六型、纳米和量子盔甲提供三套主题外观，每套包括四件普通部件和一件翼装胸甲。"><title>主题盔甲配方 · 贡献值模组维基 0.2.6</title><link rel="stylesheet" href="assets/wiki.css"><script defer src="assets/search-index.js"></script><script defer src="assets/site.js"></script></head><body data-current-page="recipes-armor"><a class="skip-link" href="#recipes-armor">跳到正文</a><div class="shell"><aside id="site-navigation" class="sidebar" aria-label="站点导航">
+<a class="brand" href="index.html#home">
+<span class="brand-mark" aria-hidden="true"></span>
+<span class="brand-text"><span class="brand-title">贡献值维基</span><span class="brand-tagline">贡献值经济 · 行业建设度 · 股票市场 · 系统商店</span></span>
+</a>
+<div class="sidebar-search"><label class="visually-hidden" for="site-search">搜索本维基</label><input id="site-search" type="search" placeholder="搜索页面与章节…" autocomplete="off"><div id="site-search-results" class="search-results" hidden></div></div>
+<div class="nav">
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-0"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开始阅读</span></button></h3>
+<ul id="nav-list-0">
+<li><a href="index.html#home" data-nav="home">贡献值模组维基</a></li>
+<li><a href="basics.html#basics" data-nav="basics">玩法入门</a></li>
+<li><a href="features.html#features" data-nav="features">玩法总览</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-1"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">贡献值与建设</span></button></h3>
+<ul id="nav-list-1">
+<li><a href="account.html#account" data-nav="account">贡献值账户</a></li>
+<li><a href="development.html#development" data-nav="development">行业建设度</a></li>
+<li><a href="statistics.html#statistics" data-nav="statistics">玩家统计</a></li>
+<li><a href="rewards.html#rewards" data-nav="rewards">建设度奖励</a></li>
+<li><a href="checkin.html#checkin" data-nav="checkin">签到与活动</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-2"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">经济交易</span></button></h3>
+<ul id="nav-list-2">
+<li><a href="shop.html#shop" data-nav="shop">系统商店</a></li>
+<li><a href="stock.html#stock" data-nav="stock">股票市场</a></li>
+<li><a href="stock-mechanics.html#stock-mechanics" data-nav="stock-mechanics">股价计算</a></li>
+<li><a href="swan.html#swan" data-nav="swan">黑天鹅事件</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-3"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">物品与进度</span></button></h3>
+<ul id="nav-list-3">
+<li><a href="items.html#items" data-nav="items">物品与装备</a></li>
+<li><a href="special-items.html#special-items" data-nav="special-items">特殊道具</a></li>
+<li><a href="recipes.html#recipes" data-nav="recipes">配方目录</a></li>
+<li><a href="recipes-basics.html#recipes-basics" data-nav="recipes-basics">基础配方</a></li>
+<li><a href="recipes-wings.html#recipes-wings" data-nav="recipes-wings">添翼配方</a></li>
+<li><a href="recipes-reinforcement.html#recipes-reinforcement" data-nav="recipes-reinforcement">强化配方</a></li>
+<li><a href="#recipes-armor" data-nav="recipes-armor">主题盔甲配方</a></li>
+<li><a href="recipes-hats.html#recipes-hats" data-nav="recipes-hats">帽子配方</a></li>
+<li><a href="recipes-special.html#recipes-special" data-nav="recipes-special">特殊道具配方</a></li>
+<li><a href="weapon-skins.html#weapon-skins" data-nav="weapon-skins">武器皮肤</a></li>
+<li><a href="advancements.html#advancements" data-nav="advancements">更多乐趣进度</a></li>
+<li><a href="advancement-details.html#advancement-details" data-nav="advancement-details">进度条件</a></li>
+<li><a href="resourcepack.html#resourcepack" data-nav="resourcepack">资源包与外观</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-4"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">操作与命令</span></button></h3>
+<ul id="nav-list-4">
+<li><a href="interface.html#interface" data-nav="interface">界面操作</a></li>
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands-contribution.html#commands-contribution" data-nav="commands-contribution">贡献值命令</a></li>
+<li><a href="commands-checkin.html#commands-checkin" data-nav="commands-checkin">签到命令</a></li>
+<li><a href="commands-stock.html#commands-stock" data-nav="commands-stock">股票命令</a></li>
+<li><a href="commands-shop.html#commands-shop" data-nav="commands-shop">商店命令</a></li>
+<li><a href="commands-account.html#commands-account" data-nav="commands-account">账户管理命令</a></li>
+<li><a href="commands-shop-admin.html#commands-shop-admin" data-nav="commands-shop-admin">商店管理命令</a></li>
+<li><a href="permissions.html#permissions" data-nav="permissions">操作权限</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-5"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">服务器管理</span></button></h3>
+<ul id="nav-list-5">
+<li><a href="installation.html#installation" data-nav="installation">安装</a></li>
+<li><a href="config.html#config" data-nav="config">服务器配置</a></li>
+<li><a href="data.html#data" data-nav="data">数据与存档</a></li>
+<li><a href="operations.html#operations" data-nav="operations">服务器维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-6"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">开发与维护</span></button></h3>
+<ul id="nav-list-6">
+<li><a href="api.html#api" data-nav="api">公共接口</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+<div class="nav-group" data-nav-group>
+<h3 class="nav-group-heading"><button type="button" class="nav-toggle" aria-expanded="true" aria-controls="nav-list-tools"><span class="nav-chevron" aria-hidden="true"></span><span class="nav-toggle-label">工具</span></button></h3>
+<ul id="nav-list-tools">
+<li><a href="commands.html#commands" data-nav="commands">命令速查</a></li>
+<li><a href="commands.xlsx">下载命令工作簿</a></li>
+<li><a href="documentation.html#documentation" data-nav="documentation">维基维护</a></li>
+</ul>
+</div>
+</div>
+<div class="sidebar-footer">版本 0.2.6 · Minecraft 26.3<br>Fabric Loader 0.19.5 · Java 25</div>
+</aside><main class="main"><header class="topbar"><nav class="topbar-crumbs" aria-label="面包屑"><a href="index.html">首页</a><span> / 主题盔甲配方</span></nav><span class="topbar-spacer"></span><button id="mobile-nav" type="button" aria-expanded="false" aria-controls="site-navigation">导航</button><button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">切换主题</button></header><div class="wiki-page" id="recipes-armor" data-page-title="主题盔甲配方">
+<div class="content-panel">
+<div class="page-head">
+<h1 class="page-title">主题盔甲配方</h1>
+<p class="page-summary">马克六型、纳米和量子盔甲提供三套主题外观，每套包括四件普通部件和一件翼装胸甲。</p>
+</div>
+<div class="page-columns">
+<div class="article">
+<div class="toc"><input class="toc-toggle" type="checkbox" id="toc-recipes-armor" checked><label class="toc-head" for="toc-recipes-armor">目录 <span class="toc-toggle-label"><span class="toc-show">[显示]</span><span class="toc-hide">[隐藏]</span></span></label><ol><li><a href="#recipes-armor-使用说明">制作</a></li><li><a href="#recipes-armor-recipe-armor-mark_6_boots">马克六型靴子</a></li><li><a href="#recipes-armor-recipe-armor-mark_6_chestplate">马克六型胸甲</a></li><li><a href="#recipes-armor-recipe-armor-mark_6_helmet">马克六型头盔</a></li><li><a href="#recipes-armor-recipe-armor-mark_6_leggings">马克六型护腿</a></li><li><a href="#recipes-armor-recipe-armor-mark_6_winged">马克六型胸甲 · 翼装</a></li><li><a href="#recipes-armor-recipe-armor-nano_boots">纳米靴子</a></li><li><a href="#recipes-armor-recipe-armor-nano_chestplate">纳米胸甲</a></li><li><a href="#recipes-armor-recipe-armor-nano_helmet">纳米头盔</a></li><li><a href="#recipes-armor-recipe-armor-nano_leggings">纳米护腿</a></li><li><a href="#recipes-armor-recipe-armor-nano_winged">纳米胸甲 · 翼装</a></li><li><a href="#recipes-armor-recipe-armor-quantum_boots">量子靴子</a></li><li><a href="#recipes-armor-recipe-armor-quantum_chestplate">量子胸甲</a></li><li><a href="#recipes-armor-recipe-armor-quantum_helmet">量子头盔</a></li><li><a href="#recipes-armor-recipe-armor-quantum_leggings">量子护腿</a></li><li><a href="#recipes-armor-recipe-armor-quantum_winged">量子胸甲 · 翼装</a></li></ol></div>
+<section class="wiki-section" id="recipes-armor-使用说明">
+<h2>制作</h2>
+<p>普通部件由下界合金装备与主题材料无序合成；翼装胸甲在锻造台制作，槽位见各配方。</p>
+<p>表中数量均为单次制作所需。服务端加载世界时启用内置配方，外观通过<a class="wikilink" href="resourcepack.html#resourcepack">资源包</a>显示。</p>
+</section>
+<section class="wiki-section" id="recipes-armor-recipe-armor-mark_6_boots">
+<h2>马克六型靴子</h2>
+<p>产物：马克六型靴子 × 1。</p>
+<figure class="recipe-figure"><div class="recipe-layout transmute-layout"><div class="slot-group"><div class="item-slot" title="下界合金靴子"><img class="item-icon" src="assets/images/icons/minecraft-netherite_boots.png" alt="下界合金靴子" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><div class="slot-group"><div class="item-slot" title="铁锭"><img class="item-icon" src="assets/images/icons/minecraft-iron_ingot.png" alt="铁锭" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><span class="recipe-arrow" aria-hidden="true">→</span><div class="slot-group"><div class="item-slot" title="马克六型靴子"><img class="item-icon" src="assets/images/icons/model-contribution-armor-mark_6_boots.png" alt="马克六型靴子" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">产物</span></div></div><figcaption>无序合成 · 马克六型靴子</figcaption></figure>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">无序合成材料</th><th scope="col">数量</th></tr></thead>
+<tbody>
+<tr><td>下界合金靴子</td><td>1</td></tr>
+<tr><td>铁锭</td><td>1</td></tr>
+</tbody>
+</table></div>
+<p>把装备与主题材料放入任意两个合成格，取出结果。转化继承基底数据，并设置对应的主题外观。</p>
+<p>普通主题部件改变名称和外观，战斗性能沿用基底，已有滑翔能力保留。可见翅膀使用本套翼装胸甲配方。</p>
+<details class="source-details"><summary>结果属性与组件</summary><pre class="code" data-language="json"><code>{
+  &quot;minecraft:item_name&quot;: {
+    &quot;text&quot;: &quot;Mark 6靴子&quot;
+  },
+  &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+  &quot;minecraft:item_model&quot;: &quot;contribution:armor/mark_6_boots&quot;,
+  &quot;minecraft:equippable&quot;: {
+    &quot;slot&quot;: &quot;feet&quot;,
+    &quot;asset_id&quot;: &quot;contribution:armor/mark_6&quot;,
+    &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+  }
+}</code></pre></details>
+<details class="source-details"><summary>配方数据</summary><p>配方标识符：<code>contribution:items/armor/mark_6_boots</code>；产物物品标识符：<code>minecraft:netherite_boots</code>。结果组件在继承基底数据后应用。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;type&quot;: &quot;minecraft:crafting_transmute&quot;,
+  &quot;category&quot;: &quot;equipment&quot;,
+  &quot;input&quot;: &quot;minecraft:netherite_boots&quot;,
+  &quot;material&quot;: &quot;minecraft:iron_ingot&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;minecraft:netherite_boots&quot;,
+    &quot;components&quot;: {
+      &quot;minecraft:item_name&quot;: {
+        &quot;text&quot;: &quot;Mark 6靴子&quot;
+      },
+      &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+      &quot;minecraft:item_model&quot;: &quot;contribution:armor/mark_6_boots&quot;,
+      &quot;minecraft:equippable&quot;: {
+        &quot;slot&quot;: &quot;feet&quot;,
+        &quot;asset_id&quot;: &quot;contribution:armor/mark_6&quot;,
+        &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+      }
+    }
+  }
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="recipes-armor-recipe-armor-mark_6_chestplate">
+<h2>马克六型胸甲</h2>
+<p>产物：马克六型胸甲 × 1。</p>
+<figure class="recipe-figure"><div class="recipe-layout transmute-layout"><div class="slot-group"><div class="item-slot" title="下界合金胸甲"><img class="item-icon" src="assets/images/icons/minecraft-netherite_chestplate.png" alt="下界合金胸甲" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><div class="slot-group"><div class="item-slot" title="铁锭"><img class="item-icon" src="assets/images/icons/minecraft-iron_ingot.png" alt="铁锭" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><span class="recipe-arrow" aria-hidden="true">→</span><div class="slot-group"><div class="item-slot" title="马克六型胸甲"><img class="item-icon" src="assets/images/icons/model-contribution-armor-mark_6_chestplate.png" alt="马克六型胸甲" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">产物</span></div></div><figcaption>无序合成 · 马克六型胸甲</figcaption></figure>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">无序合成材料</th><th scope="col">数量</th></tr></thead>
+<tbody>
+<tr><td>下界合金胸甲</td><td>1</td></tr>
+<tr><td>铁锭</td><td>1</td></tr>
+</tbody>
+</table></div>
+<p>把装备与主题材料放入任意两个合成格，取出结果。转化继承基底数据，并设置对应的主题外观。</p>
+<p>普通主题部件改变名称和外观，战斗性能沿用基底，已有滑翔能力保留。可见翅膀使用本套翼装胸甲配方。</p>
+<details class="source-details"><summary>结果属性与组件</summary><pre class="code" data-language="json"><code>{
+  &quot;minecraft:item_name&quot;: {
+    &quot;text&quot;: &quot;Mark 6胸甲&quot;
+  },
+  &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+  &quot;minecraft:item_model&quot;: &quot;contribution:armor/mark_6_chestplate&quot;,
+  &quot;minecraft:equippable&quot;: {
+    &quot;slot&quot;: &quot;chest&quot;,
+    &quot;asset_id&quot;: &quot;contribution:armor/mark_6&quot;,
+    &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+  }
+}</code></pre></details>
+<details class="source-details"><summary>配方数据</summary><p>配方标识符：<code>contribution:items/armor/mark_6_chestplate</code>；产物物品标识符：<code>minecraft:netherite_chestplate</code>。结果组件在继承基底数据后应用。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;type&quot;: &quot;minecraft:crafting_transmute&quot;,
+  &quot;category&quot;: &quot;equipment&quot;,
+  &quot;input&quot;: &quot;minecraft:netherite_chestplate&quot;,
+  &quot;material&quot;: &quot;minecraft:iron_ingot&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;minecraft:netherite_chestplate&quot;,
+    &quot;components&quot;: {
+      &quot;minecraft:item_name&quot;: {
+        &quot;text&quot;: &quot;Mark 6胸甲&quot;
+      },
+      &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+      &quot;minecraft:item_model&quot;: &quot;contribution:armor/mark_6_chestplate&quot;,
+      &quot;minecraft:equippable&quot;: {
+        &quot;slot&quot;: &quot;chest&quot;,
+        &quot;asset_id&quot;: &quot;contribution:armor/mark_6&quot;,
+        &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+      }
+    }
+  }
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="recipes-armor-recipe-armor-mark_6_helmet">
+<h2>马克六型头盔</h2>
+<p>产物：马克六型头盔 × 1。</p>
+<figure class="recipe-figure"><div class="recipe-layout transmute-layout"><div class="slot-group"><div class="item-slot" title="下界合金头盔"><img class="item-icon" src="assets/images/icons/minecraft-netherite_helmet.png" alt="下界合金头盔" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><div class="slot-group"><div class="item-slot" title="铁锭"><img class="item-icon" src="assets/images/icons/minecraft-iron_ingot.png" alt="铁锭" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><span class="recipe-arrow" aria-hidden="true">→</span><div class="slot-group"><div class="item-slot" title="马克六型头盔"><img class="item-icon" src="assets/images/icons/model-contribution-armor-mark_6_helmet.png" alt="马克六型头盔" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">产物</span></div></div><figcaption>无序合成 · 马克六型头盔</figcaption></figure>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">无序合成材料</th><th scope="col">数量</th></tr></thead>
+<tbody>
+<tr><td>下界合金头盔</td><td>1</td></tr>
+<tr><td>铁锭</td><td>1</td></tr>
+</tbody>
+</table></div>
+<p>把装备与主题材料放入任意两个合成格，取出结果。转化继承基底数据，并设置对应的主题外观。</p>
+<p>普通主题部件改变名称和外观，战斗性能沿用基底，已有滑翔能力保留。可见翅膀使用本套翼装胸甲配方。</p>
+<details class="source-details"><summary>结果属性与组件</summary><pre class="code" data-language="json"><code>{
+  &quot;minecraft:item_name&quot;: {
+    &quot;text&quot;: &quot;Mark 6头盔&quot;
+  },
+  &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+  &quot;minecraft:item_model&quot;: &quot;contribution:armor/mark_6_helmet&quot;,
+  &quot;minecraft:equippable&quot;: {
+    &quot;slot&quot;: &quot;head&quot;,
+    &quot;asset_id&quot;: &quot;contribution:armor/mark_6&quot;,
+    &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+  }
+}</code></pre></details>
+<details class="source-details"><summary>配方数据</summary><p>配方标识符：<code>contribution:items/armor/mark_6_helmet</code>；产物物品标识符：<code>minecraft:netherite_helmet</code>。结果组件在继承基底数据后应用。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;type&quot;: &quot;minecraft:crafting_transmute&quot;,
+  &quot;category&quot;: &quot;equipment&quot;,
+  &quot;input&quot;: &quot;minecraft:netherite_helmet&quot;,
+  &quot;material&quot;: &quot;minecraft:iron_ingot&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;minecraft:netherite_helmet&quot;,
+    &quot;components&quot;: {
+      &quot;minecraft:item_name&quot;: {
+        &quot;text&quot;: &quot;Mark 6头盔&quot;
+      },
+      &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+      &quot;minecraft:item_model&quot;: &quot;contribution:armor/mark_6_helmet&quot;,
+      &quot;minecraft:equippable&quot;: {
+        &quot;slot&quot;: &quot;head&quot;,
+        &quot;asset_id&quot;: &quot;contribution:armor/mark_6&quot;,
+        &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+      }
+    }
+  }
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="recipes-armor-recipe-armor-mark_6_leggings">
+<h2>马克六型护腿</h2>
+<p>产物：马克六型护腿 × 1。</p>
+<figure class="recipe-figure"><div class="recipe-layout transmute-layout"><div class="slot-group"><div class="item-slot" title="下界合金护腿"><img class="item-icon" src="assets/images/icons/minecraft-netherite_leggings.png" alt="下界合金护腿" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><div class="slot-group"><div class="item-slot" title="铁锭"><img class="item-icon" src="assets/images/icons/minecraft-iron_ingot.png" alt="铁锭" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><span class="recipe-arrow" aria-hidden="true">→</span><div class="slot-group"><div class="item-slot" title="马克六型护腿"><img class="item-icon" src="assets/images/icons/model-contribution-armor-mark_6_leggings.png" alt="马克六型护腿" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">产物</span></div></div><figcaption>无序合成 · 马克六型护腿</figcaption></figure>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">无序合成材料</th><th scope="col">数量</th></tr></thead>
+<tbody>
+<tr><td>下界合金护腿</td><td>1</td></tr>
+<tr><td>铁锭</td><td>1</td></tr>
+</tbody>
+</table></div>
+<p>把装备与主题材料放入任意两个合成格，取出结果。转化继承基底数据，并设置对应的主题外观。</p>
+<p>普通主题部件改变名称和外观，战斗性能沿用基底，已有滑翔能力保留。可见翅膀使用本套翼装胸甲配方。</p>
+<details class="source-details"><summary>结果属性与组件</summary><pre class="code" data-language="json"><code>{
+  &quot;minecraft:item_name&quot;: {
+    &quot;text&quot;: &quot;Mark 6护腿&quot;
+  },
+  &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+  &quot;minecraft:item_model&quot;: &quot;contribution:armor/mark_6_leggings&quot;,
+  &quot;minecraft:equippable&quot;: {
+    &quot;slot&quot;: &quot;legs&quot;,
+    &quot;asset_id&quot;: &quot;contribution:armor/mark_6&quot;,
+    &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+  }
+}</code></pre></details>
+<details class="source-details"><summary>配方数据</summary><p>配方标识符：<code>contribution:items/armor/mark_6_leggings</code>；产物物品标识符：<code>minecraft:netherite_leggings</code>。结果组件在继承基底数据后应用。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;type&quot;: &quot;minecraft:crafting_transmute&quot;,
+  &quot;category&quot;: &quot;equipment&quot;,
+  &quot;input&quot;: &quot;minecraft:netherite_leggings&quot;,
+  &quot;material&quot;: &quot;minecraft:iron_ingot&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;minecraft:netherite_leggings&quot;,
+    &quot;components&quot;: {
+      &quot;minecraft:item_name&quot;: {
+        &quot;text&quot;: &quot;Mark 6护腿&quot;
+      },
+      &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+      &quot;minecraft:item_model&quot;: &quot;contribution:armor/mark_6_leggings&quot;,
+      &quot;minecraft:equippable&quot;: {
+        &quot;slot&quot;: &quot;legs&quot;,
+        &quot;asset_id&quot;: &quot;contribution:armor/mark_6&quot;,
+        &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+      }
+    }
+  }
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="recipes-armor-recipe-armor-mark_6_winged">
+<h2>马克六型胸甲 · 翼装</h2>
+<p>产物：马克六型胸甲 × 1。</p>
+<figure class="recipe-figure"><div class="recipe-layout smithing-layout"><div class="slot-group"><div class="item-slot" title="铁锭"><img class="item-icon" src="assets/images/icons/minecraft-iron_ingot.png" alt="铁锭" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">模板</span></div><div class="slot-group"><div class="item-slot" title="下界合金胸甲"><img class="item-icon" src="assets/images/icons/minecraft-netherite_chestplate.png" alt="下界合金胸甲" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">基底</span></div><div class="slot-group"><div class="item-slot" title="鞘翅"><img class="item-icon" src="assets/images/icons/minecraft-elytra.png" alt="鞘翅" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">附加</span></div><span class="recipe-arrow" aria-hidden="true">→</span><div class="slot-group"><div class="item-slot" title="马克六型胸甲"><img class="item-icon" src="assets/images/icons/model-contribution-armor-mark_6_chestplate.png" alt="马克六型胸甲" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">产物</span></div></div><figcaption>锻造台 · 马克六型胸甲</figcaption></figure>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">锻造槽</th><th scope="col">材料</th><th scope="col">数量</th></tr></thead>
+<tbody>
+<tr><td>左：模板</td><td>铁锭</td><td>1</td></tr>
+<tr><td>中：基底</td><td>下界合金胸甲</td><td>1</td></tr>
+<tr><td>右：附加材料</td><td>鞘翅</td><td>1</td></tr>
+</tbody>
+</table></div>
+<p>取走结果时，各槽消耗一件材料，包括模板。结果继承基底数据，再应用配方指定的属性与外观。</p>
+<p>翼装胸甲具备滑翔能力，主题外观同时显示装甲和翅膀。</p>
+<details class="source-details"><summary>结果属性与组件</summary><pre class="code" data-language="json"><code>{
+  &quot;minecraft:item_name&quot;: {
+    &quot;text&quot;: &quot;Mark 6胸甲&quot;
+  },
+  &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+  &quot;minecraft:item_model&quot;: &quot;contribution:armor/mark_6_chestplate&quot;,
+  &quot;minecraft:equippable&quot;: {
+    &quot;slot&quot;: &quot;chest&quot;,
+    &quot;asset_id&quot;: &quot;contribution:armor/mark_6_winged&quot;,
+    &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+  },
+  &quot;minecraft:glider&quot;: {},
+  &quot;minecraft:lore&quot;: [
+    {
+      &quot;text&quot;: &quot;添翼&quot;,
+      &quot;color&quot;: &quot;gray&quot;,
+      &quot;italic&quot;: false
+    }
+  ]
+}</code></pre></details>
+<details class="source-details"><summary>配方数据</summary><p>配方标识符：<code>contribution:items/armor/mark_6_winged</code>；产物物品标识符：<code>minecraft:netherite_chestplate</code>。结果组件在继承基底数据后应用。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;type&quot;: &quot;minecraft:smithing_transform&quot;,
+  &quot;template&quot;: &quot;minecraft:iron_ingot&quot;,
+  &quot;base&quot;: &quot;minecraft:netherite_chestplate&quot;,
+  &quot;addition&quot;: &quot;minecraft:elytra&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;minecraft:netherite_chestplate&quot;,
+    &quot;components&quot;: {
+      &quot;minecraft:item_name&quot;: {
+        &quot;text&quot;: &quot;Mark 6胸甲&quot;
+      },
+      &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+      &quot;minecraft:item_model&quot;: &quot;contribution:armor/mark_6_chestplate&quot;,
+      &quot;minecraft:equippable&quot;: {
+        &quot;slot&quot;: &quot;chest&quot;,
+        &quot;asset_id&quot;: &quot;contribution:armor/mark_6_winged&quot;,
+        &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+      },
+      &quot;minecraft:glider&quot;: {},
+      &quot;minecraft:lore&quot;: [
+        {
+          &quot;text&quot;: &quot;添翼&quot;,
+          &quot;color&quot;: &quot;gray&quot;,
+          &quot;italic&quot;: false
+        }
+      ]
+    }
+  }
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="recipes-armor-recipe-armor-nano_boots">
+<h2>纳米靴子</h2>
+<p>产物：纳米靴子 × 1。</p>
+<figure class="recipe-figure"><div class="recipe-layout transmute-layout"><div class="slot-group"><div class="item-slot" title="下界合金靴子"><img class="item-icon" src="assets/images/icons/minecraft-netherite_boots.png" alt="下界合金靴子" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><div class="slot-group"><div class="item-slot" title="恶魂之泪"><img class="item-icon" src="assets/images/icons/minecraft-ghast_tear.png" alt="恶魂之泪" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><span class="recipe-arrow" aria-hidden="true">→</span><div class="slot-group"><div class="item-slot" title="纳米靴子"><img class="item-icon" src="assets/images/icons/model-contribution-armor-nano_boots.png" alt="纳米靴子" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">产物</span></div></div><figcaption>无序合成 · 纳米靴子</figcaption></figure>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">无序合成材料</th><th scope="col">数量</th></tr></thead>
+<tbody>
+<tr><td>下界合金靴子</td><td>1</td></tr>
+<tr><td>恶魂之泪</td><td>1</td></tr>
+</tbody>
+</table></div>
+<p>把装备与主题材料放入任意两个合成格，取出结果。转化继承基底数据，并设置对应的主题外观。</p>
+<p>普通主题部件改变名称和外观，战斗性能沿用基底，已有滑翔能力保留。可见翅膀使用本套翼装胸甲配方。</p>
+<details class="source-details"><summary>结果属性与组件</summary><pre class="code" data-language="json"><code>{
+  &quot;minecraft:item_name&quot;: {
+    &quot;text&quot;: &quot;纳米靴子&quot;
+  },
+  &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+  &quot;minecraft:item_model&quot;: &quot;contribution:armor/nano_boots&quot;,
+  &quot;minecraft:equippable&quot;: {
+    &quot;slot&quot;: &quot;feet&quot;,
+    &quot;asset_id&quot;: &quot;contribution:armor/nano&quot;,
+    &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+  }
+}</code></pre></details>
+<details class="source-details"><summary>配方数据</summary><p>配方标识符：<code>contribution:items/armor/nano_boots</code>；产物物品标识符：<code>minecraft:netherite_boots</code>。结果组件在继承基底数据后应用。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;type&quot;: &quot;minecraft:crafting_transmute&quot;,
+  &quot;category&quot;: &quot;equipment&quot;,
+  &quot;input&quot;: &quot;minecraft:netherite_boots&quot;,
+  &quot;material&quot;: &quot;minecraft:ghast_tear&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;minecraft:netherite_boots&quot;,
+    &quot;components&quot;: {
+      &quot;minecraft:item_name&quot;: {
+        &quot;text&quot;: &quot;纳米靴子&quot;
+      },
+      &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+      &quot;minecraft:item_model&quot;: &quot;contribution:armor/nano_boots&quot;,
+      &quot;minecraft:equippable&quot;: {
+        &quot;slot&quot;: &quot;feet&quot;,
+        &quot;asset_id&quot;: &quot;contribution:armor/nano&quot;,
+        &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+      }
+    }
+  }
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="recipes-armor-recipe-armor-nano_chestplate">
+<h2>纳米胸甲</h2>
+<p>产物：纳米胸甲 × 1。</p>
+<figure class="recipe-figure"><div class="recipe-layout transmute-layout"><div class="slot-group"><div class="item-slot" title="下界合金胸甲"><img class="item-icon" src="assets/images/icons/minecraft-netherite_chestplate.png" alt="下界合金胸甲" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><div class="slot-group"><div class="item-slot" title="恶魂之泪"><img class="item-icon" src="assets/images/icons/minecraft-ghast_tear.png" alt="恶魂之泪" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><span class="recipe-arrow" aria-hidden="true">→</span><div class="slot-group"><div class="item-slot" title="纳米胸甲"><img class="item-icon" src="assets/images/icons/model-contribution-armor-nano_chestplate.png" alt="纳米胸甲" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">产物</span></div></div><figcaption>无序合成 · 纳米胸甲</figcaption></figure>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">无序合成材料</th><th scope="col">数量</th></tr></thead>
+<tbody>
+<tr><td>下界合金胸甲</td><td>1</td></tr>
+<tr><td>恶魂之泪</td><td>1</td></tr>
+</tbody>
+</table></div>
+<p>把装备与主题材料放入任意两个合成格，取出结果。转化继承基底数据，并设置对应的主题外观。</p>
+<p>普通主题部件改变名称和外观，战斗性能沿用基底，已有滑翔能力保留。可见翅膀使用本套翼装胸甲配方。</p>
+<details class="source-details"><summary>结果属性与组件</summary><pre class="code" data-language="json"><code>{
+  &quot;minecraft:item_name&quot;: {
+    &quot;text&quot;: &quot;纳米胸甲&quot;
+  },
+  &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+  &quot;minecraft:item_model&quot;: &quot;contribution:armor/nano_chestplate&quot;,
+  &quot;minecraft:equippable&quot;: {
+    &quot;slot&quot;: &quot;chest&quot;,
+    &quot;asset_id&quot;: &quot;contribution:armor/nano&quot;,
+    &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+  }
+}</code></pre></details>
+<details class="source-details"><summary>配方数据</summary><p>配方标识符：<code>contribution:items/armor/nano_chestplate</code>；产物物品标识符：<code>minecraft:netherite_chestplate</code>。结果组件在继承基底数据后应用。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;type&quot;: &quot;minecraft:crafting_transmute&quot;,
+  &quot;category&quot;: &quot;equipment&quot;,
+  &quot;input&quot;: &quot;minecraft:netherite_chestplate&quot;,
+  &quot;material&quot;: &quot;minecraft:ghast_tear&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;minecraft:netherite_chestplate&quot;,
+    &quot;components&quot;: {
+      &quot;minecraft:item_name&quot;: {
+        &quot;text&quot;: &quot;纳米胸甲&quot;
+      },
+      &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+      &quot;minecraft:item_model&quot;: &quot;contribution:armor/nano_chestplate&quot;,
+      &quot;minecraft:equippable&quot;: {
+        &quot;slot&quot;: &quot;chest&quot;,
+        &quot;asset_id&quot;: &quot;contribution:armor/nano&quot;,
+        &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+      }
+    }
+  }
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="recipes-armor-recipe-armor-nano_helmet">
+<h2>纳米头盔</h2>
+<p>产物：纳米头盔 × 1。</p>
+<figure class="recipe-figure"><div class="recipe-layout transmute-layout"><div class="slot-group"><div class="item-slot" title="下界合金头盔"><img class="item-icon" src="assets/images/icons/minecraft-netherite_helmet.png" alt="下界合金头盔" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><div class="slot-group"><div class="item-slot" title="恶魂之泪"><img class="item-icon" src="assets/images/icons/minecraft-ghast_tear.png" alt="恶魂之泪" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><span class="recipe-arrow" aria-hidden="true">→</span><div class="slot-group"><div class="item-slot" title="纳米头盔"><img class="item-icon" src="assets/images/icons/model-contribution-armor-nano_helmet.png" alt="纳米头盔" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">产物</span></div></div><figcaption>无序合成 · 纳米头盔</figcaption></figure>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">无序合成材料</th><th scope="col">数量</th></tr></thead>
+<tbody>
+<tr><td>下界合金头盔</td><td>1</td></tr>
+<tr><td>恶魂之泪</td><td>1</td></tr>
+</tbody>
+</table></div>
+<p>把装备与主题材料放入任意两个合成格，取出结果。转化继承基底数据，并设置对应的主题外观。</p>
+<p>普通主题部件改变名称和外观，战斗性能沿用基底，已有滑翔能力保留。可见翅膀使用本套翼装胸甲配方。</p>
+<details class="source-details"><summary>结果属性与组件</summary><pre class="code" data-language="json"><code>{
+  &quot;minecraft:item_name&quot;: {
+    &quot;text&quot;: &quot;纳米头盔&quot;
+  },
+  &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+  &quot;minecraft:item_model&quot;: &quot;contribution:armor/nano_helmet&quot;,
+  &quot;minecraft:equippable&quot;: {
+    &quot;slot&quot;: &quot;head&quot;,
+    &quot;asset_id&quot;: &quot;contribution:armor/nano&quot;,
+    &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+  }
+}</code></pre></details>
+<details class="source-details"><summary>配方数据</summary><p>配方标识符：<code>contribution:items/armor/nano_helmet</code>；产物物品标识符：<code>minecraft:netherite_helmet</code>。结果组件在继承基底数据后应用。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;type&quot;: &quot;minecraft:crafting_transmute&quot;,
+  &quot;category&quot;: &quot;equipment&quot;,
+  &quot;input&quot;: &quot;minecraft:netherite_helmet&quot;,
+  &quot;material&quot;: &quot;minecraft:ghast_tear&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;minecraft:netherite_helmet&quot;,
+    &quot;components&quot;: {
+      &quot;minecraft:item_name&quot;: {
+        &quot;text&quot;: &quot;纳米头盔&quot;
+      },
+      &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+      &quot;minecraft:item_model&quot;: &quot;contribution:armor/nano_helmet&quot;,
+      &quot;minecraft:equippable&quot;: {
+        &quot;slot&quot;: &quot;head&quot;,
+        &quot;asset_id&quot;: &quot;contribution:armor/nano&quot;,
+        &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+      }
+    }
+  }
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="recipes-armor-recipe-armor-nano_leggings">
+<h2>纳米护腿</h2>
+<p>产物：纳米护腿 × 1。</p>
+<figure class="recipe-figure"><div class="recipe-layout transmute-layout"><div class="slot-group"><div class="item-slot" title="下界合金护腿"><img class="item-icon" src="assets/images/icons/minecraft-netherite_leggings.png" alt="下界合金护腿" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><div class="slot-group"><div class="item-slot" title="恶魂之泪"><img class="item-icon" src="assets/images/icons/minecraft-ghast_tear.png" alt="恶魂之泪" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><span class="recipe-arrow" aria-hidden="true">→</span><div class="slot-group"><div class="item-slot" title="纳米护腿"><img class="item-icon" src="assets/images/icons/model-contribution-armor-nano_leggings.png" alt="纳米护腿" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">产物</span></div></div><figcaption>无序合成 · 纳米护腿</figcaption></figure>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">无序合成材料</th><th scope="col">数量</th></tr></thead>
+<tbody>
+<tr><td>下界合金护腿</td><td>1</td></tr>
+<tr><td>恶魂之泪</td><td>1</td></tr>
+</tbody>
+</table></div>
+<p>把装备与主题材料放入任意两个合成格，取出结果。转化继承基底数据，并设置对应的主题外观。</p>
+<p>普通主题部件改变名称和外观，战斗性能沿用基底，已有滑翔能力保留。可见翅膀使用本套翼装胸甲配方。</p>
+<details class="source-details"><summary>结果属性与组件</summary><pre class="code" data-language="json"><code>{
+  &quot;minecraft:item_name&quot;: {
+    &quot;text&quot;: &quot;纳米护腿&quot;
+  },
+  &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+  &quot;minecraft:item_model&quot;: &quot;contribution:armor/nano_leggings&quot;,
+  &quot;minecraft:equippable&quot;: {
+    &quot;slot&quot;: &quot;legs&quot;,
+    &quot;asset_id&quot;: &quot;contribution:armor/nano&quot;,
+    &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+  }
+}</code></pre></details>
+<details class="source-details"><summary>配方数据</summary><p>配方标识符：<code>contribution:items/armor/nano_leggings</code>；产物物品标识符：<code>minecraft:netherite_leggings</code>。结果组件在继承基底数据后应用。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;type&quot;: &quot;minecraft:crafting_transmute&quot;,
+  &quot;category&quot;: &quot;equipment&quot;,
+  &quot;input&quot;: &quot;minecraft:netherite_leggings&quot;,
+  &quot;material&quot;: &quot;minecraft:ghast_tear&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;minecraft:netherite_leggings&quot;,
+    &quot;components&quot;: {
+      &quot;minecraft:item_name&quot;: {
+        &quot;text&quot;: &quot;纳米护腿&quot;
+      },
+      &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+      &quot;minecraft:item_model&quot;: &quot;contribution:armor/nano_leggings&quot;,
+      &quot;minecraft:equippable&quot;: {
+        &quot;slot&quot;: &quot;legs&quot;,
+        &quot;asset_id&quot;: &quot;contribution:armor/nano&quot;,
+        &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+      }
+    }
+  }
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="recipes-armor-recipe-armor-nano_winged">
+<h2>纳米胸甲 · 翼装</h2>
+<p>产物：纳米胸甲 × 1。</p>
+<figure class="recipe-figure"><div class="recipe-layout smithing-layout"><div class="slot-group"><div class="item-slot" title="恶魂之泪"><img class="item-icon" src="assets/images/icons/minecraft-ghast_tear.png" alt="恶魂之泪" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">模板</span></div><div class="slot-group"><div class="item-slot" title="下界合金胸甲"><img class="item-icon" src="assets/images/icons/minecraft-netherite_chestplate.png" alt="下界合金胸甲" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">基底</span></div><div class="slot-group"><div class="item-slot" title="鞘翅"><img class="item-icon" src="assets/images/icons/minecraft-elytra.png" alt="鞘翅" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">附加</span></div><span class="recipe-arrow" aria-hidden="true">→</span><div class="slot-group"><div class="item-slot" title="纳米胸甲"><img class="item-icon" src="assets/images/icons/model-contribution-armor-nano_chestplate.png" alt="纳米胸甲" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">产物</span></div></div><figcaption>锻造台 · 纳米胸甲</figcaption></figure>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">锻造槽</th><th scope="col">材料</th><th scope="col">数量</th></tr></thead>
+<tbody>
+<tr><td>左：模板</td><td>恶魂之泪</td><td>1</td></tr>
+<tr><td>中：基底</td><td>下界合金胸甲</td><td>1</td></tr>
+<tr><td>右：附加材料</td><td>鞘翅</td><td>1</td></tr>
+</tbody>
+</table></div>
+<p>取走结果时，各槽消耗一件材料，包括模板。结果继承基底数据，再应用配方指定的属性与外观。</p>
+<p>翼装胸甲具备滑翔能力，主题外观同时显示装甲和翅膀。</p>
+<details class="source-details"><summary>结果属性与组件</summary><pre class="code" data-language="json"><code>{
+  &quot;minecraft:item_name&quot;: {
+    &quot;text&quot;: &quot;纳米胸甲&quot;
+  },
+  &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+  &quot;minecraft:item_model&quot;: &quot;contribution:armor/nano_chestplate&quot;,
+  &quot;minecraft:equippable&quot;: {
+    &quot;slot&quot;: &quot;chest&quot;,
+    &quot;asset_id&quot;: &quot;contribution:armor/nano_winged&quot;,
+    &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+  },
+  &quot;minecraft:glider&quot;: {},
+  &quot;minecraft:lore&quot;: [
+    {
+      &quot;text&quot;: &quot;添翼&quot;,
+      &quot;color&quot;: &quot;gray&quot;,
+      &quot;italic&quot;: false
+    }
+  ]
+}</code></pre></details>
+<details class="source-details"><summary>配方数据</summary><p>配方标识符：<code>contribution:items/armor/nano_winged</code>；产物物品标识符：<code>minecraft:netherite_chestplate</code>。结果组件在继承基底数据后应用。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;type&quot;: &quot;minecraft:smithing_transform&quot;,
+  &quot;template&quot;: &quot;minecraft:ghast_tear&quot;,
+  &quot;base&quot;: &quot;minecraft:netherite_chestplate&quot;,
+  &quot;addition&quot;: &quot;minecraft:elytra&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;minecraft:netherite_chestplate&quot;,
+    &quot;components&quot;: {
+      &quot;minecraft:item_name&quot;: {
+        &quot;text&quot;: &quot;纳米胸甲&quot;
+      },
+      &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+      &quot;minecraft:item_model&quot;: &quot;contribution:armor/nano_chestplate&quot;,
+      &quot;minecraft:equippable&quot;: {
+        &quot;slot&quot;: &quot;chest&quot;,
+        &quot;asset_id&quot;: &quot;contribution:armor/nano_winged&quot;,
+        &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+      },
+      &quot;minecraft:glider&quot;: {},
+      &quot;minecraft:lore&quot;: [
+        {
+          &quot;text&quot;: &quot;添翼&quot;,
+          &quot;color&quot;: &quot;gray&quot;,
+          &quot;italic&quot;: false
+        }
+      ]
+    }
+  }
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="recipes-armor-recipe-armor-quantum_boots">
+<h2>量子靴子</h2>
+<p>产物：量子靴子 × 1。</p>
+<figure class="recipe-figure"><div class="recipe-layout transmute-layout"><div class="slot-group"><div class="item-slot" title="下界合金靴子"><img class="item-icon" src="assets/images/icons/minecraft-netherite_boots.png" alt="下界合金靴子" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><div class="slot-group"><div class="item-slot" title="末影珍珠"><img class="item-icon" src="assets/images/icons/minecraft-ender_pearl.png" alt="末影珍珠" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><span class="recipe-arrow" aria-hidden="true">→</span><div class="slot-group"><div class="item-slot" title="量子靴子"><img class="item-icon" src="assets/images/icons/model-contribution-armor-quantum_boots.png" alt="量子靴子" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">产物</span></div></div><figcaption>无序合成 · 量子靴子</figcaption></figure>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">无序合成材料</th><th scope="col">数量</th></tr></thead>
+<tbody>
+<tr><td>下界合金靴子</td><td>1</td></tr>
+<tr><td>末影珍珠</td><td>1</td></tr>
+</tbody>
+</table></div>
+<p>把装备与主题材料放入任意两个合成格，取出结果。转化继承基底数据，并设置对应的主题外观。</p>
+<p>普通主题部件改变名称和外观，战斗性能沿用基底，已有滑翔能力保留。可见翅膀使用本套翼装胸甲配方。</p>
+<details class="source-details"><summary>结果属性与组件</summary><pre class="code" data-language="json"><code>{
+  &quot;minecraft:item_name&quot;: {
+    &quot;text&quot;: &quot;量子靴子&quot;
+  },
+  &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+  &quot;minecraft:item_model&quot;: &quot;contribution:armor/quantum_boots&quot;,
+  &quot;minecraft:equippable&quot;: {
+    &quot;slot&quot;: &quot;feet&quot;,
+    &quot;asset_id&quot;: &quot;contribution:armor/quantum&quot;,
+    &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+  }
+}</code></pre></details>
+<details class="source-details"><summary>配方数据</summary><p>配方标识符：<code>contribution:items/armor/quantum_boots</code>；产物物品标识符：<code>minecraft:netherite_boots</code>。结果组件在继承基底数据后应用。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;type&quot;: &quot;minecraft:crafting_transmute&quot;,
+  &quot;category&quot;: &quot;equipment&quot;,
+  &quot;input&quot;: &quot;minecraft:netherite_boots&quot;,
+  &quot;material&quot;: &quot;minecraft:ender_pearl&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;minecraft:netherite_boots&quot;,
+    &quot;components&quot;: {
+      &quot;minecraft:item_name&quot;: {
+        &quot;text&quot;: &quot;量子靴子&quot;
+      },
+      &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+      &quot;minecraft:item_model&quot;: &quot;contribution:armor/quantum_boots&quot;,
+      &quot;minecraft:equippable&quot;: {
+        &quot;slot&quot;: &quot;feet&quot;,
+        &quot;asset_id&quot;: &quot;contribution:armor/quantum&quot;,
+        &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+      }
+    }
+  }
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="recipes-armor-recipe-armor-quantum_chestplate">
+<h2>量子胸甲</h2>
+<p>产物：量子胸甲 × 1。</p>
+<figure class="recipe-figure"><div class="recipe-layout transmute-layout"><div class="slot-group"><div class="item-slot" title="下界合金胸甲"><img class="item-icon" src="assets/images/icons/minecraft-netherite_chestplate.png" alt="下界合金胸甲" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><div class="slot-group"><div class="item-slot" title="末影珍珠"><img class="item-icon" src="assets/images/icons/minecraft-ender_pearl.png" alt="末影珍珠" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><span class="recipe-arrow" aria-hidden="true">→</span><div class="slot-group"><div class="item-slot" title="量子胸甲"><img class="item-icon" src="assets/images/icons/model-contribution-armor-quantum_chestplate.png" alt="量子胸甲" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">产物</span></div></div><figcaption>无序合成 · 量子胸甲</figcaption></figure>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">无序合成材料</th><th scope="col">数量</th></tr></thead>
+<tbody>
+<tr><td>下界合金胸甲</td><td>1</td></tr>
+<tr><td>末影珍珠</td><td>1</td></tr>
+</tbody>
+</table></div>
+<p>把装备与主题材料放入任意两个合成格，取出结果。转化继承基底数据，并设置对应的主题外观。</p>
+<p>普通主题部件改变名称和外观，战斗性能沿用基底，已有滑翔能力保留。可见翅膀使用本套翼装胸甲配方。</p>
+<details class="source-details"><summary>结果属性与组件</summary><pre class="code" data-language="json"><code>{
+  &quot;minecraft:item_name&quot;: {
+    &quot;text&quot;: &quot;量子胸甲&quot;
+  },
+  &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+  &quot;minecraft:item_model&quot;: &quot;contribution:armor/quantum_chestplate&quot;,
+  &quot;minecraft:equippable&quot;: {
+    &quot;slot&quot;: &quot;chest&quot;,
+    &quot;asset_id&quot;: &quot;contribution:armor/quantum&quot;,
+    &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+  }
+}</code></pre></details>
+<details class="source-details"><summary>配方数据</summary><p>配方标识符：<code>contribution:items/armor/quantum_chestplate</code>；产物物品标识符：<code>minecraft:netherite_chestplate</code>。结果组件在继承基底数据后应用。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;type&quot;: &quot;minecraft:crafting_transmute&quot;,
+  &quot;category&quot;: &quot;equipment&quot;,
+  &quot;input&quot;: &quot;minecraft:netherite_chestplate&quot;,
+  &quot;material&quot;: &quot;minecraft:ender_pearl&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;minecraft:netherite_chestplate&quot;,
+    &quot;components&quot;: {
+      &quot;minecraft:item_name&quot;: {
+        &quot;text&quot;: &quot;量子胸甲&quot;
+      },
+      &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+      &quot;minecraft:item_model&quot;: &quot;contribution:armor/quantum_chestplate&quot;,
+      &quot;minecraft:equippable&quot;: {
+        &quot;slot&quot;: &quot;chest&quot;,
+        &quot;asset_id&quot;: &quot;contribution:armor/quantum&quot;,
+        &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+      }
+    }
+  }
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="recipes-armor-recipe-armor-quantum_helmet">
+<h2>量子头盔</h2>
+<p>产物：量子头盔 × 1。</p>
+<figure class="recipe-figure"><div class="recipe-layout transmute-layout"><div class="slot-group"><div class="item-slot" title="下界合金头盔"><img class="item-icon" src="assets/images/icons/minecraft-netherite_helmet.png" alt="下界合金头盔" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><div class="slot-group"><div class="item-slot" title="末影珍珠"><img class="item-icon" src="assets/images/icons/minecraft-ender_pearl.png" alt="末影珍珠" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><span class="recipe-arrow" aria-hidden="true">→</span><div class="slot-group"><div class="item-slot" title="量子头盔"><img class="item-icon" src="assets/images/icons/model-contribution-armor-quantum_helmet.png" alt="量子头盔" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">产物</span></div></div><figcaption>无序合成 · 量子头盔</figcaption></figure>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">无序合成材料</th><th scope="col">数量</th></tr></thead>
+<tbody>
+<tr><td>下界合金头盔</td><td>1</td></tr>
+<tr><td>末影珍珠</td><td>1</td></tr>
+</tbody>
+</table></div>
+<p>把装备与主题材料放入任意两个合成格，取出结果。转化继承基底数据，并设置对应的主题外观。</p>
+<p>普通主题部件改变名称和外观，战斗性能沿用基底，已有滑翔能力保留。可见翅膀使用本套翼装胸甲配方。</p>
+<details class="source-details"><summary>结果属性与组件</summary><pre class="code" data-language="json"><code>{
+  &quot;minecraft:item_name&quot;: {
+    &quot;text&quot;: &quot;量子头盔&quot;
+  },
+  &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+  &quot;minecraft:item_model&quot;: &quot;contribution:armor/quantum_helmet&quot;,
+  &quot;minecraft:equippable&quot;: {
+    &quot;slot&quot;: &quot;head&quot;,
+    &quot;asset_id&quot;: &quot;contribution:armor/quantum&quot;,
+    &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+  }
+}</code></pre></details>
+<details class="source-details"><summary>配方数据</summary><p>配方标识符：<code>contribution:items/armor/quantum_helmet</code>；产物物品标识符：<code>minecraft:netherite_helmet</code>。结果组件在继承基底数据后应用。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;type&quot;: &quot;minecraft:crafting_transmute&quot;,
+  &quot;category&quot;: &quot;equipment&quot;,
+  &quot;input&quot;: &quot;minecraft:netherite_helmet&quot;,
+  &quot;material&quot;: &quot;minecraft:ender_pearl&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;minecraft:netherite_helmet&quot;,
+    &quot;components&quot;: {
+      &quot;minecraft:item_name&quot;: {
+        &quot;text&quot;: &quot;量子头盔&quot;
+      },
+      &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+      &quot;minecraft:item_model&quot;: &quot;contribution:armor/quantum_helmet&quot;,
+      &quot;minecraft:equippable&quot;: {
+        &quot;slot&quot;: &quot;head&quot;,
+        &quot;asset_id&quot;: &quot;contribution:armor/quantum&quot;,
+        &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+      }
+    }
+  }
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="recipes-armor-recipe-armor-quantum_leggings">
+<h2>量子护腿</h2>
+<p>产物：量子护腿 × 1。</p>
+<figure class="recipe-figure"><div class="recipe-layout transmute-layout"><div class="slot-group"><div class="item-slot" title="下界合金护腿"><img class="item-icon" src="assets/images/icons/minecraft-netherite_leggings.png" alt="下界合金护腿" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><div class="slot-group"><div class="item-slot" title="末影珍珠"><img class="item-icon" src="assets/images/icons/minecraft-ender_pearl.png" alt="末影珍珠" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">材料</span></div><span class="recipe-arrow" aria-hidden="true">→</span><div class="slot-group"><div class="item-slot" title="量子护腿"><img class="item-icon" src="assets/images/icons/model-contribution-armor-quantum_leggings.png" alt="量子护腿" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">产物</span></div></div><figcaption>无序合成 · 量子护腿</figcaption></figure>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">无序合成材料</th><th scope="col">数量</th></tr></thead>
+<tbody>
+<tr><td>下界合金护腿</td><td>1</td></tr>
+<tr><td>末影珍珠</td><td>1</td></tr>
+</tbody>
+</table></div>
+<p>把装备与主题材料放入任意两个合成格，取出结果。转化继承基底数据，并设置对应的主题外观。</p>
+<p>普通主题部件改变名称和外观，战斗性能沿用基底，已有滑翔能力保留。可见翅膀使用本套翼装胸甲配方。</p>
+<details class="source-details"><summary>结果属性与组件</summary><pre class="code" data-language="json"><code>{
+  &quot;minecraft:item_name&quot;: {
+    &quot;text&quot;: &quot;量子护腿&quot;
+  },
+  &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+  &quot;minecraft:item_model&quot;: &quot;contribution:armor/quantum_leggings&quot;,
+  &quot;minecraft:equippable&quot;: {
+    &quot;slot&quot;: &quot;legs&quot;,
+    &quot;asset_id&quot;: &quot;contribution:armor/quantum&quot;,
+    &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+  }
+}</code></pre></details>
+<details class="source-details"><summary>配方数据</summary><p>配方标识符：<code>contribution:items/armor/quantum_leggings</code>；产物物品标识符：<code>minecraft:netherite_leggings</code>。结果组件在继承基底数据后应用。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;type&quot;: &quot;minecraft:crafting_transmute&quot;,
+  &quot;category&quot;: &quot;equipment&quot;,
+  &quot;input&quot;: &quot;minecraft:netherite_leggings&quot;,
+  &quot;material&quot;: &quot;minecraft:ender_pearl&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;minecraft:netherite_leggings&quot;,
+    &quot;components&quot;: {
+      &quot;minecraft:item_name&quot;: {
+        &quot;text&quot;: &quot;量子护腿&quot;
+      },
+      &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+      &quot;minecraft:item_model&quot;: &quot;contribution:armor/quantum_leggings&quot;,
+      &quot;minecraft:equippable&quot;: {
+        &quot;slot&quot;: &quot;legs&quot;,
+        &quot;asset_id&quot;: &quot;contribution:armor/quantum&quot;,
+        &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+      }
+    }
+  }
+}</code></pre></details>
+</section>
+<section class="wiki-section" id="recipes-armor-recipe-armor-quantum_winged">
+<h2>量子胸甲 · 翼装</h2>
+<p>产物：量子胸甲 × 1。</p>
+<figure class="recipe-figure"><div class="recipe-layout smithing-layout"><div class="slot-group"><div class="item-slot" title="末影珍珠"><img class="item-icon" src="assets/images/icons/minecraft-ender_pearl.png" alt="末影珍珠" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">模板</span></div><div class="slot-group"><div class="item-slot" title="下界合金胸甲"><img class="item-icon" src="assets/images/icons/minecraft-netherite_chestplate.png" alt="下界合金胸甲" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">基底</span></div><div class="slot-group"><div class="item-slot" title="鞘翅"><img class="item-icon" src="assets/images/icons/minecraft-elytra.png" alt="鞘翅" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">附加</span></div><span class="recipe-arrow" aria-hidden="true">→</span><div class="slot-group"><div class="item-slot" title="量子胸甲"><img class="item-icon" src="assets/images/icons/model-contribution-armor-quantum_chestplate.png" alt="量子胸甲" width="128" height="128" loading="lazy" decoding="async"></div><span class="slot-label">产物</span></div></div><figcaption>锻造台 · 量子胸甲</figcaption></figure>
+<div class="table-wrap"><table class="wikitable">
+<thead><tr><th scope="col">锻造槽</th><th scope="col">材料</th><th scope="col">数量</th></tr></thead>
+<tbody>
+<tr><td>左：模板</td><td>末影珍珠</td><td>1</td></tr>
+<tr><td>中：基底</td><td>下界合金胸甲</td><td>1</td></tr>
+<tr><td>右：附加材料</td><td>鞘翅</td><td>1</td></tr>
+</tbody>
+</table></div>
+<p>取走结果时，各槽消耗一件材料，包括模板。结果继承基底数据，再应用配方指定的属性与外观。</p>
+<p>翼装胸甲具备滑翔能力，主题外观同时显示装甲和翅膀。</p>
+<details class="source-details"><summary>结果属性与组件</summary><pre class="code" data-language="json"><code>{
+  &quot;minecraft:item_name&quot;: {
+    &quot;text&quot;: &quot;量子胸甲&quot;
+  },
+  &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+  &quot;minecraft:item_model&quot;: &quot;contribution:armor/quantum_chestplate&quot;,
+  &quot;minecraft:equippable&quot;: {
+    &quot;slot&quot;: &quot;chest&quot;,
+    &quot;asset_id&quot;: &quot;contribution:armor/quantum_winged&quot;,
+    &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+  },
+  &quot;minecraft:glider&quot;: {},
+  &quot;minecraft:lore&quot;: [
+    {
+      &quot;text&quot;: &quot;添翼&quot;,
+      &quot;color&quot;: &quot;gray&quot;,
+      &quot;italic&quot;: false
+    }
+  ]
+}</code></pre></details>
+<details class="source-details"><summary>配方数据</summary><p>配方标识符：<code>contribution:items/armor/quantum_winged</code>；产物物品标识符：<code>minecraft:netherite_chestplate</code>。结果组件在继承基底数据后应用。</p>
+<pre class="code" data-language="json"><code>{
+  &quot;type&quot;: &quot;minecraft:smithing_transform&quot;,
+  &quot;template&quot;: &quot;minecraft:ender_pearl&quot;,
+  &quot;base&quot;: &quot;minecraft:netherite_chestplate&quot;,
+  &quot;addition&quot;: &quot;minecraft:elytra&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;minecraft:netherite_chestplate&quot;,
+    &quot;components&quot;: {
+      &quot;minecraft:item_name&quot;: {
+        &quot;text&quot;: &quot;量子胸甲&quot;
+      },
+      &quot;minecraft:rarity&quot;: &quot;epic&quot;,
+      &quot;minecraft:item_model&quot;: &quot;contribution:armor/quantum_chestplate&quot;,
+      &quot;minecraft:equippable&quot;: {
+        &quot;slot&quot;: &quot;chest&quot;,
+        &quot;asset_id&quot;: &quot;contribution:armor/quantum_winged&quot;,
+        &quot;equip_sound&quot;: &quot;minecraft:item.armor.equip_netherite&quot;
+      },
+      &quot;minecraft:glider&quot;: {},
+      &quot;minecraft:lore&quot;: [
+        {
+          &quot;text&quot;: &quot;添翼&quot;,
+          &quot;color&quot;: &quot;gray&quot;,
+          &quot;italic&quot;: false
+        }
+      ]
+    }
+  }
+}</code></pre></details>
+</section>
+<div class="page-footer">贡献值模组维基 · 0.2.6 · <a href="documentation.html#documentation">维基维护</a></div>
+</div>
+<aside class="page-info">
+<div class="page-info-inner">
+<div class="page-info-head">条目概要</div>
+<table class="infobox">
+<tr><th>配方</th><td>15 个</td></tr>
+<tr><th>制作</th><td>工作台或锻造台</td></tr>
+
+</table>
+</div>
+<table class="navbox"><tbody>
+<tr><th class="navbox-top" colspan="2"><span class="navbox-title">物品与进度</span></th></tr>
+<tr><th>相关页面</th><td><ul class="hlist"><li><a href="items.html#items">物品与装备</a></li><li><a href="special-items.html#special-items">特殊道具</a></li><li><a href="recipes.html#recipes">配方目录</a></li><li><a href="recipes-basics.html#recipes-basics">基础配方</a></li></ul></td></tr>
+</tbody></table>
+<div class="catlinks"><span>分类：</span><ul><li>物品与进度</li></ul></div>
+</aside>
+</div>
+</div>
+</div></main></div></body></html>

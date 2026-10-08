@@ -6,7 +6,7 @@
 
 | 项目 | 值 |
 | --- | --- |
-| 当前版本 | `0.1.2`（见 [code/gradle.properties](code/gradle.properties)） |
+| 当前版本 | `0.2.6`（见 [code/gradle.properties](code/gradle.properties)） |
 | 运行环境 | Minecraft 26.3 / Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3 / Java 25 |
 | 模组 ID | `contribution` |
 | 设计入口 | [design/README.md](design/README.md) |
@@ -23,7 +23,7 @@
 - **每日结算与繁荣度**：主服 8 点关日屏障，长期/近期 EMA 与繁荣度公式。
 - **玩家统计**：原始放置/挖掘次数与九行业个人累计建设度。
 - **交通**：鞘翅、马、船、矿车、猪、炽足兽六类距离，默认每 16 格 1 点，余数持久化。
-- **股票市场**：第 3 个游戏日上市，20 支股票覆盖九行业，10—14 点交易、2% 手续费、按繁荣度排名的日涨跌、退市与自动返还、黑天鹅事件。
+- **股票市场**：第 3 个游戏日上市，20 支正常股票覆盖九行业，从确认表导入1,535个候选，待退市股票保留卖出窗口，10—14 点交易、2% 手续费、繁荣度驱动的自适应日涨跌、退市与自动返还、黑天鹅事件。
 - **建设度奖励**：按九行业权重（默认 1/1000）定期发放贡献值。
 - **签到**：现实日在线满 10 分钟自动每日签到（7 日周期奖励），以及管理员开设的活动签到。
 - **系统商城**：以贡献值购买原版物品，带订单幂等与待发物品领取队列。
@@ -33,7 +33,7 @@
 
 - 商城的**回收、拍卖、抽奖**模块；自定义行业；`TODO.md` 中记录的其他玩法决策项。
 
-完整行为与数值规则见 [设计文档](design/README.md)，命令列表见 [命令速查](code/docs/COMMANDS.md)。
+完整行为与指令见 [离线 Wiki](wiki/index.html) 与 [指令 XLSX](documentation/commands.xlsx)，架构规则见 [设计文档](design/README.md)。维护规则与本轮审查见 [代码规范](code/docs/CODE_STYLE.md) 和 [审查报告](code/docs/AUDIT-0.1.8.md)。
 
 ## 目录结构
 
@@ -42,7 +42,7 @@
 | [code/](code/) | Fabric 模组本体（Gradle 项目，含源码、资源、测试与开发文档） |
 | [design/](design/) | 设计文档，唯一设计入口为 [design/README.md](design/README.md) |
 | [design/definitions/](design/definitions/) | 中文行业定义审核表（CSV/XLSX），模组运行时不读取 |
-| [design/items/](design/items/) | 旧数据包原型的静态分析记录，不代表模组已实现同等功能 |
+| [design/items/](design/items/) | 内置物品功能及旧原型分析，本轮按要求保持不动 |
 | [stock-simulation/](stock-simulation/) | 独立的 Python 股票算法可视化程序及其输出 |
 | [datapack/](datapack/) | 被模组取代的旧数据包原型，仅作历史参考，不参与模组运行 |
 | [TODO.md](TODO.md) | 仍需项目负责人决定的玩法机制与数值 |
@@ -82,7 +82,7 @@ python stock_visualizer.py
 - **单机 / 单服**：默认使用世界目录 `contribution/contribution.mv.db`，统计恢复日志在同一目录的 `statistics-journal/`。备份或回退时先停服，再整体复制 `contribution/` 文件夹；不要在运行时复制数据库文件，也不要手工编辑 `.mv.db`。
 - **群组服**：所有子服连接同一个 MySQL 8.4，`config/contribution/server.json` 设置 `database.mode="mysql"`，各服 `serverId` 唯一，仅生存服 `mainServer=true`。权威数据在 MySQL 中，必须单独备份数据库；子服世界里的 `contribution/` 只是本地恢复日志。
 - **配置**：`config/contribution/server.json` 保存数据库、服务器身份与 `rewards`（建设权重、时区、签到、商品）。该文件已被 `.gitignore` 排除，不要提交含口令的副本。数据库口令可交由环境变量 `CONTRIBUTION_DB_PASSWORD` 覆盖。
-- 奖励与商店配置会写入共享数据库指纹，群组服各节点必须保持一致，否则相关经济操作会被拒绝。
+- 奖励配置写入共享数据库指纹，群组服各节点必须保持一致；商店目录首次导入后由共享数据库管理，不再进入奖励配置指纹。
 
 ## 第三方与许可
 

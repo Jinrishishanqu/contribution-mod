@@ -1,0 +1,32 @@
+{
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        55
+      ],
+      "translation": [
+        0,
+        -0.25,
+        1
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -55
+      ],
+      "translation": [
+        0,
+        -0.25,
+        1
+      ]
+    }
+  },
+  "textures": {
+    "layer0": "contribution:item/weapon_skin/pickaxe/crystyl_crusher"
+  },
+  "parent": "minecraft:item/handheld"
+}

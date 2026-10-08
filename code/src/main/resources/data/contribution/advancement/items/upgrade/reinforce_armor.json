@@ -1,31 +1,206 @@
 {
   "parent": "contribution:items/upgrade/reinforce_tool",
   "criteria": {
-    "copper_boots": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:copper_boots","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":3,"operation":"add_value","slot":"feet","id":"contribution:reinforced_boots_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"feet","id":"contribution:reinforced_boots_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"feet","id":"contribution:reinforced_boots_knockback"}],"minecraft:item_name":{"text":"强化铜靴子"}}}]}},
-    "iron_leggings": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:iron_leggings","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":6,"operation":"add_value","slot":"legs","id":"contribution:reinforced_leggings_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"legs","id":"contribution:reinforced_leggings_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"legs","id":"contribution:reinforced_leggings_knockback"}],"minecraft:item_name":{"text":"强化铁护腿"}}}]}},
-    "diamond_leggings": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:diamond_leggings","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":6,"operation":"add_value","slot":"legs","id":"contribution:reinforced_leggings_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"legs","id":"contribution:reinforced_leggings_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"legs","id":"contribution:reinforced_leggings_knockback"}],"minecraft:item_name":{"text":"强化钻石护腿"}}}]}},
-    "diamond_chestplate": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:diamond_chestplate","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":8,"operation":"add_value","slot":"chest","id":"contribution:reinforced_chestplate_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"chest","id":"contribution:reinforced_chestplate_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"chest","id":"contribution:reinforced_chestplate_knockback"}],"minecraft:item_name":{"text":"强化钻石胸甲"}}}]}},
-    "iron_chestplate": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:iron_chestplate","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":8,"operation":"add_value","slot":"chest","id":"contribution:reinforced_chestplate_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"chest","id":"contribution:reinforced_chestplate_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"chest","id":"contribution:reinforced_chestplate_knockback"}],"minecraft:item_name":{"text":"强化铁胸甲"}}}]}},
-    "chainmail_chestplate": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:chainmail_chestplate","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":8,"operation":"add_value","slot":"chest","id":"contribution:reinforced_chestplate_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"chest","id":"contribution:reinforced_chestplate_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"chest","id":"contribution:reinforced_chestplate_knockback"}],"minecraft:item_name":{"text":"强化锁链胸甲"}}}]}},
-    "copper_helmet": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:copper_helmet","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":3,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_knockback"}],"minecraft:item_name":{"text":"强化铜头盔"}}}]}},
-    "copper_chestplate": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:copper_chestplate","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":8,"operation":"add_value","slot":"chest","id":"contribution:reinforced_chestplate_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"chest","id":"contribution:reinforced_chestplate_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"chest","id":"contribution:reinforced_chestplate_knockback"}],"minecraft:item_name":{"text":"强化铜胸甲"}}}]}},
-    "copper_leggings": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:copper_leggings","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":6,"operation":"add_value","slot":"legs","id":"contribution:reinforced_leggings_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"legs","id":"contribution:reinforced_leggings_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"legs","id":"contribution:reinforced_leggings_knockback"}],"minecraft:item_name":{"text":"强化铜护腿"}}}]}},
-    "diamond_boots": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:diamond_boots","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":3,"operation":"add_value","slot":"feet","id":"contribution:reinforced_boots_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"feet","id":"contribution:reinforced_boots_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"feet","id":"contribution:reinforced_boots_knockback"}],"minecraft:item_name":{"text":"强化钻石靴子"}}}]}},
-    "leather_chestplate": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:leather_chestplate","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":8,"operation":"add_value","slot":"chest","id":"contribution:reinforced_chestplate_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"chest","id":"contribution:reinforced_chestplate_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"chest","id":"contribution:reinforced_chestplate_knockback"}],"minecraft:item_name":{"text":"强化皮革胸甲"}}}]}},
-    "iron_helmet": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:iron_helmet","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":3,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_knockback"}],"minecraft:item_name":{"text":"强化铁头盔"}}}]}},
-    "diamond_helmet": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:diamond_helmet","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":3,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_knockback"}],"minecraft:item_name":{"text":"强化钻石头盔"}}}]}},
-    "leather_boots": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:leather_boots","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":3,"operation":"add_value","slot":"feet","id":"contribution:reinforced_boots_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"feet","id":"contribution:reinforced_boots_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"feet","id":"contribution:reinforced_boots_knockback"}],"minecraft:item_name":{"text":"强化皮革靴子"}}}]}},
-    "chainmail_leggings": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:chainmail_leggings","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":6,"operation":"add_value","slot":"legs","id":"contribution:reinforced_leggings_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"legs","id":"contribution:reinforced_leggings_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"legs","id":"contribution:reinforced_leggings_knockback"}],"minecraft:item_name":{"text":"强化锁链护腿"}}}]}},
-    "leather_leggings": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:leather_leggings","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":6,"operation":"add_value","slot":"legs","id":"contribution:reinforced_leggings_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"legs","id":"contribution:reinforced_leggings_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"legs","id":"contribution:reinforced_leggings_knockback"}],"minecraft:item_name":{"text":"强化皮革护腿"}}}]}},
-    "golden_leggings": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:golden_leggings","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":6,"operation":"add_value","slot":"legs","id":"contribution:reinforced_leggings_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"legs","id":"contribution:reinforced_leggings_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"legs","id":"contribution:reinforced_leggings_knockback"}],"minecraft:item_name":{"text":"强化金护腿"}}}]}},
-    "golden_chestplate": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:golden_chestplate","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":8,"operation":"add_value","slot":"chest","id":"contribution:reinforced_chestplate_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"chest","id":"contribution:reinforced_chestplate_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"chest","id":"contribution:reinforced_chestplate_knockback"}],"minecraft:item_name":{"text":"强化金胸甲"}}}]}},
-    "chainmail_helmet": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:chainmail_helmet","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":3,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_knockback"}],"minecraft:item_name":{"text":"强化锁链头盔"}}}]}},
-    "iron_boots": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:iron_boots","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":3,"operation":"add_value","slot":"feet","id":"contribution:reinforced_boots_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"feet","id":"contribution:reinforced_boots_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"feet","id":"contribution:reinforced_boots_knockback"}],"minecraft:item_name":{"text":"强化铁靴子"}}}]}},
-    "turtle_helmet": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:turtle_helmet","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":3,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_knockback"}],"minecraft:item_name":{"text":"强化海龟壳"}}}]}},
-    "golden_boots": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:golden_boots","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":3,"operation":"add_value","slot":"feet","id":"contribution:reinforced_boots_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"feet","id":"contribution:reinforced_boots_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"feet","id":"contribution:reinforced_boots_knockback"}],"minecraft:item_name":{"text":"强化金靴子"}}}]}},
-    "leather_helmet": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:leather_helmet","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":3,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_knockback"}],"minecraft:item_name":{"text":"强化皮革头盔"}}}]}},
-    "chainmail_boots": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:chainmail_boots","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":3,"operation":"add_value","slot":"feet","id":"contribution:reinforced_boots_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"feet","id":"contribution:reinforced_boots_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"feet","id":"contribution:reinforced_boots_knockback"}],"minecraft:item_name":{"text":"强化锁链靴子"}}}]}},
-    "golden_helmet": {"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":"minecraft:golden_helmet","components":{"minecraft:attribute_modifiers":[{"type":"minecraft:armor","amount":3,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_armor"},{"type":"minecraft:armor_toughness","amount":3,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_toughness"},{"type":"minecraft:knockback_resistance","amount":0.1,"operation":"add_value","slot":"head","id":"contribution:reinforced_helmet_knockback"}],"minecraft:item_name":{"text":"强化金头盔"}}}]}}
+    "copper_boots": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/copper_boots"
+        ]
+      }
+    },
+    "iron_leggings": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/iron_leggings"
+        ]
+      }
+    },
+    "diamond_leggings": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/diamond_leggings"
+        ]
+      }
+    },
+    "diamond_chestplate": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/diamond_chestplate"
+        ]
+      }
+    },
+    "iron_chestplate": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/iron_chestplate"
+        ]
+      }
+    },
+    "chainmail_chestplate": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/chainmail_chestplate"
+        ]
+      }
+    },
+    "copper_helmet": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/copper_helmet"
+        ]
+      }
+    },
+    "copper_chestplate": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/copper_chestplate"
+        ]
+      }
+    },
+    "copper_leggings": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/copper_leggings"
+        ]
+      }
+    },
+    "diamond_boots": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/diamond_boots"
+        ]
+      }
+    },
+    "leather_chestplate": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/leather_chestplate"
+        ]
+      }
+    },
+    "iron_helmet": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/iron_helmet"
+        ]
+      }
+    },
+    "diamond_helmet": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/diamond_helmet"
+        ]
+      }
+    },
+    "leather_boots": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/leather_boots"
+        ]
+      }
+    },
+    "chainmail_leggings": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/chainmail_leggings"
+        ]
+      }
+    },
+    "leather_leggings": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/leather_leggings"
+        ]
+      }
+    },
+    "golden_leggings": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/golden_leggings"
+        ]
+      }
+    },
+    "golden_chestplate": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/golden_chestplate"
+        ]
+      }
+    },
+    "chainmail_helmet": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/chainmail_helmet"
+        ]
+      }
+    },
+    "iron_boots": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/iron_boots"
+        ]
+      }
+    },
+    "turtle_helmet": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/turtle_helmet"
+        ]
+      }
+    },
+    "golden_boots": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/golden_boots"
+        ]
+      }
+    },
+    "leather_helmet": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/leather_helmet"
+        ]
+      }
+    },
+    "chainmail_boots": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/chainmail_boots"
+        ]
+      }
+    },
+    "golden_helmet": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": [
+          "contribution:items/reinforcement/golden_helmet"
+        ]
+      }
+    }
   },
   "display": {
     "icon": {

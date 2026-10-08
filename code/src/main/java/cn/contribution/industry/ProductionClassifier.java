@@ -12,11 +12,16 @@ public final class ProductionClassifier {
     private static final TagKey<Item> MATERIAL = tag("process_furnace_material");
     private static final TagKey<Item> FOOD = tag("process_furnace_food");
 
-    private ProductionClassifier() {
-    }
+    private ProductionClassifier() {}
 
     public static String furnaceEvent(ItemStack output) {
-        if (RuleManager.current() != null) return RuleManager.current().production.get(net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(output.getItem()).toString());
+        if (RuleManager.current() != null)
+            return RuleManager.current()
+                    .production
+                    .get(
+                            net.minecraft.core.registries.BuiltInRegistries.ITEM
+                                    .getKey(output.getItem())
+                                    .toString());
         var holder = output.getItem().builtInRegistryHolder();
         if (holder.is(MINERAL)) return "contribution:process/furnace/mineral_output";
         if (holder.is(CHEMICAL)) return "contribution:process/furnace/chemical_output";
@@ -26,6 +31,7 @@ public final class ProductionClassifier {
     }
 
     private static TagKey<Item> tag(String path) {
-        return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("contribution", path));
+        return TagKey.create(
+                Registries.ITEM, Identifier.fromNamespaceAndPath("contribution", path));
     }
 }

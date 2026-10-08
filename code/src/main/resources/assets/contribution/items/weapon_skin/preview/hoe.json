@@ -1,0 +1,90 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:component",
+    "component": "minecraft:item_name",
+    "cases": [
+      {
+        "when": "掠星镰",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/preview/hoe/celestial_reaper"
+        }
+      },
+      {
+        "when": "死神擢升",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/preview/hoe/deaths_ascension"
+        }
+      },
+      {
+        "when": "旧神星镰",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/preview/hoe/scythe_of_the_abandoned_god"
+        }
+      },
+      {
+        "when": "旧神巨镰",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/preview/hoe/scythe_of_the_old_god"
+        }
+      },
+      {
+        "when": "纳米黑死神",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/preview/hoe/nanoblack_reaper"
+        }
+      },
+      {
+        "when": "邪恶收割者",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/preview/hoe/baleful_harvester"
+        }
+      },
+      {
+        "when": "女妖之爪",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/preview/hoe/banshee_hook"
+        }
+      },
+      {
+        "when": "时空术士之镰",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/preview/hoe/chronomancers_scythe"
+        }
+      },
+      {
+        "when": "精元劫掠者",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/preview/hoe/essence_flayer"
+        }
+      },
+      {
+        "when": "熔岩切碎者",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/preview/hoe/molten_amputator"
+        }
+      },
+      {
+        "when": "灵魂收割者",
+        "model": {
+          "type": "minecraft:model",
+          "model": "contribution:item/weapon_skin/preview/hoe/soul_harvester"
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "contribution:item/weapon_skin/preview/hoe/celestial_reaper"
+    }
+  }
+}

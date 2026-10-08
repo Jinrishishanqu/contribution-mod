@@ -1,15 +1,13 @@
 {
   "replace": false,
   "values": [
-    "minecraft:amethyst_cluster",
     "minecraft:calibrated_sculk_sensor",
-    "minecraft:large_amethyst_bud",
-    "minecraft:medium_amethyst_bud",
+    "minecraft:dragon_egg",
+    "minecraft:honey_block",
     "minecraft:sculk",
     "minecraft:sculk_catalyst",
-    "minecraft:sculk_sensor",
     "minecraft:sculk_shrieker",
     "minecraft:sculk_vein",
-    "minecraft:small_amethyst_bud"
+    "minecraft:slime_block"
   ]
 }

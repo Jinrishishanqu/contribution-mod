@@ -9,7 +9,7 @@ final class DialogTable {
     private static final FontDescription.Resource UNIFORM =
             new FontDescription.Resource(Identifier.withDefaultNamespace("uniform"));
 
-    private DialogTable() { }
+    private DialogTable() {}
 
     static Component text(String value) {
         return Component.literal(value).withStyle(style -> style.withFont(UNIFORM));
@@ -31,9 +31,17 @@ final class DialogTable {
     }
 
     static int displayWidth(String text) {
-        return text.codePoints().map(codePoint -> Character.UnicodeScript.of(codePoint) == Character.UnicodeScript.HAN
-                || Character.UnicodeScript.of(codePoint) == Character.UnicodeScript.HIRAGANA
-                || Character.UnicodeScript.of(codePoint) == Character.UnicodeScript.KATAKANA ? 2 : 1).sum();
+        return text.codePoints()
+                .map(
+                        codePoint ->
+                                Character.UnicodeScript.of(codePoint) == Character.UnicodeScript.HAN
+                                                || Character.UnicodeScript.of(codePoint)
+                                                        == Character.UnicodeScript.HIRAGANA
+                                                || Character.UnicodeScript.of(codePoint)
+                                                        == Character.UnicodeScript.KATAKANA
+                                        ? 2
+                                        : 1)
+                .sum();
     }
 
     private static String fit(String text, int width) {
@@ -41,12 +49,13 @@ final class DialogTable {
         if (displayWidth(text) <= width) return text;
         StringBuilder clipped = new StringBuilder();
         int used = 0;
-        for (int index = 0; index < text.length();) {
+        for (int index = 0; index < text.length(); ) {
             int codePoint = text.codePointAt(index);
             String glyph = new String(Character.toChars(codePoint));
             int glyphWidth = displayWidth(glyph);
             if (used + glyphWidth + 1 > width) break;
-            clipped.append(glyph); used += glyphWidth;
+            clipped.append(glyph);
+            used += glyphWidth;
             index += Character.charCount(codePoint);
         }
         return clipped.append('…').toString();

@@ -1,0 +1,22 @@
+{
+  "parent": "contribution:item/weapon_skin/hoe/molten_amputator",
+  "display": {
+    "gui": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        41,
+        -40,
+        0
+      ],
+      "scale": [
+        4,
+        4,
+        4
+      ]
+    }
+  }
+}
