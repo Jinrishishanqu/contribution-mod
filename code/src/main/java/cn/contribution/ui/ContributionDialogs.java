@@ -712,18 +712,6 @@ public final class ContributionDialogs {
                                         List.of(
                                                 action("全部", "history " + who + " -"),
                                                 action(
-                                                        "股票买入",
-                                                        "history "
-                                                                + who
-                                                                + " - type=SPEND"
-                                                                + " source=contribution:stock"),
-                                                action(
-                                                        "股票卖出",
-                                                        "history "
-                                                                + who
-                                                                + " - type=STOCK"
-                                                                + " source=contribution:stock"),
-                                                action(
                                                         "刷新",
                                                         "history "
                                                                 + who
@@ -784,16 +772,7 @@ public final class ContributionDialogs {
                         lines.add(page.validCursor() ? "暂无符合条件的流水" : "翻页位置已失效");
                     List<ActionButton> actions = new ArrayList<>();
                     actions.add(button("全部流水", "history " + who + " -"));
-                    actions.add(
-                            button(
-                                    "股票买入",
-                                    "history " + who + " - type=SPEND source=contribution:stock"));
-                    actions.add(
-                            button(
-                                    "股票卖出",
-                                    "history " + who + " - type=STOCK source=contribution:stock"));
                     actions.add(button("管理员调整", "history " + who + " - type=ADMIN"));
-                    actions.add(button("退市返还", "history " + who + " - type=REFUND"));
                     actions.add(
                             template("应用筛选", "contribution ui history " + who + " - $(filters)"));
                     actions.add(

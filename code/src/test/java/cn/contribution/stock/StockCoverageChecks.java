@@ -155,7 +155,7 @@ final class StockCoverageChecks {
                                             "INSERT INTO contribution_account (player_uuid,"
                                                 + " player_name, player_name_normalized, balance,"
                                                 + " total_income, created_at, updated_at) VALUES"
-                                                + " (?, 'RefundCap', 'refundcap', 2147483547, 0,"
+                                                + " (?, 'RefundCap', 'refundcap', 0, 0,"
                                                 + " CURRENT_TIMESTAMP(6), CURRENT_TIMESTAMP(6))")) {
                                 insert.setBytes(1, holder);
                                 insert.executeUpdate();
@@ -180,18 +180,20 @@ final class StockCoverageChecks {
                             }
                             StockSettlement.closeRetirements(c, 9);
                             check(
-                                    count(c, "SELECT amount FROM stock_refund") == 1010000,
-                                    "refund retains the entire price times quantity");
+                                    count(c, "SELECT amount FROM stock_refund") == 1_010_000_000L,
+                                    "refund retains the entire price times quantity in milli-GC");
                             check(
-                                    count(c, "SELECT claimed FROM stock_refund") == 100,
-                                    "only available balance capacity is credited");
+                                    count(c, "SELECT claimed FROM stock_refund") == 1_010_000_000L,
+                                    "the whole refund is credited to the GC wallet");
                             check(
-                                    count(c, "SELECT balance FROM contribution_account")
-                                            == Integer.MAX_VALUE,
-                                    "refund respects account balance cap");
-                            check(
-                                    count(c, "SELECT total_income FROM contribution_account") == 0,
-                                    "refund is not historical income");
+                                    countFor(
+                                                    c,
+                                                    "SELECT balance_milli FROM"
+                                                            + " game_currency_account WHERE"
+                                                            + " player_uuid = ?",
+                                                    holder)
+                                            == 1_010_000_000L,
+                                    "GC wallet holds the full credited refund");
                             check(
                                     count(c, "SELECT COUNT(*) FROM stock_position") == 0,
                                     "retirement clears refunded holdings");
@@ -254,6 +256,16 @@ final class StockCoverageChecks {
                 var rows = query.executeQuery()) {
             rows.next();
             return rows.getLong(1);
+        }
+    }
+
+    private static long countFor(Connection c, String sql, byte[] parameter) throws SQLException {
+        try (var query = c.prepareStatement(sql)) {
+            query.setBytes(1, parameter);
+            try (var rows = query.executeQuery()) {
+                rows.next();
+                return rows.getLong(1);
+            }
         }
     }
 

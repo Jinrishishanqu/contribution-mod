@@ -1,5 +1,6 @@
 package cn.contribution.client;
 
+import cn.contribution.gamecurrency.GameCurrencyService;
 import cn.contribution.stock.StockChart;
 import cn.contribution.stock.StockLineRaster;
 import cn.contribution.stock.StockPricing;
@@ -838,11 +839,12 @@ final class StockScreen extends Screen {
         graphics.text(
                 font,
                 "账户余额 "
-                        + portfolio.balance()
+                        + GameCurrencyService.format(portfolio.balanceMilli())
                         + "    持仓市值 "
-                        + portfolio.marketValue()
+                        + GameCurrencyService.format(portfolio.marketValue())
                         + "    持仓成本 "
-                        + portfolio.costBasis(),
+                        + GameCurrencyService.format(portfolio.costBasis())
+                        + " 游戏币",
                 12,
                 52,
                 TEXT,
@@ -850,11 +852,12 @@ final class StockScreen extends Screen {
         graphics.text(
                 font,
                 "未实现盈亏 "
-                        + signed(portfolio.unrealizedProfit())
+                        + signedGc(portfolio.unrealizedProfit())
                         + "    收益率 "
                         + percent(portfolio.unrealizedProfit(), portfolio.costBasis())
                         + "    已实现盈亏 "
-                        + signed(portfolio.realizedProfit()),
+                        + signedGc(portfolio.realizedProfit())
+                        + " 游戏币",
                 12,
                 71,
                 portfolio.unrealizedProfit() >= 0 ? RED : GREEN,
@@ -884,14 +887,14 @@ final class StockScreen extends Screen {
                     TEXT,
                     false);
             if (holding != null) {
-                long gain = (long) row.price() * row.owned() - holding.costBasis();
+                long gain = (long) row.price() * row.owned() * 1000 - holding.costBasis();
                 graphics.text(
                         font,
                         "均价 "
                                 + String.format(
                                         Locale.ROOT,
                                         "%.2f",
-                                        holding.costBasis() / (double) row.owned())
+                                        holding.costBasis() / (1000.0 * row.owned()))
                                 + " · 现价 "
                                 + row.price()
                                 + " · 最近买入日 "
@@ -903,9 +906,10 @@ final class StockScreen extends Screen {
                 graphics.text(
                         font,
                         "市值 "
-                                + ((long) row.price() * row.owned())
+                                + GameCurrencyService.format(
+                                        (long) row.price() * row.owned() * 1000)
                                 + " · 未实现 "
-                                + signed(gain)
+                                + signedGc(gain)
                                 + " ("
                                 + percent(gain, holding.costBasis())
                                 + ")",
@@ -1021,13 +1025,13 @@ final class StockScreen extends Screen {
         y = detailHeading(graphics, "我的持仓", y);
         var position = detail.position();
         if (row.owned() > 0 && position != null) {
-            long gain = (long) row.price() * row.owned() - position.costBasis();
+            long gain = (long) row.price() * row.owned() * 1000 - position.costBasis();
             detailPair(
                     graphics,
                     y,
                     "持仓 " + row.owned() + " 股",
                     TEXT,
-                    "成本 " + position.costBasis(),
+                    "成本 " + GameCurrencyService.format(position.costBasis()) + " 游戏币",
                     TEXT);
             y += 15;
             detailPair(
@@ -1037,17 +1041,19 @@ final class StockScreen extends Screen {
                             + String.format(
                                     Locale.ROOT,
                                     "%.2f",
-                                    position.costBasis() / (double) row.owned()),
+                                    position.costBasis() / (1000.0 * row.owned())),
                     TEXT,
-                    "市值 " + ((long) row.price() * row.owned()),
+                    "市值 "
+                            + GameCurrencyService.format((long) row.price() * row.owned() * 1000)
+                            + " 游戏币",
                     TEXT);
             y += 15;
             detailPair(
                     graphics,
                     y,
-                    "未实现 " + signed(gain) + " (" + percent(gain, position.costBasis()) + ")",
+                    "未实现 " + signedGc(gain) + " (" + percent(gain, position.costBasis()) + ")",
                     gain >= 0 ? RED : GREEN,
-                    "已实现 " + signed(position.realizedProfit()),
+                    "已实现 " + signedGc(position.realizedProfit()) + " 游戏币",
                     MUTED);
             y += 15;
             detailPair(
@@ -1097,6 +1103,13 @@ final class StockScreen extends Screen {
 
     private static String signed(long value) {
         return value >= 0 ? "+" + value : String.valueOf(value);
+    }
+
+    /** Signed game-currency amount; milli input renders as GC text with an explicit + for gains. */
+    private static String signedGc(long milli) {
+        return milli >= 0
+                ? "+" + GameCurrencyService.format(milli)
+                : GameCurrencyService.format(milli);
     }
 
     private static String percent(long difference, long base) {

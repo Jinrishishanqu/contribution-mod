@@ -48,6 +48,9 @@
           "page": "shop"
         },
         {
+          "page": "game-currency"
+        },
+        {
           "page": "stock"
         },
         {
@@ -121,6 +124,9 @@
           "page": "commands-stock"
         },
         {
+          "page": "commands-gc"
+        },
+        {
           "page": "commands-shop"
         },
         {
@@ -174,6 +180,7 @@
     "rewards",
     "checkin",
     "shop",
+    "game-currency",
     "stock",
     "stock-mechanics",
     "swan",
@@ -191,6 +198,7 @@
     "commands-account",
     "commands-checkin",
     "commands-stock",
+    "commands-gc",
     "commands-shop",
     "commands-shop-admin",
     "documentation",

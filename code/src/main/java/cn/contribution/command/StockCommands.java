@@ -1,5 +1,6 @@
 package cn.contribution.command;
 
+import cn.contribution.gamecurrency.GameCurrencyService;
 import cn.contribution.runtime.ContributionRuntime;
 import cn.contribution.stock.StockService;
 
@@ -363,8 +364,11 @@ public final class StockCommands {
                                                                                                                         + result
                                                                                                                                 .price()
                                                                                                                         + "，余额 "
-                                                                                                                        + result
-                                                                                                                                .balance()),
+                                                                                                                        + GameCurrencyService
+                                                                                                                                .format(
+                                                                                                                                        result
+                                                                                                                                                .balanceMilli())
+                                                                                                                        + " 游戏币"),
                                                                                         false);
                                                                         });
                                                         return null;
@@ -427,10 +431,16 @@ public final class StockCommands {
                                                                                     + "，成交价 "
                                                                                     + result.price()
                                                                                     + "，手续费 "
-                                                                                    + result.fee()
-                                                                                    + "，当前余额 "
-                                                                                    + result
-                                                                                            .balance()),
+                                                                                    + GameCurrencyService
+                                                                                            .format(
+                                                                                                    result
+                                                                                                            .feeMilli())
+                                                                                    + " 游戏币，当前余额 "
+                                                                                    + GameCurrencyService
+                                                                                            .format(
+                                                                                                    result
+                                                                                                            .balanceMilli())
+                                                                                    + " 游戏币"),
                                                             false);
                                                 }));
         return 1;

@@ -1,5 +1,6 @@
 package cn.contribution.ui;
 
+import cn.contribution.gamecurrency.GameCurrencyService;
 import cn.contribution.runtime.ContributionRuntime;
 import cn.contribution.stock.StockChart;
 import cn.contribution.stock.StockPricing;
@@ -209,14 +210,14 @@ public final class StockDialogs {
                     }
                     if (stock.owned() > 0 && detail.position() != null) {
                         long gain =
-                                (long) stock.price() * stock.owned()
+                                (long) stock.price() * stock.owned() * 1000
                                         - detail.position().costBasis();
                         lines.add(
                                 "持仓成本 "
-                                        + detail.position().costBasis()
-                                        + " · 未实现收益 "
-                                        + gain
-                                        + " · 最近买入游戏日 "
+                                        + GameCurrencyService.format(detail.position().costBasis())
+                                        + " 游戏币 · 未实现收益 "
+                                        + GameCurrencyService.format(gain)
+                                        + " 游戏币 · 最近买入游戏日 "
                                         + detail.position().lastBuyDay()
                                         + " · 最近买价 "
                                         + detail.position().lastBuyPrice());
@@ -262,26 +263,33 @@ public final class StockDialogs {
                     List<String> lines = new ArrayList<>();
                     lines.add(
                             "余额 "
-                                    + portfolio.balance()
-                                    + " · 持仓市值 "
-                                    + portfolio.marketValue()
-                                    + " · 成本 "
-                                    + portfolio.costBasis());
+                                    + GameCurrencyService.format(portfolio.balanceMilli())
+                                    + " 游戏币 · 持仓市值 "
+                                    + GameCurrencyService.format(portfolio.marketValue())
+                                    + " 游戏币 · 成本 "
+                                    + GameCurrencyService.format(portfolio.costBasis())
+                                    + " 游戏币");
                     lines.add(
                             "未实现盈亏 "
-                                    + portfolio.unrealizedProfit()
-                                    + " · 已实现盈亏 "
-                                    + portfolio.realizedProfit());
+                                    + GameCurrencyService.format(portfolio.unrealizedProfit())
+                                    + " 游戏币 · 已实现盈亏 "
+                                    + GameCurrencyService.format(portfolio.realizedProfit())
+                                    + " 游戏币");
                     List<ActionButton> buttons = new ArrayList<>();
                     for (StockView.Listing stock : dashboard.market().listings())
                         if (stock.owned() > 0) {
                             var position = portfolio.positions().get(stock.id());
                             long gain =
-                                    (long) stock.price() * stock.owned()
+                                    (long) stock.price() * stock.owned() * 1000
                                             - (position == null ? 0 : position.costBasis());
                             buttons.add(
                                     button(
-                                            stock.name() + " ×" + stock.owned() + " · 盈亏 " + gain,
+                                            stock.name()
+                                                    + " ×"
+                                                    + stock.owned()
+                                                    + " · 盈亏 "
+                                                    + GameCurrencyService.format(gain)
+                                                    + " 游戏币",
                                             "check " + stock.id() + " year"));
                         }
                     buttons.add(button("返回市场", "browse name all"));

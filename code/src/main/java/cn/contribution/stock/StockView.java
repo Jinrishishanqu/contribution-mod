@@ -50,7 +50,7 @@ public final class StockView {
             long realizedProfit) {}
 
     public record Portfolio(
-            int balance,
+            long balanceMilli,
             long marketValue,
             long costBasis,
             long unrealizedProfit,
@@ -73,7 +73,7 @@ public final class StockView {
             long stockId,
             int quantity,
             int price,
-            long fee,
-            int balance,
+            long feeMilli,
+            long balanceMilli,
             boolean replay) {}
 }

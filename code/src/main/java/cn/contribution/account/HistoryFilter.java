@@ -24,6 +24,7 @@ public record HistoryFilter(
                     "EVENT_CHECK_IN",
                     "DEVELOP",
                     "SHOP_BUY",
+                    "EXCHANGE",
                     "SPEND",
                     "STOCK",
                     "BONUS",

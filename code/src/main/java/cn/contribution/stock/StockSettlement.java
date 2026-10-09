@@ -1,8 +1,8 @@
 package cn.contribution.stock;
 
 import static cn.contribution.account.AccountService.bytesUuid;
-import static cn.contribution.account.AccountService.uuidBytes;
 
+import cn.contribution.gamecurrency.GameCurrencyService;
 import cn.contribution.industry.BuiltInIndustry;
 import cn.contribution.industry.IndustryProsperity;
 
@@ -326,23 +326,39 @@ final class StockSettlement {
             try (ResultSet holders = positions.executeQuery()) {
                 while (holders.next()) {
                     byte[] playerBytes = holders.getBytes(1);
-                    long amount = Math.max(0, (long) row.price * holders.getLong(2));
-                    int balance = 0;
+                    UUID holder = bytesUuid(playerBytes);
+                    long amount = Math.max(0, (long) row.price * holders.getLong(2) * 1000);
                     String name = null;
+                    String normalized = null;
                     try (PreparedStatement account =
                             connection.prepareStatement(
-                                    "SELECT player_name, balance FROM contribution_account WHERE"
-                                            + " player_uuid = ? FOR UPDATE")) {
+                                    "SELECT player_name, player_name_normalized FROM"
+                                            + " contribution_account WHERE player_uuid = ? FOR"
+                                            + " UPDATE")) {
                         account.setBytes(1, playerBytes);
                         try (ResultSet result = account.executeQuery()) {
                             if (result.next()) {
                                 name = result.getString(1);
-                                balance = result.getInt(2);
+                                normalized = result.getString(2);
                             }
                         }
                     }
                     if (name == null) throw new SQLException("Retiring shareholder has no account");
-                    int paid = (int) Math.min(amount, Integer.MAX_VALUE - (long) balance);
+                    GameCurrencyService.ensureAccount(connection, holder, name, normalized);
+                    GameCurrencyService.WalletRow wallet =
+                            GameCurrencyService.lockWallet(connection, holder);
+                    if (wallet == null)
+                        throw new SQLException("Retiring shareholder has no wallet");
+                    long before = wallet.balanceMilli();
+                    long after = before + amount;
+                    try (PreparedStatement update =
+                            connection.prepareStatement(
+                                    "UPDATE game_currency_account SET balance_milli = ?, updated_at"
+                                            + " = CURRENT_TIMESTAMP(6) WHERE player_uuid = ?")) {
+                        update.setLong(1, after);
+                        update.setBytes(2, playerBytes);
+                        update.executeUpdate();
+                    }
                     try (PreparedStatement insert =
                             connection.prepareStatement(
                                     "INSERT INTO stock_refund (player_uuid, stock_id, amount,"
@@ -350,57 +366,37 @@ final class StockSettlement {
                         insert.setBytes(1, playerBytes);
                         insert.setLong(2, row.id);
                         insert.setLong(3, amount);
-                        insert.setInt(4, paid);
+                        insert.setLong(4, amount);
                         insert.executeUpdate();
                     }
-                    if (paid > 0) {
-                        try (PreparedStatement update =
-                                connection.prepareStatement(
-                                        "UPDATE contribution_account SET balance = balance + ?,"
-                                            + " updated_at = CURRENT_TIMESTAMP(6) WHERE player_uuid"
-                                            + " = ?")) {
-                            update.setInt(1, paid);
-                            update.setBytes(2, playerBytes);
-                            update.executeUpdate();
-                        }
-                        UUID request =
-                                UUID.nameUUIDFromBytes(
-                                        ("stock-retirement|"
-                                                        + row.id
-                                                        + "|"
-                                                        + bytesUuid(playerBytes))
-                                                .getBytes(StandardCharsets.UTF_8));
-                        byte[] requestHash;
-                        try {
-                            requestHash =
-                                    MessageDigest.getInstance("SHA-256")
-                                            .digest(
-                                                    request.toString()
-                                                            .getBytes(StandardCharsets.UTF_8));
-                        } catch (NoSuchAlgorithmException impossible) {
-                            throw new IllegalStateException(impossible);
-                        }
-                        try (PreparedStatement insert =
-                                connection.prepareStatement(
-                                        "INSERT INTO contribution_transaction (transaction_id,"
-                                            + " idempotency_id, request_hash, player_uuid,"
-                                            + " player_name, amount, income_delta, balance_before,"
-                                            + " balance_after, type, source, reason, operator,"
-                                            + " server_id, created_at, note) VALUES (?, ?, ?, ?, ?,"
-                                            + " ?, 0, ?, ?, 'REFUND', 'contribution:stock',"
-                                            + " '股票退市自动返还', 'stock-market', 'stock-main',"
-                                            + " CURRENT_TIMESTAMP(6), NULL)")) {
-                            insert.setBytes(1, uuidBytes(UUID.randomUUID()));
-                            insert.setBytes(2, uuidBytes(request));
-                            insert.setBytes(3, requestHash);
-                            insert.setBytes(4, playerBytes);
-                            insert.setString(5, name);
-                            insert.setInt(6, paid);
-                            insert.setInt(7, balance);
-                            insert.setInt(8, balance + paid);
-                            insert.executeUpdate();
-                        }
+                    UUID request =
+                            UUID.nameUUIDFromBytes(
+                                    ("stock-retirement|" + row.id + "|" + bytesUuid(playerBytes))
+                                            .getBytes(StandardCharsets.UTF_8));
+                    byte[] requestHash;
+                    try {
+                        requestHash =
+                                MessageDigest.getInstance("SHA-256")
+                                        .digest(
+                                                request.toString()
+                                                        .getBytes(StandardCharsets.UTF_8));
+                    } catch (NoSuchAlgorithmException impossible) {
+                        throw new IllegalStateException(impossible);
                     }
+                    GameCurrencyService.insertTransaction(
+                            connection,
+                            request,
+                            requestHash,
+                            holder,
+                            name,
+                            amount,
+                            before,
+                            after,
+                            "REFUND",
+                            GameCurrencyService.SOURCE_STOCK,
+                            "股票退市自动返还",
+                            "stock-market",
+                            "stock-main");
                     try (PreparedStatement notice =
                             connection.prepareStatement(
                                     "INSERT IGNORE INTO stock_notice (player_uuid, stock_id,"
@@ -414,10 +410,8 @@ final class StockSettlement {
                                 "[股票] "
                                         + row.itemId
                                         + " 已退市，按当日股价全额返还 "
-                                        + amount
-                                        + " 贡献值；已到账 "
-                                        + paid
-                                        + "，余款可用 /stock claim 领取");
+                                        + GameCurrencyService.format(amount)
+                                        + " 游戏币，已到账");
                         notice.executeUpdate();
                     }
                 }

@@ -67,6 +67,16 @@ public final class ContributionMod implements ModInitializer {
                         ServerPlayer player = handler.player;
                         ContributionRuntime.accounts()
                                 .registerPlayer(player.getUUID(), player.getGameProfile().name())
+                                .thenCompose(
+                                        ignored -> {
+                                            if (ContributionRuntime.currencies() == null)
+                                                return java.util.concurrent.CompletableFuture
+                                                        .completedFuture(null);
+                                            return ContributionRuntime.currencies()
+                                                    .registerPlayer(
+                                                            player.getUUID(),
+                                                            player.getGameProfile().name());
+                                        })
                                 .thenAccept(
                                         ignored -> {
                                             if (ContributionRuntime.deliveries() != null)

@@ -314,6 +314,7 @@ public final class ContributionCommands {
                                                                                                                                                                                 "note"))))))))))
                         .then(balanceCommand("remove", false)));
         dispatcher.register(StockCommands.command());
+        dispatcher.register(GcCommands.command());
         dispatcher.register(ShopCommands.root(registry));
         cn.contribution.items.WeaponSkins.register(dispatcher);
     }

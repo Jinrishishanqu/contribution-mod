@@ -1,7 +1,7 @@
 {
   "id": "commands",
   "title": "命令速查",
-  "summary": "命令用于打开界面、查询数据和执行交易或管理操作，按贡献值、账户、签到、股票与商店分类。",
+  "summary": "命令用于打开界面、查询数据和执行交易或管理操作，按贡献值、账户、签到、股票、游戏币与商店分类。",
   "sections": [
     {
       "title": "语法",
@@ -27,6 +27,7 @@
             "[界面操作](page:interface) —— `/contribution ui` 的页面标识与导航语义。",
             "[贡献值账户](page:account) —— `add` / `remove` / `retry` 的数值与幂等约束。",
             "[股票市场](page:stock) —— `buy` / `sell` / `batch` / `retry` 的交易规则与重试方式。",
+            "[游戏币](page:game-currency) —— `exchange` / `retry` 的兑换比例与幂等规则。",
             "[系统商店](page:shop) —— `put_on` / `modify` / `admin` 的目录管理流程与版本校验。"
           ]
         }

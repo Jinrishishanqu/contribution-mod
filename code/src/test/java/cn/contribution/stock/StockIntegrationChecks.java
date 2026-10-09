@@ -7,6 +7,7 @@ import cn.contribution.api.BalanceChangeType;
 import cn.contribution.config.ServerConfig;
 import cn.contribution.database.DatabaseService;
 import cn.contribution.database.DatabaseState;
+import cn.contribution.gamecurrency.GameCurrencyService;
 
 import net.minecraft.resources.Identifier;
 
@@ -37,9 +38,12 @@ public final class StockIntegrationChecks {
             check(db.start().join() == DatabaseState.AVAILABLE, "migration");
             StockCoverageChecks.verify(db);
             StockService stocks = new StockService(db, config);
+            GameCurrencyService currencies = new GameCurrencyService(db, config);
             AccountService accounts = new AccountService(db, "stock-test");
             UUID player = UUID.randomUUID();
             accounts.registerPlayer(player, "StockTester").join();
+            currencies.registerPlayer(player, "StockTester").join();
+            fundWallet(db, player, 100_000_000L);
             accounts.changeBalance(
                             new BalanceChangeRequest(
                                     UUID.randomUUID(),
@@ -322,22 +326,22 @@ public final class StockIntegrationChecks {
                             connection -> {
                                 try (var query =
                                         connection.prepareStatement(
-                                                "SELECT type, income_delta FROM"
-                                                    + " contribution_transaction WHERE player_uuid"
-                                                    + " = ? AND source = 'contribution:stock' ORDER"
-                                                    + " BY record_no")) {
+                                                "SELECT type, amount_milli FROM"
+                                                    + " game_currency_transaction WHERE player_uuid"
+                                                    + " = ? AND source = 'game-currency:stock'"
+                                                    + " ORDER BY record_no")) {
                                     query.setBytes(1, AccountService.uuidBytes(player));
                                     try (var rows = query.executeQuery()) {
                                         check(
                                                 rows.next()
                                                         && "SPEND".equals(rows.getString(1))
-                                                        && rows.getInt(2) == 0,
-                                                "buy ledger type");
+                                                        && rows.getLong(2) < 0,
+                                                "buy is a negative GC ledger entry");
                                         check(
                                                 rows.next()
                                                         && "STOCK".equals(rows.getString(1))
-                                                        && rows.getInt(2) == 0,
-                                                "sell ledger type");
+                                                        && rows.getLong(2) > 0,
+                                                "sell is a positive GC ledger entry");
                                     }
                                 }
                                 return null;
@@ -361,6 +365,7 @@ public final class StockIntegrationChecks {
                     "stale main server closes market");
             var accountBeforeRetirement =
                     accounts.account(AccountTarget.byUuid(player)).join().orElseThrow();
+            long walletBeforeRetirement = walletBalance(db, player);
             db.transaction(
                             connection -> {
                                 try (var retire =
@@ -374,7 +379,7 @@ public final class StockIntegrationChecks {
                                 return null;
                             })
                     .join();
-            long expectedRefund = (long) sell.price() * 5;
+            long expectedRefund = (long) sell.price() * 5 * 1000;
             long actualRefund =
                     db.transaction(
                                     connection -> {
@@ -410,17 +415,14 @@ public final class StockIntegrationChecks {
                                 return null;
                             })
                     .join();
-            var accountAfterRetirement =
-                    accounts.account(AccountTarget.byUuid(player)).join().orElseThrow();
             check(
-                    accountAfterRetirement.balance()
-                            == accountBeforeRetirement.balance() + expectedRefund,
-                    "retirement automatically credited at close");
+                    walletBalance(db, player) == walletBeforeRetirement + expectedRefund,
+                    "retirement automatically credited into the GC wallet at close");
             long expectedProfit =
-                    5L * sell.price()
-                            - sell.fee()
+                    5L * sell.price() * 1000
+                            - sell.feeMilli()
                             + expectedRefund
-                            - (10L * buy.price() + buy.fee());
+                            - (10L * buy.price() * 1000 + buy.feeMilli());
             check(
                     stocks.dashboard(player).join().portfolio().realizedProfit() == expectedProfit,
                     "portfolio realized profit includes sale fees and retirement refund");
@@ -750,6 +752,39 @@ public final class StockIntegrationChecks {
                 }
             }
         }
+    }
+
+    private static void fundWallet(DatabaseService db, UUID player, long balanceMilli) {
+        db.transaction(
+                        connection -> {
+                            try (var update =
+                                    connection.prepareStatement(
+                                            "UPDATE game_currency_account SET balance_milli = ?,"
+                                                    + " updated_at = CURRENT_TIMESTAMP(6) WHERE"
+                                                    + " player_uuid = ?")) {
+                                update.setLong(1, balanceMilli);
+                                update.setBytes(2, AccountService.uuidBytes(player));
+                                update.executeUpdate();
+                            }
+                            return null;
+                        })
+                .join();
+    }
+
+    private static long walletBalance(DatabaseService db, UUID player) {
+        return db.transaction(
+                        connection -> {
+                            try (var query =
+                                    connection.prepareStatement(
+                                            "SELECT balance_milli FROM game_currency_account WHERE"
+                                                    + " player_uuid = ?")) {
+                                query.setBytes(1, AccountService.uuidBytes(player));
+                                try (var rows = query.executeQuery()) {
+                                    return rows.next() ? rows.getLong(1) : 0L;
+                                }
+                            }
+                        })
+                .join();
     }
 
     private static void verifyCombinedWinner(

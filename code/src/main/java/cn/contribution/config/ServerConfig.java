@@ -8,4 +8,5 @@ public final class ServerConfig {
     public int databaseQueueCapacity = 1_024;
     public DatabaseConfig database = new DatabaseConfig();
     public RewardConfig rewards = new RewardConfig();
+    public GameCurrencyConfig gameCurrency = new GameCurrencyConfig();
 }

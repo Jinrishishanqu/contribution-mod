@@ -6,6 +6,7 @@ import cn.contribution.ContributionMod;
 import cn.contribution.config.ServerConfig;
 import cn.contribution.database.DatabaseService;
 import cn.contribution.database.DatabaseState;
+import cn.contribution.gamecurrency.GameCurrencyService;
 import cn.contribution.industry.BuiltInIndustry;
 import cn.contribution.industry.RuleManager;
 
@@ -576,16 +577,16 @@ public final class StockService {
         for (StockView.Listing listing : market.listings()) {
             StockView.PositionInfo position = positions.get(listing.id());
             if (position == null || listing.owned() == 0) continue;
-            value += (long) listing.price() * listing.owned();
+            value += (long) listing.price() * listing.owned() * 1000;
             cost += position.costBasis();
         }
-        int balance = 0;
+        long balance = 0;
         try (PreparedStatement query =
                 connection.prepareStatement(
-                        "SELECT balance FROM contribution_account WHERE player_uuid = ?")) {
+                        "SELECT balance_milli FROM game_currency_account WHERE player_uuid = ?")) {
             query.setBytes(1, uuidBytes(player));
             try (ResultSet rows = query.executeQuery()) {
-                if (rows.next()) balance = rows.getInt(1);
+                if (rows.next()) balance = rows.getLong(1);
             }
         }
         long realized =
@@ -604,8 +605,9 @@ public final class StockService {
             Connection connection, UUID player, Long stockId) throws SQLException {
         java.util.Map<Long, Basis> basis = new java.util.HashMap<>();
         String sql =
-                "SELECT t.stock_id, t.game_day, t.side, t.quantity, t.price, t.account_delta "
-                        + "FROM stock_trade t WHERE t.player_uuid = ?"
+                "SELECT t.stock_id, t.game_day, t.side, t.quantity, t.price,"
+                        + " t.account_delta * CASE WHEN t.currency = 'CP' THEN 1000 ELSE 1 END"
+                        + " FROM stock_trade t WHERE t.player_uuid = ?"
                         + (stockId == null ? "" : " AND t.stock_id = ?")
                         + " ORDER BY t.stock_id, t.created_at, t.trade_id";
         try (PreparedStatement query = connection.prepareStatement(sql)) {
@@ -621,7 +623,7 @@ public final class StockService {
                     if ("BUY".equals(side)) {
                         if (value.quantity == 0) value.firstBuyDay = day;
                         value.quantity += quantity;
-                        value.costBasis -= rows.getInt(6);
+                        value.costBasis -= rows.getLong(6);
                         value.lastBuyDay = day;
                         value.lastBuyPrice = rows.getInt(5);
                     } else if (value.quantity > 0) {
@@ -633,7 +635,7 @@ public final class StockService {
                                                         * (quantity / (double) value.quantity)));
                         value.quantity -= quantity;
                         value.costBasis -= removed;
-                        value.realizedProfit += rows.getInt(6) - removed;
+                        value.realizedProfit += rows.getLong(6) - removed;
                     }
                 }
             }
@@ -780,8 +782,8 @@ public final class StockService {
         if (day != accountingDay) return fail("当前游戏日的行业与股价核算尚未完成，交易已暂停");
         if (day < 2) return fail("股市尚未开放，将在第 3 个游戏日上市");
         if (time < 4000 || time >= 8000) return fail("仅在游戏时间 10:00—14:00 可交易");
-        Account account = lockAccount(connection, player);
-        if (account == null) return fail("未找到玩家账户，请重新进入服务器");
+        GameCurrencyService.WalletRow account = GameCurrencyService.lockWallet(connection, player);
+        if (account == null) return fail("未找到游戏币钱包，请重新进入服务器");
         StockView.Listing stock = findListing(connection, player, symbol, true);
         if (stock == null) return fail("未找到这支股票");
         if (buy && !stock.status().equals("ACTIVE")) return fail("退市当日只允许卖出");
@@ -803,15 +805,11 @@ public final class StockService {
                 position == null || position.boughtDay != day ? 0 : position.boughtQuantity;
         if (buy && owned + quantity > 10000) return fail("每支股票最多持有 10000 股");
         if (!buy && quantity > owned - boughtToday) return fail("可卖持仓不足；当日买入的股票当天不能卖出");
-        long gross = (long) quantity * stock.price();
+        long gross = (long) quantity * stock.price() * 1000;
         long fee = (gross * 2 + 50) / 100;
         long delta = buy ? -gross - fee : gross - fee;
-        if (delta < Integer.MIN_VALUE || delta > Integer.MAX_VALUE) return fail("交易金额超过单次变动范围");
-        long nextBalance = account.balance + delta;
-        long nextIncome = account.income;
-        if (nextBalance < 0) return fail("余额不足，本次交易未发起");
-        if (nextBalance > Integer.MAX_VALUE || nextIncome > Integer.MAX_VALUE)
-            return fail("余额或历史总收入超过上限");
+        long nextBalance = account.balanceMilli() + delta;
+        if (nextBalance < 0) return fail("游戏币余额不足，本次交易未发起");
         if (buy && position == null) {
             try (PreparedStatement insert =
                     connection.prepareStatement(
@@ -839,11 +837,10 @@ public final class StockService {
         }
         try (PreparedStatement update =
                 connection.prepareStatement(
-                        "UPDATE contribution_account SET balance = ?, total_income = ?, updated_at"
-                                + " = CURRENT_TIMESTAMP(6) WHERE player_uuid = ?")) {
-            update.setInt(1, (int) nextBalance);
-            update.setInt(2, (int) nextIncome);
-            update.setBytes(3, uuidBytes(player));
+                        "UPDATE game_currency_account SET balance_milli = ?, updated_at ="
+                                + " CURRENT_TIMESTAMP(6) WHERE player_uuid = ?")) {
+            update.setLong(1, nextBalance);
+            update.setBytes(2, uuidBytes(player));
             update.executeUpdate();
         }
         UUID tradeId = UUID.randomUUID();
@@ -851,8 +848,8 @@ public final class StockService {
                 connection.prepareStatement(
                         "INSERT INTO stock_trade (trade_id, idempotency_id, request_hash,"
                             + " player_uuid, stock_id, game_day, side, quantity, price, gross, fee,"
-                            + " account_delta, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,"
-                            + " ?, CURRENT_TIMESTAMP(6))")) {
+                            + " account_delta, currency, created_at) VALUES (?, ?, ?, ?, ?, ?, ?,"
+                            + " ?, ?, ?, ?, ?, 'GC', CURRENT_TIMESTAMP(6))")) {
             insert.setBytes(1, uuidBytes(tradeId));
             insert.setBytes(2, uuidBytes(requestId));
             insert.setBytes(3, hash);
@@ -864,22 +861,23 @@ public final class StockService {
             insert.setInt(9, stock.price());
             insert.setLong(10, gross);
             insert.setLong(11, fee);
-            insert.setInt(12, (int) delta);
+            insert.setLong(12, delta);
             insert.executeUpdate();
         }
-        accountTransaction(
+        GameCurrencyService.insertTransaction(
                 connection,
-                tradeId,
                 requestId,
                 hash,
                 player,
-                account.name,
-                (int) delta,
-                0,
-                account.balance,
-                (int) nextBalance,
+                account.playerName(),
+                delta,
+                account.balanceMilli(),
+                nextBalance,
                 buy ? "SPEND" : "STOCK",
-                (buy ? "买入 " : "卖出 ") + stock.name() + " × " + quantity);
+                GameCurrencyService.SOURCE_STOCK,
+                (buy ? "买入 " : "卖出 ") + stock.name() + " × " + quantity,
+                "stock-market",
+                serverId);
         return new StockView.TradeResult(
                 true,
                 buy ? "买入成功" : "卖出成功",
@@ -887,7 +885,7 @@ public final class StockService {
                 quantity,
                 stock.price(),
                 fee,
-                (int) nextBalance,
+                nextBalance,
                 false);
     }
 
@@ -896,37 +894,33 @@ public final class StockService {
                         connection -> {
                             try (PreparedStatement old =
                                     connection.prepareStatement(
-                                            "SELECT type, source FROM (SELECT * FROM"
-                                                    + " contribution_transaction UNION ALL SELECT *"
-                                                    + " FROM contribution_transaction_archive)"
-                                                    + " transactions WHERE idempotency_id = ?")) {
+                                            "SELECT type, source FROM game_currency_transaction"
+                                                    + " WHERE idempotency_id = ?")) {
                                 old.setBytes(1, uuidBytes(requestId));
                                 try (ResultSet row = old.executeQuery()) {
                                     if (row.next())
                                         return "REFUND".equals(row.getString(1))
-                                                        && "contribution:stock"
-                                                                .equals(row.getString(2))
+                                                        && GameCurrencyService.SOURCE_STOCK.equals(
+                                                                row.getString(2))
                                                 ? "退市返还已领取；本次未重复发放"
                                                 : "请求 ID 已用于其他账户操作";
                                 }
                             }
-                            Account account = lockAccount(connection, player);
+                            if (accountRequestExists(connection, requestId))
+                                return "请求 ID 已用于其他账户操作";
+                            GameCurrencyService.WalletRow account =
+                                    GameCurrencyService.lockWallet(connection, player);
                             if (account == null) return "账户未就绪";
-                            long room = Integer.MAX_VALUE - (long) account.balance;
-                            if (room == 0) return "余额已达上限；退市返还保留待领";
                             long total = 0;
                             try (PreparedStatement query =
                                     connection.prepareStatement(
-                                            "SELECT stock_id, amount, claimed FROM stock_refund"
+                                            "SELECT stock_id, amount - claimed FROM stock_refund"
                                                     + " WHERE player_uuid = ? AND amount > claimed"
                                                     + " ORDER BY stock_id FOR UPDATE")) {
                                 query.setBytes(1, uuidBytes(player));
                                 try (ResultSet rows = query.executeQuery()) {
-                                    while (rows.next() && total < room) {
-                                        long part =
-                                                Math.min(
-                                                        rows.getLong(2) - rows.getLong(3),
-                                                        room - total);
+                                    while (rows.next()) {
+                                        long part = rows.getLong(2);
                                         try (PreparedStatement update =
                                                 connection.prepareStatement(
                                                         "UPDATE stock_refund SET claimed = claimed"
@@ -942,30 +936,31 @@ public final class StockService {
                                 }
                             }
                             if (total == 0) return "暂无待领取的退市返还";
-                            int paid = (int) total;
+                            long next = account.balanceMilli() + total;
                             try (PreparedStatement update =
                                     connection.prepareStatement(
-                                            "UPDATE contribution_account SET balance = balance + ?,"
+                                            "UPDATE game_currency_account SET balance_milli = ?,"
                                                     + " updated_at = CURRENT_TIMESTAMP(6) WHERE"
                                                     + " player_uuid = ?")) {
-                                update.setInt(1, paid);
+                                update.setLong(1, next);
                                 update.setBytes(2, uuidBytes(player));
                                 update.executeUpdate();
                             }
-                            accountTransaction(
+                            GameCurrencyService.insertTransaction(
                                     connection,
-                                    UUID.randomUUID(),
                                     requestId,
                                     hash(player + "|refund"),
                                     player,
-                                    account.name,
-                                    paid,
-                                    0,
-                                    account.balance,
-                                    account.balance + paid,
+                                    account.playerName(),
+                                    total,
+                                    account.balanceMilli(),
+                                    next,
                                     "REFUND",
-                                    "股票退市返还");
-                            return "已领取退市返还 " + paid + " 贡献值";
+                                    GameCurrencyService.SOURCE_STOCK,
+                                    "股票退市返还",
+                                    "stock-market",
+                                    serverId);
+                            return "已领取退市返还 " + GameCurrencyService.format(total) + " 游戏币";
                         })
                 .exceptionally(error -> "返还暂时不可用，请稍后使用同一请求 ID 重试");
     }
@@ -974,10 +969,10 @@ public final class StockService {
             throws SQLException {
         try (PreparedStatement query =
                 connection.prepareStatement(
-                        "SELECT t.request_hash, t.stock_id, t.quantity, t.price, t.fee,"
-                                + " t.player_uuid, a.balance FROM stock_trade t JOIN"
-                                + " contribution_account a ON a.player_uuid = t.player_uuid WHERE"
-                                + " t.idempotency_id = ?")) {
+                        "SELECT t.request_hash, t.stock_id, t.quantity, t.price, t.fee * CASE WHEN"
+                            + " t.currency = 'CP' THEN 1000 ELSE 1 END, t.player_uuid,"
+                            + " a.balance_milli FROM stock_trade t JOIN game_currency_account a ON"
+                            + " a.player_uuid = t.player_uuid WHERE t.idempotency_id = ?")) {
             query.setBytes(1, uuidBytes(requestId));
             try (ResultSet rows = query.executeQuery()) {
                 if (!rows.next()) return null;
@@ -989,14 +984,16 @@ public final class StockService {
                         rows.getInt(3),
                         rows.getInt(4),
                         rows.getLong(5),
-                        rows.getInt(7),
+                        rows.getLong(7),
                         true);
             }
         }
     }
 
+    /** Guards against an id already spent on a contribution movement or another GC operation. */
     private static boolean accountRequestExists(Connection connection, UUID requestId)
             throws SQLException {
+        if (GameCurrencyService.currencyRequestExists(connection, requestId)) return true;
         try (PreparedStatement query =
                 connection.prepareStatement(
                         "SELECT 1 FROM (SELECT * FROM contribution_transaction UNION ALL SELECT *"
@@ -1005,20 +1002,6 @@ public final class StockService {
             query.setBytes(1, uuidBytes(requestId));
             try (ResultSet rows = query.executeQuery()) {
                 return rows.next();
-            }
-        }
-    }
-
-    private static Account lockAccount(Connection connection, UUID player) throws SQLException {
-        try (PreparedStatement query =
-                connection.prepareStatement(
-                        "SELECT player_name, balance, total_income FROM contribution_account WHERE"
-                                + " player_uuid = ? FOR UPDATE")) {
-            query.setBytes(1, uuidBytes(player));
-            try (ResultSet rows = query.executeQuery()) {
-                return rows.next()
-                        ? new Account(rows.getString(1), rows.getInt(2), rows.getInt(3))
-                        : null;
             }
         }
     }
@@ -1084,45 +1067,6 @@ public final class StockService {
                 rows.getLong(9));
     }
 
-    private void accountTransaction(
-            Connection connection,
-            UUID transaction,
-            UUID requestId,
-            byte[] hash,
-            UUID player,
-            String playerName,
-            int delta,
-            int incomeDelta,
-            int before,
-            int after,
-            String type,
-            String reason)
-            throws SQLException {
-        try (PreparedStatement insert =
-                connection.prepareStatement(
-                        "INSERT INTO contribution_transaction (transaction_id, idempotency_id,"
-                            + " request_hash, player_uuid, player_name, amount, income_delta,"
-                            + " balance_before, balance_after, type, source, reason, operator,"
-                            + " server_id, created_at, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,"
-                            + " ?, ?, ?, ?, CURRENT_TIMESTAMP(6), NULL)")) {
-            insert.setBytes(1, uuidBytes(transaction));
-            insert.setBytes(2, uuidBytes(requestId));
-            insert.setBytes(3, hash);
-            insert.setBytes(4, uuidBytes(player));
-            insert.setString(5, playerName);
-            insert.setInt(6, delta);
-            insert.setInt(7, incomeDelta);
-            insert.setInt(8, before);
-            insert.setInt(9, after);
-            insert.setString(10, type);
-            insert.setString(11, "contribution:stock");
-            insert.setString(12, reason);
-            insert.setString(13, "stock-market");
-            insert.setString(14, serverId);
-            insert.executeUpdate();
-        }
-    }
-
     private static byte[] hash(String text) {
         try {
             return MessageDigest.getInstance("SHA-256")
@@ -1135,8 +1079,6 @@ public final class StockService {
     private static StockView.TradeResult fail(String message) {
         return new StockView.TradeResult(false, message, 0, 0, 0, 0, 0, false);
     }
-
-    private record Account(String name, int balance, int income) {}
 
     private record Position(int quantity, long boughtDay, int boughtQuantity) {}
 }

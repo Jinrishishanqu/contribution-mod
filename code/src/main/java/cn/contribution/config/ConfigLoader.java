@@ -203,5 +203,16 @@ public final class ConfigLoader {
                 throw new IllegalArgumentException("Invalid shop offer");
             }
         }
+        GameCurrencyConfig gameCurrency = config.gameCurrency;
+        if (gameCurrency == null
+                || gameCurrency.exchangeRateMilli < GameCurrencyConfig.MINIMUM_EXCHANGE_RATE_MILLI
+                || gameCurrency.exchangeRateMilli
+                        > GameCurrencyConfig.MAXIMUM_EXCHANGE_RATE_MILLI) {
+            throw new IllegalArgumentException(
+                    "gameCurrency.exchangeRateMilli must be between "
+                            + GameCurrencyConfig.MINIMUM_EXCHANGE_RATE_MILLI
+                            + " and "
+                            + GameCurrencyConfig.MAXIMUM_EXCHANGE_RATE_MILLI);
+        }
     }
 }

@@ -7,6 +7,7 @@ import cn.contribution.config.ConfigLoader;
 import cn.contribution.config.ServerConfig;
 import cn.contribution.database.DatabaseService;
 import cn.contribution.database.DatabaseState;
+import cn.contribution.gamecurrency.GameCurrencyService;
 import cn.contribution.industry.DevelopmentRewardService;
 import cn.contribution.industry.IndustrySettlement;
 import cn.contribution.industry.StatisticsService;
@@ -31,6 +32,7 @@ public final class ContributionRuntime {
     private static StatisticsService statistics;
     private static IndustrySettlement settlement;
     private static StockService stocks;
+    private static GameCurrencyService currencies;
     private static DevelopmentRewardService developmentRewards;
     private static CheckinService checkins;
     private static EventCheckinService eventCheckins;
@@ -82,6 +84,7 @@ public final class ContributionRuntime {
                             ? new cn.contribution.account.TransactionArchive(database)
                             : null;
             stocks = new StockService(database, config);
+            currencies = new GameCurrencyService(database, config);
             developmentRewards =
                     config.mainServer ? new DevelopmentRewardService(database, config) : null;
             checkins = new CheckinService(database, config);
@@ -142,6 +145,7 @@ public final class ContributionRuntime {
         statistics = null;
         settlement = null;
         stocks = null;
+        currencies = null;
         developmentRewards = null;
         checkins = null;
         eventCheckins = null;
@@ -176,6 +180,10 @@ public final class ContributionRuntime {
 
     public static StockService stocks() {
         return stocks;
+    }
+
+    public static GameCurrencyService currencies() {
+        return currencies;
     }
 
     public static CheckinService checkins() {
