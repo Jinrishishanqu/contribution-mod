@@ -29,6 +29,7 @@ Wiki 网站的内容拆分、自动配方/进度明细及同步校验见[网站�
 - [贡献值账户](basic/contribution-account.md)：账户、余额、流水、查询、余额变更 API、管理员命令、权限和反馈文本。
 - [服务器建设度统计](basic/server-development.md)：行业建设度、每日统计、总建设度、繁荣度、来源规则和持久化。当前实现阶段只覆盖九个内置行业；自定义行业保留为后续设计。
 - [玩家统计数据](basic/player-statistics.md)：玩家总放置、总挖掘以及各行业累计建设度。
+- [贡献点边际计价规格（放置与挖掘）](basic/contribution-pricing.md)：**设计规格，未实现**。只重设贡献点价格，把放置/挖掘改为按当日建设度分段递减单价，使批量建造收益不超过手搭玩家的 1.2 倍；建设度、繁荣度与股票不受影响。价格对比见[前后对比（注释版）](basic/contribution-pricing-comparison.md)。
 - [图形界面](basic/graphical-interface.md)：账户、流水、统计、行业总览及管理员操作，原版客户端可用。
 
 ### 拓展功能
